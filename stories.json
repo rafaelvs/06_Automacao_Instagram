@@ -1,0 +1,62 @@
+[
+  {
+    "id": "story01",
+    "datetime": "2026-06-08T12:30:00-03:00",
+    "image": "images/story01.jpg"
+  },
+  {
+    "id": "story02",
+    "datetime": "2026-06-10T12:30:00-03:00",
+    "image": "images/story02.jpg"
+  },
+  {
+    "id": "story03",
+    "datetime": "2026-06-12T12:30:00-03:00",
+    "image": "images/story03.jpg"
+  },
+  {
+    "id": "story04",
+    "datetime": "2026-06-15T12:30:00-03:00",
+    "image": "images/story04.jpg"
+  },
+  {
+    "id": "story05",
+    "datetime": "2026-06-17T12:30:00-03:00",
+    "image": "images/story05.jpg"
+  },
+  {
+    "id": "story06",
+    "datetime": "2026-06-19T12:30:00-03:00",
+    "image": "images/story06.jpg"
+  },
+  {
+    "id": "story07",
+    "datetime": "2026-06-22T12:30:00-03:00",
+    "image": "images/story07.jpg"
+  },
+  {
+    "id": "story08",
+    "datetime": "2026-06-24T12:30:00-03:00",
+    "image": "images/story08.jpg"
+  },
+  {
+    "id": "story09",
+    "datetime": "2026-06-26T12:30:00-03:00",
+    "image": "images/story09.jpg"
+  },
+  {
+    "id": "story10",
+    "datetime": "2026-06-29T12:30:00-03:00",
+    "image": "images/story10.jpg"
+  },
+  {
+    "id": "story11",
+    "datetime": "2026-07-01T12:30:00-03:00",
+    "image": "images/story11.jpg"
+  },
+  {
+    "id": "story12",
+    "datetime": "2026-07-03T12:30:00-03:00",
+    "image": "images/story12.jpg"
+  }
+]
