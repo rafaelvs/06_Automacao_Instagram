@@ -1,0 +1,46 @@
+name: Publicar no Instagram
+
+on:
+  schedule:
+    # A cada 15 min. GitHub usa UTC; o robo so publica posts cujo horario (BRT) ja chegou.
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+    inputs:
+      force_id:
+        description: "Publicar um post imediatamente (ex.: post01). Deixe vazio para o modo agendado."
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: instagram-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - name: Publicar posts pendentes
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          FORCE_ID: ${{ github.event.inputs.force_id }}
+        run: python publish.py
+      - name: Salvar estado (evita repostar)
+        run: |
+          if ! git diff --quiet -- state/published.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add state/published.json
+            git commit -m "Atualiza estado de publicacao"
+            git push
+          else
+            echo "Sem mudancas no estado."
+          fi
