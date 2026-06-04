@@ -28,6 +28,7 @@ BRT = dt.timezone(dt.timedelta(hours=-3))
 ROOT = os.path.dirname(os.path.abspath(__file__))
 POSTS_FILE   = os.path.join(ROOT, "posts.json")
 STORIES_FILE = os.path.join(ROOT, "stories.json")
+DESTAQUES_FILE = os.path.join(ROOT, "destaques.json")  # stories para os Destaques (publicar com FORCE_ID=destaques)
 STATE_FILE   = os.path.join(ROOT, "state", "published.json")
 
 IG_USER_ID = os.environ.get("IG_USER_ID", "").strip()
@@ -92,6 +93,15 @@ def main():
     done = {e["id"] for e in state["published"]}
     now = dt.datetime.now(dt.timezone.utc); brt = now.astimezone(BRT); today = brt.date().isoformat()
     mod = brt.hour*60 + brt.minute; changed = False
+
+    if FORCE_ID == "destaques":
+        for it in load_json(DESTAQUES_FILE, []):
+            try:
+                mid = publish_story(it); log(state, it, "story", mid, now); changed = True
+                print(f"Destaque {it['id']} OK -> {mid}")
+            except Exception as e: print(f"FALHA destaque {it['id']}: {e}")
+        if changed: save_state(state)
+        return
 
     if FORCE_ID:
         it = next((x for x in posts if x["id"] == FORCE_ID), None)

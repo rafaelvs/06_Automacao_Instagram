@@ -1,0 +1,30 @@
+[
+  {
+    "id": "dest01",
+    "image": "images/dest01.jpg"
+  },
+  {
+    "id": "dest02",
+    "image": "images/dest02.jpg"
+  },
+  {
+    "id": "dest03",
+    "image": "images/dest03.jpg"
+  },
+  {
+    "id": "dest04",
+    "image": "images/dest04.jpg"
+  },
+  {
+    "id": "dest05",
+    "image": "images/dest05.jpg"
+  },
+  {
+    "id": "dest06",
+    "image": "images/dest06.jpg"
+  },
+  {
+    "id": "dest07",
+    "image": "images/dest07.jpg"
+  }
+]
