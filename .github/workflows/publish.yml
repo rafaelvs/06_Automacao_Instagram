@@ -2,8 +2,14 @@ name: Publicar no Instagram
 
 on:
   schedule:
-    # A cada 15 min. GitHub usa UTC; o robo so publica posts cujo horario (BRT) ja chegou.
-    - cron: "*/15 * * * *"
+    # GitHub usa UTC (BRT = UTC-3). O robo so publica no horario certo; o controle de
+    # estado garante 1 post/1 story por dia, mesmo com varios disparos. Adensamos perto
+    # das janelas-alvo porque o cron do GitHub e' "melhor esforco" e atrasa.
+    - cron: "*/30 * * * *"                  # catch-all (pega atrasos; nada se perde)
+    - cron: "0,10,20,35,50 22 * * 2,4,6"    # POSTS ~19:00 BRT (Ter/Qui/Sab)
+    - cron: "5,20,40 23 * * 2,4,6"          # POSTS reforco
+    - cron: "30,40,50 15 * * 1,3,5"         # STORIES ~12:30 BRT (Seg/Qua/Sex)
+    - cron: "0,15,35 16 * * 1,3,5"          # STORIES reforco
   workflow_dispatch:
     inputs:
       force_id:
