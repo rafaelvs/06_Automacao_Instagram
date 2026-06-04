@@ -20,9 +20,9 @@ import os, sys, json, time, datetime as dt
 import requests
 
 POST_WEEKDAYS  = {1, 3, 5}      # Ter, Qui, Sab
-POST_MIN       = 18*60 + 30     # 18:30
+POST_MIN       = 19*60          # 19:00
 STORY_WEEKDAYS = {0, 2, 4}      # Seg, Qua, Sex
-STORY_MIN      = 12*60          # 12:00
+STORY_MIN      = 12*60 + 30     # 12:30
 BRT = dt.timezone(dt.timedelta(hours=-3))
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
