@@ -4,7 +4,7 @@
 Publicador automatico para Instagram (API oficial da Meta / Instagram Login).
 
 Modelo BIBLIOTECA CURADA, sem repetir:
-- posts.json e stories.json sao LISTAS ORDENADAS (bibliotecas).
+- posts.json, stories.json e reels.json sao LISTAS ORDENADAS (bibliotecas).
 - Em cada janela agendada, publica o PROXIMO item ainda nao publicado (em ordem).
 - Nada se repete. Quando a biblioteca acaba, o robo simplesmente nao publica
   (hora de reabastecer com conteudo novo).
@@ -12,6 +12,7 @@ Modelo BIBLIOTECA CURADA, sem repetir:
 Agenda (horario de Brasilia, BRT = UTC-3):
 - POSTS (feed):  Ter/Qui/Sab, a partir das 19:00  -> 1 post por dia desses.
 - STORIES:       Seg/Qua/Sex, a partir das 12:30  -> 1 story por dia desses.
+- REELS:         Seg/Qua/Sex, a partir das 19:00  -> 1 reel por dia desses.
 
 Env: IG_USER_ID, IG_ACCESS_TOKEN, GITHUB_REPOSITORY, GRAPH_VERSION (opc),
      FORCE_ID (opc: publica esse id imediatamente).
@@ -23,12 +24,15 @@ POST_WEEKDAYS  = {1, 3, 5}      # Ter, Qui, Sab
 POST_MIN       = 19*60          # 19:00
 STORY_WEEKDAYS = {0, 2, 4}      # Seg, Qua, Sex
 STORY_MIN      = 12*60 + 30     # 12:30
+REEL_WEEKDAYS  = {0, 2, 4}      # Seg, Qua, Sex
+REEL_MIN       = 19*60          # 19:00
 BRT = dt.timezone(dt.timedelta(hours=-3))
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 POSTS_FILE   = os.path.join(ROOT, "posts.json")
 STORIES_FILE = os.path.join(ROOT, "stories.json")
-DESTAQUES_FILE = os.path.join(ROOT, "destaques.json")  # stories para os Destaques (publicar com FORCE_ID=destaques)
+REELS_FILE   = os.path.join(ROOT, "reels.json")
+DESTAQUES_FILE = os.path.join(ROOT, "destaques.json")  # stories para os Destaques (FORCE_ID=destaques)
 STATE_FILE   = os.path.join(ROOT, "state", "published.json")
 
 IG_USER_ID = os.environ.get("IG_USER_ID", "").strip()
@@ -54,7 +58,7 @@ def save_state(s):
     with open(STATE_FILE, "w", encoding="utf-8") as f: json.dump(s, f, ensure_ascii=False, indent=2)
 def api_post(path, data):
     data = dict(data); data["access_token"] = TOKEN
-    r = requests.post(f"{HOST}/{path}", data=data, timeout=60)
+    r = requests.post(f"{HOST}/{path}", data=data, timeout=120)
     if r.status_code >= 400: raise RuntimeError(f"POST {path} -> {r.status_code}: {r.text}")
     return r.json()
 def api_get(path, params):
@@ -82,14 +86,22 @@ def publish_story(item):
     cont = api_post(f"{IG_USER_ID}/media", {"image_url": raw_url(item["image"]), "media_type": "STORIES"})["id"]
     wait_finished(cont)
     return api_post(f"{IG_USER_ID}/media_publish", {"creation_id": cont})["id"]
+def publish_reel(item):
+    # Reel: video_url publico (raw do GitHub). share_to_feed mostra tambem no feed.
+    cont = api_post(f"{IG_USER_ID}/media", {
+        "media_type": "REELS", "video_url": raw_url(item["video"]),
+        "caption": item.get("caption", ""), "share_to_feed": "true"})["id"]
+    wait_finished(cont, tries=30, delay=10)   # video demora mais p/ processar
+    return api_post(f"{IG_USER_ID}/media_publish", {"creation_id": cont})["id"]
 def log(state, item, kind, mid, now): state["published"].append({"id": item["id"], "kind": kind, "media_id": mid, "at": now.isoformat()})
 def next_item(items, done): return next((x for x in items if x["id"] not in done), None)
 
 def main():
     posts   = load_json(POSTS_FILE, [])
     stories = load_json(STORIES_FILE, [])
-    state = load_json(STATE_FILE, {"published": [], "last_post_date": "", "last_story_date": ""})
-    state.setdefault("published", []); state.setdefault("last_post_date", ""); state.setdefault("last_story_date", "")
+    reels   = load_json(REELS_FILE, [])
+    state = load_json(STATE_FILE, {"published": [], "last_post_date": "", "last_story_date": "", "last_reel_date": ""})
+    state.setdefault("published", []); state.setdefault("last_post_date", ""); state.setdefault("last_story_date", ""); state.setdefault("last_reel_date", "")
     done = {e["id"] for e in state["published"]}
     now = dt.datetime.now(dt.timezone.utc); brt = now.astimezone(BRT); today = brt.date().isoformat()
     mod = brt.hour*60 + brt.minute; changed = False
@@ -104,13 +116,14 @@ def main():
         return
 
     if FORCE_ID:
-        it = next((x for x in posts if x["id"] == FORCE_ID), None)
-        kind = "post"
+        it = next((x for x in posts if x["id"] == FORCE_ID), None); kind = "post"
         if it is None:
             it = next((x for x in stories if x["id"] == FORCE_ID), None); kind = "story"
+        if it is None:
+            it = next((x for x in reels if x["id"] == FORCE_ID), None); kind = "reel"
         if it is None: print(f"FORCE_ID={FORCE_ID}: nao encontrado."); return
         try:
-            mid = publish_post(it) if kind == "post" else publish_story(it)
+            mid = publish_post(it) if kind == "post" else (publish_story(it) if kind == "story" else publish_reel(it))
             log(state, it, kind, mid, now); save_state(state); print(f"FORCE {FORCE_ID} OK -> {mid}")
         except Exception as e: print(f"FORCE {FORCE_ID} FALHA: {e}")
         return
@@ -138,6 +151,18 @@ def main():
             except Exception as e: print(f"FALHA story {it['id']}: {e}")
         else:
             print("Biblioteca de STORIES esgotada — hora de reabastecer.")
+
+    # REELS
+    if brt.weekday() in REEL_WEEKDAYS and mod >= REEL_MIN and state["last_reel_date"] != today:
+        it = next_item(reels, done)
+        if it:
+            try:
+                mid = publish_reel(it); log(state, it, "reel", mid, now)
+                done.add(it["id"]); state["last_reel_date"] = today; changed = True
+                print(f"Reel {it['id']} OK -> {mid}")
+            except Exception as e: print(f"FALHA reel {it['id']}: {e}")
+        else:
+            print("Biblioteca de REELS esgotada — hora de reabastecer.")
 
     if changed: save_state(state); print("Estado atualizado.")
     else: print("Nada a publicar agora.")
