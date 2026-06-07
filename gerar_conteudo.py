@@ -76,7 +76,7 @@ def story(fn,v,k,t,sub):
     for ln in wrap(d,sub,F(NR,40),W-2*M): d.text((M,by),ln,font=F(NR,40),fill=scol); by+=58
     d.text((M,H-200),"@rafaelvargasmd",font=F(NR,30),fill=mcol); d.text((M,H-150),SIG,font=F(NR,24),fill=mcol)
     img.save(os.path.join(IMG,fn),"JPEG",quality=92)
-def cap(corpo,tags): return corpo+"\n\n""💬 Dúvida? Comenta aqui ou manda no direct. 📌 Salve para consultar depois.\n""📲 Para avaliação, agende pela WhatsApp no link da bio."+"\n\n"+SIG+"\n\n"+tags
+def cap(corpo,tags): return corpo+"\n\n""📤 Manda para alguém que precisa ver. 📌 Salve para consultar depois.\n""💬 Dúvida? Comenta ou chama no direct. 📲 Agende pela WhatsApp no link da bio."+"\n\n"+SIG+"\n\n"+tags
 NL="\n\n"; A="arraste →"
 
 C19=NL.join(["Pé torto congênito: por que tratar cedo faz diferença.","O pé torto (equinovaro) já nasce com o pé virado para baixo e para dentro. É comum e não tem a ver com algo que se fez na gestação.","O tratamento costuma começar nas primeiras semanas, com gessos que corrigem o pé aos poucos (método de Ponseti) e, depois, uma órtese de manutenção. Começar cedo aproveita a flexibilidade do bebê e costuma evitar cirurgias maiores. O acompanhamento segue ao longo do crescimento.","Quer avaliar o pé do seu bebê? WhatsApp no link da bio."])
