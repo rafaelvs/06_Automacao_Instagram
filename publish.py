@@ -11,8 +11,8 @@ Modelo BIBLIOTECA CURADA, sem repetir:
 
 Agenda (horario de Brasilia, BRT = UTC-3):
 - POSTS (feed):  Ter/Qui/Sab, a partir das 19:00  -> 1 post por dia desses.
-- STORIES:       Seg/Qua/Sex, a partir das 12:30  -> 1 story por dia desses.
-- REELS:         Seg/Qua/Sex, a partir das 19:00  -> 1 reel por dia desses.
+- STORIES:       TODOS OS DIAS, a partir das 12:30  -> 1 story por dia.
+- REELS:         Seg/Qua/Sex/Dom, a partir das 19:00 -> 1 reel por dia desses.
 
 Env: IG_USER_ID, IG_ACCESS_TOKEN, GITHUB_REPOSITORY, GRAPH_VERSION (opc),
      FORCE_ID (opc: publica esse id imediatamente).
@@ -22,9 +22,9 @@ import requests
 
 POST_WEEKDAYS  = {1, 3, 5}      # Ter, Qui, Sab
 POST_MIN       = 19*60          # 19:00
-STORY_WEEKDAYS = {0, 2, 4}      # Seg, Qua, Sex
+STORY_WEEKDAYS = {0, 1, 2, 3, 4, 5, 6}  # todos os dias
 STORY_MIN      = 12*60 + 30     # 12:30
-REEL_WEEKDAYS  = {0, 2, 4}      # Seg, Qua, Sex
+REEL_WEEKDAYS  = {0, 2, 4, 6}      # Seg, Qua, Sex, Dom
 REEL_MIN       = 19*60          # 19:00
 BRT = dt.timezone(dt.timedelta(hours=-3))
 
