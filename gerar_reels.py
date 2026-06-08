@@ -121,7 +121,7 @@ def render_reel(scenes, out_mp4, music_path=None):
     subprocess.run(cmd,check=True,capture_output=True)
     return round(total,1)
 
-def cap(corpo,tags): return corpo+"\n\n""💬 Dúvida? Comenta aqui ou manda no direct. 📌 Salve para consultar depois.\n""📲 Para avaliação, agende pela WhatsApp no link da bio."+"\n\n"+SIG+"\n\n"+tags
+def cap(corpo,tags): return corpo+"\n\n""📤 Manda para alguém que precisa ver. 📌 Salve para consultar depois.\n""💬 Dúvida? Comenta ou chama no direct. 📲 Agende pela WhatsApp no link da bio."+"\n\n"+SIG+"\n\n"+tags
 
 # ----------------- BIBLIOTECA DE REELS (preencha com temas novos) -----------------
 REELS=[

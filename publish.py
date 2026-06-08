@@ -4,35 +4,36 @@
 Publicador automatico para Instagram (API oficial da Meta / Instagram Login).
 
 Modelo BIBLIOTECA CURADA, sem repetir:
-- posts.json, stories.json e reels.json sao LISTAS ORDENADAS (bibliotecas).
-- Em cada janela agendada, publica o PROXIMO item ainda nao publicado (em ordem).
-- Nada se repete. Quando a biblioteca acaba, o robo simplesmente nao publica
-  (hora de reabastecer com conteudo novo).
+- posts.json e reels.json sao listas (bibliotecas) — 1 item por janela.
+- sequences.json e a nova STORY SERIALIZADA: cada item e 1 DIA = sequencia de 5 frames,
+  publicados EM BLOCO (um story atras do outro) na janela diaria.
+- Nada se repete. Quando a biblioteca acaba, o robo nao publica (hora de reabastecer).
 
 Agenda (horario de Brasilia, BRT = UTC-3):
-- POSTS (feed):  Ter/Qui/Sab, a partir das 19:00  -> 1 post por dia desses.
-- STORIES:       Seg/Qua/Sex, a partir das 12:30  -> 1 story por dia desses.
-- REELS:         Seg/Qua/Sex, a partir das 19:00  -> 1 reel por dia desses.
+- POSTS (feed):  Ter/Qui/Sab, a partir das 19:00.
+- STORIES (seq): TODOS OS DIAS, a partir das 12:30  -> 1 sequencia (5 frames) por dia.
+- REELS:         Seg/Qua/Sex/Dom, a partir das 19:00.
 
 Env: IG_USER_ID, IG_ACCESS_TOKEN, GITHUB_REPOSITORY, GRAPH_VERSION (opc),
-     FORCE_ID (opc: publica esse id imediatamente).
+     FORCE_ID (opc: publica esse id imediatamente - post, story, reel ou sequencia).
 """
 import os, sys, json, time, datetime as dt
 import requests
 
-POST_WEEKDAYS  = {1, 3, 5}      # Ter, Qui, Sab
-POST_MIN       = 19*60          # 19:00
-STORY_WEEKDAYS = {0, 2, 4}      # Seg, Qua, Sex
-STORY_MIN      = 12*60 + 30     # 12:30
-REEL_WEEKDAYS  = {0, 2, 4}      # Seg, Qua, Sex
-REEL_MIN       = 19*60          # 19:00
+POST_WEEKDAYS  = {1, 3, 5}
+POST_MIN       = 19*60
+SEQ_WEEKDAYS   = {0, 1, 2, 3, 4, 5, 6}   # sequencia diaria
+SEQ_MIN        = 12*60 + 30              # 12:30
+REEL_WEEKDAYS  = {0, 2, 4, 6}
+REEL_MIN       = 19*60
 BRT = dt.timezone(dt.timedelta(hours=-3))
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 POSTS_FILE   = os.path.join(ROOT, "posts.json")
 STORIES_FILE = os.path.join(ROOT, "stories.json")
+SEQ_FILE     = os.path.join(ROOT, "sequences.json")
 REELS_FILE   = os.path.join(ROOT, "reels.json")
-DESTAQUES_FILE = os.path.join(ROOT, "destaques.json")  # stories para os Destaques (FORCE_ID=destaques)
+DESTAQUES_FILE = os.path.join(ROOT, "destaques.json")
 STATE_FILE   = os.path.join(ROOT, "state", "published.json")
 
 IG_USER_ID = os.environ.get("IG_USER_ID", "").strip()
@@ -82,26 +83,36 @@ def publish_post(item):
         cont = api_post(f"{IG_USER_ID}/media", {"media_type": "CAROUSEL", "children": ",".join(kids), "caption": cap})["id"]
     wait_finished(cont)
     return api_post(f"{IG_USER_ID}/media_publish", {"creation_id": cont})["id"]
-def publish_story(item):
-    cont = api_post(f"{IG_USER_ID}/media", {"image_url": raw_url(item["image"]), "media_type": "STORIES"})["id"]
+def publish_story_img(image_path):
+    cont = api_post(f"{IG_USER_ID}/media", {"image_url": raw_url(image_path), "media_type": "STORIES"})["id"]
     wait_finished(cont)
     return api_post(f"{IG_USER_ID}/media_publish", {"creation_id": cont})["id"]
+def publish_story(item):
+    return publish_story_img(item["image"])
+def publish_sequence(seq):
+    # publica os 5 frames em ordem, um atras do outro (story serializado)
+    ids = []
+    for i, img in enumerate(seq["images"], 1):
+        mid = publish_story_img(img); ids.append(mid)
+        print(f"  frame {i}/{len(seq['images'])} -> {mid}", flush=True)
+        time.sleep(2)
+    return ids
 def publish_reel(item):
-    # Reel: video_url publico (raw do GitHub). share_to_feed mostra tambem no feed.
     cont = api_post(f"{IG_USER_ID}/media", {
         "media_type": "REELS", "video_url": raw_url(item["video"]),
         "caption": item.get("caption", ""), "share_to_feed": "true"})["id"]
-    wait_finished(cont, tries=30, delay=10)   # video demora mais p/ processar
+    wait_finished(cont, tries=30, delay=10)
     return api_post(f"{IG_USER_ID}/media_publish", {"creation_id": cont})["id"]
-def log(state, item, kind, mid, now): state["published"].append({"id": item["id"], "kind": kind, "media_id": mid, "at": now.isoformat()})
+def log(state, item_id, kind, mid, now): state["published"].append({"id": item_id, "kind": kind, "media_id": mid, "at": now.isoformat()})
 def next_item(items, done): return next((x for x in items if x["id"] not in done), None)
 
 def main():
     posts   = load_json(POSTS_FILE, [])
     stories = load_json(STORIES_FILE, [])
+    seqs    = load_json(SEQ_FILE, [])
     reels   = load_json(REELS_FILE, [])
-    state = load_json(STATE_FILE, {"published": [], "last_post_date": "", "last_story_date": "", "last_reel_date": ""})
-    state.setdefault("published", []); state.setdefault("last_post_date", ""); state.setdefault("last_story_date", ""); state.setdefault("last_reel_date", "")
+    state = load_json(STATE_FILE, {"published": [], "last_post_date": "", "last_seq_date": "", "last_reel_date": ""})
+    state.setdefault("published", []); state.setdefault("last_post_date", ""); state.setdefault("last_seq_date", ""); state.setdefault("last_reel_date", "")
     done = {e["id"] for e in state["published"]}
     now = dt.datetime.now(dt.timezone.utc); brt = now.astimezone(BRT); today = brt.date().isoformat()
     mod = brt.hour*60 + brt.minute; changed = False
@@ -109,7 +120,7 @@ def main():
     if FORCE_ID == "destaques":
         for it in load_json(DESTAQUES_FILE, []):
             try:
-                mid = publish_story(it); log(state, it, "story", mid, now); changed = True
+                mid = publish_story(it); log(state, it["id"], "story", mid, now); changed = True
                 print(f"Destaque {it['id']} OK -> {mid}")
             except Exception as e: print(f"FALHA destaque {it['id']}: {e}")
         if changed: save_state(state)
@@ -118,13 +129,18 @@ def main():
     if FORCE_ID:
         it = next((x for x in posts if x["id"] == FORCE_ID), None); kind = "post"
         if it is None:
+            it = next((x for x in seqs if x["id"] == FORCE_ID), None); kind = "seq"
+        if it is None:
             it = next((x for x in stories if x["id"] == FORCE_ID), None); kind = "story"
         if it is None:
             it = next((x for x in reels if x["id"] == FORCE_ID), None); kind = "reel"
         if it is None: print(f"FORCE_ID={FORCE_ID}: nao encontrado."); return
         try:
-            mid = publish_post(it) if kind == "post" else (publish_story(it) if kind == "story" else publish_reel(it))
-            log(state, it, kind, mid, now); save_state(state); print(f"FORCE {FORCE_ID} OK -> {mid}")
+            if kind == "post": mid = publish_post(it)
+            elif kind == "seq": mid = publish_sequence(it)[0]
+            elif kind == "story": mid = publish_story(it)
+            else: mid = publish_reel(it)
+            log(state, it["id"], kind, mid, now); save_state(state); print(f"FORCE {FORCE_ID} OK -> {mid}")
         except Exception as e: print(f"FORCE {FORCE_ID} FALHA: {e}")
         return
 
@@ -133,31 +149,32 @@ def main():
         it = next_item(posts, done)
         if it:
             try:
-                mid = publish_post(it); log(state, it, "post", mid, now)
+                mid = publish_post(it); log(state, it["id"], "post", mid, now)
                 done.add(it["id"]); state["last_post_date"] = today; changed = True
                 print(f"Post {it['id']} OK -> {mid}")
             except Exception as e: print(f"FALHA post {it['id']}: {e}")
         else:
             print("Biblioteca de POSTS esgotada — hora de reabastecer.")
 
-    # STORIES
-    if brt.weekday() in STORY_WEEKDAYS and mod >= STORY_MIN and state["last_story_date"] != today:
-        it = next_item(stories, done)
+    # SEQUENCIA DIARIA (story serializado, 5 frames)
+    if brt.weekday() in SEQ_WEEKDAYS and mod >= SEQ_MIN and state["last_seq_date"] != today:
+        it = next_item(seqs, done)
         if it:
             try:
-                mid = publish_story(it); log(state, it, "story", mid, now)
-                done.add(it["id"]); state["last_story_date"] = today; changed = True
-                print(f"Story {it['id']} OK -> {mid}")
-            except Exception as e: print(f"FALHA story {it['id']}: {e}")
+                print(f"Sequencia {it['id']} ({it.get('theme','')}) — publicando {len(it['images'])} frames...")
+                ids = publish_sequence(it); log(state, it["id"], "seq", ids[0], now)
+                done.add(it["id"]); state["last_seq_date"] = today; changed = True
+                print(f"Sequencia {it['id']} OK -> {len(ids)} frames")
+            except Exception as e: print(f"FALHA sequencia {it['id']}: {e}")
         else:
-            print("Biblioteca de STORIES esgotada — hora de reabastecer.")
+            print("Biblioteca de SEQUENCIAS esgotada — hora de reabastecer.")
 
     # REELS
     if brt.weekday() in REEL_WEEKDAYS and mod >= REEL_MIN and state["last_reel_date"] != today:
         it = next_item(reels, done)
         if it:
             try:
-                mid = publish_reel(it); log(state, it, "reel", mid, now)
+                mid = publish_reel(it); log(state, it["id"], "reel", mid, now)
                 done.add(it["id"]); state["last_reel_date"] = today; changed = True
                 print(f"Reel {it['id']} OK -> {mid}")
             except Exception as e: print(f"FALHA reel {it['id']}: {e}")
