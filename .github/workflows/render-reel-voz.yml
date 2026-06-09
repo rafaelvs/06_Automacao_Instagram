@@ -1,6 +1,11 @@
 name: render-reel-voz
 on:
   workflow_dispatch:
+    inputs:
+      episodio:
+        description: "ID do episódio (andador, pe_chato, dor_crescimento, displasia_quadril, pernas_tortas, ponta_dos_pes, pe_torto, quando_procurar)"
+        required: false
+        default: "andador"
 
 permissions:
   contents: write
@@ -17,25 +22,24 @@ jobs:
           python-version: "3.11"
       - name: Instalar Pillow + Piper TTS
         run: pip install pillow "piper-tts==1.2.0"
-      - name: Baixar voz faber (pt-BR)
+      - name: Baixar voz (placeholder faber pt-BR; trocar por nossa voz treinada quando pronta)
         run: |
           mkdir -p voices
           base="https://huggingface.co/rhasspy/piper-voices/resolve/main/pt/pt_BR/faber/medium"
           curl -L -o voices/pt_BR-faber-medium.onnx      "$base/pt_BR-faber-medium.onnx"
           curl -L -o voices/pt_BR-faber-medium.onnx.json "$base/pt_BR-faber-medium.onnx.json"
-          ls -la voices
       - name: Renderizar reel-episodio com voz
-        run: python gerar_reel_voz.py
-      - name: Publicar como artefato (download na pagina do run)
+        run: python gerar_reel_voz.py "${{ github.event.inputs.episodio || 'andador' }}"
+      - name: Artefato
         uses: actions/upload-artifact@v4
         with:
-          name: pe-no-chao-ep01
-          path: reels/_preview_pe_no_chao_ep01.mp4
+          name: pe-no-chao-${{ github.event.inputs.episodio || 'andador' }}
+          path: reels/_preview_*.mp4
           if-no-files-found: error
-      - name: Commit do mp4 (sincroniza para revisao)
+      - name: Commit do mp4 (sincroniza p/ revisao)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add reels/_preview_pe_no_chao_ep01.mp4
-          git commit -m "Render reel-episodio com voz (preview, automated)" || echo "nada a commitar"
+          git add reels/_preview_*.mp4
+          git commit -m "Render reel-episodio com voz (preview)" || echo "nada a commitar"
           git push
