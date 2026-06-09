@@ -1,5 +1,5 @@
 import os, glob, time, threading, subprocess, datetime
-os.environ["TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD"]="1"
+os.environ["TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD"]="1"; os.environ["CUDA_VISIBLE_DEVICES"]="0"
 print(">> instalando coqui-tts (1-2 min)...", flush=True)
 os.system("pip -q install -U coqui-tts huggingface_hub >/dev/null 2>&1")
 from huggingface_hub import login, snapshot_download, HfApi
@@ -17,6 +17,7 @@ except Exception as e: print(">> 1a sessao (sem checkpoint):", e, flush=True)
 os.environ["CONT_PATH"]=CONT
 RECIPE=r'''
 import os
+os.environ["CUDA_VISIBLE_DEVICES"]="0"
 from trainer import Trainer, TrainerArgs
 from TTS.tts.configs.shared_configs import BaseDatasetConfig, CharactersConfig
 from TTS.tts.configs.vits_config import VitsConfig
