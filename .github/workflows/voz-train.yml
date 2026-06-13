@@ -1,0 +1,26 @@
+name: voz-train
+# Dispara um run headless de treino no Kaggle (resume do ultimo checkpoint).
+# Pacedo 3x/semana (Seg/Qua/Sex 06:00 UTC) ~9h cada => ~27h/sem, sob a cota de 30h GPU do Kaggle.
+on:
+  schedule:
+    - cron: "0 6 * * 1,3,5"
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  launch:
+    runs-on: ubuntu-latest
+    env:
+      KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+      KAGGLE_KEY:      ${{ secrets.KAGGLE_KEY }}
+      HF_TOKEN:        ${{ secrets.HF_TOKEN }}
+      GH_TOKEN:        ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Deps
+        run: pip install -q kaggle huggingface_hub
+      - name: Disparar treino (resume)
+        run: python voz/orchestrator.py launch

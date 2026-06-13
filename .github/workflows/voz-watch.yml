@@ -1,0 +1,27 @@
+name: voz-watch
+# Vigia independente do treino: le o heartbeat no HF a cada 4h.
+# Se FALHOU -> abre issue e re-tenta (crash custa segundos de GPU). Se travado durante um run -> alerta.
+# NUNCA relanca um PAUSED saudavel (isso e' pacedo pelo voz-train, p/ respeitar a cota).
+on:
+  schedule:
+    - cron: "0 */4 * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    env:
+      KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+      KAGGLE_KEY:      ${{ secrets.KAGGLE_KEY }}
+      HF_TOKEN:        ${{ secrets.HF_TOKEN }}
+      GH_TOKEN:        ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Deps
+        run: pip install -q kaggle huggingface_hub
+      - name: Vigiar heartbeat
+        run: python voz/orchestrator.py watch
