@@ -14,6 +14,12 @@ import render_reel as R
 from episodios_pe_no_chao import get
 
 ROOT=os.path.dirname(os.path.abspath(__file__)); AUD=os.path.join(ROOT,"audio")
+# VOZ DO CANAL: motor padrao = edge-tts (vozes neurais Microsoft, gratis, sem chave de API).
+# Alterna p/ Piper com VOZ_ENGINE=piper. Botoes de edicao: EDGE_RATE (ritmo) e EDGE_PITCH (tom).
+ENGINE=os.environ.get("VOZ_ENGINE","edge")
+EDGE_VOICE=os.environ.get("EDGE_VOICE","pt-BR-AntonioNeural")
+EDGE_RATE=os.environ.get("EDGE_RATE","+0%")     # ex.: -8% mais devagar, +6% mais rapido
+EDGE_PITCH=os.environ.get("EDGE_PITCH","+0Hz")  # ex.: -3Hz mais grave, +2Hz mais agudo
 VOICE=os.environ.get("PIPER_VOICE", os.path.join(ROOT,"voices","pt_BR-faber-medium.onnx"))
 LEAD=0.30; TAIL=0.80
 
@@ -27,8 +33,13 @@ VOICE_CHAIN=("highpass=f=85,"
  "loudnorm=I=-16:TP=-1.5:LRA=11,aformat=sample_rates=48000:channel_layouts=stereo")
 
 def synth(text,out_wav):
-    raw=out_wav+".raw.wav"
-    subprocess.run(["piper","-m",VOICE,"-f",raw],input=text.encode("utf-8"),check=True,capture_output=True)
+    raw=out_wav+(".mp3" if ENGINE=="edge" else ".raw.wav")
+    if ENGINE=="edge":
+        # edge-tts: voz neural Microsoft (gratis, sem chave). Precisa de internet no momento do render.
+        subprocess.run(["edge-tts","--voice",EDGE_VOICE,f"--rate={EDGE_RATE}",f"--pitch={EDGE_PITCH}",
+                        "--text",text,"--write-media",raw],check=True,capture_output=True)
+    else:
+        subprocess.run(["piper","-m",VOICE,"-f",raw],input=text.encode("utf-8"),check=True,capture_output=True)
     subprocess.run(["ffmpeg","-y","-i",raw,"-af",VOICE_CHAIN,out_wav],check=True,capture_output=True)
     os.remove(raw)
 def dur_of(w):

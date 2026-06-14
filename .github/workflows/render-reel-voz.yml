@@ -20,15 +20,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Instalar Pillow + Piper TTS
-        run: pip install pillow "piper-tts==1.2.0"
-      - name: Baixar voz (placeholder faber pt-BR; trocar por nossa voz treinada quando pronta)
-        run: |
-          mkdir -p voices
-          base="https://huggingface.co/rhasspy/piper-voices/resolve/main/pt/pt_BR/faber/medium"
-          curl -L -o voices/pt_BR-faber-medium.onnx      "$base/pt_BR-faber-medium.onnx"
-          curl -L -o voices/pt_BR-faber-medium.onnx.json "$base/pt_BR-faber-medium.onnx.json"
-      - name: Renderizar reel-episodio com voz
+      - name: Instalar Pillow + edge-tts (voz neural Microsoft, gratis)
+        run: pip install pillow edge-tts
+      - name: Renderizar reel-episodio com voz (edge-tts pt-BR-AntonioNeural)
+        env:
+          VOZ_ENGINE: edge
+          EDGE_VOICE: pt-BR-AntonioNeural
+          EDGE_RATE: "+0%"
+          EDGE_PITCH: "+0Hz"
         run: python gerar_reel_voz.py "${{ github.event.inputs.episodio || 'andador' }}"
       - name: Artefato
         uses: actions/upload-artifact@v4
