@@ -154,10 +154,16 @@
       "kind": "seq",
       "media_id": "18119575717793815",
       "at": "2026-06-14T15:30:28.149329+00:00"
+    },
+    {
+      "id": "pnc_dor_crescimento",
+      "kind": "reel",
+      "media_id": "17955446364152795",
+      "at": "2026-06-14T22:00:23.329963+00:00"
     }
   ],
   "last_post_date": "2026-06-13",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-06-12",
+  "last_reel_date": "2026-06-14",
   "last_seq_date": "2026-06-14"
 }
