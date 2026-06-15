@@ -11,9 +11,9 @@ on:
         required: false
         default: "-8%"
       pitch:
-        description: "Tom (ex.: -2Hz mais grave/autoridade, +0Hz padrão)"
+        description: "Tom (ex.: -4Hz grave/autoridade, -6Hz bem grave, +0Hz padrão)"
         required: false
-        default: "+0Hz"
+        default: "-4Hz"
 
 permissions:
   contents: write
