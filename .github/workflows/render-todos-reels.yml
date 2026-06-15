@@ -1,0 +1,55 @@
+name: render-todos-reels
+on:
+  workflow_dispatch:
+    inputs:
+      rate:
+        description: "Ritmo do Antonio (padrao -8% conversacional)"
+        required: false
+        default: "-8%"
+      pitch:
+        description: "Tom (padrao -4Hz grave/autoridade)"
+        required: false
+        default: "-4Hz"
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar fontes Liberation + ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y fonts-liberation ffmpeg
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Instalar Pillow + edge-tts
+        run: pip install pillow edge-tts
+      - name: Renderizar a serie inteira (voz Antonio afinada)
+        env:
+          VOZ_ENGINE: edge
+          EDGE_VOICE: pt-BR-AntonioNeural
+          EDGE_RATE: ${{ github.event.inputs.rate || '-8%' }}
+          EDGE_PITCH: ${{ github.event.inputs.pitch || '-4Hz' }}
+        run: |
+          for EP in andador pe_chato dor_crescimento displasia_quadril pernas_tortas ponta_dos_pes pe_torto quando_procurar; do
+            echo "::group::render $EP"
+            python gerar_reel_voz.py "$EP" || { echo "FALHOU $EP"; exit 1; }
+            echo "::endgroup::"
+          done
+          ls -la reels/_preview_*.mp4
+      - name: Artefato (serie completa)
+        uses: actions/upload-artifact@v4
+        with:
+          name: serie-pe-no-chao-voz
+          path: reels/_preview_*.mp4
+          if-no-files-found: error
+      - name: Commit dos mp4 (sincroniza p/ revisao)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add reels/_preview_*.mp4
+          git commit -m "Render serie inteira com voz Antonio afinada (preview)" || echo "nada a commitar"
+          git pull --rebase origin main || true
+          git push
