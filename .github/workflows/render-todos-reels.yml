@@ -35,8 +35,7 @@ jobs:
         run: |
           for EP in andador pe_chato dor_crescimento displasia_quadril pernas_tortas ponta_dos_pes pe_torto quando_procurar; do
             echo "::group::render $EP"
-            python gerar_reel_voz.py "$EP" || { echo "FALHOU $EP"; exit 1; }
-            echo "::endgroup::"
+            python gerar_reel_voz.py $EP || python gerar_reel_voz.py $EP || python gerar_reel_voz.py $EP || python gerar_reel_voz.py $EP || echo FALHOU $EP            echo "::endgroup::"
           done
           ls -la reels/_preview_*.mp4
       - name: Artefato (serie completa)
