@@ -36,17 +36,18 @@ EPISODES = [
   "caption":cap("Mito x Verdade: o andador NÃO ensina o bebê a andar. Parece que ajuda porque a criança se move — mas ali ela só desliza, empurrando com a ponta dos pés. Andar é equilíbrio, e equilíbrio se aprende sustentando o próprio peso. Usado em excesso, está associado a quedas e muda o apoio do quadril enquanto ele se forma. O que ajuda: chão livre, descalço e tempo; o empurrador entra quando o bebê já fica de pé sozinho.","#andador #primeirospassos #desenvolvimentoinfantil")},
 
  {"id":"pe_chato","ep":2,"temporada":"pernas",
+  # VOZ COMPLEMENTA o texto (modelo 3 camadas): a tela mostra a manchete; a voz acrescenta o porquê e o acolhimento.
   "scenes":[
    {"k":"Mito x Verdade","sc":["Pé chato nem","sempre é problema."],"e":"nem","sub":"E quase nunca se resolve com aquela palmilha cara.",
-    "vo":"Pé chato nem sempre é problema. E quase nunca se resolve com aquela palmilha cara."},
+    "vo":"Se você olhou pra sola do pé do seu filho toda encostada no chão e se assustou... respira. Na maior parte das vezes, isso é normal."},
    {"k":"O que quase ninguém conta","sc":["Todo bebê nasce","com pé chato."],"e":None,"sub":"O arco do pé vai se formando sozinho ao longo da infância.",
-    "vo":"Quase ninguém conta: todo bebê nasce com o pé chato. O arco vai se formando sozinho ao longo da infância."},
+    "vo":"Todo mundo nasce com o pé assim, planinho. O arco, aquela curvinha embaixo, vai surgindo sozinho com os anos, conforme a criança anda e corre."},
    {"k":"A virada","sc":["Palmilha não","molda o arco."],"e":"não","sub":"Em pé flexível e sem dor, ela costuma ser gasto sem necessidade.","motif":"no",
-    "vo":"E a palmilha não molda o arco. No pé flexível e sem dor, costuma ser um gasto sem necessidade."},
+    "vo":"E o que raramente te contam na loja: a palmilha não esculpe esse arco. Num pé que dobra normal e não dói, ela costuma ser dinheiro jogado fora."},
    {"k":"Quando acender o alerta","sc":["Dói, é rígido","ou só num pé."],"e":None,"sub":"Pé chato que dói, que é duro ou apareceu de repente merece avaliação.",
-    "vo":"O alerta é outro: pé que dói, que é rígido, ou que ficou chato só de um lado. Aí sim vale avaliar."},
+    "vo":"Existe, sim, a hora de ligar o alerta: se esse pé dói, se é durinho e travado, ou se só um lado é chato. Aí vale passar com o ortopedista."},
    {"k":"Passa adiante","sc":["Antes de comprar","palmilha, avalie."],"e":None,"sub":"Manda pra um pai ou mãe que vai gastar sem precisar.","cta":True,
-    "vo":"Antes de comprar palmilha, avalie. Manda isso pra um pai ou mãe que ia gastar sem precisar."},
+    "vo":"Então, antes de gastar com palmilha, vale ouvir um especialista. E manda esse vídeo pra aquele pai ou mãe que já tá quase comprando uma."},
   ],
   "caption":cap("Mito x Verdade: pé chato na criança quase nunca é problema. Todo bebê nasce com o pé plano e o arco se forma sozinho ao longo da infância — e a palmilha NÃO molda esse arco. Em pé flexível e sem dor, ela costuma ser gasto desnecessário. O que merece avaliação é o pé que dói, que é rígido ou que ficou chato só de um lado.","#pechato #peplano #palmilha")},
 

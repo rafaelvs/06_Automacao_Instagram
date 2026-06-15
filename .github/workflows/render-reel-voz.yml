@@ -6,16 +6,12 @@ on:
         description: "ID do episódio (andador, pe_chato, dor_crescimento, displasia_quadril, pernas_tortas, ponta_dos_pes, pe_torto, quando_procurar)"
         required: false
         default: "andador"
-      vozes:
-        description: "Vozes edge-tts a renderizar (separadas por virgula) p/ A/B. Masculinas pt-BR: Antonio, Fabio, Humberto, Julio, Valerio, Donato"
-        required: false
-        default: "pt-BR-AntonioNeural,pt-BR-FabioNeural,pt-BR-HumbertoNeural"
       rate:
-        description: "Ritmo (ex.: -6% mais devagar, +0% padrão, +5% mais rápido)"
+        description: "Ritmo do Antonio (ex.: -8% mais devagar/conversacional, +0% padrão)"
         required: false
-        default: "-6%"
+        default: "-8%"
       pitch:
-        description: "Tom (ex.: -2Hz mais grave, +0Hz padrão)"
+        description: "Tom (ex.: -2Hz mais grave/autoridade, +0Hz padrão)"
         required: false
         default: "+0Hz"
 
@@ -34,35 +30,24 @@ jobs:
           python-version: "3.11"
       - name: Instalar Pillow + edge-tts (voz neural Microsoft, gratis)
         run: pip install pillow edge-tts
-      - name: Renderizar reel-episodio em cada voz (A/B)
+      - name: Renderizar reel-episodio (voz Antonio, ritmo afinado)
         env:
           VOZ_ENGINE: edge
-          EDGE_RATE: ${{ github.event.inputs.rate || '-6%' }}
+          EDGE_VOICE: pt-BR-AntonioNeural
+          EDGE_RATE: ${{ github.event.inputs.rate || '-8%' }}
           EDGE_PITCH: ${{ github.event.inputs.pitch || '+0Hz' }}
-          VOZES: ${{ github.event.inputs.vozes || 'pt-BR-AntonioNeural,pt-BR-FabioNeural,pt-BR-HumbertoNeural' }}
-        run: |
-          EP="${{ github.event.inputs.episodio || 'andador' }}"
-          IFS=',' read -ra LISTA <<< "$VOZES"
-          for V in "${LISTA[@]}"; do
-            V=$(echo "$V" | xargs)   # trim
-            echo "::group::Renderizando $V"
-            EDGE_VOICE="$V" python gerar_reel_voz.py "$EP"
-            VZ=$(echo "$V" | sed 's/pt-BR-//; s/Neural//')
-            mv "reels/_preview_${EP}.mp4" "reels/_preview_${EP}__${VZ}.mp4"
-            echo "::endgroup::"
-          done
-          ls -la reels/_preview_${EP}__*.mp4
-      - name: Artefato (todas as variantes)
+        run: python gerar_reel_voz.py "${{ github.event.inputs.episodio || 'andador' }}"
+      - name: Artefato
         uses: actions/upload-artifact@v4
         with:
-          name: ab-vozes-${{ github.event.inputs.episodio || 'andador' }}
-          path: reels/_preview_*__*.mp4
+          name: reel-${{ github.event.inputs.episodio || 'andador' }}
+          path: reels/_preview_*.mp4
           if-no-files-found: error
-      - name: Commit dos mp4 (sincroniza p/ revisao)
+      - name: Commit do mp4 (sincroniza p/ revisao)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add reels/_preview_*.mp4
-          git commit -m "Render A/B de vozes ${{ github.event.inputs.episodio || 'andador' }} (preview)" || echo "nada a commitar"
+          git commit -m "Render reel ${{ github.event.inputs.episodio || 'andador' }} (preview Antonio)" || echo "nada a commitar"
           git pull --rebase origin main || true
           git push
