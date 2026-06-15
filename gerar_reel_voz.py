@@ -63,7 +63,7 @@ def main():
     tracks=sorted(glob.glob(AUD+"/*.mp4")+glob.glob(AUD+"/*.mp3")); music=tracks[epi["ep"]%len(tracks)] if tracks else None
     if music:
         subprocess.run(["ffmpeg","-y","-i",music,"-vn","-map","0:a:0","-af",
-            f"highpass=f=120,atrim=0:{total:.2f},loudnorm=I=-32:TP=-2,afade=t=in:d=0.6,afade=t=out:st={total-1.2:.2f}:d=1.2,aformat=sample_rates=48000:channel_layouts=stereo",
+            f"highpass=f=120,atrim=0:{total:.2f},loudnorm=I=-40:TP=-2,afade=t=in:d=0.6,afade=t=out:st={total-1.2:.2f}:d=1.2,aformat=sample_rates=48000:channel_layouts=stereo",
             "-t",f"{total:.2f}",f"{TMP}/bed.wav"],check=True,capture_output=True)
         subprocess.run(["ffmpeg","-y","-i",f"{TMP}/voz.wav","-i",f"{TMP}/bed.wav","-filter_complex",
             "[0:a][1:a]amix=inputs=2:duration=first:normalize=0[mx];[mx]loudnorm=I=-14:TP=-1,alimiter=limit=-1dB[o]",
