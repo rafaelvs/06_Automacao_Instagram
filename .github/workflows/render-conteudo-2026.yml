@@ -1,0 +1,35 @@
+name: render-conteudo-2026
+# Gera as ARTES do lote 2026: 30 carrosséis (c_*) + 30 sequências de stories (s_*),
+# derivados dos 30 reels narrados (mesmo conteúdo clínico já revisado). Rede-de-segurança:
+# regenera as imagens no runner caso o commit local (300 imgs via OneDrive) falhe/fique parcial.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar fontes Liberation
+        run: sudo apt-get update && sudo apt-get install -y fonts-liberation
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Instalar Pillow
+        run: pip install pillow
+      - name: Gerar carrosséis + sequências (300 imagens)
+        run: |
+          python gerar_lote_2026.py
+          ls images/c_*.jpg images/s_*.jpg | wc -l
+      - name: Commit das imagens
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add images/c_*.jpg images/s_*.jpg
+          git commit -m "Render lote 2026: artes de 30 carrosseis + 30 sequencias de stories" || echo "nada a commitar"
+          git pull --rebase origin main || true
+          git push

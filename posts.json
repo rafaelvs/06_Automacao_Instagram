@@ -1,667 +1,1027 @@
 [
-  {
-    "id": "post01",
-    "datetime": "2026-06-09T19:00:00-03:00",
-    "images": [
-      "images/post01_1.jpg",
-      "images/post01_2.jpg",
-      "images/post01_3.jpg",
-      "images/post01_4.jpg",
-      "images/post01_5.jpg"
-    ],
-    "caption": "Prazer, sou o Dr. Rafael Vargas.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#ortopediapediatrica #alongamentoosseo #reconstrucaoossea #deformidadesosseas #ortopediasaopaulo"
-  },
-  {
-    "id": "post02",
-    "datetime": "2026-06-11T19:00:00-03:00",
-    "images": [
-      "images/post02_1.jpg",
-      "images/post02_2.jpg",
-      "images/post02_3.jpg",
-      "images/post02_4.jpg",
-      "images/post02_5.jpg",
-      "images/post02_6.jpg"
-    ],
-    "caption": "O que é reconstrução e alongamento ósseo? São técnicas para restaurar osso que faltou, corrigir deformidades e tratar fraturas que não colaram — sempre com foco na FUNÇÃO: andar, apoiar e usar o membro. O princípio é engenhoso: estimulado corretamente, o próprio corpo forma osso novo, em etapas e com acompanhamento próximo.\n\n📤 Manda para alguém que precisa entender. 📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
-  },
-  {
-    "id": "post03",
-    "datetime": "2026-06-13T11:00:00-03:00",
-    "images": [
-      "images/post03_1.jpg",
-      "images/post03_2.jpg",
-      "images/post03_3.jpg",
-      "images/post03_4.jpg",
-      "images/post03_5.jpg",
-      "images/post03_6.jpg"
-    ],
-    "caption": "Fixador externo: para que serve (e por que não precisa ter medo).\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#fixadorexterno #alongamentoosseo #reconstrucaoossea #ortopediapediatrica #ortopediasaopaulo"
-  },
-  {
-    "id": "post04",
-    "datetime": "2026-06-16T19:00:00-03:00",
-    "images": [
-      "images/post04_1.jpg",
-      "images/post04_2.jpg",
-      "images/post04_3.jpg",
-      "images/post04_4.jpg",
-      "images/post04_5.jpg",
-      "images/post04_6.jpg"
-    ],
-    "caption": "Uma perna mais curta que a outra? Quando investigar.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#discrepancia #alongamentoosseo #ortopediapediatrica #deformidadesosseas #ortopediasaopaulo"
-  },
-  {
-    "id": "post05",
-    "datetime": "2026-06-18T19:00:00-03:00",
-    "images": [
-      "images/post05_1.jpg",
-      "images/post05_2.jpg",
-      "images/post05_3.jpg",
-      "images/post05_4.jpg",
-      "images/post05_5.jpg",
-      "images/post05_6.jpg"
-    ],
-    "caption": "Fratura que não cola (pseudartrose): o que fazer.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#pseudartrose #reconstrucaoossea #ortopediasaopaulo #ortopedia #alongamentoosseo"
-  },
-  {
-    "id": "post06",
-    "datetime": "2026-06-20T11:00:00-03:00",
-    "images": [
-      "images/post06_1.jpg",
-      "images/post06_2.jpg",
-      "images/post06_3.jpg",
-      "images/post06_4.jpg",
-      "images/post06_5.jpg"
-    ],
-    "caption": "O caminhar do seu filho merece atenção?\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#ortopediapediatrica #ortopediainfantil #deformidadesosseas #ortopediasaopaulo #saudedacrianca"
-  },
-  {
-    "id": "post07",
-    "datetime": "2026-06-23T19:00:00-03:00",
-    "images": [
-      "images/post07_1.jpg",
-      "images/post07_2.jpg",
-      "images/post07_3.jpg",
-      "images/post07_4.jpg",
-      "images/post07_5.jpg",
-      "images/post07_6.jpg"
-    ],
-    "caption": "Quando procurar um especialista em casos complexos.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#deformidadesosseas #reconstrucaoossea #alongamentoosseo #ortopediapediatrica #ortopediasaopaulo"
-  },
-  {
-    "id": "post08",
-    "datetime": "2026-06-25T19:00:00-03:00",
-    "images": [
-      "images/post08_1.jpg",
-      "images/post08_2.jpg",
-      "images/post08_3.jpg",
-      "images/post08_4.jpg",
-      "images/post08_5.jpg",
-      "images/post08_6.jpg"
-    ],
-    "caption": "O que é tratamento guiado e seriado (e por que muda o resultado).\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#reconstrucaoossea #alongamentoosseo #ortopediapediatrica #ortopediasaopaulo #ortopedia"
-  },
-  {
-    "id": "post11",
-    "datetime": "2026-07-02T19:00:00-03:00",
-    "images": [
-      "images/post11_1.jpg",
-      "images/post11_2.jpg",
-      "images/post11_3.jpg",
-      "images/post11_4.jpg",
-      "images/post11_5.jpg",
-      "images/post11_6.jpg"
-    ],
-    "caption": "Como é a consulta — Av. Paulista.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#ortopediasaopaulo #avenidapaulista #ortopediapediatrica #reconstrucaoossea #alongamentoosseo"
-  },
-  {
-    "id": "post12",
-    "datetime": "2026-07-04T11:00:00-03:00",
-    "images": [
-      "images/post12_1.jpg",
-      "images/post12_2.jpg",
-      "images/post12_3.jpg",
-      "images/post12_4.jpg",
-      "images/post12_5.jpg",
-      "images/post12_6.jpg"
-    ],
-    "caption": "Dói? Quanto tempo? Volto a andar? — perguntas frequentes.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#alongamentoosseo #reconstrucaoossea #ortopediapediatrica #duvidas #ortopediasaopaulo"
-  },
-  {
-    "id": "post13",
-    "images": [
-      "images/post13_1.jpg",
-      "images/post13_2.jpg",
-      "images/post13_3.jpg",
-      "images/post13_4.jpg"
-    ],
-    "caption": "Consolidação viciosa: quando o osso cola, mas torto.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#consolidacaoviciosa #osteotomia #reconstrucaoossea #ortopediasaopaulo #ortopedia"
-  },
-  {
-    "id": "post14",
-    "images": [
-      "images/post14_1.jpg",
-      "images/post14_2.jpg",
-      "images/post14_3.jpg",
-      "images/post14_4.jpg",
-      "images/post14_5.jpg",
-      "images/post14_6.jpg"
-    ],
-    "caption": "Sequela de infecção óssea? Existe reconstrução.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#osteomielite #reconstrucaoossea #alongamentoosseo #ortopediasaopaulo #ortopedia"
-  },
-  {
-    "id": "post15",
-    "images": [
-      "images/post15_1.jpg",
-      "images/post15_2.jpg",
-      "images/post15_3.jpg",
-      "images/post15_4.jpg"
-    ],
-    "caption": "Pernas em “X” ou em “O”: quando é normal e quando avaliar.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#ortopediapediatrica #genovalgo #genovaro #ortopediainfantil #ortopediasaopaulo"
-  },
-  {
-    "id": "post16",
-    "images": [
-      "images/post16_1.jpg",
-      "images/post16_2.jpg",
-      "images/post16_3.jpg",
-      "images/post16_4.jpg"
-    ],
-    "caption": "Ossos frágeis e deformidades: há tratamento.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#osteogeneseimperfeita #raquitismo #ortopediapediatrica #deformidadesosseas #ortopediasaopaulo"
-  },
-  {
-    "id": "post17",
-    "images": [
-      "images/post17_1.jpg",
-      "images/post17_2.jpg",
-      "images/post17_3.jpg",
-      "images/post17_4.jpg",
-      "images/post17_5.jpg",
-      "images/post17_6.jpg"
-    ],
-    "caption": "Antes de operar, o planejamento é o que muda o resultado.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#planejamentocirurgico #reconstrucaoossea #deformidadesosseas #ortopediasaopaulo #ortopedia"
-  },
-  {
-    "id": "post18",
-    "images": [
-      "images/post18_1.jpg",
-      "images/post18_2.jpg",
-      "images/post18_3.jpg",
-      "images/post18_4.jpg"
-    ],
-    "caption": "Como é o acompanhamento ao longo do tratamento.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#reconstrucaoossea #alongamentoosseo #ortopediapediatrica #cuidadocontinuo #ortopediasaopaulo"
-  },
-  {
-    "id": "post19",
-    "images": [
-      "images/post19_1.jpg",
-      "images/post19_2.jpg",
-      "images/post19_3.jpg",
-      "images/post19_4.jpg",
-      "images/post19_5.jpg"
-    ],
-    "caption": "Pé torto congênito: por que tratar cedo faz diferença.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#petortocongenito #ponseti #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
-  },
-  {
-    "id": "post20",
-    "images": [
-      "images/post20_1.jpg",
-      "images/post20_2.jpg",
-      "images/post20_3.jpg",
-      "images/post20_4.jpg",
-      "images/post20_5.jpg"
-    ],
-    "caption": "Displasia do desenvolvimento do quadril: sinais para observar no bebê.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#displasiadoquadril #ddq #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
-  },
-  {
-    "id": "post21",
-    "images": [
-      "images/post21_1.jpg",
-      "images/post21_2.jpg",
-      "images/post21_3.jpg",
-      "images/post21_4.jpg",
-      "images/post21_5.jpg"
-    ],
-    "caption": "Convivendo com o fixador externo: cuidados no dia a dia.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#fixadorexterno #cuidados #reconstrucaoossea #alongamentoosseo #ortopediasaopaulo"
-  },
-  {
-    "id": "post22",
-    "images": [
-      "images/post22_1.jpg",
-      "images/post22_2.jpg",
-      "images/post22_3.jpg",
-      "images/post22_4.jpg",
-      "images/post22_5.jpg"
-    ],
-    "caption": "Como o corpo cria osso novo durante o alongamento.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#alongamentoosseo #osteogenesedistracao #reconstrucaoossea #ortopediasaopaulo #ortopedia"
-  },
-  {
-    "id": "post23",
-    "images": [
-      "images/post23_1.jpg",
-      "images/post23_2.jpg",
-      "images/post23_3.jpg",
-      "images/post23_4.jpg",
-      "images/post23_5.jpg"
-    ],
-    "caption": "Deformidades de causa neurológica: a ortopedia também ajuda.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#mielomeningocele #paralisiacerebral #ortopediapediatrica #deformidadesosseas #ortopediasaopaulo"
-  },
-  {
-    "id": "post24",
-    "images": [
-      "images/post24_1.jpg",
-      "images/post24_2.jpg",
-      "images/post24_3.jpg",
-      "images/post24_4.jpg",
-      "images/post24_5.jpg"
-    ],
-    "caption": "Dor de crescimento ou dor que precisa avaliar?\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#dordecrescimento #ortopediapediatrica #ortopediainfantil #saudedacrianca #ortopediasaopaulo"
-  },
-  {
-    "id": "post25",
-    "images": [
-      "images/post25_1.jpg",
-      "images/post25_2.jpg",
-      "images/post25_3.jpg",
-      "images/post25_4.jpg",
-      "images/post25_5.jpg"
-    ],
-    "caption": "Joelhos arqueados nos primeiros anos e em X dos 3 aos 6 costumam fazer parte do desenvolvimento e melhoram sozinhos. Vale avaliar quando é muito acentuado, assimétrico, piora com a idade ou vem com dor.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#joelhovalgo #joelhovaro #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
-  },
-  {
-    "id": "post26",
-    "images": [
-      "images/post26_1.jpg",
-      "images/post26_2.jpg",
-      "images/post26_3.jpg",
-      "images/post26_4.jpg",
-      "images/post26_5.jpg"
-    ],
-    "caption": "O pé plano flexível é comum na infância e o arco costuma se formar com o crescimento — geralmente sem necessidade de palmilha. Avalie quando há dor, cansaço, rigidez ou assimetria.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#peplano #pechato #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
-  },
-  {
-    "id": "post27",
-    "images": [
-      "images/post27_1.jpg",
-      "images/post27_2.jpg",
-      "images/post27_3.jpg",
-      "images/post27_4.jpg",
-      "images/post27_5.jpg"
-    ],
-    "caption": "A escoliose costuma ser indolor no início. Observe ombros e cintura assimétricos e, ao inclinar o tronco à frente, um lado das costas mais alto. Quanto antes a avaliação, mais simples o acompanhamento.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#escoliose #colunainfantil #ortopediapediatrica #postura #ortopediasaopaulo"
-  },
-  {
-    "id": "post28",
-    "images": [
-      "images/post28_1.jpg",
-      "images/post28_2.jpg",
-      "images/post28_3.jpg",
-      "images/post28_4.jpg",
-      "images/post28_5.jpg"
-    ],
-    "caption": "A doença de Osgood-Schlatter causa dor abaixo da patela em adolescentes que treinam, no estirão. Costuma melhorar ajustando a carga, com gelo e alongamento. Se persiste ou limita, vale avaliar.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#osgoodschlatter #joelho #ortopediadoesporte #adolescente #ortopediasaopaulo"
-  },
-  {
-    "id": "post29",
-    "images": [
-      "images/post29_1.jpg",
-      "images/post29_2.jpg",
-      "images/post29_3.jpg",
-      "images/post29_4.jpg",
-      "images/post29_5.jpg"
-    ],
-    "caption": "No pré-adolescente, dor no quadril, coxa ou joelho com claudicação e sem trauma claro merece avaliação sem demora — o joelho às vezes \"avisa\" um problema do quadril. A avaliação precoce faz diferença.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#quadril #epifisiolise #ortopediapediatrica #sinaldealerta #ortopediasaopaulo"
-  },
-  {
-    "id": "post30",
-    "images": [
-      "images/post30_1.jpg",
-      "images/post30_2.jpg",
-      "images/post30_3.jpg",
-      "images/post30_4.jpg",
-      "images/post30_5.jpg"
-    ],
-    "caption": "O torcicolo muscular congênito faz o bebê preferir um lado, às vezes com um nódulo no pescoço. Identificado cedo, costuma responder bem a alongamentos orientados, prevenindo assimetrias.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#torcicolo #bebe #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
-  },
-  {
-    "id": "post31",
-    "images": [
-      "images/post31_1.jpg",
-      "images/post31_2.jpg",
-      "images/post31_3.jpg",
-      "images/post31_4.jpg",
-      "images/post31_5.jpg"
-    ],
-    "caption": "A pronação dolorosa (\"cotovelo de babá\") ocorre após puxar o bracinho: a criança passa a segurar o braço sem mexer. Não force — a correção costuma ser rápida. Levantar pelas axilas ajuda a prevenir.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#cotovelodebaba #pronacaodolorosa #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
-  },
-  {
-    "id": "post32",
-    "images": [
-      "images/post32_1.jpg",
-      "images/post32_2.jpg",
-      "images/post32_3.jpg",
-      "images/post32_4.jpg",
-      "images/post32_5.jpg"
-    ],
-    "caption": "O osso da criança cresce pela placa de crescimento (fise), uma região mais frágil e importante. Por isso fraturas infantis têm avaliação própria — e costumam consolidar mais rápido que no adulto.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#fratura #placadecrescimento #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
-  },
-  {
-    "id": "post33",
-    "images": [
-      "images/post33_1.jpg",
-      "images/post33_2.jpg",
-      "images/post33_3.jpg",
-      "images/post33_4.jpg",
-      "images/post33_5.jpg"
-    ],
-    "caption": "Para a maioria dos bebês, andar descalço em casa fortalece o pé e o equilíbrio. O sapato é proteção — prefira solado flexível e tamanho confortável, sem necessidade de \"sapato ortopédico\" por rotina.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#primeirospassos #pedobebe #ortopediapediatrica #mitoouverdade #ortopediasaopaulo"
-  },
-  {
-    "id": "post34",
-    "images": [
-      "images/post34_1.jpg",
-      "images/post34_2.jpg",
-      "images/post34_3.jpg",
-      "images/post34_4.jpg",
-      "images/post34_5.jpg"
-    ],
-    "caption": "Andar entre 12 e 15 meses é o mais comum, mas a faixa normal vai além. Avalie quando a criança não anda após 18 meses, perde habilidades já conquistadas ou mostra movimento assimétrico.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#desenvolvimento #marcos #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
-  },
-  {
-    "id": "post35",
-    "images": [
-      "images/post35_1.jpg",
-      "images/post35_2.jpg",
-      "images/post35_3.jpg",
-      "images/post35_4.jpg",
-      "images/post35_5.jpg"
-    ],
-    "caption": "Articulação subitamente inchada, quente e dolorosa, com febre e recusa a movimentar o membro, pode ser artrite séptica — uma urgência. Procure atendimento imediato: tratar cedo protege a articulação.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#artriteseptica #emergencia #ortopediapediatrica #sinaldealerta #ortopediasaopaulo"
-  },
-  {
-    "id": "post36",
-    "images": [
-      "images/post36_1.jpg",
-      "images/post36_2.jpg",
-      "images/post36_3.jpg",
-      "images/post36_4.jpg",
-      "images/post36_5.jpg"
-    ],
-    "caption": "Diferenças de comprimento entre as pernas são comuns. Pequenas costumam ser bem toleradas; maiores têm opções que vão de palmilha a alongamento, conforme a diferença, a causa, a idade e a expectativa.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#discrepancia #alongamentoosseo #reconstrucaoossea #ortopediapediatrica #ortopediasaopaulo"
-  },
-  {
-    "id": "post37",
-    "images": [
-      "images/post37_1.jpg",
-      "images/post37_2.jpg",
-      "images/post37_3.jpg",
-      "images/post37_4.jpg",
-      "images/post37_5.jpg"
-    ],
-    "caption": "Na maioria dos casos dá para higienizar a região do fixador seguindo a orientação individual: manter limpo, secar bem os pinos e observar vermelhidão ou secreção. Suas orientações valem mais que regras gerais.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#fixadorexterno #cuidados #reconstrucaoossea #alongamentoosseo #ortopediasaopaulo"
-  },
-  {
-    "id": "post38",
-    "images": [
-      "images/post38_1.jpg",
-      "images/post38_2.jpg",
-      "images/post38_3.jpg",
-      "images/post38_4.jpg",
-      "images/post38_5.jpg"
-    ],
-    "caption": "Algum desconforto pode aparecer no alongamento, sobretudo na fase de distração, e costuma ser controlável com acompanhamento e fisioterapia. Cada fase tem seu cuidado — o plano é feito para o seu caso.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#alongamentoosseo #reconstrucaoossea #fisioterapia #ortopediasaopaulo #ortopedia"
-  },
-  {
-    "id": "post39",
-    "images": [
-      "images/post39_1.jpg",
-      "images/post39_2.jpg",
-      "images/post39_3.jpg",
-      "images/post39_4.jpg",
-      "images/post39_5.jpg"
-    ],
-    "caption": "Quando uma fratura não consolida (pseudoartrose), há caminho: investigar a causa, estabilizar adequadamente e estimular a formação de osso, com acompanhamento próximo. Cada caso tem seu plano.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#pseudoartrose #reconstrucaoossea #ortopedia #ortopediasaopaulo #fratura"
-  },
-  {
-    "id": "post40",
-    "images": [
-      "images/post40_1.jpg",
-      "images/post40_2.jpg",
-      "images/post40_3.jpg",
-      "images/post40_4.jpg",
-      "images/post40_5.jpg"
-    ],
-    "caption": "Após infecções com perda óssea, a reconstrução é por etapas: controlar a infecção e depois recompor o osso — às vezes com transporte ósseo, em que o próprio osso preenche a falha gradualmente.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#transporteosseo #reconstrucaoossea #osteomielite #ortopedia #ortopediasaopaulo"
-  },
-  {
-    "id": "post41",
-    "images": [
-      "images/post41_1.jpg",
-      "images/post41_2.jpg",
-      "images/post41_3.jpg",
-      "images/post41_4.jpg",
-      "images/post41_5.jpg"
-    ],
-    "caption": "O alinhamento das pernas distribui a carga na cartilagem. Um joelho muito desalinhado pode sobrecarregar um lado e acelerar o desgaste. Avaliar o eixo e, quando indicado, corrigi-lo (osteotomia) ajuda a proteger a articulação.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#osteotomia #joelho #alinhamento #reconstrucaoossea #ortopediasaopaulo"
-  },
-  {
-    "id": "post42",
-    "images": [
-      "images/post42_1.jpg",
-      "images/post42_2.jpg",
-      "images/post42_3.jpg",
-      "images/post42_4.jpg",
-      "images/post42_5.jpg"
-    ],
-    "caption": "Andar com os pés para fora (ou para dentro) costuma fazer parte do desenvolvimento e melhora com o crescimento, refletindo a rotação dos ossos. Avalie quando é muito assimétrico, causa quedas ou piora.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#marcha #rotacao #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
-  },
-  {
-    "id": "post43",
-    "images": [
-      "images/post43_1.jpg",
-      "images/post43_2.jpg",
-      "images/post43_3.jpg",
-      "images/post43_4.jpg",
-      "images/post43_5.jpg"
-    ],
-    "caption": "A vitamina D ajuda o corpo a usar o cálcio e sustenta o crescimento ósseo. Sol e alimentação contribuem, mas a necessidade de suplemento é individual — vale avaliar antes de iniciar por conta própria.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#vitaminad #saudeossea #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
-  },
-  {
-    "id": "post44",
-    "images": [
-      "images/post44_1.jpg",
-      "images/post44_2.jpg",
-      "images/post44_3.jpg",
-      "images/post44_4.jpg",
-      "images/post44_5.jpg"
-    ],
-    "caption": "No metatarso aduto, a frente do pé do bebê vira para dentro — é comum, costuma ser flexível e melhora na maioria. É diferente do pé torto. O acompanhamento define a necessidade de tratamento.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#metatarsoaduto #pedobebe #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
-  },
-  {
-    "id": "post45",
-    "images": [
-      "images/post45_1.jpg",
-      "images/post45_2.jpg",
-      "images/post45_3.jpg",
-      "images/post45_4.jpg",
-      "images/post45_5.jpg"
-    ],
-    "caption": "Em casos complexos de deformidade e reconstrução, um segundo olhar cuidadoso às vezes revela opções. Não prometo milagre — proponho avaliação honesta, plano realista e acompanhamento próximo.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#segundaopiniao #casoscomplexos #reconstrucaoossea #deformidades #ortopediasaopaulo"
-  },
-  {
-    "id": "post46",
-    "images": [
-      "images/post46_1.jpg",
-      "images/post46_2.jpg",
-      "images/post46_3.jpg",
-      "images/post46_4.jpg",
-      "images/post46_5.jpg"
-    ],
-    "caption": "Na primeira consulta, escuto a história, examino com calma e explico em linguagem clara. A ideia é você sair entendendo o problema e os próximos passos, com espaço para todas as perguntas.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#primeiraconsulta #ortopedia #ortopediapediatrica #reconstrucaoossea #ortopediasaopaulo"
-  },
-  {
-    "id": "post47",
-    "images": [
-      "images/post47_1.jpg",
-      "images/post47_2.jpg",
-      "images/post47_3.jpg",
-      "images/post47_4.jpg",
-      "images/post47_5.jpg"
-    ],
-    "caption": "Criança que cansa muito mais que os colegas, sente dor que limita o brincar ou muda o jeito de andar merece avaliação. Muitas vezes é leve; quando há algo a tratar, quanto antes melhor.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#dor #marcha #ortopediapediatrica #saudedacrianca #ortopediasaopaulo"
-  },
-  {
-    "id": "post48",
-    "images": [
-      "images/post48_1.jpg",
-      "images/post48_2.jpg",
-      "images/post48_3.jpg",
-      "images/post48_4.jpg",
-      "images/post48_5.jpg"
-    ],
-    "caption": "Deformidades angulares das pernas podem ser corrigidas com planejamento: medir o eixo, definir o ponto de correção e, muitas vezes, corrigir de forma gradual e acompanhada. O foco é segurança e função.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#deformidades #reconstrucaoossea #alongamentoosseo #ortopedia #ortopediasaopaulo"
-  },
-  {
-    "id": "post49",
-    "images": [
-      "images/post49_1.jpg",
-      "images/post49_2.jpg",
-      "images/post49_3.jpg",
-      "images/post49_4.jpg",
-      "images/post49_5.jpg"
-    ],
-    "caption": "Fraturas repetidas com pequenos traumas, às vezes com histórico familiar, merecem investigação — pode haver uma condição óssea, como a osteogênese imperfeita. O cuidado é especializado e acompanha o crescimento.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#osteogeneseimperfeita #ossosfrageis #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
-  },
-  {
-    "id": "post50",
-    "images": [
-      "images/post50_1.jpg",
-      "images/post50_2.jpg",
-      "images/post50_3.jpg",
-      "images/post50_4.jpg",
-      "images/post50_5.jpg"
-    ],
-    "caption": "A indicação de alongamento ósseo é individual: pesa-se a diferença ou deformidade, o impacto na função e a expectativa realista. É uma decisão conjunta, com transparência sobre riscos e benefícios.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#alongamentoosseo #reconstrucaoossea #deformidades #ortopedia #ortopediasaopaulo"
-  },
-  {
-    "id": "post51",
-    "images": [
-      "images/post51_1.jpg",
-      "images/post51_2.jpg",
-      "images/post51_3.jpg",
-      "images/post51_4.jpg",
-      "images/post51_5.jpg"
-    ],
-    "caption": "No pé cavo, o arco é mais alto que o habitual e o peso se concentra em poucos pontos. Quando é acentuado ou progride, vale investigar a causa. O tratamento depende da avaliação de cada caso.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#pecavo #ortopediapediatrica #ortopediainfantil #pe #ortopediasaopaulo"
-  },
-  {
-    "id": "post52",
-    "images": [
-      "images/post52_1.jpg",
-      "images/post52_2.jpg",
-      "images/post52_3.jpg",
-      "images/post52_4.jpg",
-      "images/post52_5.jpg"
-    ],
-    "caption": "A doença de Sever causa dor no calcanhar em crianças e adolescentes ativos, na área de crescimento do osso. Costuma melhorar com ajuste de carga, gelo e alongamento. Se persiste, vale avaliar.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#doencadesever #calcanhar #ortopediadoesporte #ortopediapediatrica #ortopediasaopaulo"
-  },
-  {
-    "id": "post53",
-    "images": [
-      "images/post53_1.jpg",
-      "images/post53_2.jpg",
-      "images/post53_3.jpg",
-      "images/post53_4.jpg",
-      "images/post53_5.jpg"
-    ],
-    "caption": "Articulações que estalam sem dor, inchaço ou travamento costumam ser benignas. O estalo acompanhado de dor, inchaço, travamento ou falseio é que merece avaliação — o sintoma guia, não o barulho.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#estalos #articulacoes #ortopedia #ortopediapediatrica #ortopediasaopaulo"
-  },
-  {
-    "id": "post54",
-    "images": [
-      "images/post54_1.jpg",
-      "images/post54_2.jpg",
-      "images/post54_3.jpg",
-      "images/post54_4.jpg",
-      "images/post54_5.jpg"
-    ],
-    "caption": "A hipermobilidade (frouxidão ligamentar) é comum e, em muitos, é só uma característica. Algumas crianças têm dores após esforço; atividade física e fortalecimento muscular costumam ajudar.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#hipermobilidade #frouxidaoligamentar #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
-  },
-  {
-    "id": "post55",
-    "images": [
-      "images/post55_1.jpg",
-      "images/post55_2.jpg",
-      "images/post55_3.jpg",
-      "images/post55_4.jpg",
-      "images/post55_5.jpg"
-    ],
-    "caption": "Dor nas costas persistente na criança merece atenção. Sinais como dor noturna, febre, perda de peso ou que limita as atividades pedem avaliação. Na maioria é simples, mas vale investigar quando há alerta.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#dornascostas #colunainfantil #ortopediapediatrica #sinaldealerta #ortopediasaopaulo"
-  },
-  {
-    "id": "post56",
-    "images": [
-      "images/post56_1.jpg",
-      "images/post56_2.jpg",
-      "images/post56_3.jpg",
-      "images/post56_4.jpg",
-      "images/post56_5.jpg"
-    ],
-    "caption": "Para a criança atleta, variar atividades, respeitar o descanso, aquecer e fortalecer reduzem lesões por excesso de uso. Dor que persiste ou limita o esporte deve ser avaliada — não é normal.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#esporteinfantil #prevencao #ortopediadoesporte #ortopediapediatrica #ortopediasaopaulo"
-  },
-  {
-    "id": "post57",
-    "images": [
-      "images/post57_1.jpg",
-      "images/post57_2.jpg",
-      "images/post57_3.jpg",
-      "images/post57_4.jpg",
-      "images/post57_5.jpg"
-    ],
-    "caption": "Na torção de tornozelo, proteger, aplicar gelo e elevar ajuda no início. Não apoiar o pé, inchaço importante ou dor que não melhora merecem avaliação. Fortalecer e treinar equilíbrio evita novas torções.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#entorse #tornozelo #ortopediadoesporte #adolescente #ortopediasaopaulo"
-  },
-  {
-    "id": "post58",
-    "images": [
-      "images/post58_1.jpg",
-      "images/post58_2.jpg",
-      "images/post58_3.jpg",
-      "images/post58_4.jpg",
-      "images/post58_5.jpg"
-    ],
-    "caption": "Para aproveitar a consulta, leve a história do problema (quando começou, o que melhora/piora, tratamentos já feitos), os exames que já tem (mesmo antigos) e uma lista das suas dúvidas.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#consulta #ortopedia #ortopediapediatrica #reconstrucaoossea #ortopediasaopaulo"
-  },
-  {
-    "id": "post59",
-    "images": [
-      "images/post59_1.jpg",
-      "images/post59_2.jpg",
-      "images/post59_3.jpg",
-      "images/post59_4.jpg",
-      "images/post59_5.jpg"
-    ],
-    "caption": "A sensação de joelho que \"falseia\" no adolescente pode ser instabilidade da patela, que escapa para o lado. Fortalecimento costuma ser a base; alguns casos pedem avaliação mais detalhada.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#instabilidadepatelar #joelho #ortopediapediatrica #adolescente #ortopediasaopaulo"
-  },
-  {
-    "id": "post60",
-    "images": [
-      "images/post60_1.jpg",
-      "images/post60_2.jpg",
-      "images/post60_3.jpg",
-      "images/post60_4.jpg",
-      "images/post60_5.jpg"
-    ],
-    "caption": "Arqueamento das pernas que piora, é assimétrico ou vem com baixa estatura pode não ser só do crescimento — às vezes há causa, como o raquitismo. Avaliar e tratar a origem ajuda a restabelecer o alinhamento.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#raquitismo #deformidades #ortopediapediatrica #saudeossea #ortopediasaopaulo"
-  },
-  {
-    "id": "post61",
-    "images": [
-      "images/post61_1.jpg",
-      "images/post61_2.jpg",
-      "images/post61_3.jpg",
-      "images/post61_4.jpg",
-      "images/post61_5.jpg"
-    ],
-    "caption": "Para deformidades e problemas ósseos de difícil solução, em crianças e adultos, a proposta é um tratamento guiado e seriado: avaliação cuidadosa, plano realista e correção em etapas, com foco em função e qualidade de vida.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#reconstrucaoossea #alongamentoosseo #deformidades #casoscomplexos #ortopediasaopaulo"
-  }
+ {
+  "id": "post01",
+  "datetime": "2026-06-09T19:00:00-03:00",
+  "images": [
+   "images/post01_1.jpg",
+   "images/post01_2.jpg",
+   "images/post01_3.jpg",
+   "images/post01_4.jpg",
+   "images/post01_5.jpg"
+  ],
+  "caption": "Prazer, sou o Dr. Rafael Vargas.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#ortopediapediatrica #alongamentoosseo #reconstrucaoossea #deformidadesosseas #ortopediasaopaulo"
+ },
+ {
+  "id": "post02",
+  "datetime": "2026-06-11T19:00:00-03:00",
+  "images": [
+   "images/post02_1.jpg",
+   "images/post02_2.jpg",
+   "images/post02_3.jpg",
+   "images/post02_4.jpg",
+   "images/post02_5.jpg",
+   "images/post02_6.jpg"
+  ],
+  "caption": "O que é reconstrução e alongamento ósseo? São técnicas para restaurar osso que faltou, corrigir deformidades e tratar fraturas que não colaram — sempre com foco na FUNÇÃO: andar, apoiar e usar o membro. O princípio é engenhoso: estimulado corretamente, o próprio corpo forma osso novo, em etapas e com acompanhamento próximo.\n\n📤 Manda para alguém que precisa entender. 📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "post03",
+  "datetime": "2026-06-13T11:00:00-03:00",
+  "images": [
+   "images/post03_1.jpg",
+   "images/post03_2.jpg",
+   "images/post03_3.jpg",
+   "images/post03_4.jpg",
+   "images/post03_5.jpg",
+   "images/post03_6.jpg"
+  ],
+  "caption": "Fixador externo: para que serve (e por que não precisa ter medo).\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#fixadorexterno #alongamentoosseo #reconstrucaoossea #ortopediapediatrica #ortopediasaopaulo"
+ },
+ {
+  "id": "post04",
+  "datetime": "2026-06-16T19:00:00-03:00",
+  "images": [
+   "images/post04_1.jpg",
+   "images/post04_2.jpg",
+   "images/post04_3.jpg",
+   "images/post04_4.jpg",
+   "images/post04_5.jpg",
+   "images/post04_6.jpg"
+  ],
+  "caption": "Uma perna mais curta que a outra? Quando investigar.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#discrepancia #alongamentoosseo #ortopediapediatrica #deformidadesosseas #ortopediasaopaulo"
+ },
+ {
+  "id": "post05",
+  "datetime": "2026-06-18T19:00:00-03:00",
+  "images": [
+   "images/post05_1.jpg",
+   "images/post05_2.jpg",
+   "images/post05_3.jpg",
+   "images/post05_4.jpg",
+   "images/post05_5.jpg",
+   "images/post05_6.jpg"
+  ],
+  "caption": "Fratura que não cola (pseudartrose): o que fazer.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#pseudartrose #reconstrucaoossea #ortopediasaopaulo #ortopedia #alongamentoosseo"
+ },
+ {
+  "id": "post06",
+  "datetime": "2026-06-20T11:00:00-03:00",
+  "images": [
+   "images/post06_1.jpg",
+   "images/post06_2.jpg",
+   "images/post06_3.jpg",
+   "images/post06_4.jpg",
+   "images/post06_5.jpg"
+  ],
+  "caption": "O caminhar do seu filho merece atenção?\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#ortopediapediatrica #ortopediainfantil #deformidadesosseas #ortopediasaopaulo #saudedacrianca"
+ },
+ {
+  "id": "post07",
+  "datetime": "2026-06-23T19:00:00-03:00",
+  "images": [
+   "images/post07_1.jpg",
+   "images/post07_2.jpg",
+   "images/post07_3.jpg",
+   "images/post07_4.jpg",
+   "images/post07_5.jpg",
+   "images/post07_6.jpg"
+  ],
+  "caption": "Quando procurar um especialista em casos complexos.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#deformidadesosseas #reconstrucaoossea #alongamentoosseo #ortopediapediatrica #ortopediasaopaulo"
+ },
+ {
+  "id": "post08",
+  "datetime": "2026-06-25T19:00:00-03:00",
+  "images": [
+   "images/post08_1.jpg",
+   "images/post08_2.jpg",
+   "images/post08_3.jpg",
+   "images/post08_4.jpg",
+   "images/post08_5.jpg",
+   "images/post08_6.jpg"
+  ],
+  "caption": "O que é tratamento guiado e seriado (e por que muda o resultado).\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#reconstrucaoossea #alongamentoosseo #ortopediapediatrica #ortopediasaopaulo #ortopedia"
+ },
+ {
+  "id": "post11",
+  "datetime": "2026-07-02T19:00:00-03:00",
+  "images": [
+   "images/post11_1.jpg",
+   "images/post11_2.jpg",
+   "images/post11_3.jpg",
+   "images/post11_4.jpg",
+   "images/post11_5.jpg",
+   "images/post11_6.jpg"
+  ],
+  "caption": "Como é a consulta — Av. Paulista.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#ortopediasaopaulo #avenidapaulista #ortopediapediatrica #reconstrucaoossea #alongamentoosseo"
+ },
+ {
+  "id": "post12",
+  "datetime": "2026-07-04T11:00:00-03:00",
+  "images": [
+   "images/post12_1.jpg",
+   "images/post12_2.jpg",
+   "images/post12_3.jpg",
+   "images/post12_4.jpg",
+   "images/post12_5.jpg",
+   "images/post12_6.jpg"
+  ],
+  "caption": "Dói? Quanto tempo? Volto a andar? — perguntas frequentes.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#alongamentoosseo #reconstrucaoossea #ortopediapediatrica #duvidas #ortopediasaopaulo"
+ },
+ {
+  "id": "post13",
+  "images": [
+   "images/post13_1.jpg",
+   "images/post13_2.jpg",
+   "images/post13_3.jpg",
+   "images/post13_4.jpg"
+  ],
+  "caption": "Consolidação viciosa: quando o osso cola, mas torto.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#consolidacaoviciosa #osteotomia #reconstrucaoossea #ortopediasaopaulo #ortopedia"
+ },
+ {
+  "id": "post14",
+  "images": [
+   "images/post14_1.jpg",
+   "images/post14_2.jpg",
+   "images/post14_3.jpg",
+   "images/post14_4.jpg",
+   "images/post14_5.jpg",
+   "images/post14_6.jpg"
+  ],
+  "caption": "Sequela de infecção óssea? Existe reconstrução.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#osteomielite #reconstrucaoossea #alongamentoosseo #ortopediasaopaulo #ortopedia"
+ },
+ {
+  "id": "post15",
+  "images": [
+   "images/post15_1.jpg",
+   "images/post15_2.jpg",
+   "images/post15_3.jpg",
+   "images/post15_4.jpg"
+  ],
+  "caption": "Pernas em “X” ou em “O”: quando é normal e quando avaliar.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#ortopediapediatrica #genovalgo #genovaro #ortopediainfantil #ortopediasaopaulo"
+ },
+ {
+  "id": "post16",
+  "images": [
+   "images/post16_1.jpg",
+   "images/post16_2.jpg",
+   "images/post16_3.jpg",
+   "images/post16_4.jpg"
+  ],
+  "caption": "Ossos frágeis e deformidades: há tratamento.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#osteogeneseimperfeita #raquitismo #ortopediapediatrica #deformidadesosseas #ortopediasaopaulo"
+ },
+ {
+  "id": "post17",
+  "images": [
+   "images/post17_1.jpg",
+   "images/post17_2.jpg",
+   "images/post17_3.jpg",
+   "images/post17_4.jpg",
+   "images/post17_5.jpg",
+   "images/post17_6.jpg"
+  ],
+  "caption": "Antes de operar, o planejamento é o que muda o resultado.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#planejamentocirurgico #reconstrucaoossea #deformidadesosseas #ortopediasaopaulo #ortopedia"
+ },
+ {
+  "id": "post18",
+  "images": [
+   "images/post18_1.jpg",
+   "images/post18_2.jpg",
+   "images/post18_3.jpg",
+   "images/post18_4.jpg"
+  ],
+  "caption": "Como é o acompanhamento ao longo do tratamento.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#reconstrucaoossea #alongamentoosseo #ortopediapediatrica #cuidadocontinuo #ortopediasaopaulo"
+ },
+ {
+  "id": "post19",
+  "images": [
+   "images/post19_1.jpg",
+   "images/post19_2.jpg",
+   "images/post19_3.jpg",
+   "images/post19_4.jpg",
+   "images/post19_5.jpg"
+  ],
+  "caption": "Pé torto congênito: por que tratar cedo faz diferença.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#petortocongenito #ponseti #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
+ },
+ {
+  "id": "post20",
+  "images": [
+   "images/post20_1.jpg",
+   "images/post20_2.jpg",
+   "images/post20_3.jpg",
+   "images/post20_4.jpg",
+   "images/post20_5.jpg"
+  ],
+  "caption": "Displasia do desenvolvimento do quadril: sinais para observar no bebê.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#displasiadoquadril #ddq #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
+ },
+ {
+  "id": "post21",
+  "images": [
+   "images/post21_1.jpg",
+   "images/post21_2.jpg",
+   "images/post21_3.jpg",
+   "images/post21_4.jpg",
+   "images/post21_5.jpg"
+  ],
+  "caption": "Convivendo com o fixador externo: cuidados no dia a dia.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#fixadorexterno #cuidados #reconstrucaoossea #alongamentoosseo #ortopediasaopaulo"
+ },
+ {
+  "id": "post22",
+  "images": [
+   "images/post22_1.jpg",
+   "images/post22_2.jpg",
+   "images/post22_3.jpg",
+   "images/post22_4.jpg",
+   "images/post22_5.jpg"
+  ],
+  "caption": "Como o corpo cria osso novo durante o alongamento.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#alongamentoosseo #osteogenesedistracao #reconstrucaoossea #ortopediasaopaulo #ortopedia"
+ },
+ {
+  "id": "post23",
+  "images": [
+   "images/post23_1.jpg",
+   "images/post23_2.jpg",
+   "images/post23_3.jpg",
+   "images/post23_4.jpg",
+   "images/post23_5.jpg"
+  ],
+  "caption": "Deformidades de causa neurológica: a ortopedia também ajuda.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#mielomeningocele #paralisiacerebral #ortopediapediatrica #deformidadesosseas #ortopediasaopaulo"
+ },
+ {
+  "id": "post24",
+  "images": [
+   "images/post24_1.jpg",
+   "images/post24_2.jpg",
+   "images/post24_3.jpg",
+   "images/post24_4.jpg",
+   "images/post24_5.jpg"
+  ],
+  "caption": "Dor de crescimento ou dor que precisa avaliar?\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#dordecrescimento #ortopediapediatrica #ortopediainfantil #saudedacrianca #ortopediasaopaulo"
+ },
+ {
+  "id": "post25",
+  "images": [
+   "images/post25_1.jpg",
+   "images/post25_2.jpg",
+   "images/post25_3.jpg",
+   "images/post25_4.jpg",
+   "images/post25_5.jpg"
+  ],
+  "caption": "Joelhos arqueados nos primeiros anos e em X dos 3 aos 6 costumam fazer parte do desenvolvimento e melhoram sozinhos. Vale avaliar quando é muito acentuado, assimétrico, piora com a idade ou vem com dor.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#joelhovalgo #joelhovaro #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
+ },
+ {
+  "id": "post26",
+  "images": [
+   "images/post26_1.jpg",
+   "images/post26_2.jpg",
+   "images/post26_3.jpg",
+   "images/post26_4.jpg",
+   "images/post26_5.jpg"
+  ],
+  "caption": "O pé plano flexível é comum na infância e o arco costuma se formar com o crescimento — geralmente sem necessidade de palmilha. Avalie quando há dor, cansaço, rigidez ou assimetria.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#peplano #pechato #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
+ },
+ {
+  "id": "post27",
+  "images": [
+   "images/post27_1.jpg",
+   "images/post27_2.jpg",
+   "images/post27_3.jpg",
+   "images/post27_4.jpg",
+   "images/post27_5.jpg"
+  ],
+  "caption": "A escoliose costuma ser indolor no início. Observe ombros e cintura assimétricos e, ao inclinar o tronco à frente, um lado das costas mais alto. Quanto antes a avaliação, mais simples o acompanhamento.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#escoliose #colunainfantil #ortopediapediatrica #postura #ortopediasaopaulo"
+ },
+ {
+  "id": "post28",
+  "images": [
+   "images/post28_1.jpg",
+   "images/post28_2.jpg",
+   "images/post28_3.jpg",
+   "images/post28_4.jpg",
+   "images/post28_5.jpg"
+  ],
+  "caption": "A doença de Osgood-Schlatter causa dor abaixo da patela em adolescentes que treinam, no estirão. Costuma melhorar ajustando a carga, com gelo e alongamento. Se persiste ou limita, vale avaliar.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#osgoodschlatter #joelho #ortopediadoesporte #adolescente #ortopediasaopaulo"
+ },
+ {
+  "id": "post29",
+  "images": [
+   "images/post29_1.jpg",
+   "images/post29_2.jpg",
+   "images/post29_3.jpg",
+   "images/post29_4.jpg",
+   "images/post29_5.jpg"
+  ],
+  "caption": "No pré-adolescente, dor no quadril, coxa ou joelho com claudicação e sem trauma claro merece avaliação sem demora — o joelho às vezes \"avisa\" um problema do quadril. A avaliação precoce faz diferença.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#quadril #epifisiolise #ortopediapediatrica #sinaldealerta #ortopediasaopaulo"
+ },
+ {
+  "id": "post30",
+  "images": [
+   "images/post30_1.jpg",
+   "images/post30_2.jpg",
+   "images/post30_3.jpg",
+   "images/post30_4.jpg",
+   "images/post30_5.jpg"
+  ],
+  "caption": "O torcicolo muscular congênito faz o bebê preferir um lado, às vezes com um nódulo no pescoço. Identificado cedo, costuma responder bem a alongamentos orientados, prevenindo assimetrias.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#torcicolo #bebe #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
+ },
+ {
+  "id": "post31",
+  "images": [
+   "images/post31_1.jpg",
+   "images/post31_2.jpg",
+   "images/post31_3.jpg",
+   "images/post31_4.jpg",
+   "images/post31_5.jpg"
+  ],
+  "caption": "A pronação dolorosa (\"cotovelo de babá\") ocorre após puxar o bracinho: a criança passa a segurar o braço sem mexer. Não force — a correção costuma ser rápida. Levantar pelas axilas ajuda a prevenir.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#cotovelodebaba #pronacaodolorosa #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
+ },
+ {
+  "id": "post32",
+  "images": [
+   "images/post32_1.jpg",
+   "images/post32_2.jpg",
+   "images/post32_3.jpg",
+   "images/post32_4.jpg",
+   "images/post32_5.jpg"
+  ],
+  "caption": "O osso da criança cresce pela placa de crescimento (fise), uma região mais frágil e importante. Por isso fraturas infantis têm avaliação própria — e costumam consolidar mais rápido que no adulto.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#fratura #placadecrescimento #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
+ },
+ {
+  "id": "post33",
+  "images": [
+   "images/post33_1.jpg",
+   "images/post33_2.jpg",
+   "images/post33_3.jpg",
+   "images/post33_4.jpg",
+   "images/post33_5.jpg"
+  ],
+  "caption": "Para a maioria dos bebês, andar descalço em casa fortalece o pé e o equilíbrio. O sapato é proteção — prefira solado flexível e tamanho confortável, sem necessidade de \"sapato ortopédico\" por rotina.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#primeirospassos #pedobebe #ortopediapediatrica #mitoouverdade #ortopediasaopaulo"
+ },
+ {
+  "id": "post34",
+  "images": [
+   "images/post34_1.jpg",
+   "images/post34_2.jpg",
+   "images/post34_3.jpg",
+   "images/post34_4.jpg",
+   "images/post34_5.jpg"
+  ],
+  "caption": "Andar entre 12 e 15 meses é o mais comum, mas a faixa normal vai além. Avalie quando a criança não anda após 18 meses, perde habilidades já conquistadas ou mostra movimento assimétrico.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#desenvolvimento #marcos #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
+ },
+ {
+  "id": "post35",
+  "images": [
+   "images/post35_1.jpg",
+   "images/post35_2.jpg",
+   "images/post35_3.jpg",
+   "images/post35_4.jpg",
+   "images/post35_5.jpg"
+  ],
+  "caption": "Articulação subitamente inchada, quente e dolorosa, com febre e recusa a movimentar o membro, pode ser artrite séptica — uma urgência. Procure atendimento imediato: tratar cedo protege a articulação.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#artriteseptica #emergencia #ortopediapediatrica #sinaldealerta #ortopediasaopaulo"
+ },
+ {
+  "id": "post36",
+  "images": [
+   "images/post36_1.jpg",
+   "images/post36_2.jpg",
+   "images/post36_3.jpg",
+   "images/post36_4.jpg",
+   "images/post36_5.jpg"
+  ],
+  "caption": "Diferenças de comprimento entre as pernas são comuns. Pequenas costumam ser bem toleradas; maiores têm opções que vão de palmilha a alongamento, conforme a diferença, a causa, a idade e a expectativa.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#discrepancia #alongamentoosseo #reconstrucaoossea #ortopediapediatrica #ortopediasaopaulo"
+ },
+ {
+  "id": "post37",
+  "images": [
+   "images/post37_1.jpg",
+   "images/post37_2.jpg",
+   "images/post37_3.jpg",
+   "images/post37_4.jpg",
+   "images/post37_5.jpg"
+  ],
+  "caption": "Na maioria dos casos dá para higienizar a região do fixador seguindo a orientação individual: manter limpo, secar bem os pinos e observar vermelhidão ou secreção. Suas orientações valem mais que regras gerais.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#fixadorexterno #cuidados #reconstrucaoossea #alongamentoosseo #ortopediasaopaulo"
+ },
+ {
+  "id": "post38",
+  "images": [
+   "images/post38_1.jpg",
+   "images/post38_2.jpg",
+   "images/post38_3.jpg",
+   "images/post38_4.jpg",
+   "images/post38_5.jpg"
+  ],
+  "caption": "Algum desconforto pode aparecer no alongamento, sobretudo na fase de distração, e costuma ser controlável com acompanhamento e fisioterapia. Cada fase tem seu cuidado — o plano é feito para o seu caso.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#alongamentoosseo #reconstrucaoossea #fisioterapia #ortopediasaopaulo #ortopedia"
+ },
+ {
+  "id": "post39",
+  "images": [
+   "images/post39_1.jpg",
+   "images/post39_2.jpg",
+   "images/post39_3.jpg",
+   "images/post39_4.jpg",
+   "images/post39_5.jpg"
+  ],
+  "caption": "Quando uma fratura não consolida (pseudoartrose), há caminho: investigar a causa, estabilizar adequadamente e estimular a formação de osso, com acompanhamento próximo. Cada caso tem seu plano.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#pseudoartrose #reconstrucaoossea #ortopedia #ortopediasaopaulo #fratura"
+ },
+ {
+  "id": "post40",
+  "images": [
+   "images/post40_1.jpg",
+   "images/post40_2.jpg",
+   "images/post40_3.jpg",
+   "images/post40_4.jpg",
+   "images/post40_5.jpg"
+  ],
+  "caption": "Após infecções com perda óssea, a reconstrução é por etapas: controlar a infecção e depois recompor o osso — às vezes com transporte ósseo, em que o próprio osso preenche a falha gradualmente.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#transporteosseo #reconstrucaoossea #osteomielite #ortopedia #ortopediasaopaulo"
+ },
+ {
+  "id": "post41",
+  "images": [
+   "images/post41_1.jpg",
+   "images/post41_2.jpg",
+   "images/post41_3.jpg",
+   "images/post41_4.jpg",
+   "images/post41_5.jpg"
+  ],
+  "caption": "O alinhamento das pernas distribui a carga na cartilagem. Um joelho muito desalinhado pode sobrecarregar um lado e acelerar o desgaste. Avaliar o eixo e, quando indicado, corrigi-lo (osteotomia) ajuda a proteger a articulação.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#osteotomia #joelho #alinhamento #reconstrucaoossea #ortopediasaopaulo"
+ },
+ {
+  "id": "post42",
+  "images": [
+   "images/post42_1.jpg",
+   "images/post42_2.jpg",
+   "images/post42_3.jpg",
+   "images/post42_4.jpg",
+   "images/post42_5.jpg"
+  ],
+  "caption": "Andar com os pés para fora (ou para dentro) costuma fazer parte do desenvolvimento e melhora com o crescimento, refletindo a rotação dos ossos. Avalie quando é muito assimétrico, causa quedas ou piora.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#marcha #rotacao #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
+ },
+ {
+  "id": "post43",
+  "images": [
+   "images/post43_1.jpg",
+   "images/post43_2.jpg",
+   "images/post43_3.jpg",
+   "images/post43_4.jpg",
+   "images/post43_5.jpg"
+  ],
+  "caption": "A vitamina D ajuda o corpo a usar o cálcio e sustenta o crescimento ósseo. Sol e alimentação contribuem, mas a necessidade de suplemento é individual — vale avaliar antes de iniciar por conta própria.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#vitaminad #saudeossea #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
+ },
+ {
+  "id": "post44",
+  "images": [
+   "images/post44_1.jpg",
+   "images/post44_2.jpg",
+   "images/post44_3.jpg",
+   "images/post44_4.jpg",
+   "images/post44_5.jpg"
+  ],
+  "caption": "No metatarso aduto, a frente do pé do bebê vira para dentro — é comum, costuma ser flexível e melhora na maioria. É diferente do pé torto. O acompanhamento define a necessidade de tratamento.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#metatarsoaduto #pedobebe #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
+ },
+ {
+  "id": "post45",
+  "images": [
+   "images/post45_1.jpg",
+   "images/post45_2.jpg",
+   "images/post45_3.jpg",
+   "images/post45_4.jpg",
+   "images/post45_5.jpg"
+  ],
+  "caption": "Em casos complexos de deformidade e reconstrução, um segundo olhar cuidadoso às vezes revela opções. Não prometo milagre — proponho avaliação honesta, plano realista e acompanhamento próximo.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#segundaopiniao #casoscomplexos #reconstrucaoossea #deformidades #ortopediasaopaulo"
+ },
+ {
+  "id": "post46",
+  "images": [
+   "images/post46_1.jpg",
+   "images/post46_2.jpg",
+   "images/post46_3.jpg",
+   "images/post46_4.jpg",
+   "images/post46_5.jpg"
+  ],
+  "caption": "Na primeira consulta, escuto a história, examino com calma e explico em linguagem clara. A ideia é você sair entendendo o problema e os próximos passos, com espaço para todas as perguntas.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#primeiraconsulta #ortopedia #ortopediapediatrica #reconstrucaoossea #ortopediasaopaulo"
+ },
+ {
+  "id": "post47",
+  "images": [
+   "images/post47_1.jpg",
+   "images/post47_2.jpg",
+   "images/post47_3.jpg",
+   "images/post47_4.jpg",
+   "images/post47_5.jpg"
+  ],
+  "caption": "Criança que cansa muito mais que os colegas, sente dor que limita o brincar ou muda o jeito de andar merece avaliação. Muitas vezes é leve; quando há algo a tratar, quanto antes melhor.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#dor #marcha #ortopediapediatrica #saudedacrianca #ortopediasaopaulo"
+ },
+ {
+  "id": "post48",
+  "images": [
+   "images/post48_1.jpg",
+   "images/post48_2.jpg",
+   "images/post48_3.jpg",
+   "images/post48_4.jpg",
+   "images/post48_5.jpg"
+  ],
+  "caption": "Deformidades angulares das pernas podem ser corrigidas com planejamento: medir o eixo, definir o ponto de correção e, muitas vezes, corrigir de forma gradual e acompanhada. O foco é segurança e função.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#deformidades #reconstrucaoossea #alongamentoosseo #ortopedia #ortopediasaopaulo"
+ },
+ {
+  "id": "post49",
+  "images": [
+   "images/post49_1.jpg",
+   "images/post49_2.jpg",
+   "images/post49_3.jpg",
+   "images/post49_4.jpg",
+   "images/post49_5.jpg"
+  ],
+  "caption": "Fraturas repetidas com pequenos traumas, às vezes com histórico familiar, merecem investigação — pode haver uma condição óssea, como a osteogênese imperfeita. O cuidado é especializado e acompanha o crescimento.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#osteogeneseimperfeita #ossosfrageis #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
+ },
+ {
+  "id": "post50",
+  "images": [
+   "images/post50_1.jpg",
+   "images/post50_2.jpg",
+   "images/post50_3.jpg",
+   "images/post50_4.jpg",
+   "images/post50_5.jpg"
+  ],
+  "caption": "A indicação de alongamento ósseo é individual: pesa-se a diferença ou deformidade, o impacto na função e a expectativa realista. É uma decisão conjunta, com transparência sobre riscos e benefícios.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#alongamentoosseo #reconstrucaoossea #deformidades #ortopedia #ortopediasaopaulo"
+ },
+ {
+  "id": "post51",
+  "images": [
+   "images/post51_1.jpg",
+   "images/post51_2.jpg",
+   "images/post51_3.jpg",
+   "images/post51_4.jpg",
+   "images/post51_5.jpg"
+  ],
+  "caption": "No pé cavo, o arco é mais alto que o habitual e o peso se concentra em poucos pontos. Quando é acentuado ou progride, vale investigar a causa. O tratamento depende da avaliação de cada caso.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#pecavo #ortopediapediatrica #ortopediainfantil #pe #ortopediasaopaulo"
+ },
+ {
+  "id": "post52",
+  "images": [
+   "images/post52_1.jpg",
+   "images/post52_2.jpg",
+   "images/post52_3.jpg",
+   "images/post52_4.jpg",
+   "images/post52_5.jpg"
+  ],
+  "caption": "A doença de Sever causa dor no calcanhar em crianças e adolescentes ativos, na área de crescimento do osso. Costuma melhorar com ajuste de carga, gelo e alongamento. Se persiste, vale avaliar.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#doencadesever #calcanhar #ortopediadoesporte #ortopediapediatrica #ortopediasaopaulo"
+ },
+ {
+  "id": "post53",
+  "images": [
+   "images/post53_1.jpg",
+   "images/post53_2.jpg",
+   "images/post53_3.jpg",
+   "images/post53_4.jpg",
+   "images/post53_5.jpg"
+  ],
+  "caption": "Articulações que estalam sem dor, inchaço ou travamento costumam ser benignas. O estalo acompanhado de dor, inchaço, travamento ou falseio é que merece avaliação — o sintoma guia, não o barulho.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#estalos #articulacoes #ortopedia #ortopediapediatrica #ortopediasaopaulo"
+ },
+ {
+  "id": "post54",
+  "images": [
+   "images/post54_1.jpg",
+   "images/post54_2.jpg",
+   "images/post54_3.jpg",
+   "images/post54_4.jpg",
+   "images/post54_5.jpg"
+  ],
+  "caption": "A hipermobilidade (frouxidão ligamentar) é comum e, em muitos, é só uma característica. Algumas crianças têm dores após esforço; atividade física e fortalecimento muscular costumam ajudar.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#hipermobilidade #frouxidaoligamentar #ortopediapediatrica #ortopediainfantil #ortopediasaopaulo"
+ },
+ {
+  "id": "post55",
+  "images": [
+   "images/post55_1.jpg",
+   "images/post55_2.jpg",
+   "images/post55_3.jpg",
+   "images/post55_4.jpg",
+   "images/post55_5.jpg"
+  ],
+  "caption": "Dor nas costas persistente na criança merece atenção. Sinais como dor noturna, febre, perda de peso ou que limita as atividades pedem avaliação. Na maioria é simples, mas vale investigar quando há alerta.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#dornascostas #colunainfantil #ortopediapediatrica #sinaldealerta #ortopediasaopaulo"
+ },
+ {
+  "id": "post56",
+  "images": [
+   "images/post56_1.jpg",
+   "images/post56_2.jpg",
+   "images/post56_3.jpg",
+   "images/post56_4.jpg",
+   "images/post56_5.jpg"
+  ],
+  "caption": "Para a criança atleta, variar atividades, respeitar o descanso, aquecer e fortalecer reduzem lesões por excesso de uso. Dor que persiste ou limita o esporte deve ser avaliada — não é normal.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#esporteinfantil #prevencao #ortopediadoesporte #ortopediapediatrica #ortopediasaopaulo"
+ },
+ {
+  "id": "post57",
+  "images": [
+   "images/post57_1.jpg",
+   "images/post57_2.jpg",
+   "images/post57_3.jpg",
+   "images/post57_4.jpg",
+   "images/post57_5.jpg"
+  ],
+  "caption": "Na torção de tornozelo, proteger, aplicar gelo e elevar ajuda no início. Não apoiar o pé, inchaço importante ou dor que não melhora merecem avaliação. Fortalecer e treinar equilíbrio evita novas torções.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#entorse #tornozelo #ortopediadoesporte #adolescente #ortopediasaopaulo"
+ },
+ {
+  "id": "post58",
+  "images": [
+   "images/post58_1.jpg",
+   "images/post58_2.jpg",
+   "images/post58_3.jpg",
+   "images/post58_4.jpg",
+   "images/post58_5.jpg"
+  ],
+  "caption": "Para aproveitar a consulta, leve a história do problema (quando começou, o que melhora/piora, tratamentos já feitos), os exames que já tem (mesmo antigos) e uma lista das suas dúvidas.\n\n📤 Manda este post para alguém que precisa ver — um pai, uma mãe, um amigo.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#consulta #ortopedia #ortopediapediatrica #reconstrucaoossea #ortopediasaopaulo"
+ },
+ {
+  "id": "post59",
+  "images": [
+   "images/post59_1.jpg",
+   "images/post59_2.jpg",
+   "images/post59_3.jpg",
+   "images/post59_4.jpg",
+   "images/post59_5.jpg"
+  ],
+  "caption": "A sensação de joelho que \"falseia\" no adolescente pode ser instabilidade da patela, que escapa para o lado. Fortalecimento costuma ser a base; alguns casos pedem avaliação mais detalhada.\n\n📤 Conhece quem está com essa dúvida? Compartilhe no direct com a pessoa.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#instabilidadepatelar #joelho #ortopediapediatrica #adolescente #ortopediasaopaulo"
+ },
+ {
+  "id": "post60",
+  "images": [
+   "images/post60_1.jpg",
+   "images/post60_2.jpg",
+   "images/post60_3.jpg",
+   "images/post60_4.jpg",
+   "images/post60_5.jpg"
+  ],
+  "caption": "Arqueamento das pernas que piora, é assimétrico ou vem com baixa estatura pode não ser só do crescimento — às vezes há causa, como o raquitismo. Avaliar e tratar a origem ajuda a restabelecer o alinhamento.\n\n📤 Envie para aquele pai ou aquela mãe que vive essa preocupação.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#raquitismo #deformidades #ortopediapediatrica #saudeossea #ortopediasaopaulo"
+ },
+ {
+  "id": "post61",
+  "images": [
+   "images/post61_1.jpg",
+   "images/post61_2.jpg",
+   "images/post61_3.jpg",
+   "images/post61_4.jpg",
+   "images/post61_5.jpg"
+  ],
+  "caption": "Para deformidades e problemas ósseos de difícil solução, em crianças e adultos, a proposta é um tratamento guiado e seriado: avaliação cuidadosa, plano realista e correção em etapas, com foco em função e qualidade de vida.\n\n📤 Salva e manda para quem precisa: pode ajudar mais gente do que parece.\n📌 Salve para consultar depois · 💬 dúvida? comenta ou chama no direct.\n📲 Para avaliar o seu caso, agende pela WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#reconstrucaoossea #alongamentoosseo #deformidades #casoscomplexos #ortopediasaopaulo"
+ },
+ {
+  "id": "c_on_osso_cresce",
+  "datetime": "2026-07-06T11:00:00-03:00",
+  "images": [
+   "images/c_on_osso_cresce_1.jpg",
+   "images/c_on_osso_cresce_2.jpg",
+   "images/c_on_osso_cresce_3.jpg",
+   "images/c_on_osso_cresce_4.jpg",
+   "images/c_on_osso_cresce_5.jpg"
+  ],
+  "caption": "O osso cresce no espaço vazio. Quando se separam lentamente as duas pontas de um osso, o corpo preenche o vão com osso novo — isso se chama osteogênese por distração. É a base da reconstrução e do alongamento ósseo, usada para refazer o que um trauma, uma infecção ou uma deformidade tiraram. Aqui é sempre sobre função e movimento, nunca estética ou altura. Conteúdo educativo; cada caso é avaliado individualmente.\n\n📤 Manda pra quem está reconstruindo um osso — ou ama alguém que está.\n🦴 Osso novo, de volta ao movimento.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#reconstrucaoossea #alongamentoosseo #ortopediasaopaulo #pseudartrose #fixadorexterno #traumatortopedico #osteogeneseporodistração #reconstrucao\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_on_regra_milimetro",
+  "datetime": "2026-07-07T11:00:00-03:00",
+  "images": [
+   "images/c_on_regra_milimetro_1.jpg",
+   "images/c_on_regra_milimetro_2.jpg",
+   "images/c_on_regra_milimetro_3.jpg",
+   "images/c_on_regra_milimetro_4.jpg",
+   "images/c_on_regra_milimetro_5.jpg"
+  ],
+  "caption": "A regra do milímetro. No alongamento e na reconstrução óssea, as pontas do osso são afastadas cerca de 1 mm por dia, em geral em 4 vezes. Mais rápido, o osso novo não se forma; mais devagar, ele endurece antes da hora e trava a correção. Por isso o ritmo é acompanhado de perto e ajustado para cada pessoa. É sobre devolver função — nunca estética.\n\n📤 Manda pra quem está reconstruindo um osso — ou ama alguém que está.\n🦴 Osso novo, de volta ao movimento.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#reconstrucaoossea #alongamentoosseo #ortopediasaopaulo #pseudartrose #fixadorexterno #traumatortopedico #alongamentoosseo #milimetro\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_on_tres_fases",
+  "datetime": "2026-07-08T11:00:00-03:00",
+  "images": [
+   "images/c_on_tres_fases_1.jpg",
+   "images/c_on_tres_fases_2.jpg",
+   "images/c_on_tres_fases_3.jpg",
+   "images/c_on_tres_fases_4.jpg",
+   "images/c_on_tres_fases_5.jpg"
+  ],
+  "caption": "As 3 fases do alongamento e da reconstrução óssea: latência (alguns dias parado, para o osso iniciar o reparo), distração (o famoso 1 mm por dia, quando o osso novo se forma) e consolidação (parar e deixar o osso amadurecer e endurecer — costuma ser a fase mais longa). Saber em que fase se está tira boa parte da ansiedade do processo.\n\n📤 Manda pra quem está reconstruindo um osso — ou ama alguém que está.\n🦴 Osso novo, de volta ao movimento.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#reconstrucaoossea #alongamentoosseo #ortopediasaopaulo #pseudartrose #fixadorexterno #traumatortopedico #consolidacaoossea #reconstrucao\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_on_pseudartrose",
+  "datetime": "2026-07-09T11:00:00-03:00",
+  "images": [
+   "images/c_on_pseudartrose_1.jpg",
+   "images/c_on_pseudartrose_2.jpg",
+   "images/c_on_pseudartrose_3.jpg",
+   "images/c_on_pseudartrose_4.jpg",
+   "images/c_on_pseudartrose_5.jpg"
+  ],
+  "caption": "Pseudartrose: a fratura que não cola. Quando a consolidação falha, o osso fica com mobilidade onde deveria estar firme — uma 'falsa junta'. Os sinais costumam ser dor persistente no foco da fratura e sensação de instabilidade muito além do tempo esperado. Tem conserto: estabilizar melhor, estimular o osso e, às vezes, refazer o trecho. Sempre individualizado.\n\n📤 Manda pra quem está reconstruindo um osso — ou ama alguém que está.\n🦴 Osso novo, de volta ao movimento.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#reconstrucaoossea #alongamentoosseo #ortopediasaopaulo #pseudartrose #fixadorexterno #traumatortopedico #pseudartrose #fratura\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_on_tres_razoes",
+  "datetime": "2026-07-10T11:00:00-03:00",
+  "images": [
+   "images/c_on_tres_razoes_1.jpg",
+   "images/c_on_tres_razoes_2.jpg",
+   "images/c_on_tres_razoes_3.jpg",
+   "images/c_on_tres_razoes_4.jpg",
+   "images/c_on_tres_razoes_5.jpg"
+  ],
+  "caption": "Por que um osso não consolida? Há um tripé: estabilidade (osso que se mexe demais não cola — por isso placas, hastes e fixadores), circulação (sem sangue chegando, não há cicatrização) e ausência de infecção (um osso infectado prioriza se defender). Quando um desses falha, a consolidação emperra. E há um fator desse tripé que está na sua mão mudar.\n\n📤 Manda pra quem está reconstruindo um osso — ou ama alguém que está.\n🦴 Osso novo, de volta ao movimento.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#reconstrucaoossea #alongamentoosseo #ortopediasaopaulo #pseudartrose #fixadorexterno #traumatortopedico #consolidacaoossea #ortopedia\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_on_cigarro",
+  "datetime": "2026-07-11T11:00:00-03:00",
+  "images": [
+   "images/c_on_cigarro_1.jpg",
+   "images/c_on_cigarro_2.jpg",
+   "images/c_on_cigarro_3.jpg",
+   "images/c_on_cigarro_4.jpg",
+   "images/c_on_cigarro_5.jpg"
+  ],
+  "caption": "Cigarro x consolidação óssea. Não é mito: a nicotina aperta os vasos e reduz o oxigênio e o sangue que chegam ao osso — e cicatrização depende disso. Quem fuma tem risco maior de pseudartrose, de infecção e de cura mais lenta. A boa notícia: reduzir ou parar, principalmente em volta da cirurgia, melhora bastante as chances. Vale conversar com sua equipe.\n\n📤 Manda pra quem está reconstruindo um osso — ou ama alguém que está.\n🦴 Osso novo, de volta ao movimento.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#reconstrucaoossea #alongamentoosseo #ortopediasaopaulo #pseudartrose #fixadorexterno #traumatortopedico #tabagismo #consolidacaoossea\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_on_osteomielite",
+  "datetime": "2026-07-12T11:00:00-03:00",
+  "images": [
+   "images/c_on_osteomielite_1.jpg",
+   "images/c_on_osteomielite_2.jpg",
+   "images/c_on_osteomielite_3.jpg",
+   "images/c_on_osteomielite_4.jpg",
+   "images/c_on_osteomielite_5.jpg"
+  ],
+  "caption": "Osteomielite: quando a infecção atinge o osso. Pode entrar por uma fratura exposta, num pós-operatório, ou viajar pelo sangue. Sinais comuns: dor persistente, inchaço, calor, vermelhidão, às vezes febre ou secreção. Tem tratamento: combater a infecção, remover o osso doente e, quando sobra um vão, reconstruir o que se perdeu — sempre individualizado.\n\n📤 Manda pra quem está reconstruindo um osso — ou ama alguém que está.\n🦴 Osso novo, de volta ao movimento.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#reconstrucaoossea #alongamentoosseo #ortopediasaopaulo #pseudartrose #fixadorexterno #traumatortopedico #osteomielite #infeccaoossea\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_on_transporte_osseo",
+  "datetime": "2026-07-13T11:00:00-03:00",
+  "images": [
+   "images/c_on_transporte_osseo_1.jpg",
+   "images/c_on_transporte_osseo_2.jpg",
+   "images/c_on_transporte_osseo_3.jpg",
+   "images/c_on_transporte_osseo_4.jpg",
+   "images/c_on_transporte_osseo_5.jpg"
+  ],
+  "caption": "Transporte ósseo: refazer osso que se perdeu. Quando um trauma ou uma infecção leva um pedaço grande de osso, um segmento do próprio osso vivo é deslizado lentamente pelo vão — e atrás dele o corpo forma osso novo (a mesma osteogênese por distração). O objetivo é devolver osso, comprimento e função a um membro que quase foi perdido. Reconstrução de função, nunca estética.\n\n📤 Manda pra quem está reconstruindo um osso — ou ama alguém que está.\n🦴 Osso novo, de volta ao movimento.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#reconstrucaoossea #alongamentoosseo #ortopediasaopaulo #pseudartrose #fixadorexterno #traumatortopedico #transporteosseo #reconstrucao\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_on_osteotomia",
+  "datetime": "2026-07-14T11:00:00-03:00",
+  "images": [
+   "images/c_on_osteotomia_1.jpg",
+   "images/c_on_osteotomia_2.jpg",
+   "images/c_on_osteotomia_3.jpg",
+   "images/c_on_osteotomia_4.jpg",
+   "images/c_on_osteotomia_5.jpg"
+  ],
+  "caption": "Osteotomia: cortar o osso para realinhar. Osteo = osso, tomia = corte. Um osso fora de eixo joga carga demais num canto da articulação e a desgasta antes da hora. Na osteotomia, o osso é cortado, reposicionado no eixo certo e fixado para cicatrizar alinhado — reorganizando a carga. Costuma ajudar em deformidades, sequelas de fratura e desgaste inicial.\n\n📤 Manda pra quem está reconstruindo um osso — ou ama alguém que está.\n🦴 Osso novo, de volta ao movimento.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#reconstrucaoossea #alongamentoosseo #ortopediasaopaulo #pseudartrose #fixadorexterno #traumatortopedico #osteotomia #alinhamento\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_on_perna_torta_adulto",
+  "datetime": "2026-07-15T11:00:00-03:00",
+  "images": [
+   "images/c_on_perna_torta_adulto_1.jpg",
+   "images/c_on_perna_torta_adulto_2.jpg",
+   "images/c_on_perna_torta_adulto_3.jpg",
+   "images/c_on_perna_torta_adulto_4.jpg",
+   "images/c_on_perna_torta_adulto_5.jpg"
+  ],
+  "caption": "Perna torta no adulto. Diferente da criança (que costuma alinhar sozinha), no adulto a perna torta não se ajeita só — mas corrige. Costuma vir de uma fratura que colou torta, de sequelas antigas ou de desgaste. Importa porque um eixo errado sobrecarrega joelho e quadril, dói e desgasta. O caminho costuma ser a osteotomia para realinhar, às vezes de forma gradual, devolvendo o eixo.\n\n📤 Manda pra quem está reconstruindo um osso — ou ama alguém que está.\n🦴 Osso novo, de volta ao movimento.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#reconstrucaoossea #alongamentoosseo #ortopediasaopaulo #pseudartrose #fixadorexterno #traumatortopedico #deformidade #osteotomia\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_on_discrepancia",
+  "datetime": "2026-07-16T11:00:00-03:00",
+  "images": [
+   "images/c_on_discrepancia_1.jpg",
+   "images/c_on_discrepancia_2.jpg",
+   "images/c_on_discrepancia_3.jpg",
+   "images/c_on_discrepancia_4.jpg",
+   "images/c_on_discrepancia_5.jpg"
+  ],
+  "caption": "Uma perna mais curta que a outra, no adulto. Diferenças pequenas nem se sentem; a partir de certo ponto, começa a mancar e a sobrecarregar coluna, quadril e joelho. Pode vir de fratura, infecção antiga ou ser congênita. As soluções formam uma escada: da palmilha que compensa até o alongamento do osso mais curto — sempre para equilibrar marcha e função, nunca uma questão de altura.\n\n📤 Manda pra quem está reconstruindo um osso — ou ama alguém que está.\n🦴 Osso novo, de volta ao movimento.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#reconstrucaoossea #alongamentoosseo #ortopediasaopaulo #pseudartrose #fixadorexterno #traumatortopedico #discrepancia #marcha\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_on_medir_antes",
+  "datetime": "2026-07-17T11:00:00-03:00",
+  "images": [
+   "images/c_on_medir_antes_1.jpg",
+   "images/c_on_medir_antes_2.jpg",
+   "images/c_on_medir_antes_3.jpg",
+   "images/c_on_medir_antes_4.jpg",
+   "images/c_on_medir_antes_5.jpg"
+  ],
+  "caption": "Discrepância: medir antes de corrigir. Sem a medida exata, não há como escolher o tratamento. A escanometria (exame de imagem) mostra no milímetro o comprimento real de cada osso — não é no olho nem na fita métrica. Cada faixa de milímetros aponta para uma solução diferente. Na criança, mede-se e remede-se ao longo do tempo, prevendo a diferença no final do crescimento.\n\n📤 Manda pra quem está reconstruindo um osso — ou ama alguém que está.\n🦴 Osso novo, de volta ao movimento.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#reconstrucaoossea #alongamentoosseo #ortopediasaopaulo #pseudartrose #fixadorexterno #traumatortopedico #escanometria #discrepancia\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_on_fixador_vs_haste",
+  "datetime": "2026-07-18T11:00:00-03:00",
+  "images": [
+   "images/c_on_fixador_vs_haste_1.jpg",
+   "images/c_on_fixador_vs_haste_2.jpg",
+   "images/c_on_fixador_vs_haste_3.jpg",
+   "images/c_on_fixador_vs_haste_4.jpg",
+   "images/c_on_fixador_vs_haste_5.jpg"
+  ],
+  "caption": "Fixador externo x haste interna. Os dois corrigem e alongam osso, de jeitos diferentes. O fixador externo é a estrutura por fora, com pinos até o osso: permite ajuste fino de fora, mas pede cuidado diário e fica visível por um tempo. A haste interna fica dentro do osso, discreta — algumas modernas alongam por controle externo, com indicações próprias. Qual usar depende do caso (tamanho da correção, estado do osso, idade, infecção), não da moda.\n\n📤 Manda pra quem está reconstruindo um osso — ou ama alguém que está.\n🦴 Osso novo, de volta ao movimento.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#reconstrucaoossea #alongamentoosseo #ortopediasaopaulo #pseudartrose #fixadorexterno #traumatortopedico #fixadorexterno #hasteintramedular\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_on_quanto_tempo",
+  "datetime": "2026-07-19T11:00:00-03:00",
+  "images": [
+   "images/c_on_quanto_tempo_1.jpg",
+   "images/c_on_quanto_tempo_2.jpg",
+   "images/c_on_quanto_tempo_3.jpg",
+   "images/c_on_quanto_tempo_4.jpg",
+   "images/c_on_quanto_tempo_5.jpg"
+  ],
+  "caption": "Quanto tempo fico com o fixador? A resposta honesta é 'depende', mas tem lógica. Quanto maior a correção, mais dias na fase de afastamento (o 1 mm por dia). O que costuma levar mais tempo, porém, é a consolidação — o osso ainda precisa amadurecer e endurecer, e isso não se apressa. Idade, saúde, nutrição e tabagismo mudam a velocidade; por isso o acompanhamento é de perto, com imagem.\n\n📤 Manda pra quem está reconstruindo um osso — ou ama alguém que está.\n🦴 Osso novo, de volta ao movimento.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#reconstrucaoossea #alongamentoosseo #ortopediasaopaulo #pseudartrose #fixadorexterno #traumatortopedico #fixadorexterno #recuperacao\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_on_cuidado_pinos",
+  "datetime": "2026-07-20T11:00:00-03:00",
+  "images": [
+   "images/c_on_cuidado_pinos_1.jpg",
+   "images/c_on_cuidado_pinos_2.jpg",
+   "images/c_on_cuidado_pinos_3.jpg",
+   "images/c_on_cuidado_pinos_4.jpg",
+   "images/c_on_cuidado_pinos_5.jpg"
+  ],
+  "caption": "Cuidado com os pinos do fixador externo. O ponto mais importante do dia a dia é onde o pino encontra a pele — ali pele e metal convivem, e é a 'porta' que pode irritar ou infeccionar. A rotina costuma ser uma limpeza simples e constante, orientada pela equipe (nada de receita caseira). Fique atento a aumento de dor, vermelhidão ou secreção nova: avisar cedo resolve fácil.\n\n📤 Manda pra quem está reconstruindo um osso — ou ama alguém que está.\n🦴 Osso novo, de volta ao movimento.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#reconstrucaoossea #alongamentoosseo #ortopediasaopaulo #pseudartrose #fixadorexterno #traumatortopedico #fixadorexterno #cuidados\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_on_fisioterapia",
+  "datetime": "2026-07-21T11:00:00-03:00",
+  "images": [
+   "images/c_on_fisioterapia_1.jpg",
+   "images/c_on_fisioterapia_2.jpg",
+   "images/c_on_fisioterapia_3.jpg",
+   "images/c_on_fisioterapia_4.jpg",
+   "images/c_on_fisioterapia_5.jpg"
+  ],
+  "caption": "Por que a reabilitação decide o resultado. A cirurgia é metade do caminho; a outra metade se constrói na fisioterapia. Osso novo e articulação não gostam de ficar parados — movimento e carga na dose certa mantêm a articulação solta e fortalecem o osso. Pular essa parte arrisca rigidez e perda de músculo, que roubam o ganho da cirurgia. O segredo não é treino pesado: é constância, guiada pela equipe.\n\n📤 Manda pra quem está reconstruindo um osso — ou ama alguém que está.\n🦴 Osso novo, de volta ao movimento.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#reconstrucaoossea #alongamentoosseo #ortopediasaopaulo #pseudartrose #fixadorexterno #traumatortopedico #fisioterapia #reabilitacao\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_on_pos_trauma",
+  "datetime": "2026-07-22T11:00:00-03:00",
+  "images": [
+   "images/c_on_pos_trauma_1.jpg",
+   "images/c_on_pos_trauma_2.jpg",
+   "images/c_on_pos_trauma_3.jpg",
+   "images/c_on_pos_trauma_4.jpg",
+   "images/c_on_pos_trauma_5.jpg"
+  ],
+  "caption": "Reconstruir uma perna depois de um trauma grave. Quando um acidente leva osso, alinhamento e comprimento de uma vez, a reconstrução junta tudo: estabilizar e controlar infecção, refazer o osso que faltou, alinhar o eixo e igualar o comprimento — por etapas, cada peça no seu tempo. É uma maratona de meses, com a equipe junto. A meta é sempre função: voltar a apoiar o pé e andar. Nunca estética.\n\n📤 Manda pra quem está reconstruindo um osso — ou ama alguém que está.\n🦴 Osso novo, de volta ao movimento.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#reconstrucaoossea #alongamentoosseo #ortopediasaopaulo #pseudartrose #fixadorexterno #traumatortopedico #reconstrucaoossea #trauma\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_on_nao_estetica",
+  "datetime": "2026-07-23T11:00:00-03:00",
+  "images": [
+   "images/c_on_nao_estetica_1.jpg",
+   "images/c_on_nao_estetica_2.jpg",
+   "images/c_on_nao_estetica_3.jpg",
+   "images/c_on_nao_estetica_4.jpg",
+   "images/c_on_nao_estetica_5.jpg"
+  ],
+  "caption": "Reconstrução NÃO é estética. Tudo o que esta série mostrou — alongar, transportar e corrigir osso — é sobre função: parte de um osso que o trauma, a infecção ou uma deformidade machucaram, e busca devolver o que foi perdido, nunca um padrão de aparência ou altura. É cirurgia séria, com tempo e riscos reais, indicada por necessidade de função. Por isso o lema: osso novo, de volta ao movimento.\n\n📤 Manda pra quem está reconstruindo um osso — ou ama alguém que está.\n🦴 Osso novo, de volta ao movimento.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#reconstrucaoossea #alongamentoosseo #ortopediasaopaulo #pseudartrose #fixadorexterno #traumatortopedico #reconstrucaoossea #funcao\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_pnc_marcos_andar",
+  "datetime": "2026-07-24T11:00:00-03:00",
+  "images": [
+   "images/c_pnc_marcos_andar_1.jpg",
+   "images/c_pnc_marcos_andar_2.jpg",
+   "images/c_pnc_marcos_andar_3.jpg",
+   "images/c_pnc_marcos_andar_4.jpg",
+   "images/c_pnc_marcos_andar_5.jpg"
+  ],
+  "caption": "Marcos do andar: quando se preocupar. A maioria das crianças dá os primeiros passos entre 9 e 18 meses — janela ampla, então um pouco antes ou depois costuma ser normal. Comparar com outras crianças só gera ansiedade: o ritmo é individual. A linha de alerta: não andar até por volta dos 18 meses, ou perder uma habilidade já conquistada, merece avaliação.\n\n📤 Manda pra um pai, mãe ou avó que precisa ver.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#ortopediapediatrica #ortopediainfantil #saudedacrianca #maternidade #paternidade #ortopediasaopaulo #primeirospassos #desenvolvimentoinfantil\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_pnc_pe_pra_dentro",
+  "datetime": "2026-07-25T11:00:00-03:00",
+  "images": [
+   "images/c_pnc_pe_pra_dentro_1.jpg",
+   "images/c_pnc_pe_pra_dentro_2.jpg",
+   "images/c_pnc_pe_pra_dentro_3.jpg",
+   "images/c_pnc_pe_pra_dentro_4.jpg",
+   "images/c_pnc_pe_pra_dentro_5.jpg"
+  ],
+  "caption": "Pé virado para dentro ao andar (o 'andar de pombinho'). Pode vir de uma leve torção do pé, da canela ou do osso da coxa — todas variações comuns do crescimento. A regra é o tempo: conforme a criança cresce, a rotação costuma se ajustar sozinha. O alerta é quando ocorre só de um lado, dói, causa quedas demais, ou piora em vez de melhorar.\n\n📤 Manda pra um pai, mãe ou avó que precisa ver.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#ortopediapediatrica #ortopediainfantil #saudedacrianca #maternidade #paternidade #ortopediasaopaulo #marcha #desenvolvimento\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_pnc_estalo_joelho",
+  "datetime": "2026-07-26T11:00:00-03:00",
+  "images": [
+   "images/c_pnc_estalo_joelho_1.jpg",
+   "images/c_pnc_estalo_joelho_2.jpg",
+   "images/c_pnc_estalo_joelho_3.jpg",
+   "images/c_pnc_estalo_joelho_4.jpg",
+   "images/c_pnc_estalo_joelho_5.jpg"
+  ],
+  "caption": "Estalo no joelho da criança. Estalo SEM dor é, na imensa maioria, inofensivo: costuma ser tendão deslizando sobre o osso ou bolhas de gás dentro da articulação — fenômenos normais. O que tranquiliza é o conjunto: se ela corre, pula e brinca sem reclamar e sem inchaço, é só som. Acenda o alerta quando o estalo vem com dor, inchaço ou travamento do joelho.\n\n📤 Manda pra um pai, mãe ou avó que precisa ver.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#ortopediapediatrica #ortopediainfantil #saudedacrianca #maternidade #paternidade #ortopediasaopaulo #joelho #criancas\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_pnc_tenis_caro",
+  "datetime": "2026-07-27T11:00:00-03:00",
+  "images": [
+   "images/c_pnc_tenis_caro_1.jpg",
+   "images/c_pnc_tenis_caro_2.jpg",
+   "images/c_pnc_tenis_caro_3.jpg",
+   "images/c_pnc_tenis_caro_4.jpg",
+   "images/c_pnc_tenis_caro_5.jpg"
+  ],
+  "caption": "Tênis caro NÃO molda nem corrige o pé da criança. O arco e a musculatura se desenvolvem com o movimento — andando, correndo, sentindo o chão — não com um solado especial. O papel do calçado é proteger: flexível, leve e no tamanho certo já basta. A dica que de fato ajuda não custa nada: tempo descalço em casa, em piso seguro.\n\n📤 Manda pra um pai, mãe ou avó que precisa ver.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#ortopediapediatrica #ortopediainfantil #saudedacrianca #maternidade #paternidade #ortopediasaopaulo #pechato #calcadoinfantil\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_pnc_perna_curta_crianca",
+  "datetime": "2026-07-28T11:00:00-03:00",
+  "images": [
+   "images/c_pnc_perna_curta_crianca_1.jpg",
+   "images/c_pnc_perna_curta_crianca_2.jpg",
+   "images/c_pnc_perna_curta_crianca_3.jpg",
+   "images/c_pnc_perna_curta_crianca_4.jpg",
+   "images/c_pnc_perna_curta_crianca_5.jpg"
+  ],
+  "caption": "Uma perna mais curta que a outra, na criança. Calma: uma diferença bem pequena quase todo mundo tem, e não dá sintoma. O trunfo da infância é o crescimento — como a criança ainda cresce, dá para prever a diferença no final e planejar com tempo, se preciso. Vale avaliar quando ela manca, quando há desnível no quadril ou a diferença é nítida. (A versão adulta está na série Osso Novo.)\n\n📤 Manda pra um pai, mãe ou avó que precisa ver.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#ortopediapediatrica #ortopediainfantil #saudedacrianca #maternidade #paternidade #ortopediasaopaulo #discrepancia #criancas\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_pnc_nao_dor_crescimento",
+  "datetime": "2026-07-29T11:00:00-03:00",
+  "images": [
+   "images/c_pnc_nao_dor_crescimento_1.jpg",
+   "images/c_pnc_nao_dor_crescimento_2.jpg",
+   "images/c_pnc_nao_dor_crescimento_3.jpg",
+   "images/c_pnc_nao_dor_crescimento_4.jpg",
+   "images/c_pnc_nao_dor_crescimento_5.jpg"
+  ],
+  "caption": "Os sinais de que NÃO é dor de crescimento. A dor de crescimento clássica é difusa, nas duas pernas, à noite, sem inchaço, e some pela manhã. Fogem desse padrão e merecem avaliação: dor sempre no MESMO ponto; inchaço, calor ou febre junto; e dor que invade o dia, fazendo mancar, limitar o brincar ou acordar sempre. Na dúvida, avalie.\n\n📤 Manda pra um pai, mãe ou avó que precisa ver.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#ortopediapediatrica #ortopediainfantil #saudedacrianca #maternidade #paternidade #ortopediasaopaulo #dordecrescimento #sinaisdealerta\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_pnc_mancando",
+  "datetime": "2026-07-30T11:00:00-03:00",
+  "images": [
+   "images/c_pnc_mancando_1.jpg",
+   "images/c_pnc_mancando_2.jpg",
+   "images/c_pnc_mancando_3.jpg",
+   "images/c_pnc_mancando_4.jpg",
+   "images/c_pnc_mancando_5.jpg"
+  ],
+  "caption": "Criança mancando: regra de ouro, sempre se avalia. Manqueira não é manha — é o corpo protegendo algo, fugindo de uma dor ou compensando uma fraqueza. As causas mudam com a idade, de um sapato apertado a questões no quadril ou joelho que pedem mais pressa. Ajuda o médico observar: há quanto tempo, se há dor, se veio febre e se é sempre do mesmo lado.\n\n📤 Manda pra um pai, mãe ou avó que precisa ver.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#ortopediapediatrica #ortopediainfantil #saudedacrianca #maternidade #paternidade #ortopediasaopaulo #manqueira #sinaisdealerta\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_pnc_mancar_febre",
+  "datetime": "2026-07-31T11:00:00-03:00",
+  "images": [
+   "images/c_pnc_mancar_febre_1.jpg",
+   "images/c_pnc_mancar_febre_2.jpg",
+   "images/c_pnc_mancar_febre_3.jpg",
+   "images/c_pnc_mancar_febre_4.jpg",
+   "images/c_pnc_mancar_febre_5.jpg"
+  ],
+  "caption": "Mancar + febre na criança: combinação que pede pressa. Uma das causas dessa dupla é uma infecção dentro da articulação — e articulação infectada é das poucas situações que não esperam. Sinais que reforçam a urgência: a criança não quer dobrar nem apoiar a perna, chora ao mexerem na articulação e fica protegendo o membro. Com febre e manqueira juntas, procure atendimento no mesmo dia.\n\n📤 Manda pra um pai, mãe ou avó que precisa ver.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#ortopediapediatrica #ortopediainfantil #saudedacrianca #maternidade #paternidade #ortopediasaopaulo #emergencia #sinaisdealerta\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_pnc_escoliose",
+  "datetime": "2026-08-01T11:00:00-03:00",
+  "images": [
+   "images/c_pnc_escoliose_1.jpg",
+   "images/c_pnc_escoliose_2.jpg",
+   "images/c_pnc_escoliose_3.jpg",
+   "images/c_pnc_escoliose_4.jpg",
+   "images/c_pnc_escoliose_5.jpg"
+  ],
+  "caption": "Escoliose: o sinal nas costas. É um desvio em curva da coluna (vista por trás), que costuma aparecer no estirão da pré-adolescência. Há um teste simples em casa: peça para a criança inclinar o corpo à frente, como quem vai tocar os pés, e observe as costas de cima — se um lado fica mais alto que o outro, vale mostrar ao médico. Perceber cedo costuma deixar o acompanhamento mais simples.\n\n📤 Manda pra um pai, mãe ou avó que precisa ver.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#ortopediapediatrica #ortopediainfantil #saudedacrianca #maternidade #paternidade #ortopediasaopaulo #escoliose #coluna\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_pnc_cai_muito",
+  "datetime": "2026-08-02T11:00:00-03:00",
+  "images": [
+   "images/c_pnc_cai_muito_1.jpg",
+   "images/c_pnc_cai_muito_2.jpg",
+   "images/c_pnc_cai_muito_3.jpg",
+   "images/c_pnc_cai_muito_4.jpg",
+   "images/c_pnc_cai_muito_5.jpg"
+  ],
+  "caption": "Criança que cai muito: é normal? Nos primeiros anos, cair é como o corpo calibra o equilíbrio — cada tombo ensina, e uma boa quantidade de quedas, sem mais nada, costuma ser normal. O que muda o jogo é a tendência: cair cada vez mais (em vez de melhorar), tropeçar sempre do mesmo lado, ou perder uma habilidade já conquistada. Em casa, ajuda espaço seguro para praticar e tempo descalço.\n\n📤 Manda pra um pai, mãe ou avó que precisa ver.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#ortopediapediatrica #ortopediainfantil #saudedacrianca #maternidade #paternidade #ortopediasaopaulo #desenvolvimento #equilibrio\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_pnc_sentar_w",
+  "datetime": "2026-08-03T11:00:00-03:00",
+  "images": [
+   "images/c_pnc_sentar_w_1.jpg",
+   "images/c_pnc_sentar_w_2.jpg",
+   "images/c_pnc_sentar_w_3.jpg",
+   "images/c_pnc_sentar_w_4.jpg",
+   "images/c_pnc_sentar_w_5.jpg"
+  ],
+  "caption": "Sentar em 'W': pode ou não? Virou vilão na internet, mas a real é mais tranquila. As crianças escolhem essa posição porque é uma base larga e estável, que deixa as mãos livres para brincar. O entendimento atual: numa criança que se desenvolve bem, sentar em W de vez em quando não vira deformidade. O bom senso é estimular variar a posição — e, se ela SÓ senta em W ou já tem outros sinais, comentar com o ortopedista.\n\n📤 Manda pra um pai, mãe ou avó que precisa ver.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#ortopediapediatrica #ortopediainfantil #saudedacrianca #maternidade #paternidade #ortopediasaopaulo #sentaremw #mitoouverdade\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ },
+ {
+  "id": "c_pnc_mochila",
+  "datetime": "2026-08-04T11:00:00-03:00",
+  "images": [
+   "images/c_pnc_mochila_1.jpg",
+   "images/c_pnc_mochila_2.jpg",
+   "images/c_pnc_mochila_3.jpg",
+   "images/c_pnc_mochila_4.jpg",
+   "images/c_pnc_mochila_5.jpg"
+  ],
+  "caption": "Mochila pesada estraga a coluna? Resposta com equilíbrio. O peso excessivo causa, sim, dor nas costas e ombros e má postura na hora de carregar — desconforto real. Mas NÃO há prova de que mochila cause escoliose ou deformidade permanente. A regra prática: a mochila cheia idealmente não passa de ~10–15% do peso da criança; use as duas alças, ajustada ao corpo, e leve só o essencial.\n\n📤 Manda pra um pai, mãe ou avó que precisa ver.\n📌 Salva pra lembrar. 💬 Dúvida? Comenta ou chama no direct.\n\n#ortopediapediatrica #ortopediainfantil #saudedacrianca #maternidade #paternidade #ortopediasaopaulo #mochila #postura\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+ }
 ]
