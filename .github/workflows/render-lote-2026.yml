@@ -1,0 +1,66 @@
+name: render-lote-2026
+# Renderiza o LOTE 2026 de 30 reels narrados (18 "Osso Novo" + 12 "Pé no Chão" novos).
+# Saída: reels/_preview_<id>.mp4 (fora do reels.json? não — já estão no reels.json, mas com prefixo
+# _preview_ por convenção do pipeline de voz). Voz Antonio afinada (edge-tts), mesma cadeia de áudio.
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Renderizar só 1 episódio (id) p/ smoke test; vazio = todos os 30"
+        required: false
+        default: ""
+      rate:
+        description: "Ritmo do Antonio (padrao -8%)"
+        required: false
+        default: "-8%"
+      pitch:
+        description: "Tom (padrao -4Hz)"
+        required: false
+        default: "-4Hz"
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar fontes Liberation + ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y fonts-liberation ffmpeg
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Instalar Pillow + edge-tts
+        run: pip install pillow edge-tts
+      - name: Renderizar o lote 2026 (voz Antonio afinada)
+        env:
+          VOZ_ENGINE: edge
+          EDGE_VOICE: pt-BR-AntonioNeural
+          EDGE_RATE: ${{ github.event.inputs.rate || '-8%' }}
+          EDGE_PITCH: ${{ github.event.inputs.pitch || '-4Hz' }}
+          ONLY: ${{ github.event.inputs.only }}
+        run: |
+          TODOS="on_osso_cresce on_regra_milimetro on_tres_fases on_pseudartrose on_tres_razoes on_cigarro on_osteomielite on_transporte_osseo on_osteotomia on_perna_torta_adulto on_discrepancia on_medir_antes on_fixador_vs_haste on_quanto_tempo on_cuidado_pinos on_fisioterapia on_pos_trauma on_nao_estetica pnc_marcos_andar pnc_pe_pra_dentro pnc_estalo_joelho pnc_tenis_caro pnc_perna_curta_crianca pnc_nao_dor_crescimento pnc_mancando pnc_mancar_febre pnc_escoliose pnc_cai_muito pnc_sentar_w pnc_mochila"
+          if [ -n "$ONLY" ]; then LISTA="$ONLY"; else LISTA="$TODOS"; fi
+          for EP in $LISTA; do
+            echo "::group::render $EP"
+            python gerar_reel_voz.py "$EP" || python gerar_reel_voz.py "$EP" || python gerar_reel_voz.py "$EP" || python gerar_reel_voz.py "$EP" || echo "FALHOU $EP"
+            echo "::endgroup::"
+          done
+          ls -la reels/_preview_*.mp4 || true
+      - name: Artefato (lote 2026)
+        uses: actions/upload-artifact@v4
+        with:
+          name: lote-2026-reels
+          path: reels/_preview_*.mp4
+          if-no-files-found: error
+      - name: Commit dos mp4 (sincroniza p/ publicacao)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add reels/_preview_*.mp4
+          git commit -m "Render lote 2026: 30 reels narrados (Osso Novo + Pe no Chao)" || echo "nada a commitar"
+          git pull --rebase origin main || true
+          git push

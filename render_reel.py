@@ -62,6 +62,33 @@ def _feet(img,prog):
         if a<=0: continue
         ft=_foot(92,int(60*a)).rotate(ang+8*side,expand=True,resample=Image.BICUBIC)
         img.paste(ft,(int(x-ft.width/2+side*14),int(y-ft.height/2)),ft)
+def _bone(img,prog):
+    """Motivo da série OSSO NOVO: o osso novo preenchendo o vão (linha que cresce das duas
+    pontas pro centro) + uma régua de milímetros por baixo. Identidade INK/CREAM/GOLD."""
+    ov=Image.new("RGBA",(W,H),(0,0,0,0)); d=ImageDraw.Draw(ov)
+    y=1230; x0,x1=M+30,W-M-30; cx=(x0+x1)//2; gap=150  # vão central que o osso novo preenche
+    a=int(60); end=GOLD+(a,)
+    # duas pontas de osso (segmentos sólidos), com "cabeças" arredondadas
+    d.line([(x0,y),(cx-gap,y)],fill=end,width=10); d.line([(cx+gap,y),(x1,y)],fill=end,width=10)
+    for ex in (x0,x1):
+        d.ellipse([ex-13,y-16,ex+13,y+16],fill=end)
+    # osso novo crescendo das duas pontas pro centro conforme prog
+    fill=eoutc(min(1.0,prog/0.85)); half=int(gap*fill)
+    nb=GOLD+(int(90*fill),)
+    if half>0:
+        d.line([(cx-gap,y),(cx-gap+half,y)],fill=nb,width=12)
+        d.line([(cx+gap,y),(cx+gap-half,y)],fill=nb,width=12)
+        # textura de trabéculas (tracinhos diagonais) na zona recém-formada
+        for xx in range(cx-gap, cx-gap+half, 18):
+            d.line([(xx,y-9),(xx+9,y+9)],fill=GOLD+(int(55*fill),),width=2)
+        for xx in range(cx+gap, cx+gap-half, -18):
+            d.line([(xx,y-9),(xx-9,y+9)],fill=GOLD+(int(55*fill),),width=2)
+    # régua de milímetros (motivo secundário) logo abaixo
+    ry=y+70; d.line([(x0,ry),(x1,ry)],fill=GOLD+(34,),width=2)
+    for i,xx in enumerate(range(x0,x1+1,26)):
+        h=14 if i%5==0 else 7
+        d.line([(xx,ry),(xx,ry-h)],fill=GOLD+(34,),width=2)
+    img.paste(Image.alpha_composite(img.convert("RGBA"),ov).convert("RGB"),(0,0))
 def _bg(drift):
     img=Image.new("RGB",(W,H),INK); ov=Image.new("RGBA",(W,H),(0,0,0,0)); da=ImageDraw.Draw(ov); cy=1720+drift
     for r in(680,580,480,380): da.arc([W//2-r,cy-r,W//2+r,cy+r],204,336,fill=(176,140,79,30),width=2)
@@ -72,12 +99,12 @@ def _no(img,prog,tl):
     cx,cy,r=W-M-86,470,66; ov=Image.new("RGBA",(W,H),(0,0,0,0)); d=ImageDraw.Draw(ov); col=RED+(a,)
     d.ellipse([cx-r,cy-r,cx+r,cy+r],outline=col,width=13); ang=math.radians(45); dx,dy=math.cos(ang)*r*.74,math.sin(ang)*r*.74
     d.line([(cx-dx,cy+dy),(cx+dx,cy-dy)],fill=col,width=13); img.paste(Image.alpha_composite(img.convert("RGBA"),ov).convert("RGB"),(0,0))
-def _header(d,ep):
+def _header(d,ep,serie=SERIE):
     d.text((M,168),"RV",font=F(SB,54),fill=CREAM); wf=d.textlength("RV",font=F(SB,54))
     d.line([(M+wf+22,178),(M+wf+22,222)],fill=GOLD,width=2)
     d.text((M+wf+40,174),"Dr. Rafael Vargas",font=F(NR,25),fill=CREAM); d.text((M+wf+40,206),"Ortopedia · São Paulo",font=F(NR,21),fill=GOLD)
     trk(d,(W-M,178),f"EP {ep:02d}",F(NB,30),GOLD,3,left=False)
-    trk(d,(M,286),SERIE.upper(),F(NB,25),GOLD,6); d.line([(M,326),(M+62,326)],fill=GOLD,width=3)
+    trk(d,(M,286),serie.upper(),F(NB,25),GOLD,6); d.line([(M,326),(M+62,326)],fill=GOLD,width=3)
 def _footer(d,prog):
     fy=1380; d.line([(M,fy),(W-M,fy)],fill=FAINT,width=2)
     d.text((M,fy+22),"@rafaelvargasmd",font=F(NR,26),fill=MUT_L); d.text((M,fy+62),SIG,font=F(NR,21),fill=MUT_L); d.text((M,fy+94),DISC,font=F(NR,20),fill=MUT_L)
@@ -87,6 +114,7 @@ def render_frames(episode, durs, frames_dir):
     """Renderiza os JPGs do episódio. durs = lista de durações (s) por cena."""
     shutil.rmtree(frames_dir,ignore_errors=True); os.makedirs(frames_dir)
     S=episode["scenes"]; ep=episode["ep"]
+    serie=episode.get("serie",SERIE); motif_fam=episode.get("motif_family","feet")
     bnd=[]; acc=0.0
     for i,dch in enumerate(durs): bnd.append((acc,acc+dch,i)); acc+=dch
     total=acc; nf=int(total*FPS); BIG=F(SB,98); SUB=F(NR,40); T82=F(SB,82)
@@ -95,9 +123,12 @@ def render_frames(episode, durs, frames_dir):
         for b in bnd:
             if b[0]<=t<b[1]: cur=b; break
         t0,t1,idx=cur; tl=t-t0; s=S[idx]; drift=int(8*math.sin(t*0.5))
-        img=_bg(drift); _feet(img,t/total); d=ImageDraw.Draw(img)
+        img=_bg(drift)
+        if motif_fam=="bone": _bone(img,t/total)
+        else: _feet(img,t/total)
+        d=ImageDraw.Draw(img)
         if s.get("motif")=="no": _no(img,t/total,tl); d=ImageDraw.Draw(img)
-        _header(d,ep)
+        _header(d,ep,serie)
         trk(d,(M,560),s["k"].upper(),F(NB,28),GOLD,5); d.line([(M,602),(M+56,602)],fill=GOLD,width=3)
         ln=s["sc"]; emph=s.get("e"); tf=BIG
         if any(_m.textlength(x,font=tf)>W-2*M for x in ln): tf=T82

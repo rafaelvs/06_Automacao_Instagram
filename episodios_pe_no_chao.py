@@ -144,6 +144,14 @@ EPISODES = [
   "caption":cap("Quando levar ao ortopedista infantil? 5 sinais: 1) manca ou evita pisar num pé; 2) protege sempre o mesmo lado; 3) dor que volta no mesmo lugar; 4) quedas e tropeços demais; 5) assimetria — um ombro, quadril ou perna diferente do outro. Sem pânico: na dúvida, avaliar cedo costuma simplificar tudo.","#ortopediainfantil #sinaisdealerta #quandoprocurar")},
 ]
 
+# LOTE 2026: 30 novos episódios narrados (18 "Osso Novo" + 12 "Pé no Chão") encadeados pela
+# Arquitetura de Ganchos 2026. Mantidos em módulo próprio p/ diff limpo; aqui só estendemos a lista.
+try:
+    from episodios_novos_2026 import NEW_EPISODES
+    EPISODES = EPISODES + NEW_EPISODES
+except Exception as _e:  # nunca quebrar o render dos pilotos se o módulo novo faltar
+    print("AVISO: episodios_novos_2026 não carregado:", _e)
+
 def get(ep_id):
     for e in EPISODES:
         if e["id"]==ep_id: return e
