@@ -35,7 +35,7 @@ OSSO_NOVO = [
  {"id":"on_osso_cresce","ep":1,"serie":"Osso Novo","temporada":"o-osso-se-refaz","motif_family":"bone",
   "scenes":[
    {"k":"Como assim?","sc":["O osso cresce","no espaço vazio."],"e":None,"sub":"Parece ficção — mas é biologia, e tem nome.",
-    "vo":"Parece coisa de ficção científica, mas é pura biologia. O corpo é capaz de fabricar osso novo onde antes não tinha nada."},
+    "vo":"Parece difícil de acreditar, mas é pura biologia: o corpo é capaz de fabricar osso novo onde antes não tinha nada."},
    {"k":"A ideia","sc":["Separe o osso","devagarinho."],"e":"devagarinho","sub":"As duas pontas afastam pouquíssimo por dia — e o vão não fica vazio.",
     "vo":"A sacada é separar as duas pontas do osso bem devagar. No vão que se abre, o corpo entende que precisa preencher e começa a produzir osso ali."},
    {"k":"O nome disso","sc":["Osteogênese","por distração."],"e":None,"sub":"Distrair = afastar. A tração lenta acorda a fábrica de osso.",
@@ -85,12 +85,12 @@ OSSO_NOVO = [
     "vo":"A palavra assusta, mas a ideia é simples: é um osso que parou de cicatrizar e ficou com mobilidade onde deveria estar firme. Uma falsa junta."},
    {"k":"Sinais","sc":["Dor que volta,","meses depois."],"e":None,"sub":"Dor no foco da fratura e sensação de instabilidade além do previsto.",
     "vo":"Os sinais costumam ser dor que insiste no lugar da fratura muito além do esperado, e uma sensação de que ali ainda mexe."},
-   {"k":"Tem solução","sc":["Não cola sozinha,","mas tem conserto."],"e":"conserto","sub":"Estabilizar, estimular e, às vezes, refazer o osso — caso a caso.",
-    "vo":"A boa notícia é que pseudartrose tem conserto. Geralmente envolve estabilizar melhor, estimular o osso e, em alguns casos, refazer aquele trecho. Sempre avaliado individualmente."},
+   {"k":"Tem caminho","sc":["Não cola sozinha,","mas tem caminho."],"e":"caminho","sub":"Estabilizar, estimular e, às vezes, refazer o osso — caso a caso.",
+    "vo":"A boa notícia é que pseudartrose costuma ter solução. Geralmente envolve estabilizar melhor, estimular o osso e, em alguns casos, refazer aquele trecho. Sempre avaliado caso a caso."},
    {"k":"Passa adiante","sc":["Salva: osso que","não cola tem saída."],"e":None,"sub":"Manda pra quem está há meses com uma fratura que não fecha.","cta":True,
     "vo":"Manda pra quem está há meses com uma fratura que não fecha. E no próximo: as três coisas que travam um osso. Uma você controla hoje."},
   ],
-  "caption":cap_rec("Pseudartrose: a fratura que não cola. Quando a consolidação falha, o osso fica com mobilidade onde deveria estar firme — uma 'falsa junta'. Os sinais costumam ser dor persistente no foco da fratura e sensação de instabilidade muito além do tempo esperado. Tem conserto: estabilizar melhor, estimular o osso e, às vezes, refazer o trecho. Sempre individualizado.","#pseudartrose #fratura")},
+  "caption":cap_rec("Pseudartrose: a fratura que não cola. Quando a consolidação falha, o osso fica com mobilidade onde deveria estar firme — uma 'falsa junta'. Os sinais costumam ser dor persistente no foco da fratura e sensação de instabilidade muito além do tempo esperado. Costuma ter solução: estabilizar melhor, estimular o osso e, às vezes, refazer o trecho. Sempre individualizado.","#pseudartrose #fratura")},
 
  {"id":"on_tres_razoes","ep":5,"serie":"Osso Novo","temporada":"quando-o-osso-falha","motif_family":"bone",
   "scenes":[
@@ -139,8 +139,8 @@ OSSO_NOVO = [
 
  {"id":"on_transporte_osseo","ep":8,"serie":"Osso Novo","temporada":"refazer-e-realinhar","motif_family":"bone",
   "scenes":[
-   {"k":"Parece mágica","sc":["Dá pra 'transportar'","osso vivo."],"e":None,"sub":"Faltou um pedaço grande de osso? Ele pode ser refeito.",
-    "vo":"Esse é dos mais impressionantes. Quando falta um pedaço grande de osso, dá pra refazer movendo um segmento de osso vivo bem devagar pelo vão."},
+   {"k":"Quando falta osso","sc":["Dá pra refazer osso","que se perdeu."],"e":None,"sub":"Faltou um pedaço grande? Há um caminho — longo, mas possível.",
+    "vo":"Esse é um dos recursos mais poderosos da reconstrução. Quando falta um pedaço grande de osso, dá pra refazer movendo um segmento de osso vivo, bem devagar, pelo vão. É um processo longo, mas possível."},
    {"k":"Como funciona","sc":["Um pedaço desliza","e deixa osso atrás."],"e":None,"sub":"Atrás do segmento que avança, o corpo forma osso novo.",
     "vo":"Funciona assim: um pedaço do seu próprio osso vai sendo deslizado aos poucos pra dentro da falha. E atrás dele, naquele rastro, o corpo vai formando osso novo."},
    {"k":"De onde vem a ideia","sc":["O mesmo princípio","do milímetro."],"e":None,"sub":"É a osteogênese por distração aplicada a grandes perdas.",
@@ -148,9 +148,9 @@ OSSO_NOVO = [
    {"k":"Pra quê","sc":["Reconstruir o que","o trauma levou."],"e":None,"sub":"Devolver osso, comprimento e função — nunca estética.",
     "vo":"O objetivo é devolver osso, comprimento e função pra um membro que quase foi perdido. É reconstrução de função, nunca questão estética."},
    {"k":"Passa adiante","sc":["Salva: osso","perdido se refaz."],"e":None,"sub":"Manda pra quem acha que falta de osso não tem solução.","cta":True,
-    "vo":"Salva essa esperança e compartilha. E quando o osso não falta, mas está torto? É o próximo."},
+    "vo":"Salva e compartilha — é técnica e tempo, não promessa. E quando o osso não falta, mas está torto? É o próximo."},
   ],
-  "caption":cap_rec("Transporte ósseo: refazer osso que se perdeu. Quando um trauma ou uma infecção leva um pedaço grande de osso, um segmento do próprio osso vivo é deslizado lentamente pelo vão — e atrás dele o corpo forma osso novo (a mesma osteogênese por distração). O objetivo é devolver osso, comprimento e função a um membro que quase foi perdido. Reconstrução de função, nunca estética.","#transporteosseo #reconstrucao")},
+  "caption":cap_rec("Transporte ósseo: refazer osso que se perdeu. Quando um trauma ou uma infecção leva um pedaço grande de osso, um segmento do próprio osso vivo é deslizado lentamente pelo vão — e atrás dele o corpo forma osso novo (a mesma osteogênese por distração). O objetivo é devolver osso, comprimento e função a um membro que quase foi perdido — num tratamento longo, em etapas. Reconstrução de função, nunca estética.","#transporteosseo #reconstrucao")},
 
  {"id":"on_osteotomia","ep":9,"serie":"Osso Novo","temporada":"refazer-e-realinhar","motif_family":"bone",
   "scenes":[
@@ -190,12 +190,12 @@ OSSO_NOVO = [
     "vo":"Diferenças pequenas a gente nem sente. Mas, a partir de certo ponto, começa a mancar, e isso sobrecarrega coluna, quadril e joelho com o tempo."},
    {"k":"De onde vem","sc":["Fratura, infecção","ou de nascença."],"e":None,"sub":"Sequela de fratura, infecção antiga ou diferença congênita.",
     "vo":"Pode vir de uma fratura que afetou o crescimento, de uma infecção antiga, ou ser de nascença que persistiu até a vida adulta."},
-   {"k":"Tem correção","sc":["Compensar, frear","ou alongar."],"e":None,"sub":"Da palmilha ao alongamento ósseo — função e marcha, nunca altura.",
-    "vo":"E o leque de soluções é grande: vai de uma palmilha que compensa, até alongar o osso mais curto. Sempre pra equilibrar a marcha e a função, nunca uma questão de altura."},
+   {"k":"Tem correção","sc":["Compensar, frear","ou alongar."],"e":None,"sub":"Da palmilha ao alongamento (casos selecionados) — função e marcha, nunca altura.",
+    "vo":"E o leque de soluções é grande: vai de uma palmilha que compensa, até alongar o osso mais curto, em casos selecionados. Sempre pra equilibrar a marcha e a função, nunca uma questão de altura."},
    {"k":"Passa adiante","sc":["Salva: perna curta","tem escada de soluções."],"e":None,"sub":"Manda pra quem manca e nunca mediu.","cta":True,
     "vo":"Salva e compartilha. Mas antes de corrigir qualquer coisa, tem um passo que ninguém pula: medir direito. É o próximo."},
   ],
-  "caption":cap_rec("Uma perna mais curta que a outra, no adulto. Diferenças pequenas nem se sentem; a partir de certo ponto, começa a mancar e a sobrecarregar coluna, quadril e joelho. Pode vir de fratura, infecção antiga ou ser congênita. As soluções formam uma escada: da palmilha que compensa até o alongamento do osso mais curto — sempre para equilibrar marcha e função, nunca uma questão de altura.","#discrepancia #marcha")},
+  "caption":cap_rec("Uma perna mais curta que a outra, no adulto. Diferenças pequenas nem se sentem; a partir de certo ponto, começa a mancar e a sobrecarregar coluna, quadril e joelho. Pode vir de fratura, infecção antiga ou ser congênita. As soluções formam uma escada: da palmilha que compensa até o alongamento do osso mais curto, em casos selecionados — sempre para equilibrar marcha e função, nunca uma questão de altura.","#discrepancia #marcha")},
 
  {"id":"on_medir_antes","ep":12,"serie":"Osso Novo","temporada":"os-caminhos-do-conserto","motif_family":"bone",
   "scenes":[
