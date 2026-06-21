@@ -10,9 +10,9 @@ Modelo BIBLIOTECA CURADA, sem repetir:
 - Nada se repete. Quando a biblioteca acaba, o robo nao publica (hora de reabastecer).
 
 Agenda (horario de Brasilia, BRT = UTC-3):
-- POSTS (feed):  Ter/Qui/Sab, a partir das 19:00.
+- POSTS (feed):  Ter/Qui/Sab, a partir das 15:00.  (pico de audiencia 12h-15h; ver auditoria jun/2026)
 - STORIES (seq): TODOS OS DIAS, a partir das 12:30  -> 1 sequencia (5 frames) por dia.
-- REELS:         Seg/Qua/Sex/Dom, a partir das 19:00.
+- REELS:         Seg/Qua/Sex/Dom, a partir das 15:00.  (pico de audiencia; antes era 19:00, na descida)
 
 Env: IG_USER_ID, IG_ACCESS_TOKEN, GITHUB_REPOSITORY, GRAPH_VERSION (opc),
      FORCE_ID (opc: publica esse id imediatamente - post, story, reel ou sequencia).
@@ -21,11 +21,11 @@ import os, sys, json, time, datetime as dt
 import requests
 
 POST_WEEKDAYS  = {1, 3, 5}
-POST_MIN       = 19*60
+POST_MIN       = 15*60                   # 15:00 BRT (pico de audiencia; era 19:00)
 SEQ_WEEKDAYS   = {0, 1, 2, 3, 4, 5, 6}   # sequencia diaria
 SEQ_MIN        = 12*60 + 30              # 12:30
 REEL_WEEKDAYS  = {0, 2, 4, 6}
-REEL_MIN       = 19*60
+REEL_MIN       = 15*60                   # 15:00 BRT (pico de audiencia; era 19:00)
 BRT = dt.timezone(dt.timedelta(hours=-3))
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -42,6 +42,7 @@ REPO       = os.environ.get("GITHUB_REPOSITORY", "").strip()
 REF        = os.environ.get("GITHUB_REF_NAME", "main").strip() or "main"
 VER        = os.environ.get("GRAPH_VERSION", "v21.0").strip()
 FORCE_ID   = os.environ.get("FORCE_ID", "").strip()
+LOCATION_ID = os.environ.get("LOCATION_ID", "").strip()   # SEO local: place id (SP). Inerte se vazio.
 HOST       = f"https://graph.instagram.com/{VER}"
 
 if not IG_USER_ID or not TOKEN:
@@ -74,13 +75,28 @@ def wait_finished(cid, tries=10, delay=6):
         if st in ("ERROR", "EXPIRED"): raise RuntimeError(f"Container {cid} status {st}")
         time.sleep(delay)
     return True
+def _alt(item):
+    """Alt-text (acessibilidade + SEO de imagem): usa item['alt'] ou a 1a linha da legenda
+    (que e' keyword-forward). API suporta alt_text em imagens desde mar/2025."""
+    a = (item.get("alt") or "").strip()
+    if not a:
+        a = (item.get("caption", "") or "").strip().split("\n", 1)[0].strip()
+    return a[:100]
+
+def _loc(d):
+    """Adiciona location_id (SEO local) ao payload se LOCATION_ID estiver definido. No-op se vazio."""
+    if LOCATION_ID:
+        d = dict(d); d["location_id"] = LOCATION_ID
+    return d
+
 def publish_post(item):
-    imgs = item["images"]; cap = item.get("caption", "")
+    imgs = item["images"]; cap = item.get("caption", ""); alt = _alt(item)
     if len(imgs) == 1:
-        cont = api_post(f"{IG_USER_ID}/media", {"image_url": raw_url(imgs[0]), "caption": cap})["id"]
+        cont = api_post(f"{IG_USER_ID}/media", _loc({"image_url": raw_url(imgs[0]), "caption": cap, "alt_text": alt}))["id"]
     else:
-        kids = [api_post(f"{IG_USER_ID}/media", {"image_url": raw_url(p), "is_carousel_item": "true"})["id"] for p in imgs]
-        cont = api_post(f"{IG_USER_ID}/media", {"media_type": "CAROUSEL", "children": ",".join(kids), "caption": cap})["id"]
+        # alt_text por filho do carrossel (verificar no 1o publish real; se a API recusar, remover dos filhos).
+        kids = [api_post(f"{IG_USER_ID}/media", {"image_url": raw_url(p), "is_carousel_item": "true", "alt_text": alt})["id"] for p in imgs]
+        cont = api_post(f"{IG_USER_ID}/media", _loc({"media_type": "CAROUSEL", "children": ",".join(kids), "caption": cap}))["id"]
     wait_finished(cont)
     return api_post(f"{IG_USER_ID}/media_publish", {"creation_id": cont})["id"]
 def publish_story_img(image_path):
@@ -98,9 +114,10 @@ def publish_sequence(seq):
         time.sleep(2)
     return ids
 def publish_reel(item):
-    cont = api_post(f"{IG_USER_ID}/media", {
+    # alt_text NAO e' suportado em reels (so imagens); location_id e' suportado.
+    cont = api_post(f"{IG_USER_ID}/media", _loc({
         "media_type": "REELS", "video_url": raw_url(item["video"]),
-        "caption": item.get("caption", ""), "share_to_feed": "true"})["id"]
+        "caption": item.get("caption", ""), "share_to_feed": "true"}))["id"]
     wait_finished(cont, tries=30, delay=10)
     return api_post(f"{IG_USER_ID}/media_publish", {"creation_id": cont})["id"]
 def log(state, item_id, kind, mid, now): state["published"].append({"id": item_id, "kind": kind, "media_id": mid, "at": now.isoformat()})
