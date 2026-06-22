@@ -46,7 +46,7 @@ LOCATION_ID = os.environ.get("LOCATION_ID", "").strip()   # SEO local: place id 
 # Trial Reels: publica o reel so' para NAO-seguidores (alcance de descoberta); graduacao
 # SS_PERFORMANCE promove sozinho aos seguidores se performar (sem passo manual). Default OFF.
 TRIAL_REELS = os.environ.get("TRIAL_REELS", "false").strip().lower() in ("1", "true", "yes", "sim")
-TRIAL_GRADUATION = os.environ.get("TRIAL_GRADUATION", "SS_PERFORMANCE").strip()  # SS_PERFORMANCE | MANUAL
+TRIAL_GRADUATION = os.environ.get("TRIAL_GRADUATION", "").strip() or "SS_PERFORMANCE"  # vazio -> default; SS_PERFORMANCE | MANUAL
 HOST       = f"https://graph.instagram.com/{VER}"
 
 if not IG_USER_ID or not TOKEN:

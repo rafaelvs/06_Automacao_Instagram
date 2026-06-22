@@ -42,7 +42,7 @@ jobs:
           FORCE_ID: ${{ github.event.inputs.force_id }}
           LOCATION_ID: ${{ vars.LOCATION_ID }}
           TRIAL_REELS: ${{ vars.TRIAL_REELS || 'true' }}
-          TRIAL_GRADUATION: ${{ vars.TRIAL_GRADUATION }}
+          TRIAL_GRADUATION: ${{ vars.TRIAL_GRADUATION || 'SS_PERFORMANCE' }}
         run: python publish.py
       - name: Salvar estado (evita repostar)
         run: |
