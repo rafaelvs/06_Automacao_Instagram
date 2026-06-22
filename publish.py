@@ -43,6 +43,10 @@ REF        = os.environ.get("GITHUB_REF_NAME", "main").strip() or "main"
 VER        = os.environ.get("GRAPH_VERSION", "v21.0").strip()
 FORCE_ID   = os.environ.get("FORCE_ID", "").strip()
 LOCATION_ID = os.environ.get("LOCATION_ID", "").strip()   # SEO local: place id (SP). Inerte se vazio.
+# Trial Reels: publica o reel so' para NAO-seguidores (alcance de descoberta); graduacao
+# SS_PERFORMANCE promove sozinho aos seguidores se performar (sem passo manual). Default OFF.
+TRIAL_REELS = os.environ.get("TRIAL_REELS", "false").strip().lower() in ("1", "true", "yes", "sim")
+TRIAL_GRADUATION = os.environ.get("TRIAL_GRADUATION", "SS_PERFORMANCE").strip()  # SS_PERFORMANCE | MANUAL
 HOST       = f"https://graph.instagram.com/{VER}"
 
 if not IG_USER_ID or not TOKEN:
@@ -115,9 +119,14 @@ def publish_sequence(seq):
     return ids
 def publish_reel(item):
     # alt_text NAO e' suportado em reels (so imagens); location_id e' suportado.
-    cont = api_post(f"{IG_USER_ID}/media", _loc({
-        "media_type": "REELS", "video_url": raw_url(item["video"]),
-        "caption": item.get("caption", ""), "share_to_feed": "true"}))["id"]
+    params = _loc({"media_type": "REELS", "video_url": raw_url(item["video"]),
+                   "caption": item.get("caption", "")})
+    if TRIAL_REELS:
+        # Trial Reel: so' para nao-seguidores; graduacao automatica se performar.
+        params["trial_params"] = json.dumps({"graduation_strategy": TRIAL_GRADUATION})
+    else:
+        params["share_to_feed"] = "true"
+    cont = api_post(f"{IG_USER_ID}/media", params)["id"]
     wait_finished(cont, tries=30, delay=10)
     return api_post(f"{IG_USER_ID}/media_publish", {"creation_id": cont})["id"]
 def log(state, item_id, kind, mid, now): state["published"].append({"id": item_id, "kind": kind, "media_id": mid, "at": now.isoformat()})
