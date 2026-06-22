@@ -119,14 +119,21 @@ def publish_sequence(seq):
     return ids
 def publish_reel(item):
     # alt_text NAO e' suportado em reels (so imagens); location_id e' suportado.
-    params = _loc({"media_type": "REELS", "video_url": raw_url(item["video"]),
-                   "caption": item.get("caption", "")})
+    base = _loc({"media_type": "REELS", "video_url": raw_url(item["video"]),
+                 "caption": item.get("caption", "")})
+    cont = None
     if TRIAL_REELS:
-        # Trial Reel: so' para nao-seguidores; graduacao automatica se performar.
-        params["trial_params"] = json.dumps({"graduation_strategy": TRIAL_GRADUATION})
-    else:
-        params["share_to_feed"] = "true"
-    cont = api_post(f"{IG_USER_ID}/media", params)["id"]
+        # Trial Reel: so' para nao-seguidores; graduacao automatica (SS_PERFORMANCE) se performar.
+        try:
+            p = dict(base); p["trial_params"] = json.dumps({"graduation_strategy": TRIAL_GRADUATION})
+            cont = api_post(f"{IG_USER_ID}/media", p)["id"]
+        except RuntimeError as e:
+            # Fallback robusto: se a API recusar trial_params, publica reel normal (nao trava o robo).
+            print(f"  ! trial_params recusado ({e}); publicando como reel normal.", file=sys.stderr)
+            cont = None
+    if cont is None:
+        p = dict(base); p["share_to_feed"] = "true"
+        cont = api_post(f"{IG_USER_ID}/media", p)["id"]
     wait_finished(cont, tries=30, delay=10)
     return api_post(f"{IG_USER_ID}/media_publish", {"creation_id": cont})["id"]
 def log(state, item_id, kind, mid, now): state["published"].append({"id": item_id, "kind": kind, "media_id": mid, "at": now.isoformat()})

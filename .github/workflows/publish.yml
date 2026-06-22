@@ -41,7 +41,7 @@ jobs:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           FORCE_ID: ${{ github.event.inputs.force_id }}
           LOCATION_ID: ${{ vars.LOCATION_ID }}
-          TRIAL_REELS: ${{ vars.TRIAL_REELS }}
+          TRIAL_REELS: ${{ vars.TRIAL_REELS || 'true' }}
           TRIAL_GRADUATION: ${{ vars.TRIAL_GRADUATION }}
         run: python publish.py
       - name: Salvar estado (evita repostar)
