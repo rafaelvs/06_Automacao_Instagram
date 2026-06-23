@@ -159,6 +159,13 @@ try:
 except Exception as _e:
     print("AVISO: episodios_lote_julho_2026 não carregado:", _e)
 
+# VÍDEO DE APRESENTAÇÃO do perfil (Doctoralia) — módulo próprio, mesmo motor.
+try:
+    from episodio_apresentacao import APRESENTACAO
+    EPISODES = EPISODES + APRESENTACAO
+except Exception as _e:
+    print("AVISO: episodio_apresentacao não carregado:", _e)
+
 def get(ep_id):
     for e in EPISODES:
         if e["id"]==ep_id: return e
