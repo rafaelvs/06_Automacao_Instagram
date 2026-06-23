@@ -5,7 +5,8 @@ Assembler do LOTE JULHO/2026 — monta as entradas do reels.json a partir dos v�
 Roda no GitHub Actions, DEPOIS do passo de render (tem ffprobe + os mp4 commitados na árvore).
 
 Convenção (igual ao LOTE 2026): reels.json id = id do episódio; video = reels/_preview_<id>.mp4.
-Os novos são PREPENDADOS (publicam antes dos reels antigos). Mantém o modelo BIBLIOTECA (sem repetir).
+Os novos são ANEXADOS NO FIM (publicam DEPOIS de toda a fila atual — dá margem de QA visual no
+Cowork antes de irem ao ar). Mantém o modelo BIBLIOTECA (sem repetir).
 """
 import os, glob, json, subprocess
 from episodios_lote_julho_2026 import LOTE_JULHO
@@ -41,7 +42,7 @@ def main():
         print("ok", rid, "| dur", novos[-1]["dur"], "| serie", ep["serie"])
     if not novos:
         print("Nada novo a anexar."); return
-    reels = novos + reels  # PREPENDA: novos publicam antes
+    reels = reels + novos  # ANEXA NO FIM: novos publicam depois da fila atual (QA-first)
     json.dump(reels, open(RJ, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     print("reels.json:", len(reels), "| novos anexados:", len(novos))
 
