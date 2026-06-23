@@ -22,6 +22,8 @@ import requests
 
 POST_WEEKDAYS  = {1, 3, 5}
 POST_MIN       = 15*60                   # 15:00 BRT (pico de audiencia; era 19:00)
+POST2_WEEKDAYS = {6}                     # 4o carrossel/sem (feed 8/sem) — dia-duplo c/ Reel no domingo
+POST2_MIN      = 11*60                   # 11:00 BRT — escalonado p/ nao colidir com o Reel das 15h
 SEQ_WEEKDAYS   = {0, 1, 2, 3, 4, 5, 6}   # sequencia diaria
 SEQ_MIN        = 12*60 + 30              # 12:30
 REEL_WEEKDAYS  = {0, 2, 4, 6}
@@ -188,6 +190,18 @@ def main():
             except Exception as e: print(f"FALHA post {it['id']}: {e}")
         else:
             print("Biblioteca de POSTS esgotada — hora de reabastecer.")
+
+    # CARROSSEL EXTRA (4o/sem) — dia-duplo com o Reel; horario escalonado (11h) p/ nao colidir
+    if brt.weekday() in POST2_WEEKDAYS and mod >= POST2_MIN and state["last_post_date"] != today:
+        it = next_item(posts, done)
+        if it:
+            try:
+                mid = publish_post(it); log(state, it["id"], "post", mid, now)
+                done.add(it["id"]); state["last_post_date"] = today; changed = True
+                print(f"Post extra {it['id']} OK -> {mid}")
+            except Exception as e: print(f"FALHA post extra {it['id']}: {e}")
+        else:
+            print("Biblioteca de POSTS esgotada (extra) — hora de reabastecer.")
 
     # SEQUENCIA DIARIA (story serializado, 5 frames)
     if brt.weekday() in SEQ_WEEKDAYS and mod >= SEQ_MIN and state["last_seq_date"] != today:
