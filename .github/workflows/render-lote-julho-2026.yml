@@ -1,0 +1,67 @@
+name: render-lote-julho-2026
+# Renderiza o LOTE JULHO/2026 (16 reels narrados: 8 Pe no Chao + 8 Osso Novo) p/ reabastecer a fila.
+# Voz Antonio afinada (edge-tts). Depois roda o assembler que prependa as entradas no reels.json.
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Renderizar so 1 episodio (id) p/ smoke test; vazio = todos os 16"
+        required: false
+        default: ""
+      rate:
+        description: "Ritmo do Antonio (padrao -8%)"
+        required: false
+        default: "-8%"
+      pitch:
+        description: "Tom (padrao -4Hz)"
+        required: false
+        default: "-4Hz"
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 200
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar fontes Liberation + ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y fonts-liberation ffmpeg
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Instalar Pillow + edge-tts
+        run: pip install pillow edge-tts
+      - name: Renderizar o lote julho/2026 (voz Antonio afinada)
+        env:
+          VOZ_ENGINE: edge
+          EDGE_VOICE: pt-BR-AntonioNeural
+          EDGE_RATE: ${{ github.event.inputs.rate || '-8%' }}
+          EDGE_PITCH: ${{ github.event.inputs.pitch || '-4Hz' }}
+          ONLY: ${{ github.event.inputs.only }}
+        run: |
+          TODOS="pnc_joelho_valgo on_consolidacao_viciosa pnc_osgood on_salvamento_membro pnc_sever on_vitamina_d pnc_torcicolo on_diabetes_osso pnc_engatinhar on_haste_magnetica pnc_calcado_bebe on_dor_cronica_fratura pnc_hipermobilidade on_artrose_osteotomia pnc_cansa_andar on_falha_ossea"
+          if [ -n "$ONLY" ]; then LISTA="$ONLY"; else LISTA="$TODOS"; fi
+          for EP in $LISTA; do
+            echo "::group::render $EP"
+            python gerar_reel_voz.py "$EP" || python gerar_reel_voz.py "$EP" || python gerar_reel_voz.py "$EP" || python gerar_reel_voz.py "$EP" || echo "FALHOU $EP"
+            echo "::endgroup::"
+          done
+          ls -la reels/_preview_*.mp4 || true
+      - name: Anexar entradas no reels.json (assembler idempotente)
+        run: python anexar_lote_julho.py
+      - name: Artefato (lote julho)
+        uses: actions/upload-artifact@v4
+        with:
+          name: lote-julho-2026-reels
+          path: reels/_preview_*.mp4
+          if-no-files-found: error
+      - name: Commit dos mp4 + reels.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add reels/_preview_*.mp4 reels.json
+          git commit -m "Render lote julho/2026: 16 reels narrados + reels.json atualizado" || echo "nada a commitar"
+          git pull --rebase origin main || true
+          git push

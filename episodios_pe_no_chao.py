@@ -152,6 +152,13 @@ try:
 except Exception as _e:  # nunca quebrar o render dos pilotos se o módulo novo faltar
     print("AVISO: episodios_novos_2026 não carregado:", _e)
 
+# LOTE JULHO/2026: +16 episódios (8 Pé no Chão + 8 Osso Novo) p/ reabastecer a fila de Reels.
+try:
+    from episodios_lote_julho_2026 import LOTE_JULHO
+    EPISODES = EPISODES + LOTE_JULHO
+except Exception as _e:
+    print("AVISO: episodios_lote_julho_2026 não carregado:", _e)
+
 def get(ep_id):
     for e in EPISODES:
         if e["id"]==ep_id: return e
