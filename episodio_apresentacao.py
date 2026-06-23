@@ -20,7 +20,7 @@ APRESENTACAO = [
    # 1) GANCHO — pela dor do paciente, não pelo nome (3s decidem)
    {"k":"Casos de difícil solução","sc":["Quase sempre","há um caminho."],"e":"caminho",
     "sub":"Perna mais curta, osso que não colou, deformidade na criança.",
-    "vo":"Uma perna que ficou mais curta que a outra. Um osso que não colou depois de uma fratura. Uma criança com uma deformidade que preocupa a família. Muitos ouvem que casos assim não têm solução."},
+    "vo":"Uma perna mais curta que a outra. Um osso que não colou depois da fratura. Uma criança com uma deformidade que preocupa. Muitos ouvem que casos assim não têm solução."},
    # 2) QUEM É — uma frase
    {"k":"Quem cuida disso","sc":["Dr. Rafael Vargas,","ortopedista."],"e":None,
     "sub":"Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.",
@@ -36,13 +36,13 @@ APRESENTACAO = [
    # 5) COMO TRABALHA — onde nasce a confiança
    {"k":"Como eu trabalho","sc":["Com calma e","no milímetro."],"e":"milímetro",
     "sub":"Avaliação, planejamento e correção gradual — cada etapa explicada.",
-    "vo":"Meu jeito de trabalhar começa por entender o caso com calma, do exame ao planejamento. A correção é gradual, medida no milímetro, e eu explico cada etapa pra você e pra sua família."},
+    "vo":"Começo entendendo o caso com calma, do exame ao planejamento. A correção é gradual, no milímetro, e eu explico cada etapa pra você e pra sua família."},
    # 6) FOCO FUNCIONAL — guardrail CFM reforçado na tela
    {"k":"O foco é sempre um","sc":["Função:","voltar ao movimento."],"e":"Função",
     "sub":"Caminhar, correr, viver. Nunca sobre estética.",
     "vo":"E o foco é sempre a função: voltar a caminhar, correr, viver com mais autonomia. Aqui é sobre movimento e qualidade de vida, nunca sobre estética."},
    # 7) CTA — único, acolhedor
-   {"k":"O primeiro passo","sc":["Agende uma","avaliação."],"e":"avaliação","cta":True,
+   {"k":"O primeiro passo","sc":["Agende uma","avaliação."],"e":"avaliação",
     "sub":"Vamos pensar juntos no melhor caminho.",
     "vo":"Se você, ou alguém que você ama, convive com um caso desses, o primeiro passo é conversar. Agende uma avaliação, e vamos pensar juntos no melhor caminho."},
   ],

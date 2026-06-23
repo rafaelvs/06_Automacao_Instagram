@@ -103,7 +103,8 @@ def _header(d,ep,serie=SERIE):
     d.text((M,168),"RV",font=F(SB,54),fill=CREAM); wf=d.textlength("RV",font=F(SB,54))
     d.line([(M+wf+22,178),(M+wf+22,222)],fill=GOLD,width=2)
     d.text((M+wf+40,174),"Dr. Rafael Vargas",font=F(NR,25),fill=CREAM); d.text((M+wf+40,206),"Ortopedia · São Paulo",font=F(NR,21),fill=GOLD)
-    trk(d,(W-M,178),f"EP {ep:02d}",F(NB,30),GOLD,3,left=False)
+    if not serie.startswith("Dr."):  # vídeo de apresentação não exibe número de episódio
+        trk(d,(W-M,178),f"EP {ep:02d}",F(NB,30),GOLD,3,left=False)
     trk(d,(M,286),serie.upper(),F(NB,25),GOLD,6); d.line([(M,326),(M+62,326)],fill=GOLD,width=3)
 def _footer(d,prog):
     fy=1380; d.line([(M,fy),(W-M,fy)],fill=FAINT,width=2)
