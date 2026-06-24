@@ -142,7 +142,7 @@ POS_OP = [
   "scenes":[
    {"k":"Pós-operatório","sc":["Tem medo de","mexer depois?"],"e":None,
     "sub":"Mover cedo — quando liberado — é parte do tratamento.",
-    "vo":"Muita gente sai da cirurgia com medo de mexer, achando que vai atrapalhar. Mas, no ritmo que a sua equipe liberar, o movimento é justamente parte do que cura."},
+    "vo":"Muita gente sai da cirurgia com medo de mexer, achando que vai atrapalhar. Mas, no ritmo que a sua equipe liberar, o movimento é justamente parte da sua recuperação."},
    {"k":"O mito do repouso","sc":["Ficar parado","não é o que cura."],"e":"parado",
     "sub":"Repouso demais perde força e enrijece a articulação.",
     "vo":"Ficar de molho o tempo todo não acelera nada. Pelo contrário: o músculo perde força e a articulação vai enrijecendo, e isso depois custa caro pra recuperar."},
@@ -165,13 +165,13 @@ POS_OP = [
     "sub":"Dúvida de rotina: WhatsApp (11) 3280-1413.",
     "vo":"Resumindo: mexer e apoiar cedo, no ritmo da sua equipe, é o que acelera de verdade. Dúvida do dia a dia, fale com a gente; sinal de alarme, pronto-socorro."},
   ],
-  "caption":"Operou e tem medo de mexer? Mover e apoiar cedo — no ritmo que a sua equipe liberar — é parte do tratamento: reduz rigidez, trombose e perda de força. O repouso total não é o que cura. Fisioterapia é parte do tratamento.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
+  "caption":"Operou e tem medo de mexer? Mover e apoiar cedo — no ritmo que a sua equipe liberar — é parte do tratamento: reduz rigidez, trombose e perda de força. O repouso total não é o que acelera. Fisioterapia é parte do tratamento.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
  {"id":"carga_fisio_kids","ep":6,"temporada":"pos_operatorio","serie":"Recuperação","motif_family":"bone",
   "scenes":[
    {"k":"Pós-op infantil","sc":["Medo de deixar","seu filho mexer?"],"e":None,
     "sub":"Movimento, no ritmo da equipe, é parte do tratamento.",
-    "vo":"É natural querer proteger e deixar a criança paradinha depois da cirurgia. Mas, no ritmo que a equipe liberar, o movimento é parte do que cura."},
+    "vo":"É natural querer proteger e deixar a criança paradinha depois da cirurgia. Mas, no ritmo que a equipe liberar, o movimento é parte da recuperação dela."},
    {"k":"O mito do repouso","sc":["Criança parada","enrijece também."],"e":"parada",
     "sub":"Repouso demais perde força e amplitude.",
     "vo":"Criança também perde força e amplitude se fica parada demais. O corpo dela responde rápido ao movimento, pra o bem e pra o mal."},
