@@ -166,6 +166,13 @@ try:
 except Exception as _e:
     print("AVISO: episodio_apresentacao não carregado:", _e)
 
+# SÉRIE "RECUPERAÇÃO": vídeos pós-operatórios p/ o paciente (YouTube Short + link). Mesmo motor.
+try:
+    from episodios_pos_op import POS_OP
+    EPISODES = EPISODES + POS_OP
+except Exception as _e:
+    print("AVISO: episodios_pos_op não carregado:", _e)
+
 def get(ep_id):
     for e in EPISODES:
         if e["id"]==ep_id: return e
