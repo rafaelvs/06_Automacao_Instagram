@@ -4,11 +4,22 @@ Série "Recuperação" — vídeos PÓS-OPERATÓRIOS para o PACIENTE (faceless, 
 Diferente de "Pé no Chão"/"Osso Novo": registro em 2ª pessoa (fala direta com o paciente),
 instrução clínica clara. Saída serve como Short do YouTube + link p/ enviar ao paciente.
 
-CFM (Res. 2.336/2023): educativo, sem prometer resultado, sem paciente real, com disclaimer.
-Conteúdo clínico revisado em literatura (AAOS OrthoInfo, SBOT, sínd. compartimental) e
-APROVADO pelo Dr. Rafael Vargas (RQE) antes do render — ver ROTEIRO_01 no projeto YouTube.
+═══ CONVENÇÕES DA SÉRIE (aprendizados consolidados — todo episódio novo SEGUE isto) ═══
+ 1. PAR ADULTO + INFANTIL: todo tema tem 2 episódios — adulto (fala com o paciente) e a "irmã"
+    infantil (fala com os PAIS sobre "seu filho"). id infantil = "<tema>_kids".
+ 2. SINAIS DE ALARME → PRONTO-SOCORRO imediato, avisando a equipe NO CAMINHO (paralelo). NUNCA
+    direcionar emergência ao WhatsApp. WhatsApp (11) 3280-1413 só p/ DÚVIDA DE ROTINA (cena de resumo).
+ 3. ALARME INFANTIL = os "3 A" pediátricos (Analgesia↑ / Ansiedade / Agitação) + dedos roxos/frios /
+    não mexe — porque a criança pequena não localiza/descreve a dor (precede sinais clássicos).
+ 4. EDEMA: elevar o membro SEMPRE que em repouso, durante TODA a recuperação. SEM gelo sobre o gesso.
+ 5. CARGA: "varia conforme a cirurgia; em geral proibida no início — siga sua equipe" (nunca afirmar regra fixa).
+ 6. CFM (Res. 2.336/2023): educativo, sem prometer resultado, sem paciente real, rodapé CRM/RQE+disclaimer.
+ 7. PROCESSO: cada roteiro nasce de revisão de literatura com fontes e é APROVADO pelo Rafael (RQE)
+    ANTES do render. Voz: edge Antonio, rate -8%, pitch -4Hz. Roteiros em projeto YouTube/videos_pos_operatorio/.
+════════════════════════════════════════════════════════════════════════════════════════
 
-Ep 01 — Cuidados com o gesso no pós-operatório.
+Ep 01  — gesso_pos_op       — Cuidados com o gesso (adulto).
+Ep 02  — gesso_pos_op_kids  — Cuidados com o gesso (criança / aos pais).
 """
 POS_OP = [
  {"id":"gesso_pos_op","ep":1,"temporada":"pos_operatorio","serie":"Recuperação","motif_family":"bone",
@@ -39,4 +50,33 @@ POS_OP = [
     "vo":"Resumindo: dúvida do dia a dia, fale com a nossa equipe no WhatsApp do consultório. Sinal de alarme, o caminho é o pronto-socorro. A sua recuperação é acompanhada de perto."},
   ],
   "caption":"Saiu de gesso depois da cirurgia? Os cuidados essenciais do pós-operatório — e os sinais que pedem PRONTO-SOCORRO imediato. Dúvidas de rotina fazem parte: fale com nossa equipe.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
+
+ {"id":"gesso_pos_op_kids","ep":2,"temporada":"pos_operatorio","serie":"Recuperação","motif_family":"bone",
+  "scenes":[
+   {"k":"Pós-op infantil","sc":["Seu filho","saiu de gesso?"],"e":None,
+    "sub":"Os cuidados — e os sinais que, numa criança, pedem pronto-socorro.",
+    "vo":"Seu filho operou e saiu de gesso. Veja como cuidar nesses dias — e, principalmente, os sinais que, numa criança, pedem o pronto-socorro."},
+   {"k":"Para desinchar","sc":["Em repouso,","deixe elevado."],"e":"elevado",
+    "sub":"Acima do coração, sempre que parar — em toda a recuperação.",
+    "vo":"Sempre que ele estiver parado, deitado no sofá ou na cama, apoie o bracinho ou a perna em travesseiros, acima da altura do coração. Faça isso a recuperação toda: desincha e evita que inche de novo."},
+   {"k":"Circulação","sc":["Mexa os","dedinhos."],"e":"dedinhos",
+    "sub":"Transforme em brincadeira — vira e mexe.",
+    "vo":"Incentive a criança a mexer sempre os dedinhos que ficaram de fora. Vira brincadeira: mexe os dedos! Isso mantém o sangue circulando e evita que enrijeçam."},
+   {"k":"No banho e no dia a dia","sc":["Nada entra","no gesso."],"e":None,
+    "sub":"Capa impermeável · cubra a abertura · coceira: ar frio.",
+    "vo":"No banho, proteja com uma capa impermeável e nunca mergulhe o gesso. E criança adora enfiar coisa lá dentro: cubra a abertura pra brinquedo, areia ou migalha não caírem. Se coçar, sopre ar frio com o secador, nunca um objeto."},
+   {"k":"Integridade","sc":["Rachou ou","molhou?"],"e":None,
+    "sub":"Perdeu a forma: pronto-socorro pra trocar ou reforçar.",
+    "vo":"Criança bate o gesso o tempo todo. Se ele rachar, amolecer, molhar e não secar, ou perder a forma, leve ao pronto-socorro pra trocar ou reforçar. Depois a equipe reavalia na consulta."},
+   {"k":"Apoio de peso","sc":["Só pisa se","liberado."],"e":"liberado",
+    "sub":"Varia conforme a cirurgia — e exige supervisão.",
+    "vo":"Sobre pôr o pé no chão: em geral é proibido no começo, mas varia conforme a cirurgia. Siga a orientação da equipe, e fique de olho, porque criança quer sair correndo."},
+   {"k":"Emergência","sc":["Pronto-socorro","se notar:"],"e":None,"motif":"no",
+    "sub":"Mais dor que antes · agitação · dedos roxos ou frios.",
+    "vo":"Numa criança, o alarme mais importante é este: se ela passa a precisar de mais remédio pra dor do que antes, fica muito agitada, ansiosa ou chora sem parar. Some a isso dedos roxos, pálidos ou frios, ou que ela não mexe. Diante disso, pronto-socorro na hora, avisando a equipe no caminho. Pode ser compressão da circulação."},
+   {"k":"Resumo","sc":["Emergência?","Pronto-socorro."],"e":"Pronto-socorro",
+    "sub":"Dúvida de rotina: WhatsApp (11) 3280-1413.",
+    "vo":"Resumindo: dúvida do dia a dia, fale com a nossa equipe no WhatsApp. Sinal de alarme, o caminho é o pronto-socorro. A recuperação do seu filho é acompanhada de perto."},
+  ],
+  "caption":"Seu filho saiu de gesso depois da cirurgia? Os cuidados no dia a dia — e os sinais de alarme na criança (mais dor que antes, agitação, dedos roxos/frios) que pedem PRONTO-SOCORRO imediato.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 ]
