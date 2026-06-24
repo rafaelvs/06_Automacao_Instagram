@@ -11,6 +11,20 @@ from PIL import Image, ImageDraw, ImageFont
 
 W, H, FPS = 1080, 1920, 30
 INK=(18,18,24); CREAM=(243,226,200); GOLD=(176,140,79); TXT_L=(206,198,184); MUT_L=(150,144,132); FAINT=(70,66,60); RED=(196,72,60)
+
+# ── VARIAÇÃO ANTI-TEMPLATIZAÇÃO (política "Inauthentic Content" do YouTube) ──────────────────────────
+# Paletas selecionáveis por episódio (episode["palette"]). Default "classico" = cores ORIGINAIS, então
+# episódios sem 'palette' (ex.: Instagram/"Pé no Chão") renderizam IDÊNTICOS — mudança 100% aditiva.
+PALETTES = {
+ "classico":      dict(INK=(18,18,24),  CREAM=(243,226,200), GOLD=(176,140,79), TXT_L=(206,198,184), MUT_L=(150,144,132), FAINT=(70,66,60), RED=(196,72,60)),
+ "noturno_azul":  dict(INK=(16,22,34),  CREAM=(232,234,240), GOLD=(214,162,84), TXT_L=(190,198,212), MUT_L=(140,150,168), FAINT=(54,62,80), RED=(210,90,80)),
+ "verde_clinico": dict(INK=(18,28,26),  CREAM=(238,236,224), GOLD=(196,156,86), TXT_L=(196,206,198), MUT_L=(140,154,146), FAINT=(58,70,66), RED=(200,84,72)),
+ "carvao_quente": dict(INK=(22,20,20),  CREAM=(240,230,214), GOLD=(198,138,86), TXT_L=(208,198,186), MUT_L=(150,142,132), FAINT=(64,60,56), RED=(196,80,64)),
+}
+def _apply_palette(name):
+    g = globals()
+    for k, v in PALETTES.get(name or "classico", PALETTES["classico"]).items():
+        g[k] = v
 FD="/usr/share/fonts/truetype/liberation/"; SB="LiberationSerif-Bold.ttf"; NR="LiberationSans-Regular.ttf"; NB="LiberationSans-Bold.ttf"
 M=120
 SIG="Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
@@ -91,7 +105,7 @@ def _bone(img,prog):
     img.paste(Image.alpha_composite(img.convert("RGBA"),ov).convert("RGB"),(0,0))
 def _bg(drift):
     img=Image.new("RGB",(W,H),INK); ov=Image.new("RGBA",(W,H),(0,0,0,0)); da=ImageDraw.Draw(ov); cy=1720+drift
-    for r in(680,580,480,380): da.arc([W//2-r,cy-r,W//2+r,cy+r],204,336,fill=(176,140,79,30),width=2)
+    for r in(680,580,480,380): da.arc([W//2-r,cy-r,W//2+r,cy+r],204,336,fill=GOLD+(30,),width=2)
     return Image.alpha_composite(img.convert("RGBA"),ov).convert("RGB")
 def _no(img,prog,tl):
     a=int(235*eoutc((tl-0.5)/0.6))
@@ -113,6 +127,7 @@ def _footer(d,prog):
 
 def render_frames(episode, durs, frames_dir):
     """Renderiza os JPGs do episódio. durs = lista de durações (s) por cena."""
+    _apply_palette(episode.get("palette"))   # variação por episódio (default = cores originais)
     shutil.rmtree(frames_dir,ignore_errors=True); os.makedirs(frames_dir)
     S=episode["scenes"]; ep=episode["ep"]
     serie=episode.get("serie",SERIE); motif_fam=episode.get("motif_family","feet")
