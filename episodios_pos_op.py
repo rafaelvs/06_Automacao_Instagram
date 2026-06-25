@@ -18,8 +18,10 @@ instrução clínica clara. Saída serve como Short do YouTube + link p/ enviar 
     ANTES do render. Voz: edge Antonio, rate -8%, pitch -4Hz. Roteiros em projeto YouTube/videos_pos_operatorio/.
 ════════════════════════════════════════════════════════════════════════════════════════
 
-Ep 01  — gesso_pos_op       — Cuidados com o gesso (adulto).
-Ep 02  — gesso_pos_op_kids  — Cuidados com o gesso (criança / aos pais).
+Ep 01  — gesso_pos_op          — Cuidados com o gesso (adulto).
+Ep 02  — gesso_pos_op_kids     — Cuidados com o gesso (criança / aos pais).
+Ep 07  — artrorrise            — Pós-op artrorrise / pé plano (adulto).
+Ep 08  — artrorrise_kids       — Pós-op artrorrise / pé plano (criança / aos pais).
 """
 POS_OP = [
  {"id":"gesso_pos_op","ep":1,"temporada":"pos_operatorio","serie":"Recuperação","motif_family":"bone",
@@ -195,4 +197,67 @@ POS_OP = [
     "vo":"Resumindo: deixar a criança se mover, no ritmo da equipe, é o que acelera. Dúvida do dia a dia, fale com a gente; sinal de alarme, pronto-socorro."},
   ],
   "caption":"Seu filho operou e você tem medo de deixar mexer? No ritmo que a equipe liberar, o movimento é parte do tratamento: reduz rigidez e perda de força. Fisioterapia, em criança, vira brincadeira guiada.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
+
+ # ── ④ Artrorrise / pé plano ──────────────────────────────────────────────────────────
+ # Arquétipo gancho: micro_caso (adulto) · pergunta (kids). Palette: noturno_azul / verde_clinico.
+ # Fontes: SBOT; Gutteck et al., JBJS 2019; consenso pós-op de Ilizarov/artrorrise do serviço.
+ {"id":"artrorrise","ep":7,"temporada":"pos_operatorio","serie":"Recuperação","motif_family":"bone",
+  "palette":"noturno_azul",
+  "scenes":[
+   {"k":"SAIU DA CIRURGIA","sc":["Um implante minúsculo,","grande diferença."],"e":None,
+    "sub":"A artrorrise corrigiu o pé plano — e os primeiros dias em casa definem o resultado.",
+    "vo":"Você passou pela artrorrise: um implante pequeníssimo entrou no calcanhar pra corrigir o pé plano. O resultado de longo prazo começa nesses primeiros dias em casa."},
+   {"k":"Para desinchar","sc":["Em repouso,","pé elevado."],"e":"elevado",
+    "sub":"Travesseiro abaixo do pé, acima do coração — em toda a recuperação.",
+    "vo":"Sempre que parar, eleve o pé com um travesseiro, acima da altura do coração. Faz isso durante toda a recuperação: é o que controla o inchaço."},
+   {"k":"A bota","sc":["Não tire","por conta própria."],"e":"Não tire",
+    "sub":"Ela protege o implante enquanto o corpo se adapta.",
+    "vo":"A bota ou imobilização mantém o pé na posição certa enquanto o corpo se adapta ao implante. Não tire por conta própria — siga exatamente o que a equipe orientou."},
+   {"k":"Apoio de peso","sc":["No ritmo","da liberação."],"e":"liberação",
+    "sub":"Varia conforme a cirurgia — siga sua equipe.",
+    "vo":"Pisar vai sendo liberado aos poucos, conforme a cicatrização avança. O ritmo e o quanto dependem da sua cirurgia — siga à risca a orientação da equipe."},
+   {"k":"A ferida","sc":["Seca,","limpa e coberta."],"e":"Seca",
+    "sub":"No banho, proteja conforme orientado; curativo sujo — troque e avise.",
+    "vo":"Mantenha a ferida limpa, seca e coberta. No banho, proteja conforme a equipe orientou. Se o curativo sujar ou soltar, troque e avise."},
+   {"k":"Fique de olho","sc":["Dor crescente,","vermelho ou febre?"],"e":None,
+    "sub":"Inchaço que não cede · calor · ferida com secreção.",
+    "vo":"Olhe o pé todo dia: dor que vai aumentando, vermelhidão, calor, inchaço que não reduz, ferida com secreção ou febre. Qualquer um merece atenção."},
+   {"k":"Sinal de alarme","sc":["Pronto-socorro","se tiver:"],"e":None,"motif":"no",
+    "sub":"Dor intensa · dedos roxos ou frios · febre · ferida com pus.",
+    "vo":"Diante de dor intensa que não cede, dedos roxos ou frios, febre, ou ferida com pus, vá ao pronto-socorro e avise a equipe. Não espere."},
+   {"k":"Resumo","sc":["Elevação,","pronto-socorro."],"e":"Elevação",
+    "sub":"Dúvida de rotina: WhatsApp (11) 3280-1413.",
+    "vo":"Resumindo: pé elevado no repouso, bota como orientado, e pronto-socorro se vier qualquer sinal de alarme. Dúvida do dia a dia, fale com a nossa equipe no WhatsApp."},
+  ],
+  "caption":"Fez artrorrise (implante pra pé plano) e está em casa? Elevação no repouso, bota como orientado, ferida seca — e pronto-socorro imediato se dor intensa, dedos roxos/frios ou febre.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
+
+ {"id":"artrorrise_kids","ep":8,"temporada":"pos_operatorio","serie":"Recuperação","motif_family":"bone",
+  "palette":"verde_clinico",
+  "scenes":[
+   {"k":"VOCÊ SABIA?","sc":["A artrorrise","corrige o pé plano?"],"e":"artrorrise",
+    "sub":"E os primeiros dias em casa decidem o resultado do seu filho.",
+    "vo":"Sabia que a artrorrise corrige o pé plano com um implante pequeníssimo, sem uma grande cirurgia? Os cuidados em casa não são complicados — mas têm detalhes que protegem o resultado do seu filho."},
+   {"k":"Para desinchar","sc":["Em repouso,","pé elevado."],"e":"elevado",
+    "sub":"Acima do coração — sempre que parar, a recuperação toda.",
+    "vo":"Sempre que seu filho parar, eleve o pé com um travesseiro, acima da altura do coração. Faz isso durante toda a recuperação: é o que controla o inchaço, normal após a artrorrise."},
+   {"k":"A bota","sc":["Não tire","por conta própria."],"e":"Não tire",
+    "sub":"Protege o implante enquanto o corpo se adapta — e define quando pode pisar.",
+    "vo":"A bota protege o implante enquanto o pé do seu filho se adapta. Não tire por conta própria e siga as orientações da equipe — especialmente sobre quando ele pode apoiar o pé no chão."},
+   {"k":"Apoio de peso","sc":["No ritmo","da equipe."],"e":"ritmo",
+    "sub":"Varia conforme a cirurgia — siga e supervisione.",
+    "vo":"O quanto pode pisar vai sendo liberado aos poucos, e depende da cirurgia. Siga à risca e supervisione, porque criança quer testar os limites."},
+   {"k":"A ferida","sc":["Seca,","limpa e coberta."],"e":"Seca",
+    "sub":"Proteja no banho conforme orientado; curativo sujo — troque e avise.",
+    "vo":"Mantenha a ferida limpa, seca e coberta. No banho, proteja conforme a equipe orientou. Se o curativo sujar ou soltar, troque e avise."},
+   {"k":"Fique de olho","sc":["Dor crescente,","ou febre?"],"e":None,
+    "sub":"Inchaço que não cede · vermelhidão · calor · ferida com secreção.",
+    "vo":"Olhe o pé todo dia: dor que vai aumentando, vermelhidão, calor, inchaço que não reduz, ferida com secreção ou febre. Qualquer um merece atenção."},
+   {"k":"Sinal de alarme","sc":["Mais dor,","dedos roxos?"],"e":None,"motif":"no",
+    "sub":"3 As: Analgesia↑ · Ansiedade · Agitação + dedos roxos ou frios.",
+    "vo":"Na criança, fique atento: se precisar de mais remédio pra dor do que antes, ficar muito agitada ou ansiosa — são os primeiros sinais. Some a isso dedos roxos ou frios. Pronto-socorro na hora e avise a equipe no caminho."},
+   {"k":"Resumo","sc":["Elevação,","pronto-socorro."],"e":"Elevação",
+    "sub":"Dúvida de rotina: WhatsApp (11) 3280-1413.",
+    "vo":"Resumindo: pé elevado no repouso, bota como orientado, olho nos sinais — pronto-socorro se precisar. Dúvida do dia a dia, fale com a gente."},
+  ],
+  "caption":"Seu filho fez artrorrise (implante pra pé plano) e está em casa? Elevação no repouso, bota como orientado, ferida seca — e pronto-socorro imediato se mais dor que antes, agitação, dedos roxos/frios.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 ]
