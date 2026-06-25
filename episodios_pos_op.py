@@ -22,6 +22,8 @@ Ep 01  — gesso_pos_op          — Cuidados com o gesso (adulto).
 Ep 02  — gesso_pos_op_kids     — Cuidados com o gesso (criança / aos pais).
 Ep 07  — artrorrise            — Pós-op artrorrise / pé plano (adulto).
 Ep 08  — artrorrise_kids       — Pós-op artrorrise / pé plano (criança / aos pais).
+Ep 09  — growth_guided         — Pós-op epifisiodese / guia de crescimento (adulto/adolescente).
+Ep 10  — growth_guided_kids    — Pós-op epifisiodese / guia de crescimento (criança / aos pais).
 """
 POS_OP = [
  {"id":"gesso_pos_op","ep":1,"temporada":"pos_operatorio","serie":"Recuperação","motif_family":"bone",
@@ -260,4 +262,70 @@ POS_OP = [
     "vo":"Resumindo: pé elevado no repouso, bota como orientado, olho nos sinais — pronto-socorro se precisar. Dúvida do dia a dia, fale com a gente."},
   ],
   "caption":"Seu filho fez artrorrise (implante pra pé plano) e está em casa? Elevação no repouso, bota como orientado, ferida seca — e pronto-socorro imediato se mais dor que antes, agitação, dedos roxos/frios.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
+
+ # ── ⑤ Epifisiodese / Growth Guided ──────────────────────────────────────────────────
+ # Arquétipo gancho: alerta (adolescente/adulto) · mito_vs_verdade (kids).
+ # Palette: carvao_quente / noturno_azul.
+ # Fontes: SBOT; Sabharwal S., JBJS 2015 (guided growth); Paley D. protocols.
+ # Clínica: freia placa de crescimento com implante (8-plate/staple) → corrige dismetria ou
+ # deformidade angular; implante removível quando corrigido; baixa morbidade, cirurgia curta.
+ {"id":"growth_guided","ep":9,"temporada":"pos_operatorio","serie":"Recuperação","motif_family":"bone",
+  "palette":"carvao_quente",
+  "scenes":[
+   {"k":"ATENÇÃO","sc":["Operou o","crescimento?"],"e":"crescimento",
+    "sub":"A epifisiodese age aos poucos — mas os primeiros cuidados importam muito.",
+    "vo":"Se você operou a placa de crescimento — a epifisiodese — a cirurgia parece simples, mas o que acontece em casa nos primeiros dias define muito da recuperação."},
+   {"k":"Para desinchar","sc":["Em repouso,","membro elevado."],"e":"elevado",
+    "sub":"Acima do coração — sempre que parar, durante toda a recuperação.",
+    "vo":"Sempre que parar, eleve o membro operado com um travesseiro, acima da altura do coração. Faz isso durante toda a recuperação: controla o inchaço, que é normal depois da cirurgia."},
+   {"k":"A ferida","sc":["Seca,","limpa e coberta."],"e":"Seca",
+    "sub":"No banho, proteja conforme orientado; curativo sujo — troque e avise.",
+    "vo":"Mantenha a ferida limpa, seca e coberta. No banho, proteja conforme a equipe orientou. Se o curativo sujar ou soltar, troque e avise."},
+   {"k":"Apoio de peso","sc":["Em geral","liberado logo."],"e":"liberado",
+    "sub":"A epifisiodese costuma permitir carga cedo — confirme com sua equipe.",
+    "vo":"A boa notícia: a epifisiodese em geral permite apoiar o peso logo após a cirurgia. Mas o quanto e o quando dependem da sua operação específica — confirme com a equipe."},
+   {"k":"O implante","sc":["Vai ser retirado","depois."],"e":None,
+    "sub":"Quando a correção estiver pronta, o implante é removido — planejado.",
+    "vo":"O implante — a plaquinha ou grampo — vai ser retirado quando a correção atingir o objetivo. Isso é parte do plano desde o começo; a equipe vai acompanhar o crescimento em consultas regulares."},
+   {"k":"Fique de olho","sc":["Dor crescente,","vermelho ou febre?"],"e":None,
+    "sub":"Inchaço que não cede · calor · ferida com secreção.",
+    "vo":"Olhe a ferida todo dia: dor que vai aumentando, vermelhidão, calor, inchaço que não reduz, secreção ou febre. Uma irritação leve é normal nas primeiras 48h; após isso, atenção."},
+   {"k":"Sinal de alarme","sc":["Pronto-socorro","se tiver:"],"e":None,"motif":"no",
+    "sub":"Dor intensa · febre alta · ferida com pus · membro muito inchado.",
+    "vo":"Diante de dor intensa que não cede, febre alta, ferida com pus, ou membro muito inchado, vá ao pronto-socorro e avise a equipe. Não espere pela consulta."},
+   {"k":"Resumo","sc":["Elevação,","consultas em dia."],"e":"Elevação",
+    "sub":"Dúvida de rotina: WhatsApp (11) 3280-1413.",
+    "vo":"Resumindo: membro elevado no repouso, ferida seca, acompanhe as consultas — é o ritmo de crescimento que guia o tratamento. Dúvida do dia a dia, fale com a gente; sinal de alarme, pronto-socorro."},
+  ],
+  "caption":"Fez epifisiodese (cirurgia de guia de crescimento) e está em casa? Elevação no repouso, ferida seca, carga conforme liberado — e pronto-socorro se dor intensa, febre ou pus. O implante será retirado quando a correção estiver pronta.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
+
+ {"id":"growth_guided_kids","ep":10,"temporada":"pos_operatorio","serie":"Recuperação","motif_family":"bone",
+  "palette":"noturno_azul",
+  "scenes":[
+   {"k":"MITO OU VERDADE?","sc":["A cirurgia parou","o crescimento?"],"e":"parou",
+    "sub":"Mito — a epifisiodese freia, corrige e depois o crescimento volta.",
+    "vo":"Muita família acha que a epifisiodese parou o crescimento do filho para sempre. Isso é um mito. Ela freia temporariamente a placa certa para corrigir a diferença — e depois, com o implante retirado, o crescimento continua."},
+   {"k":"Para desinchar","sc":["Em repouso,","membro elevado."],"e":"elevado",
+    "sub":"Travesseiro abaixo do membro, acima do coração — a recuperação toda.",
+    "vo":"Sempre que seu filho parar, eleve o membro operado acima da altura do coração. Faz isso durante toda a recuperação: é o que controla o inchaço."},
+   {"k":"A ferida","sc":["Seca,","limpa e coberta."],"e":"Seca",
+    "sub":"Proteja no banho conforme orientado; curativo sujo — troque e avise.",
+    "vo":"Mantenha a ferida limpa, seca e coberta. No banho, proteja conforme a equipe orientou. Se o curativo sujar ou soltar, troque e avise."},
+   {"k":"Apoio de peso","sc":["Em geral","liberado cedo."],"e":"liberado",
+    "sub":"A epifisiodese costuma permitir carga logo — confirme e supervisione.",
+    "vo":"A boa notícia: a cirurgia em geral permite pôr o pé no chão logo. O quanto e o quando dependem da cirurgia do seu filho — confirme com a equipe e supervisione, porque criança quer correr."},
+   {"k":"O implante","sc":["Vai sair","quando pronto."],"e":None,
+    "sub":"Quando a correção atingir o objetivo, o implante é retirado.",
+    "vo":"O implante — a plaquinha ou grampo — vai ser retirado quando a correção atingir o objetivo. Isso é parte do plano desde o começo. As consultas de acompanhamento são essenciais: é o crescimento do seu filho que dita o ritmo."},
+   {"k":"Fique de olho","sc":["Dor crescente,","ou febre?"],"e":None,
+    "sub":"Inchaço que não cede · vermelhidão · calor · ferida com secreção.",
+    "vo":"Olhe a ferida todo dia: dor que vai aumentando, vermelhidão, calor, inchaço que não reduz, secreção ou febre. Atenção especial após as primeiras 48h."},
+   {"k":"Sinal de alarme","sc":["Mais dor,","febre ou pus?"],"e":None,"motif":"no",
+    "sub":"3 As: Analgesia↑ · Ansiedade · Agitação + febre ou ferida com pus.",
+    "vo":"Na criança, fique atento: se ela precisar de mais remédio pra dor do que antes, ficar muito agitada ou ansiosa — são os primeiros sinais. Some a isso febre ou ferida com pus: pronto-socorro na hora e avise a equipe."},
+   {"k":"Resumo","sc":["Elevação,","consultas em dia."],"e":"Elevação",
+    "sub":"Dúvida de rotina: WhatsApp (11) 3280-1413.",
+    "vo":"Resumindo: membro elevado no repouso, ferida seca, não pule as consultas — é o crescimento do seu filho que guia o tratamento. Dúvida do dia a dia, fale com a gente; sinal de alarme, pronto-socorro."},
+  ],
+  "caption":"Seu filho fez epifisiodese (cirurgia de guia de crescimento)? O implante freia temporariamente — não para o crescimento. Elevação no repouso, ferida seca, carga conforme liberado — pronto-socorro se mais dor, agitação, febre ou pus.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 ]
