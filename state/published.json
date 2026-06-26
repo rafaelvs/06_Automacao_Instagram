@@ -298,10 +298,16 @@
       "kind": "seq",
       "media_id": "18081128147230603",
       "at": "2026-06-26T15:30:48.897799+00:00"
+    },
+    {
+      "id": "on_regra_milimetro",
+      "kind": "reel",
+      "media_id": "17966778552065681",
+      "at": "2026-06-26T18:21:29.325397+00:00"
     }
   ],
   "last_post_date": "2026-06-25",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-06-24",
+  "last_reel_date": "2026-06-26",
   "last_seq_date": "2026-06-26"
 }
