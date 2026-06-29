@@ -53,7 +53,7 @@ APRESENTACAO = [
   ],
   "caption":("Dr. Rafael Vargas — ortopedista em São Paulo. Reconstrução e Alongamento Ósseo e "
    "Ortopedia Pediátrica: casos de difícil solução em crianças e adultos — diferenças de comprimento "
-   "dos membros, deformidades, pseudartrose e sequelas de trauma ou infecção. Avaliação cuidadosa, "
+   "dos membros, deformidades, pseudartrose (osso que não cola) e sequelas de trauma ou infecção. Avaliação cuidadosa, "
    "planejamento individual e correção gradual, com foco em função e movimento. "
    "Agende uma avaliação.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901")},
 ]

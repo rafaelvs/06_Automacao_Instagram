@@ -255,7 +255,7 @@ POS_OP = [
     "sub":"Dúvida de rotina: WhatsApp (11) 3280-1413.",
     "vo":"Resumindo: pé elevado no repouso, bota como orientado, e pronto-socorro se vier qualquer sinal de alarme. Dúvida do dia a dia, fale com a nossa equipe no WhatsApp."},
   ],
-  "caption":"Fez artrorrise (implante pra pé plano) e está em casa? Elevação no repouso, bota como orientado, ferida seca — e pronto-socorro imediato se dor intensa, dedos roxos/frios ou febre.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
+  "caption":"Fez artrorrise (implante pra pé plano, o 'pé chato') e está em casa? Elevação no repouso, bota como orientado, ferida seca — e pronto-socorro imediato se dor intensa, dedos roxos/frios ou febre.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
  {"id":"artrorrise_kids","ep":8,"temporada":"pos_operatorio","serie":"Recuperação","motif_family":"bone",
   "palette":"verde_clinico",
@@ -285,7 +285,7 @@ POS_OP = [
     "sub":"Dúvida de rotina: WhatsApp (11) 3280-1413.",
     "vo":"Resumindo: pé elevado no repouso, bota como orientado, olho nos sinais — pronto-socorro se precisar. Dúvida do dia a dia, fale com a gente."},
   ],
-  "caption":"Seu filho fez artrorrise (implante pra pé plano) e está em casa? Elevação no repouso, bota como orientado, ferida seca — e pronto-socorro imediato se mais dor que antes, agitação, dedos roxos/frios.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
+  "caption":"Seu filho fez artrorrise (implante pra pé plano, o 'pé chato') e está em casa? Elevação no repouso, bota como orientado, ferida seca — e pronto-socorro imediato se mais dor que antes, agitação, dedos roxos/frios.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
  # ── ⑤ Epifisiodese / Growth Guided ──────────────────────────────────────────────────
  # Arquétipo gancho: alerta (adolescente/adulto) · mito_vs_verdade (kids).
@@ -952,7 +952,7 @@ POS_OP = [
     "sub":"Dúvida de rotina: WhatsApp (11) 3280-1413.",
     "vo":"Resumindo: nutrição adequada, carga conforme liberado e raio-X de controle em dia. A consolidação do seu filho depende da disciplina nos cuidados. Dúvida do dia a dia, fale com a gente."},
   ],
-  "caption":"Seu filho está consolidando o osso? Criança consolida mais rápido — mas precisa de cálcio, vitamina D, e não pode pular os raio-X de controle. Dor nova ou deformidade: avise a equipe antes.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
+  "caption":"Seu filho está consolidando o osso (o osso colando)? Criança consolida mais rápido — mas precisa de cálcio, vitamina D, e não pode pular os raio-X de controle. Dor nova ou deformidade: avise a equipe antes.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
  # ── ⑯ Retirada de fixador / pinos ────────────────────────────────────────────────────
  # Arquétipo gancho: dado_estatistica (adulto) · boa_noticia (kids). Palette: noturno_azul / verde_clinico.
@@ -982,7 +982,7 @@ POS_OP = [
     "sub":"Dúvida de rotina: WhatsApp (11) 3280-1413.",
     "vo":"Resumindo: retirada do fixador é um passo importante e bem tolerado. Cuide dos sítios de pino nos dias seguintes e avise se surgir qualquer sinal. Dúvida do dia a dia, fale com a gente."},
   ],
-  "caption":"Vai retirar o fixador externo? É em geral o menor procedimento de todo o tratamento — minutos com anestesia. Cuide dos sítios de pino depois. Febre, pus ou dor no osso crescendo: pronto-socorro.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
+  "caption":"Vai retirar o fixador externo? É em geral o menor procedimento de todo o tratamento — minutos com anestesia. A carga depois depende de quanto o osso já colou. Cuide dos sítios de pino depois. Febre, pus ou dor no osso crescendo: pronto-socorro.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
  {"id":"retirada_fixador_kids","ep":32,"temporada":"pos_operatorio","serie":"Recuperação","motif_family":"bone",
   "palette":"verde_clinico",
@@ -1009,7 +1009,7 @@ POS_OP = [
     "sub":"Dúvida de rotina: WhatsApp (11) 3280-1413.",
     "vo":"Resumindo: a retirada é um momento feliz — e curto. Cuide dos sítios nos primeiros dias e avise se surgir qualquer sinal. Dúvida do dia a dia, fale com a gente."},
   ],
-  "caption":"Seu filho vai retirar o fixador? É o procedimento mais aguardado — rápido, com anestesia, ambulatorial. Cuide dos sítios de pino depois. Febre, pus ou agitação crescente: pronto-socorro.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
+  "caption":"Seu filho vai retirar o fixador? É o procedimento mais aguardado — rápido, com anestesia, ambulatorial. A carga depois depende de quanto o osso já colou. Cuide dos sítios de pino depois. Febre, pus ou agitação crescente: pronto-socorro.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
  # ── ⑰ Cuidados com banho e higiene no pós-op ─────────────────────────────────────────
  # Arquétipo gancho: pergunta (adulto) · micro_caso (kids). Palette: carvao_quente / noturno_azul.

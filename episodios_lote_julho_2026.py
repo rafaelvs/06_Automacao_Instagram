@@ -198,7 +198,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra quem","tem perna curta."],"e":None,"sub":"Osso novo, de volta ao movimento. Salva pra lembrar.","cta":True,
     "vo":"Manda pra alguém que convive com uma perna mais curta por trauma ou sequela. Existe caminho. E salva pra lembrar."},
   ],
-  "caption":cap_rec("Existe uma haste colocada dentro do osso que o alonga aos poucos, controlada por um ímã fora do corpo (sem fixador externo aparente) — milímetros por dia, boa parte em casa. Serve para corrigir encurtamento pós-trauma/sequela e ajudar a preencher falhas de osso, SEMPRE por função. Deixo claro: alongamento ósseo NÃO é sobre ficar mais alto — é tratamento de discrepância e deformidade, nunca cosmético. E não é mágica: tem fases (alongar, endurecer, reabilitar) e exige paciência.","#alongamentoosseo #discrepancia #reconstrucaoossea")},
+  "caption":cap_rec("Existe uma haste colocada dentro do osso que o alonga aos poucos, controlada por um ímã fora do corpo (sem fixador externo aparente) — milímetros por dia, boa parte em casa. Serve para corrigir uma perna mais curta (encurtamento) pós-trauma/sequela e ajudar a preencher falhas de osso, SEMPRE por função. Deixo claro: alongamento ósseo NÃO é sobre ficar mais alto — é tratamento de discrepância e deformidade, nunca cosmético. E não é mágica: tem fases (alongar, endurecer, reabilitar) e exige paciência.","#alongamentoosseo #discrepancia #reconstrucaoossea")},
 
  # ───────────── Pé no Chão #6 ─────────────
  {"id":"pnc_calcado_bebe","ep":31,"serie":"Pé no Chão","temporada":"pernas-e-pes",
@@ -270,7 +270,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra quem","ouviu só prótese."],"e":None,"sub":"Sendo jovem, vale avaliar a osteotomia. Salva pra lembrar.","cta":True,
     "vo":"Se alguém jovem ouviu que só resta prótese no joelho, manda esse vídeo. Pode valer avaliar a osteotomia antes. E salva pra lembrar."},
   ],
-  "caption":cap_rec("Joelho que dói e desgastou só de um lado (em geral o de dentro), numa pessoa ainda ativa, nem sempre precisa de prótese. Muitas vezes a causa é o eixo: a perna pende para um lado e concentra o peso num compartimento, que desgasta enquanto o outro está novo. A osteotomia realinha a perna e transfere a carga para o lado saudável — adiando a prótese em quem é jovem demais para ela. Não é para todos: desgaste dos dois lados ou avançado pede outra conduta. A indicação é individual.","#osteotomia #artrosedejoelho #preservacaoarticular")},
+  "caption":cap_rec("Joelho que dói e desgastou só de um lado (em geral o de dentro), numa pessoa ainda ativa, nem sempre precisa de prótese. Muitas vezes a causa é o eixo: a perna pende para um lado e concentra o peso num compartimento, que desgasta enquanto o outro está novo. A osteotomia corrige o eixo e realinha a perna, transferindo a carga para o lado saudável — adiando a prótese em quem é jovem demais para ela. Não é para todos: desgaste dos dois lados ou avançado pede outra conduta. A indicação é individual.","#osteotomia #artrosedejoelho #preservacaoarticular")},
 
  # ───────────── Pé no Chão #8 ─────────────
  {"id":"pnc_cansa_andar","ep":35,"serie":"Pé no Chão","temporada":"marcha",

@@ -75,7 +75,7 @@ OSSO_NOVO = [
    {"k":"Passa adiante","sc":["Salva as","3 fases."],"e":None,"sub":"Manda pra alguém no meio de uma reconstrução.","cta":True,
     "vo":"Salva as três fases. E se o osso, mesmo assim, simplesmente não cola? É o próximo."},
   ],
-  "caption":cap_rec("As 3 fases do alongamento e da reconstrução óssea: latência (alguns dias parado, para o osso iniciar o reparo), distração (o famoso 1 mm por dia, quando o osso novo se forma) e consolidação (parar e deixar o osso amadurecer e endurecer — costuma ser a fase mais longa). Saber em que fase se está tira boa parte da ansiedade do processo.","#consolidacaoossea #reconstrucao")},
+  "caption":cap_rec("As 3 fases do alongamento e da reconstrução óssea: latência (alguns dias parado, para o osso iniciar o reparo), distração (o famoso 1 mm por dia, quando o osso novo se forma) e consolidação (o osso colar: parar e deixar ele amadurecer e endurecer — costuma ser a fase mais longa). Saber em que fase se está tira boa parte da ansiedade do processo.","#consolidacaoossea #reconstrucao")},
 
  {"id":"on_pseudartrose","ep":4,"serie":"Osso Novo","temporada":"quando-o-osso-falha","motif_family":"bone",
   "scenes":[
@@ -90,7 +90,7 @@ OSSO_NOVO = [
    {"k":"Passa adiante","sc":["Salva: osso que","não cola tem saída."],"e":None,"sub":"Manda pra quem está há meses com uma fratura que não fecha.","cta":True,
     "vo":"Manda pra quem está há meses com uma fratura que não fecha. E no próximo: as três coisas que travam um osso. Uma você controla hoje."},
   ],
-  "caption":cap_rec("Pseudartrose: a fratura que não cola. Quando a consolidação falha, o osso fica com mobilidade onde deveria estar firme — uma 'falsa junta'. Os sinais costumam ser dor persistente no foco da fratura e sensação de instabilidade muito além do tempo esperado. Costuma ter solução: estabilizar melhor, estimular o osso e, às vezes, refazer o trecho. Sempre individualizado.","#pseudartrose #fratura")},
+  "caption":cap_rec("Pseudartrose: a fratura que não cola. Quando a consolidação falha (ou seja, o osso não colou), ele fica com mobilidade onde deveria estar firme — uma 'falsa junta'. Os sinais costumam ser dor persistente no foco da fratura e sensação de instabilidade muito além do tempo esperado. Costuma ter solução: estabilizar melhor, estimular o osso e, às vezes, refazer o trecho. Sempre individualizado.","#pseudartrose #fratura")},
 
  {"id":"on_tres_razoes","ep":5,"serie":"Osso Novo","temporada":"quando-o-osso-falha","motif_family":"bone",
   "scenes":[
@@ -120,7 +120,7 @@ OSSO_NOVO = [
    {"k":"Passa adiante","sc":["Manda pra quem","vai operar e fuma."],"e":None,"sub":"Esse recado pode mudar um resultado.","cta":True,
     "vo":"Manda pra quem vai operar e ainda fuma. Esse recado pode mudar o resultado. E no próximo: quando quem destrói o osso é uma infecção."},
   ],
-  "caption":cap_rec("Cigarro x consolidação óssea. Não é mito: a nicotina aperta os vasos e reduz o oxigênio e o sangue que chegam ao osso — e cicatrização depende disso. Quem fuma tem risco maior de pseudartrose, de infecção e de cura mais lenta. A boa notícia: reduzir ou parar, principalmente em volta da cirurgia, melhora bastante as chances. Vale conversar com sua equipe.","#tabagismo #consolidacaoossea")},
+  "caption":cap_rec("Cigarro x consolidação óssea. Não é mito: a nicotina aperta os vasos e reduz o oxigênio e o sangue que chegam ao osso — e cicatrização depende disso. Quem fuma tem risco maior de pseudartrose (a fratura que não cola), de infecção e de cura mais lenta. A boa notícia: reduzir ou parar, principalmente em volta da cirurgia, melhora bastante as chances. Vale conversar com sua equipe.","#tabagismo #consolidacaoossea")},
 
  {"id":"on_osteomielite","ep":7,"serie":"Osso Novo","temporada":"quando-o-osso-falha","motif_family":"bone",
   "scenes":[
@@ -210,7 +210,7 @@ OSSO_NOVO = [
    {"k":"Passa adiante","sc":["Salva: medir","é metade do tratamento."],"e":None,"sub":"Manda pra quem vai investigar uma diferença nas pernas.","cta":True,
     "vo":"Salva isso: medir é metade do tratamento. E com o quê se segura o osso pra corrigir? É o próximo."},
   ],
-  "caption":cap_rec("Discrepância: medir antes de corrigir. Sem a medida exata, não há como escolher o tratamento. A escanometria (exame de imagem) mostra no milímetro o comprimento real de cada osso — não é no olho nem na fita métrica. Cada faixa de milímetros aponta para uma solução diferente. Na criança, mede-se e remede-se ao longo do tempo, prevendo a diferença no final do crescimento. Corrigir, aqui, é sempre sobre função e marcha — nunca estética ou altura.","#escanometria #discrepancia")},
+  "caption":cap_rec("Discrepância (uma perna mais curta que a outra): medir antes de corrigir. Sem a medida exata, não há como escolher o tratamento. A escanometria (exame de imagem) mostra no milímetro o comprimento real de cada osso — não é no olho nem na fita métrica. Cada faixa de milímetros aponta para uma solução diferente. Na criança, mede-se e remede-se ao longo do tempo, prevendo a diferença no final do crescimento. Corrigir, aqui, é sempre sobre função e marcha — nunca estética ou altura.","#escanometria #discrepancia")},
 
  {"id":"on_fixador_vs_haste","ep":13,"serie":"Osso Novo","temporada":"os-caminhos-do-conserto","motif_family":"bone",
   "scenes":[
@@ -240,7 +240,7 @@ OSSO_NOVO = [
    {"k":"Passa adiante","sc":["Salva: o tempo","tem lógica."],"e":None,"sub":"Manda pra quem está nessa contagem.","cta":True,
     "vo":"Salva pra entender a contagem. E no dia a dia com o aparelho, um cuidado decide tudo: os pinos. É o próximo."},
   ],
-  "caption":cap_rec("Quanto tempo fico com o fixador? A resposta honesta é 'depende', mas tem lógica. Quanto maior a correção, mais dias na fase de afastamento (o 1 mm por dia). O que costuma levar mais tempo, porém, é a consolidação — o osso ainda precisa amadurecer e endurecer, e isso não se apressa. Idade, saúde, nutrição e tabagismo mudam a velocidade; por isso o acompanhamento é de perto, com imagem. O foco é sempre devolver função — nunca estética ou altura.","#fixadorexterno #recuperacao")},
+  "caption":cap_rec("Quanto tempo fico com o fixador? A resposta honesta é 'depende', mas tem lógica. Quanto maior a correção, mais dias na fase de afastamento (o 1 mm por dia). O que costuma levar mais tempo, porém, é a consolidação — o osso ainda precisa colar, amadurecer e endurecer, e isso não se apressa. Idade, saúde, nutrição e tabagismo mudam a velocidade; por isso o acompanhamento é de perto, com imagem. O foco é sempre devolver função — nunca estética ou altura.","#fixadorexterno #recuperacao")},
 
  {"id":"on_cuidado_pinos","ep":15,"serie":"Osso Novo","temporada":"viver-o-tratamento","motif_family":"bone",
   "scenes":[
