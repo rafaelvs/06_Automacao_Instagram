@@ -95,7 +95,25 @@ def _loc(d):
         d = dict(d); d["location_id"] = LOCATION_ID
     return d
 
+def _cfm_guard(item):
+    """Backstop CFM antes de publicar. Se o MODULO estiver ausente: avisa ALTO e nao bloqueia
+    (fail-open RUIDOSO — nao quebra o robo). Se o modulo existir mas tiver bug (SyntaxError/re.error):
+    a excecao propaga -> o try/except do chamador trata como FALHA (fail-CLOSED: nao publica, nao marca
+    done). Se houver VIOLACAO de CFM: loga marcador distinto 'BLOQUEADO CFM' e levanta RuntimeError
+    (o chamador pula o item e NAO avanca, forcando revisao humana). Conteudo limpo passa direto."""
+    try:
+        from cfm_guardrails import auditar
+    except (ImportError, ModuleNotFoundError):
+        print("!!! ALERTA: cfm_guardrails ausente — guardrail CFM DESLIGADO neste run.", file=sys.stderr)
+        return
+    viol = [p for p in auditar(item.get("caption", ""), "publico") if p[0] == "VIOLACAO"]
+    if viol:
+        msg = "BLOQUEADO CFM: " + "; ".join(f"{r}:{d}" for _, r, d in viol)
+        print(f"!!! {msg} (item={item.get('id', '?')}) — NAO publicado, revisar.", file=sys.stderr)
+        raise RuntimeError(msg)
+
 def publish_post(item):
+    _cfm_guard(item)
     imgs = item["images"]; cap = item.get("caption", ""); alt = _alt(item)
     if len(imgs) == 1:
         cont = api_post(f"{IG_USER_ID}/media", _loc({"image_url": raw_url(imgs[0]), "caption": cap, "alt_text": alt}))["id"]
@@ -120,6 +138,7 @@ def publish_sequence(seq):
         time.sleep(2)
     return ids
 def publish_reel(item):
+    _cfm_guard(item)
     # alt_text NAO e' suportado em reels (so imagens); location_id e' suportado.
     base = _loc({"media_type": "REELS", "video_url": raw_url(item["video"]),
                  "caption": item.get("caption", "")})
