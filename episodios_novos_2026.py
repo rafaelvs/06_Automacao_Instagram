@@ -60,7 +60,7 @@ OSSO_NOVO = [
    {"k":"Passa adiante","sc":["Salva a regra","do milímetro."],"e":None,"sub":"Manda pra quem vai operar e tem essa dúvida.","cta":True,
     "vo":"Guarda a regra do milímetro. E no próximo: por que esse osso novo passa por fases até ficar firme."},
   ],
-  "caption":cap_rec("A regra do milímetro. No alongamento e na reconstrução óssea, as pontas do osso são afastadas cerca de 1 mm por dia, em geral em 2 a 4 vezes. Mais rápido, o osso novo não se forma; mais devagar, ele endurece antes da hora e trava a correção. Por isso o ritmo é acompanhado de perto e ajustado para cada pessoa. É sobre devolver função — nunca estética.","#alongamentoosseo #milimetro")},
+  "caption":cap_rec("A regra do milímetro. No alongamento ósseo e na reconstrução, as pontas do osso são afastadas cerca de 1 mm por dia, em geral em 2 a 4 vezes. Mais rápido, o osso novo não se forma; mais devagar, ele endurece antes da hora e trava a correção. Por isso o ritmo é acompanhado de perto e ajustado para cada pessoa. É sobre devolver função — nunca estética.","#alongamentoosseo #milimetro")},
 
  {"id":"on_tres_fases","ep":3,"serie":"Osso Novo","temporada":"o-osso-se-refaz","motif_family":"bone",
   "scenes":[
@@ -75,7 +75,7 @@ OSSO_NOVO = [
    {"k":"Passa adiante","sc":["Salva as","3 fases."],"e":None,"sub":"Manda pra alguém no meio de uma reconstrução.","cta":True,
     "vo":"Salva as três fases. E se o osso, mesmo assim, simplesmente não cola? É o próximo."},
   ],
-  "caption":cap_rec("As 3 fases do alongamento e da reconstrução óssea: latência (alguns dias parado, para o osso iniciar o reparo), distração (o famoso 1 mm por dia, quando o osso novo se forma) e consolidação (o osso colar: parar e deixar ele amadurecer e endurecer — costuma ser a fase mais longa). Saber em que fase se está tira boa parte da ansiedade do processo.","#consolidacaoossea #reconstrucao")},
+  "caption":cap_rec("As 3 fases do alongamento ósseo e da reconstrução: latência (alguns dias parado, para o osso iniciar o reparo), distração (o famoso 1 mm por dia, quando o osso novo se forma) e consolidação (o osso colar: parar e deixar ele amadurecer e endurecer — costuma ser a fase mais longa). Saber em que fase se está tira boa parte da ansiedade do processo.","#consolidacaoossea #reconstrucao")},
 
  {"id":"on_pseudartrose","ep":4,"serie":"Osso Novo","temporada":"quando-o-osso-falha","motif_family":"bone",
   "scenes":[
@@ -105,7 +105,7 @@ OSSO_NOVO = [
    {"k":"Passa adiante","sc":["Salva o tripé","da consolidação."],"e":None,"sub":"Tem um fator desse tripé que está na sua mão hoje.","cta":True,
     "vo":"Salva esse tripé. E tem um item dele que está na sua mão mudar hoje, o que mais surpreende: o cigarro. É o próximo."},
   ],
-  "caption":cap_rec("Por que um osso não consolida? Há um tripé: estabilidade (osso que se mexe demais não cola — por isso placas, hastes e fixadores), circulação (sem sangue chegando, não há cicatrização) e ausência de infecção (um osso infectado prioriza se defender). Quando um desses falha, a consolidação emperra. E há um fator desse tripé que está na sua mão mudar.","#consolidacaoossea #ortopedia")},
+  "caption":cap_rec("Por que um osso não consolida? Há um tripé: estabilidade (osso que se mexe demais não cola — por isso placas, hastes e fixadores), circulação (sem sangue chegando, não há cicatrização) e ausência de infecção (um osso infectado prioriza se defender). Quando um desses falha, a consolidação emperra e pode virar pseudoartrose — a fratura que não cola. E há um fator desse tripé que está na sua mão mudar.","#consolidacaoossea #ortopedia")},
 
  {"id":"on_cigarro","ep":6,"serie":"Osso Novo","temporada":"quando-o-osso-falha","motif_family":"bone",
   "scenes":[
@@ -135,7 +135,7 @@ OSSO_NOVO = [
    {"k":"Passa adiante","sc":["Salva: osso","infecciona — e trata."],"e":None,"sub":"Manda pra quem convive com uma ferida óssea que não fecha.","cta":True,
     "vo":"Salva e compartilha. E se a infecção levou um pedaço do osso embora, dá pra refazer? Dá. E o nome assusta: transporte ósseo. É o próximo."},
   ],
-  "caption":cap_rec("Osteomielite: quando a infecção atinge o osso. Pode entrar por uma fratura exposta, num pós-operatório, ou viajar pelo sangue. Sinais comuns: dor persistente, inchaço, calor, vermelhidão, às vezes febre ou secreção. Tem tratamento: combater a infecção, remover o osso doente e, quando sobra um vão, reconstruir o que se perdeu — sempre individualizado.","#osteomielite #infeccaoossea")},
+  "caption":cap_rec("Osteomielite: quando a infecção atinge o osso. Pode entrar por uma fratura exposta, num pós-operatório, ou viajar pelo sangue. Sinais comuns: dor persistente, inchaço, calor, vermelhidão, às vezes febre ou secreção. Tem tratamento: combater a infecção, remover o osso doente e, quando sobra um vão, reconstruir o que se perdeu com as técnicas do alongamento ósseo — sempre individualizado.","#osteomielite #infeccaoossea")},
 
  {"id":"on_transporte_osseo","ep":8,"serie":"Osso Novo","temporada":"refazer-e-realinhar","motif_family":"bone",
   "scenes":[
@@ -150,7 +150,7 @@ OSSO_NOVO = [
    {"k":"Passa adiante","sc":["Salva: osso","perdido se refaz."],"e":None,"sub":"Manda pra quem acha que falta de osso não tem solução.","cta":True,
     "vo":"Salva e compartilha — é técnica e tempo, não promessa. E quando o osso não falta, mas está torto? É o próximo."},
   ],
-  "caption":cap_rec("Transporte ósseo: refazer osso que se perdeu. Quando um trauma ou uma infecção leva um pedaço grande de osso, um segmento do próprio osso vivo é deslizado lentamente pelo vão — e atrás dele o corpo forma osso novo (a mesma osteogênese por distração). O objetivo é devolver osso, comprimento e função a um membro que quase foi perdido — num tratamento longo, em etapas. Reconstrução de função, nunca estética.","#transporteosseo #reconstrucao")},
+  "caption":cap_rec("Transporte ósseo: refazer osso que se perdeu. Quando um trauma ou uma infecção leva um pedaço grande de osso, um segmento do próprio osso vivo é deslizado lentamente pelo vão — e atrás dele o corpo forma osso novo (a mesma osteogênese por distração do alongamento ósseo). O objetivo é devolver osso, comprimento e função a um membro que quase foi perdido — num tratamento longo, em etapas. Reconstrução de função, nunca estética.","#transporteosseo #reconstrucao")},
 
  {"id":"on_osteotomia","ep":9,"serie":"Osso Novo","temporada":"refazer-e-realinhar","motif_family":"bone",
   "scenes":[
@@ -240,7 +240,7 @@ OSSO_NOVO = [
    {"k":"Passa adiante","sc":["Salva: o tempo","tem lógica."],"e":None,"sub":"Manda pra quem está nessa contagem.","cta":True,
     "vo":"Salva pra entender a contagem. E no dia a dia com o aparelho, um cuidado decide tudo: os pinos. É o próximo."},
   ],
-  "caption":cap_rec("Quanto tempo fico com o fixador? A resposta honesta é 'depende', mas tem lógica. Quanto maior a correção, mais dias na fase de afastamento (o 1 mm por dia). O que costuma levar mais tempo, porém, é a consolidação — o osso ainda precisa colar, amadurecer e endurecer, e isso não se apressa. Idade, saúde, nutrição e tabagismo mudam a velocidade; por isso o acompanhamento é de perto, com imagem. O foco é sempre devolver função — nunca estética ou altura.","#fixadorexterno #recuperacao")},
+  "caption":cap_rec("Quanto tempo fico com o fixador externo? A resposta honesta é 'depende', mas tem lógica. Quanto maior a correção, mais dias na fase de afastamento (o 1 mm por dia). O que costuma levar mais tempo, porém, é a consolidação — o osso ainda precisa colar, amadurecer e endurecer, e isso não se apressa. Idade, saúde, nutrição e tabagismo mudam a velocidade; por isso o acompanhamento é de perto, com imagem. O foco é sempre devolver função — nunca estética ou altura.","#fixadorexterno #recuperacao")},
 
  {"id":"on_cuidado_pinos","ep":15,"serie":"Osso Novo","temporada":"viver-o-tratamento","motif_family":"bone",
   "scenes":[
@@ -270,7 +270,7 @@ OSSO_NOVO = [
    {"k":"Passa adiante","sc":["Salva: reabilitar","é metade do resultado."],"e":None,"sub":"Manda pra quem está no pós e desanimou.","cta":True,
     "vo":"Salva e manda pra quem está no pós-operatório e desanimou. E quando tudo isso se junta pra reconstruir uma perna depois de um trauma grave? É o próximo."},
   ],
-  "caption":cap_rec("Por que a reabilitação decide o resultado. A cirurgia é metade do caminho; a outra metade se constrói na fisioterapia. Osso novo e articulação não gostam de ficar parados — movimento e carga na dose certa mantêm a articulação solta e fortalecem o osso. Pular essa parte arrisca rigidez e perda de músculo, que roubam o ganho da cirurgia. O segredo não é treino pesado: é constância, guiada pela equipe.","#fisioterapia #reabilitacao")},
+  "caption":cap_rec("Por que a reabilitação decide o resultado. A cirurgia é metade do caminho; a outra metade se constrói na fisioterapia. Osso novo (como o do alongamento ósseo) e articulação não gostam de ficar parados — movimento e carga na dose certa mantêm a articulação solta e fortalecem o osso. Pular essa parte arrisca rigidez e perda de músculo, que roubam o ganho da cirurgia. O segredo não é treino pesado: é constância, guiada pela equipe.","#fisioterapia #reabilitacao")},
 
  {"id":"on_pos_trauma","ep":17,"serie":"Osso Novo","temporada":"viver-o-tratamento","motif_family":"bone",
   "scenes":[
@@ -285,7 +285,7 @@ OSSO_NOVO = [
    {"k":"Passa adiante","sc":["Salva: perna","grave se reconstrói."],"e":None,"sub":"Manda pra quem precisa de esperança baseada em técnica.","cta":True,
     "vo":"Salva e compartilha essa esperança, que é técnica, não promessa. E por que nada disso aqui é sobre estética? É o fecho da série."},
   ],
-  "caption":cap_rec("Reconstruir uma perna depois de um trauma grave. Quando um acidente leva osso, alinhamento e comprimento de uma vez, a reconstrução junta tudo: estabilizar e controlar infecção, refazer o osso que faltou, alinhar o eixo e igualar o comprimento — por etapas, cada peça no seu tempo. É uma maratona de meses, com a equipe junto. A meta é sempre função: voltar a apoiar o pé e andar. Nunca estética.","#reconstrucaoossea #trauma")},
+  "caption":cap_rec("Reconstruir uma perna depois de um trauma grave. Quando um acidente leva osso, alinhamento e comprimento de uma vez, a reconstrução junta tudo: estabilizar e controlar infecção, refazer o osso que faltou, alinhar o eixo e igualar o comprimento — por etapas, muitas vezes com fixador externo, cada peça no seu tempo. É uma maratona de meses, com a equipe junto. A meta é sempre função: voltar a apoiar o pé e andar. Nunca estética.","#reconstrucaoossea #trauma")},
 
  {"id":"on_nao_estetica","ep":18,"serie":"Osso Novo","temporada":"viver-o-tratamento","motif_family":"bone",
   "scenes":[
@@ -300,7 +300,7 @@ OSSO_NOVO = [
    {"k":"Passa adiante","sc":["Salva e compartilha","a série inteira."],"e":None,"sub":"Manda pra quem precisa entender que reconstrução é função.","cta":True,
     "vo":"Salva e manda pra quem precisa entender isso. É sobre voltar a andar. E se você chegou agora, a série recomeça do começo: o osso cresce no espaço vazio."},
   ],
-  "caption":cap_rec("Reconstrução NÃO é estética. Tudo o que esta série mostrou — alongar, transportar e corrigir osso — é sobre função: parte de um osso que o trauma, a infecção ou uma deformidade machucaram, e busca devolver o que foi perdido, nunca um padrão de aparência ou altura. É cirurgia séria, com tempo e riscos reais, indicada por necessidade de função. Por isso o lema: osso novo, de volta ao movimento.","#reconstrucaoossea #funcao")},
+  "caption":cap_rec("Reconstrução NÃO é estética. Tudo o que esta série mostrou — o alongamento ósseo, o transporte e a correção do osso — é sobre função: parte de um osso que o trauma, a infecção ou uma deformidade machucaram, e busca devolver o que foi perdido, nunca um padrão de aparência ou altura. É cirurgia séria, com tempo e riscos reais, indicada por necessidade de função. Por isso o lema: osso novo, de volta ao movimento.","#reconstrucaoossea #funcao")},
 ]
 
 # ───────────────────────────── SÉRIE "PÉ NO CHÃO" — 12 NOVOS ─────────────────────────────
@@ -318,7 +318,7 @@ PE_NO_CHAO_NOVOS = [
    {"k":"Passa adiante","sc":["Salva a janela","do primeiro passo."],"e":None,"sub":"Manda pra quem está ansioso esperando o primeiro passo.","cta":True,
     "vo":"Salva essa janela e manda pra quem está no aperto esperando o primeiro passo. E quando ela anda, mas com o pé virado pra dentro? É o próximo."},
   ],
-  "caption":cap_ped("Marcos do andar: quando se preocupar. A maioria das crianças dá os primeiros passos entre 9 e 18 meses — janela ampla, então um pouco antes ou depois costuma ser normal. Comparar com outras crianças só gera ansiedade: o ritmo é individual. A linha de alerta: não andar até por volta dos 18 meses, ou perder uma habilidade já conquistada, merece avaliação.","#primeirospassos #desenvolvimentoinfantil")},
+  "caption":cap_ped("Marcos do andar: quando se preocupar. A maioria das crianças dá os primeiros passos entre 9 e 18 meses — janela ampla, então um pouco antes ou depois costuma ser normal. Comparar com outras crianças só gera ansiedade: o ritmo é individual. A linha de alerta: não andar até por volta dos 18 meses, ou perder uma habilidade já conquistada, merece avaliação na ortopedia pediátrica.","#primeirospassos #desenvolvimentoinfantil")},
 
  {"id":"pnc_pe_pra_dentro","ep":10,"serie":"Pé no Chão","temporada":"pernas-e-pes",
   "scenes":[
@@ -333,7 +333,7 @@ PE_NO_CHAO_NOVOS = [
    {"k":"Passa adiante","sc":["Salva: pé pra","dentro costuma alinhar."],"e":None,"sub":"Manda pra mãe preocupada com o 'andar de pombinho'.","cta":True,
     "vo":"Salva e manda pra aquela mãe preocupada com o andar de pombinho. E aquele estalo no joelho da criança, é grave? É o próximo."},
   ],
-  "caption":cap_ped("Pé virado para dentro ao andar (o 'andar de pombinho'). Pode vir de uma leve torção do pé, da canela ou do osso da coxa — todas variações comuns do crescimento. A regra é o tempo: conforme a criança cresce, a rotação costuma se ajustar sozinha. O alerta é quando ocorre só de um lado, dói, causa quedas demais, ou piora em vez de melhorar.","#marcha #desenvolvimento")},
+  "caption":cap_ped("Pé virado para dentro ao andar (o 'andar de pombinho'). Pode vir de uma leve torção do pé, da canela ou do osso da coxa — todas variações comuns do crescimento, bem conhecidas da ortopedia pediátrica. A regra é o tempo: conforme a criança cresce, a rotação costuma se ajustar sozinha. O alerta é quando ocorre só de um lado, dói, causa quedas demais, ou piora em vez de melhorar.","#marcha #desenvolvimento")},
 
  {"id":"pnc_estalo_joelho","ep":11,"serie":"Pé no Chão","temporada":"pernas-e-pes",
   "scenes":[
@@ -348,7 +348,7 @@ PE_NO_CHAO_NOVOS = [
    {"k":"Passa adiante","sc":["Salva: estalo sem","dor é normal."],"e":None,"sub":"Manda pra quem se assusta com o joelho que estala.","cta":True,
     "vo":"Salva e manda pra quem se assusta com o joelho que estala. E será que tênis caro corrige o pé da criança? Spoiler: não. É o próximo."},
   ],
-  "caption":cap_ped("Estalo no joelho da criança. Estalo SEM dor é, na imensa maioria, inofensivo: costuma ser tendão deslizando sobre o osso ou bolhas de gás dentro da articulação — fenômenos normais. O que tranquiliza é o conjunto: se ela corre, pula e brinca sem reclamar e sem inchaço, é só som. Acenda o alerta quando o estalo vem com dor, inchaço ou travamento do joelho.","#joelho #criancas")},
+  "caption":cap_ped("Estalo no joelho da criança. Estalo SEM dor é, na imensa maioria, inofensivo: costuma ser tendão deslizando sobre o osso ou bolhas de gás dentro da articulação — fenômenos normais. O que tranquiliza é o conjunto: se ela corre, pula e brinca sem reclamar e sem inchaço, é só som. Acenda o alerta — e procure a ortopedia pediátrica — quando o estalo vem com dor, inchaço ou travamento do joelho.","#joelho #criancas")},
 
  {"id":"pnc_tenis_caro","ep":12,"serie":"Pé no Chão","temporada":"pernas-e-pes",
   "scenes":[
@@ -363,7 +363,7 @@ PE_NO_CHAO_NOVOS = [
    {"k":"Passa adiante","sc":["Salva antes de","gastar no tênis."],"e":None,"sub":"Manda pra quem vai gastar caro achando que corrige.","cta":True,
     "vo":"Salva antes de gastar caro com a promessa de corrigir. E se uma perna da criança for mais curta que a outra? É o próximo, e ele faz uma ponte."},
   ],
-  "caption":cap_ped("Tênis caro NÃO molda nem corrige o pé da criança. O arco e a musculatura se desenvolvem com o movimento — andando, correndo, sentindo o chão — não com um solado especial. O papel do calçado é proteger: flexível, leve e no tamanho certo já basta. A dica que de fato ajuda não custa nada: tempo descalço em casa, em piso seguro.","#pechato #calcadoinfantil")},
+  "caption":cap_ped("Tênis caro NÃO molda nem corrige o pé da criança. O arco e a musculatura se desenvolvem com o movimento — andando, correndo, sentindo o chão — não com um solado especial. O papel do calçado é proteger: flexível, leve e no tamanho certo já basta — é o que a ortopedia pediátrica recomenda. A dica que de fato ajuda não custa nada: tempo descalço em casa, em piso seguro.","#pechato #calcadoinfantil")},
 
  {"id":"pnc_perna_curta_crianca","ep":13,"serie":"Pé no Chão","temporada":"pernas-e-pes",
   "scenes":[
@@ -393,7 +393,7 @@ PE_NO_CHAO_NOVOS = [
    {"k":"Passa adiante","sc":["Salva os sinais","que fogem do padrão."],"e":None,"sub":"Manda pra quem fica na dúvida toda noite.","cta":True,
     "vo":"Salva esses sinais de alerta e compartilha. E tem um deles que nunca dá pra ignorar sozinho: mancar. É o próximo."},
   ],
-  "caption":cap_ped("Os sinais de que NÃO é dor de crescimento. A dor de crescimento clássica é difusa, nas duas pernas, à noite, sem inchaço, e some pela manhã. Fogem desse padrão e merecem avaliação: dor sempre no MESMO ponto; inchaço, calor ou febre junto; e dor que invade o dia, fazendo mancar, limitar o brincar ou acordar sempre. Na dúvida, avalie.","#dordecrescimento #sinaisdealerta")},
+  "caption":cap_ped("Os sinais de que NÃO é dor de crescimento. A dor de crescimento clássica é difusa, nas duas pernas, à noite, sem inchaço, e some pela manhã. Fogem desse padrão e merecem avaliação na ortopedia pediátrica: dor sempre no MESMO ponto; inchaço, calor ou febre junto; e dor que invade o dia, fazendo mancar, limitar o brincar ou acordar sempre. Na dúvida, avalie.","#dordecrescimento #sinaisdealerta")},
 
  {"id":"pnc_mancando","ep":15,"serie":"Pé no Chão","temporada":"sinais-de-alerta",
   "scenes":[
@@ -408,7 +408,7 @@ PE_NO_CHAO_NOVOS = [
    {"k":"Passa adiante","sc":["Salva: mancar","sempre se investiga."],"e":None,"sub":"Manda pra quem acha que vai passar sozinho.","cta":True,
     "vo":"Salva essa regra e manda pra quem acha que a manqueira passa sozinha. E quando ela vem junto com febre? Aí o relógio aperta. É o próximo."},
   ],
-  "caption":cap_ped("Criança mancando: regra de ouro, sempre se avalia. Manqueira não é manha — é o corpo protegendo algo, fugindo de uma dor ou compensando uma fraqueza. As causas mudam com a idade, de um sapato apertado a questões no quadril ou joelho que pedem mais pressa. Ajuda o médico observar: há quanto tempo, se há dor, se veio febre e se é sempre do mesmo lado.","#manqueira #sinaisdealerta")},
+  "caption":cap_ped("Criança mancando: na ortopedia pediátrica, sempre se avalia. Manqueira não é manha — é o corpo protegendo algo, fugindo de uma dor ou compensando uma fraqueza. As causas mudam com a idade, de um sapato apertado a questões no quadril ou joelho que pedem mais pressa. Ajuda o médico observar: há quanto tempo, se há dor, se veio febre e se é sempre do mesmo lado.","#manqueira #sinaisdealerta")},
 
  {"id":"pnc_mancar_febre","ep":16,"serie":"Pé no Chão","temporada":"sinais-de-alerta",
   "scenes":[
@@ -423,7 +423,7 @@ PE_NO_CHAO_NOVOS = [
    {"k":"Passa adiante","sc":["Salva: febre +","manca = avaliar já."],"e":None,"sub":"Manda pra todo pai e mãe — esse pode importar muito.","cta":True,
     "vo":"Salva e manda pra todo pai e mãe, porque esse pode fazer diferença de verdade. E nem todo sinal está nas pernas: às vezes está nas costas. É o próximo."},
   ],
-  "caption":cap_ped("Mancar + febre na criança: combinação que pede pressa. Uma das causas dessa dupla é uma infecção dentro da articulação — e articulação infectada é das poucas situações que não esperam. Sinais que reforçam a urgência: a criança não quer dobrar nem apoiar a perna, chora ao mexerem na articulação e fica protegendo o membro. Com febre e manqueira juntas, procure atendimento no mesmo dia.","#emergencia #sinaisdealerta")},
+  "caption":cap_ped("Mancar + febre na criança: combinação que pede pressa. Uma das causas dessa dupla é uma infecção dentro da articulação — e articulação infectada é das poucas urgências da ortopedia pediátrica que não esperam. Sinais que reforçam a urgência: a criança não quer dobrar nem apoiar a perna, chora ao mexerem na articulação e fica protegendo o membro. Com febre e manqueira juntas, procure atendimento no mesmo dia.","#emergencia #sinaisdealerta")},
 
  {"id":"pnc_escoliose","ep":17,"serie":"Pé no Chão","temporada":"sinais-de-alerta",
   "scenes":[
@@ -438,7 +438,7 @@ PE_NO_CHAO_NOVOS = [
    {"k":"Passa adiante","sc":["Salva o teste","da inclinação."],"e":None,"sub":"Manda pra pais de pré-adolescentes.","cta":True,
     "vo":"Salva esse teste das costas e manda pra pais de pré-adolescente. E aqueles medos que viralizam, tipo cair muito? É o próximo."},
   ],
-  "caption":cap_ped("Escoliose: o sinal nas costas. É um desvio em curva da coluna (vista por trás), que costuma aparecer no estirão da pré-adolescência. Há um teste simples em casa: peça para a criança inclinar o corpo à frente, como quem vai tocar os pés, e observe as costas de cima — se um lado fica mais alto que o outro, vale mostrar ao médico. Perceber cedo costuma deixar o acompanhamento mais simples.","#escoliose #coluna")},
+  "caption":cap_ped("Escoliose: o sinal nas costas. É um desvio em curva da coluna (vista por trás), que costuma aparecer no estirão da pré-adolescência. Há um teste simples em casa: peça para a criança inclinar o corpo à frente, como quem vai tocar os pés, e observe as costas de cima — se um lado fica mais alto que o outro, vale mostrar ao médico. Perceber cedo costuma deixar o acompanhamento na ortopedia pediátrica mais simples.","#escoliose #coluna")},
 
  {"id":"pnc_cai_muito","ep":18,"serie":"Pé no Chão","temporada":"mito-ou-verdade",
   "scenes":[
@@ -453,7 +453,7 @@ PE_NO_CHAO_NOVOS = [
    {"k":"Passa adiante","sc":["Salva: cair faz","parte (até certo ponto)."],"e":None,"sub":"Manda pra quem se preocupa com cada tombo.","cta":True,
     "vo":"Salva e manda pra quem sofre a cada tombo. E o medo que mais viraliza: sentar em W, pode ou não? É o próximo."},
   ],
-  "caption":cap_ped("Criança que cai muito: é normal? Nos primeiros anos, cair é como o corpo calibra o equilíbrio — cada tombo ensina, e uma boa quantidade de quedas, sem mais nada, costuma ser normal. O que muda o jogo é a tendência: cair cada vez mais (em vez de melhorar), tropeçar sempre do mesmo lado, ou perder uma habilidade já conquistada. Em casa, ajuda espaço seguro para praticar e tempo descalço.","#desenvolvimento #equilibrio")},
+  "caption":cap_ped("Criança que cai muito: é normal? Nos primeiros anos, cair é como o corpo calibra o equilíbrio — cada tombo ensina, e uma boa quantidade de quedas, sem mais nada, costuma ser normal. O que muda o jogo é a tendência: cair cada vez mais (em vez de melhorar), tropeçar sempre do mesmo lado, ou perder uma habilidade já conquistada — sinais que valem avaliação na ortopedia pediátrica. Em casa, ajuda espaço seguro para praticar e tempo descalço.","#desenvolvimento #equilibrio")},
 
  {"id":"pnc_sentar_w","ep":19,"serie":"Pé no Chão","temporada":"mito-ou-verdade",
   "scenes":[
@@ -468,7 +468,7 @@ PE_NO_CHAO_NOVOS = [
    {"k":"Passa adiante","sc":["Salva: W não é","o monstro do vídeo."],"e":None,"sub":"Manda pra quem vive corrigindo o filho no chão.","cta":True,
     "vo":"Salva e manda pra quem vive corrigindo o filho no chão por causa disso. E pra fechar a série, a campeã das dúvidas: mochila pesada estraga a coluna? É o próximo."},
   ],
-  "caption":cap_ped("Sentar em 'W': pode ou não? Virou vilão na internet, mas a real é mais tranquila. As crianças escolhem essa posição porque é uma base larga e estável, que deixa as mãos livres para brincar. O entendimento atual: numa criança que se desenvolve bem, sentar em W de vez em quando não vira deformidade. O bom senso é estimular variar a posição — e, se ela SÓ senta em W ou já tem outros sinais, comentar com o ortopedista.","#sentaremw #mitoouverdade")},
+  "caption":cap_ped("Sentar em 'W': pode ou não? Virou vilão na internet, mas a real é mais tranquila. As crianças escolhem essa posição porque é uma base larga e estável, que deixa as mãos livres para brincar. O entendimento atual: numa criança que se desenvolve bem, sentar em W de vez em quando não vira deformidade. O bom senso é estimular variar a posição — e, se ela SÓ senta em W ou já tem outros sinais, comentar na consulta de ortopedia pediátrica.","#sentaremw #mitoouverdade")},
 
  {"id":"pnc_mochila","ep":20,"serie":"Pé no Chão","temporada":"mito-ou-verdade",
   "scenes":[
@@ -483,7 +483,7 @@ PE_NO_CHAO_NOVOS = [
    {"k":"Passa adiante","sc":["Salva a regra","da mochila."],"e":None,"sub":"Manda pro grupo da escola. E recomeça a série!","cta":True,
     "vo":"Salva e manda pro grupo da escola. No fim, tudo se resume a saber a hora de procurar, e é isso que o Pé no Chão te ensina. Se quiser, recomeça do primeiro: os marcos do andar."},
   ],
-  "caption":cap_ped("Mochila pesada estraga a coluna? Resposta com equilíbrio. O peso excessivo causa, sim, dor nas costas e ombros e má postura na hora de carregar — desconforto real. Mas NÃO há prova de que mochila cause escoliose ou deformidade permanente. A regra prática: a mochila cheia idealmente não passa de ~10–15% do peso da criança; use as duas alças, ajustada ao corpo, e leve só o essencial.","#mochila #postura")},
+  "caption":cap_ped("Mochila pesada estraga a coluna? É das dúvidas que mais chegam ao consultório de ortopedia pediátrica — e a resposta pede equilíbrio. O peso excessivo causa, sim, dor nas costas e ombros e má postura na hora de carregar — desconforto real. Mas NÃO há prova de que mochila cause escoliose ou deformidade permanente. A regra prática: a mochila cheia idealmente não passa de ~10–15% do peso da criança; use as duas alças, ajustada ao corpo, e leve só o essencial.","#mochila #postura")},
 ]
 
 NEW_EPISODES = OSSO_NOVO + PE_NO_CHAO_NOVOS

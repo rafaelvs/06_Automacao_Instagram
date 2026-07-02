@@ -36,7 +36,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra um pai","preocupado com isso."],"e":None,"sub":"Salva pra lembrar quando bater a dúvida.","cta":True,
     "vo":"Manda esse vídeo pra aquele pai ou mãe que vive preocupado com o joelho do filho. E salva pra quando a dúvida voltar."},
   ],
-  "caption":cap_ped("Joelho em X (geno valgo) na criança quase sempre é fase: entre 3 e 6 anos é o desenho normal do crescimento, e o alinhamento costuma chegar perto dos 7. Sapato e palmilha NÃO endireitam o joelho de uma criança saudável. Merece avaliação o X que aparece só num lado, que piora, que dói ou que vem com baixa estatura.","#joelhoemx #genovalgo #desenvolvimentoinfantil")},
+  "caption":cap_ped("Joelho em X (geno valgo) na criança quase sempre é fase: entre 3 e 6 anos é o desenho normal do crescimento, e o alinhamento costuma chegar perto dos 7. Sapato e palmilha NÃO endireitam o joelho de uma criança saudável. Merece avaliação na ortopedia pediátrica o X que aparece só num lado, que piora, que dói ou que vem com baixa estatura.","#joelhoemx #genovalgo #desenvolvimentoinfantil")},
 
  # ───────────── Osso Novo #1 ─────────────
  {"id":"on_consolidacao_viciosa","ep":22,"serie":"Osso Novo","temporada":"refazer-e-realinhar","motif_family":"bone",
@@ -72,7 +72,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pro grupo","dos pais do time."],"e":None,"sub":"Salva pra próxima reclamação de joelho.","cta":True,
     "vo":"Manda esse vídeo pro grupo dos pais do time, que sempre tem alguém passando por isso. E salva pra próxima reclamação de joelho."},
   ],
-  "caption":cap_ped("Caroço dolorido logo abaixo do joelho no adolescente que corre e salta costuma ser Osgood-Schlatter: na fase de estirão, o tendão traciona um ponto de osso ainda em formação. Boa notícia — costuma ser temporário e passar quando o osso amadurece, raramente exigindo cirurgia. Ajuda dosar o esforço (sem largar o esporte), gelo e alongamento orientado. Avalie se mancar, inchar muito ou travar.","#osgoodschlatter #dornojoelho #adolescente")},
+  "caption":cap_ped("Caroço dolorido logo abaixo do joelho no adolescente que corre e salta costuma ser Osgood-Schlatter: na fase de estirão, o tendão traciona um ponto de osso ainda em formação. Boa notícia — costuma ser temporário e passar quando o osso amadurece, raramente exigindo cirurgia. Ajuda dosar o esforço (sem largar o esporte), gelo e alongamento orientado. Avalie na ortopedia pediátrica se mancar, inchar muito ou travar.","#osgoodschlatter #dornojoelho #adolescente")},
 
  # ───────────── Osso Novo #2 ─────────────
  {"id":"on_salvamento_membro","ep":24,"serie":"Osso Novo","temporada":"reconstrucao","motif_family":"bone",
@@ -90,7 +90,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra quem","ouviu só amputar."],"e":None,"sub":"Vale uma segunda opinião. Salva pra lembrar.","cta":True,
     "vo":"Se alguém ouviu que só resta amputar e ficou na dúvida, manda esse vídeo. Uma segunda opinião, nessas horas, vale muito."},
   ],
-  "caption":cap_rec("Amputar ou reconstruir? Em casos graves de trauma ou infecção, essa decisão é real — e compartilhada. Não há resposta única: pesa a extensão da lesão, infecção, circulação, saúde geral e o que faz sentido para a vida da pessoa. Reconstruir grandes perdas de osso é possível (transporte ósseo, fixadores), mas costuma ser um caminho de etapas. E amputar não é desistir: às vezes devolve função e autonomia mais rápido. O que guia é a qualidade de vida.","#salvamentodemembro #reconstrucaoossea #segundaopiniao")},
+  "caption":cap_rec("Amputar ou reconstruir? Em casos graves de trauma ou infecção, essa decisão é real — e compartilhada. Não há resposta única: pesa a extensão da lesão, infecção, circulação, saúde geral e o que faz sentido para a vida da pessoa. Reconstruir grandes perdas de osso é possível (transporte ósseo com fixador externo, técnica de Ilizarov), mas costuma ser um caminho de etapas. E amputar não é desistir: às vezes devolve função e autonomia mais rápido. O que guia é a qualidade de vida.","#salvamentodemembro #reconstrucaoossea #segundaopiniao")},
 
  # ───────────── Pé no Chão #3 ─────────────
  {"id":"pnc_sever","ep":25,"serie":"Pé no Chão","temporada":"crescimento",
@@ -108,7 +108,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra outro","pai de atleta."],"e":None,"sub":"Salva pra próxima dor de calcanhar.","cta":True,
     "vo":"Manda pra outro pai ou mãe de criança que vive no esporte. E salva pra próxima vez que o calcanhar reclamar."},
   ],
-  "caption":cap_ped("Dor no calcanhar na criança/pré-adolescente que pratica esporte costuma ser doença de Sever: o impacto repetido irrita a placa de crescimento do calcâneo. Tranquiliza — é autolimitada, melhora com o tempo e não deixa sequela. Ajuda gelo, calçado com amortecimento, calcanheira de silicone, alongar a panturrilha e dosar o treino. Avalie se mancar o dia todo, inchar ou doer em repouso.","#doencadesever #dornocalcanhar #esporteinfantil")},
+  "caption":cap_ped("Dor no calcanhar na criança/pré-adolescente que pratica esporte costuma ser doença de Sever: o impacto repetido irrita a placa de crescimento do calcâneo. Tranquiliza — é autolimitada, melhora com o tempo e não deixa sequela. Ajuda gelo, calçado com amortecimento, calcanheira de silicone, alongar a panturrilha e dosar o treino. Avalie na ortopedia pediátrica se mancar o dia todo, inchar ou doer em repouso.","#doencadesever #dornocalcanhar #esporteinfantil")},
 
  # ───────────── Osso Novo #3 ─────────────
  {"id":"on_vitamina_d","ep":26,"serie":"Osso Novo","temporada":"viver-o-tratamento","motif_family":"bone",
@@ -126,7 +126,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra quem","fraturou agora."],"e":None,"sub":"Salva pra ajustar a dieta da recuperação.","cta":True,
     "vo":"Manda pra alguém que acabou de fraturar e quer ajudar o osso. E salva pra ajustar a alimentação da recuperação."},
   ],
-  "caption":cap_rec("Vitamina ajuda o osso a colar? Tem papel, sim, mas não como pílula mágica. O que conta é o combo cálcio + vitamina D (o tijolo e quem o leva para dentro do osso). Mais NÃO é melhor: acima do que o corpo usa, o excesso não acelera e pode sobrecarregar o rim. O que mais pesa na consolidação é não fumar, controlar o diabetes e ter proteína na dieta. O certo é medir a vitamina D e repor o que falta, com orientação.","#vitaminad #calcio #consolidacaoossea")},
+  "caption":cap_rec("Vitamina ajuda o osso a colar? Tem papel, sim, mas não como pílula mágica. O que conta é o combo cálcio + vitamina D (o tijolo e quem o leva para dentro do osso). Mais NÃO é melhor: acima do que o corpo usa, o excesso não acelera e pode sobrecarregar o rim. O que mais pesa na consolidação — inclusive para evitar a pseudoartrose, a fratura que não cola — é não fumar, controlar o diabetes e ter proteína na dieta. O certo é medir a vitamina D e repor o que falta, com orientação.","#vitaminad #calcio #consolidacaoossea")},
 
  # ───────────── Pé no Chão #4 ─────────────
  {"id":"pnc_torcicolo","ep":27,"serie":"Pé no Chão","temporada":"sinais-de-alerta",
@@ -144,7 +144,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra um pai","ou mãe de recém."],"e":None,"sub":"Quanto antes virem, melhor. Salva pra lembrar.","cta":True,
     "vo":"Manda pra um pai ou mãe de bebê recém-nascido. Nisso, ver cedo faz toda a diferença. Salva pra lembrar."},
   ],
-  "caption":cap_ped("Bebê que vive com a cabeça virada sempre pro mesmo lado pode ter torcicolo congênito: um músculo do pescoço fica encurtado de um lado. Agir cedo é tudo — nos primeiros meses costuma resolver só com posição e fisioterapia. Em casa, estimular (com orientação) o lado que ele evita ajuda. Fique de olho no achatamento do crânio, que pode vir junto.","#torcicolo #bebe #desenvolvimentoinfantil")},
+  "caption":cap_ped("Bebê que vive com a cabeça virada sempre pro mesmo lado pode ter torcicolo congênito: um músculo do pescoço fica encurtado de um lado. Agir cedo é tudo na ortopedia pediátrica — nos primeiros meses costuma resolver só com posição e fisioterapia. Em casa, estimular (com orientação) o lado que ele evita ajuda. Fique de olho no achatamento do crânio, que pode vir junto.","#torcicolo #bebe #desenvolvimentoinfantil")},
 
  # ───────────── Osso Novo #4 ─────────────
  {"id":"on_diabetes_osso","ep":28,"serie":"Osso Novo","temporada":"quando-o-osso-falha","motif_family":"bone",
@@ -162,7 +162,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra quem","tem diabetes."],"e":None,"sub":"Vai operar ou fraturou? O controle conta. Salva pra lembrar.","cta":True,
     "vo":"Manda pra alguém com diabetes que vai operar ou fraturou. Saber disso muda a preparação. E salva pra lembrar."},
   ],
-  "caption":cap_rec("Pouca gente sabe: o diabetes mal controlado atrapalha a fratura a colar e a cirurgia a cicatrizar. O açúcar alto trava a obra por vários lados — piora circulação, derruba a defesa contra infecção e prejudica as células que fabricam osso novo. Resultado: mais risco de infecção e consolidação mais lenta. A boa notícia: com a glicemia controlada, o risco cai muito. Por isso ortopedista e o cuidado do diabetes caminham juntos.","#diabetes #consolidacaoossea #cicatrizacao")},
+  "caption":cap_rec("Pouca gente sabe: o diabetes mal controlado atrapalha a fratura a colar e a cirurgia a cicatrizar. O açúcar alto trava a obra por vários lados — piora circulação, derruba a defesa contra infecção e prejudica as células que fabricam osso novo. Resultado: mais risco de infecção, consolidação mais lenta e até pseudoartrose (a fratura que não cola). A boa notícia: com a glicemia controlada, o risco cai muito. Por isso ortopedista e o cuidado do diabetes caminham juntos.","#diabetes #consolidacaoossea #cicatrizacao")},
 
  # ───────────── Pé no Chão #5 ─────────────
  {"id":"pnc_engatinhar","ep":29,"serie":"Pé no Chão","temporada":"marcha",
@@ -180,7 +180,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra uma","mãe ansiosa."],"e":None,"sub":"Salva pra lembrar nos próximos marcos.","cta":True,
     "vo":"Manda pra aquela mãe ou pai ansioso com os marcos do bebê. E salva pra lembrar nos próximos."},
   ],
-  "caption":cap_ped("Pular o engatinhar pode ser normal — nem todo bebê engatinha, e muitos vão direto para o ficar de pé. O que importa não é a etapa exata, é o progresso: sentar, rolar, se arrastar, buscar objetos, ficar de pé. Engatinhar de bumbum ou de urso também conta. Acenda o alerta se usar sempre só um lado do corpo, rigidez/moleza importante, ou perda de habilidades — aí avalie.","#engatinhar #marcosdodesenvolvimento #bebe")},
+  "caption":cap_ped("Pular o engatinhar pode ser normal — nem todo bebê engatinha, e muitos vão direto para o ficar de pé. O que importa não é a etapa exata, é o progresso: sentar, rolar, se arrastar, buscar objetos, ficar de pé. Engatinhar de bumbum ou de urso também conta. Acenda o alerta se usar sempre só um lado do corpo, rigidez/moleza importante, ou perda de habilidades — aí avalie na ortopedia pediátrica.","#engatinhar #marcosdodesenvolvimento #bebe")},
 
  # ───────────── Osso Novo #5 ─────────────
  {"id":"on_haste_magnetica","ep":30,"serie":"Osso Novo","temporada":"reconstrucao","motif_family":"bone",
@@ -216,7 +216,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra quem","vai montar enxoval."],"e":None,"sub":"Salva antes da próxima compra.","cta":True,
     "vo":"Manda pra aquela amiga grávida montando o enxoval. E salva antes da próxima compra de sapatinho."},
   ],
-  "caption":cap_ped("Bebê precisa de sapato? Antes de andar, o melhor calçado é o pé descalço — sentir o chão fortalece o pé e treina o equilíbrio (meia antiderrapante resolve o frio). O sapato entra para proteger ao andar na rua, não para dar suporte. Escolha flexível, leve, sola fina, firme no calcanhar e com espaço para os dedos. Evite sapato duro e pesado: no pé saudável, atrapalha.","#calcadoinfantil #primeirospassos #pedescalco")},
+  "caption":cap_ped("Bebê precisa de sapato? Antes de andar, o melhor calçado é o pé descalço — sentir o chão fortalece o pé e treina o equilíbrio (meia antiderrapante resolve o frio). O sapato entra para proteger ao andar na rua, não para dar suporte. Escolha flexível, leve, sola fina, firme no calcanhar e com espaço para os dedos. Evite sapato duro e pesado: no pé saudável, atrapalha — é a orientação atual em ortopedia pediátrica.","#calcadoinfantil #primeirospassos #pedescalco")},
 
  # ───────────── Osso Novo #6 ─────────────
  {"id":"on_dor_cronica_fratura","ep":32,"serie":"Osso Novo","temporada":"viver-o-tratamento",
@@ -234,7 +234,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra quem","já colou e dói."],"e":None,"sub":"Salva pra levar numa reavaliação.","cta":True,
     "vo":"Manda pra alguém que fraturou, já colou e segue com dor. E salva pra levar numa reavaliação."},
   ],
-  "caption":cap_rec("A fratura colou, o exame está bom, mas meses depois ainda dói — isso não é frescura, costuma ter causa. Pode ser o material (placa/parafuso) incomodando, a articulação enrijecida por imobilidade, ou um nervo mais sensível na região. O caminho é investigar, não ignorar: uma avaliação dirigida encontra a origem na maioria dos casos. E há tratamento — reabilitação, retirar o implante que incomoda, tratar o ponto sensível. Antes de aceitar conviver com a dor para sempre, reavalie.","#dorcronica #posfratura #reabilitacao")},
+  "caption":cap_rec("A fratura colou, o exame está bom, mas meses depois ainda dói — isso não é frescura, costuma ter causa. Pode ser o material (placa/parafuso) incomodando, a articulação enrijecida por imobilidade, ou um nervo mais sensível na região. O caminho é investigar, não ignorar: uma avaliação dirigida encontra a origem na maioria dos casos — e descarta uma pseudoartrose (a fratura que não cola) que tenha passado despercebida. E há tratamento — reabilitação, retirar o implante que incomoda, tratar o ponto sensível. Antes de aceitar conviver com a dor para sempre, reavalie.","#dorcronica #posfratura #reabilitacao")},
 
  # ───────────── Pé no Chão #7 ─────────────
  {"id":"pnc_hipermobilidade","ep":33,"serie":"Pé no Chão","temporada":"sinais-de-alerta",
@@ -252,7 +252,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra um pai","de criança elástica."],"e":None,"sub":"Salva pra lembrar do que observar.","cta":True,
     "vo":"Manda pra aquele pai ou mãe que tem uma criança elástica em casa. E salva pra lembrar do que vale observar."},
   ],
-  "caption":cap_ped("Criança que dobra os dedos e as juntas demais costuma ter hipermobilidade — folga articular maior que a média, e na maioria das vezes é benigna (muitos atletas e bailarinos são assim). Tranquilo quando é só flexibilidade, sem dor e sem a junta sair do lugar. Observe se há dor após brincar, cansaço ao andar, quedas frequentes ou mão cansada ao escrever. O que ajuda é fortalecer, não frear o movimento.","#hipermobilidade #flexibilidade #ortopediainfantil")},
+  "caption":cap_ped("Criança que dobra os dedos e as juntas demais costuma ter hipermobilidade — folga articular maior que a média, e na maioria das vezes é benigna (muitos atletas e bailarinos são assim). Tranquilo quando é só flexibilidade, sem dor e sem a junta sair do lugar. Observe se há dor após brincar, cansaço ao andar, quedas frequentes ou mão cansada ao escrever. O que ajuda é fortalecer, não frear o movimento — com orientação da ortopedia pediátrica.","#hipermobilidade #flexibilidade #ortopediainfantil")},
 
  # ───────────── Osso Novo #7 ─────────────
  {"id":"on_artrose_osteotomia","ep":34,"serie":"Osso Novo","temporada":"refazer-e-realinhar","motif_family":"bone",
@@ -288,7 +288,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra uma mãe","na dúvida do colo."],"e":None,"sub":"Salva pra observar com calma.","cta":True,
     "vo":"Manda pra aquela mãe que não sabe se é manha ou cansaço de verdade. E salva pra observar com calma."},
   ],
-  "caption":cap_ped("Criança que vive pedindo colo e cansa de andar mais que as outras geralmente é só idade — perna curta dá passo curto, e distância grande cansa mesmo. Observe o padrão: manca ao cansar? protege sempre a mesma perna? piorou de repente? Bandeiras que pedem avaliação sem demora: dor noturna persistente, febre, perda de peso ou articulação inchada. Avaliar costuma ser simples e tranquilizador.","#desenvolvimentoinfantil #marcha #sinaisdealerta")},
+  "caption":cap_ped("Criança que vive pedindo colo e cansa de andar mais que as outras geralmente é só idade — perna curta dá passo curto, e distância grande cansa mesmo. Observe o padrão: manca ao cansar? protege sempre a mesma perna? piorou de repente? Bandeiras que pedem avaliação sem demora: dor noturna persistente, febre, perda de peso ou articulação inchada. Avaliar na ortopedia pediátrica costuma ser simples e tranquilizador.","#desenvolvimentoinfantil #marcha #sinaisdealerta")},
 
  # ───────────── Osso Novo #8 ─────────────
  {"id":"on_falha_ossea","ep":36,"serie":"Osso Novo","temporada":"quando-o-osso-falha","motif_family":"bone",
@@ -306,6 +306,6 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra quem","perdeu osso."],"e":None,"sub":"Osso novo, de volta ao movimento. Salva pra lembrar.","cta":True,
     "vo":"Se você conhece alguém que perdeu osso num acidente ou infecção e acha que não tem solução, manda esse vídeo. Existe caminho. E salva pra lembrar."},
   ],
-  "caption":cap_rec("Quando não é só fratura, mas FALTA osso (falha óssea) — um trauma grave ou infecção podem levar um pedaço inteiro. Não dá para só encostar as pontas: fecharia o vão, mas encurtaria a perna. A solução elegante é o transporte ósseo: um segmento caminha devagar pelo vão e o corpo gera osso novo atrás dele, preenchendo sem perder comprimento. Há outras rotas (enxerto, técnicas de estrutura) conforme o caso. Leva tempo e etapas — mas devolve membro e função.","#falhaossea #transporteosseo #reconstrucaoossea")},
+  "caption":cap_rec("Quando não é só fratura, mas FALTA osso (falha óssea) — um trauma grave ou infecção podem levar um pedaço inteiro. Não dá para só encostar as pontas: fecharia o vão, mas encurtaria a perna. A solução elegante é o transporte ósseo, técnica clássica de Ilizarov: um segmento caminha devagar pelo vão e o corpo gera osso novo atrás dele, preenchendo sem perder comprimento. Há outras rotas (enxerto, técnicas de estrutura) conforme o caso. Leva tempo e etapas — mas devolve membro e função.","#falhaossea #transporteosseo #reconstrucaoossea")},
 
 ]

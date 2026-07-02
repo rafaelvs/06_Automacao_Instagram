@@ -38,6 +38,8 @@ GLOSSARIO = {
     # — reconstrução (jargão que o paciente não digita) —
     "consolidacao viciosa": ["colou torto", "osso torto", "entortado"],
     "pseudartrose":         ["fratura que nao cola", "osso que nao cola", "nao cola"],
+    # grafia canônica com "o" (o match é substring literal: uma grafia NÃO casa a outra)
+    "pseudoartrose":        ["fratura que nao cola", "osso que nao cola", "nao cola"],
     "discrepancia":         ["perna mais curta", "uma perna mais curta", "perna curta"],
     "osteomielite":         ["infeccao no osso", "infeccao do osso", "infeccao"],
     "osteotomia":           ["cortar e realinhar", "realinhar", "muda o eixo", "corrige o eixo"],

@@ -48,7 +48,7 @@ APRESENTACAO = [
     "vo":"E o foco é sempre a função e o movimento: voltar a caminhar, correr e viver com mais autonomia e qualidade de vida."},
    # 7) CTA — único, acolhedor
    {"k":"O primeiro passo","sc":["Agende uma","avaliação."],"e":"avaliação",
-    "sub":"Vamos pensar juntos no melhor caminho.",
+    "sub":"Vamos pensar juntos no melhor caminho — e manda pra quem precisa ouvir isso.",
     "vo":"Se você, ou alguém que você ama, convive com um caso desses, o primeiro passo é conversar. Agende uma avaliação e entenda as opções para o seu caso."},
   ],
   "caption":("Dr. Rafael Vargas — ortopedista em São Paulo. Reconstrução e Alongamento Ósseo e "
