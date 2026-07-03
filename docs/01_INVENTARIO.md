@@ -85,7 +85,7 @@ Legenda: 🟢 núcleo ativo · 🔵 gerador (reusável) · 🟡 lote único (já
 | `reels.json` | 84 itens (11 publicados, **73 na fila**) | ✅ 0 refs quebradas |
 | `posts.json` | 89 itens (9 pub, **80 fila**) | ✅ |
 | `sequences.json` | 121 itens (16 pub, **105 fila**) | ✅ |
-| `stories.json` | 89 itens (1 pub, **88 fila**) | ✅ |
+| `stories.json` | 89 itens (1 pub, fila **CONGELADA** em 88 — **APOSENTADA 03/07/2026**: ~97% dos temas já cobertos pelas sequências; reativação pontual via `FORCE_ID=storyNN`) | ✅ |
 | `destaques.json` | 6 itens | ✅ |
 | `images/*.jpg` | 1168 (1151 referenciadas, **17 órfãs**) | ⚠️ 17 órfãs (limpeza opcional) |
 | `reels/*.mp4` | 85 (84 publicáveis + 55 `_preview_`) | ✅ |

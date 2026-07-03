@@ -18,7 +18,7 @@ da Meta**, rodando 100% de graça no **GitHub Actions**. Sem app aberto, sem cel
   episodios_*.py  ───────────►  render_reel.py (craft 30fps) ──►  reels.json     (vídeos)
   temporadas_data.py            gerar_reel_voz.py (voz Antonio)    posts.json     (carrosséis)
   (cenas: k, sc, sub, vo)       carrossel.py (feed 4:5)           sequences.json (stories 5-frames)
-                                gerar_conteudo/_sequencias        stories.json   (stories soltos)
+                                gerar_conteudo/_sequencias        stories.json   (stories soltos — APOSENTADA 03/07/26)
                                         │                          destaques.json (highlights)
                                         ▼                                  │
                                   mídia em images/ e reels/                │
@@ -72,7 +72,7 @@ Cada cena: `k` (kicker), `sc` (linhas grandes), `e` (palavra dourada de ênfase)
 | `reels.json` | vídeos (reels) | `id`, `video`, `caption` |
 | `posts.json` | carrosséis do feed | `id`, `images[]`, `caption`, `alt` |
 | `sequences.json` | stories serializados (5 frames/dia) | `id`, `theme`, `images[]` |
-| `stories.json` | stories soltos | `id`, `image` |
+| `stories.json` | stories soltos — **APOSENTADA (03/07/2026)**: fila congelada em 88; sem branch agendado no main() desde o pivot p/ sequências (6e5a04a, 08/06); card pontual via `FORCE_ID=storyNN`; fluxo diário antigo preservado em `publish_backup_single.py` | `id`, `image` |
 | `destaques.json` | capas de Destaques | `id`, `image` |
 
 ### [4] Publicador — `publish.py`
