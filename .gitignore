@@ -1,3 +1,8 @@
 __pycache__/
 *.pyc
 /tmp/
+
+# harness de verificação visual local (não-produção)
+_local_frames/
+_local_frames_raw_*/
+_render_reel_OLD.py

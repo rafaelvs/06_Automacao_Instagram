@@ -900,7 +900,7 @@ POS_OP = [
    {"k":"ESPERANDO COLAR","sc":["Seu osso está","se consolidando."],"e":None,
     "sub":"Esse processo acontece em fases — e você pode acelerar ou atrasar.",
     "vo":"Você operou e está esperando o osso colar. Esse processo — a consolidação — acontece em fases, e o que você faz em casa pode acelerar ou atrasar o resultado."},
-   {"k":"Fases da consolidação","sc":["Inflamação →","osso novo."],"e":None,
+   {"k":"Fases da consolidação","sc":["Da inflamação","ao osso novo."],"e":None,
     "sub":"Semanas a meses: do coágulo ao osso maduro. Raio-X acompanha.",
     "vo":"A consolidação começa com inflamação, passa por uma fase de osso imaturo — o calo — e culmina no osso maduro. Pode levar semanas a meses, e o raio-X é o que acompanha o progresso."},
    {"k":"O que ajuda","sc":["Carga e","nutrição certa."],"e":"Carga",
@@ -930,7 +930,7 @@ POS_OP = [
    {"k":"VOCÊ SABIA?","sc":["Criança consolida","mais rápido?"],"e":"Criança",
     "sub":"Em geral sim — mas a nutrição e os cuidados ainda importam muito.",
     "vo":"Sabia que criança consolida o osso mais rápido que adulto? Em geral sim — a plasticidade óssea infantil é um dos maiores presentes da pediatria. Mas os cuidados continuam essenciais."},
-   {"k":"Fases da consolidação","sc":["Calo →","osso maduro."],"e":None,
+   {"k":"Fases da consolidação","sc":["Do calo","ao osso maduro."],"e":None,
     "sub":"Do coágulo ao osso maduro: semanas a meses. Raio-X acompanha.",
     "vo":"O processo vai do coágulo ao calo ósseo imaturo, e depois ao osso maduro. Em criança, costuma ser mais rápido — mas o raio-X é o que confirma quando está realmente consolidado."},
    {"k":"Nutrição","sc":["Cálcio e","vitamina D."],"e":None,
@@ -1074,3 +1074,10 @@ POS_OP = [
   ],
   "caption":"Seu filho pode tomar banho após a cirurgia? Depende: gesso = proteja (supervise!); fixador = banho normal; pontos = aguarde 48-72h. Supervisione sempre. Ferida molhada + vermelhidão: avise ou pronto-socorro.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 ]
+
+# ── ROLLOUT anti-templatização (03/07/2026): toda peça pós-op usa layout ROTACIONADO por padrão. ──
+# setdefault → opt-in explícito por episódio ainda vence (não sobrescreve). Instagram/"Pé no Chão" NÃO é
+# afetado (aquelas séries não passam por aqui). Já-renderizados (EP01-28) só mudam se RE-renderizados;
+# os uploads existentes ficam intactos. Ver render_reel.LAYOUTS + ganchos_layout.layout_para.
+for _e in POS_OP:
+    _e.setdefault("layout", "auto")
