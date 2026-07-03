@@ -1786,5 +1786,17 @@
       "images/s_on_remedio_que_atrapalha_4.jpg",
       "images/s_on_remedio_que_atrapalha_5.jpg"
     ]
+  },
+  {
+    "id": "s_inst_como_e_a_consulta",
+    "theme": "Como é a consulta",
+    "label": "Como é a consulta",
+    "images": [
+      "images/s_inst_como_e_a_consulta_1.jpg",
+      "images/s_inst_como_e_a_consulta_2.jpg",
+      "images/s_inst_como_e_a_consulta_3.jpg",
+      "images/s_inst_como_e_a_consulta_4.jpg",
+      "images/s_inst_como_e_a_consulta_5.jpg"
+    ]
   }
 ]

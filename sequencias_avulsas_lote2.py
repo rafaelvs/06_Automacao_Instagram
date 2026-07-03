@@ -385,6 +385,20 @@ NOVAS = [
   "Existem analgésicos que não interferem no osso. A equipe monta o esquema para cada fase — sempre informe tudo o que você toma.", "quase lá →"),
  ("Guarde isso", "Remédio também é assunto de consulta",
   "Compartilha com quem está consolidando uma fratura.", "Dúvidas? Manda DM →")]),
+
+# ======================= INSTITUCIONAL (1) =======================
+
+("s_inst_como_e_a_consulta", "Como é a consulta", "dark", [
+ ("Como é a consulta", "Pensando em marcar? Veja como é a consulta",
+  "Sem mistério: um passo a passo do que acontece, o que levar e onde é o atendimento. Tudo informativo, para você chegar mais tranquilo.", "deslize →"),
+ ("O que levar", "Exames e relatórios anteriores",
+  "Se já tiver, leve as imagens e os laudos de exames anteriores e relatórios de outros médicos. O histórico ajuda muito a entender o seu caso.", "continua →"),
+ ("Como é a avaliação", "Conversa, exame e, se indicado, imagem",
+  "A consulta começa pela sua história, passa pelo exame clínico e, quando necessário, pela solicitação de exames de imagem para esclarecer o quadro.", "continua →"),
+ ("Onde é", "Av. Paulista 2064, São Paulo",
+  "O atendimento presencial é na Av. Paulista, 2064. Para quem é de fora de São Paulo, a teleorientação ajuda a ouvir o caso, revisar exames e organizar os próximos passos.", "quase lá →"),
+ ("Guarde isso", "Ficou com dúvida?",
+  "Agende pelo WhatsApp no link da bio. Dúvidas sobre como funciona? Manda uma DM.", "Compartilha com quem pensa em marcar →")]),
 ]
 
 
