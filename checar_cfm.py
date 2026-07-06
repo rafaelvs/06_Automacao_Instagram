@@ -6,6 +6,11 @@ LINT CFM — roda os guardrails compartilhados (cfm_guardrails.auditar) sobre TO
 Saída: lista de VIOLACAO (proibido) e REVISAR (conferir contexto). Idempotente, só leitura.
 Rodar: python checar_cfm.py   (use PYTHONIOENCODING=utf-8 no Windows).
 Vira gate de publicação: 0 VIOLACAO é o alvo.
+
+COBERTURA ADITIVA (ADVISORY, não bloqueia): auditar_seo_youtube() roda os mesmos guardrails
+sobre os metadados PÚBLICOS do YouTube (seo_episodios.json — title/title_alt/description/tags),
+que antes NÃO passavam por auditar(). É só AVISO: não entra nas VIOLACOES/BLOQUEIOS do gate IG
+(o gate IG e a pipeline do YouTube são desacoplados por design do Rafael).
 """
 import json
 import os
@@ -21,7 +26,81 @@ def texto_cenas(ep):
     return " ".join(p for p in partes if p)
 
 
-def main():
+def auditar_seo_youtube(caminho=None):
+    """ADVISORY (aditivo) — fecha a brecha de cobertura: os metadados PÚBLICOS do YouTube
+    gerados pelo motor SEO v2 (seo_episodios.json: title/title_alt/description/tags por entrada)
+    NÃO passavam por cfm_guardrails.auditar. Aqui rodamos os MESMOS guardrails sobre eles:
+      - title, title_alt, description  -> contexto 'publico'
+      - tags (juntas)                  -> contexto 'mensagem'
+    Só REPORTA (não bloqueia). Ver comentário no gate: promover isto a blocking — ou plugar
+    o guardrail DENTRO da publicação do YouTube (_cfm_guard) — é decisão do Rafael.
+
+    fail-open RUIDOSO: se seo_episodios.json não existir ou falhar o load, imprime AVISO e
+    segue (retorna listas vazias) — NUNCA trava o gate.
+
+    Retorna (violacoes, revisar): cada item = (origem, id, severidade, regra, detalhe).
+    """
+    violacoes = []
+    revisar = []
+    if caminho is None:
+        caminho = os.path.join(ROOT, "seo_episodios.json")
+
+    if not os.path.exists(caminho):
+        print(f"AVISO: SEO YouTube advisory — {os.path.basename(caminho)} nao encontrado; pulando (fail-open).")
+        return violacoes, revisar
+
+    try:
+        dados = json.load(open(caminho, encoding="utf-8"))
+    except Exception as e:
+        print(f"AVISO: SEO YouTube advisory — falha ao carregar {os.path.basename(caminho)}: {e} (fail-open).")
+        return violacoes, revisar
+
+    # aceita dict {id: entrada} (formato atual do motor v2) ou lista de entradas
+    if isinstance(dados, dict):
+        entradas = list(dados.items())
+    elif isinstance(dados, list):
+        entradas = [(e.get("id", "?") if isinstance(e, dict) else "?", e) for e in dados]
+    else:
+        print("AVISO: SEO YouTube advisory — formato inesperado de seo_episodios.json (fail-open).")
+        return violacoes, revisar
+
+    n = 0
+    for _id, ent in entradas:
+        if not isinstance(ent, dict):
+            continue
+        n += 1
+        # title / title_alt / description: metadados públicos -> contexto 'publico'
+        for campo in ("title", "title_alt", "description"):
+            txt = ent.get(campo, "")
+            if not txt:
+                continue
+            for sev, regra, det in auditar(txt, "publico"):
+                # a regra 'assinatura' é irrelevante p/ title/tag/description do YT (assinatura vai no rodapé
+                # do vídeo, não nos metadados) — não conta como aviso relevante desta cobertura.
+                if regra == "assinatura":
+                    continue
+                alvo = violacoes if sev == "VIOLACAO" else revisar
+                alvo.append((f"seo_yt:{campo}", _id, sev, regra, det))
+        # tags juntas: contexto 'mensagem' (não exige assinatura)
+        tags = ent.get("tags")
+        if isinstance(tags, list) and tags:
+            texto_tags = " ".join(str(t) for t in tags)
+        elif isinstance(tags, str):
+            texto_tags = tags
+        else:
+            texto_tags = ""
+        if texto_tags:
+            for sev, regra, det in auditar(texto_tags, "mensagem"):
+                alvo = violacoes if sev == "VIOLACAO" else revisar
+                alvo.append(("seo_yt:tags", _id, sev, regra, det))
+
+    print(f"SEO YouTube auditado (advisory): {n} entradas")
+    return violacoes, revisar
+
+
+def main(seo_advisory_inline=True):
+    """seo_advisory_inline=True imprime o bloco advisory do SEO YouTube ao fim (uso standalone).
+    O gate passa False e imprime seu próprio bloco [extra] para não duplicar."""
     violacoes = []   # (origem, id, severidade, regra, detalhe)
     revisar = []
 
@@ -70,7 +149,27 @@ def main():
     relevantes = [r for r in revisar if r[3] != "assinatura"]
     for origem, _id, sev, regra, det in relevantes[:40]:
         print(f"   [REVISAR]  {origem:22s} {str(_id):26s} {regra}: {det}")
+
+    # --- COBERTURA ADITIVA (ADVISORY): metadados públicos do YouTube (seo_episodios.json) ---
+    # Fecha a brecha em que title/title_alt/description/tags do motor SEO v2 NÃO passavam
+    # pelos guardrails CFM. Reporta SOMENTE — NÃO entra nas VIOLACOES/BLOQUEIOS do gate IG.
+    # Só imprime aqui quando NÃO for o gate a chamar (o gate imprime seu próprio bloco [extra]),
+    # para evitar duplicação. Ao rodar `python checar_cfm.py` direto, mostra o advisory.
+    if seo_advisory_inline:
+        seo_viol, seo_rev = auditar_seo_youtube()
+        imprimir_seo_advisory(seo_viol, seo_rev)
+
     return violacoes, revisar
+
+
+def imprimir_seo_advisory(seo_viol, seo_rev):
+    """Imprime o bloco ADVISORY da cobertura SEO YouTube (não afeta exit/bloqueios)."""
+    print("\n--- SEO YouTube (CFM advisory — NAO bloqueia) ---")
+    print(f"VIOLACAO={len(seo_viol)}  REVISAR={len(seo_rev)}")
+    for origem, _id, sev, regra, det in seo_viol:
+        print(f"   [VIOLACAO] {origem:16s} {str(_id):26s} {regra}: {det}")
+    for origem, _id, sev, regra, det in seo_rev[:40]:
+        print(f"   [REVISAR]  {origem:16s} {str(_id):26s} {regra}: {det}")
 
 
 if __name__ == "__main__":

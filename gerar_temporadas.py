@@ -55,8 +55,35 @@ def run():
                 imgs.append("images/"+fn)
             seqs.append({"id": f"{slug}-{did}", "theme": theme, "label": frames[0][0], "images": imgs})
         print("ok temporada:", slug, flush=True)
-    json.dump(seqs, open(os.path.join(ROOT, "sequences.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=2)
-    print("TEMPORADAS:", len(SEASONS), "| DIAS/SEQUENCIAS:", len(seqs), "| FRAMES:", sum(len(s["images"]) for s in seqs))
+    # --- TRAVA DE SEGURANCA (footgun documentado) -------------------------------
+    # O json.dump em modo "w" abaixo TRUNCA e reescreve sequences.json inteiro a
+    # partir SO das SEASONS (91 ids no formato "<slug>-<dow>"). Sem esta trava, as
+    # sequencias avulsas s_* (anexadas por sequencias_avulsas_lote2.py via merge
+    # idempotente) seriam APAGADAS silenciosamente a cada rodada. Aqui fazemos o
+    # MERGE inverso: preservamos do arquivo atual todo item cujo id NAO seja gerado
+    # por SEASONS (na pratica, as avulsas s_*). Idempotente: reprocessar nao
+    # duplica ids nem sobrescreve avulsas. Fail-open RUIDOSO: se o arquivo nao
+    # existir ou for ilegivel, avisamos e seguimos gerando so as SEASONS (primeira
+    # geracao / arquivo corrompido nao deve travar o pipeline).
+    seq_path = os.path.join(ROOT, "sequences.json")
+    gerados_ids = {s["id"] for s in seqs}  # tudo que ESTA rodada produziu a partir de SEASONS
+    preservadas = []
+    try:
+        with open(seq_path, encoding="utf-8") as fh:
+            atuais = json.load(fh)
+        # preserva itens orfaos (nao gerados por SEASONS): as avulsas s_* e quaisquer
+        # outros ids que nao venham do gerador. NUNCA apaga silenciosamente.
+        preservadas = [it for it in atuais
+                       if isinstance(it, dict) and it.get("id") not in gerados_ids]
+        print("PRESERVANDO", len(preservadas), "sequencias avulsas/orfas (nao vindas de SEASONS)", flush=True)
+    except FileNotFoundError:
+        print("AVISO: sequences.json inexistente — primeira geracao, nada a preservar (fail-open).", flush=True)
+    except (json.JSONDecodeError, OSError) as e:
+        # fail-open RUIDOSO: nao trava o pipeline, mas grita para nao mascarar perda.
+        print("AVISO: sequences.json ilegivel (", repr(e), ") — seguindo SO com SEASONS (fail-open ruidoso).", flush=True)
+    saida = seqs + preservadas  # SEASONS (fonte de verdade) + avulsas preservadas, sem duplicar ids
+    json.dump(saida, open(seq_path, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    print("TEMPORADAS:", len(SEASONS), "| DIAS/SEQUENCIAS:", len(seqs), "| PRESERVADAS:", len(preservadas), "| TOTAL GRAVADO:", len(saida), "| FRAMES:", sum(len(s["images"]) for s in seqs))
 
 if __name__ == "__main__":
     run()

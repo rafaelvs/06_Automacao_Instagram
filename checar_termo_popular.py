@@ -15,8 +15,10 @@ GLOSSÁRIO = jargão clínico (que leigo NÃO digita) -> nomes populares aceitos
 Termos que o leigo já busca (escoliose, displasia de quadril, pseudartrose) NÃO entram aqui — não
 precisam de tradução. Estender este dict a cada lote novo.
 """
-import re, unicodedata
+import re, unicodedata, json, os
 from episodios_pe_no_chao import EPISODES
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
 
 GLOSSARIO = {
     # — pediátrico (jargão que o pai não digita) —
@@ -71,6 +73,78 @@ def textos(ep):
     )
     return norm(gancho), norm(cap), norm(corpo + " " + cap)
 
+# ─────────────────────────────────────────────────────────────────────────────
+# CHECK ADVISORY (aditivo, NÃO bloqueia) — "keyword clínica no CORPO da caption".
+# Lição D8 (auditoria v5): keyword que só aparece em #hashtag NÃO conta para SEO de
+# busca (o algoritmo de busca prioriza o texto do corpo, não a tag). Então uma caption
+# cujo único jargão canônico está numa #hashtag fica invisível para quem digita o termo.
+# Reusa a LISTA CANÔNICA (chaves do GLOSSÁRIO). Só varre reels.json/posts.json AINDA
+# NÃO publicados (state/published.json) — não retroage no que já foi ao ar.
+# Classifica cada caption:
+#   KW_CORPO_OK   : ≥1 keyword canônica no CORPO (norm(sem_hashtags(caption))) — bom p/ busca.
+#   KW_SO_HASHTAG : keyword existe SÓ na #hashtag (some ao remover tags) — mover p/ o corpo.
+#   KW_AUSENTE    : nenhuma keyword canônica em lugar nenhum (nem corpo, nem hashtag).
+# É ADVISORY: entra como aviso REVISAR, NUNCA vira BLOQUEIO / exit=1.
+
+KW_CANONICAS = tuple(norm(j) for j in GLOSSARIO)  # jargão canônico normalizado (substring literal)
+
+
+def _publicados():
+    # ids já publicados (state/published.json). Fail-open RUIDOSO: se não ler, trata como
+    # conjunto vazio (varre tudo) e avisa — nunca esconde captions por falha de leitura.
+    p = os.path.join(ROOT, "state", "published.json")
+    try:
+        st = json.load(open(p, encoding="utf-8"))
+        return {e["id"] for e in st.get("published", []) if isinstance(e, dict) and "id" in e}
+    except Exception as e:
+        print("AVISO (fail-open): nao leu state/published.json (%s) — varrendo TODAS as captions." % e)
+        return set()
+
+
+def checar_kw_corpo():
+    """Advisory: keyword clínica no corpo vs só em #hashtag, p/ captions não-publicadas."""
+    done = _publicados()
+    corpo_ok, so_hashtag, ausente = [], [], []
+    for arq in ["reels.json", "posts.json"]:
+        p = os.path.join(ROOT, arq)
+        if not os.path.exists(p):
+            continue
+        try:
+            itens = json.load(open(p, encoding="utf-8"))
+        except Exception as e:
+            print("AVISO (fail-open): %s nao carregou (%s) — pulando." % (arq, e))
+            continue
+        if not isinstance(itens, list):
+            continue
+        for it in itens:
+            if not isinstance(it, dict):
+                continue
+            _id = it.get("id", "?")
+            if _id in done:
+                continue  # já publicado — não retroage
+            cap = it.get("caption") or ""
+            if not cap:
+                continue
+            no_corpo = norm(sem_hashtags(cap))  # texto sem tags (#... vira ' ')
+            no_full = norm(cap)                 # texto com tags
+            if any(k in no_corpo for k in KW_CANONICAS):
+                corpo_ok.append((arq, _id))
+            elif any(k in no_full for k in KW_CANONICAS):
+                so_hashtag.append((arq, _id))   # keyword existe SÓ na hashtag
+            else:
+                ausente.append((arq, _id))
+    # Relatório (advisory)
+    print("\n--- ADVISORY: keyword clinica no CORPO (nao-publicados, D8 SEO de busca) ---")
+    print("KW_CORPO_OK (keyword canonica no corpo — otima p/ busca):", len(corpo_ok))
+    print("KW_SO_HASHTAG (keyword SO na #hashtag — mover p/ o corpo):", len(so_hashtag))
+    for a, i in so_hashtag:
+        print("   [KW_SO_HASHTAG] %-12s %s" % (a, i))
+    print("KW_AUSENTE (sem keyword canonica no corpo nem na hashtag):", len(ausente))
+    for a, i in ausente:
+        print("   [KW_AUSENTE]    %-12s %s" % (a, i))
+    return corpo_ok, so_hashtag, ausente
+
+
 def main():
     faltas, so_corpo, ok, proibidos_uso = [], [], [], []
     for ep in EPISODES:
@@ -104,7 +178,14 @@ def main():
     print("FALTA (jargao sem nome popular no episodio):", len(faltas))
     for i, j in faltas:
         print("   [FALTA]    %-26s jargao=%s" % (i, j))
-    return faltas, so_corpo
+    # ADVISORY (aditivo): keyword clínica no corpo vs só em #hashtag — NÃO entra em faltas/bloqueio.
+    # Blindado por try/except: por ser load-bearing (main devolve 'faltas' que forma bloqueios), qualquer
+    # exceção futura no advisory NUNCA pode derrubar o caminho que calcula os bloqueios/exit. Fail-open RUIDOSO.
+    try:
+        checar_kw_corpo()
+    except Exception as e:
+        print("AVISO (fail-open): kw-corpo advisory falhou:", e)
+    return faltas, so_corpo  # contrato do gate inalterado: só FALTA (termo->popular) bloqueia.
 
 if __name__ == "__main__":
     main()
