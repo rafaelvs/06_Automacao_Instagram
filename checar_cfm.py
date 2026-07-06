@@ -108,6 +108,27 @@ def main(seo_advisory_inline=True):
         for sev, regra, det in issues:
             (violacoes if sev == "VIOLACAO" else revisar).append((origem, _id, sev, regra, det))
 
+    # 0) INTEGRIDADE DOS MODULOS DE EPISODIOS (fail-CLOSED) — P0 #2
+    # episodios_pe_no_chao.py ESTENDE EPISODES importando 4 modulos, cada um num try/except
+    # que apenas imprime "AVISO: ... nao carregado" e SEGUE (fail-open). Se o lag do OneDrive
+    # ou um erro de sintaxe derrubar um desses modulos, aquele guard mascara a falha e o gate
+    # imprimiria PASS com uma lista EPISODES AMPUTADA. Aqui importamos os 4 modulos DIRETAMENTE
+    # (sem passar pelo try/except mascarador): se QUALQUER import propagar exceccao, registramos
+    # como VIOLACAO (origem="episodios:import") — assim entra em `violacoes`, o gate soma em
+    # `bloqueios` e o exit vira != 0. NUNCA passar em silencio com episodios faltando.
+    # NAO edita episodios_pe_no_chao.py nem os modulos de episodios (so os importa).
+    import importlib
+    for _mod in ("episodios_novos_2026", "episodios_lote_julho_2026",
+                 "episodio_apresentacao", "episodios_pos_op"):
+        try:
+            importlib.import_module(_mod)
+        except Exception as e:
+            registra("episodios:import", _mod,
+                     [("VIOLACAO", "integridade_episodios",
+                       f"falha ao importar modulo de episodios '{_mod}': "
+                       f"{type(e).__name__}: {e} — EPISODES ficaria amputado (fail-closed)")])
+            print(f"BLOQUEIO: modulo de episodios '{_mod}' NAO importou: {type(e).__name__}: {e}")
+
     # 1) EPISODES
     try:
         from episodios_pe_no_chao import EPISODES
@@ -117,6 +138,47 @@ def main(seo_advisory_inline=True):
         print(f"EPISODES auditados: {len(EPISODES)}")
     except Exception as e:
         print("AVISO: nao carregou EPISODES:", e)
+
+    # 1b) CARROSSEL.POSTS — fonte publica de 1a classe (P0 #3)
+    # carrossel.POSTS e conteudo publico de legenda/tela (9 carrosseis) que ANTES nao passava
+    # pelos guardrails CFM. Importar `carrossel` e SEGURO: o render (loop sobre POSTS / EXEMPLO)
+    # vive dentro de atualizar_todos()/main-guard, entao um `import carrossel` NAO renderiza nada.
+    # Falha ao importar carrossel -> registra em REVISAR (nao passar em silencio), sem travar o gate.
+    # Auditamos kicker/title/sub/body de cada slide em contexto 'mensagem' (a assinatura CRM+RQE vai
+    # no RODAPE do render, nao no texto — por isso a regra 'assinatura' e ignorada aqui). VIOLACAO
+    # cai em `violacoes` (bloqueia via gate); o resto em `revisar` (avisa) — via a MESMA closure.
+    try:
+        from carrossel import POSTS
+    except Exception as e:
+        registra("carrossel:POSTS", "carrossel",
+                 [("REVISAR", "import_carrossel",
+                   f"nao foi possivel importar carrossel.POSTS: {type(e).__name__}: {e}")])
+        print("AVISO: nao importou carrossel.POSTS:", e)
+    else:
+        # try/except PER-POST: um post malformado (nao-dict, slides nao-dict) vira REVISAR
+        # isolado daquele post e NAO aborta a auditoria dos demais posts. VIOLACAO real de
+        # qualquer post bem-formado segue caindo em `violacoes` (bloqueia via gate).
+        n_slides = 0
+        for post in POSTS:
+            try:
+                pid = post.get("id", "?")
+                for s in post.get("slides", []):
+                    n_slides += 1
+                    for campo in ("kicker", "title", "sub", "body"):
+                        txt = s.get(campo, "")
+                        if not txt:
+                            continue
+                        issues = [(sev, regra, det) for sev, regra, det in auditar(txt, "mensagem")
+                                  if regra != "assinatura"]
+                        if issues:
+                            registra(f"carrossel:{pid}", pid, issues)
+            except Exception as e:
+                pid = post.get("id", "?") if isinstance(post, dict) else "?"
+                registra(f"carrossel:{pid}", pid,
+                         [("REVISAR", "carrossel_post_malformado",
+                           f"post malformado ignorado na auditoria CFM: {type(e).__name__}: {e}")])
+                print(f"AVISO: post carrossel '{pid}' malformado, pulado:", e)
+        print(f"carrossel.POSTS auditado: {len(POSTS)} posts / {n_slides} slides")
 
     # 2) Bibliotecas publicadas
     for arq in ["reels.json", "posts.json", "sequences.json", "stories.json"]:
