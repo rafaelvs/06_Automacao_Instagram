@@ -54,8 +54,20 @@ try:
 except Exception as _e:
     print(f"AVISO: SEO YouTube advisory falhou: {_e} (fail-open — nao afeta o gate).")
 
+# --- [v6] ALAVANCAS v6 (ADVISORY) — tripla-keyword + send-first + retencao/hook -------------------
+# Espelha [3b]: import + chamada em try/except (fail-open RUIDOSO). MEDE, por episodio, o gap das 3
+# alavancas v6 no conteudo atual. Soma SO em 'avisos'; NUNCA toca 'bloqueios' nem o sys.exit abaixo.
+print("\n=== [v6] tripla-keyword+send-first (advisory) ===")
+try:
+    import checar_v6
+    _v6 = checar_v6.relatorio_v6()
+    v6_gap = int(_v6.get("gap_total", 0))
+except Exception as e:
+    print("AVISO: advisory v6 falhou (fail-open — nao bloqueia):", e)
+    v6_gap = 0
+
 bloqueios = len(violacoes) + len(faltas)
-avisos = len(revisar) + len(so_corpo) + len(hook_fraco) + len(send_fraco) + send_libs_fraco
+avisos = len(revisar) + len(so_corpo) + len(hook_fraco) + len(send_fraco) + send_libs_fraco + v6_gap
 
 print("\n################ RESULTADO ################")
 print(f"BLOQUEIOS (VIOLACAO CFM + FALTA termo->popular): {bloqueios}")
