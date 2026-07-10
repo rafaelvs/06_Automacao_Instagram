@@ -478,10 +478,16 @@
       "kind": "seq",
       "media_id": "17900617521469947",
       "at": "2026-07-10T15:30:54.138003+00:00"
+    },
+    {
+      "id": "on_perna_torta_adulto",
+      "kind": "reel",
+      "media_id": "17935702212281172",
+      "at": "2026-07-10T18:06:16.311213+00:00"
     }
   ],
   "last_post_date": "2026-07-09",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-07-08",
+  "last_reel_date": "2026-07-10",
   "last_seq_date": "2026-07-10"
 }
