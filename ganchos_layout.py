@@ -36,6 +36,20 @@ def layout_para(episode_id: str) -> str:
     return LAYOUTS_ROT[idx]
 
 
+# ── Rotação de PALETA (esquema de cor) por episode_id — irmã de layout_para. ─────────────────
+# Roleta inclui 'classico' (identidade quente preto/creme/dourado) p/ o feed manter ~1/4 na marca,
+# + as 3 paletas usadas pela série pós-op. Sal distinto (+7, módulo 4) descorrela cor×composição.
+PALETAS_ROT = ["classico", "noturno_azul", "verde_clinico", "carvao_quente"]
+_SALT_PAL = 7
+def palette_para(episode_id: str) -> str:
+    """Paleta determinística do episódio (render_reel.PALETTES). Opt-in: grave em episode['palette']."""
+    eid = str(episode_id)
+    idx = (sum(map(ord, eid)) + _SALT_PAL) % len(PALETAS_ROT)
+    if eid.endswith("_kids"):
+        idx = (idx + 1) % len(PALETAS_ROT)   # par adulto+kids difere de cor tambem
+    return PALETAS_ROT[idx]
+
+
 def layout_para_sequencia(ids):
     """Atribuição BALANCEADA + anti-consecutivo + par-adulto/kids-nunca-igual, determinística.
     Parte do layout hash-preferido de cada episódio, mas escolhe o candidato MENOS USADO até então

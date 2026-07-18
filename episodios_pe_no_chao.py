@@ -144,6 +144,18 @@ EPISODES = [
   "caption":cap("Quando levar ao ortopedista infantil? 5 sinais: 1) manca ou evita pisar num pé; 2) protege sempre o mesmo lado; 3) dor que volta no mesmo lugar; 4) quedas e tropeços demais; 5) assimetria — um ombro, quadril ou perna diferente do outro. Sem pânico: na dúvida, avaliar cedo costuma simplificar tudo.","#ortopediainfantil #sinaisdealerta #quandoprocurar")},
 ]
 
+# ── ROLLOUT anti-templatização no feed (18/07/2026): layout + paleta rotacionados por id. ──
+# Aplica-se SÓ aos episódios PRÓPRIOS do Pé no Chão — roda ANTES dos merges abaixo, então os assets
+# mesclados depois ficam FORA: novos/lote já vêm rolados dos próprios módulos; a APRESENTAÇÃO
+# (vídeo institucional) e a série PÓS-OP permanecem INTOCADAS (classico). setdefault → opt-in
+# explícito por episódio ainda vence. Ver ganchos_layout (layout_para_sequencia / palette_para).
+import ganchos_layout as _gl
+_sem_lay = [_e for _e in EPISODES if "layout" not in _e]
+for _e, _lay in zip(_sem_lay, _gl.layout_para_sequencia([_e["id"] for _e in _sem_lay])):
+    _e["layout"] = _lay
+for _e in EPISODES:
+    _e.setdefault("palette", _gl.palette_para(_e["id"]))
+
 # LOTE 2026: 30 novos episódios narrados (18 "Osso Novo" + 12 "Pé no Chão") encadeados pela
 # Arquitetura de Ganchos 2026. Mantidos em módulo próprio p/ diff limpo; aqui só estendemos a lista.
 try:

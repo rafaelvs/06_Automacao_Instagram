@@ -488,6 +488,16 @@ PE_NO_CHAO_NOVOS = [
 
 NEW_EPISODES = OSSO_NOVO + PE_NO_CHAO_NOVOS
 
+# ── ROLLOUT anti-templatização no feed (18/07/2026): layout + paleta rotacionados por id. ──
+# setdefault → opt-in por episódio ainda vence. Já-publicados não mudam (publish.py pula ids
+# publicados); vale só p/ reels ainda não renderizados. Ver ganchos_layout / série pós-op.
+import ganchos_layout as _gl
+_sem_lay = [_e for _e in NEW_EPISODES if "layout" not in _e]
+for _e, _lay in zip(_sem_lay, _gl.layout_para_sequencia([_e["id"] for _e in _sem_lay])):
+    _e["layout"] = _lay
+for _e in NEW_EPISODES:
+    _e.setdefault("palette", _gl.palette_para(_e["id"]))
+
 if __name__ == "__main__":
     print(len(NEW_EPISODES), "novos episódios")
     for e in NEW_EPISODES:
