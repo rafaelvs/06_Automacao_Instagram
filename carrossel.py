@@ -32,54 +32,65 @@ def trk(d,xy,text,font,fill,tr,left=True):
     if not left:
         wt=sum(d.textlength(c,font=font)+tr for c in text)-tr;x-=wt
     for c in text:d.text((x,y),c,font=font,fill=fill);x+=d.textlength(c,font=font)+tr
-def base(motif=True):
+# Variacao visual por peca (regra 4 v6 — feedback Leo 08/07). ADITIVO/fail-safe: sem o modulo, GOLD.
+try:
+    import estilo_variacao as _EV
+except Exception:
+    _EV=None
+def _var(post_id):
+    return _EV.variante(post_id) if _EV else None
+def base(motif=True, var=None):
     img=Image.new("RGB",(W,H),INK); ov=Image.new("RGBA",(W,H),(0,0,0,0)); da=ImageDraw.Draw(ov)
     if motif:
-        cy=1180
-        for r in(560,470,380,300): da.arc([W//2-r,cy-r,W//2+r,cy+r],202,338,fill=(176,140,79,34),width=2)
+        if var and _EV: _EV.desenha_motivo(da,W,H,var["motivo"],var["acento"],alpha=58)
+        else:
+            cy=1180
+            for r in(560,470,380,300): da.arc([W//2-r,cy-r,W//2+r,cy+r],202,338,fill=(176,140,79,34),width=2)
     img=Image.alpha_composite(img.convert("RGBA"),ov).convert("RGB"); d=ImageDraw.Draw(img)
     d.text((M,86),"RV",font=F(SB,46),fill=CREAM); wf=d.textlength("RV",font=F(SB,46))
     d.line([(M+wf+20,94),(M+wf+20,132)],fill=GOLD,width=2)
     d.text((M+wf+36,90),"Dr. Rafael Vargas",font=F(NR,23),fill=CREAM); d.text((M+wf+36,120),"Ortopedia · São Paulo",font=F(NR,19),fill=GOLD)
     return img,d
-def footer(d,page,n,cta=False):
+def footer(d,page,n,cta=False,ac=GOLD):
     d.line([(M,H-150),(W-M,H-150)],fill=FAINT,width=2)
     d.text((M,H-128),"@rafaelvargasmd",font=F(NR,24),fill=MUT)
     d.text((M,H-94),SIG,font=F(NR,19),fill=MUT); d.text((M,H-64),DISC,font=F(NR,18),fill=MUT)
-    # indicador de paginas (bolinhas)
-    bx=W-M-(n*22); 
+    # indicador de paginas (bolinhas) — usa o acento da peca
+    bx=W-M-(n*22);
     for i in range(n):
-        c=GOLD if i==page else FAINT
+        c=ac if i==page else FAINT
         d.ellipse([bx+i*22, H-126, bx+i*22+10, H-116], fill=c)
 
 def render_post(post, outdir):
     sl=post["slides"]; n=len(sl); paths=[]
     os.makedirs(outdir, exist_ok=True)
+    var=_var(post.get("id","")); AC=var["acento"] if var else GOLD; DY=var["dy"] if var else 0
+    HE=var["hook_escala"] if var else 1.0
     for i,s in enumerate(sl):
-        img,d=base(motif=True)
-        trk(d,(M,300),s.get("kicker",("EDUCATIVO" if i==0 else "")).upper(),F(NB,24),GOLD,5)
-        d.line([(M,340),(M+58,340)],fill=GOLD,width=3)
+        img,d=base(motif=True,var=var)
+        trk(d,(M,300),s.get("kicker",("EDUCATIVO" if i==0 else "")).upper(),F(NB,24),AC,5)
+        d.line([(M,340),(M+58,340)],fill=AC,width=3)
         if i==0:  # CAPA
-            tf=F(SB,92); tl=wrap(s["title"],tf,W-2*M)
-            if len(tl)>3: tf=F(SB,76); tl=wrap(s["title"],tf,W-2*M)
-            ty=380
+            tf=F(SB,int(92*HE)); tl=wrap(s["title"],tf,W-2*M)
+            if len(tl)>3: tf=F(SB,int(76*HE)); tl=wrap(s["title"],tf,W-2*M)
+            ty=380+DY
             for ln in tl: d.text((M,ty),ln,font=tf,fill=CREAM); ty+=int(tf.size*1.08)
             if s.get("sub"):
                 ty+=24
                 for ln in wrap(s["sub"],F(NR,38),W-2*M): d.text((M,ty),ln,font=F(NR,38),fill=TXT); ty+=54
-            trk(d,(M,H-210),"ARRASTE →",F(NB,30),GOLD,4)
+            trk(d,(M,H-210),"ARRASTE →",F(NB,30),AC,4)
         elif s.get("cta"):
-            tf=F(SB,80); ty=400
+            tf=F(SB,80); ty=400+DY
             for ln in wrap(s["title"],tf,W-2*M): d.text((M,ty),ln,font=tf,fill=CREAM); ty+=int(tf.size*1.1)
             ty+=20
             for ln in wrap(s.get("sub",""),F(NR,38),W-2*M): d.text((M,ty),ln,font=F(NR,38),fill=TXT); ty+=54
-            d.text((M,H-250),"Agende pelo WhatsApp",font=F(NB,42),fill=GOLD); d.text((M,H-198),"link na bio",font=F(NR,34),fill=TXT)
+            d.text((M,H-250),"Agende pelo WhatsApp",font=F(NB,42),fill=AC); d.text((M,H-198),"link na bio",font=F(NR,34),fill=TXT)
         else:  # CONTEUDO
-            tf=F(SB,70); ty=400
+            tf=F(SB,70); ty=400+DY
             for ln in wrap(s["title"],tf,W-2*M): d.text((M,ty),ln,font=tf,fill=CREAM); ty+=int(tf.size*1.12)
             ty+=28
             for ln in wrap(s["body"],F(NR,42),W-2*M): d.text((M,ty),ln,font=F(NR,42),fill=TXT); ty+=60
-        footer(d,i,n,cta=s.get("cta",False))
+        footer(d,i,n,cta=s.get("cta",False),ac=AC)
         p=os.path.join(outdir,f"{post['id']}_{i+1}.jpg"); img.save(p,"JPEG",quality=92); paths.append("images/"+os.path.basename(p))
     return paths
 
