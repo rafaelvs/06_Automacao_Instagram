@@ -106,7 +106,7 @@ O `IG_ACCESS_TOKEN` expira em ~60 dias. Quando expirar, as publicações falham 
 | Reel não publica | Item não está no `reels.json` (ficou como `_preview_`) | **§2** |
 | "raw url" 404 | Path no JSON ≠ arquivo no repo | Rodar `python _auditoria_motor.py` (lista refs quebradas) |
 | Carrossel recusa `alt_text` nos filhos | Limite da API | Remover `alt_text` dos filhos (deixar só no container) |
-| Posta 2x | `id` repetido OU estado não commitado | Garantir `id` único; o `publish.yml` commita `state/published.json` |
+| Posta 2x | `id` repetido OU estado não commitado | Garantir `id` único. O `publish.yml` commita `state/published.json` com **retry** (5 tentativas, `pull --rebase`, backoff 10→50s) desde `09da55e` — se esgotar, o job **fica vermelho**; ver o log do step *"Salvar estado"* |
 | Nada publica há dias | Crons atrasando OU fila esgotada | Ver logs do Actions; conferir runway no `01_INVENTARIO §C` |
 
 ---
