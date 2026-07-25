@@ -1,0 +1,52 @@
+name: Renovar token do Instagram
+
+# Elimina a manutencao manual do IG_ACCESS_TOKEN. Roda toda semana e cada
+# renovacao devolve +60 dias, entao o token vive folgado e ainda sobram ~8
+# tentativas caso alguma falhe. A Meta exige que o token tenha >=24h de vida e
+# NAO esteja expirado - token que passa de 60 dias sem renovar morre de vez.
+#
+# Se este workflow ficar vermelho, o GitHub manda e-mail para o dono do repo.
+# Nao ignore: e' o unico aviso antes de a conta parar de publicar.
+
+on:
+  schedule:
+    - cron: "17 9 * * 1"     # Seg ~06:17 BRT (minuto quebrado: cron do GitHub atrasa menos fora do :00)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: instagram-refresh-token
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests pynacl
+      - name: Renovar o token e regravar o secret
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          GH_SECRETS_PAT: ${{ secrets.GH_SECRETS_PAT }}
+        run: python refresh_token.py
+      - name: Registrar a data da renovacao
+        # O token ja' foi renovado neste ponto - falhar o commit nao pode
+        # derrubar o job. O robo de publicacao commita 1-2x/dia, entao
+        # rebase antes de empurrar.
+        continue-on-error: true
+        run: |
+          if ! git diff --quiet -- state/token_refresh.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add state/token_refresh.json
+            git commit -m "Renova token do Instagram"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push
+          else
+            echo "Sem mudancas no registro."
+          fi

@@ -11,7 +11,7 @@ Pré-requisito: estar logado no `gh` (CLI) **ou** usar a interface web do GitHub
 | Soltar 1 reel novo na fila | **§1** (render) → **§2** (entrar no `reels.json`). |
 | Soltar 1 carrossel / story | **§3**. |
 | Testar publicação agora | **§4** (FORCE_ID). |
-| Renovar o token (a cada ~60d) | **§5**. |
+| Renovar o token | **Nada.** Automático (`refresh-token.yml`). Emergência: **§5**. |
 | Algo falhou | **§6** (troubleshooting). |
 
 ---
@@ -84,7 +84,15 @@ checa isso — rode antes de commitar se quiser garantir 0 refs quebradas).
 
 ---
 
-## 5. Renovar o token da Meta (a cada ~60 dias) — ÚNICA manutenção recorrente
+## 5. Renovar o token da Meta — AUTOMÁTICO desde 25/07/2026
+> ✅ **Não faça isso à mão.** O workflow `refresh-token.yml` renova o `IG_ACCESS_TOKEN`
+> sozinho toda segunda (~06:17 BRT) e regrava o próprio secret. Setup único e detalhes em
+> **`05_MANUTENCAO.md §0 e §1`**. Confira a última renovação em `state/token_refresh.json`.
+>
+> O procedimento manual abaixo virou **emergência**: só serve se o token for invalidado de
+> fora (senha trocada, app removido) ou se passar 60 dias sem renovar — aí a Meta o mata e
+> nem a automação o recupera.
+
 O `IG_ACCESS_TOKEN` expira em ~60 dias. Quando expirar, as publicações falham com erro de token.
 1. Gere um token novo de longa duração (passo da Parte A do `README.md` raiz, ou trocar o atual):
    `https://graph.instagram.com/access_token?grant_type=ig_exchange_token&client_secret=APP_SECRET&access_token=TOKEN_ATUAL`
@@ -114,5 +122,5 @@ O `IG_ACCESS_TOKEN` expira em ~60 dias. Quando expirar, as publicações falham 
 ## 7. Higiene recomendada (rotina leve)
 - **Mensal:** rodar `python _auditoria_motor.py` (saúde: refs quebradas, runway, órfãos).
 - **Quando a fila de um tipo < ~2 semanas:** reabastecer com os geradores 🔵.
-- **A cada ~55 dias:** renovar o token (§5).
+- ~~**A cada ~55 dias:** renovar o token.~~ → automático; ver `05_MANUTENCAO.md`.
 - **Trimestral:** revisar `images/_removidos_estetica/` e órfãs (limpeza).
