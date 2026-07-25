@@ -1,0 +1,222 @@
+{
+  "_meta": {
+    "proposito": "Texto de tela RECUPERADO POR TRANSCRICAO das imagens, para os itens cujo texto NAO existe em nenhum .py do repo. Sem este arquivo, stories orfaos e destaques sao impossiveis de auditar: o texto so existe dentro do pixel.",
+    "escopo": "26 stories orfaos (story01, story03-story27) + 7 destaques (dest01-dest07). Os demais stories (story28-story90) tem fonte viva em gerar_conteudo.py / stories_batch.py / stories_batch2.py e NAO entram aqui.",
+    "origem": "Transcricao automatica por IA (Claude) a partir de images/*.jpg em 2026-07-25.",
+    "revisado_por_medico": false,
+    "AVISO": "Enquanto revisado_por_medico=false, este arquivo NAO deve liberar publicacao. O lint deve tratar item nao-revisado como pendencia, nunca como aprovado. Conferir contra a imagem antes de virar a chave.",
+    "sig_visivel": "Verificado VISUALMENTE na imagem: 33 de 33 exibem 'CRM-SP 226103' e 'RQE 137901' no rodape. E isso que autoriza o lint a anexar SIG ao texto antes de auditar (mesmo contrato de sequencias_avulsas_lote2.py:410) sem gerar falso positivo da regra 'assinatura'.",
+    "disc_visivel": "ACHADO: 0 de 33 exibem o disclaimer 'Conteudo educativo · nao substitui avaliacao medica.'. Causa raiz: gerar_conteudo.story() desenha SIG mas nao desenha DISC, ao contrario de seq_story() (gerar_temporadas.py:39). Falha sistematica de render, invisivel para auditoria de legenda."
+  },
+  "textos": {
+    "story01": {
+      "kicker": "COMO EU PENSO",
+      "title": "Casos que não se resolvem com uma única cirurgia",
+      "sub": "Tratamento guiado e seriado — etapas, planejamento e acompanhamento.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false
+    },
+    "story03": {
+      "kicker": "SEM MEDO",
+      "title": "Fixador externo é uma ferramenta precisa",
+      "sub": "Sustenta e guia o osso enquanto ele se corrige, milímetro a milímetro.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false
+    },
+    "story04": {
+      "kicker": "ORTOPEDIA PEDIÁTRICA",
+      "title": "Joelhos “para dentro” que pioram?",
+      "sub": "Vale uma avaliação. Na dúvida, observar de perto é melhor que esperar.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false
+    },
+    "story05": {
+      "kicker": "QUANDO PROCURAR",
+      "title": "Fratura que não cola (pseudartrose)",
+      "sub": "Não é o fim do caminho. Procure um especialista em reconstrução.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false
+    },
+    "story06": {
+      "kicker": "É A MINHA ÁREA",
+      "title": "Uma perna mais curta que a outra?",
+      "sub": "Diferenças de comprimento podem ser reequilibradas — em crianças e adultos.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false
+    },
+    "story07": {
+      "kicker": "SEGUNDA OPINIÃO",
+      "title": "Já ouviu “não há mais o que fazer”?",
+      "sub": "Em muitos casos existe um caminho. Ele só precisa ser planejado.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false,
+      "observacoes": "ATENCAO CFM: enquadramento comparativo em relacao a outros profissionais. Nenhuma regex de PROMESSAS cobre isto hoje."
+    },
+    "story08": {
+      "kicker": "CALMA, PAIS",
+      "title": "Na criança, a maioria é observada",
+      "sub": "Não operada. A avaliação precoce permite agir na janela certa do crescimento.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false
+    },
+    "story09": {
+      "kicker": "COMO FUNCIONA",
+      "title": "O corpo forma osso novo",
+      "sub": "É isso que permite reconstruir e alongar, de forma gradual e guiada.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false
+    },
+    "story10": {
+      "kicker": "DIFERENCIAL",
+      "title": "Deformidades com doença de base",
+      "sub": "Mielomeningocele, raquitismo, osteogênese imperfeita — é a minha área.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false
+    },
+    "story11": {
+      "kicker": "CONSULTÓRIO",
+      "title": "Atendo na Av. Paulista",
+      "sub": "Bela Vista, São Paulo. Agende pelo link na bio.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false,
+      "observacoes": "Captacao/CTA sem disclaimer educativo."
+    },
+    "story12": {
+      "kicker": "VAMOS CONVERSAR",
+      "title": "Dúvidas sobre um caso?",
+      "sub": "Fale comigo pelo WhatsApp — link na bio.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false,
+      "observacoes": "Captacao/CTA sem disclaimer educativo."
+    },
+    "story13": {
+      "kicker": "VOCÊ SABIA?",
+      "title": "Realinhar o osso é possível",
+      "sub": "Técnicas de corrigir eixo e comprimento evoluíram muito nas últimas décadas.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false,
+      "observacoes": "Transcrito literalmente: 'Tecnicas de corrigir' (provavel erro de digitacao no render original; NAO corrigido)."
+    },
+    "story14": {
+      "kicker": "SINAIS NA CRIANÇA",
+      "title": "Pés muito “para dentro”?",
+      "sub": "Na maioria, melhora com o crescimento. Se piora ou é assimétrico, vale avaliar.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false
+    },
+    "story15": {
+      "kicker": "MITO X VERDADE",
+      "title": "“Fratura sempre cola sozinha”",
+      "sub": "Mito. Algumas viram pseudartrose e precisam de reconstrução.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false
+    },
+    "story16": {
+      "kicker": "CONCEITO",
+      "title": "Consolidação viciosa",
+      "sub": "É quando o osso cola torto. Dá para corrigir o eixo.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false
+    },
+    "story17": {
+      "kicker": "ACOLHIMENTO",
+      "title": "Cada caso tem seu tempo",
+      "sub": "Reconstrução não é corrida de velocidade — é de fundo.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false
+    },
+    "story18": {
+      "kicker": "PEDIÁTRICA",
+      "title": "Diferença de comprimento?",
+      "sub": "O acompanhamento permite corrigir na hora certa do crescimento.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false
+    },
+    "story19": {
+      "kicker": "QUANDO PROCURAR",
+      "title": "Infecção óssea deixou sequela?",
+      "sub": "Há caminhos de reconstrução. Vale uma avaliação.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false
+    },
+    "story20": {
+      "kicker": "É A MINHA ÁREA",
+      "title": "Ossos frágeis e deformidades",
+      "sub": "Osteogênese imperfeita e raquitismo têm tratamento.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false
+    },
+    "story21": {
+      "kicker": "COMPARTILHE",
+      "title": "Conhece alguém nessa situação?",
+      "sub": "Marque essa pessoa — informação ajuda a buscar o caminho certo.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false,
+      "observacoes": "CTA de compartilhamento sem disclaimer educativo."
+    },
+    "story22": {
+      "kicker": "DÚVIDA COMUM",
+      "title": "Volto a praticar esporte?",
+      "sub": "Depende do caso e da fase. O objetivo é devolver função.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false
+    },
+    "story23": {
+      "kicker": "PRIMEIRA CONSULTA",
+      "title": "O que levar?",
+      "sub": "Seus exames e o histórico do que já foi tentado.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false
+    },
+    "story24": {
+      "kicker": "VAMOS CONVERSAR",
+      "title": "Quer uma segunda opinião?",
+      "sub": "Me chame no WhatsApp — link na bio.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false,
+      "observacoes": "Captacao/CTA sem disclaimer educativo."
+    },
+    "story25": {
+      "kicker": "CUIDADOS",
+      "title": "Como cuidar do fixador em casa",
+      "sub": "Higiene simples e orientada evita problemas. Ensino cada passo na consulta.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false
+    },
+    "story26": {
+      "kicker": "SINAIS DE ALERTA",
+      "title": "Dor que muda de padrão?",
+      "sub": "Mudança súbita de dor, febre ou vermelhidão pedem contato rápido.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false
+    },
+    "story27": {
+      "kicker": "RECUPERAÇÃO",
+      "title": "O papel da fisioterapia",
+      "sub": "Mover com orientação, na hora certa, acelera a volta da função.",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false
+    },
+    "dest01": {
+      "kicker": "SOBRE",
+      "title": "Dr. Rafael Vargas",
+      "sub": "Médico ortopedista\nOrtopedia Pediátrica · Reconstrução e Alongamento Ósseo\nCrianças e adultos · casos de difícil solução",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false,
+      "observacoes": "O titulo serifado do card e literalmente 'Dr. Rafael Vargas', igual ao boilerplate do cabecalho."
+    },
+    "dest02": {
+      "kicker": "TRATAMENTOS",
+      "title": "Reconstrução e alongamento ósseo",
+      "sub": "Corrigir forma, eixo e comprimento do osso\nFixadores e correção gradual\nUm tratamento guiado e seriado",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false
+    },
+    "dest03": {
+      "kicker": "ORTOPEDIA PEDIÁTRICA",
+      "title": "Cuidar no tempo certo",
+      "sub": "Deformidades congênitas e adquiridas\nAcompanhar na janela certa do crescimento\nA maioria é observada, não operada",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false
+    },
+    "dest04": {
+      "kicker": "CASOS COMPLEXOS",
+      "title": "O que outros não resolveram",
+      "sub": "Deformidades, discrepâncias e pseudartroses\nSequelas de fraturas e infecções\nInclusive com doença de base",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false,
+      "observacoes": "ATENCAO CFM: 'O que outros nao resolveram' e enquadramento comparativo com outros profissionais. Nenhuma regex de PROMESSAS cobre isto hoje. 'Sequelas' aparece sem acento na imagem — transcrito literalmente."
+    },
+    "dest05": {
+      "kicker": "DÚVIDAS",
+      "title": "Dói? Quanto tempo? Volto a andar?",
+      "sub": "Depende de cada caso\nUm plano feito para a sua situação\nTraga sua dúvida pelo WhatsApp (link na bio)",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false,
+      "observacoes": "Captacao/CTA sem disclaimer educativo."
+    },
+    "dest06": {
+      "kicker": "CONSULTÓRIO",
+      "title": "Av. Paulista, 2064",
+      "sub": "21º andar · Bela Vista, São Paulo\nEspaço Livance\nAgende pelo WhatsApp (link na bio)",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "media", "revisado": false,
+      "observacoes": "Confianca MEDIA: nao da para distinguir 'º' (ordinal) de '°' (grau) em '21º andar' na resolucao disponivel. Captacao/CTA sem disclaimer."
+    },
+    "dest07": {
+      "kicker": "PARA COLEGAS",
+      "title": "Quando encaminhar",
+      "sub": "Discrepâncias, deformidades e pseudartroses\nSequelas e deformidades do desenvolvimento\nRecebo, planejo e devolvo o acompanhamento",
+      "sig_visivel": true, "disc_visivel": false, "confianca": "alta", "revisado": false,
+      "observacoes": "ORFAO: images/dest07.jpg existe no disco mas foi removido de destaques.json no commit cbd3aa3. Transcrito para completude; nao e publicado hoje. 'Sequelas' sem acento na imagem — literal."
+    }
+  }
+}
