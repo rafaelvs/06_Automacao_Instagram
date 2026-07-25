@@ -1,0 +1,52 @@
+{
+  "_sobre": "Ledger de publicacao no YouTube da serie 'Recuperacao' (34 episodios de episodios_pos_op.py). Espelha o modelo de state/published.json (Instagram), mas e mantido A MAO: o upload do YouTube e manual — ver docs/05_YOUTUBE.md. Ate 25/07/2026 nao existia NENHUM registro de o que estava publicado; o unico indicio era um comentario em _gen_seo_json.py:30, que estava ERRADO.",
+  "canal_id": "UCVxnOwRuauSrn9dJ-tNpSYw",
+  "levantado_em": "2026-07-25",
+  "fonte_do_levantamento": "YouTube Studio > Conteudo > Shorts (28 de 28), conferido titulo a titulo contra seo_episodios.json e, nos divergentes, contra o caption de episodios_pos_op.py",
+  "_como_atualizar": "Ao subir um episodio, mover o id de 'pendentes' para 'published' com video_id e a data (AAAA-MM-DD).",
+  "_titulos_sincronizados_25_07_2026": "Os 5 episodios publicados em 24-25/06 (antes do motor SEO v2) tinham titulo divergente entre canal e JSON. Por decisao do Rafael, o seo_episodios.json foi alinhado AO CANAL (JSON <- canal), para nao renomear video ja publicado. O title_alt de cada um foi preservado como esta. O que ainda NAO foi aplicado nesses 5 e a description + tags do JSON — a descricao no ar e a legenda do Instagram.",
+
+  "published": [
+    { "id": "gesso_pos_op",               "kind": "short", "video_id": "RfzvilhwgLM", "at": "2026-06-24", "titulo_sincronizado_em": "2026-07-25", "desc_no_ar": "legenda do Instagram — aplicar description + tags do seo_episodios.json" },
+    { "id": "gesso_pos_op_kids",          "kind": "short", "video_id": "EaO-Hs1LoIg", "at": "2026-06-24", "titulo_sincronizado_em": "2026-07-25", "desc_no_ar": "legenda do Instagram — aplicar description + tags do seo_episodios.json" },
+    { "id": "fixador_externo",            "kind": "short", "video_id": "dLqjPf9cl7w", "at": "2026-06-24", "titulo_sincronizado_em": "2026-07-25", "desc_no_ar": "legenda do Instagram — aplicar description + tags do seo_episodios.json" },
+    { "id": "fixador_externo_kids",       "kind": "short", "video_id": "zYQCCPtXx7o", "at": "2026-06-24", "titulo_sincronizado_em": "2026-07-25", "desc_no_ar": "legenda do Instagram — aplicar description + tags do seo_episodios.json" },
+    { "id": "carga_fisio",                "kind": "short", "video_id": "Xz0sr7GZU1s", "at": "2026-06-25", "titulo_sincronizado_em": "2026-07-25", "desc_no_ar": "legenda do Instagram — aplicar description + tags do seo_episodios.json" },
+    { "id": "artrorrise",                 "kind": "short", "video_id": "E2SiLshuMdU", "at": "2026-06-27" },
+    { "id": "artrorrise_kids",            "kind": "short", "video_id": "YEiSK_S3O4U", "at": "2026-06-27" },
+    { "id": "growth_guided",              "kind": "short", "video_id": "RcdnvW8ibuY", "at": "2026-06-30" },
+    { "id": "growth_guided_kids",         "kind": "short", "video_id": "3gGUZidbGxs", "at": "2026-06-30" },
+    { "id": "ferida_cirurgica",           "kind": "short", "video_id": "OedQuDfK9FI", "at": "2026-06-30" },
+    { "id": "ferida_cirurgica_kids",      "kind": "short", "video_id": "2yWcNSLvd08", "at": "2026-07-02" },
+    { "id": "dor_posop",                  "kind": "short", "video_id": "yMbeRDyE2zE", "at": "2026-07-02" },
+    { "id": "dor_posop_kids",             "kind": "short", "video_id": "3PHDAM7mZl8", "at": "2026-07-02" },
+    { "id": "edema",                      "kind": "short", "video_id": "Z7X08-UWG8M", "at": "2026-07-04" },
+    { "id": "edema_kids",                 "kind": "short", "video_id": "4-9NlGWbSZs", "at": "2026-07-04" },
+    { "id": "infeccao_ferida",            "kind": "short", "video_id": "RR6uPYHK3-U", "at": "2026-07-04" },
+    { "id": "infeccao_ferida_kids",       "kind": "short", "video_id": "GII53552vws", "at": "2026-07-07" },
+    { "id": "tvp",                        "kind": "short", "video_id": "mpOfg67Qqig", "at": "2026-07-07" },
+    { "id": "tvp_kids",                   "kind": "short", "video_id": "VTv6AIbzsH0", "at": "2026-07-07" },
+    { "id": "fisioterapia",               "kind": "short", "video_id": "aQhKKd5yavg", "at": "2026-07-09" },
+    { "id": "fisioterapia_kids",          "kind": "short", "video_id": "XkFQHNAm6lQ", "at": "2026-07-09" },
+    { "id": "retorno_atividades",         "kind": "short", "video_id": "7Se_hX-SIVQ", "at": "2026-07-09", "desc_desatualizada": "descricao no ar e a versao SEM a linha de pronto-socorro; corrigida no seo_episodios.json em 25/07/2026" },
+    { "id": "retorno_atividades_kids",    "kind": "short", "video_id": "OSgoavxQvko", "at": "2026-07-11", "desc_desatualizada": "idem — descricao no ar sem a linha de pronto-socorro" },
+    { "id": "ortese_bota",                "kind": "short", "video_id": "g9e1wqiVAWc", "at": "2026-07-11" },
+    { "id": "ortese_bota_kids",           "kind": "short", "video_id": "3tvzoyHdxm8", "at": "2026-07-11", "desc_desatualizada": "idem — descricao no ar sem a linha de pronto-socorro" },
+    { "id": "distracao_alongamento",      "kind": "short", "video_id": "Nu4LmEZjuNw", "at": "2026-07-14" },
+    { "id": "distracao_alongamento_kids", "kind": "short", "video_id": "s4XXU2gf9X0", "at": "2026-07-14" }
+  ],
+
+  "pendentes": [
+    "carga_fisio_kids",
+    "consolidacao",
+    "consolidacao_kids",
+    "retirada_fixador",
+    "retirada_fixador_kids",
+    "banho_posop",
+    "banho_posop_kids"
+  ],
+
+  "fora_da_serie": [
+    { "kind": "short", "video_id": "xG_LJX4ULPE", "at": "2026-06-23", "titulo_no_canal": "Dr. Rafael Vargas — Ortopedista | Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica", "nota": "video de apresentacao do canal (episodio_apresentacao.py) — nao faz parte dos 34 da serie Recuperacao" }
+  ]
+}

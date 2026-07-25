@@ -8,6 +8,8 @@ Organização criada em **23/06/2026**. Comece por aqui.
 | [02_RUNBOOK.md](02_RUNBOOK.md) | **Como usar no dia a dia**: render, publicar, token, troubleshooting. |
 | [03_AUDITORIA.md](03_AUDITORIA.md) | Saúde do motor (runway, refs quebradas, pontos de atenção). |
 | [04_ORGANIZACAO_PROPOSTA.md](04_ORGANIZACAO_PROPOSTA.md) | Estrutura-alvo + plano de migração seguro (em fases). |
+| [05_YOUTUBE.md](05_YOUTUBE.md) | **Série "Recuperação" no YouTube**: o que está no ar, decisões (upload manual, gate CFM) e runbook. |
+| [05a_YOUTUBE_COLAR.md](05a_YOUTUBE_COLAR.md) | Título/descrição/tags prontos para colar no YouTube Studio (gerado de `seo_episodios.json`). |
 
 **Auditoria reproduzível:** `python _auditoria_motor.py` (na raiz do repo).
 
