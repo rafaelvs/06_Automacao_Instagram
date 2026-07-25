@@ -4,7 +4,20 @@ Por que: o agendador interno do GitHub é "melhor esforço" e atrasa (buracos de
 O cron-job.org chama a API do GitHub no horário exato e **força** o workflow a rodar.
 O robô (publish.py) continua decidindo o que publicar pela data/hora — o cron-job só dá o "start".
 
-Resultado: post sai Ter/Qui/Sáb 19:00 e story Seg/Qua/Sex 12:30, pontual, de graça.
+Resultado: as publicações saem no horário-alvo, pontuais, de graça.
+
+## Agenda real (fonte da verdade: `publish.py` linhas 23-30)
+
+| O quê | Dias | Hora (BRT) |
+|---|---|---|
+| **POSTS** (carrossel de feed) | Ter / Qui / Sáb | 15:00 |
+| **CARROSSEL EXTRA** (4º da semana) | Dom | 11:00 |
+| **SEQUÊNCIAS** (story serializado, 5 frames em bloco) | **todos os dias** | 12:30 |
+| **REELS** | Seg / Qua / Sex / **Dom** | 15:00 |
+
+> ⚠️ Agenda **atualizada em 25/07/2026**. A anterior (posts 19:00, stories 12:30 em Seg/Qua/Sex)
+> está obsoleta — os horários migraram para o pico de audiência de 12h-15h (auditoria jun/2026).
+> O `publish.py` é quem decide o que publicar; o cron-job só dá o "start" pontual.
 
 ---
 
@@ -57,15 +70,30 @@ mudando só a agenda.
 
 > O cabeçalho **User-Agent** é obrigatório na API do GitHub — sem ele dá erro 403.
 
-### Cronjob 1 — POSTS
-- **Title:** Instagram POSTS
-- **Time zone:** America/Sao_Paulo
-- **Schedule:** dias **Ter, Qui, Sáb** · hora **19:00**
+Como POSTS (Ter/Qui/Sáb 15:00) e REELS (Seg/Qua/Sex/Dom 15:00) juntos cobrem **os 7 dias
+às 15:00**, dois cronjobs bastam para a janela principal:
 
-### Cronjob 2 — STORIES
-- **Title:** Instagram STORIES
+### Cronjob 1 — JANELA DAS 15h (posts + reels)
+- **Title:** Instagram 15h (posts + reels)
 - **Time zone:** America/Sao_Paulo
-- **Schedule:** dias **Seg, Qua, Sex** · hora **12:30**
+- **Schedule:** **todos os dias** · hora **15:00**
+- Cobre: POSTS Ter/Qui/Sáb **e** REELS Seg/Qua/Sex/Dom.
+
+### Cronjob 2 — JANELA DAS 12h30 (sequências)
+- **Title:** Instagram 12h30 (sequências)
+- **Time zone:** America/Sao_Paulo
+- **Schedule:** **todos os dias** · hora **12:30**
+- Cobre: a sequência diária (5 frames em bloco).
+
+### Cronjob 3 — CARROSSEL EXTRA de domingo *(opcional)*
+- **Title:** Instagram 11h domingo (carrossel extra)
+- **Time zone:** America/Sao_Paulo
+- **Schedule:** dia **Dom** · hora **11:00**
+- Sem ele, o carrossel de domingo ainda sai — mas depende do catch-all `*/30` do GitHub,
+  que é "melhor esforço" e pode atrasar 1-2h. É o único item da agenda sem gatilho pontual.
+
+> Disparar o workflow fora da janela é inofensivo: o `publish.py` confere data/hora e o
+> `state/published.json` impede repetição. Disparo a mais nunca duplica publicação.
 
 ---
 

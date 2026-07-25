@@ -89,8 +89,12 @@ O `IG_ACCESS_TOKEN` expira em ~60 dias. Quando expirar, as publicações falham 
 1. Gere um token novo de longa duração (passo da Parte A do `README.md` raiz, ou trocar o atual):
    `https://graph.instagram.com/access_token?grant_type=ig_exchange_token&client_secret=APP_SECRET&access_token=TOKEN_ATUAL`
 2. GitHub → repo → **Settings → Secrets and variables → Actions → `IG_ACCESS_TOKEN` → Update**.
-> 📌 Lembrete: a memória [[linkedin-automacao-conteudo]] tem o mesmo padrão de token manual ~60d.
-> Vale agendar um lembrete recorrente (a cada ~55 dias) para trocar antes de expirar.
+3. **Anotar a data em `05_MANUTENCAO.md §1`** (só a data — nunca o token; o repo é público).
+
+> 📌 A data real da última troca está na coluna **Updated** do secret, no GitHub. O que estiver
+> escrito no repositório é estimativa.
+> ✅ Lembrete recorrente (55 dias) já ativo no Google Calendar: *"🔑 Renovar IG_ACCESS_TOKEN"*.
+> 📌 A memória [[linkedin-automacao-conteudo]] tem o mesmo padrão de token manual ~60d.
 
 ---
 

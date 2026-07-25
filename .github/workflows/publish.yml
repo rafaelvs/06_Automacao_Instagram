@@ -9,9 +9,9 @@ on:
     - cron: "0,10,20,35,50 18 * * 2,4,6"    # POSTS ~15:00 BRT (Ter/Qui/Sab)
     - cron: "5,20,40 19 * * 2,4,6"          # POSTS reforco
     - cron: "0,15,35 14 * * 0"              # CARROSSEL EXTRA ~11:00 BRT (Dom) - 4o/sem, dia-duplo c/ Reel
-    - cron: "30,40,50 15 * * *"               # STORIES ~12:30 BRT (Seg/Qua/Sex)
-    - cron: "0,15,35 16 * * *"                # STORIES reforco
-    - cron: "0,10,20,35,50 18 * * 0,1,3,5"    # REELS ~15:00 BRT (Seg/Qua/Sex)
+    - cron: "30,40,50 15 * * *"               # SEQUENCIAS ~12:30 BRT (TODOS os dias) - 5 frames em bloco
+    - cron: "0,15,35 16 * * *"                # SEQUENCIAS reforco
+    - cron: "0,10,20,35,50 18 * * 0,1,3,5"    # REELS ~15:00 BRT (Seg/Qua/Sex/Dom)
     - cron: "5,20,40 19 * * 0,1,3,5"          # REELS reforco
   workflow_dispatch:
     inputs:
