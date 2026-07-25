@@ -65,6 +65,34 @@ jobs:
           set -o pipefail
           python gate_publicacao.py 2>&1 | tee gate.log
 
+      # Bateria adversarial: falha (exit 1) SO em regressao de caso critico.
+      # Os GAPs conhecidos (furo #8) sao reportados sem quebrar o build.
+      - name: Bateria adversarial dos guardrails
+        if: always()
+        shell: bash
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          set -o pipefail
+          python testes_guardrails.py 2>&1 | tee testes.log
+
+      # As contagens ficam presas no log, cujo download exige token de admin.
+      # Emitidas como ANOTACOES, ficam legiveis pela API de check-runs sem login —
+      # e aparecem no topo da pagina do run, sem precisar abrir step nenhum.
+      - name: Expor contagens como anotacoes
+        if: always()
+        shell: bash
+        run: |
+          emit() {
+            [ -f "$1" ] || return 0
+            grep -E "$2" "$1" | while IFS= read -r l; do
+              echo "::notice title=$3::${l}"
+            done
+          }
+          emit gate.log   '^(BLOQUEIOS|avisos|  \[advisory frames\]|>>>)' 'Gate CFM'
+          emit gate.log   '^(sequencias:|stories:|destaques:|VIOLACAO:|REVISAR:|SEM TEXTO|TRANSCRITOS|SEM DISCLAIMER)' 'Frames'
+          emit testes.log '^(casos:|FALHA:|OK:)' 'Bateria adversarial'
+
       # O Rafael nao abre log de Actions. O resultado vai para o Job Summary,
       # visivel na primeira tela do run.
       - name: Resumo no Job Summary
@@ -76,7 +104,8 @@ jobs:
             echo ""
             if [ -f gate.log ]; then
               echo '```'
-              grep -E "^(BLOQUEIOS|avisos|>>>)" gate.log || echo "(gate nao chegou ao bloco RESULTADO)"
+              grep -E "^(BLOQUEIOS|avisos|  \[advisory frames\]|>>>)" gate.log \
+                || echo "(gate nao chegou ao bloco RESULTADO)"
               echo '```'
               echo ""
               echo "<details><summary>Saida completa do gate</summary>"
@@ -89,12 +118,30 @@ jobs:
             else
               echo "**O gate nao produziu log** — falhou antes de rodar (veja os steps acima)."
             fi
+            if [ -f testes.log ]; then
+              echo ""
+              echo "### Bateria adversarial"
+              echo ""
+              echo '```'
+              grep -E "^casos:" testes.log || true
+              echo '```'
+              echo ""
+              echo "<details><summary>Saida completa da bateria</summary>"
+              echo ""
+              echo '```text'
+              cat testes.log
+              echo '```'
+              echo ""
+              echo "</details>"
+            fi
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Guardar log do gate
+      - name: Guardar logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: gate-cfm-log
-          path: gate.log
+          path: |
+            gate.log
+            testes.log
           if-no-files-found: warn
