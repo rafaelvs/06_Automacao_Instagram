@@ -11,7 +11,14 @@ CFM + WhatsApp + hashtags) e TAGS (semânticas por episódio). Fundamentado em E
 Versão 2 (03/07/2026): + 3 padrões de título (8 no total); + _EPISODE_TAGS (long-tail semânticos
 por episódio, baseados em linguagem de paciente); + _SEARCH_INTENT (intenções de busca por episódio,
 para guiar refinamento manual); + titulo_alt() para A/B; + score_seo() como gate de qualidade.
+
+Versão 2.1 (25/07/2026): encurtamento de título passou a respeitar fronteira de palavra (antes
+cortava cru no char 92 e produzia "(guia para os pai #Shorts"), e o padrão não repete mais uma
+expressão que o foco já contém ("...no pós-operatório no pós-operatório — o que fazer").
 """
+import re
+import unicodedata
+
 SIG = ("Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — "
        "Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.")
 DISC = "Conteúdo educativo, não substitui a avaliação do seu médico."
@@ -19,8 +26,13 @@ WPP = "Dúvidas de rotina: WhatsApp (11) 3280-1413."
 
 # ── PADRÕES DE TÍTULO (8 padrões, variam por episódio → anti-templatização) ──────────────────
 # {foco} = tema do episódio (ex.: "Gesso no pós-operatório").
-# {pais} = "" para adulto; " (guia para os pais)" para _kids.
+# {pais} = "" para adulto; PAIS_SUFIXO para _kids.
 # P0-P4: originais. P5-P7: novos (busca semântica + E-E-A-T).
+TITLE_MAX   = 100                      # limite duro do YouTube
+TITLE_MIN   = 45                       # abaixo disso o título é curto demais (ver score_seo)
+SHORTS      = " #Shorts"
+PAIS_SUFIXO = " (guia para os pais)"
+
 TITLE_PATTERNS = [
     "{foco}: cuidados e sinais de alarme{pais}",                         # P0 - classic alarm
     "Saiu de cirurgia? {foco}{pais}",                                     # P1 - post-op hook
@@ -31,6 +43,23 @@ TITLE_PATTERNS = [
     "{foco}: quando chamar o médico — e quando não precisa{pais}",        # P6 - decision tree
     "Cirurgião explica: {foco}{pais}",                                    # P7 - E-E-A-T / autoridade
 ]
+
+# Trechos que o PADRÃO acrescenta e que vários FOCOs já trazem embutidos — ver o mapa FOCO em
+# _gen_seo_json.py ("Dor no pós-operatório", "Bota ortopédica em criança no pós-operatório", ...).
+# Sem isto, padrão + foco duplicava a expressão: o title_alt de ortese_bota_kids saía
+# "Bota ortopédica em criança no pós-operatório no pós-operatório — o que fazer".
+# Quando o foco já contém o trecho, o padrão não o repete.
+_TRECHOS_REDUNDANTES = (
+    " no pós-operatório",   # P2
+    "Pós-operatório: ",     # P3
+)
+
+# Separadores que um corte pode deixar pendurados no fim do título.
+_SEPARADORES = " ,;:—–-"
+
+# Fim de oração: cortar aqui devolve um título inteiro em vez de uma frase pela metade.
+# "?" e "." fecham a oração e ficam; ":" e "—" só anunciam o que vem depois, então saem junto.
+_FIM_DE_ORACAO = re.compile(r"[?!.]|[:—–]")
 
 # ── TAGS SEMÂNTICAS POR EPISÓDIO ────────────────────────────────────────────────────────────
 # Long-tail + linguagem de paciente (o que o paciente realmente digita no YouTube).
@@ -280,28 +309,92 @@ _SEARCH_INTENT = {
 def _is_kids(eid): return str(eid).endswith("_kids")
 
 
+def _norm(s):
+    """Minúsculas, sem acento, pontuação → espaço, com folga nas bordas.
+    Serve para comparar trecho do padrão × foco sem depender de grafia."""
+    s = unicodedata.normalize("NFD", s.lower())
+    s = "".join(c for c in s if unicodedata.category(c) != "Mn")
+    return " " + re.sub(r"[^a-z0-9]+", " ", s).strip() + " "
+
+
+def _sem_redundancia(padrao, foco):
+    """Tira do PADRÃO os trechos que o FOCO já contém — evita 'no pós-operatório' duplicado."""
+    foco_n = _norm(foco)
+    for trecho in _TRECHOS_REDUNDANTES:
+        if trecho in padrao and _norm(trecho) in foco_n:
+            padrao = padrao.replace(trecho, "", 1)
+    return padrao
+
+
+def _limpa_borda(t):
+    """Tira separador solto e parêntese aberto sem fechar que um corte tenha deixado."""
+    t = t.rstrip(_SEPARADORES)
+    if t.count("(") > t.count(")"):
+        t = t[:t.rfind("(")].rstrip(_SEPARADORES)
+    return t
+
+
+def _corta_em_palavra(t, limite):
+    """Encurta t para <= limite cortando SÓ em fronteira de palavra — nunca no meio dela."""
+    if len(t) <= limite:
+        return t
+    corte = ""
+    for palavra in t.split(" "):
+        candidato = f"{corte} {palavra}" if corte else palavra
+        if len(candidato) > limite:
+            break
+        corte = candidato
+    # fallback só se a 1ª palavra sozinha estourar o limite — não ocorre com os padrões atuais.
+    return _limpa_borda(corte) or t[:limite].rstrip()
+
+
+def _corta_em_oracao(t, limite):
+    """Maior corte que cabe em <= limite terminando em fim de oração. "" se nenhum servir."""
+    melhor = ""
+    for m in _FIM_DE_ORACAO.finditer(t):
+        fim = m.end() if m.group() in "?!." else m.start()   # ":"/"—" saem; "?"/"." ficam
+        trecho = _limpa_borda(t[:fim])
+        if TITLE_MIN <= len(trecho) <= limite and len(trecho) > len(melhor):
+            melhor = trecho
+    return melhor
+
+
+def _encaixa(t, limite):
+    """Ajusta t para <= limite sem quebrar palavra: 1) descarta o '(guia para os pais)' INTEIRO;
+    2) corta no fim de oração que couber; 3) só então corta em fronteira de palavra."""
+    if len(t) <= limite:
+        return t
+    if PAIS_SUFIXO in t:
+        t = t.replace(PAIS_SUFIXO, "", 1).rstrip()
+    if len(t) <= limite:
+        return t
+    return _corta_em_oracao(t, limite) or _corta_em_palavra(t, limite)
+
+
+def _monta_titulo(padrao, foco, kids):
+    """Formata o padrão com o foco (sem redundância) e garante ' #Shorts' dentro dos 100 chars."""
+    pais = PAIS_SUFIXO if kids else ""
+    t = _sem_redundancia(padrao, foco).format(foco=foco, pais=pais).strip()
+    if "#shorts" in t.lower():
+        return _encaixa(t, TITLE_MAX)
+    return _encaixa(t, TITLE_MAX - len(SHORTS)) + SHORTS
+
+
 def titulo(episode, foco, idx=None):
     """Título variado e dentro do limite (100 chars). foco = tema curto (ex.: 'Gesso no pós-operatório')."""
-    eid = episode["id"]; pais = " (guia para os pais)" if _is_kids(eid) else ""
+    eid = episode["id"]
     i = (idx if idx is not None else sum(map(ord, eid))) % len(TITLE_PATTERNS)
-    t = TITLE_PATTERNS[i].format(foco=foco, pais=pais)
-    if "#shorts" not in t.lower():
-        t = (t[:100 - len(" #Shorts")]).rstrip() + " #Shorts"
-    return t[:100]
+    return _monta_titulo(TITLE_PATTERNS[i], foco, _is_kids(eid))
 
 
 def titulo_alt(episode, foco, avoid=None):
     """Título alternativo para A/B (padrão seguinte na roleta).
     avoid: string a evitar (ex.: título original já publicado) — avança +1 até diferir."""
-    eid = episode["id"]; pais = " (guia para os pais)" if _is_kids(eid) else ""
+    eid = episode["id"]
     base = sum(map(ord, eid))
     n = len(TITLE_PATTERNS)
     for offset in range(1, n):
-        i = (base + offset) % n
-        t = TITLE_PATTERNS[i].format(foco=foco, pais=pais)
-        if "#shorts" not in t.lower():
-            t = (t[:100 - len(" #Shorts")]).rstrip() + " #Shorts"
-        t = t[:100]
+        t = _monta_titulo(TITLE_PATTERNS[(base + offset) % n], foco, _is_kids(eid))
         if avoid is None or t != avoid:
             return t
     return t  # fallback: retorna o último (não deve ocorrer)
@@ -341,11 +434,11 @@ def score_seo(title, description, tags_list):
     """Gate de qualidade SEO. Retorna (score 0-100, lista de issues)."""
     issues = []
     score = 100
-    if len(title) < 45:
-        issues.append(f"título curto ({len(title)} chars; ideal ≥ 45)")
+    if len(title) < TITLE_MIN:
+        issues.append(f"título curto ({len(title)} chars; ideal ≥ {TITLE_MIN})")
         score -= 15
-    if len(title) > 100:
-        issues.append(f"título longo ({len(title)} chars; limite = 100)")
+    if len(title) > TITLE_MAX:
+        issues.append(f"título longo ({len(title)} chars; limite = {TITLE_MAX})")
         score -= 20
     if "#shorts" not in title.lower():
         issues.append("título sem #Shorts")

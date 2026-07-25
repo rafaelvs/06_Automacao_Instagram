@@ -14,6 +14,9 @@ Critérios verificados:
   6. ≥ 10 tags únicas
   7. title_alt presente e diferente do title
   8. search_intent presente (≥ 1 item)
+  9. title_alt entre 45 e 100 chars
+ 10. title_alt íntegro (sem corte no meio da palavra/parêntese)
+ 11. title_alt sem expressão duplicada
 
 Isenção: os 28 episódios EP07-28 já publicados no canal não são cobrados no
 critério 1 (comprimento mínimo do título) — ver TITULO_DO_CANAL abaixo. A isenção
@@ -26,11 +29,41 @@ import seo_youtube as seo
 
 JSON_PATH = os.path.join(os.path.dirname(__file__), "seo_episodios.json")
 
+
+# ─── Sanidade do title_alt ──────────────────────────────────────────────────────
+# title_alt é só sugestão de A/B — não vai para o ar sem o Rafael escolher. Mas se
+# for escolhido, vai como está. Estas checagens pegam os dois defeitos que o motor
+# já teve e que passaram batido enquanto o lint só olhava presença/diferença:
+# corte cru no char 92 ("...(guia para os pai #Shorts") e expressão duplicada
+# ("...no pós-operatório no pós-operatório — o que fazer").
+
+def _corpo_alt(alt):
+    """title_alt sem o sufixo ' #Shorts' — o texto que o motor de fato montou."""
+    return alt[:-len(seo.SHORTS)] if alt.endswith(seo.SHORTS) else alt
+
+
+def _alt_integro(alt):
+    """False quando o texto tem cara de corte cru: parêntese aberto sem fechar
+    (foi assim que '(guia para os pais)' virou '(guia para os pai') ou separador
+    solto no fim."""
+    corpo = _corpo_alt(alt)
+    if corpo.count("(") != corpo.count(")"):
+        return False
+    return corpo == corpo.rstrip(seo._SEPARADORES)
+
+
+def _alt_sem_duplicata(alt):
+    """False quando alguma expressão de 2+ palavras aparece duas vezes no título."""
+    palavras = seo._norm(_corpo_alt(alt)).split()
+    bigramas = [" ".join(palavras[i:i + 2]) for i in range(len(palavras) - 1)]
+    return len(bigramas) == len(set(bigramas))
+
+
 RULES = [
-    ("TITLE_LEN_MIN",  lambda e: len(e["title"]) >= 45,
-     "título muito curto (< 45 chars; atual={len_title})"),
-    ("TITLE_LEN_MAX",  lambda e: len(e["title"]) <= 100,
-     "título muito longo (> 100 chars; atual={len_title})"),
+    ("TITLE_LEN_MIN",  lambda e: len(e["title"]) >= seo.TITLE_MIN,
+     f"título muito curto (< {seo.TITLE_MIN} chars; atual={{len_title}})"),
+    ("TITLE_LEN_MAX",  lambda e: len(e["title"]) <= seo.TITLE_MAX,
+     f"título muito longo (> {seo.TITLE_MAX} chars; atual={{len_title}})"),
     ("TITLE_SHORTS",   lambda e: "#shorts" in e["title"].lower(),
      "título sem #Shorts"),
     ("DESC_LEN",       lambda e: len(e["description"]) >= 200,
@@ -46,12 +79,21 @@ RULES = [
      "title_alt ausente ou igual ao title"),
     ("SEARCH_INTENT",  lambda e: bool(e.get("search_intent")),
      "search_intent ausente"),
+    ("ALT_LEN_MIN",    lambda e: len(e.get("title_alt") or "") >= seo.TITLE_MIN,
+     f"title_alt muito curto (< {seo.TITLE_MIN} chars; atual={{len_alt}})"),
+    ("ALT_LEN_MAX",    lambda e: len(e.get("title_alt") or "") <= seo.TITLE_MAX,
+     f"title_alt muito longo (> {seo.TITLE_MAX} chars; atual={{len_alt}})"),
+    ("ALT_INTEGRO",    lambda e: _alt_integro(e.get("title_alt") or ""),
+     "title_alt truncado (parêntese aberto ou separador solto no fim)"),
+    ("ALT_SEM_DUP",    lambda e: _alt_sem_duplicata(e.get("title_alt") or ""),
+     "title_alt com expressão duplicada"),
 ]
 
 WEIGHTS = {
     "TITLE_LEN_MIN": 10, "TITLE_LEN_MAX": 15, "TITLE_SHORTS": 10,
     "DESC_LEN": 10, "DESC_ALARME": 15, "DESC_CRM": 20,
     "TAGS_COUNT": 10, "TITLE_ALT": 5, "SEARCH_INTENT": 5,
+    "ALT_LEN_MIN": 5, "ALT_LEN_MAX": 5, "ALT_INTEGRO": 5, "ALT_SEM_DUP": 5,
 }
 
 # ─── Títulos preservados do canal (EP07-28) ─────────────────────────────────────
@@ -88,6 +130,7 @@ def _fmt(msg, e):
         len_title=len(e["title"]),
         len_desc=len(e["description"]),
         n_tags=len(e.get("tags", [])),
+        len_alt=len(e.get("title_alt") or ""),
     )
 
 
