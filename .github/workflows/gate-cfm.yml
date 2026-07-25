@@ -83,15 +83,24 @@ jobs:
         if: always()
         shell: bash
         run: |
-          emit() {
-            [ -f "$1" ] || return 0
-            grep -E "$2" "$1" | while IFS= read -r l; do
-              echo "::notice title=$3::${l}"
-            done
-          }
-          emit gate.log   '^(BLOQUEIOS|avisos|  \[advisory frames\]|>>>)' 'Gate CFM'
-          emit gate.log   '^(sequencias:|stories:|destaques:|VIOLACAO:|REVISAR:|SEM TEXTO|TRANSCRITOS|SEM DISCLAIMER)' 'Frames'
-          emit testes.log '^(casos:|FALHA:|OK:)' 'Bateria adversarial'
+          # O GitHub mostra no MAXIMO 10 anotacoes por tipo/step. A primeira versao
+          # emitia uma por linha e estourou o teto — a bateria adversarial e o
+          # detalhamento de REVISAR por regra foram truncados silenciosamente.
+          # Aqui consolidamos: poucas anotacoes, densas, em ordem de importancia.
+          note() { echo "::notice title=$1::$2"; }
+          g() { grep -m1 -- "$1" "$2" 2>/dev/null || echo "n/d"; }
+
+          if [ -f gate.log ]; then
+            note 'Gate CFM'    "$(g '^BLOQUEIOS' gate.log) || $(g '^avisos' gate.log)"
+            note 'Frames'      "$(g '\[advisory frames\]' gate.log)"
+            note 'Cobertura'   "$(g '^sequencias:' gate.log) || $(g '^stories:' gate.log) || $(g '^destaques:' gate.log)"
+            note 'REVISAR CFM' "$(g '^REVISAR (conferir' gate.log)"
+            note 'REVISAR frm' "$(g '^REVISAR:' gate.log)"
+            note 'Disclaimer'  "$(g '^SEM DISCLAIMER' gate.log)"
+          fi
+          if [ -f testes.log ]; then
+            note 'Bateria' "$(g '^casos:' testes.log)"
+          fi
 
       # O Rafael nao abre log de Actions. O resultado vai para o Job Summary,
       # visivel na primeira tela do run.
