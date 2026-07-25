@@ -102,6 +102,16 @@ jobs:
             note 'Bateria' "$(g '^casos:' testes.log)"
           fi
 
+          # Os ACHADOS em si (nao so as contagens). Uma anotacao unica com quebras
+          # de linha escapadas: o teto de 10 por tipo tornaria inviavel uma por achado,
+          # e o log completo exige token de admin para baixar.
+          # Escape exigido pelo Actions: '%' -> %25, CR -> %0D, LF -> %0A (nesta ordem).
+          if [ -f gate.log ]; then
+            v=$(grep -E '^\s*\[VIOLACAO\]' gate.log | head -40 \
+                | sed 's/%/%25/g; s/\r/%0D/g' | awk '{printf "%s%%0A", $0}')
+            [ -n "$v" ] && echo "::error title=Achados VIOLACAO::${v}"
+          fi
+
       # O Rafael nao abre log de Actions. O resultado vai para o Job Summary,
       # visivel na primeira tela do run.
       - name: Resumo no Job Summary
