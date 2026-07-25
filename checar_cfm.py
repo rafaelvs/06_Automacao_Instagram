@@ -32,8 +32,10 @@ def auditar_seo_youtube(caminho=None):
     NÃO passavam por cfm_guardrails.auditar. Aqui rodamos os MESMOS guardrails sobre eles:
       - title, title_alt, description  -> contexto 'publico'
       - tags (juntas)                  -> contexto 'mensagem'
-    Só REPORTA (não bloqueia). Ver comentário no gate: promover isto a blocking — ou plugar
-    o guardrail DENTRO da publicação do YouTube (_cfm_guard) — é decisão do Rafael.
+    Esta função só REPORTA — é assim que gate_publicacao.py (Instagram) a consome.
+    DECIDIDO (25/07/2026, Rafael): quem BLOQUEIA em VIOLACAO é gate_youtube.py, um gate próprio
+    do caminho YouTube que chama esta mesma função e derruba o exit. Os dois canais seguem
+    desacoplados de propósito — não promover este advisory dentro do gate do Instagram.
 
     fail-open RUIDOSO: se seo_episodios.json não existir ou falhar o load, imprime AVISO e
     segue (retorna listas vazias) — NUNCA trava o gate.

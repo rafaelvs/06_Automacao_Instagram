@@ -41,10 +41,10 @@ except Exception as e:
 
 # --- COBERTURA ADITIVA (ADVISORY): CFM sobre metadados publicos do YouTube (seo_episodios.json) ---
 # Fecha a brecha em que title/title_alt/description/tags do motor SEO v2 nao passavam pelos
-# guardrails CFM. E AVISO: NAO entra em BLOQUEIOS nem no exit — o gate do IG e a pipeline do
+# guardrails CFM. AQUI e AVISO: NAO entra em BLOQUEIOS nem no exit — o gate do IG e a pipeline do
 # YouTube sao desacoplados por design do Rafael (um titulo de YT nao pode travar a publicacao do IG).
-# Promover isto a blocking, ou plugar o guardrail DENTRO da publicacao do YouTube (_cfm_guard),
-# e decisao do Rafael.
+# DECIDIDO (25/07/2026, Rafael): quem BLOQUEIA em VIOLACAO e gate_youtube.py, gate proprio do
+# caminho YouTube. Este bloco fica advisory DE PROPOSITO — nao promover a blocking aqui.
 print("\n=== [extra] CFM advisory — SEO YouTube (seo_episodios.json) ===")
 try:
     seo_yt_viol, seo_yt_rev = checar_cfm.auditar_seo_youtube()
