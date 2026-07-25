@@ -156,6 +156,15 @@ CASOS = [
     (f"Mito x Verdade · “Já disseram que não há o que fazer” · O mito do caso perdido. {SIG}",
      "publico", False, None, False, True,
      "frase rotulada como MITO — 3 frames reais da temporada Complexos"),
+
+    # A LINHA entre descrever crenca alheia e usar o caso perdido como gancho.
+    # Este par existe para fixar a fronteira: se alguem alargar CASO_PERDIDO_CTX_OK
+    # e engolir o gancho retorico, o 2o caso vira REGRESSAO e o CI avisa.
+    (f"Muitos ouvem que casos assim não têm solução. Quase sempre existe caminho. {SIG}",
+     "publico", False, None, False, True,
+     "3a pessoa descrevendo crenca alheia — narracao de abertura do apresentacao_rafael"),
+    (f"Já ouviu “não há mais o que fazer”? {SIG}", "publico", True, "autopromocao", False, True,
+     "interpelacao DIRETA ao espectador — gancho retorico, do lado sinalizado da linha"),
 ]
 
 

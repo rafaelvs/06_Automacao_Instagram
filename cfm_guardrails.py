@@ -131,9 +131,16 @@ AUTOPROMOCAO_CASO_PERDIDO = [
 ]
 # Marcadores de que a frase está sendo ATRIBUÍDA a terceiros para ser contrariada
 # ("quem acha que não tem jeito") ou explicitamente rotulada como mito — e não usada
-# como gancho promocional. NÃO incluir marcadores de esperança ("existe caminho"):
-# story07 usa exatamente isso e o Rafael quer continuar vendo story07.
-CASO_PERDIDO_CTX_OK = ["acha que", "acham que", "achando que", "quem acha", "mito"]
+# como gancho promocional.
+#
+# A LINHA, que é fina e vale explicitar: atribuição em 3ª pessoa ("muitos ouvem que
+# casos assim não têm solução") descreve uma crença alheia e entra aqui. Interpelação
+# direta ao espectador ("Já ouviu 'não há mais o que fazer'?") é gancho retórico e
+# NÃO entra — por isso "ouvem/ouviram que" está na lista e "ja ouviu" não está.
+# Pelo mesmo motivo não há marcador de esperança ("existe caminho"): story07 usa
+# exatamente essa construção e o Rafael quer continuar vendo story07.
+CASO_PERDIDO_CTX_OK = ["acha que", "acham que", "achando que", "quem acha", "mito",
+                       "ouvem que", "ouviram que", "escutam que", "escutaram que"]
 
 # 4) Estética/altura no alongamento (precisa co-ocorrer alongamento + estética)
 ALONG_GATILHO = ["alongament", "alongar o osso", "osso novo", "estatura", "transporte osseo"]
