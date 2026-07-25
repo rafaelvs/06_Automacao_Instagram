@@ -73,8 +73,13 @@ def main():
     print("\n=== [2/2] Qualidade SEO (score < 80 bloqueia) ===")
     reprovados = []
     com_aviso = 0
+    n_isentos = 0
     for eid, ent in dados.items():
-        score, issues = _lint_seo.lint_entry(eid, ent)
+        # ATENCAO: lint_entry devolve TRES valores desde a isencao TITULO_DO_CANAL (EP07-28) em
+        # _lint_seo.py — (score, issues, isentos). Desempacotar em dois quebra este gate.
+        score, issues, isentos = _lint_seo.lint_entry(eid, ent)
+        if isentos:
+            n_isentos += 1
         if not issues:
             continue
         flag = "ERR" if score < 80 else "wrn"
@@ -85,7 +90,8 @@ def main():
             reprovados.append(eid)
         else:
             com_aviso += 1
-    print(f"auditados: {len(dados)} | reprovados (<80): {len(reprovados)} | com aviso (80-99): {com_aviso}")
+    print(f"auditados: {len(dados)} | reprovados (<80): {len(reprovados)} | com aviso (80-99): {com_aviso}"
+          f" | isentos de TITLE_LEN_MIN: {n_isentos}")
 
     bloqueios = len(violacoes) + len(reprovados)
     avisos = len(revisar) + com_aviso

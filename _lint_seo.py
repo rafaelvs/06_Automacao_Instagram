@@ -14,6 +14,10 @@ Critérios verificados:
   6. ≥ 10 tags únicas
   7. title_alt presente e diferente do title
   8. search_intent presente (≥ 1 item)
+
+Isenção: os 28 episódios EP07-28 já publicados no canal não são cobrados no
+critério 1 (comprimento mínimo do título) — ver TITULO_DO_CANAL abaixo. A isenção
+aparece marcada na saída, nunca some em silêncio.
 """
 import json, sys, os
 
@@ -50,6 +54,34 @@ WEIGHTS = {
     "TAGS_COUNT": 10, "TITLE_ALT": 5, "SEARCH_INTENT": 5,
 }
 
+# ─── Títulos preservados do canal (EP07-28) ─────────────────────────────────────
+# Estes 28 vídeos já estão publicados no YouTube e o gerador preserva o `title`
+# deles de propósito — ver _gen_seo_json.py: "não mudamos os títulos dos EP07-28
+# existentes", e build_entry(), que copia o title da entrada existente.
+# Alongá-los para bater os 45 chars significaria RENOMEAR vídeo no ar, perdendo o
+# histórico de SEO. Então TITLE_LEN_MIN não se aplica a eles.
+# Lista CONGELADA de propósito: episódio novo continua sendo cobrado normalmente.
+TITULO_DO_CANAL = frozenset({
+    "artrorrise",            "artrorrise_kids",
+    "growth_guided",         "growth_guided_kids",
+    "ferida_cirurgica",      "ferida_cirurgica_kids",
+    "dor_posop",             "dor_posop_kids",
+    "edema",                 "edema_kids",
+    "infeccao_ferida",       "infeccao_ferida_kids",
+    "tvp",                   "tvp_kids",
+    "fisioterapia",          "fisioterapia_kids",
+    "retorno_atividades",    "retorno_atividades_kids",
+    "ortese_bota",           "ortese_bota_kids",
+    "distracao_alongamento", "distracao_alongamento_kids",
+    "consolidacao",          "consolidacao_kids",
+    "retirada_fixador",      "retirada_fixador_kids",
+    "banho_posop",           "banho_posop_kids",
+})
+
+# Só o comprimento mínimo é dispensado. Tudo que é CFM (DESC_ALARME, DESC_CRM) e
+# o teto de 100 chars continuam valendo para todo mundo.
+ISENCOES = frozenset({"TITLE_LEN_MIN"})
+
 
 def _fmt(msg, e):
     return msg.format(
@@ -61,12 +93,17 @@ def _fmt(msg, e):
 
 def lint_entry(eid, e):
     issues = []
+    isentos = []
     score = 100
     for name, check_fn, msg_tpl in RULES:
-        if not check_fn(e):
-            issues.append((name, _fmt(msg_tpl, e)))
-            score -= WEIGHTS.get(name, 10)
-    return max(0, score), issues
+        if check_fn(e):
+            continue
+        if eid in TITULO_DO_CANAL and name in ISENCOES:
+            isentos.append(name)
+            continue
+        issues.append((name, _fmt(msg_tpl, e)))
+        score -= WEIGHTS.get(name, 10)
+    return max(0, score), issues, isentos
 
 
 def main():
@@ -83,23 +120,28 @@ def main():
     failed = 0
     all_issues = {}
 
+    n_isentos = 0
+
     for eid, e in data.items():
-        s, issues = lint_entry(eid, e)
+        s, issues, isentos = lint_entry(eid, e)
         total += s
         flag = "OK " if not issues else ("WRN" if s >= 80 else "ERR")
         line = f"{flag}  {eid:<36} {s:3}/100  tags={len(e.get('tags',[])):2}"
+        if isentos:
+            n_isentos += 1
+            line += f"  [isento: {', '.join(isentos)} — titulo publicado no canal]"
+        print(line)
         if issues:
-            print(line)
             for name, msg in issues:
                 print(f"     [{name}] {msg}")
             all_issues[eid] = issues
             if s < 80:
                 failed += 1
-        else:
-            print(line)
 
     n = len(data)
     print(f"\nMedia: {total // n}/100  ({n} episodios, {len(all_issues)} com issues, {n-len(all_issues)} perfeitos)")
+    if n_isentos:
+        print(f"Isentos de TITLE_LEN_MIN: {n_isentos} (titulo ja publicado no canal — nao penalizado)")
 
     if strict and failed > 0:
         print(f"[STRICT] {failed} episodios com score < 80 — EXIT 1", file=sys.stderr)

@@ -9,9 +9,9 @@ on:
     - cron: "0,10,20,35,50 18 * * 2,4,6"    # POSTS ~15:00 BRT (Ter/Qui/Sab)
     - cron: "5,20,40 19 * * 2,4,6"          # POSTS reforco
     - cron: "0,15,35 14 * * 0"              # CARROSSEL EXTRA ~11:00 BRT (Dom) - 4o/sem, dia-duplo c/ Reel
-    - cron: "30,40,50 15 * * *"               # STORIES ~12:30 BRT (Seg/Qua/Sex)
-    - cron: "0,15,35 16 * * *"                # STORIES reforco
-    - cron: "0,10,20,35,50 18 * * 0,1,3,5"    # REELS ~15:00 BRT (Seg/Qua/Sex)
+    - cron: "30,40,50 15 * * *"               # SEQUENCIAS ~12:30 BRT (TODOS os dias) - 5 frames em bloco
+    - cron: "0,15,35 16 * * *"                # SEQUENCIAS reforco
+    - cron: "0,10,20,35,50 18 * * 0,1,3,5"    # REELS ~15:00 BRT (Seg/Qua/Sex/Dom)
     - cron: "5,20,40 19 * * 0,1,3,5"          # REELS reforco
   workflow_dispatch:
     inputs:
@@ -52,7 +52,20 @@ jobs:
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add state/published.json
             git commit -m "Atualiza estado de publicacao"
-            git push
+            # retry git push p/ evitar race condition (mesmo padrao do render-reel-voz.yml).
+            # Um push perdido deixa o estado sem salvar e o item VOLTA PARA A FILA — e' o
+            # sintoma "Posta 2x" catalogado em docs/02_RUNBOOK.md.
+            ok=0
+            for attempt in 1 2 3 4 5; do
+              if git pull --rebase origin main && git push; then ok=1; break; fi
+              git rebase --abort 2>/dev/null || true
+              echo "Push tentativa $attempt falhou — aguardando ${attempt}0s..."
+              sleep $((attempt * 10))
+            done
+            if [ "$ok" != "1" ]; then
+              echo "::error::Estado NAO salvo apos 5 tentativas — risco de republicar o mesmo item."
+              exit 1
+            fi
           else
             echo "Sem mudancas no estado."
           fi

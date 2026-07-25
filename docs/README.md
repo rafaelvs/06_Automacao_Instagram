@@ -10,6 +10,13 @@ Organização criada em **23/06/2026**. Comece por aqui.
 | [04_ORGANIZACAO_PROPOSTA.md](04_ORGANIZACAO_PROPOSTA.md) | Estrutura-alvo + plano de migração seguro (em fases). |
 | [05_YOUTUBE.md](05_YOUTUBE.md) | **Série "Recuperação" no YouTube**: o que está no ar, decisões (upload manual, gate CFM) e runbook. |
 | [05a_YOUTUBE_COLAR.md](05a_YOUTUBE_COLAR.md) | Título/descrição/tags prontos para colar no YouTube Studio (gerado de `seo_episodios.json`). |
+| [05_MANUTENCAO.md](05_MANUTENCAO.md) | Manutenção recorrente do motor (token, agenda, checagens). |
+| [ESTRATEGIA_YOUTUBE_2026.md](ESTRATEGIA_YOUTUBE_2026.md) | 📺 Ganchos, título, descrição, tags e gate de SEO. Fonte de `seo_youtube.py` e `ganchos.py`. |
+| [GUIA_PRODUCAO_RECUPERACAO.md](GUIA_PRODUCAO_RECUPERACAO.md) | 🩺 Convenções da série "Recuperação" + regras R1-R7. Fonte de `_lint_recuperacao.py`. |
+| [SETUP_MODAL.md](SETUP_MODAL.md) | 🎙️ Bootstrap e operação do treino da voz pt-BR. Fonte de `voz/modal_voz.py`. |
+
+> ⚠️ Os três docs normativos acima foram **reconstruídos em 25/07/2026** a partir do que já estava
+> codificado nos scripts que os citam — os originais viviam fora do Git e se perderam na troca de máquina.
 
 **Auditoria reproduzível:** `python _auditoria_motor.py` (na raiz do repo).
 

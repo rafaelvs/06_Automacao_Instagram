@@ -132,17 +132,40 @@ Microsoft Store. O interpretador real está em
 `C:\Users\rafae\AppData\Local\Programs\Python\Python311\python.exe` (3.11.9). Use o caminho absoluto
 e `PYTHONIOENCODING=utf-8`.
 
+Números depois de integrar a `main` (que trouxe a isenção `TITULO_DO_CANAL` no `_lint_seo.py`):
+
 | Comando | Resultado |
 |---|---|
 | `_lint_recuperacao.py` | 34 episódios, **0 erros, 0 avisos** · exit 0 |
-| `_lint_seo.py --strict` | Média **99/100**, **32 perfeitos**, 2 avisos · exit 0 |
-| `gate_youtube.py` | **PASS** · 0 bloqueios, 6 avisos · exit 0 |
+| `_lint_seo.py --strict` | Média **100/100**, **34 perfeitos**, 2 isentos · exit 0 |
+| `gate_youtube.py` | **PASS** · 0 bloqueios, 4 avisos · exit 0 |
 | `gate_youtube.py <ids>` | filtro funciona; id inexistente é avisado e ignorado |
-| `gate_publicacao.py` (Instagram) | **PASS** · 0 bloqueios · exit 0 — as edições de comentário não o afetaram |
+| `gate_publicacao.py` (Instagram) | **PASS** · 0 bloqueios · exit 0 |
 
-Os 2 avisos remanescentes do lint SEO são `artrorrise` (título de 36 chars) e `edema` (43) —
-ambos **no ar com exatamente esses títulos**, então não foram tocados. Corrigi-los significa
-renomear vídeo publicado; ficam como dívida conhecida e deliberada.
+Os avisos de título curto de `artrorrise` (36 chars) e `edema` (43) deixaram de ser cobrados: a
+`main` os pôs no frozenset `TITULO_DO_CANAL` do `_lint_seo.py`, que dispensa `TITLE_LEN_MIN` de
+episódio já publicado. Mesma conclusão a que eu havia chegado — não renomear vídeo no ar —
+resolvida no lint em vez de ficar como dívida.
+
+### ⚠️ Defeito herdado da `main`: `TITULO_DO_CANAL` está errado
+
+A lista foi montada a partir do comentário de `_gen_seo_json.py:30` ("EP07-28 já publicados"), que
+**este documento desmente** (§1). Cruzada com o canal, ela erra nas duas pontas:
+
+- **Isenta 6 episódios que NÃO estão publicados** — `consolidacao`, `consolidacao_kids`,
+  `retirada_fixador`, `retirada_fixador_kids`, `banho_posop`, `banho_posop_kids`. São 6 dos 7
+  inéditos. O comentário na lista diz "episódio novo continua sendo cobrado normalmente", mas para
+  esses seis é exatamente o que deixa de acontecer: um título curto passa em silêncio.
+- **Não isenta 5 que ESTÃO publicados** — `gesso_pos_op`, `gesso_pos_op_kids`, `fixador_externo`,
+  `fixador_externo_kids`, `carga_fisio`. Foi por isso que a `main` "consertou" o `fixador_externo`
+  inventando o título `"Fixador externo: cuidados e sinais de alarme"`, que **não é** o que está no
+  ar (`dLqjPf9cl7w` = "Fixador externo: cuidados com os pinos e sinais de alarme"). No merge esse
+  título foi descartado em favor do real.
+
+A fonte da verdade para reconstruir a lista é
+[`state/published_youtube.json`](../state/published_youtube.json): isentar quem está em `published`,
+cobrar quem está em `pendentes`. Não corrigi aqui de propósito — `_lint_seo.py` está sendo alterado
+em paralelo (tarefa da sanidade de `title_alt`), e mexer nele agora garantiria conflito.
 
 ### O que foi corrigido no `seo_episodios.json` nesta sessão
 
