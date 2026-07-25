@@ -1,26 +1,56 @@
 [
   {
     "id": "dest01",
-    "image": "images/dest01.jpg"
+    "image": "images/dest01.jpg",
+    "kicker": "SOBRE",
+    "title": "Dr. Rafael Vargas",
+    "sub": "Médico ortopedista\nOrtopedia Pediátrica · Reconstrução e Alongamento Ósseo\nCrianças e adultos · casos de difícil solução",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "dest02",
-    "image": "images/dest02.jpg"
+    "image": "images/dest02.jpg",
+    "kicker": "TRATAMENTOS",
+    "title": "Reconstrução e alongamento ósseo",
+    "sub": "Corrigir forma, eixo e comprimento do osso\nFixadores e correção gradual\nUm tratamento guiado e seriado",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "dest03",
-    "image": "images/dest03.jpg"
+    "image": "images/dest03.jpg",
+    "kicker": "ORTOPEDIA PEDIÁTRICA",
+    "title": "Cuidar no tempo certo",
+    "sub": "Deformidades congênitas e adquiridas\nAcompanhar na janela certa do crescimento\nA maioria é observada, não operada",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "dest04",
-    "image": "images/dest04.jpg"
+    "image": "images/dest04.jpg",
+    "kicker": "CASOS COMPLEXOS",
+    "title": "O que outros não resolveram",
+    "sub": "Deformidades, discrepâncias e pseudartroses\nSequelas de fraturas e infecções\nInclusive com doença de base",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "dest05",
-    "image": "images/dest05.jpg"
+    "image": "images/dest05.jpg",
+    "kicker": "DÚVIDAS",
+    "title": "Dói? Quanto tempo? Volto a andar?",
+    "sub": "Depende de cada caso\nUm plano feito para a sua situação\nTraga sua dúvida pelo WhatsApp (link na bio)",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "dest06",
-    "image": "images/dest06.jpg"
+    "image": "images/dest06.jpg",
+    "kicker": "CONSULTÓRIO",
+    "title": "Av. Paulista, 2064",
+    "sub": "21º andar · Bela Vista, São Paulo\nEspaço Livance\nAgende pelo WhatsApp (link na bio)",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   }
 ]

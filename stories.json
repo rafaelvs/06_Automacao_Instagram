@@ -1,358 +1,740 @@
 [
   {
     "id": "story01",
-    "image": "images/story01.jpg"
+    "image": "images/story01.jpg",
+    "kicker": "COMO EU PENSO",
+    "title": "Casos que não se resolvem com uma única cirurgia",
+    "sub": "Tratamento guiado e seriado — etapas, planejamento e acompanhamento.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story03",
-    "image": "images/story03.jpg"
+    "image": "images/story03.jpg",
+    "kicker": "SEM MEDO",
+    "title": "Fixador externo é uma ferramenta precisa",
+    "sub": "Sustenta e guia o osso enquanto ele se corrige, milímetro a milímetro.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story04",
-    "image": "images/story04.jpg"
+    "image": "images/story04.jpg",
+    "kicker": "ORTOPEDIA PEDIÁTRICA",
+    "title": "Joelhos “para dentro” que pioram?",
+    "sub": "Vale uma avaliação. Na dúvida, observar de perto é melhor que esperar.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story05",
-    "image": "images/story05.jpg"
+    "image": "images/story05.jpg",
+    "kicker": "QUANDO PROCURAR",
+    "title": "Fratura que não cola (pseudartrose)",
+    "sub": "Não é o fim do caminho. Procure um especialista em reconstrução.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story06",
-    "image": "images/story06.jpg"
+    "image": "images/story06.jpg",
+    "kicker": "É A MINHA ÁREA",
+    "title": "Uma perna mais curta que a outra?",
+    "sub": "Diferenças de comprimento podem ser reequilibradas — em crianças e adultos.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story07",
-    "image": "images/story07.jpg"
+    "image": "images/story07.jpg",
+    "kicker": "SEGUNDA OPINIÃO",
+    "title": "Já ouviu “não há mais o que fazer”?",
+    "sub": "Em muitos casos existe um caminho. Ele só precisa ser planejado.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story08",
-    "image": "images/story08.jpg"
+    "image": "images/story08.jpg",
+    "kicker": "CALMA, PAIS",
+    "title": "Na criança, a maioria é observada",
+    "sub": "Não operada. A avaliação precoce permite agir na janela certa do crescimento.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story09",
-    "image": "images/story09.jpg"
+    "image": "images/story09.jpg",
+    "kicker": "COMO FUNCIONA",
+    "title": "O corpo forma osso novo",
+    "sub": "É isso que permite reconstruir e alongar, de forma gradual e guiada.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story10",
-    "image": "images/story10.jpg"
+    "image": "images/story10.jpg",
+    "kicker": "DIFERENCIAL",
+    "title": "Deformidades com doença de base",
+    "sub": "Mielomeningocele, raquitismo, osteogênese imperfeita — é a minha área.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story11",
-    "image": "images/story11.jpg"
+    "image": "images/story11.jpg",
+    "kicker": "CONSULTÓRIO",
+    "title": "Atendo na Av. Paulista",
+    "sub": "Bela Vista, São Paulo. Agende pelo link na bio.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story12",
-    "image": "images/story12.jpg"
+    "image": "images/story12.jpg",
+    "kicker": "VAMOS CONVERSAR",
+    "title": "Dúvidas sobre um caso?",
+    "sub": "Fale comigo pelo WhatsApp — link na bio.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story13",
-    "image": "images/story13.jpg"
+    "image": "images/story13.jpg",
+    "kicker": "VOCÊ SABIA?",
+    "title": "Realinhar o osso é possível",
+    "sub": "Técnicas de corrigir eixo e comprimento evoluíram muito nas últimas décadas.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story14",
-    "image": "images/story14.jpg"
+    "image": "images/story14.jpg",
+    "kicker": "SINAIS NA CRIANÇA",
+    "title": "Pés muito “para dentro”?",
+    "sub": "Na maioria, melhora com o crescimento. Se piora ou é assimétrico, vale avaliar.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story15",
-    "image": "images/story15.jpg"
+    "image": "images/story15.jpg",
+    "kicker": "MITO X VERDADE",
+    "title": "“Fratura sempre cola sozinha”",
+    "sub": "Mito. Algumas viram pseudartrose e precisam de reconstrução.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story16",
-    "image": "images/story16.jpg"
+    "image": "images/story16.jpg",
+    "kicker": "CONCEITO",
+    "title": "Consolidação viciosa",
+    "sub": "É quando o osso cola torto. Dá para corrigir o eixo.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story17",
-    "image": "images/story17.jpg"
+    "image": "images/story17.jpg",
+    "kicker": "ACOLHIMENTO",
+    "title": "Cada caso tem seu tempo",
+    "sub": "Reconstrução não é corrida de velocidade — é de fundo.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story18",
-    "image": "images/story18.jpg"
+    "image": "images/story18.jpg",
+    "kicker": "PEDIÁTRICA",
+    "title": "Diferença de comprimento?",
+    "sub": "O acompanhamento permite corrigir na hora certa do crescimento.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story19",
-    "image": "images/story19.jpg"
+    "image": "images/story19.jpg",
+    "kicker": "QUANDO PROCURAR",
+    "title": "Infecção óssea deixou sequela?",
+    "sub": "Há caminhos de reconstrução. Vale uma avaliação.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story20",
-    "image": "images/story20.jpg"
+    "image": "images/story20.jpg",
+    "kicker": "É A MINHA ÁREA",
+    "title": "Ossos frágeis e deformidades",
+    "sub": "Osteogênese imperfeita e raquitismo têm tratamento.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story21",
-    "image": "images/story21.jpg"
+    "image": "images/story21.jpg",
+    "kicker": "COMPARTILHE",
+    "title": "Conhece alguém nessa situação?",
+    "sub": "Marque essa pessoa — informação ajuda a buscar o caminho certo.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story22",
-    "image": "images/story22.jpg"
+    "image": "images/story22.jpg",
+    "kicker": "DÚVIDA COMUM",
+    "title": "Volto a praticar esporte?",
+    "sub": "Depende do caso e da fase. O objetivo é devolver função.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story23",
-    "image": "images/story23.jpg"
+    "image": "images/story23.jpg",
+    "kicker": "PRIMEIRA CONSULTA",
+    "title": "O que levar?",
+    "sub": "Seus exames e o histórico do que já foi tentado.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story24",
-    "image": "images/story24.jpg"
+    "image": "images/story24.jpg",
+    "kicker": "VAMOS CONVERSAR",
+    "title": "Quer uma segunda opinião?",
+    "sub": "Me chame no WhatsApp — link na bio.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story25",
-    "image": "images/story25.jpg"
+    "image": "images/story25.jpg",
+    "kicker": "CUIDADOS",
+    "title": "Como cuidar do fixador em casa",
+    "sub": "Higiene simples e orientada evita problemas. Ensino cada passo na consulta.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story26",
-    "image": "images/story26.jpg"
+    "image": "images/story26.jpg",
+    "kicker": "SINAIS DE ALERTA",
+    "title": "Dor que muda de padrão?",
+    "sub": "Mudança súbita de dor, febre ou vermelhidão pedem contato rápido.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story27",
-    "image": "images/story27.jpg"
+    "image": "images/story27.jpg",
+    "kicker": "RECUPERAÇÃO",
+    "title": "O papel da fisioterapia",
+    "sub": "Mover com orientação, na hora certa, acelera a volta da função.",
+    "texto_origem": "transcricao",
+    "texto_revisado": false
   },
   {
     "id": "story28",
-    "image": "images/story28.jpg"
+    "image": "images/story28.jpg",
+    "kicker": "Ortopedia Pediátrica",
+    "title": "Pé torto tem tratamento",
+    "sub": "Começar cedo, com gessos que corrigem aos poucos, costuma evitar cirurgias maiores.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story29",
-    "image": "images/story29.jpg"
+    "image": "images/story29.jpg",
+    "kicker": "Quadril do bebê",
+    "title": "Sinais da displasia",
+    "sub": "Pregas assimétricas, uma perna mais curta ou dificuldade de abrir a perna merecem avaliação.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story30",
-    "image": "images/story30.jpg"
+    "image": "images/story30.jpg",
+    "kicker": "Dúvida comum",
+    "title": "Dor de crescimento",
+    "sub": "Costuma ser nas duas pernas, à noite, e melhora pela manhã. Dor de um lado só, vale avaliar.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story31",
-    "image": "images/story31.jpg"
+    "image": "images/story31.jpg",
+    "kicker": "Marcha da criança",
+    "title": "Pé virado para dentro",
+    "sub": "Muitas vezes faz parte do desenvolvimento e melhora com o tempo. Se piora ou é assimétrico, avalie.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story32",
-    "image": "images/story32.jpg"
+    "image": "images/story32.jpg",
+    "kicker": "Mito",
+    "title": "Palmilha corrige tudo?",
+    "sub": "Nem sempre. A indicação depende do caso — o exame é que diz o que realmente ajuda.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story33",
-    "image": "images/story33.jpg"
+    "image": "images/story33.jpg",
+    "kicker": "Quando investigar",
+    "title": "Pernas de tamanhos diferentes",
+    "sub": "Diferenças que aumentam, fazem mancar ou vêm de fratura ou infecção merecem avaliação.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story34",
-    "image": "images/story34.jpg"
+    "image": "images/story34.jpg",
+    "kicker": "Fixador externo",
+    "title": "Cuidando dos pinos",
+    "sub": "Manter limpo e seco e observar vermelhidão ou secreção faz parte do tratamento.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story35",
-    "image": "images/story35.jpg"
+    "image": "images/story35.jpg",
+    "kicker": "Como funciona",
+    "title": "O corpo cria osso novo",
+    "sub": "Após um corte planejado, o osso se alonga em fases: espera, distração e consolidação.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story36",
-    "image": "images/story36.jpg"
+    "image": "images/story36.jpg",
+    "kicker": "Segunda opinião",
+    "title": "Não há mais o que fazer?",
+    "sub": "Em casos complexos, costuma valer um segundo olhar antes de desistir do tratamento.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story37",
-    "image": "images/story37.jpg"
+    "image": "images/story37.jpg",
+    "kicker": "Marcha da criança",
+    "title": "Andar na ponta dos pés",
+    "sub": "Comum nos primeiros anos. Se persiste ou é só de um lado, vale uma avaliação.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story38",
-    "image": "images/story38.jpg"
+    "image": "images/story38.jpg",
+    "kicker": "Sinal de alerta",
+    "title": "Quando a criança manca",
+    "sub": "Mancar sem melhora, com dor ou febre, não é o esperado — procure avaliação.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story39",
-    "image": "images/story39.jpg"
+    "image": "images/story39.jpg",
+    "kicker": "Acolhimento",
+    "title": "Casos difíceis têm caminho",
+    "sub": "Avaliação cuidadosa, plano realista e acompanhamento de perto. Agende pelo WhatsApp.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story40",
-    "image": "images/story40.jpg"
+    "image": "images/story40.jpg",
+    "kicker": "Joelho da criança",
+    "title": "Pernas em X ou arqueadas",
+    "sub": "Costuma ser do crescimento e alinhar sozinho. Muito acentuado ou só de um lado, avalie.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story41",
-    "image": "images/story41.jpg"
+    "image": "images/story41.jpg",
+    "kicker": "Pé da criança",
+    "title": "Pé chato preocupa?",
+    "sub": "Quase sempre não: o arco se forma com o tempo. Dor ou rigidez merecem avaliação.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story42",
-    "image": "images/story42.jpg"
+    "image": "images/story42.jpg",
+    "kicker": "Teste em casa",
+    "title": "Sinais de escoliose",
+    "sub": "Ombros e cintura tortos, e um lado das costas mais alto ao inclinar o tronco à frente.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story43",
-    "image": "images/story43.jpg"
+    "image": "images/story43.jpg",
+    "kicker": "Adolescente atleta",
+    "title": "Dor abaixo do joelho",
+    "sub": "Osgood-Schlatter é comum no estirão. Ajustar a carga, gelo e alongar costumam ajudar.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story44",
-    "image": "images/story44.jpg"
+    "image": "images/story44.jpg",
+    "kicker": "Sinal de alerta",
+    "title": "Dor no quadril, mancando",
+    "sub": "No pré-adolescente, sem trauma claro, vale avaliar sem demora. O joelho às vezes avisa o quadril.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story45",
-    "image": "images/story45.jpg"
+    "image": "images/story45.jpg",
+    "kicker": "Bebê",
+    "title": "Cabeça sempre para um lado",
+    "sub": "Pode ser torcicolo congênito. Cedo, responde bem a alongamentos orientados.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story46",
-    "image": "images/story46.jpg"
+    "image": "images/story46.jpg",
+    "kicker": "Primeiros socorros",
+    "title": "\"Cotovelo de babá\"",
+    "sub": "Após puxar o bracinho, a criança não mexe o braço. Não force e procure avaliação.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story47",
-    "image": "images/story47.jpg"
+    "image": "images/story47.jpg",
+    "kicker": "Entenda",
+    "title": "A placa de crescimento",
+    "sub": "É por onde o osso da criança cresce. Por isso fraturas infantis têm cuidado próprio.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story48",
-    "image": "images/story48.jpg"
+    "image": "images/story48.jpg",
+    "kicker": "Mito",
+    "title": "Bebê precisa de sapato firme?",
+    "sub": "Descalço em casa fortalece o pé. O sapato é proteção: prefira solado flexível.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story49",
-    "image": "images/story49.jpg"
+    "image": "images/story49.jpg",
+    "kicker": "Desenvolvimento",
+    "title": "Quando a criança anda?",
+    "sub": "A maioria entre 12 e 15 meses. Não andar após 18 meses merece avaliação.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story50",
-    "image": "images/story50.jpg"
+    "image": "images/story50.jpg",
+    "kicker": "Emergência",
+    "title": "Articulação quente e com febre",
+    "sub": "Inchaço, dor forte e recusa a mexer o membro: procure atendimento imediato.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story51",
-    "image": "images/story51.jpg"
+    "image": "images/story51.jpg",
+    "kicker": "Reconstrução",
+    "title": "Uma perna mais curta",
+    "sub": "Pequenas diferenças são comuns. Há opções, da palmilha ao alongamento, conforme o caso.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story52",
-    "image": "images/story52.jpg"
+    "image": "images/story52.jpg",
+    "kicker": "Fixador externo",
+    "title": "Posso tomar banho?",
+    "sub": "Em geral sim, seguindo a orientação: manter limpo, secar os pinos e observar a pele.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story53",
-    "image": "images/story53.jpg"
+    "image": "images/story53.jpg",
+    "kicker": "Reconstrução",
+    "title": "Fratura que não cola",
+    "sub": "A pseudoartrose tem tratamento: investigar a causa, estabilizar e estimular o osso.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story54",
-    "image": "images/story54.jpg"
+    "image": "images/story54.jpg",
+    "kicker": "Adulto",
+    "title": "Joelho desalinhado",
+    "sub": "O eixo torto sobrecarrega um lado e pode desgastar antes. Avaliar o alinhamento ajuda.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story55",
-    "image": "images/story55.jpg"
+    "image": "images/story55.jpg",
+    "kicker": "Marcha",
+    "title": "Pés para fora",
+    "sub": "Costuma ser do desenvolvimento e melhora. Muito assimétrico ou com quedas, avalie.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story56",
-    "image": "images/story56.jpg"
+    "image": "images/story56.jpg",
+    "kicker": "Saúde óssea",
+    "title": "Vitamina D",
+    "sub": "Ajuda a usar o cálcio. Sol e dieta contribuem; suplemento é individual, sob avaliação.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story57",
-    "image": "images/story57.jpg"
+    "image": "images/story57.jpg",
+    "kicker": "Jovem atleta",
+    "title": "Dor no calcanhar",
+    "sub": "Doença de Sever: comum em quem treina. Carga equilibrada, gelo e alongamento ajudam.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story58",
-    "image": "images/story58.jpg"
+    "image": "images/story58.jpg",
+    "kicker": "Antes da consulta",
+    "title": "O que levar",
+    "sub": "História do problema, exames que já tem (mesmo antigos) e suas dúvidas anotadas.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story59",
-    "image": "images/story59.jpg"
+    "image": "images/story59.jpg",
+    "kicker": "Coluna",
+    "title": "Dor nas costas na criança",
+    "sub": "Dor noturna, febre ou que limita merece avaliação. Na maioria é simples, mas vale investigar.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story60",
-    "image": "images/story60.jpg"
+    "image": "images/story60.jpg",
+    "kicker": "Acolhimento",
+    "title": "Casos difíceis têm caminho",
+    "sub": "Avaliação cuidadosa, plano realista e acompanhamento de perto. Agende pelo WhatsApp.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story61",
-    "image": "images/story61.jpg"
+    "image": "images/story61.jpg",
+    "kicker": "Lesão aguda",
+    "title": "Gelo ou calor?",
+    "sub": "Nas primeiras 48h, gelo para inchaço e dor. Calor ajuda mais em tensão muscular crônica.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story62",
-    "image": "images/story62.jpg"
+    "image": "images/story62.jpg",
+    "kicker": "Torceu o pé",
+    "title": "O que NÃO fazer",
+    "sub": "Evite forçar, massagear forte ou aplicar calor nas primeiras horas. Proteja, gelo e eleve.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story63",
-    "image": "images/story63.jpg"
+    "image": "images/story63.jpg",
+    "kicker": "Mito",
+    "title": "Crescer dói?",
+    "sub": "A \"dor de crescimento\" existe e é benigna, mas o crescimento em si não machuca. Dor que limita, avalie.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story64",
-    "image": "images/story64.jpg"
+    "image": "images/story64.jpg",
+    "kicker": "Adolescente",
+    "title": "Estalo no joelho ao agachar",
+    "sub": "Sem dor ou inchaço, costuma não preocupar. Com dor ou falseio, vale avaliar.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story65",
-    "image": "images/story65.jpg"
+    "image": "images/story65.jpg",
+    "kicker": "Atenção",
+    "title": "Criança que cai demais",
+    "sub": "Quedas frequentes, tropeços e cansaço acima do normal merecem uma avaliação.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story66",
-    "image": "images/story66.jpg"
+    "image": "images/story66.jpg",
+    "kicker": "Sinal",
+    "title": "Dor no pé ao acordar",
+    "sub": "Pode ser do crescimento. Se persiste, é de um lado só ou faz mancar, avalie.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story67",
-    "image": "images/story67.jpg"
+    "image": "images/story67.jpg",
+    "kicker": "Dúvida comum",
+    "title": "Cãibra à noite na criança",
+    "sub": "Comum e costuma ser benigna. Hidratação e alongamento ajudam; se atrapalha o sono sempre, avalie.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story68",
-    "image": "images/story68.jpg"
+    "image": "images/story68.jpg",
+    "kicker": "Tratamento",
+    "title": "Imobilização tem tempo certo",
+    "sub": "Tempo de mais ou de menos atrapalha. Siga o combinado e compareça aos retornos.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story69",
-    "image": "images/story69.jpg"
+    "image": "images/story69.jpg",
+    "kicker": "Esporte",
+    "title": "Voltar a jogar: critérios",
+    "sub": "Não é só \"sumiu a dor\". Força, amplitude e confiança contam para evitar nova lesão.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story70",
-    "image": "images/story70.jpg"
+    "image": "images/story70.jpg",
+    "kicker": "Mito",
+    "title": "Alongar antes previne lesão?",
+    "sub": "Sozinho, pouco. O que protege é aquecer, fortalecer e respeitar o descanso.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story71",
-    "image": "images/story71.jpg"
+    "image": "images/story71.jpg",
+    "kicker": "Consolidação",
+    "title": "O que atrapalha o osso colar",
+    "sub": "Cigarro, alguns remédios e instabilidade dificultam. Por isso o acompanhamento importa.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story72",
-    "image": "images/story72.jpg"
+    "image": "images/story72.jpg",
+    "kicker": "Saúde óssea",
+    "title": "Nutrição e osso na infância",
+    "sub": "Cálcio e vitamina D sustentam o crescimento ósseo. A necessidade de suplemento é individual.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story73",
-    "image": "images/story73.jpg"
+    "image": "images/story73.jpg",
+    "kicker": "Adolescente",
+    "title": "Pescoço de texto",
+    "sub": "Horas no celular pesam na postura. Pausas e tela na altura dos olhos ajudam.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story74",
-    "image": "images/story74.jpg"
+    "image": "images/story74.jpg",
+    "kicker": "Cuidado",
+    "title": "Bota/imobilizador removível",
+    "sub": "Tirar só quando autorizado, observar a pele e seguir as orientações de apoio.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story75",
-    "image": "images/story75.jpg"
+    "image": "images/story75.jpg",
+    "kicker": "Bom senso",
+    "title": "Raio-X nem sempre é preciso",
+    "sub": "O exame clínico vem primeiro. Imagem entra quando muda a conduta.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story76",
-    "image": "images/story76.jpg"
+    "image": "images/story76.jpg",
+    "kicker": "Por que retornar",
+    "title": "Deformidade que cresce",
+    "sub": "No crescimento, o que está leve hoje pode mudar. Acompanhar de perto evita surpresas.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story77",
-    "image": "images/story77.jpg"
+    "image": "images/story77.jpg",
+    "kicker": "Atenção",
+    "title": "Joelho inchado após o jogo",
+    "sub": "Inchaço que volta sempre, com dor ou travamento, merece avaliação.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story78",
-    "image": "images/story78.jpg"
+    "image": "images/story78.jpg",
+    "kicker": "Marcha",
+    "title": "Pé que vira ao correr",
+    "sub": "Às vezes é só rotação do desenvolvimento. Se causa quedas ou dor, avalie.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story79",
-    "image": "images/story79.jpg"
+    "image": "images/story79.jpg",
+    "kicker": "Observar",
+    "title": "Diferença de força entre os lados",
+    "sub": "Um lado nitidamente mais fraco ou \"diferente\" merece um olhar mais atento.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story80",
-    "image": "images/story80.jpg"
+    "image": "images/story80.jpg",
+    "kicker": "Pós-operatório",
+    "title": "Fisioterapia é parte do tratamento",
+    "sub": "A recuperação depende tanto da cirurgia quanto da reabilitação bem feita.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story81",
-    "image": "images/story81.jpg"
+    "image": "images/story81.jpg",
+    "kicker": "Sinal de alerta",
+    "title": "\"Foi só uma torção\"?",
+    "sub": "Não apoiar o pé, inchaço grande ou dor que não cede podem ser mais que entorse.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story82",
-    "image": "images/story82.jpg"
+    "image": "images/story82.jpg",
+    "kicker": "Investigar",
+    "title": "Dor que acorda à noite",
+    "sub": "Dor que tira do sono, com febre ou perda de peso, deve ser avaliada.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story83",
-    "image": "images/story83.jpg"
+    "image": "images/story83.jpg",
+    "kicker": "Marcha",
+    "title": "Andar na ponta dos pés",
+    "sub": "Comum nos primeiros anos. Se persiste ou é só de um lado, vale avaliar.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story84",
-    "image": "images/story84.jpg"
+    "image": "images/story84.jpg",
+    "kicker": "Bebê",
+    "title": "Quadril que estala",
+    "sub": "Nem todo estalo preocupa. Com assimetria ou dificuldade de abrir a perna, avalie.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story85",
-    "image": "images/story85.jpg"
+    "image": "images/story85.jpg",
+    "kicker": "Crescimento",
+    "title": "Compare os dois lados",
+    "sub": "Assimetrias que aumentam — pernas, ombros, força — merecem avaliação.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story86",
-    "image": "images/story86.jpg"
+    "image": "images/story86.jpg",
+    "kicker": "Antes de operar",
+    "title": "Vale uma segunda opinião",
+    "sub": "Em casos complexos, um segundo olhar tranquiliza e às vezes abre opções.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story87",
-    "image": "images/story87.jpg"
+    "image": "images/story87.jpg",
+    "kicker": "De longe",
+    "title": "Telemedicina orienta",
+    "sub": "Para quem é de fora de SP, dá para orientar e organizar o caminho à distância.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story88",
-    "image": "images/story88.jpg"
+    "image": "images/story88.jpg",
+    "kicker": "Alongamento",
+    "title": "Como é o acompanhamento",
+    "sub": "Tratamento de etapas: espera, afastamento gradual e consolidação, de perto.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story89",
-    "image": "images/story89.jpg"
+    "image": "images/story89.jpg",
+    "kicker": "Reconstrução",
+    "title": "Por que é por etapas",
+    "sub": "Cada fase tem seu tempo e cuidado — segurança e função vêm primeiro.",
+    "texto_origem": "codigo"
   },
   {
     "id": "story90",
-    "image": "images/story90.jpg"
+    "image": "images/story90.jpg",
+    "kicker": "Acolhimento",
+    "title": "Plano realista vale ouro",
+    "sub": "Sem promessas: avaliação cuidadosa, plano honesto e acompanhamento próximo. Agende pelo WhatsApp.",
+    "texto_origem": "codigo"
   }
 ]
