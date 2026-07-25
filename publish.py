@@ -95,25 +95,78 @@ def _loc(d):
         d = dict(d); d["location_id"] = LOCATION_ID
     return d
 
-def _cfm_guard(item):
-    """Backstop CFM antes de publicar. Se o MODULO estiver ausente: avisa ALTO e nao bloqueia
-    (fail-open RUIDOSO — nao quebra o robo). Se o modulo existir mas tiver bug (SyntaxError/re.error):
-    a excecao propaga -> o try/except do chamador trata como FALHA (fail-CLOSED: nao publica, nao marca
-    done). Se houver VIOLACAO de CFM: loga marcador distinto 'BLOQUEADO CFM' e levanta RuntimeError
-    (o chamador pula o item e NAO avanca, forcando revisao humana). Conteudo limpo passa direto."""
-    try:
-        from cfm_guardrails import auditar
-    except (ImportError, ModuleNotFoundError):
-        print("!!! ALERTA: cfm_guardrails ausente — guardrail CFM DESLIGADO neste run.", file=sys.stderr)
-        return
-    viol = [p for p in auditar(item.get("caption", ""), "publico") if p[0] == "VIOLACAO"]
+# Assinatura desenhada no rodape de TODO frame/story pelos templates seq_story()/story().
+# Repetida aqui em vez de importada de gerar_conteudo porque aquele modulo puxa PIL, que
+# NAO existe no runner do publish.yml (requirements.txt = so requests). checar_frames.py
+# faz o cross-check com a fonte no CI, onde PIL existe.
+SIG_RODAPE = "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901"
+
+
+def _texto_publico(item, kind):
+    """Texto publico do item, montado do que esta MATERIALIZADO no JSON (zero import alem
+    de stdlib). Devolve None quando o item nao carrega texto auditavel — o chamador trata
+    como FALHA, nunca como 'nada a auditar'."""
+    if kind in ("post", "reel"):
+        return item.get("caption", "")
+    if kind == "seq":
+        frames = item.get("frames")
+        if not frames:
+            return None
+        tema = item.get("theme", "")
+        return " · ".join(
+            f"{tema} · {f.get('seg', '')} · {f.get('title', '')} · "
+            f"{f.get('sub', '')} · {f.get('cue', '')}"
+            for f in frames)
+    # story / destaque
+    if not item.get("title"):
+        return None
+    return f"{item.get('kicker', '')} · {item.get('title', '')} · {item.get('sub', '')}"
+
+
+def _cfm_guard(item, kind="post"):
+    """Backstop CFM antes de publicar. FAIL-CLOSED em tres frentes:
+
+    1. MODULO AUSENTE -> nao publica. Antes era fail-OPEN: imprimia alerta e publicava
+       assim mesmo, num log do Actions que ninguem abre. Guardrail que se desliga sozinho
+       quando some nao e guardrail.
+    2. ITEM SEM TEXTO AUDITAVEL -> nao publica. Sequencias/stories/destaques nao tem
+       'caption'; o texto de tela vive em frames/kicker/title/sub (ver enriquecer_jsons.py).
+       Item sem texto e item NAO auditado, e nao auditado nao publica.
+    3. TRANSCRICAO NAO CONFERIDA -> nao publica. Texto recuperado por transcricao
+       automatica de imagem nao pode autorizar publicacao com o CRM do medico.
+
+    Se o modulo existir mas tiver bug (SyntaxError/re.error), a excecao propaga -> o
+    try/except do chamador trata como FALHA: nao publica e NAO marca done."""
+    from cfm_guardrails import auditar  # ImportError propaga de proposito (fail-closed)
+
+    _id = item.get("id", "?")
+
+    if item.get("texto_origem") == "transcricao" and not item.get("texto_revisado", False):
+        msg = ("BLOQUEADO CFM: texto veio de transcricao de imagem e ainda nao foi "
+               "conferido pelo medico (texto_revisado=false)")
+        print(f"!!! {msg} (item={_id}) — NAO publicado.", file=sys.stderr)
+        raise RuntimeError(msg)
+
+    texto = _texto_publico(item, kind)
+    if texto is None:
+        msg = (f"BLOQUEADO CFM: item do tipo '{kind}' sem texto auditavel "
+               f"— rode enriquecer_jsons.py")
+        print(f"!!! {msg} (item={_id}) — NAO publicado.", file=sys.stderr)
+        raise RuntimeError(msg)
+
+    # A assinatura vai no RODAPE do render em seq/story/destaque, entao e anexada ao
+    # texto auditado. Em post/reel ela precisa estar na PROPRIA legenda — anexar ali
+    # mascararia uma legenda sem CRM+RQE.
+    alvo = texto if kind in ("post", "reel") else f"{texto} · {SIG_RODAPE}"
+
+    viol = [p for p in auditar(alvo, "publico") if p[0] == "VIOLACAO"]
     if viol:
         msg = "BLOQUEADO CFM: " + "; ".join(f"{r}:{d}" for _, r, d in viol)
-        print(f"!!! {msg} (item={item.get('id', '?')}) — NAO publicado, revisar.", file=sys.stderr)
+        print(f"!!! {msg} (item={_id}) — NAO publicado, revisar.", file=sys.stderr)
         raise RuntimeError(msg)
 
 def publish_post(item):
-    _cfm_guard(item)
+    _cfm_guard(item, "post")
     imgs = item["images"]; cap = item.get("caption", ""); alt = _alt(item)
     if len(imgs) == 1:
         cont = api_post(f"{IG_USER_ID}/media", _loc({"image_url": raw_url(imgs[0]), "caption": cap, "alt_text": alt}))["id"]
@@ -128,8 +181,15 @@ def publish_story_img(image_path):
     wait_finished(cont)
     return api_post(f"{IG_USER_ID}/media_publish", {"creation_id": cont})["id"]
 def publish_story(item):
+    # Guard aqui e nao em publish_story_img: aquela recebe um CAMINHO, nao o item, e
+    # portanto nao tem o que auditar. Este e o ponto por onde passam story E destaque
+    # (o ramo FORCE_ID=destaques chama publish_story), que antes publicavam sem checagem.
+    _cfm_guard(item, "story")
     return publish_story_img(item["image"])
 def publish_sequence(seq):
+    # Audita os 5 frames ANTES de publicar qualquer um: publicacao de story e irreversivel
+    # frame a frame, entao checar no meio deixaria telas ja no ar.
+    _cfm_guard(seq, "seq")
     # publica os 5 frames em ordem, um atras do outro (story serializado)
     ids = []
     for i, img in enumerate(seq["images"], 1):
@@ -138,7 +198,7 @@ def publish_sequence(seq):
         time.sleep(2)
     return ids
 def publish_reel(item):
-    _cfm_guard(item)
+    _cfm_guard(item, "reel")
     # alt_text NAO e' suportado em reels (so imagens); location_id e' suportado.
     base = _loc({"media_type": "REELS", "video_url": raw_url(item["video"]),
                  "caption": item.get("caption", "")})

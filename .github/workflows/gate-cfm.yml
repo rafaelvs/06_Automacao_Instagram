@@ -76,6 +76,19 @@ jobs:
           set -o pipefail
           python testes_guardrails.py 2>&1 | tee testes.log
 
+      # Enforcement de verdade: prova que a agenda diaria continua passando E que os
+      # caminhos que antes publicavam sem checagem agora bloqueiam. Se este step ficar
+      # vermelho na metade "agenda", o robo para de publicar amanha — e o mais critico
+      # do workflow.
+      - name: Teste de enforcement (publish._cfm_guard)
+        if: always()
+        shell: bash
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          set -o pipefail
+          python testes_publish_guard.py 2>/dev/null | tee guard.log
+
       # As contagens ficam presas no log, cujo download exige token de admin.
       # Emitidas como ANOTACOES, ficam legiveis pela API de check-runs sem login —
       # e aparecem no topo da pagina do run, sem precisar abrir step nenhum.
@@ -100,6 +113,9 @@ jobs:
           fi
           if [ -f testes.log ]; then
             note 'Bateria' "$(g '^casos:' testes.log)"
+          fi
+          if [ -f guard.log ]; then
+            note 'Enforcement' "$(g 'comportamentos corretos' guard.log) || $(g 'sequencias que NAO passam' guard.log)"
           fi
 
           # Os ACHADOS em si (nao so as contagens). Uma anotacao unica com quebras
