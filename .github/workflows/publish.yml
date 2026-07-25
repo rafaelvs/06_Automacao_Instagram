@@ -52,7 +52,20 @@ jobs:
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add state/published.json
             git commit -m "Atualiza estado de publicacao"
-            git push
+            # retry git push p/ evitar race condition (mesmo padrao do render-reel-voz.yml).
+            # Um push perdido deixa o estado sem salvar e o item VOLTA PARA A FILA — e' o
+            # sintoma "Posta 2x" catalogado em docs/02_RUNBOOK.md.
+            ok=0
+            for attempt in 1 2 3 4 5; do
+              if git pull --rebase origin main && git push; then ok=1; break; fi
+              git rebase --abort 2>/dev/null || true
+              echo "Push tentativa $attempt falhou — aguardando ${attempt}0s..."
+              sleep $((attempt * 10))
+            done
+            if [ "$ok" != "1" ]; then
+              echo "::error::Estado NAO salvo apos 5 tentativas — risco de republicar o mesmo item."
+              exit 1
+            fi
           else
             echo "Sem mudancas no estado."
           fi
