@@ -1,0 +1,100 @@
+name: Gate CFM (conformidade)
+
+# Porta de conformidade CFM 2.336/2023 rodada em CI.
+#
+# DESACOPLADO de publish.yml POR DECISAO DE PROJETO: um FAIL aqui sinaliza conteudo
+# irregular, mas NAO trava a agenda diaria de publicacao. Plugar o gate dentro do
+# publish.yml (ou como pre-commit) e' um passo posterior, decisao do Rafael.
+#
+# Este workflow so LE o repositorio: nao publica, nao commita, nao escreve estado.
+
+on:
+  push:
+    branches: ["**"]
+    paths-ignore:
+      # O robo commita state/published.json 1-2x/dia. Esses commits nao mudam
+      # conteudo auditavel — ignorar evita encher o CI de runs redundantes.
+      - "state/**"
+  pull_request:
+    paths-ignore:
+      - "state/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gate-cfm-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    name: Rodar gate_publicacao.py
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # Pillow NAO esta em requirements.txt (que so tem `requests`), mas checar_cfm.py
+      # importa `carrossel`, que faz `from PIL import Image, ImageDraw, ImageFont`.
+      # Sem Pillow esse import falha, cai no except de checar_cfm.py:152 como REVISAR
+      # (nao-bloqueante) e os 9 carrosseis ficam SEM auditoria — o gate ainda imprime
+      # PASS. Instalar Pillow aqui e' o que torna a contagem do gate honesta.
+      - name: Instalar dependencias (inclui Pillow — ver comentario acima)
+        run: pip install -r requirements.txt Pillow
+
+      # Trava anti-falso-verde: se o import de carrossel falhar, o gate passaria em
+      # silencio sobre os carrosseis. Aqui o import e' obrigatorio e o step quebra.
+      - name: Sanidade — carrossel.POSTS precisa importar de verdade
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          python -c "from carrossel import POSTS; print(f'carrossel.POSTS importado: {len(POSTS)} posts')"
+
+      - name: Rodar gate de publicacao
+        id: gate
+        shell: bash
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          # pipefail e' obrigatorio: sem ele o `| tee` mascara o exit 1 do gate
+          # e o CI ficaria verde com bloqueios pendentes.
+          set -o pipefail
+          python gate_publicacao.py 2>&1 | tee gate.log
+
+      # O Rafael nao abre log de Actions. O resultado vai para o Job Summary,
+      # visivel na primeira tela do run.
+      - name: Resumo no Job Summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## Gate CFM — Res. CFM 2.336/2023"
+            echo ""
+            if [ -f gate.log ]; then
+              echo '```'
+              grep -E "^(BLOQUEIOS|avisos|>>>)" gate.log || echo "(gate nao chegou ao bloco RESULTADO)"
+              echo '```'
+              echo ""
+              echo "<details><summary>Saida completa do gate</summary>"
+              echo ""
+              echo '```text'
+              cat gate.log
+              echo '```'
+              echo ""
+              echo "</details>"
+            else
+              echo "**O gate nao produziu log** — falhou antes de rodar (veja os steps acima)."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Guardar log do gate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate-cfm-log
+          path: gate.log
+          if-no-files-found: warn
