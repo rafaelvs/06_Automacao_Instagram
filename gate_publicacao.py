@@ -66,12 +66,39 @@ except Exception as e:
     print("AVISO: advisory v6 falhou (fail-open — nao bloqueia):", e)
     v6_gap = 0
 
+# --- [frames] TEXTO DE TELA (ADVISORY) — sequencias / stories / destaques -------------------
+# Fecha a brecha estrutural do lint: checar_cfm.py procura o campo 'caption' em
+# sequences.json e stories.json (checar_cfm.py:193), campo que esses arquivos NAO tem —
+# 239 itens auditados como ZERO, passando em silencio. E destaques.json nem esta na lista
+# varrida (checar_cfm.py:184). checar_frames.py resolve o texto de tela nas fontes vivas
+# (SEASONS / NOVAS / NEW_EPISODES derivados) e nas transcricoes de imagem, e audita de verdade.
+#
+# ADVISORY POR SEGURANCA DE AGENDA: a sequencia publica TODOS OS DIAS. Promover isto a
+# bloqueante antes de a cobertura fechar e as transcricoes serem revisadas PARARIA a
+# publicacao diaria. Soma SO em 'avisos'; JAMAIS em 'bloqueios' ou no exit.
+print("\n=== [frames] Texto de tela — sequencias/stories/destaques (advisory) ===")
+frames_resumo = None
+try:
+    import checar_frames
+    _fr = checar_frames.relatorio()
+    frames_resumo = (len(_fr["violacoes"]), len(_fr["sem_texto"]),
+                     len(_fr["nao_revisados"]), len(_fr["falhas"]))
+    frames_gap = sum(frames_resumo)
+except Exception as e:
+    print("AVISO: lint de frames falhou (fail-open — nao bloqueia):", e)
+    frames_gap = 0
+
 bloqueios = len(violacoes) + len(faltas)
-avisos = len(revisar) + len(so_corpo) + len(hook_fraco) + len(send_fraco) + send_libs_fraco + v6_gap
+avisos = (len(revisar) + len(so_corpo) + len(hook_fraco) + len(send_fraco)
+          + send_libs_fraco + v6_gap + frames_gap)
 
 print("\n################ RESULTADO ################")
 print(f"BLOQUEIOS (VIOLACAO CFM + FALTA termo->popular): {bloqueios}")
 print(f"avisos (REVISAR + SO_CORPO, nao bloqueiam): {avisos}")
+if frames_resumo is not None:
+    _v, _st, _nr, _f = frames_resumo
+    print(f"  [advisory frames] VIOLACAO={_v} SEM_TEXTO={_st} NAO_REVISADOS={_nr} FALHAS_FONTE={_f}")
+    print("  ^ texto de TELA de sequencias/stories/destaques — NAO entra em BLOQUEIOS (ainda).")
 if bloqueios == 0:
     print(">>> PASS — conteudo liberado para render/publicacao.")
     sys.exit(0)
