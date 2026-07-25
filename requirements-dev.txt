@@ -9,6 +9,9 @@ pillow>=10.0
 #   edge-tts        -> voz neural dos Reels (gerar_reel_voz.py, render-reel-voz.yml)
 #   kaggle          -> treino de voz (voz/orchestrator.py)
 #   huggingface_hub -> modelos de voz (voz_train.py, voz/modal_voz.py, voz/orchestrator.py)
+#   pynacl          -> cifra o token ao regravar o secret (refresh_token.py,
+#                      refresh-token.yml). Fica fora do requirements.txt de proposito:
+#                      o publish.yml roda 2x/dia e nao precisa dele.
 #
 # ffmpeg tambem NAO e' necessario localmente: o render e' na nuvem por design.
 # Ver docs/00_ARQUITETURA.md secao 6 ("Por que NAO renderiza no Windows local").

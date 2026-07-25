@@ -35,18 +35,27 @@ jobs:
           GH_SECRETS_PAT: ${{ secrets.GH_SECRETS_PAT }}
         run: python refresh_token.py
       - name: Registrar a data da renovacao
-        # O token ja' foi renovado neste ponto - falhar o commit nao pode
-        # derrubar o job. O robo de publicacao commita 1-2x/dia, entao
-        # rebase antes de empurrar.
-        continue-on-error: true
         run: |
           if ! git diff --quiet -- state/token_refresh.json; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add state/token_refresh.json
             git commit -m "Renova token do Instagram"
-            git pull --rebase origin "${GITHUB_REF_NAME}"
-            git push
+            # Mesmo retry do publish.yml: o robo de publicacao commita 1-2x/dia
+            # e pode empurrar entre o nosso commit e o push.
+            ok=0
+            for attempt in 1 2 3 4 5; do
+              if git pull --rebase origin main && git push; then ok=1; break; fi
+              git rebase --abort 2>/dev/null || true
+              echo "Push tentativa $attempt falhou — aguardando ${attempt}0s..."
+              sleep $((attempt * 10))
+            done
+            # Diferenca proposital em relacao ao publish.yml: la' o estado nao salvo
+            # faz REPUBLICAR, entao e' erro. Aqui o token JA' foi renovado com sucesso
+            # - perder o registro e' cosmetico. Avisa, mas nao derruba o job.
+            if [ "$ok" != "1" ]; then
+              echo "::warning::Token renovado, mas o registro em state/token_refresh.json nao foi salvo."
+            fi
           else
             echo "Sem mudancas no registro."
           fi
