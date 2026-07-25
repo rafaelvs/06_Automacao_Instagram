@@ -153,6 +153,44 @@ emergência. Isso é deliberado: o gate protege o registro profissional antes do
 > score). Não quebra nada, mas é lixo a limpar, e o `gerar()` **não aplica o gate**: quem publica
 > precisa chamar `score_seo` explicitamente.
 
+### 6.1 O gate de verdade — `_lint_seo.py`
+
+`score_seo()` pontua **um episódio em memória**. Quem audita o arquivo publicado é
+[`_lint_seo.py`](../_lint_seo.py), rodando sobre `seo_episodios.json`:
+
+```bash
+python _lint_seo.py                    # audita tudo
+python _lint_seo.py --strict           # exit 1 se algum episódio < 90 pts
+python _lint_seo.py artrorrise tvp     # filtra episódios
+```
+
+Ele repete os 7 critérios do `score_seo` e acrescenta **dois**:
+
+| Regra extra | Peso | Por quê |
+|---|---|---|
+| `TITLE_ALT` | 5 | `title_alt` presente e diferente do `title` — sem isso não há A/B |
+| `SEARCH_INTENT` | 5 | `search_intent` com ao menos 1 item |
+
+> ⚠️ **Os pesos das duas implementações divergem.** Mesma verificação, punição diferente:
+>
+> | Critério | `score_seo` | `_lint_seo` |
+> |---|---|---|
+> | Título < 45 | −15 | −10 |
+> | Título > 100 | −20 | −15 |
+> | Descrição < 200 | −15 | −10 |
+> | Sem pronto-socorro/emergência | −10 | −15 |
+> | Sem `CRM-SP` | −20 | −20 |
+> | Sem `#Shorts` / < 10 tags | −10 | −10 |
+>
+> Um episódio pode passar em um gate e falhar no outro. **`_lint_seo.py` é o que vale** — é ele
+> que roda sobre o arquivo que vai ao ar. Vale unificar os pesos num lugar só.
+
+**Isenção EP07-28.** Os 28 episódios já publicados no canal estão em `TITULO_DO_CANAL` (frozenset)
+e **não são cobrados** no critério de comprimento mínimo do título. Alongar esses títulos
+significaria renomear vídeo no ar e perder o histórico de SEO — `_gen_seo_json.py` preserva o
+`title` deles de propósito. A isenção **aparece marcada na saída**, nunca some em silêncio. A lista
+é congelada: episódio novo é cobrado normalmente.
+
 ---
 
 ## 7. Intenções de busca
@@ -171,7 +209,7 @@ responder a pelo menos uma dessas queries.
 - [ ] `titulo()` / `titulo_alt()` → par para A/B
 - [ ] `descricao()` com hook, pontos, WhatsApp, assinatura
 - [ ] `tags()` com `episode_id` (senão perde o long-tail)
-- [ ] **`score_seo()` ≥ 90** e nenhum issue de CFM
+- [ ] `python _lint_seo.py --strict <id>` → **≥ 90 pts**, nenhum issue de CFM
 - [ ] `python _lint_recuperacao.py <id>` → 0 erros
 - [ ] Aprovação do Rafael (RQE) **antes** do render
 
