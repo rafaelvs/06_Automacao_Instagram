@@ -13,13 +13,21 @@
 O token da Meta vive **~60 dias**. Quando expira, o `publish.py` falha e a conta para
 **em silêncio** — nada avisa. Procedimento de troca: `02_RUNBOOK.md §5`.
 
-| # | Renovado em | Próxima data-alvo (+55d) | Observação |
-|---|---|---|---|
-| 0 | **2026-06-04** | — | Criação do repo (data inferida do 1º commit + 1ª publicação às 13:38) |
-| 1 | `____/____/______` | `____/____/______` | ⬅️ **preencher na próxima troca** |
+| # | Renovado em | Expira (+60d) | Próxima data-alvo (+55d) | Observação |
+|---|---|---|---|---|
+| 0 | **2026-06-04** | **2026-08-03** | 2026-07-29 | Emissão original, na montagem do repo. **Confirmado em 25/07/2026** pela coluna Updated do secret — nunca foi trocado até então. |
+| 1 | `____/____/______` | `____/____/______` | `____/____/______` | ⬅️ **preencher na próxima troca** |
 
 **Fonte de verdade da data:** GitHub → repo → *Settings → Secrets and variables → Actions*
-→ coluna **Updated** do secret `IG_ACCESS_TOKEN`. O que está no repositório é só estimativa.
+→ coluna **Updated** do secret `IG_ACCESS_TOKEN`. O que está no repositório é só estimativa
+até ser conferido lá.
+
+> ⚠️ **Pegadinha:** o §5 do runbook sugere trocar o token atual via `ig_exchange_token`, mas
+> isso exige o **valor do token vigente** — e o GitHub **não devolve** um secret depois de
+> salvo (são write-only; a tela só mostra a data). Se o token atual não estiver guardado num
+> gerenciador de senhas, o caminho é **refazer a Parte A do `README.md`** (gerar token novo no
+> painel da Meta e convertê-lo para longa duração). Não crie um app novo — use o existente,
+> senão o `IG_USER_ID` muda.
 
 **Como detectar que expirou:** se `state/published.json` ficar **24h sem commit novo**,
 algo travou. Verificação rápida:
