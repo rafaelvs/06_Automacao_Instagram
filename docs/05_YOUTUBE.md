@@ -132,40 +132,57 @@ Microsoft Store. O interpretador real está em
 `C:\Users\rafae\AppData\Local\Programs\Python\Python311\python.exe` (3.11.9). Use o caminho absoluto
 e `PYTHONIOENCODING=utf-8`.
 
-Números depois de integrar a `main` (que trouxe a isenção `TITULO_DO_CANAL` no `_lint_seo.py`):
+Números **rerodados em 25/07/2026** depois de `TITULO_DO_CANAL` passar a sair do ledger (a tabela
+anterior era de antes da tarefa de sanidade do `title_alt`, que acrescentou 4 regras e o aviso de
+`consolidacao`):
 
 | Comando | Resultado |
 |---|---|
-| `_lint_recuperacao.py` | 34 episódios, **0 erros, 0 avisos** · exit 0 |
-| `_lint_seo.py --strict` | Média **100/100**, **34 perfeitos**, 2 isentos · exit 0 |
-| `gate_youtube.py` | **PASS** · 0 bloqueios, 4 avisos · exit 0 |
+| `_lint_recuperacao.py` | 34 episódios, **0 erros** · exit 0 |
+| `_lint_seo.py --strict` | Média **99/100**, **33 perfeitos**, 2 isentos · exit 0 |
+| `gate_youtube.py` | **PASS** · 0 bloqueios, 5 avisos · exit 0 |
 | `gate_youtube.py <ids>` | filtro funciona; id inexistente é avisado e ignorado |
 | `gate_publicacao.py` (Instagram) | **PASS** · 0 bloqueios · exit 0 |
 
-Os avisos de título curto de `artrorrise` (36 chars) e `edema` (43) deixaram de ser cobrados: a
-`main` os pôs no frozenset `TITULO_DO_CANAL` do `_lint_seo.py`, que dispensa `TITLE_LEN_MIN` de
-episódio já publicado. Mesma conclusão a que eu havia chegado — não renomear vídeo no ar —
-resolvida no lint em vez de ficar como dívida.
+O único aviso do lint SEO é `consolidacao` com `ALT_LEN_MIN` (`title_alt` de 44 chars, 1 a menos que
+o mínimo) — vem da tarefa do `title_alt`, é `title_alt` e não `title`, então não é nada que esteja
+no ar. Os 5 avisos do gate são esse mais os 4 `REVISAR` de CFM por citarem "radiografia".
 
-### ⚠️ Defeito herdado da `main`: `TITULO_DO_CANAL` está errado
+Os avisos de título curto de `artrorrise` (36 chars) e `edema` (43) não são cobrados: são os dois
+únicos títulos abaixo de 45 chars em **todo** o `seo_episodios.json`, e ambos estão no ar, então a
+isenção `TITLE_LEN_MIN` pega os dois — não renomear vídeo publicado. Continuam **marcados na
+saída**, nunca somem em silêncio. Nenhum dos 7 inéditos tem título curto hoje; se um tiver, agora é
+cobrado, que era a promessa que a lista antiga quebrava.
 
-A lista foi montada a partir do comentário de `_gen_seo_json.py:30` ("EP07-28 já publicados"), que
-**este documento desmente** (§1). Cruzada com o canal, ela erra nas duas pontas:
+### ✅ Corrigido: `TITULO_DO_CANAL` agora sai do ledger
 
-- **Isenta 6 episódios que NÃO estão publicados** — `consolidacao`, `consolidacao_kids`,
+**O defeito.** A lista tinha sido montada a partir do comentário de `_gen_seo_json.py:30` ("EP07-28
+já publicados"), que **este documento desmente** (§1). Cruzada com o canal, ela errava nas duas pontas:
+
+- **Isentava 6 episódios que NÃO estão publicados** — `consolidacao`, `consolidacao_kids`,
   `retirada_fixador`, `retirada_fixador_kids`, `banho_posop`, `banho_posop_kids`. São 6 dos 7
-  inéditos. O comentário na lista diz "episódio novo continua sendo cobrado normalmente", mas para
-  esses seis é exatamente o que deixa de acontecer: um título curto passa em silêncio.
-- **Não isenta 5 que ESTÃO publicados** — `gesso_pos_op`, `gesso_pos_op_kids`, `fixador_externo`,
+  inéditos. O comentário na lista prometia "episódio novo continua sendo cobrado normalmente", e era
+  exatamente o que deixava de acontecer para esses seis: título curto passaria em silêncio.
+- **Não isentava 5 que ESTÃO publicados** — `gesso_pos_op`, `gesso_pos_op_kids`, `fixador_externo`,
   `fixador_externo_kids`, `carga_fisio`. Foi por isso que a `main` "consertou" o `fixador_externo`
   inventando o título `"Fixador externo: cuidados e sinais de alarme"`, que **não é** o que está no
   ar (`dLqjPf9cl7w` = "Fixador externo: cuidados com os pinos e sinais de alarme"). No merge esse
   título foi descartado em favor do real.
 
-A fonte da verdade para reconstruir a lista é
-[`state/published_youtube.json`](../state/published_youtube.json): isentar quem está em `published`,
-cobrar quem está em `pendentes`. Não corrigi aqui de propósito — `_lint_seo.py` está sendo alterado
-em paralelo (tarefa da sanidade de `title_alt`), e mexer nele agora garantiria conflito.
+**A correção.** O frozenset hardcoded saiu; `TITULO_DO_CANAL` é **derivado em tempo de execução** de
+[`state/published_youtube.json`](../state/published_youtube.json) — isenta quem está em `published`
+(27), cobra quem está em `pendentes` (7). Derivar em vez de duplicar é o ponto: a lista não tem como
+divergir de novo, porque publicar já é mover o id no ledger (passo 4 do runbook em §5) e a isenção
+acompanha sozinha. Id ausente do ledger é cobrado normalmente — a direção segura. Se o ledger sumir
+ou corromper, o lint **estoura com mensagem explícita** em vez de devolver lista vazia e desligar a
+isenção calado.
+
+Conferido depois da troca: os ids isentos passaram a ser exatamente os 27 de `published`; nenhum
+`pendente` isento; `published + pendentes` cobre os 34 do `seo_episodios.json`. Com um título de 27
+chars injetado em memória, `banho_posop`/`consolidacao`/`retirada_fixador` voltam a ser cobrados em
+`TITLE_LEN_MIN` e `gesso_pos_op`/`carga_fisio`/`fixador_externo` são isentos — o inverso do que a
+lista antiga fazia. A saída dos gates não mudou, porque nenhum dos 11 ids afetados tem título curto
+hoje: o que mudou foi a regra deixar de estar errada.
 
 ### O que foi corrigido no `seo_episodios.json` nesta sessão
 

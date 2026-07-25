@@ -75,8 +75,9 @@ def main():
     com_aviso = 0
     n_isentos = 0
     for eid, ent in dados.items():
-        # ATENCAO: lint_entry devolve TRES valores desde a isencao TITULO_DO_CANAL (EP07-28) em
-        # _lint_seo.py — (score, issues, isentos). Desempacotar em dois quebra este gate.
+        # ATENCAO: lint_entry devolve TRES valores desde a isencao TITULO_DO_CANAL em _lint_seo.py
+        # — (score, issues, isentos). Desempacotar em dois quebra este gate. Quem entra na isencao
+        # sai de state/published_youtube.json (nao mais de uma lista fixa rotulada "EP07-28").
         score, issues, isentos = _lint_seo.lint_entry(eid, ent)
         if isentos:
             n_isentos += 1

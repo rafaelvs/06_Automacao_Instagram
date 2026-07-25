@@ -185,11 +185,18 @@ Ele repete os 7 critérios do `score_seo` e acrescenta **dois**:
 > Um episódio pode passar em um gate e falhar no outro. **`_lint_seo.py` é o que vale** — é ele
 > que roda sobre o arquivo que vai ao ar. Vale unificar os pesos num lugar só.
 
-**Isenção EP07-28.** Os 28 episódios já publicados no canal estão em `TITULO_DO_CANAL` (frozenset)
-e **não são cobrados** no critério de comprimento mínimo do título. Alongar esses títulos
-significaria renomear vídeo no ar e perder o histórico de SEO — `_gen_seo_json.py` preserva o
-`title` deles de propósito. A isenção **aparece marcada na saída**, nunca some em silêncio. A lista
-é congelada: episódio novo é cobrado normalmente.
+**Isenção de quem já está no canal.** Episódio já publicado entra em `TITULO_DO_CANAL` e **não é
+cobrado** no critério de comprimento mínimo do título. Alongar esses títulos significaria renomear
+vídeo no ar e perder o histórico de SEO — `_gen_seo_json.py` preserva o `title` deles de propósito.
+A isenção **aparece marcada na saída**, nunca some em silêncio, e episódio inédito é cobrado
+normalmente.
+
+> A lista é **derivada de [`state/published_youtube.json`](../state/published_youtube.json)** em
+> tempo de execução, não escrita à mão. Já foi um frozenset fixo, montado a partir do comentário
+> "EP07-28 já publicados" de `_gen_seo_json.py:30` — que o levantamento do canal desmentiu: isentava
+> 6 dos 7 inéditos e deixava de isentar 5 que estavam no ar. Ver
+> [`05_YOUTUBE.md`](05_YOUTUBE.md) §1 e §6. Derivar é o que impede a divergência de voltar: publicar
+> já é mover o id no ledger, e a isenção acompanha.
 
 ---
 

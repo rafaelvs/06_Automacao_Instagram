@@ -18,16 +18,17 @@ Critérios verificados:
  10. title_alt íntegro (sem corte no meio da palavra/parêntese)
  11. title_alt sem expressão duplicada
 
-Isenção: os 28 episódios EP07-28 já publicados no canal não são cobrados no
-critério 1 (comprimento mínimo do título) — ver TITULO_DO_CANAL abaixo. A isenção
-aparece marcada na saída, nunca some em silêncio.
+Isenção: episódio já publicado no canal não é cobrado no critério 1 (comprimento
+mínimo do título) — quem está no ar sai de state/published_youtube.json, ver
+TITULO_DO_CANAL abaixo. A isenção aparece marcada na saída, nunca some em silêncio.
 """
 import json, sys, os
 
 sys.path.insert(0, os.path.dirname(__file__))
 import seo_youtube as seo
 
-JSON_PATH = os.path.join(os.path.dirname(__file__), "seo_episodios.json")
+JSON_PATH   = os.path.join(os.path.dirname(__file__), "seo_episodios.json")
+LEDGER_PATH = os.path.join(os.path.dirname(__file__), "state", "published_youtube.json")
 
 
 # ─── Sanidade do title_alt ──────────────────────────────────────────────────────
@@ -96,29 +97,40 @@ WEIGHTS = {
     "ALT_LEN_MIN": 5, "ALT_LEN_MAX": 5, "ALT_INTEGRO": 5, "ALT_SEM_DUP": 5,
 }
 
-# ─── Títulos preservados do canal (EP07-28) ─────────────────────────────────────
-# Estes 28 vídeos já estão publicados no YouTube e o gerador preserva o `title`
-# deles de propósito — ver _gen_seo_json.py: "não mudamos os títulos dos EP07-28
-# existentes", e build_entry(), que copia o title da entrada existente.
-# Alongá-los para bater os 45 chars significaria RENOMEAR vídeo no ar, perdendo o
-# histórico de SEO. Então TITLE_LEN_MIN não se aplica a eles.
-# Lista CONGELADA de propósito: episódio novo continua sendo cobrado normalmente.
-TITULO_DO_CANAL = frozenset({
-    "artrorrise",            "artrorrise_kids",
-    "growth_guided",         "growth_guided_kids",
-    "ferida_cirurgica",      "ferida_cirurgica_kids",
-    "dor_posop",             "dor_posop_kids",
-    "edema",                 "edema_kids",
-    "infeccao_ferida",       "infeccao_ferida_kids",
-    "tvp",                   "tvp_kids",
-    "fisioterapia",          "fisioterapia_kids",
-    "retorno_atividades",    "retorno_atividades_kids",
-    "ortese_bota",           "ortese_bota_kids",
-    "distracao_alongamento", "distracao_alongamento_kids",
-    "consolidacao",          "consolidacao_kids",
-    "retirada_fixador",      "retirada_fixador_kids",
-    "banho_posop",           "banho_posop_kids",
-})
+# ─── Títulos preservados do canal ───────────────────────────────────────────────
+# Vídeo já no ar não se renomeia: alongar o título para bater os 45 chars mexeria
+# em vídeo publicado e perderia o histórico de SEO — o _gen_seo_json.py preserva o
+# `title` desses de propósito. Então TITLE_LEN_MIN não se aplica a eles.
+#
+# A lista é DERIVADA de state/published_youtube.json — o ledger levantado vídeo a
+# vídeo no YouTube Studio em 25/07/2026 — e NÃO do comentário de _gen_seo_json.py:30
+# ("EP07-28 já publicados"). Esse comentário nunca foi fonte de verdade, e a versão
+# anterior desta lista, montada a partir dele, errava nas duas pontas: isentava 6
+# episódios INÉDITOS (justamente os que precisam ser cobrados) e deixava de isentar
+# 5 que estão no ar desde 24-25/06. Ver docs/05_YOUTUBE.md §1 e §6.
+#
+# Derivar em vez de duplicar é o que impede a lista de divergir de novo: publicou,
+# move o id de "pendentes" para "published" no ledger e a isenção passa a valer
+# sozinha. Id ausente do ledger é cobrado normalmente — a direção segura, porque
+# episódio novo com título curto não pode passar em silêncio.
+
+def _publicados_no_canal():
+    """ids da série que já estão no ar, lidos do ledger de publicação."""
+    try:
+        with open(LEDGER_PATH, encoding="utf-8") as f:
+            ledger = json.load(f)
+    except (OSError, ValueError) as err:
+        raise RuntimeError(
+            f"nao consegui ler o ledger de publicacao ({LEDGER_PATH}): {err}. "
+            "Sem ele o lint nao sabe quem ja esta no ar e nao tem como decidir a "
+            "isencao de TITLE_LEN_MIN — conserte o arquivo antes de rodar."
+        ) from err
+    # v["id"] de propósito, e não .get("id"): se o formato do ledger mudar, isso
+    # estoura aqui em vez de devolver conjunto vazio e desligar a isenção calado.
+    return frozenset(v["id"] for v in ledger["published"])
+
+
+TITULO_DO_CANAL = _publicados_no_canal()
 
 # Só o comprimento mínimo é dispensado. Tudo que é CFM (DESC_ALARME, DESC_CRM) e
 # o teto de 100 chars continuam valendo para todo mundo.
