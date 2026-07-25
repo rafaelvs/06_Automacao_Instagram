@@ -8,6 +8,12 @@ Organização criada em **23/06/2026**. Comece por aqui.
 | [02_RUNBOOK.md](02_RUNBOOK.md) | **Como usar no dia a dia**: render, publicar, token, troubleshooting. |
 | [03_AUDITORIA.md](03_AUDITORIA.md) | Saúde do motor (runway, refs quebradas, pontos de atenção). |
 | [04_ORGANIZACAO_PROPOSTA.md](04_ORGANIZACAO_PROPOSTA.md) | Estrutura-alvo + plano de migração seguro (em fases). |
+| [ESTRATEGIA_YOUTUBE_2026.md](ESTRATEGIA_YOUTUBE_2026.md) | 📺 Ganchos, título, descrição, tags e gate de SEO. Fonte de `seo_youtube.py` e `ganchos.py`. |
+| [GUIA_PRODUCAO_RECUPERACAO.md](GUIA_PRODUCAO_RECUPERACAO.md) | 🩺 Convenções da série "Recuperação" + regras R1-R7. Fonte de `_lint_recuperacao.py`. |
+| [SETUP_MODAL.md](SETUP_MODAL.md) | 🎙️ Bootstrap e operação do treino da voz pt-BR. Fonte de `voz/modal_voz.py`. |
+
+> ⚠️ Os três docs acima foram **reconstruídos em 25/07/2026** a partir do que já estava codificado
+> nos scripts que os citam — os originais viviam fora do Git e se perderam na troca de máquina.
 
 **Auditoria reproduzível:** `python _auditoria_motor.py` (na raiz do repo).
 
