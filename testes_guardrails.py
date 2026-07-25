@@ -146,6 +146,16 @@ CASOS = [
      "ilustracao didatica declarada nao pode virar violacao"),
     (f"Antes e depois não fazem sentido em ortopedia. {SIG}", "publico", False, None, False, True,
      "critica ao 'antes e depois' nao pode virar violacao"),
+
+    # A primeira versao da regra autopromocao sinalizou 13 itens, dos quais 12 eram
+    # exatamente estes dois padroes: o material que educa CONTRA o 'caso perdido'.
+    # Ficam como caso critico para a correcao nao regredir em silencio.
+    (f"Manda pra quem acha que não tem jeito. Quase sempre tem caminho. {SIG}",
+     "publico", False, None, False, True,
+     "crença atribuida a terceiro para ser contrariada — 5 episodios e 1 carrossel reais"),
+    (f"Mito x Verdade · “Já disseram que não há o que fazer” · O mito do caso perdido. {SIG}",
+     "publico", False, None, False, True,
+     "frase rotulada como MITO — 3 frames reais da temporada Complexos"),
 ]
 
 

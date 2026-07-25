@@ -103,9 +103,15 @@ NEG_PROMESSA = ["nao promet", "nao garant", "nao existe", "nada de", "longe de",
 # 3) Autopromoção comparativa — REGRA NOVA. Não existia: a transcrição das imagens
 # revelou dest04 ("O que outros não resolveram") e story07 ("Já ouviu 'não há mais o
 # que fazer'?"), que passavam limpos por TODAS as 10 regex de PROMESSAS.
-# Sem janela de negação: estas frases são comparativas por construção, e a negação que
-# elas contêm ("não resolveram", "não há") é parte do próprio enquadramento.
-AUTOPROMOCAO = [
+#
+# Duas famílias, com tratamento DIFERENTE — a primeira versão desta regra tratava as
+# duas igual e errou feio: sinalizou 13 itens, dos quais 12 eram o material que educa
+# CONTRA o enquadramento (episódios do tipo "manda pra quem acha que não tem jeito" e
+# a temporada "Mito x Verdade"). Ruído desse tamanho enterra o achado real.
+#
+# FORTE: posicionamento em 1ª pessoa contra outros profissionais. Não tem leitura
+# inocente — sem filtro de contexto.
+AUTOPROMOCAO_FORTE = [
     (r"\b(o que|que) (outros|os outros|ninguem|outro medico|outros medicos) "
      r"nao (resolveu|resolveram|resolve|resolvem|conseguiu|conseguiram|fez|fizeram|quis|quiseram)\b",
      "comparação com outros profissionais"),
@@ -113,13 +119,21 @@ AUTOPROMOCAO = [
      "comparação com outros profissionais"),
     (r"\boutros (medicos|profissionais|colegas|ortopedistas) (nao|recusaram|desistiram|erraram)\b",
      "comparação com outros profissionais"),
-    (r"\bnao ha mais (o que fazer|nada a fazer)\b",
-     "apelo ao 'caso perdido' (comparativo/sensacionalista)"),
-    (r"\bnao tem (mais )?(solucao|jeito|conserto)\b",
-     "apelo ao 'caso perdido'"),
-    (r"\b(disseram|falaram|te disseram) que nao (tinha|havia|tem|ha)\b",
-     "apelo ao 'caso perdido'"),
 ]
+
+# CASO PERDIDO: aqui a FRASE não revela a POSTURA. Medida no conteúdo real, ela aparece
+# majoritariamente sendo contrariada. Por isso tem filtro de contexto.
+AUTOPROMOCAO_CASO_PERDIDO = [
+    (r"\bnao ha mais (o que fazer|nada a fazer)\b", "apelo ao 'caso perdido'"),
+    (r"\bnao ha o que fazer\b", "apelo ao 'caso perdido'"),
+    (r"\bnao tem (mais )?(solucao|jeito|conserto)\b", "apelo ao 'caso perdido'"),
+    (r"\b(disseram|falaram|te disseram) que nao (tinha|havia|tem|ha)\b", "apelo ao 'caso perdido'"),
+]
+# Marcadores de que a frase está sendo ATRIBUÍDA a terceiros para ser contrariada
+# ("quem acha que não tem jeito") ou explicitamente rotulada como mito — e não usada
+# como gancho promocional. NÃO incluir marcadores de esperança ("existe caminho"):
+# story07 usa exatamente isso e o Rafael quer continuar vendo story07.
+CASO_PERDIDO_CTX_OK = ["acha que", "acham que", "achando que", "quem acha", "mito"]
 
 # 4) Estética/altura no alongamento (precisa co-ocorrer alongamento + estética)
 ALONG_GATILHO = ["alongament", "alongar o osso", "osso novo", "estatura", "transporte osseo"]
@@ -166,10 +180,18 @@ def auditar(texto, contexto="publico"):
                 issues.append(("VIOLACAO", "promessa", f"{detalhe} — em hashtag '#{h}'"))
                 break
 
-    # 3) autopromoção comparativa
-    for rgx, detalhe in AUTOPROMOCAO:
+    # 3) autopromoção comparativa — família FORTE sem filtro; família 'caso perdido'
+    #    anulada por marcador de crença alheia / desmistificação.
+    for rgx, detalhe in AUTOPROMOCAO_FORTE:
         if re.search(rgx, n):
             issues.append(("VIOLACAO", "autopromocao", detalhe))
+    for rgx, detalhe in AUTOPROMOCAO_CASO_PERDIDO:
+        for m in re.finditer(rgx, n):
+            janela = n[max(0, m.start() - 60): m.end() + 60]
+            if any(ok in janela for ok in CASO_PERDIDO_CTX_OK):
+                continue  # frase citada para ser contrariada — é o oposto do achado
+            issues.append(("VIOLACAO", "autopromocao", detalhe))
+            break
 
     # 4) estética/altura no alongamento (co-ocorrência, exceto se houver negação/guardrail).
     #    Antes usava n.find(): só a PRIMEIRA ocorrência era avaliada, então um primeiro uso
