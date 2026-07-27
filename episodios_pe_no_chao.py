@@ -171,6 +171,13 @@ try:
 except Exception as _e:
     print("AVISO: episodios_lote_julho_2026 não carregado:", _e)
 
+# SÉRIE "Respondendo" (temporada "Você Perguntou"): +10 reels curtos de P&R intercalados no feed.
+try:
+    from episodios_qa_respondendo import QA_EPISODES
+    EPISODES = EPISODES + QA_EPISODES
+except Exception as _e:
+    print("AVISO: episodios_qa_respondendo não carregado:", _e)
+
 # VÍDEO DE APRESENTAÇÃO do perfil (Doctoralia) — módulo próprio, mesmo motor.
 try:
     from episodio_apresentacao import APRESENTACAO

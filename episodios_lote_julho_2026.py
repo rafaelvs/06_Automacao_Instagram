@@ -23,8 +23,8 @@ LOTE_JULHO = [
  # ───────────── Pé no Chão #1 ─────────────
  {"id":"pnc_joelho_valgo","ep":21,"serie":"Pé no Chão","temporada":"pernas",
   "scenes":[
-   {"k":"Mito x Verdade","sc":["Joelho em X","quase sempre é fase."],"e":"fase","sub":"Entre 3 e 6 anos, é o desenho normal do crescimento.",
-    "vo":"Joelho em X na criança quase sempre é fase. Dos três aos seis anos, é o desenho normal do crescimento."},
+   {"k":"Mito x Verdade","sc":["Joelho em X","quase sempre é fase."],"e":"fase","sub":"Geno valgo: entre 3 e 6 anos, é o desenho normal do crescimento.",
+    "vo":"Joelho em X — o geno valgo — na criança quase sempre é fase. Dos três aos seis anos, é o desenho normal do crescimento."},
    {"k":"O que acontece","sc":["As perninhas","mudam sozinhas."],"e":None,"sub":"Bebê arqueado, X na pré-escola, alinha perto dos 7.",
     "vo":"As perninhas trocam de forma com a idade e tendem a alinhar perto dos sete."},
    {"k":"O que NÃO ajuda","sc":["Palmilha não","alinha o joelho."],"e":"não","sub":"Em criança saudável, isso não muda o eixo da perna.","motif":"no",
@@ -55,8 +55,8 @@ LOTE_JULHO = [
  # ───────────── Pé no Chão #2 ─────────────
  {"id":"pnc_osgood","ep":23,"serie":"Pé no Chão","temporada":"crescimento",
   "scenes":[
-   {"k":"Pais de atleta, atenção","sc":["Caroço dolorido","abaixo do joelho."],"e":None,"sub":"No adolescente que corre e salta, costuma ter nome.",
-    "vo":"Carocinho dolorido logo abaixo do joelho, no adolescente que corre e salta, costuma ter nome."},
+   {"k":"Pais de atleta, atenção","sc":["Caroço dolorido","abaixo do joelho."],"e":None,"sub":"No adolescente que corre e salta, costuma ser Osgood-Schlatter.",
+    "vo":"Carocinho dolorido logo abaixo do joelho, no adolescente que corre e salta, costuma ser Osgood-Schlatter."},
    {"k":"O que é","sc":["Osgood-","Schlatter."],"e":None,"sub":"A tração do tendão puxa o osso que ainda está crescendo ali.",
     "vo":"Chama Osgood-Schlatter: na fase de estirão, o tendão puxa um osso ainda em formação."},
    {"k":"A boa notícia","sc":["Costuma ser","temporário."],"e":"temporário","sub":"Tende a passar quando o osso amadurece — raramente com cirurgia.",
@@ -82,13 +82,13 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra quem","ouviu só amputar."],"e":None,"sub":"Vale uma segunda opinião. Salva pra lembrar.","cta":True,
     "vo":"Se ouviu que só resta amputar, manda o vídeo: uma segunda opinião vale muito. Salva pra lembrar."},
   ],
-  "caption":cap_rec("Amputar ou reconstruir? Em casos graves de trauma ou infecção, essa decisão é real — e compartilhada. Não há resposta única: pesa a extensão da lesão, infecção, circulação, saúde geral e o que faz sentido para a vida da pessoa. Reconstruir grandes perdas de osso é possível (transporte ósseo com fixador externo, técnica de Ilizarov), mas costuma ser um caminho de etapas. E amputar não é desistir: às vezes devolve função e autonomia mais rápido. O que guia é a qualidade de vida.","#salvamentodemembro #reconstrucaoossea #segundaopiniao")},
+  "caption":cap_rec("Amputar ou reconstruir? Em casos graves de trauma ou infecção, essa decisão é real — e compartilhada. Não há resposta única: pesa a extensão da lesão, infecção, circulação, a saúde de base e o que faz sentido para a vida da pessoa. Reconstruir grandes perdas de osso é possível (transporte ósseo com fixador externo, técnica de Ilizarov), mas costuma ser um caminho de etapas. E amputar não é desistir: às vezes devolve função e autonomia mais rápido. O que guia é a qualidade de vida.","#salvamentodemembro #reconstrucaoossea #segundaopiniao")},
 
  # ───────────── Pé no Chão #3 ─────────────
  {"id":"pnc_sever","ep":25,"serie":"Pé no Chão","temporada":"crescimento",
   "scenes":[
-   {"k":"Dói o calcanhar?","sc":["Criança que joga","bola e reclama."],"e":None,"sub":"Dor no calcanhar no esporte tem uma explicação comum.",
-    "vo":"Dor no calcanhar na criança que joga bola, dança ou corre muito tem uma explicação comum."},
+   {"k":"Dói o calcanhar?","sc":["Criança que joga","bola e reclama."],"e":None,"sub":"Dor no calcanhar no esporte costuma ser a doença de Sever.",
+    "vo":"Dor no calcanhar na criança que joga bola, dança ou corre muito costuma ser a doença de Sever."},
    {"k":"O que é","sc":["Doença de","Sever."],"e":None,"sub":"A placa de crescimento do calcanhar inflama com o impacto repetido.",
     "vo":"Chama doença de Sever: o impacto repetido irrita a placa de crescimento do calcanhar."},
    {"k":"Tranquiliza","sc":["Não deixa","sequela."],"e":"Não","sub":"É autolimitada: melhora com o tempo e não estraga o osso.","motif":"no",
@@ -103,8 +103,8 @@ LOTE_JULHO = [
  # ───────────── Osso Novo #3 ─────────────
  {"id":"on_vitamina_d","ep":26,"serie":"Osso Novo","temporada":"viver-o-tratamento","motif_family":"bone",
   "scenes":[
-   {"k":"Pergunta comum","sc":["Vitamina ajuda","o osso a colar?"],"e":None,"sub":"Tem papel, sim — mas não do jeito que vendem.",
-    "vo":"A vitamina não faz o osso colar feito mágica. Tem papel, mas não é pílula milagrosa."},
+   {"k":"Pergunta comum","sc":["Vitamina ajuda","o osso a colar?"],"e":None,"sub":"Na consolidação tem papel, sim — mas não do jeito que vendem.",
+    "vo":"A vitamina não faz o osso colar feito mágica. Na consolidação ela tem papel, mas não é pílula milagrosa."},
    {"k":"O básico que conta","sc":["Cálcio e","vitamina D."],"e":None,"sub":"São a matéria-prima e o pedreiro que coloca o cálcio no osso.",
     "vo":"O que conta é cálcio com vitamina D: o cálcio é o tijolo, a D o coloca no osso."},
    {"k":"Mais não é melhor","sc":["Encher de","cálcio não cola."],"e":"não","sub":"Acima do que o corpo usa, o excesso não acelera — e pode fazer mal.","motif":"no",
@@ -114,13 +114,13 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra quem","fraturou agora."],"e":None,"sub":"Salva pra ajustar a dieta da recuperação.","cta":True,
     "vo":"Manda pra quem fraturou agora e salva pra ajustar a alimentação."},
   ],
-  "caption":cap_rec("Vitamina ajuda o osso a colar? Tem papel, sim, mas não como pílula mágica. O que conta é o combo cálcio + vitamina D (o tijolo e quem o leva para dentro do osso). Mais NÃO é melhor: acima do que o corpo usa, o excesso não acelera e pode sobrecarregar o rim. O que mais pesa na consolidação — inclusive para evitar a pseudoartrose, a fratura que não cola — é não fumar, controlar o diabetes e ter proteína na dieta. O certo é medir a vitamina D e repor o que falta, com orientação.","#vitaminad #calcio #consolidacaoossea")},
+  "caption":cap_rec("Vitamina ajuda o osso a colar (a consolidação)? Tem papel, sim, mas não como pílula mágica. O que conta é o combo cálcio + vitamina D (o tijolo e quem o leva para dentro do osso). Mais NÃO é melhor: acima do que o corpo usa, o excesso não acelera e pode sobrecarregar o rim. O que mais pesa na consolidação — inclusive para evitar a pseudoartrose, a fratura que não cola — é não fumar, controlar o diabetes e ter proteína na dieta. O certo é medir a vitamina D e repor o que falta, com orientação.","#vitaminad #calcio #consolidacaoossea")},
 
  # ───────────── Pé no Chão #4 ─────────────
  {"id":"pnc_torcicolo","ep":27,"serie":"Pé no Chão","temporada":"sinais-de-alerta",
   "scenes":[
-   {"k":"Bebê novinho","sc":["Só olha pra","um lado."],"e":None,"sub":"A cabecinha vive virada sempre pro mesmo lado.",
-    "vo":"Bebê que vira a cabeça quase sempre pro mesmo lado merece um olhar cedo."},
+   {"k":"Bebê novinho","sc":["Só olha pra","um lado."],"e":None,"sub":"A cabecinha vive virada sempre pro mesmo lado — pode ser torcicolo.",
+    "vo":"Bebê que só vira a cabeça pro mesmo lado pode ser torcicolo — e merece um olhar cedo."},
    {"k":"O que pode ser","sc":["Torcicolo","do bebê."],"e":None,"sub":"Um músculo do pescoço fica mais encurtado de um lado.",
     "vo":"Pode ser o torcicolo do bebê: um músculo do pescoço fica mais curto de um lado."},
    {"k":"Por que agir cedo","sc":["Quanto antes,","mais simples."],"e":"antes","sub":"Nos primeiros meses costuma resolver só com posição e fisioterapia.",
@@ -135,8 +135,8 @@ LOTE_JULHO = [
  # ───────────── Osso Novo #4 ─────────────
  {"id":"on_diabetes_osso","ep":28,"serie":"Osso Novo","temporada":"quando-o-osso-falha","motif_family":"bone",
   "scenes":[
-   {"k":"Pouca gente sabe","sc":["Diabetes mexe","com o osso."],"e":None,"sub":"O açúcar alto atrapalha a fratura colar — e a cirurgia cicatrizar.",
-    "vo":"Diabetes mal controlado mexe com o osso: atrapalha a fratura a colar e a ferida a fechar."},
+   {"k":"Pouca gente sabe","sc":["Diabetes mexe","com o osso."],"e":None,"sub":"O açúcar alto atrapalha a consolidação: a fratura colar — e a cirurgia cicatrizar.",
+    "vo":"Diabetes mal controlado mexe com o osso: atrapalha a consolidação — a fratura a colar — e a ferida a fechar."},
    {"k":"Por quê","sc":["Açúcar alto","trava a obra."],"e":"trava","sub":"Prejudica circulação, defesa e as células que fabricam osso novo.",
     "vo":"O açúcar alto trava a obra: piora a circulação, a defesa e as células que fazem osso."},
    {"k":"O risco extra","sc":["Mais infecção,","cola mais devagar."],"e":None,"sub":"Por isso o controle do açúcar entra no plano cirúrgico.",
@@ -146,7 +146,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra quem","tem diabetes."],"e":None,"sub":"Vai operar ou fraturou? O controle conta. Salva pra lembrar.","cta":True,
     "vo":"Manda pra alguém com diabetes que vai operar ou fraturou. Salva pra lembrar."},
   ],
-  "caption":cap_rec("Pouca gente sabe: o diabetes mal controlado atrapalha a fratura a colar e a cirurgia a cicatrizar. O açúcar alto trava a obra por vários lados — piora circulação, derruba a defesa contra infecção e prejudica as células que fabricam osso novo. Resultado: mais risco de infecção, consolidação mais lenta e até pseudoartrose (a fratura que não cola). A boa notícia: com a glicemia controlada, o risco cai muito. Por isso ortopedista e o cuidado do diabetes caminham juntos.","#diabetes #consolidacaoossea #cicatrizacao")},
+  "caption":cap_rec("Pouca gente sabe: o diabetes mal controlado atrapalha a consolidação — a fratura a colar e a cirurgia a cicatrizar. O açúcar alto trava a obra por vários lados — piora circulação, derruba a defesa contra infecção e prejudica as células que fabricam osso novo. Resultado: mais risco de infecção, consolidação mais lenta e até pseudoartrose (a fratura que não cola). A boa notícia: com a glicemia controlada, o risco cai muito. Por isso ortopedista e o cuidado do diabetes caminham juntos.","#diabetes #consolidacaoossea #cicatrizacao")},
 
  # ───────────── Pé no Chão #5 ─────────────
  {"id":"pnc_engatinhar","ep":29,"serie":"Pé no Chão","temporada":"marcha",
@@ -167,8 +167,8 @@ LOTE_JULHO = [
  # ───────────── Osso Novo #5 ─────────────
  {"id":"on_haste_magnetica","ep":30,"serie":"Osso Novo","temporada":"reconstrucao","motif_family":"bone",
   "scenes":[
-   {"k":"Tecnologia que impressiona","sc":["Uma haste que","alonga por dentro."],"e":None,"sub":"Sem fixador externo aparente — controlada por ímã.",
-    "vo":"Existe uma haste dentro do osso que o alonga aos poucos, sem fixador por fora."},
+   {"k":"Tecnologia que impressiona","sc":["Uma haste que","alonga por dentro."],"e":None,"sub":"Discrepância (perna mais curta): sem fixador externo, controlada por ímã.",
+    "vo":"Existe uma haste dentro do osso que trata a discrepância — a perna mais curta — alongando por dentro."},
    {"k":"Como funciona","sc":["Um ímã, fora","do corpo."],"e":None,"sub":"Um controle magnético move a haste milímetros por dia, em casa.",
     "vo":"O controle é magnético: um aparelho na pele move a haste milímetros por dia, em casa."},
    {"k":"Pra quê serve","sc":["Perna mais curta,","falha de osso."],"e":None,"sub":"Discrepância pós-trauma, sequela ou perda óssea — sempre por função.",
@@ -178,7 +178,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra quem","tem perna curta."],"e":None,"sub":"Osso novo, de volta ao movimento. Salva pra lembrar.","cta":True,
     "vo":"Manda pra quem convive com uma perna mais curta por trauma. É um tratamento de etapas e paciência, mas existe caminho. Salva pra lembrar."},
   ],
-  "caption":cap_rec("Existe uma haste colocada dentro do osso que o alonga aos poucos, controlada por um ímã fora do corpo (sem fixador externo aparente) — milímetros por dia, boa parte em casa. Serve para corrigir uma perna mais curta (encurtamento) pós-trauma/sequela e ajudar a preencher falhas de osso, SEMPRE por função. Deixo claro: alongamento ósseo NÃO é sobre ficar mais alto — é tratamento de discrepância e deformidade, nunca cosmético. E não é mágica: tem fases (alongar, endurecer, reabilitar) e exige paciência.","#alongamentoosseo #discrepancia #reconstrucaoossea")},
+  "caption":cap_rec("Para tratar uma discrepância (perna mais curta), existe uma haste colocada dentro do osso que o alonga aos poucos, controlada por um ímã fora do corpo (sem fixador externo aparente) — milímetros por dia, boa parte em casa. Serve para corrigir uma perna mais curta (encurtamento) pós-trauma/sequela e ajudar a preencher falhas de osso, SEMPRE por função. Deixo claro: alongamento ósseo NÃO é sobre ficar mais alto — é tratamento de discrepância e deformidade, nunca cosmético. E não é mágica: tem fases (alongar, endurecer, reabilitar) e exige paciência.","#alongamentoosseo #discrepancia #reconstrucaoossea")},
 
  # ───────────── Pé no Chão #6 ─────────────
  {"id":"pnc_calcado_bebe","ep":31,"serie":"Pé no Chão","temporada":"pernas-e-pes",
@@ -199,8 +199,8 @@ LOTE_JULHO = [
  # ───────────── Osso Novo #6 ─────────────
  {"id":"on_dor_cronica_fratura","ep":32,"serie":"Osso Novo","temporada":"viver-o-tratamento",
   "scenes":[
-   {"k":"Já colou, mas dói","sc":["Meses depois,","ainda dói."],"e":None,"sub":"A fratura consolidou e a dor não foi embora. Tem explicações.",
-    "vo":"A fratura colou, o exame está bom, mas ainda dói meses depois. Não é frescura: tem causa."},
+   {"k":"Já colou, mas dói","sc":["Meses depois,","ainda dói."],"e":None,"sub":"A fratura consolidou e a dor não foi embora — isso tem causa e dá pra investigar.",
+    "vo":"A fratura colou, o exame está bom, mas ainda dói meses depois. Não é frescura: tem causa — e dá pra investigar."},
    {"k":"Vários porquês","sc":["Material, rigidez","ou nervo."],"e":None,"sub":"Pode ser o parafuso incomodando, a junta enrijecida ou um nervo sensível.",
     "vo":"Pode ser uma placa ou parafuso incomodando, a articulação enrijecida ou um nervo sensível na região."},
    {"k":"Investigar, não ignorar","sc":["Dor crônica tem","causa."],"e":"causa","sub":"O caminho é achar de onde vem — avaliação dirigida resolve a maioria.",
@@ -215,8 +215,8 @@ LOTE_JULHO = [
  # ───────────── Pé no Chão #7 ─────────────
  {"id":"pnc_hipermobilidade","ep":33,"serie":"Pé no Chão","temporada":"sinais-de-alerta",
   "scenes":[
-   {"k":"Criança elástica","sc":["Dobra os dedos","demais?"],"e":None,"sub":"Algumas crianças são naturalmente mais flexíveis. Quase sempre, ok.",
-    "vo":"Criança que dobra o dedão até quase encostar no braço quase sempre é só flexibilidade."},
+   {"k":"Criança elástica","sc":["Dobra os dedos","demais?"],"e":None,"sub":"Hipermobilidade: crianças naturalmente mais flexíveis. Quase sempre, ok.",
+    "vo":"Criança que dobra o dedão até quase encostar no braço quase sempre é só flexibilidade — a hipermobilidade."},
    {"k":"Tem nome","sc":["Hiper-","mobilidade."],"e":None,"sub":"As articulações têm uma amplitude maior que a média.",
     "vo":"Isso tem nome: hipermobilidade. As juntas têm folga maior que a média, e muita gente vive assim."},
    {"k":"Quando é só um charme","sc":["Sem dor, sem","luxação: tranquilo."],"e":"tranquilo","sub":"Flexível, sem dor e sem a junta saindo do lugar costuma ser benigno.",
@@ -231,8 +231,8 @@ LOTE_JULHO = [
  # ───────────── Osso Novo #7 ─────────────
  {"id":"on_artrose_osteotomia","ep":34,"serie":"Osso Novo","temporada":"refazer-e-realinhar","motif_family":"bone",
   "scenes":[
-   {"k":"Joelho gasto de um lado","sc":["Dói só por","dentro do joelho."],"e":None,"sub":"Quando o desgaste é de um lado só, existe alternativa à prótese.",
-    "vo":"Joelho que dói e gastou só de um lado, nem sempre precisa de prótese."},
+   {"k":"Joelho gasto de um lado","sc":["Dói só por","dentro do joelho."],"e":None,"sub":"Desgaste de um lado só: a osteotomia é alternativa à prótese.",
+    "vo":"Joelho que dói e gastou só de um lado nem sempre precisa de prótese — às vezes a osteotomia é uma alternativa."},
    {"k":"Por que desgasta de um lado","sc":["A perna pende","pra um lado."],"e":None,"sub":"Um eixo levemente torto concentra todo o peso num compartimento.",
     "vo":"Muitas vezes é o eixo: a perna pende pra dentro e concentra o peso num lado."},
    {"k":"A ideia","sc":["Mudar o eixo,","aliviar o gasto."],"e":None,"sub":"A osteotomia realinha a perna e transfere a carga pro lado saudável.",
@@ -242,7 +242,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra quem","ouviu só prótese."],"e":None,"sub":"Sendo jovem, vale avaliar a osteotomia. Salva pra lembrar.","cta":True,
     "vo":"Se alguém jovem ouviu que só resta prótese, manda o vídeo e salva pra lembrar."},
   ],
-  "caption":cap_rec("Joelho que dói e desgastou só de um lado (em geral o de dentro), numa pessoa ainda ativa, nem sempre precisa de prótese. Muitas vezes a causa é o eixo: a perna pende para um lado e concentra o peso num compartimento, que desgasta enquanto o outro está novo. A osteotomia corrige o eixo e realinha a perna, transferindo a carga para o lado saudável — adiando a prótese em quem é jovem demais para ela. Não é para todos: desgaste dos dois lados ou avançado pede outra conduta. A indicação é individual.","#osteotomia #artrosedejoelho #preservacaoarticular")},
+  "caption":cap_rec("Joelho que dói e desgastou só de um lado (costuma ser o de dentro), numa pessoa ainda ativa, nem sempre precisa de prótese — às vezes a saída é a osteotomia. Muitas vezes a causa é o eixo: a perna pende para um lado e concentra o peso num compartimento, que desgasta enquanto o outro está novo. A osteotomia corrige o eixo e realinha a perna, transferindo a carga para o lado saudável — adiando a prótese em quem é jovem demais para ela. Não é para todos: desgaste dos dois lados ou avançado pede outra conduta. A indicação é individual.","#osteotomia #artrosedejoelho #preservacaoarticular")},
 
  # ───────────── Pé no Chão #8 ─────────────
  {"id":"pnc_cansa_andar","ep":35,"serie":"Pé no Chão","temporada":"marcha",
@@ -258,7 +258,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra uma mãe","na dúvida do colo."],"e":None,"sub":"Salva pra observar com calma.","cta":True,
     "vo":"Manda pra aquela mãe em dúvida se é manha ou cansaço, salva pra observar."},
   ],
-  "caption":cap_ped("Criança que vive pedindo colo e cansa de andar mais que as outras geralmente é só idade — perna curta dá passo curto, e distância grande cansa mesmo. Observe o padrão: manca ao cansar? protege sempre a mesma perna? piorou de repente? Bandeiras que pedem avaliação sem demora: dor noturna persistente, febre, perda de peso ou articulação inchada. Avaliar na ortopedia pediátrica costuma ser simples e tranquilizador.","#desenvolvimentoinfantil #marcha #sinaisdealerta")},
+  "caption":cap_ped("Criança que vive pedindo colo e cansa de andar mais que as outras costuma ser só idade — perna curta dá passo curto, e distância grande cansa mesmo. Observe o padrão: manca ao cansar? protege sempre a mesma perna? piorou de repente? Bandeiras que pedem avaliação sem demora: dor noturna persistente, febre, perda de peso ou articulação inchada. Avaliar na ortopedia pediátrica costuma ser simples e tranquilizador.","#desenvolvimentoinfantil #marcha #sinaisdealerta")},
 
  # ───────────── Osso Novo #8 ─────────────
  {"id":"on_falha_ossea","ep":36,"serie":"Osso Novo","temporada":"quando-o-osso-falha","motif_family":"bone",

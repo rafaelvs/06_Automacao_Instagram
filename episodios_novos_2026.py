@@ -370,7 +370,7 @@ PE_NO_CHAO_NOVOS = [
    {"k":"Passa adiante","sc":["Manda pra quem","notou a diferença."],"e":None,"sub":"Manda pra quem notou essa diferença no filho. E salva.","cta":True,
     "vo":"Manda pra quem notou essa diferença no filho, e salva pra mostrar ao pediatra ou ortopedista se chamar atenção."},
   ],
-  "caption":cap_ped("Uma perna mais curta que a outra, na criança. Calma: uma diferença bem pequena quase todo mundo tem, e não dá sintoma. O trunfo da infância é o crescimento — como a criança ainda cresce, dá para prever a diferença no final e planejar com tempo, se preciso. Vale avaliar quando ela manca, quando há desnível no quadril ou a diferença é nítida. (A versão adulta está na série Osso Novo.)","#discrepancia #criancas")},
+  "caption":cap_ped("Uma perna mais curta que a outra, na criança. Calma: uma diferença bem pequena quase toda criança tem, e não dá sintoma. O trunfo da infância é o crescimento — como a criança ainda cresce, dá para prever a diferença no final e planejar com tempo, se preciso. Vale avaliar quando ela manca, quando há desnível no quadril ou a diferença é nítida. (A versão adulta está na série Osso Novo.)","#discrepancia #criancas")},
 
  {"id":"pnc_nao_dor_crescimento","ep":14,"serie":"Pé no Chão","temporada":"sinais-de-alerta",
   "scenes":[
