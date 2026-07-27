@@ -13,8 +13,9 @@ W, H, FPS = 1080, 1920, 30
 INK=(18,18,24); CREAM=(243,226,200); GOLD=(176,140,79); TXT_L=(206,198,184); MUT_L=(150,144,132); FAINT=(70,66,60); RED=(196,72,60)
 
 # ── VARIAÇÃO ANTI-TEMPLATIZAÇÃO (política "Inauthentic Content" do YouTube) ──────────────────────────
-# Paletas selecionáveis por episódio (episode["palette"]). Default "classico" = cores ORIGINAIS, então
-# episódios sem 'palette' (ex.: Instagram/"Pé no Chão") renderizam IDÊNTICOS — mudança 100% aditiva.
+# Paletas selecionáveis por episódio (episode["palette"]). Default "classico" = cores ORIGINAIS.
+# ⚠️ Desde o fix retencao-3s (v7), re-render NAO e mais byte-identico em NENHUM layout: a CENA 0 sai
+# assentada (tlv). Vale p/ todas as series (IG, pos-op/YouTube, apresentacao, narrativos) — intencional.
 PALETTES = {
  "classico":      dict(INK=(18,18,24),  CREAM=(243,226,200), GOLD=(176,140,79), TXT_L=(206,198,184), MUT_L=(150,144,132), FAINT=(70,66,60), RED=(196,72,60)),
  "noturno_azul":  dict(INK=(16,22,34),  CREAM=(232,234,240), GOLD=(214,162,84), TXT_L=(190,198,212), MUT_L=(140,150,168), FAINT=(54,62,80), RED=(210,90,80)),
@@ -32,8 +33,8 @@ DISC="Conteúdo educativo · não substitui avaliação médica."
 SERIE="Pé no Chão"
 
 # ── VARIAÇÃO DE LAYOUT (anti-templatização, camada 2: composição espacial + ritmo tipográfico) ──
-# Opt-in por episode["layout"] (espelha episode["palette"]). AUSENTE → "classico" (L0) = código atual
-# VERBATIM = byte-idêntico (Instagram "Pé no Chão" e vídeos já renderizados NÃO mudam). "auto" → rotação
+# Opt-in por episode["layout"] (espelha episode["palette"]). AUSENTE → "clássico" (L0) = miolo original.
+# ⚠️ Byte-idêntico NÃO vale mais (fix retenção-3s muda a cena 0 em todo layout). "auto" → rotação
 # determinística (ganchos_layout). O footer CFM (CRM/RQE + disclaimer) fica SEMPRE fora do dispatch de
 # layout e é chamado por último em TODOS os ramos (ver _footer + CLAMP_Y) → presente, legível e na safe
 # zone em 100% dos layouts.
@@ -199,7 +200,7 @@ def _footer(d,prog):
     by=fy-14; pw=int(prog*(W-2*M)); d.line([(M,by),(W-M,by)],fill=FAINT,width=4); d.line([(M,by),(M+pw,by)],fill=GOLD,width=4)
 
 def _draw_L0(img, d, s, tl):
-    """L0 'classico' — miolo de conteúdo ORIGINAL verbatim. NÃO alterar (congelamento byte-idêntico)."""
+    """L0 'classico' — miolo de conteúdo ORIGINAL (não alterar o corpo; a cena 0 chega assentada via tlv)."""
     BIG=F(SB,98); SUB=F(NR,40); T82=F(SB,82)
     trk(d,(M,560),s["k"].upper(),F(NB,28),GOLD,5); d.line([(M,602),(M+56,602)],fill=GOLD,width=3)
     ln=s["sc"]; emph=s.get("e"); tf=BIG
@@ -317,6 +318,11 @@ def render_frames(episode, durs, frames_dir):
         for b in bnd:
             if b[0]<=t<b[1]: cur=b; break
         t0,t1,idx=cur; tl=t-t0; s=S[idx]; drift=int(8*math.sin(t*0.5))
+        # RETENCAO-3s (v7): a CENA 0 nasce ASSENTADA — o hook aparece INTEIRO no frame 0, sem rampa
+        # de entrada. Deslocar tl adianta todas as animacoes de entrada do miolo (slide/fade/sub) p/
+        # antes de t=0; cenas seguintes mantem o ritmo atual (viewer ja engajado). Motivo: watch medio
+        # 2,3s medido no pulso v7 — o reel morria no gate de retencao antes do CTA importar.
+        tlv=tl+0.72 if idx==0 else tl
         img=_bg(drift)
         # ── MOTIVO: L0 = comportamento exato atual; demais layouts despacham por motif_mode ──
         if is_L0:
@@ -325,11 +331,11 @@ def render_frames(episode, durs, frames_dir):
         else:
             _dispatch_motif(img, motif_fam, t/total, LP)
         d=ImageDraw.Draw(img)
-        if s.get("motif")=="no": _no(img,t/total,tl); d=ImageDraw.Draw(img)   # SEMPRE (independe do motif_mode)
+        if s.get("motif")=="no": _no(img,t/total,tlv); d=ImageDraw.Draw(img)   # SEMPRE (independe do motif_mode)
         _header(d,ep,serie,style=hdr_style)
-        # ── CONTEÚDO: dispatch por layout (L0 = miolo verbatim; L1-L5 = paramétrico clampado) ──
-        if is_L0: _draw_L0(img,d,s,tl)
-        else:     _draw_content(img,d,s,tl,LP)
+        # ── CONTEÚDO: dispatch por layout (L0 = miolo com cena-0 assentada; L1-L5 = paramétrico clampado) ──
+        if is_L0: _draw_L0(img,d,s,tlv)
+        else:     _draw_content(img,d,s,tlv,LP)
         _footer(d,t/total)                          # ← IMUTÁVEL, por último, em TODOS os ramos (CFM)
         img.save(f"{frames_dir}/f{f:05d}.jpg","JPEG",quality=92)
     return total, nf

@@ -22,6 +22,9 @@ EDGE_PITCH=os.environ.get("EDGE_PITCH","+0Hz")
 VOICE=os.environ.get("PIPER_VOICE", os.path.join(ROOT,"voices","pt_BR-faber-medium.onnx"))
 # folgas entre fala e cena (encurtadas p/ a narracao fluir mais natural, menos "robotica"). Tunaveis por env.
 LEAD=float(os.environ.get("VOZ_LEAD","0.18")); TAIL=float(os.environ.get("VOZ_TAIL","0.45"))
+# RETENCAO-3s (v7): a voz da CENA 0 entra quase no frame 0 (0,05s) — sem "respiro" inicial. O watch
+# medio de 2,3s (pulso v7) mostrou que o 1o segundo decide; o lead normal segue nas demais cenas.
+LEAD0=float(os.environ.get("VOZ_LEAD0","0.05"))
 # apara silencio das pontas de cada trecho de voz (remove os "delays" sinteticos)
 TRIM_SIL=("silenceremove=start_periods=1:start_threshold=-50dB:start_silence=0.03,areverse,"
           "silenceremove=start_periods=1:start_threshold=-50dB:start_silence=0.03,areverse,")
@@ -49,12 +52,13 @@ def dur_of(w):
 def main():
     ep_id=sys.argv[1] if len(sys.argv)>1 else "andador"
     epi=get(ep_id); S=epi["scenes"]; TMP="/tmp/_voz"; os.makedirs(TMP,exist_ok=True)
-    voices=[]; durs=[]
+    voices=[]; durs=[]; leads=[]
     for i,s in enumerate(S):
-        wv=f"{TMP}/v{i}.wav"; synth(s["vo"],wv); durs.append(round(LEAD+dur_of(wv)+TAIL,3)); voices.append(wv)
+        wv=f"{TMP}/v{i}.wav"; synth(s["vo"],wv); ld=LEAD0 if i==0 else LEAD
+        durs.append(round(ld+dur_of(wv)+TAIL,3)); voices.append(wv); leads.append(ld)
     FR="/tmp/_vfr"; total,nf=R.render_frames(epi,durs,FR)
     acc=0.0; offs=[]
-    for d in durs: offs.append(acc+LEAD); acc+=d
+    for i,d in enumerate(durs): offs.append(acc+leads[i]); acc+=d
     vin=[]; filt=[]
     for i,wv in enumerate(voices):
         o=int(offs[i]*1000); vin+=["-i",wv]; filt.append(f"[{i}:a]adelay={o}|{o}[d{i}]")
