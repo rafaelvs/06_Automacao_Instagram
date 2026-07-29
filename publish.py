@@ -16,6 +16,27 @@ Agenda (horario de Brasilia, BRT = UTC-3):
 
 Env: IG_USER_ID, IG_ACCESS_TOKEN, GITHUB_REPOSITORY, GRAPH_VERSION (opc),
      FORCE_ID (opc: publica esse id imediatamente - post, story, reel ou sequencia).
+
+NOTA — falha de AUTENTICACAO e' BARULHENTA (nao silenciosa):
+    O token da Meta (renovado a cada ~60 dias) e' o ponto unico de falha do motor.
+    Ate 07/2026 um `except Exception` engolia o erro, o main() retornava normal e o
+    job do Actions terminava VERDE — a fila pararia sem ninguem perceber. Agora um
+    erro de auth vira `AuthError`, o robo para de tentar (o token vale para todos os
+    itens), grava o que ja' saiu e sai com exit != 0, deixando o job VERMELHO — que
+    e' o que dispara a notificacao do GitHub.
+
+    CUIDADO ao mexer aqui: a Meta devolve HTTP **400** (nao 401) com
+    type=OAuthException / code=190 quando o token expira, entao NAO da' para decidir
+    so' pelo status HTTP. E os codigos de rate limit (4, 17, 32...) tambem vem como
+    OAuthException — esses sao transitorios e NAO podem derrubar o job.
+
+NOTA — por que NAO existe um limite de itens por execucao aqui:
+    O robo do LinkedIn tem LINKEDIN_MAX_PER_RUN porque la' os posts tem horario
+    marcado e se acumulam como "vencidos" enquanto a publicacao esta travada. Aqui a
+    fila e' uma BIBLIOTECA e cada bloco publica no maximo 1 item por dia-calendario
+    (guarda `last_*_date != today`). Se o token ficar morto 10 dias, a volta publica
+    1 post, nao 10 — a recuperacao ja' e' gradual por construcao. Um limite global
+    de 1/execucao seria ate' NOCIVO: no domingo saem legitimamente carrossel + reel.
 """
 import os, sys, json, time, datetime as dt
 import requests
@@ -54,6 +75,52 @@ HOST       = f"https://graph.instagram.com/{VER}"
 if not IG_USER_ID or not TOKEN:
     print("ERRO: defina os secrets IG_USER_ID e IG_ACCESS_TOKEN."); sys.exit(1)
 
+class AuthError(RuntimeError):
+    """Token invalido/expirado ou permissao negada. Aborta o run e faz o job ficar
+    VERMELHO, em vez de sair verde com a fila parada."""
+
+# Quase TUDO na Meta chega com type=OAuthException — inclusive rate limit e erro de
+# midia. Por isso a classificacao e' por CODIGO, nao pelo type.
+# 1) Token/permissao: nao adianta tentar de novo, precisa de humano.
+AUTH_CODES     = {10, 102, 190, 2500}
+AUTH_SUBCODES  = {458, 459, 460, 463, 464, 467, 492}
+# 2) Throttling: transitorio, o proximo disparo do cron resolve sozinho.
+RATE_CODES     = {4, 17, 32, 341, 613}
+# 3) Parametro/midia invalida: problema DAQUELE item, nao do token. O robo loga e
+#    segue para os outros blocos (um reel corrompido nao pode travar a sequencia do dia).
+CONTEUDO_CODES = {100, 352, 2207001, 2207003, 2207004, 2207005, 2207006, 2207020,
+                  2207026, 2207032, 2207053}
+
+def _e_falha_de_auth(status, payload):
+    # corpo pode vir vazio/HTML/lista (erro de gateway): nunca confiar no formato
+    err = payload.get("error") if isinstance(payload, dict) else None
+    if not isinstance(err, dict): err = {}
+    code = err.get("code"); sub = err.get("error_subcode")
+    if sub in AUTH_SUBCODES: return True
+    if code in AUTH_CODES: return True
+    if isinstance(code, int) and 200 <= code <= 299: return True    # familia de permissao
+    if code in RATE_CODES or code in CONTEUDO_CODES: return False
+    if isinstance(code, int) and code >= 2207000: return False      # erros de container/midia
+    if str(err.get("type", "")) == "OAuthException": return True
+    return status in (401, 403)
+
+def _erro_api(r, onde):
+    """Resposta >=400 vira excecao: AuthError se for token/permissao (aborta tudo),
+    RuntimeError no resto (o robo tolera e tenta o proximo bloco)."""
+    try: payload = r.json()
+    except Exception: payload = {}
+    detalhe = f"{onde} -> {r.status_code}: {r.text[:300]}"
+    if _e_falha_de_auth(r.status_code, payload): raise AuthError(detalhe)
+    raise RuntimeError(detalhe)
+
+def _avisar_token_parado(auth_error):
+    """Mensagem unica de encerramento quando o token morre. Sai com exit 1 para o
+    job ficar vermelho (o estado ja' foi gravado pelo chamador)."""
+    print(f"::error::AUTENTICACAO FALHOU — token do Instagram invalido ou expirado. {auth_error}")
+    print("::error::A fila esta PARADA: nada mais sera publicado ate' renovar. Gere um novo "
+          "token e atualize o secret IG_ACCESS_TOKEN em rafaelvs/06_Automacao_Instagram.")
+    sys.exit(1)
+
 def raw_url(path):
     if not REPO: raise RuntimeError("GITHUB_REPOSITORY nao definido (rode no GitHub Actions).")
     return f"https://raw.githubusercontent.com/{REPO}/{REF}/{path}"
@@ -67,12 +134,12 @@ def save_state(s):
 def api_post(path, data):
     data = dict(data); data["access_token"] = TOKEN
     r = requests.post(f"{HOST}/{path}", data=data, timeout=120)
-    if r.status_code >= 400: raise RuntimeError(f"POST {path} -> {r.status_code}: {r.text}")
+    if r.status_code >= 400: _erro_api(r, f"POST {path}")
     return r.json()
 def api_get(path, params):
     params = dict(params); params["access_token"] = TOKEN
     r = requests.get(f"{HOST}/{path}", params=params, timeout=60)
-    if r.status_code >= 400: raise RuntimeError(f"GET {path} -> {r.status_code}: {r.text}")
+    if r.status_code >= 400: _erro_api(r, f"GET {path}")
     return r.json()
 def wait_finished(cid, tries=10, delay=6):
     for _ in range(tries):
@@ -148,6 +215,10 @@ def publish_reel(item):
         try:
             p = dict(base); p["trial_params"] = json.dumps({"graduation_strategy": TRIAL_GRADUATION})
             cont = api_post(f"{IG_USER_ID}/media", p)["id"]
+        except AuthError:
+            # Token morto nao e' "trial_params recusado": propaga, senao este except
+            # engoliria a falha de auth e o robo tentaria de novo a' toa.
+            raise
         except RuntimeError as e:
             # Fallback robusto: se a API recusar trial_params, publica reel normal (nao trava o robo).
             print(f"  ! trial_params recusado ({e}); publicando como reel normal.", file=sys.stderr)
@@ -170,14 +241,17 @@ def main():
     done = {e["id"] for e in state["published"]}
     now = dt.datetime.now(dt.timezone.utc); brt = now.astimezone(BRT); today = brt.date().isoformat()
     mod = brt.hour*60 + brt.minute; changed = False
+    auth_error = None   # token morto: para tudo, grava o que saiu e sai com exit 1
 
     if FORCE_ID == "destaques":
         for it in load_json(DESTAQUES_FILE, []):
             try:
                 mid = publish_story(it); log(state, it["id"], "story", mid, now); changed = True
                 print(f"Destaque {it['id']} OK -> {mid}")
+            except AuthError as e: auth_error = e; break
             except Exception as e: print(f"FALHA destaque {it['id']}: {e}")
         if changed: save_state(state)
+        if auth_error: _avisar_token_parado(auth_error)
         return
 
     if FORCE_ID:
@@ -195,6 +269,7 @@ def main():
             elif kind == "story": mid = publish_story(it)
             else: mid = publish_reel(it)
             log(state, it["id"], kind, mid, now); save_state(state); print(f"FORCE {FORCE_ID} OK -> {mid}")
+        except AuthError as e: _avisar_token_parado(e)
         except Exception as e: print(f"FORCE {FORCE_ID} FALHA: {e}")
         return
 
@@ -206,24 +281,26 @@ def main():
                 mid = publish_post(it); log(state, it["id"], "post", mid, now)
                 done.add(it["id"]); state["last_post_date"] = today; changed = True
                 print(f"Post {it['id']} OK -> {mid}")
+            except AuthError as e: auth_error = e
             except Exception as e: print(f"FALHA post {it['id']}: {e}")
         else:
             print("Biblioteca de POSTS esgotada — hora de reabastecer.")
 
     # CARROSSEL EXTRA (4o/sem) — dia-duplo com o Reel; horario escalonado (11h) p/ nao colidir
-    if brt.weekday() in POST2_WEEKDAYS and mod >= POST2_MIN and state["last_post_date"] != today:
+    if not auth_error and brt.weekday() in POST2_WEEKDAYS and mod >= POST2_MIN and state["last_post_date"] != today:
         it = next_item(posts, done)
         if it:
             try:
                 mid = publish_post(it); log(state, it["id"], "post", mid, now)
                 done.add(it["id"]); state["last_post_date"] = today; changed = True
                 print(f"Post extra {it['id']} OK -> {mid}")
+            except AuthError as e: auth_error = e
             except Exception as e: print(f"FALHA post extra {it['id']}: {e}")
         else:
             print("Biblioteca de POSTS esgotada (extra) — hora de reabastecer.")
 
     # SEQUENCIA DIARIA (story serializado, 5 frames)
-    if brt.weekday() in SEQ_WEEKDAYS and mod >= SEQ_MIN and state["last_seq_date"] != today:
+    if not auth_error and brt.weekday() in SEQ_WEEKDAYS and mod >= SEQ_MIN and state["last_seq_date"] != today:
         it = next_item(seqs, done)
         if it:
             try:
@@ -231,24 +308,30 @@ def main():
                 ids = publish_sequence(it); log(state, it["id"], "seq", ids[0], now)
                 done.add(it["id"]); state["last_seq_date"] = today; changed = True
                 print(f"Sequencia {it['id']} OK -> {len(ids)} frames")
+            except AuthError as e: auth_error = e
             except Exception as e: print(f"FALHA sequencia {it['id']}: {e}")
         else:
             print("Biblioteca de SEQUENCIAS esgotada — hora de reabastecer.")
 
     # REELS
-    if brt.weekday() in REEL_WEEKDAYS and mod >= REEL_MIN and state["last_reel_date"] != today:
+    if not auth_error and brt.weekday() in REEL_WEEKDAYS and mod >= REEL_MIN and state["last_reel_date"] != today:
         it = next_item(reels, done)
         if it:
             try:
                 mid = publish_reel(it); log(state, it["id"], "reel", mid, now)
                 done.add(it["id"]); state["last_reel_date"] = today; changed = True
                 print(f"Reel {it['id']} OK -> {mid}")
+            except AuthError as e: auth_error = e
             except Exception as e: print(f"FALHA reel {it['id']}: {e}")
         else:
             print("Biblioteca de REELS esgotada — hora de reabastecer.")
 
+    # Grava o estado ANTES de sair com erro, para nao reperder o que ja' foi publicado
+    # quando o token morre no meio da execucao.
     if changed: save_state(state); print("Estado atualizado.")
-    else: print("Nada a publicar agora.")
+    elif not auth_error: print("Nada a publicar agora.")
+
+    if auth_error: _avisar_token_parado(auth_error)
 
 if __name__ == "__main__":
     main()
