@@ -724,10 +724,16 @@
       "kind": "seq",
       "media_id": "18098247269604134",
       "at": "2026-07-29T15:30:49.415108+00:00"
+    },
+    {
+      "id": "qa_perna_encurtou_acidente",
+      "kind": "reel",
+      "media_id": "18098963207359836",
+      "at": "2026-07-29T18:47:28.779336+00:00"
     }
   ],
   "last_post_date": "2026-07-28",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-07-27",
+  "last_reel_date": "2026-07-29",
   "last_seq_date": "2026-07-29"
 }
