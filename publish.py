@@ -58,6 +58,8 @@ SEQ_FILE     = os.path.join(ROOT, "sequences.json")
 REELS_FILE   = os.path.join(ROOT, "reels.json")
 DESTAQUES_FILE = os.path.join(ROOT, "destaques.json")
 STATE_FILE   = os.path.join(ROOT, "state", "published.json")
+TOKEN_STATE_FILE = os.path.join(ROOT, "state", "token_refresh.json")  # escrito por refresh_token.py
+AVISO_EXPIRACAO_DIAS = 14   # a renovacao roda toda segunda: 14 dias = ~2 tentativas de folga
 
 IG_USER_ID = os.environ.get("IG_USER_ID", "").strip()
 TOKEN      = os.environ.get("IG_ACCESS_TOKEN", "").strip()
@@ -120,6 +122,51 @@ def _avisar_token_parado(auth_error):
     print("::error::A fila esta PARADA: nada mais sera publicado ate' renovar. Gere um novo "
           "token e atualize o secret IG_ACCESS_TOKEN em rafaelvs/06_Automacao_Instagram.")
     sys.exit(1)
+
+def _falhou(falhas, rotulo, erro):
+    """Registra falha NAO-auth de um item, de forma BARULHENTA.
+
+    Ate 07/2026 estas falhas saiam por `print` puro: o main() retornava normal e o job
+    ficava VERDE. Como o item que falha NAO entra em `done` nem avanca `last_*_date`, o
+    cron (*/30) repetia o MESMO item para sempre — inclusive o `RuntimeError` do
+    guardrail CFM (`BLOQUEADO CFM`), que e' permanente por definicao e NUNCA se resolve
+    sozinho. Resultado: fila parada em silencio, com o painel todo verde.
+
+    Agora cada falha sai como `::error::` (anotacao visivel no Actions) e o main()
+    devolve a lista para o processo sair com exit 1 — espelhando o caminho do AuthError.
+    O passo "Salvar estado" do publish.yml tem `if: always()`, entao o que JA' foi ao ar
+    continua sendo commitado normalmente: ficar vermelho nao faz republicar."""
+    print(f"::error::FALHA {rotulo}: {erro}")
+    falhas.append(f"{rotulo} ({type(erro).__name__})")
+
+def _avisar_validade_do_token():
+    """Aviso preventivo de expiracao DENTRO do motor.
+
+    Ate 07/2026 o unico alarme de expiracao vivia fora do repo (uma tarefa agendada no
+    PC do Rafael). Se o refresh-token.yml falha — como falhou desde sempre, por falta do
+    secret GH_SECRETS_PAT — nada aqui dentro reclamava ate' o token simplesmente morrer.
+    Isto le' o rastro deixado por refresh_token.py e avisa ANTES. Nunca bloqueia: e' so'
+    um ::warning:: (o job segue verde), porque publicar ainda funciona ate' a expiracao."""
+    # Leitura propria (nao load_json): um JSON corrompido aqui levantaria ValueError e
+    # derrubaria a publicacao inteira por causa de um aviso COSMETICO. Fail-open sempre.
+    try:
+        with open(TOKEN_STATE_FILE, encoding="utf-8") as fh:
+            estado = json.load(fh)
+    except (OSError, ValueError):
+        estado = None
+    if not isinstance(estado, dict) or not estado.get("expira_em"):
+        print("::warning::Sem registro de renovacao do token (state/token_refresh.json ausente). "
+              "A renovacao automatica pode nunca ter rodado — confira o workflow refresh-token.yml.")
+        return
+    try:
+        expira = dt.date.fromisoformat(estado["expira_em"])
+    except (TypeError, ValueError):
+        print("::warning::state/token_refresh.json tem 'expira_em' ilegivel — nao da' para conferir a validade.")
+        return
+    dias = (expira - dt.datetime.now(BRT).date()).days
+    if dias <= AVISO_EXPIRACAO_DIAS:
+        print(f"::warning::Token do Instagram expira em {dias} dia(s) ({expira:%d/%m/%Y}). "
+              "Se o refresh-token.yml nao voltar a rodar verde, a fila para nessa data.")
 
 def raw_url(path):
     if not REPO: raise RuntimeError("GITHUB_REPOSITORY nao definido (rode no GitHub Actions).")
@@ -242,6 +289,9 @@ def main():
     now = dt.datetime.now(dt.timezone.utc); brt = now.astimezone(BRT); today = brt.date().isoformat()
     mod = brt.hour*60 + brt.minute; changed = False
     auth_error = None   # token morto: para tudo, grava o que saiu e sai com exit 1
+    falhas = []         # falhas NAO-auth: o run termina VERMELHO (ver _falhou)
+
+    _avisar_validade_do_token()
 
     if FORCE_ID == "destaques":
         for it in load_json(DESTAQUES_FILE, []):
@@ -249,10 +299,10 @@ def main():
                 mid = publish_story(it); log(state, it["id"], "story", mid, now); changed = True
                 print(f"Destaque {it['id']} OK -> {mid}")
             except AuthError as e: auth_error = e; break
-            except Exception as e: print(f"FALHA destaque {it['id']}: {e}")
+            except Exception as e: _falhou(falhas, f"destaque {it['id']}", e)
         if changed: save_state(state)
         if auth_error: _avisar_token_parado(auth_error)
-        return
+        return falhas
 
     if FORCE_ID:
         it = next((x for x in posts if x["id"] == FORCE_ID), None); kind = "post"
@@ -262,7 +312,10 @@ def main():
             it = next((x for x in stories if x["id"] == FORCE_ID), None); kind = "story"
         if it is None:
             it = next((x for x in reels if x["id"] == FORCE_ID), None); kind = "reel"
-        if it is None: print(f"FORCE_ID={FORCE_ID}: nao encontrado."); return
+        if it is None:
+            # FORCE_ID digitado errado tambem e' falha: antes saia verde sem publicar nada.
+            _falhou(falhas, f"FORCE_ID={FORCE_ID}", ValueError("id nao encontrado em nenhuma biblioteca"))
+            return falhas
         try:
             if kind == "post": mid = publish_post(it)
             elif kind == "seq": mid = publish_sequence(it)[0]
@@ -270,8 +323,8 @@ def main():
             else: mid = publish_reel(it)
             log(state, it["id"], kind, mid, now); save_state(state); print(f"FORCE {FORCE_ID} OK -> {mid}")
         except AuthError as e: _avisar_token_parado(e)
-        except Exception as e: print(f"FORCE {FORCE_ID} FALHA: {e}")
-        return
+        except Exception as e: _falhou(falhas, f"FORCE {FORCE_ID}", e)
+        return falhas
 
     # POSTS (feed)
     if brt.weekday() in POST_WEEKDAYS and mod >= POST_MIN and state["last_post_date"] != today:
@@ -282,7 +335,7 @@ def main():
                 done.add(it["id"]); state["last_post_date"] = today; changed = True
                 print(f"Post {it['id']} OK -> {mid}")
             except AuthError as e: auth_error = e
-            except Exception as e: print(f"FALHA post {it['id']}: {e}")
+            except Exception as e: _falhou(falhas, f"post {it['id']}", e)
         else:
             print("Biblioteca de POSTS esgotada — hora de reabastecer.")
 
@@ -295,7 +348,7 @@ def main():
                 done.add(it["id"]); state["last_post_date"] = today; changed = True
                 print(f"Post extra {it['id']} OK -> {mid}")
             except AuthError as e: auth_error = e
-            except Exception as e: print(f"FALHA post extra {it['id']}: {e}")
+            except Exception as e: _falhou(falhas, f"post extra {it['id']}", e)
         else:
             print("Biblioteca de POSTS esgotada (extra) — hora de reabastecer.")
 
@@ -309,7 +362,7 @@ def main():
                 done.add(it["id"]); state["last_seq_date"] = today; changed = True
                 print(f"Sequencia {it['id']} OK -> {len(ids)} frames")
             except AuthError as e: auth_error = e
-            except Exception as e: print(f"FALHA sequencia {it['id']}: {e}")
+            except Exception as e: _falhou(falhas, f"sequencia {it['id']}", e)
         else:
             print("Biblioteca de SEQUENCIAS esgotada — hora de reabastecer.")
 
@@ -322,16 +375,25 @@ def main():
                 done.add(it["id"]); state["last_reel_date"] = today; changed = True
                 print(f"Reel {it['id']} OK -> {mid}")
             except AuthError as e: auth_error = e
-            except Exception as e: print(f"FALHA reel {it['id']}: {e}")
+            except Exception as e: _falhou(falhas, f"reel {it['id']}", e)
         else:
             print("Biblioteca de REELS esgotada — hora de reabastecer.")
 
     # Grava o estado ANTES de sair com erro, para nao reperder o que ja' foi publicado
     # quando o token morre no meio da execucao.
     if changed: save_state(state); print("Estado atualizado.")
-    elif not auth_error: print("Nada a publicar agora.")
+    elif not auth_error and not falhas: print("Nada a publicar agora.")
 
     if auth_error: _avisar_token_parado(auth_error)
+    return falhas
 
 if __name__ == "__main__":
-    main()
+    # O exit code vive AQUI, nao dentro do main(), para que todo caminho de saida
+    # (inclusive os `return` antecipados do FORCE_ID) passe pelo mesmo veredito.
+    _falhas = main() or []
+    if _falhas:
+        print(f"::error::{len(_falhas)} item(ns) falharam SEM publicar: {'; '.join(_falhas)}")
+        print("::error::Item que falha nao entra em `done`: o cron (*/30) vai RETENTAR o mesmo "
+              "item indefinidamente. Se for 'BLOQUEADO CFM', a fila NAO anda sozinha — "
+              "corrija ou remova o item (docs/02_RUNBOOK.md).")
+        sys.exit(1)
