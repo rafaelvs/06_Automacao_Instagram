@@ -33,18 +33,19 @@
     { "id": "ortese_bota",                "kind": "short", "video_id": "g9e1wqiVAWc", "at": "2026-07-11" },
     { "id": "ortese_bota_kids",           "kind": "short", "video_id": "3tvzoyHdxm8", "at": "2026-07-11", "desc_desatualizada": "idem — descricao no ar sem a linha de pronto-socorro" },
     { "id": "distracao_alongamento",      "kind": "short", "video_id": "Nu4LmEZjuNw", "at": "2026-07-14" },
-    { "id": "distracao_alongamento_kids", "kind": "short", "video_id": "s4XXU2gf9X0", "at": "2026-07-14" }
+    { "id": "distracao_alongamento_kids", "kind": "short", "video_id": "s4XXU2gf9X0", "at": "2026-07-14" },
+    { "id": "carga_fisio_kids",           "kind": "short", "video_id": "ak9yjtRf3hs", "at": "2026-07-28", "nota": "EP06 — fecha o par de carga_fisio; title+description+tags aplicados do seo_episodios.json no upload (nao precisa de correcao posterior)" },
+    { "id": "consolidacao",               "kind": "short", "video_id": "KQ-Ke-qT0rM", "at": "2026-07-28" },
+    { "id": "consolidacao_kids",          "kind": "short", "video_id": "1RPtnRcedSA", "at": "2026-07-28" },
+    { "id": "retirada_fixador",           "kind": "short", "video_id": "wjGJEDf7JPA", "at": "2026-07-28" },
+    { "id": "retirada_fixador_kids",      "kind": "short", "video_id": "5OkzSD4uSws", "at": "2026-07-28" },
+    { "id": "banho_posop",                "kind": "short", "video_id": "0LFt4AFUwwc", "at": "2026-07-28", "aval_clinico": "Rafael avalizou em 28/07/2026 a orientacao 'seque com ar frio, cubra com curativo limpo' (substituiu 'seque com papel'); audio renderizado e descricao estao consistentes" },
+    { "id": "banho_posop_kids",           "kind": "short", "video_id": "y5COhPC3xl4", "at": "2026-07-28", "aval_clinico": "idem banho_posop — avalizado por Rafael em 28/07/2026" }
   ],
 
-  "pendentes": [
-    "carga_fisio_kids",
-    "consolidacao",
-    "consolidacao_kids",
-    "retirada_fixador",
-    "retirada_fixador_kids",
-    "banho_posop",
-    "banho_posop_kids"
-  ],
+  "_serie_completa_em": "2026-07-28 — os 34 episodios da serie 'Recuperacao' estao no ar. EP06 + EP29-34 subiram em 28/07; title+description+tags aplicados do seo_episodios.json direto no upload. Limite diario de envios NAO apareceu (o bloqueio de 27/06 caiu).",
+
+  "pendentes": [],
 
   "fora_da_serie": [
     { "kind": "short", "video_id": "xG_LJX4ULPE", "at": "2026-06-23", "titulo_no_canal": "Dr. Rafael Vargas — Ortopedista | Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica", "nota": "video de apresentacao do canal (episodio_apresentacao.py) — nao faz parte dos 34 da serie Recuperacao" }
