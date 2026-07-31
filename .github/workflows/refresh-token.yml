@@ -36,10 +36,21 @@ jobs:
         run: python refresh_token.py
       - name: Registrar a data da renovacao
         run: |
-          if ! git diff --quiet -- state/token_refresh.json; then
+          # `git diff` NAO enxerga arquivo NOVO (untracked). Como state/token_refresh.json
+          # nunca existiu no repo, a versao anterior deste passo caia sempre no "Sem
+          # mudancas no registro" e NUNCA commitava — e, sem o primeiro commit, o arquivo
+          # jamais passava a ser rastreado, entao a falha se repetiria para sempre com o
+          # job VERDE (token renovado, rastro perdido). Observado no run 30674071604 de
+          # 31/07/2026, a primeira renovacao bem-sucedida do motor.
+          # Por isso: `git add` PRIMEIRO, e a comparacao passa a ser contra o INDEX.
+          if [ ! -f state/token_refresh.json ]; then
+            echo "::error::refresh_token.py terminou OK mas nao deixou state/token_refresh.json."
+            exit 1
+          fi
+          git add state/token_refresh.json
+          if ! git diff --cached --quiet -- state/token_refresh.json; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add state/token_refresh.json
             git commit -m "Renova token do Instagram"
             # Mesmo retry do publish.yml: o robo de publicacao commita 1-2x/dia
             # e pode empurrar entre o nosso commit e o push.
