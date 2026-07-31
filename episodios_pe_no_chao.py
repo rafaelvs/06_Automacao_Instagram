@@ -192,6 +192,14 @@ try:
 except Exception as _e:
     print("AVISO: episodios_pos_op não carregado:", _e)
 
+# TESTE DE RETENÇÃO (30/07/2026): versões curtas (~40s, <=5 cenas) de 3 episódios da "Recuperação".
+# Módulo separado de propósito — o POS_OP tem 34 ids e gates que contam esse número.
+try:
+    from episodios_teste_curto import TESTE_CURTO
+    EPISODES = EPISODES + TESTE_CURTO
+except Exception as _e:
+    print("AVISO: episodios_teste_curto não carregado:", _e)
+
 def get(ep_id):
     for e in EPISODES:
         if e["id"]==ep_id: return e
