@@ -47,6 +47,14 @@
 
   "pendentes": [],
 
+  "_teste_retencao_31_07_2026": "Teste A/B de FORMATO (curto ~45s x original ~95s). Os 3 curtos abaixo sao versoes novas de episodios da serie, publicados em 31/07 com title/description/tags IDENTICOS ao original (isola a variavel duracao). Os 3 originais foram postos como 'Nao listado' — NAO excluidos, para preservar a baseline da comparacao. Leitura dos resultados ~14/08/2026. Ver Projeto_YouTube_Dr_Rafael_Vargas\\TESTE_RETENCAO_2026-07-30.md",
+
+  "teste_retencao": [
+    { "id": "infeccao_ferida_curto",    "kind": "short", "video_id": "_nwECrcDD5g", "at": "2026-07-31", "dur_s": 44.1, "substitui": "infeccao_ferida",    "original_video_id": "RR6uPYHK3-U", "original_agora": "nao_listado", "baseline_views": 98 },
+    { "id": "retorno_atividades_curto", "kind": "short", "video_id": "q3byvPyLt0g", "at": "2026-07-31", "dur_s": 50.0, "substitui": "retorno_atividades", "original_video_id": "7Se_hX-SIVQ", "original_agora": "nao_listado", "baseline_views": 71 },
+    { "id": "edema_curto",              "kind": "short", "video_id": "SLR_RCoQrLU", "at": "2026-07-31", "dur_s": 46.5, "substitui": "edema",              "original_video_id": "Z7X08-UWG8M", "original_agora": "nao_listado", "baseline_views": 61 }
+  ],
+
   "fora_da_serie": [
     { "kind": "short", "video_id": "xG_LJX4ULPE", "at": "2026-06-23", "titulo_no_canal": "Dr. Rafael Vargas — Ortopedista | Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica", "nota": "video de apresentacao do canal (episodio_apresentacao.py) — nao faz parte dos 34 da serie Recuperacao" }
   ]
