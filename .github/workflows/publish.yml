@@ -53,10 +53,20 @@ jobs:
         # VERMELHO de qualquer forma, porque quem falhou foi o passo anterior.
         if: always()
         run: |
-          if ! git diff --quiet -- state/published.json; then
+          # `git add` PRIMEIRO e comparacao contra o INDEX. `git diff --quiet` NAO
+          # enxerga arquivo NOVO (untracked): se state/published.json ainda nao
+          # estivesse no repo, este passo diria "Sem mudancas" para sempre com o
+          # job VERDE — foi exatamente o que aconteceu com state/token_refresh.json
+          # no refresh-token.yml (run 30674071604, corrigido em fdd245b). Aqui o
+          # arquivo escapou por ACIDENTE, por ja' ser rastreado desde o inicio.
+          if [ ! -f state/published.json ]; then
+            echo "::error::publish.py nao deixou state/published.json — o item que ja' foi ao ar voltaria para a fila (Posta 2x)."
+            exit 1
+          fi
+          git add state/published.json
+          if ! git diff --cached --quiet -- state/published.json; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add state/published.json
             git commit -m "Atualiza estado de publicacao"
             # retry git push p/ evitar race condition (mesmo padrao do render-reel-voz.yml).
             # Um push perdido deixa o estado sem salvar e o item VOLTA PARA A FILA — e' o
