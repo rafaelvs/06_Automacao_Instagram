@@ -63,7 +63,14 @@
     { "id": "tempo_tratamento",         "kind": "short", "video_id": "_vWoCaYwBJA", "at": "2026-07-31", "dur_s": 36.7 },
     { "id": "discrepancia_membro_kids", "kind": "short", "video_id": "dXjFBO3MbX0", "at": "2026-08-01", "dur_s": 40.5, "aval_clinico": "Rafael aprovou em 01/08/2026" },
     { "id": "fixador_ou_haste_kids",    "kind": "short", "video_id": "83pLhFLhEjo", "at": "2026-08-01", "dur_s": 42.3, "aval_clinico": "Rafael aprovou em 01/08/2026 — inclui a afirmacao de que as placas de crescimento limitam opcoes intramedulares na crianca" },
-    { "id": "tempo_tratamento_kids",    "kind": "short", "video_id": "NP8EA4QrkDY", "at": "2026-08-01", "dur_s": 42.0, "aval_clinico": "Rafael aprovou em 01/08/2026 — inclui a afirmacao de que crianca consolida mais rapido que adulto" }
+    { "id": "tempo_tratamento_kids",    "kind": "short", "video_id": "NP8EA4QrkDY", "at": "2026-08-01", "dur_s": 42.0, "aval_clinico": "Rafael aprovou em 01/08/2026 — inclui a afirmacao de que crianca consolida mais rapido que adulto" },
+
+    { "id": "pseudartrose",             "kind": "short", "video_id": "0Vt2E6H26DI", "at": "2026-08-01", "dur_s": 40.6, "lote": 2, "aval_clinico": "Rafael aprovou em 01/08/2026 — inclui a afirmacao de que o cigarro atrapalha a consolidacao" },
+    { "id": "pseudartrose_kids",        "kind": "short", "video_id": "WqRGd6vW9v8", "at": "2026-08-01", "dur_s": 39.6, "lote": 2, "aval_clinico": "Rafael aprovou em 01/08/2026 — a cena 2 alude a pseudartrose congenita da tibia e a associacao com neurofibromatose SEM nomear nenhuma das duas ('manchas na pele'), por decisao editorial" },
+    { "id": "sequela_fratura",          "kind": "short", "video_id": "bsaxraSUEDU", "at": "2026-08-01", "dur_s": 40.1, "lote": 2, "aval_clinico": "Rafael aprovou em 01/08/2026 — inclui o convite a segunda opiniao ('se foi informado que nao havia mais o que fazer')" },
+    { "id": "sequela_fratura_kids",     "kind": "short", "video_id": "HbYSFy3nBS4", "at": "2026-08-01", "dur_s": 41.2, "lote": 2 },
+    { "id": "primeira_consulta",        "kind": "short", "video_id": "U9etOfT6aVM", "at": "2026-08-01", "dur_s": 34.3, "lote": 2, "nota": "episodio de conversao — ataca os 703 views com 0 inscritos" },
+    { "id": "primeira_consulta_kids",   "kind": "short", "video_id": "btS8GJEa8qw", "at": "2026-08-01", "dur_s": 32.4, "lote": 2, "nota": "o mais curto da serie" }
   ],
 
   "fora_da_serie": [
