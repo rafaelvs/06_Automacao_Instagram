@@ -778,10 +778,17 @@
       "kind": "seq",
       "media_id": "18043987853803376",
       "at": "2026-08-02T15:30:46.988099+00:00"
+    },
+    {
+      "id": "qa_gaiola_perna",
+      "kind": "reel",
+      "media_id": "18082603595265835",
+      "at": "2026-08-02T18:48:07.853525+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-08-02",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-07-31",
+  "last_reel_date": "2026-08-02",
   "last_seq_date": "2026-08-02"
 }
