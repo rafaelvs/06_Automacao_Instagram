@@ -13,7 +13,7 @@ Guardrail: NUNCA alongamento ósseo sob ângulo estético/altura. Tudo aqui é o
 função / desenvolvimento / sinal de alerta. Temas escolhidos por potencial de SEND (pesquisa de demanda).
 """
 SERIE = "Pé no Chão"
-SIG = "Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+SIG = "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901"
 HASH_BASE = "#ortopediapediatrica #ortopediainfantil #saudedacrianca #maternidade #paternidade #ortopediasaopaulo"
 
 def cap(corpo, extra_tags=""):

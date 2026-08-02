@@ -28,7 +28,7 @@ def _apply_palette(name):
         g[k] = v
 FD="/usr/share/fonts/truetype/liberation/"; SB="LiberationSerif-Bold.ttf"; NR="LiberationSans-Regular.ttf"; NB="LiberationSans-Bold.ttf"
 M=120
-SIG="Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+SIG="Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901"
 DISC="Conteúdo educativo · não substitui avaliação médica."
 SERIE="Pé no Chão"
 

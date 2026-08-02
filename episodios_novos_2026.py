@@ -14,7 +14,7 @@ deformidade e sequela — NUNCA sob ângulo estético, cosmético ou de altura. 
 CFM (Res. 2.336/2023): educativo, sem prometer/insinuar resultado, sem paciente real; rodapé com CRM/RQE
 e disclaimer já entram em todo frame pelo render. Cada gancho de saída é pago no gancho de 3s do próximo.
 """
-SIG = "Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901"
+SIG = "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901"
 HASH_PED = "#ortopediapediatrica #ortopediainfantil #saudedacrianca #maternidade #paternidade #ortopediasaopaulo"
 HASH_REC = "#reconstrucaoossea #alongamentoosseo #ortopediasaopaulo #pseudartrose #fixadorexterno #traumatortopedico"
 

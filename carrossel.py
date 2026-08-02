@@ -10,7 +10,7 @@ from PIL import Image, ImageDraw, ImageFont
 W,H = 1080,1350; M=110
 INK=(18,18,24); CREAM=(243,226,200); GOLD=(176,140,79); TXT=(206,198,184); MUT=(150,144,132); FAINT=(70,66,60)
 FD="/usr/share/fonts/truetype/liberation/"; SB="LiberationSerif-Bold.ttf"; NR="LiberationSans-Regular.ttf"; NB="LiberationSans-Bold.ttf"
-SIG="Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901"; DISC="Conteúdo educativo · não substitui avaliação médica."
+SIG="Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901"; DISC="Conteúdo educativo · não substitui avaliação médica."
 _FC={}
 def F(n,s):
     k=(n,s)
