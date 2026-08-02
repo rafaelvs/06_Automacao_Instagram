@@ -55,18 +55,15 @@
     { "id": "edema_curto",              "kind": "short", "video_id": "SLR_RCoQrLU", "at": "2026-07-31", "dur_s": 46.5, "substitui": "edema",              "original_video_id": "Z7X08-UWG8M", "original_agora": "nao_listado", "baseline_views": 61 }
   ],
 
-  "_serie_alongamento_osseo": "Serie 2 do canal (o nicho core), iniciada em 31/07/2026 ja no formato curto (<=5 cenas, 37-43s). Fonte dos metadados: seo_alongamento.json. Episodios em episodios_alongamento.py. As versoes _kids do lote 1 estao RENDERIZADAS mas NAO publicadas — aguardam aval clinico do Rafael (ver Projeto_YouTube_Dr_Rafael_Vargas\\APROVACAO_SERIE_ALONGAMENTO_L1.md).",
+  "_serie_alongamento_osseo": "Serie 2 do canal (o nicho core), iniciada em 31/07/2026 ja no formato curto (<=5 cenas, 37-43s). Fonte dos metadados: seo_alongamento.json. Episodios em episodios_alongamento.py. LOTE 1 COMPLETO: 3 pares adulto+pais. Adultos aprovados e publicados em 31/07; as _kids receberam o aval clinico do Rafael e foram publicadas em 01/08. Restam 14 dos 17 temas mapeados.",
 
   "alongamento_osseo": [
-    { "id": "discrepancia_membro", "kind": "short", "video_id": "PtSMFuhWiJ0", "at": "2026-07-31", "dur_s": 40.6 },
-    { "id": "fixador_ou_haste",    "kind": "short", "video_id": "D4hTFaxEcZs", "at": "2026-07-31", "dur_s": 42.2 },
-    { "id": "tempo_tratamento",    "kind": "short", "video_id": "_vWoCaYwBJA", "at": "2026-07-31", "dur_s": 36.7 }
-  ],
-
-  "alongamento_osseo_aguardando_aval": [
-    { "id": "discrepancia_membro_kids", "renderizado": true, "publicado": false, "dur_s": 40.5, "pendencia": "aval clinico do Rafael" },
-    { "id": "fixador_ou_haste_kids",    "renderizado": true, "publicado": false, "dur_s": 42.3, "pendencia": "aval clinico — cena 2 afirma que as placas de crescimento limitam opcoes intramedulares" },
-    { "id": "tempo_tratamento_kids",    "renderizado": true, "publicado": false, "dur_s": 42.0, "pendencia": "aval clinico — cena 2 afirma que crianca consolida mais rapido que adulto" }
+    { "id": "discrepancia_membro",      "kind": "short", "video_id": "PtSMFuhWiJ0", "at": "2026-07-31", "dur_s": 40.6 },
+    { "id": "fixador_ou_haste",         "kind": "short", "video_id": "D4hTFaxEcZs", "at": "2026-07-31", "dur_s": 42.2 },
+    { "id": "tempo_tratamento",         "kind": "short", "video_id": "_vWoCaYwBJA", "at": "2026-07-31", "dur_s": 36.7 },
+    { "id": "discrepancia_membro_kids", "kind": "short", "video_id": "dXjFBO3MbX0", "at": "2026-08-01", "dur_s": 40.5, "aval_clinico": "Rafael aprovou em 01/08/2026" },
+    { "id": "fixador_ou_haste_kids",    "kind": "short", "video_id": "83pLhFLhEjo", "at": "2026-08-01", "dur_s": 42.3, "aval_clinico": "Rafael aprovou em 01/08/2026 — inclui a afirmacao de que as placas de crescimento limitam opcoes intramedulares na crianca" },
+    { "id": "tempo_tratamento_kids",    "kind": "short", "video_id": "NP8EA4QrkDY", "at": "2026-08-01", "dur_s": 42.0, "aval_clinico": "Rafael aprovou em 01/08/2026 — inclui a afirmacao de que crianca consolida mais rapido que adulto" }
   ],
 
   "fora_da_serie": [
