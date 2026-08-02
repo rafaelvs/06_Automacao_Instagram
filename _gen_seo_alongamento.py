@@ -94,6 +94,82 @@ SEO = {
     "escola com fixador", "rotina criança fixador externo"]},
 }
 
+
+# ─────────────────── LOTE 2 (01/08/2026) ───────────────────
+SEO.update({
+ "pseudartrose": {
+  "title": "O osso não colou? Isso se chama pseudartrose #Shorts",
+  "description": desc(
+    "Fraturou, operou, e meses depois o osso ainda não colou? Isso tem nome: pseudartrose.",
+    ["A consolidação não acontece no tempo esperado e o foco da fratura continua se mexendo.",
+     "Pesa a estabilidade do osso, a circulação no local, infecção — e o cigarro.",
+     "Dor que persiste meses depois: procure avaliação com quem trata reconstrução óssea."],
+    REF_AD, "#Shorts #pseudartrose #reconstrucaoossea #fratura #drrafaelvargas"),
+  "tags": BASE + ["pseudartrose", "osso que não cola", "fratura que não consolida",
+    "falha de consolidação óssea", "osso não colou depois da cirurgia",
+    "tratamento pseudartrose", "enxerto ósseo", "não consolidação de fratura"]},
+
+ "pseudartrose_kids": {
+  "title": "O osso do seu filho não colou? (guia para os pais) #Shorts",
+  "description": desc(
+    "O osso do seu filho fraturou, tratou, e não colou? Isso tem nome e tem tratamento.",
+    ["Criança costuma consolidar bem — quando não cola, vale investigar a causa.",
+     "Existe uma forma que aparece nos primeiros anos, às vezes ligada a manchas na pele.",
+     "Dor que não passa, deformidade nova ou a criança evitando apoiar: leve para avaliação."],
+    REF_KIDS, "#Shorts #ortopediapediatrica #pseudartrose #criança #drrafaelvargas"),
+  "tags": BASE + ["ortopedia pediátrica", "ortopedia infantil", "pais",
+    "osso que não cola criança", "pseudartrose congênita", "fratura criança não consolidou",
+    "perna arqueada bebê", "manchas na pele e osso"]},
+
+ "sequela_fratura": {
+  "title": "Fratura que colou torta: ainda dá para tratar #Shorts",
+  "description": desc(
+    "Fratura que colou em posição ruim, encurtada, ou que infeccionou: ainda dá para tratar.",
+    ["A sequela muda a marcha e sobrecarrega o resto do corpo.",
+     "Havendo infecção no osso, ela é resolvida junto com a reconstrução, em etapas.",
+     "Se convive com dor ou manca: vale uma segunda opinião com quem trata reconstrução óssea."],
+    REF_AD, "#Shorts #sequeladefratura #reconstrucaoossea #osteomielite #drrafaelvargas"),
+  "tags": BASE + ["sequela de fratura", "fratura consolidada torta", "osso torto depois da fratura",
+    "infecção no osso", "osteomielite", "perna encurtada após fratura",
+    "correção de deformidade óssea", "reconstrução após fratura"]},
+
+ "sequela_fratura_kids": {
+  "title": "Fratura que colou torta na criança (para os pais) #Shorts",
+  "description": desc(
+    "A fratura do seu filho colou torta ou deixou a perna mais curta? Em criança, a conta é diferente.",
+    ["A criança remodela o osso — parte dos desalinhamentos melhora com o crescimento.",
+     "Mas tem limite: depende da idade, do osso e do tipo de desvio.",
+     "Se a placa de crescimento se machucou, a diferença pode aumentar: acompanhe de perto."],
+    REF_KIDS, "#Shorts #ortopediapediatrica #fratura #criança #drrafaelvargas"),
+  "tags": BASE + ["ortopedia pediátrica", "ortopedia infantil", "pais",
+    "fratura criança colou torta", "remodelação óssea criança", "placa de crescimento fratura",
+    "perna torta após fratura criança", "sequela fratura infantil"]},
+
+ "primeira_consulta": {
+  "title": "Alongamento ósseo: o que perguntar na consulta #Shorts",
+  "description": desc(
+    "Vai na primeira consulta sobre alongamento ósseo? Anote estas perguntas antes de ir.",
+    ["Qual o objetivo funcional do tratamento e o que exatamente será corrigido.",
+     "Qual método, quanto tempo no total, e como fica sua rotina de trabalho.",
+     "Quais os riscos e o que se faz se algo não sair como esperado."],
+    REF_AD, "#Shorts #alongamentoosseo #primeiraconsulta #ortopedia #drrafaelvargas"),
+  "tags": BASE + ["primeira consulta alongamento ósseo", "o que perguntar ao ortopedista",
+    "consulta ortopedia o que levar", "segunda opinião ortopedia",
+    "avaliação alongamento ósseo", "como escolher ortopedista"]},
+
+ "primeira_consulta_kids": {
+  "title": "Levar seu filho ao ortopedista: o que perguntar #Shorts",
+  "description": desc(
+    "Vai levar seu filho na primeira consulta de ortopedia? Anote o que perguntar.",
+    ["Leve os exames anteriores e, se tiver, vídeo de como ele anda.",
+     "Pergunte o que dá para observar, o que tratar agora, e de quanto em quanto tempo voltar.",
+     "Pergunte como fica a escola, a educação física e o esporte durante o acompanhamento."],
+    REF_KIDS, "#Shorts #ortopediapediatrica #consulta #criança #drrafaelvargas"),
+  "tags": BASE + ["ortopedia pediátrica", "ortopedia infantil", "pais",
+    "primeira consulta ortopedista criança", "o que perguntar ortopedista infantil",
+    "levar filho ao ortopedista", "criança mancando consulta"]},
+})
+
 if __name__ == "__main__":
     p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "seo_alongamento.json")
     json.dump(SEO, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
