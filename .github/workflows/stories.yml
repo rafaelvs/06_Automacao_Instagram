@@ -1,0 +1,47 @@
+name: Pulso de Stories (diario)
+
+# Os stories NAO aparecem em `{IG_USER}/media` — por desenho da Graph API. Logo o
+# `insights.yml` nunca os mediu, e a auditoria v1 (02/08/2026) achou ~150 telas/mes
+# (30 sequencias x 5 frames) totalmente cegas, o que duas medicoes independentes
+# situam em ~72% das views da conta.
+#
+# A edge `/stories` so devolve as ultimas 24 h: o dado de ontem NAO volta. Por isso
+# este job roda TODO DIA e acumula em state/stories_serie.json.
+# SO LEITURA (GET) — nao publica e nao altera a conta. Commita apenas a serie.
+on:
+  schedule:
+    - cron: "0 2 * * *"      # 02:00 UTC ~ 23:00 BRT — depois da janela de publicacao (18-19h BRT)
+  workflow_dispatch:
+
+permissions:
+  contents: write            # so para commitar state/stories_serie.json
+
+concurrency:
+  group: stories-pulse
+  cancel-in-progress: false
+
+jobs:
+  pulso:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pulso de stories
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: python3 stories_pulse.py
+      - name: Salvar a serie
+        # if: always() — a medicao do dia nao volta; se o passo acima falhar DEPOIS de
+        # gravar algo, ainda queremos o que deu para salvar. `git add` explicito porque
+        # `git diff` nao ve arquivo NOVO (licao da casa: o 1o dia criaria o arquivo e o
+        # commit sairia vazio, com o job verde, para sempre).
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state/stories_serie.json
+          git diff --cached --quiet || git commit -m "Pulso de stories: serie do dia"
+          for i in 1 2 3; do
+            git push && break || { git pull --rebase --autostash && sleep 5; }
+          done
