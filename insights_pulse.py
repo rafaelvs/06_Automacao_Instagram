@@ -60,7 +60,11 @@ def conta_metrica(metric, **extra):
 d = conta_metrica("reach")
 if d:
     vals = [v.get("value", 0) for v in d[0].get("values", [])]
-    out["conta"]["reach_soma_diaria"] = sum(vals)
+    # ATENCAO: isto NAO e alcance unico do mes — e a soma dos alcances diarios, entao
+    # a mesma pessoa conta de novo a cada dia em que viu algo. Na janela de 03/07-02/08
+    # deu 1463 contra 527 de alcance UNICO (breakdown follow_type). A auditoria v1 usou
+    # o numero errado como metrica-titulo. O nome ficou explicito para nao enganar de novo.
+    out["conta"]["reach_impressoes_soma_diaria"] = sum(vals)
 
 for m in ("views", "profile_views", "website_clicks", "accounts_engaged",
           "total_interactions", "likes", "comments", "shares", "saves", "replies"):
@@ -80,6 +84,28 @@ for m in ("views", "reach", "total_interactions"):
                 "/".join(b.get("dimension_values", ["?"])): b.get("value") for b in bks}
         except Exception:
             pass
+
+# TAMANHO DA BASE — sem ele nao da para separar "o Instagram parou de me entregar" de
+# "eu tenho poucos seguidores", nem dizer que fracao da base cada peca alcancou.
+# A auditoria v1 nao conseguiu responder isso: followers_count nunca era pedido.
+r = get(IG_USER, fields="followers_count,follows_count,media_count,username,name,biography,website")
+if "_erro" in r:
+    out["erros"].append(r["_erro"])
+else:
+    for campo in ("followers_count", "follows_count", "media_count", "username", "name"):
+        if r.get(campo) is not None:
+            out["conta"][campo] = r[campo]
+    # Superficie de 3 segundos do perfil: a auditoria v1 nao conseguiu auditar bio nem
+    # link porque nada disso era versionado. Guardar aqui congela o estado de cada pulso.
+    out["perfil"] = {"biography": r.get("biography"), "website": r.get("website")}
+
+# ALCANCE UNICO da janela, derivado do breakdown (a metrica-titulo correta).
+try:
+    _rb = out["conta"].get("reach_por_follow_type") or {}
+    if _rb:
+        out["conta"]["reach_unico_janela"] = sum(v for v in _rb.values() if isinstance(v, (int, float)))
+except Exception:
+    pass
 
 # follower_count diario (crescimento na janela)
 d = conta_metrica("follower_count")
@@ -139,9 +165,20 @@ tot_rc = sum(p.get("reach") or 0 for p in reels)
 out["reels_janela"] = {
     "n": len(reels), "shares_total": tot_sh, "reach_total": tot_rc,
     "SPR_agregado_pct": round(100.0 * tot_sh / tot_rc, 2) if tot_rc else None,
-    "watch_time_medio_ms": (lambda ws: round(sum(ws) / len(ws)) if ws else None)(
+    # Media SIMPLES: cada reel pesa igual, entao um reel com 1 view distorce tanto quanto
+    # um com 111. Mantida so para comparar com as rodadas antigas.
+    "watch_time_medio_simples_ms": (lambda ws: round(sum(ws) / len(ws)) if ws else None)(
         [p["ig_reels_avg_watch_time"] for p in reels
          if isinstance(p.get("ig_reels_avg_watch_time"), (int, float))]),
+    # Media PONDERADA por views — e esta que descreve o que a audiencia realmente assistiu.
+    # Na janela de 03/07-02/08 dava 1891 ms contra 2128 ms da media simples.
+    "watch_time_ponderado_ms": (lambda ps: round(
+        sum(p["ig_reels_avg_watch_time"] * (p.get("views") or 0) for p in ps)
+        / sum((p.get("views") or 0) for p in ps)) if sum((p.get("views") or 0) for p in ps) else None)(
+        [p for p in reels if isinstance(p.get("ig_reels_avg_watch_time"), (int, float))]),
+    # Mediana de alcance por peca: com n pequeno e cauda longa, a media engana.
+    "reach_mediano_por_peca": (lambda xs: sorted(xs)[len(xs) // 2] if xs else None)(
+        [p.get("reach") or 0 for p in reels]),
 }
 out["top_por_shares"] = sorted(pecas, key=lambda p: (p.get("shares") or 0), reverse=True)[:8]
 out["top_por_saved"] = sorted(pecas, key=lambda p: (p.get("saved") or 0), reverse=True)[:5]
