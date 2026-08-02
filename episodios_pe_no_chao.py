@@ -200,6 +200,13 @@ try:
 except Exception as _e:
     print("AVISO: episodios_teste_curto não carregado:", _e)
 
+# SÉRIE "ALONGAMENTO ÓSSEO" (31/07/2026): o nicho core, já no formato curto. Mesmo motor.
+try:
+    from episodios_alongamento import ALONGAMENTO
+    EPISODES = EPISODES + ALONGAMENTO
+except Exception as _e:
+    print("AVISO: episodios_alongamento não carregado:", _e)
+
 def get(ep_id):
     for e in EPISODES:
         if e["id"]==ep_id: return e
