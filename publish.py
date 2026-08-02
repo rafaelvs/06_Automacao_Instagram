@@ -209,6 +209,27 @@ def _loc(d):
         d = dict(d); d["location_id"] = LOCATION_ID
     return d
 
+def _texto_auditavel(item):
+    """Junta TODA superficie de texto do item, nao so a legenda.
+
+    A auditoria v1 mediu que o gate cobria ~13% do que e publicado: auditava apenas
+    `item['caption']`, entao rotulo de sequencia, texto de cena de reel e slide de
+    carrossel passavam batido. Varre tambem colecoes aninhadas para que qualquer campo
+    de texto que venha a ser adicionado aos JSONs ja nasca coberto."""
+    partes = []
+    for chave in ("caption", "label", "theme", "titulo", "title", "alt_text"):
+        v = item.get(chave)
+        if isinstance(v, str) and v.strip():
+            partes.append(v)
+    for colecao in ("scenes", "slides", "frames"):
+        for el in (item.get(colecao) or []):
+            if isinstance(el, dict):
+                partes += [v for v in el.values() if isinstance(v, str) and v.strip()]
+            elif isinstance(el, str) and el.strip():
+                partes.append(el)
+    return "\n".join(partes)
+
+
 def _cfm_guard(item):
     """Backstop CFM antes de publicar. Se o MODULO estiver ausente: avisa ALTO e nao bloqueia
     (fail-open RUIDOSO — nao quebra o robo). Se o modulo existir mas tiver bug (SyntaxError/re.error):
@@ -220,7 +241,7 @@ def _cfm_guard(item):
     except (ImportError, ModuleNotFoundError):
         print("!!! ALERTA: cfm_guardrails ausente — guardrail CFM DESLIGADO neste run.", file=sys.stderr)
         return
-    viol = [p for p in auditar(item.get("caption", ""), "publico") if p[0] == "VIOLACAO"]
+    viol = [p for p in auditar(_texto_auditavel(item), "publico") if p[0] == "VIOLACAO"]
     if viol:
         msg = "BLOQUEADO CFM: " + "; ".join(f"{r}:{d}" for _, r, d in viol)
         print(f"!!! {msg} (item={item.get('id', '?')}) — NAO publicado, revisar.", file=sys.stderr)
@@ -242,9 +263,13 @@ def publish_story_img(image_path):
     wait_finished(cont)
     return api_post(f"{IG_USER_ID}/media_publish", {"creation_id": cont})["id"]
 def publish_story(item):
+    _cfm_guard(item)
     return publish_story_img(item["image"])
 def publish_sequence(seq):
     # publica os 5 frames em ordem, um atras do outro (story serializado)
+    # Guard aqui tambem: sequencia e o MAIOR volume publicado (5 telas por peca) e ate
+    # 02/08/2026 era a unica rota que subia sem nenhum backstop de CFM.
+    _cfm_guard(seq)
     ids = []
     for i, img in enumerate(seq["images"], 1):
         mid = publish_story_img(img); ids.append(mid)
