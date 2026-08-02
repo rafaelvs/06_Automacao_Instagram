@@ -251,17 +251,28 @@ def publish_sequence(seq):
         print(f"  frame {i}/{len(seq['images'])} -> {mid}", flush=True)
         time.sleep(2)
     return ids
+# Ramo que a ultima publicacao de reel tomou. Vai para o state (ver log()).
+# Sem isto ninguem consegue provar POR DADO se um reel saiu em modo trial: o fallback
+# abaixo e' silencioso e a Graph API nao expoe o status de trial na leitura da midia.
+# Foi essa cegueira que deixou 19 reels publicados fora do grid de 22/06 a 24/07/2026
+# sem que nenhuma auditoria conseguisse confirmar a causa. Ver docs/06_TRIAL_REELS.md.
+_MODO_REEL = None   # "trial" | "fallback_normal" | "normal"
+
+
 def publish_reel(item):
+    global _MODO_REEL
     _cfm_guard(item)
     # alt_text NAO e' suportado em reels (so imagens); location_id e' suportado.
     base = _loc({"media_type": "REELS", "video_url": raw_url(item["video"]),
                  "caption": item.get("caption", "")})
     cont = None
+    _MODO_REEL = "normal"
     if TRIAL_REELS:
         # Trial Reel: so' para nao-seguidores; graduacao automatica (SS_PERFORMANCE) se performar.
         try:
             p = dict(base); p["trial_params"] = json.dumps({"graduation_strategy": TRIAL_GRADUATION})
             cont = api_post(f"{IG_USER_ID}/media", p)["id"]
+            _MODO_REEL = "trial"
         except AuthError:
             # Token morto nao e' "trial_params recusado": propaga, senao este except
             # engoliria a falha de auth e o robo tentaria de novo a' toa.
@@ -270,12 +281,20 @@ def publish_reel(item):
             # Fallback robusto: se a API recusar trial_params, publica reel normal (nao trava o robo).
             print(f"  ! trial_params recusado ({e}); publicando como reel normal.", file=sys.stderr)
             cont = None
+            _MODO_REEL = "fallback_normal"
     if cont is None:
         p = dict(base); p["share_to_feed"] = "true"
         cont = api_post(f"{IG_USER_ID}/media", p)["id"]
     wait_finished(cont, tries=30, delay=10)
     return api_post(f"{IG_USER_ID}/media_publish", {"creation_id": cont})["id"]
-def log(state, item_id, kind, mid, now): state["published"].append({"id": item_id, "kind": kind, "media_id": mid, "at": now.isoformat()})
+def log(state, item_id, kind, mid, now):
+    reg = {"id": item_id, "kind": kind, "media_id": mid, "at": now.isoformat()}
+    if kind == "reel" and _MODO_REEL:
+        # Prova por dado de qual ramo publicou (trial / fallback / normal). A auditoria v1
+        # nao conseguiu confirmar isso em 18 reels de julho porque nada era gravado.
+        reg["modo_reel"] = _MODO_REEL
+        print(f"  modo do reel: {_MODO_REEL}", flush=True)
+    state["published"].append(reg)
 def next_item(items, done): return next((x for x in items if x["id"] not in done), None)
 
 def main():
