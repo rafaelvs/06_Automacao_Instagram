@@ -816,10 +816,17 @@
       "kind": "seq",
       "media_id": "18331999369285120",
       "at": "2026-08-05T15:31:22.985468+00:00"
+    },
+    {
+      "id": "qa_osso_nao_cola",
+      "kind": "reel",
+      "media_id": "18062903840756889",
+      "at": "2026-08-05T18:59:16.320740+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-08-04",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-08-03",
+  "last_reel_date": "2026-08-05",
   "last_seq_date": "2026-08-05"
 }
