@@ -841,10 +841,17 @@
       "kind": "seq",
       "media_id": "17941046880321959",
       "at": "2026-08-07T15:42:14.344177+00:00"
+    },
+    {
+      "id": "pnc_perna_curta_crianca",
+      "kind": "reel",
+      "media_id": "17944114197273541",
+      "at": "2026-08-07T18:35:33.663702+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-08-06",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-08-05",
+  "last_reel_date": "2026-08-07",
   "last_seq_date": "2026-08-07"
 }
