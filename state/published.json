@@ -910,10 +910,17 @@
       "kind": "seq",
       "media_id": "17894187120391725",
       "at": "2026-08-12T15:30:40.557734+00:00"
+    },
+    {
+      "id": "qa_pino_frouxo",
+      "kind": "reel",
+      "media_id": "17972995313914556",
+      "at": "2026-08-12T18:13:07.378069+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-08-11",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-08-10",
+  "last_reel_date": "2026-08-12",
   "last_seq_date": "2026-08-12"
 }
