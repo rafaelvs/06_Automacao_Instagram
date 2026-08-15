@@ -1,0 +1,90 @@
+{
+  "_leia": "Estado da superficie de 3 segundos do perfil (@rafaelvargasmd). Ate 15/08/2026 nada disto era versionado: nao dava para lintar, reverter nem auditar o ativo de maior alavancagem do perfil. Os campos com origem 'graph_api' sao lidos automaticamente pelo pulso; os com 'pendente_rafael' a API nao expoe.",
+  "medido_em": "2026-08-15",
+  "origem": "graph.instagram.com v21.0 (campos sob instagram_business_basic)",
+  "username": {
+    "valor": "rafaelvargasmd",
+    "origem": "graph_api"
+  },
+  "nome_de_exibicao": {
+    "valor": "Dr. Rafael Vargas · Ortopedia",
+    "origem": "graph_api"
+  },
+  "biografia": {
+    "valor": "Reconstrução e Alongamento Ósseo\nOrtopedia Pediátrica · adultos e crianças\nDeformidades e casos complexos\nMédico · CRM-SP 226103 · RQE 137901",
+    "linhas": [
+      "Reconstrução e Alongamento Ósseo",
+      "Ortopedia Pediátrica · adultos e crianças",
+      "Deformidades e casos complexos",
+      "Médico · CRM-SP 226103 · RQE 137901"
+    ],
+    "caracteres": 141,
+    "origem": "graph_api"
+  },
+  "link": {
+    "valor": "https://wa.me/551132801413",
+    "origem": "graph_api",
+    "nota": "O unico link clicavel aponta para o WhatsApp, nao para o site. Por isso `website_clicks` do Instagram e um PISO: conversa iniciada por DM ou WhatsApp nao aparece em metrica nenhuma. UTM nao funciona em wa.me — o que funciona e um parametro no TEXTO pre-preenchido da mensagem."
+  },
+  "categoria": {
+    "valor": null,
+    "origem": "pendente_rafael",
+    "por_que": "`category` nao existe no no IG User da API com Instagram Login; e campo do no Page, so alcancavel por Facebook Login. Estruturalmente inalcancavel por este caminho."
+  },
+  "numeros": {
+    "followers_count": 1308,
+    "follows_count": 896,
+    "media_count": 57,
+    "nota_media_count": "media_count conta o que esta NO GRID. Com 128 registros em published.json (que inclui stories e sequencias, que nao vao ao grid) e reels que ficaram em modo trial ate 02/08, este numero e a melhor prova externa do tamanho real da grade.",
+    "origem": "graph_api"
+  },
+  "destaques": [
+    {
+      "id": "dest01",
+      "arquivo_capa": "images/dest01.jpg",
+      "publicado_em": "2026-06-04",
+      "titulo_no_app": null,
+      "origem_titulo": "pendente_rafael"
+    },
+    {
+      "id": "dest02",
+      "arquivo_capa": "images/dest02.jpg",
+      "publicado_em": "2026-06-04",
+      "titulo_no_app": null,
+      "origem_titulo": "pendente_rafael"
+    },
+    {
+      "id": "dest03",
+      "arquivo_capa": "images/dest03.jpg",
+      "publicado_em": "2026-06-04",
+      "titulo_no_app": null,
+      "origem_titulo": "pendente_rafael"
+    },
+    {
+      "id": "dest04",
+      "arquivo_capa": "images/dest04.jpg",
+      "publicado_em": "2026-06-04",
+      "titulo_no_app": null,
+      "origem_titulo": "pendente_rafael"
+    },
+    {
+      "id": "dest05",
+      "arquivo_capa": "images/dest05.jpg",
+      "publicado_em": "2026-06-04",
+      "titulo_no_app": null,
+      "origem_titulo": "pendente_rafael"
+    },
+    {
+      "id": "dest06",
+      "arquivo_capa": "images/dest06.jpg",
+      "publicado_em": "2026-06-04",
+      "titulo_no_app": null,
+      "origem_titulo": "pendente_rafael"
+    }
+  ],
+  "_pendente_do_rafael": [
+    "categoria do perfil (1 string)",
+    "titulo exato digitado no app para cada um dos 6 destaques (6 strings)"
+  ],
+  "_nota_destaques": "A Graph API NAO tem edge de story highlights — verificado na lista completa de edges do no IG User. A edge `/stories` devolve so stories ativos das ultimas 24 h, nao Destaques. As datas de publicacao vieram de state/published.json, sem digitacao."
+}
