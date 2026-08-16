@@ -966,10 +966,17 @@
       "kind": "seq",
       "media_id": "17889782967427404",
       "at": "2026-08-16T15:30:39.365567+00:00"
+    },
+    {
+      "id": "qa_quando_pisar",
+      "kind": "reel",
+      "media_id": "18121659233510027",
+      "at": "2026-08-16T18:09:39.495909+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-08-16",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-08-14",
+  "last_reel_date": "2026-08-16",
   "last_seq_date": "2026-08-16"
 }
