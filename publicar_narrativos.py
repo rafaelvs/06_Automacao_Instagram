@@ -41,8 +41,10 @@ def main():
         video,dur,music=render_ep(epi)
         novos.append({"id":rid,"video":video,"caption":epi["caption"],"music":music,"dur":dur,"serie":"Pé no Chão"})
         print("ok",rid,dur,"s |",music)
-    # PREPENDA os novos (publicam antes dos reels antigos)
-    reels=novos+reels
+    # APPEND (nao prepend): entram no FIM da fila. O prepend fazia um disparo so
+    # colocar ate 60 reels mudos no TOPO, na frente de tudo que ja estava na fila --
+    # ~6 meses de publicacao sem voz de uma vez. Achado da auditoria v1 (16/08/2026).
+    reels=reels+novos
     json.dump(reels,open(rj,"w",encoding="utf-8"),ensure_ascii=False,indent=2)
     print("reels.json:",len(reels),"| novos narrativos:",len(novos))
 

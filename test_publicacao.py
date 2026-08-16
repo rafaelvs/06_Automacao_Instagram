@@ -21,7 +21,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 
-CAP = "Discrepancia de membro: medir antes de operar. Conteudo educativo."
+CAP = ("Discrepancia de membro: medir antes de operar. Conteudo educativo.\n\n"
+       "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901")
+# 16/08/2026: assinatura CRM+RQE virou VIOLACAO (nao so REVISAR) na auditoria v1 —
+# fixture sem ela travava no _cfm_guard antes mesmo de chegar no cenario de auth
+# que este teste quer exercitar. Toda legenda real ja carrega a assinatura.
 
 POSTS = [{"id": "t-post-1", "images": ["media/a.png"], "caption": CAP}]
 SEQS = [{"id": "t-seq-1", "theme": "teste",

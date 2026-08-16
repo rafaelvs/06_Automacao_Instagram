@@ -241,7 +241,13 @@ def _cfm_guard(item):
     except (ImportError, ModuleNotFoundError):
         print("!!! ALERTA: cfm_guardrails ausente — guardrail CFM DESLIGADO neste run.", file=sys.stderr)
         return
-    viol = [p for p in auditar(_texto_auditavel(item), "publico") if p[0] == "VIOLACAO"]
+    # Assinatura em texto so' e' exigivel onde a legenda e' o que o usuario le (post/reel
+    # tem "caption"). Sequencia/story so' tem rotulo estrutural curto (theme/label) e a
+    # identificacao CFM vive no RODAPE DO RENDER, nunca no JSON -- exigir texto ali travaria
+    # a fila inteira (0 das 150 sequencias reais tem CRM em campo de texto).
+    tem_legenda_visivel = bool(item.get("caption"))
+    viol = [p for p in auditar(_texto_auditavel(item), "publico",
+                               exigir_assinatura_texto=tem_legenda_visivel) if p[0] == "VIOLACAO"]
     if viol:
         msg = "BLOQUEADO CFM: " + "; ".join(f"{r}:{d}" for _, r, d in viol)
         print(f"!!! {msg} (item={item.get('id', '?')}) — NAO publicado, revisar.", file=sys.stderr)

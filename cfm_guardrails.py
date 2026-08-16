@@ -43,8 +43,13 @@ PROMESSAS = [
     (r"\bo melhor (medico|cirurgiao|ortopedista|profissional)\b", "autopromoção ('o melhor')"),
     (r"\bnumero 1\b", "autopromoção ('número 1')"),
     (r"\bconsulta gratis\b", "'consulta grátis' (vedado)"),
-    (r"\bantes e depois\b", "'antes e depois' (sensacionalismo/identificável)"),
 ]
+
+# "antes e depois" NAO e VIOLACAO por si so: o Art. 14, II, b da Res. CFM 2.336/2023
+# PERMITE antes-e-depois quando exibido como CONJUNTO (par de imagens, mesmo contexto,
+# sem sensacionalizar). Rebaixado de VIOLACAO para REVISAR em 16/08/2026 (auditoria v1) —
+# antes disso a regra travava a fila por engano em conteudo licito.
+ANTES_DEPOIS_RGX = r"\bantes e depois\b"
 
 # 2b) Negações que ANULAM uma "promessa" (ex.: "não prometo milagre" é honestidade, não violação)
 NEG_PROMESSA = ["nao promet", "nao garant", "nao e ", "nao existe", "nada de", "longe de",
@@ -64,8 +69,16 @@ EXAME_TERMOS = ["raio-x", "raio x", "raiox", "radiografia", "tomografia", "resso
 EXAME_OK_CTX = ["ilustr", "esquem", "didatic", "desenho", "simbol", "no olhometro", "na imagem"]
 
 
-def auditar(texto, contexto="publico"):
-    """contexto: 'publico' (post/legenda — exige assinatura) ou 'mensagem' (DM/bot — não exige)."""
+def auditar(texto, contexto="publico", exigir_assinatura_texto=True):
+    """contexto: 'publico' (post/legenda — exige assinatura) ou 'mensagem' (DM/bot — não exige).
+
+    exigir_assinatura_texto: default True (post/reel — a legenda É o que o usuário lê, a
+    assinatura ausente no texto é VIOLACAO). Passar False para conteúdo cuja legenda é só
+    um rótulo estrutural curto e a identificação vive no RENDER (sequência/story — nenhuma
+    das 150 sequências reais tem CRM em texto, é assim que o formato funciona): nesse caso
+    a checagem vira REVISAR (advisório), não bloqueio. Sem essa distinção, promover a regra
+    de REVISAR para VIOLACAO travaria toda sequência para sempre — achado do teste
+    `test_publicacao.py` ao rodar com a promoção aplicada indiscriminadamente."""
     issues = []
     bruto = _sem_hashtags(texto)
     n = _norm(bruto)
@@ -84,6 +97,15 @@ def auditar(texto, contexto="publico"):
                 continue
             issues.append(("VIOLACAO", "promessa", detalhe))
             break
+
+    # 2b) "antes e depois" isolado: REVISAR, nao VIOLACAO (ver ANTES_DEPOIS_RGX acima)
+    for m in re.finditer(ANTES_DEPOIS_RGX, n):
+        janela = n[max(0, m.start() - 35): m.end() + 45]
+        if any(neg in janela for neg in NEG_PROMESSA):
+            continue
+        issues.append(("REVISAR", "antes_depois",
+                       "'antes e depois' — confirmar que aparece como CONJUNTO (par de imagens, Art. 14 II b), não isolado/sensacionalizado"))
+        break
 
     # 3) estética/altura no alongamento (co-ocorrência, exceto se houver negação/guardrail)
     if any(g in n for g in ALONG_GATILHO):
@@ -106,10 +128,14 @@ def auditar(texto, contexto="publico"):
                 issues.append(("REVISAR", "exame_imagem",
                                f"'{termo}' sem contexto de ilustração/esquema — garantir que é só didático (nunca exame real/falso)"))
 
-    # 5) assinatura CFM (só material público)
+    # 5) assinatura CFM (só material público) — promovido de REVISAR para VIOLACAO em
+    # 16/08/2026 (auditoria v1): e requisito OBJETIVAMENTE checavel (Arts. 4o/6o), nao
+    # uma suspeita a confirmar. 91/183 legendas nao traziam a palavra "Médico" ate a
+    # correção de 02/08; manter em REVISAR deixava passar sem alarme.
     if contexto == "publico":
         if not (("crm" in n) and ("rqe" in n)):
-            issues.append(("REVISAR", "assinatura", "material público sem CRM+RQE visível no texto (pode estar no rodapé do render)"))
+            sev = "VIOLACAO" if exigir_assinatura_texto else "REVISAR"
+            issues.append((sev, "assinatura", "material público sem CRM+RQE visível no texto (pode estar no rodapé do render)"))
 
     return issues
 
