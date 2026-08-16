@@ -73,7 +73,16 @@
     { "id": "primeira_consulta_kids",   "kind": "short", "video_id": "btS8GJEa8qw", "at": "2026-08-01", "dur_s": 32.4, "lote": 2, "nota": "o mais curto da serie" },
 
     { "id": "fim_tratamento",           "kind": "short", "video_id": "OW37LJ4WEZU", "at": "2026-08-16", "dur_s": 35.7, "lote": 3, "nota": "unico tema com score 0 contra os 46 no ar; sobreposicao parcial nos outros 4 restantes aguarda decisao do Rafael" },
-    { "id": "fim_tratamento_kids",      "kind": "short", "video_id": "v5GcZG8Yr48", "at": "2026-08-16", "dur_s": 31.6, "lote": 3 }
+    { "id": "fim_tratamento_kids",      "kind": "short", "video_id": "v5GcZG8Yr48", "at": "2026-08-16", "dur_s": 31.6, "lote": 3 },
+
+    { "id": "deformidade_angular",         "kind": "short", "video_id": "n5IK-liCAKs", "at": "2026-08-16", "dur_s": 37, "lote": 4, "nota": "sobreposicao parcial (score 2) aprovada pelo Rafael; sem pronto-socorro, e tema de indicacao" },
+    { "id": "deformidade_angular_kids",    "kind": "short", "video_id": "fOSg4EQIf9A", "at": "2026-08-16", "dur_s": 38, "lote": 4 },
+    { "id": "quanto_alongar",              "kind": "short", "video_id": "ON5EolsZ9wQ", "at": "2026-08-16", "dur_s": 37, "lote": 4, "nota": "sobreposicao parcial (score 2) aprovada pelo Rafael; sem pronto-socorro, e tema de indicacao" },
+    { "id": "quanto_alongar_kids",         "kind": "short", "video_id": "eMlU_2RLnUo", "at": "2026-08-16", "dur_s": 35, "lote": 4 },
+    { "id": "trabalho_escola",             "kind": "short", "video_id": "i64HgwG7MoQ", "at": "2026-08-16", "dur_s": 38, "lote": 4, "nota": "sobreposicao parcial (score 3) aprovada pelo Rafael; tratamento ATIVO, mantem pronto-socorro" },
+    { "id": "trabalho_escola_kids",        "kind": "short", "video_id": "i-MAHH4OK_I", "at": "2026-08-16", "dur_s": 36, "lote": 4 },
+    { "id": "vida_cotidiana_fixador",      "kind": "short", "video_id": "gTmSRIVl4Bs", "at": "2026-08-16", "dur_s": 41, "lote": 4, "nota": "sobreposicao parcial (score 4) aprovada pelo Rafael; tratamento ATIVO, mantem pronto-socorro" },
+    { "id": "vida_cotidiana_fixador_kids", "kind": "short", "video_id": "fTFpNsdMi20", "at": "2026-08-16", "dur_s": 41, "lote": 4 }
   ],
 
   "fora_da_serie": [
