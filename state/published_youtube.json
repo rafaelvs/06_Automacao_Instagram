@@ -70,7 +70,10 @@
     { "id": "sequela_fratura",          "kind": "short", "video_id": "bsaxraSUEDU", "at": "2026-08-01", "dur_s": 40.1, "lote": 2, "aval_clinico": "Rafael aprovou em 01/08/2026 — inclui o convite a segunda opiniao ('se foi informado que nao havia mais o que fazer')" },
     { "id": "sequela_fratura_kids",     "kind": "short", "video_id": "HbYSFy3nBS4", "at": "2026-08-01", "dur_s": 41.2, "lote": 2 },
     { "id": "primeira_consulta",        "kind": "short", "video_id": "U9etOfT6aVM", "at": "2026-08-01", "dur_s": 34.3, "lote": 2, "nota": "episodio de conversao — ataca os 703 views com 0 inscritos" },
-    { "id": "primeira_consulta_kids",   "kind": "short", "video_id": "btS8GJEa8qw", "at": "2026-08-01", "dur_s": 32.4, "lote": 2, "nota": "o mais curto da serie" }
+    { "id": "primeira_consulta_kids",   "kind": "short", "video_id": "btS8GJEa8qw", "at": "2026-08-01", "dur_s": 32.4, "lote": 2, "nota": "o mais curto da serie" },
+
+    { "id": "fim_tratamento",           "kind": "short", "video_id": "OW37LJ4WEZU", "at": "2026-08-16", "dur_s": 35.7, "lote": 3, "nota": "unico tema com score 0 contra os 46 no ar; sobreposicao parcial nos outros 4 restantes aguarda decisao do Rafael" },
+    { "id": "fim_tratamento_kids",      "kind": "short", "video_id": "v5GcZG8Yr48", "at": "2026-08-16", "dur_s": 31.6, "lote": 3 }
   ],
 
   "fora_da_serie": [
