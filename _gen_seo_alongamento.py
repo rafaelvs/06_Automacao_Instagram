@@ -170,6 +170,34 @@ SEO.update({
     "levar filho ao ortopedista", "criança mancando consulta"]},
 })
 
+
+# ─────────────────── LOTE 3 (16/08/2026) ───────────────────
+SEO.update({
+ "fim_tratamento": {
+  "title": "Tirou o fixador? O tratamento não acaba aí #Shorts",
+  "description": desc(
+    "O fixador saiu, o raio-X está bom — mas o tratamento não termina nesse dia.",
+    ["O osso novo ainda está mais frágil que o osso maduro por meses após a retirada.",
+     "Carga e atividade voltam aos poucos, no ritmo que a equipe orienta.",
+     "Dor nova ou insegurança para apoiar o peso: volte para reavaliação antes de forçar."],
+    REF_AD, "#Shorts #alongamentoosseo #fixadorexterno #reconstrucaoossea #drrafaelvargas"),
+  "tags": BASE + ["depois de tirar o fixador externo", "pos retirada fixador",
+    "reabilitacao pos alongamento osseo", "quando volto a andar normal",
+    "osso fragil apos fixador", "retirada do fixador externo cuidados", "alta do tratamento ortopedico"]},
+
+ "fim_tratamento_kids": {
+  "title": "Tiraram o fixador do seu filho? Cuidado continua #Shorts",
+  "description": desc(
+    "O fixador do seu filho saiu — mas o cuidado com aquele osso continua.",
+    ["O osso novo segue ganhando resistência por meses; quedas merecem mais atenção.",
+     "Esporte e educação física voltam aos poucos, no ritmo que a equipe orientar.",
+     "Dor nova ou ele evitando apoiar o membro depois da retirada: leve para reavaliação."],
+    REF_KIDS, "#Shorts #ortopediapediatrica #fixadorexterno #crianca #drrafaelvargas"),
+  "tags": BASE + ["ortopedia pediátrica", "ortopedia infantil", "pais",
+    "retirada fixador externo crianca", "crianca depois do fixador", "volta ao esporte crianca fixador",
+    "cuidados pos fixador infantil", "osso fragil crianca"]},
+})
+
 if __name__ == "__main__":
     p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "seo_alongamento.json")
     json.dump(SEO, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=2)

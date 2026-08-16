@@ -288,4 +288,52 @@ ALONGAMENTO = [
     "vo":"Criança acompanhada de perto tem mais opções. Se inscreve."},
   ],
   "caption":"Vai levar seu filho na primeira consulta de ortopedia? Leve os exames anteriores e, se tiver, vídeo de como ele anda. Pergunte o que dá para observar e o que precisa tratar agora, de quanto em quanto tempo voltar, e como fica escola, educação física e esporte.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
+
+ # ═══════════════════════ LOTE 3 (16/08/2026) ═══════════════════════
+ # Unico tema com score 0 contra os 46 episodios no ar (34 Recuperacao + 12 Alongamento):
+ # o que muda quando o tratamento termina. Os outros 4 candidatos restantes (11, 3, 10, 9)
+ # tinham sobreposicao parcial e ficaram para decisao do Rafael antes do lote 4.
+ # Sem urgencia de pronto-socorro: tema de transicao de cuidado.
+
+ {"id":"fim_tratamento","ep":213,"temporada":"alongamento","serie":"Alongamento Ósseo",
+  "motif_family":"bone","palette":"verde_clinico","layout":"auto",
+  "scenes":[
+   {"k":"TIROU O FIXADOR?","sc":["O tratamento não","termina nesse dia."],"e":None,
+    "sub":"O que muda quando o alongamento ósseo termina.",
+    "vo":"O fixador saiu, o raio-X está bom — mas o tratamento não termina nesse dia."},
+   {"k":"O osso ainda é novo","sc":["Mais frágil que","o osso maduro."],"e":"frágil",
+    "sub":"Continua ganhando resistência por meses depois da retirada.",
+    "vo":"O osso que formou durante o alongamento ainda está mais frágil que o osso maduro. Ele continua ganhando resistência por meses depois da retirada."},
+   {"k":"A volta é gradual","sc":["No ritmo que","a equipe orienta."],"e":None,
+    "sub":"Não no ritmo que você sente que aguenta.",
+    "vo":"Carga e atividade voltam aos poucos, seguindo o que a equipe orienta — não no ritmo que você sente que aguenta."},
+   {"k":"Quando voltar","sc":["Dor nova?","Insegurança ao apoiar?"],"e":None,
+    "sub":"Volte para reavaliação antes de forçar.",
+    "vo":"Dor nova depois da retirada, ou insegurança para apoiar o peso: volte para reavaliação antes de forçar."},
+   {"k":"O acompanhamento continua","sc":["Mesmo depois","do fixador sair."],"e":None,
+    "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
+    "vo":"O acompanhamento continua depois do fixador sair. Se inscreve."},
+  ],
+  "caption":"O fixador saiu, o raio-X está bom — mas o tratamento não termina nesse dia. O osso novo ainda está mais frágil que o osso maduro e segue ganhando resistência por meses. Carga e atividade voltam aos poucos, no ritmo que a equipe orienta. Dor nova ou insegurança ao apoiar: volte para reavaliação.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
+
+ {"id":"fim_tratamento_kids","ep":214,"temporada":"alongamento","serie":"Alongamento Ósseo",
+  "motif_family":"bone","palette":"verde_clinico","layout":"auto",
+  "scenes":[
+   {"k":"TIRARAM O FIXADOR DELE?","sc":["O cuidado com","aquele osso continua."],"e":None,
+    "sub":"Guia para os pais: o que muda quando o tratamento termina.",
+    "vo":"O fixador do seu filho saiu — mas o cuidado com aquele osso continua."},
+   {"k":"Osso ainda formando","sc":["Mais atenção","a quedas."],"e":"quedas",
+    "sub":"O osso novo segue ganhando resistência por meses.",
+    "vo":"O osso novo segue ganhando resistência por meses. Nessa fase, quedas e pancadas merecem mais atenção do que o normal."},
+   {"k":"Volta gradual à atividade","sc":["No ritmo que","a equipe orientar."],"e":None,
+    "sub":"Esporte e educação física voltam aos poucos.",
+    "vo":"Esporte e educação física voltam aos poucos, no ritmo que a equipe orientar."},
+   {"k":"Quando levar","sc":["Dor nova?","Evitando apoiar?"],"e":None,
+    "sub":"Leve para reavaliação.",
+    "vo":"Dor nova no local, ou ele evitando apoiar o membro depois da retirada: leve para reavaliação."},
+   {"k":"Não acaba aqui","sc":["O acompanhamento","continua."],"e":None,
+    "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
+    "vo":"O acompanhamento não acaba quando o fixador sai. Se inscreve."},
+  ],
+  "caption":"O fixador do seu filho saiu — mas o cuidado com aquele osso continua. O osso novo segue ganhando resistência por meses; nessa fase, quedas merecem mais atenção. Esporte e educação física voltam aos poucos, no ritmo que a equipe orientar. Dor nova ou ele evitando apoiar: leve para reavaliação.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 ]
