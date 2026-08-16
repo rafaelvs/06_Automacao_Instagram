@@ -198,6 +198,106 @@ SEO.update({
     "cuidados pos fixador infantil", "osso fragil crianca"]},
 })
 
+
+# ─────────────── LOTE 4 (16/08/2026) ───────────────
+SEO.update({
+ "deformidade_angular": {
+  "title": "Perna torta ou perna curta? Não é o mesmo #Shorts",
+  "description": desc(
+    "Perna torta e perna curta são problemas diferentes — e o tratamento também.",
+    ["Na deformidade angular, o eixo do osso está desviado.",
+     "No encurtamento, o osso é mais curto, sem desvio de eixo. Muitas vezes vêm juntos.",
+     "Perna que muda de forma, ou desconforto ao apoiar que não melhora: procure avaliação."],
+    REF_AD, "#Shorts #deformidadeangular #alongamentoosseo #ortopedia #drrafaelvargas"),
+  "tags": BASE + ["deformidade angular perna", "perna torta tratamento", "genu varo genu valgo",
+    "correção de eixo do osso", "encurtamento x deformidade", "osteotomia corretiva",
+    "perna arqueada adulto"]},
+
+ "deformidade_angular_kids": {
+  "title": "Perna torta ou curta na criança? São diferentes #Shorts",
+  "description": desc(
+    "No seu filho, perna torta e perna curta são coisas diferentes — cada uma tem seu tratamento.",
+    ["A deformidade angular costuma chamar atenção pela forma do joelho ou tornozelo.",
+     "Na criança, alguns desvios pequenos melhoram sozinhos com o crescimento.",
+     "Perna que mudou de forma, ou ele começou a mancar: leve para avaliação."],
+    REF_KIDS, "#Shorts #ortopediapediatrica #deformidadeangular #criança #drrafaelvargas"),
+  "tags": BASE + ["ortopedia pediátrica", "ortopedia infantil", "pais",
+    "perna torta criança", "genu valgo infantil", "joelho torto criança",
+    "perna arqueada bebê tratamento", "deformidade angular infantil"]},
+
+ "quanto_alongar": {
+  "title": "Quanto dá para alongar o osso? O que decide #Shorts",
+  "description": desc(
+    "Quantos centímetros dá para alongar? Não existe um número fixo — depende do seu caso.",
+    ["Pele, nervo e vaso esticam junto com o osso e ditam o limite seguro por etapa.",
+     "Passar do limite de uma vez aumenta o risco de lesão — por isso casos maiores são feitos em fases.",
+     "Leve essa pergunta para o planejamento com seu cirurgião."],
+    REF_AD, "#Shorts #alongamentoosseo #ilizarov #distracaoossea #drrafaelvargas"),
+  "tags": BASE + ["quanto dá para alongar a perna", "limite alongamento ósseo",
+    "quantos centímetros alongamento", "alongamento em etapas", "distração osteogênica limite",
+    "risco alongamento ósseo nervo"]},
+
+ "quanto_alongar_kids": {
+  "title": "Quanto dá para alongar na criança? O que pesa #Shorts",
+  "description": desc(
+    "Quanto dá para alongar na perna do seu filho? Não é um número fixo — depende do caso dele.",
+    ["Pele, nervo e vaso ditam o limite seguro em cada etapa, junto com o osso.",
+     "Na criança, o plano também considera quanto ainda falta crescer.",
+     "Leve essa pergunta ao planejamento com o cirurgião."],
+    REF_KIDS, "#Shorts #ortopediapediatrica #alongamentoosseo #criança #drrafaelvargas"),
+  "tags": BASE + ["ortopedia pediátrica", "ortopedia infantil", "pais",
+    "quanto alongar perna criança", "alongamento ósseo infantil limite",
+    "crescimento e alongamento ósseo", "planejamento cirúrgico infantil"]},
+
+ "trabalho_escola": {
+  "title": "Fixador externo: quando volto ao trabalho? #Shorts",
+  "description": desc(
+    "Voltar ao trabalho com fixador depende mais da função do cargo do que de uma data no calendário.",
+    ["Trabalho sentado costuma liberar mais cedo; esforço físico intenso demora mais.",
+     "Organize o deslocamento e reserve um momento para cuidar dos pinos.",
+     "Dor que piora no fim do dia ou sinais de infecção nos pinos: avise a equipe."],
+    REF_AD, "#Shorts #fixadorexterno #voltaraotrabalho #alongamentoosseo #drrafaelvargas"),
+  "tags": BASE + ["voltar ao trabalho com fixador externo", "afastamento fixador externo",
+    "trabalhar com fixador externo", "rotina fixador externo trabalho",
+    "quando volto a trabalhar cirurgia perna"]},
+
+ "trabalho_escola_kids": {
+  "title": "Fixador externo: quando volta à escola? #Shorts",
+  "description": desc(
+    "Seu filho pode voltar à escola bem antes do que os pais costumam imaginar.",
+    ["A sala de aula costuma ser liberada logo; recreio livre e educação física esperam.",
+     "Converse com os professores sobre o fixador antes da volta.",
+     "Dor após o dia de aula, ou sinais de infecção nos pinos: avise a equipe."],
+    REF_KIDS, "#Shorts #ortopediapediatrica #fixadorexterno #criança #drrafaelvargas"),
+  "tags": BASE + ["ortopedia pediátrica", "ortopedia infantil", "pais",
+    "volta à escola com fixador externo", "criança fixador externo escola",
+    "educação física com fixador", "rotina escolar cirurgia ortopédica"]},
+
+ "vida_cotidiana_fixador": {
+  "title": "Banho, roupa e sono com fixador externo #Shorts",
+  "description": desc(
+    "Banho, roupa e sono com fixador têm truques simples que facilitam o dia a dia.",
+    ["O banho normal costuma ser liberado — aproveite para lavar os pinos com sabonete neutro.",
+     "Roupas largas com zíper lateral ajudam a vestir; um travesseiro de apoio protege ao dormir.",
+     "Secreção com mau cheiro, vermelhidão que avança ou febre: pronto-socorro."],
+    REF_AD, "#Shorts #fixadorexterno #rotina #alongamentoosseo #drrafaelvargas"),
+  "tags": BASE + ["como tomar banho com fixador externo", "como dormir com fixador externo",
+    "roupa para fixador externo", "cuidados diários fixador externo",
+    "rotina com fixador externo", "higiene dos pinos fixador"]},
+
+ "vida_cotidiana_fixador_kids": {
+  "title": "Banho, roupa e sono do seu filho com fixador #Shorts",
+  "description": desc(
+    "Banho, roupa e sono do seu filho com o fixador ficam mais fáceis com alguns ajustes.",
+    ["O banho normal costuma ser liberado — supervisione sempre e lave os pinos.",
+     "Roupas largas facilitam vestir; um travesseiro de apoio protege ao dormir.",
+     "Secreção, vermelhidão que avança ao redor dos pinos, ou febre: pronto-socorro."],
+    REF_KIDS, "#Shorts #ortopediapediatrica #fixadorexterno #criança #drrafaelvargas"),
+  "tags": BASE + ["ortopedia pediátrica", "ortopedia infantil", "pais",
+    "banho criança com fixador externo", "dormir com fixador externo criança",
+    "cuidados fixador externo infantil", "rotina criança fixador"]},
+})
+
 if __name__ == "__main__":
     p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "seo_alongamento.json")
     json.dump(SEO, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
