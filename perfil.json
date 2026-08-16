@@ -27,9 +27,11 @@
     "nota": "O unico link clicavel aponta para o WhatsApp, nao para o site. Por isso `website_clicks` do Instagram e um PISO: conversa iniciada por DM ou WhatsApp nao aparece em metrica nenhuma. UTM nao funciona em wa.me — o que funciona e um parametro no TEXTO pre-preenchido da mensagem."
   },
   "categoria": {
-    "valor": null,
-    "origem": "pendente_rafael",
-    "por_que": "`category` nao existe no no IG User da API com Instagram Login; e campo do no Page, so alcancavel por Facebook Login. Estruturalmente inalcancavel por este caminho."
+    "valor": "Orthopaedist",
+    "origem": "recomendado_nao_confirmado",
+    "por_que": "`category` nao existe no no IG User da API com Instagram Login; e campo do no Page, so alcancavel por Facebook Login. NAO da para ler o valor atual por este caminho — o que esta aqui e RECOMENDACAO, nao leitura.",
+    "pesquisa": "Taxonomia oficial de categorias de negocio do Instagram/Meta (levantada 15/08/2026): nao existe combinacao 'ortopedista pediatrico'; a subespecialidade pediatrica vive so na bio. 'Orthopaedist' e a categoria mais especifica disponivel para a pratica dele — mais precisa que as genericas 'Doctor', 'Surgeon' ou 'Medical centre', que tambem existem na lista.",
+    "confirmar": "Settings > Edit profile > Category no app. Se ja estiver assim, so trocar origem para 'confirmado_pelo_rafael'."
   },
   "numeros": {
     "followers_count": 1308,
@@ -43,48 +45,56 @@
       "id": "dest01",
       "arquivo_capa": "images/dest01.jpg",
       "publicado_em": "2026-06-04",
-      "titulo_no_app": null,
-      "origem_titulo": "pendente_rafael"
+      "titulo_no_app": "SOBRE",
+      "origem_titulo": "inferido_da_arte",
+      "confianca": "alta — kicker da propria arte, cabe no limite de 15 caracteres do Instagram"
     },
     {
       "id": "dest02",
       "arquivo_capa": "images/dest02.jpg",
       "publicado_em": "2026-06-04",
-      "titulo_no_app": null,
-      "origem_titulo": "pendente_rafael"
+      "titulo_no_app": "TRATAMENTOS",
+      "origem_titulo": "inferido_da_arte",
+      "confianca": "alta — kicker da propria arte, cabe no limite de 15 caracteres do Instagram"
     },
     {
       "id": "dest03",
       "arquivo_capa": "images/dest03.jpg",
       "publicado_em": "2026-06-04",
       "titulo_no_app": null,
-      "origem_titulo": "pendente_rafael"
+      "origem_titulo": "pendente_rafael",
+      "confianca": null,
+      "kicker_da_arte": "ORTOPEDIA PEDIÁTRICA",
+      "achado": "o kicker da arte tem 20 caracteres — EXCEDE o limite de 15 do Instagram para titulo de destaque, entao nao pode ter sido digitado assim no app. Provavel abreviacao (ex.: 'PEDIATRIA'); nao adivinhei para nao inventar."
     },
     {
       "id": "dest04",
       "arquivo_capa": "images/dest04.jpg",
       "publicado_em": "2026-06-04",
-      "titulo_no_app": null,
-      "origem_titulo": "pendente_rafael"
+      "titulo_no_app": "CASOS COMPLEXOS",
+      "origem_titulo": "inferido_da_arte",
+      "confianca": "alta — kicker da propria arte, cabe no limite de 15 caracteres do Instagram"
     },
     {
       "id": "dest05",
       "arquivo_capa": "images/dest05.jpg",
       "publicado_em": "2026-06-04",
-      "titulo_no_app": null,
-      "origem_titulo": "pendente_rafael"
+      "titulo_no_app": "DÚVIDAS",
+      "origem_titulo": "inferido_da_arte",
+      "confianca": "alta — kicker da propria arte, cabe no limite de 15 caracteres do Instagram"
     },
     {
       "id": "dest06",
       "arquivo_capa": "images/dest06.jpg",
       "publicado_em": "2026-06-04",
-      "titulo_no_app": null,
-      "origem_titulo": "pendente_rafael"
+      "titulo_no_app": "CONSULTÓRIO",
+      "origem_titulo": "inferido_da_arte",
+      "confianca": "alta — kicker da propria arte, cabe no limite de 15 caracteres do Instagram"
     }
   ],
   "_pendente_do_rafael": [
-    "categoria do perfil (1 string)",
-    "titulo exato digitado no app para cada um dos 6 destaques (6 strings)"
+    "categoria do perfil: confirmar 'Orthopaedist' (recomendado) ou informar a atual",
+    "titulo exato do Destaque 3 (kicker 'ORTOPEDIA PEDIÁTRICA' nao cabe no limite de 15 chars — 1 string)"
   ],
-  "_nota_destaques": "A Graph API NAO tem edge de story highlights — verificado na lista completa de edges do no IG User. A edge `/stories` devolve so stories ativos das ultimas 24 h, nao Destaques. As datas de publicacao vieram de state/published.json, sem digitacao."
+  "_nota_destaques": "A Graph API NAO tem edge de story highlights — verificado na lista completa de edges do no IG User. A edge `/stories` devolve so stories ativos das ultimas 24 h, nao Destaques. As datas de publicacao vieram de state/published.json, sem digitacao. Em 15/08/2026, os 6 kickers foram lidos das proprias artes (images/dest01..06.jpg) e testados contra o limite de 15 caracteres do Instagram para titulo de destaque: 5 cabem e foram usados como inferencia de alta confianca (origem_titulo='inferido_da_arte'); dest03 ('ORTOPEDIA PEDIÁTRICA', 20 chars) excede o limite e NAO pode ser o texto literal — fica pendente do Rafael, com o achado registrado em vez de uma abreviacao inventada."
 }
