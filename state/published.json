@@ -979,10 +979,17 @@
       "kind": "seq",
       "media_id": "18101577857589495",
       "at": "2026-08-17T16:13:15.257057+00:00"
+    },
+    {
+      "id": "pnc_mancar_febre",
+      "kind": "reel",
+      "media_id": "17953041615214080",
+      "at": "2026-08-17T18:18:48.246455+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-08-16",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-08-16",
+  "last_reel_date": "2026-08-17",
   "last_seq_date": "2026-08-17"
 }
