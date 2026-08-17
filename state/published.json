@@ -973,10 +973,16 @@
       "media_id": "18121659233510027",
       "at": "2026-08-16T18:09:39.495909+00:00",
       "modo_reel": "normal"
+    },
+    {
+      "id": "cotovelo-seg",
+      "kind": "seq",
+      "media_id": "18101577857589495",
+      "at": "2026-08-17T16:13:15.257057+00:00"
     }
   ],
   "last_post_date": "2026-08-16",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-08-16",
-  "last_seq_date": "2026-08-16"
+  "last_seq_date": "2026-08-17"
 }
