@@ -38,8 +38,13 @@ qualquer passo.
 3. No painel do app, adicione/abra o produto **Instagram → Configuração da API com
    login do Instagram** ("Instagram API setup with Instagram login").
 4. Clique em **Gerar token de acesso** e conecte a conta **@rafaelvargasmd**
-   (conta profissional). Autorize as permissões pedidas
-   (`instagram_business_basic` e `instagram_business_content_publish`).
+   (conta profissional). Autorize as permissões pedidas — confira que a lista
+   inclui as **três**:
+   - `instagram_business_basic`
+   - `instagram_business_content_publish`
+   - `instagram_business_manage_insights` ← necessária para o robô **medir**
+     alcance/engajamento (sem ela, só publica às cegas). Se ela não aparecer na
+     tela de autorização, adicione-a antes na configuração de permissões do app.
 5. **Copie o token** que aparece. Esse é o seu `IG_ACCESS_TOKEN`.
 6. Ainda nessa tela costuma aparecer o **ID da conta do Instagram**
    (`Instagram user ID`). Copie — é o seu `IG_USER_ID`.
@@ -103,9 +108,9 @@ Posts que **já foram publicados** não se repetem (controle em `state/published
 
 ## Manutenção
 
-- **Token expira em ~60 dias.** Como esta campanha dura ~4 semanas, um token de
-  longa duração cobre tudo. Para continuar publicando depois, gere um token novo
-  (Parte A) e atualize o secret `IG_ACCESS_TOKEN`.
+- **Token expira em ~60 dias.** A renovação é automática (`refresh-token.yml`,
+  toda segunda) e **mantém os escopos** do token vigente — escopo novo (ex.:
+  insights) só entra refazendo a Parte A uma vez. Emergência: `docs/02_RUNBOOK.md §5`.
 - **Se uma publicação falhar:** quase sempre é (a) token vencido, (b) repositório
   não-público, ou (c) a conta precisa estar ligada a uma Página do Facebook.
   Nesse último caso, conecte @rafaelvargasmd a uma Página (Configurações do
