@@ -1029,10 +1029,17 @@
       "kind": "seq",
       "media_id": "18332796850272225",
       "at": "2026-08-21T15:30:50.460400+00:00"
+    },
+    {
+      "id": "pnc_escoliose",
+      "kind": "reel",
+      "media_id": "18107816408139541",
+      "at": "2026-08-21T18:18:15.930435+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-08-20",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-08-19",
+  "last_reel_date": "2026-08-21",
   "last_seq_date": "2026-08-21"
 }
