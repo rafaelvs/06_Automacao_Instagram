@@ -1098,10 +1098,17 @@
       "kind": "seq",
       "media_id": "17961438138190982",
       "at": "2026-08-26T15:32:58.027051+00:00"
+    },
+    {
+      "id": "qa_pe_chato_palmilha",
+      "kind": "reel",
+      "media_id": "17871546579582752",
+      "at": "2026-08-26T18:10:30.315018+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-08-25",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-08-24",
+  "last_reel_date": "2026-08-26",
   "last_seq_date": "2026-08-26"
 }
