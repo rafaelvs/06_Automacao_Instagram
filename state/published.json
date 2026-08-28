@@ -1123,10 +1123,17 @@
       "kind": "seq",
       "media_id": "18437218978133522",
       "at": "2026-08-28T15:30:42.128919+00:00"
+    },
+    {
+      "id": "pnc_sentar_w",
+      "kind": "reel",
+      "media_id": "18325142662263938",
+      "at": "2026-08-28T22:00:45.508981+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-08-27",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-08-26",
+  "last_reel_date": "2026-08-28",
   "last_seq_date": "2026-08-28"
 }
