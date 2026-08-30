@@ -12,3 +12,5 @@ Curva de notas por rodada. Cada rodada fica arquivada em `rodadas/` e **nunca é
 - Distinga sempre **mudança real** de **correção de medição** (regra da casa).
 
 **Diagnóstico central da v1:** O problema deste perfil nao e conteudo nem disciplina — e um circuito aberto nas duas pontas: metade das pecas (os 18 Reels) e publicada em modo de teste, fora do grid e longe dos seguidores, por um default de workflow que a propria casa ja mediu como morto e corrigiu numa branch que nunca foi integrada; e a outra metade, que chega aos 91,5% de audiencia ja seguidora, nao oferece uma unica coisa que se guarde, se responda ou se clique — dai 0 saves, 0 comentarios, 8,5% de descoberta e 2 cliques em 30 dias.
+
+| v1.5 (máquina) | 2026-08-30 | 69,0 | Processo 34,5/54 · Resultado 34,5/46 — rodada da MÁQUINA (não compara com as rodadas de perfil); M1-M5 implementadas em `32fd4d9` antes do número; rodadas/maquina_v1.5_2026-08-30.md |
