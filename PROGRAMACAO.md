@@ -5,7 +5,10 @@ Regenerado em 30/08/2026 (estreia do reel-caso agendada). **Datas são projeçã
 **Como revisar/suspender:** os itens ficam dias na fila antes de publicar — confira por aqui; para suspender ou editar, avise o chat da auditoria (ou remova a entrada do JSON, com lock `motor-instagram`). Piloto ativo só para formato/estratégia NOVA ou mudança de voz.
 
 
-## Reels (seg · qua · sex · dom, ~18h)
+## Reels (seg · qua · sex · dom, ~15h BRT)
+
+<!-- ~15h (BRT) MEDIDO no state/published.json (auditoria v1.5/A3): o cron publica os reels
+     ~18h UTC = ~15h BRT. O "~18h" anterior encolhia em 3h a janela de revisão passiva. -->
 
 | Data | Peça | Série | Vídeo |
 |---|---|---|---|

@@ -6,13 +6,14 @@
 
 **30/08/2026 — piloto de voz do lote 2 APROVADO:** `_preview_qa_gesso_molhar.mp4` enviado ao Rafael antes da intercalação; resposta dele no chat: "está ótimo esse áudio". Motor de voz INALTERADO (edge-tts Antonio, fingerprint 6488eb26…); o piloto valida o formato do lote, conforme a regra de piloto instituída por ele em 30/08.
 
-# MINUTA — APROVACOES.md · Registro de aprovação clínica dos reels narrados
+# ANEXO HISTÓRICO — minuta de 30/08 (SUPERADA)
 
-> **STATUS: RASCUNHO LOCAL · AGUARDA AVAL DO RAFAEL.**
-> Nada neste arquivo vale como aprovação. Nenhuma linha daqui autoriza enfileiramento.
-> Destino proposto após o aval: raiz do repo de produção do motor Instagram, ao lado de
-> `reels.json`, com o irmão máquina-legível `aprovacoes.json` (ver `minuta_aprovacoes.json`).
-> Redigido em 30/08/2026 na execução S1 preparatória (Aposta 3 do plano de 29/08).
+> **STATUS: ANEXO HISTÓRICO (rebaixado em 30/08/2026, auditoria v1.5/A3).** As seções 1–6
+> abaixo são o corpo da minuta original de 30/08, preservado como contexto — os avisos
+> "AGUARDA AVAL" nelas estão VENCIDOS. **A fonte de verdade das aprovações é
+> `aprovacoes.json`** (5 lotes registrados; enforcement: `checar_aprovacoes.py` +
+> workflow `gate-aprovacoes.yml`); o registro vivo humano-legível é o topo deste arquivo.
+> A seção 5.1 abaixo foi reescrita para apontar para os lotes reais.
 
 ---
 
@@ -125,10 +126,19 @@ de snapshot velho (lição: *inventário afirmado nasce vencido*).
 
 ## 5.1 Entradas registradas
 
-**NENHUMA.** Esta minuta não cria aprovação; cria o lugar onde ela passa a morar. As oito
-entradas candidatas (com hashes do snapshot de 29–30/08 e status `pendente_ratificacao`)
-estão pré-preenchidas em `minuta_aprovacoes.json` para o Rafael converter em `aprovado`
-lote a lote, nas sessões do pacote de revisão.
+[Reescrito em 30/08/2026, v1.5/A3 — o "NENHUMA" da minuta original ficou falso no mesmo
+dia.] As entradas reais vivem em **`aprovacoes.json`** — 5 lotes registrados em 30/08/2026:
+
+| Lote | Eps | Status | Evidência |
+|---|---|---|---|
+| `ALONGAMENTO-ADULTO-2026-08-30` | 11 | **aprovado** | Decisão D2 do Rafael, chat de 30/08 |
+| `QA-LOTE2-2026-08-30` | 12 | **aprovado** | Decisão D3 do Rafael, chat de 30/08 |
+| `REEL-CASO-PILOTOS-2026-08-30` | 3 | **aprovado** | "pode seguir" + render do piloto 1 aprovado, chat de 30/08 |
+| `ALONGAMENTO-KIDS` | 11 | pendente | pergunta aberta ao Rafael (seção 4, item 1) |
+| `LEGADO-PRE-GATE` | 45 | pendente_ratificacao | fila pré-gate; isento no CI via `--isentar-lote` até ratificação |
+
+Conferência: `python checar_aprovacoes.py --hash <id> --fontes .` e o workflow
+`gate-aprovacoes.yml` (escopo id-novo; legado isento DECLARADO até o Rafael ratificar).
 
 ---
 
@@ -156,8 +166,7 @@ este snapshot serve à revisão, não ao registro final.
 
 ---
 
-*Minuta preparada em 30/08/2026 · Aposta 3 (gate de aprovação clínica com enforcement) ·*
-*AGUARDA AVAL — nada foi gravado no repo, na fila ou no perfil.*
+*[fim do ANEXO HISTÓRICO — minuta de 30/08, superada; o rodapé "AGUARDA AVAL" original foi removido por vencido (v1.5/A3). Daqui para baixo, registro VIVO.]*
 
 **30/08/2026 — PROCESSO (regra do Rafael):** por padrão, episódio de formato ESTABELECIDO não passa por aval ativo peça a peça — entra na fila com data futura e o Rafael revisa/edita/suspende antes da publicação (janela de revisão passiva; ver PROGRAMACAO.md). Aval ativo/piloto fica reservado a: (a) estreia de formato ou estratégia NOVA (ex.: reel-caso), (b) qualquer mudança no motor de voz (guarda-freio checar_voz.py). O registro em aprovacoes.json continua obrigatório para todo lote novo — muda a FONTE da evidência, não a exigência do registro.
 
