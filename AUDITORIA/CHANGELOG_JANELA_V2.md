@@ -67,6 +67,13 @@
 - **O que contamina:** a janela, nada (nenhuma peça ao ar, nenhum item de fila). Repo ganhou ~20 renders novos (tamanho/histórico).
 - **Como a v2 deve ler:** verbetes não existem para a medição da janela; a v2.1 lê o pacote do D-day. (Entrada adicionada em 30/08 pela rodada v1.5 — os commits tinham ficado FORA do changelog; achado A3.)
 
+### 30/08/2026 — Rodada v1.5 da máquina: M1–M5 implementadas na branch `auditoria/v15-provas` (aguarda merge do dono)
+
+- **O que muda (só código/CI/registro — nenhuma peça, fila publicável ou perfil):** M1 freio de voz + fail-loud nos 3 lotes de render e nos pushes de render-reel-voz/stories, ramo Piper morto removido, fingerprint re-registrado (`bed45a4c…`, citando o piloto de 30/08, sem mudança sonora); M2 `gate-aprovacoes.yml` em CI (escopo id-novo, `--isentar-lote LEGADO-PRE-GATE` declarado) + `checar_aprovacoes.py` exigindo `aprovado_por`+`evidencia` e hash de prova com EOL normalizado; M3 este registro corrigido; M4 ferramenta de telemetria copiada p/ pasta durável da oficina; M5 `timeout-minutes: 15` + `checar_cfm.py` advisory no publish.yml + `ci-testes.yml`.
+- **Provas (checks novos vistos FALHAR uma vez, protocolo da casa):** gate-aprovacoes VERMELHO run `33336839874` (id semeado `prova_v15_semeado_sem_aval`) → VERDE runs `33336913006`/`33336927027`; ci-testes VERMELHO run `33336839881` (SystemExit semeado) → VERDE runs `33336913008`/`33336927006`. Sementes removidas; branch fecha byte-idêntica à main em `reels.json`/`test_publicacao.py`.
+- **O que contamina:** a janela, nada, enquanto na branch (o cron lê só a main). No MERGE, o step advisory e o timeout passam a valer no publish — mudança de CI, não de conteúdo; registrar a data do merge aqui.
+- **Como a v2 deve ler:** máquina auditada na v1.5 (baseline 69,0); a v2 (16/09) segue focada em desempenho do perfil.
+
 ### [PLANEJADO pós-15/09] Swap edge-tts → Azure Speech (pt-BR-AntonioNeural via endpoint oficial)
 
 - **O que muda:** `synth()` do motor de voz troca o endpoint não-oficial (edge-tts, 503 intermitentes) pelo Azure oficial (free tier). Mesma voz de catálogo; **equivalência sonora ASSUMIDA com base num A/B de 1 cena** — não provada em escala.
