@@ -47,7 +47,8 @@ jobs:
         # Este step da' VISIBILIDADE: antes so' stderr de job verde denunciava lint
         # reprovado — e stderr de job verde ninguem le. Promover a bloqueio e' decisao
         # explicita pos-janela (registrar no changelog quando acontecer).
-        run: python checar_cfm.py || echo "::warning::checar_cfm.py saiu com exit != 0 — ha VIOLACAO/REVISAR no acervo ou na fila; ver o log deste step (advisory: o publish continua)."
+        run: |
+          python checar_cfm.py || echo "::warning::checar_cfm.py saiu com exit != 0 — ha VIOLACAO/REVISAR no acervo ou na fila; ver o log deste step (advisory, o publish continua)."
       - name: Publicar posts pendentes
         env:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
