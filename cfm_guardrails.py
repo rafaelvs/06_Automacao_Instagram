@@ -59,10 +59,16 @@ NEG_PROMESSA = ["nao promet", "nao garant", "nao e ", "nao existe", "nada de", "
 # 3) Estética/altura no alongamento (precisa co-ocorrer alongamento + estética)
 ALONG_GATILHO = ["alongament", "alongar o osso", "osso novo", "estatura", "transporte osseo"]
 ESTETICA_TERMOS = ["estetic", "cosmetic", "ficar mais alto", "ganhar altura", "aumentar a altura",
-                   "ficar mais alta", "questao de altura", "por beleza", "embelez", "vaidade"]
+                   "ficar mais alta", "questao de altura", "por beleza", "embelez", "vaidade",
+                   # D17 (30/08/2026): o furo achado pela fábrica de verbetes — "estatura" era só
+                   # GATILHO, então "alongamento para ganhar estatura" passava sem nenhum issue.
+                   "ganhar estatura", "aumentar a estatura", "aumento de estatura",
+                   "ficar alto", "ser mais alto", "questao de estatura"]
 # negações/guardrail que tornam OK ("NÃO é sobre ficar mais alto", "nunca por estética")
 NEGACAO = ["nao e sobre", "nao e por", "nunca ", "nao e estetic", "nao e questao de altura",
-           "nada de estetic", "longe de estetic", "nao por vaidade", "nao e vaidade", "sem ser estetic"]
+           "nada de estetic", "longe de estetic", "nao por vaidade", "nao e vaidade", "sem ser estetic",
+           # D17: formas defensivas reais do acervo que a lista não conhecia (on_consolidacao_viciosa)
+           "nao e questao de", "nao embelez", "nao a aparencia", "nao e aparencia", "nao e estetica"]
 
 # 4) Exame de imagem
 EXAME_TERMOS = ["raio-x", "raio x", "raiox", "radiografia", "tomografia", "ressonancia", "exame de imagem"]
@@ -116,8 +122,12 @@ def auditar(texto, contexto="publico", exigir_assinatura_texto=True):
                 janela = n[max(0, idx - 60): idx + 40]
                 if any(neg in janela for neg in NEGACAO):
                     continue  # é o próprio guardrail afirmando o tabu — ok
-                issues.append(("REVISAR", "estetica_alongamento",
-                               f"'{est}' perto de alongamento — confirmar que NÃO é ângulo estético/altura"))
+                # D17 (30/08/2026, decisão do Rafael): promovido de REVISAR para VIOLACAO —
+                # o tabu estético/estatura é ABSOLUTO no projeto (regra transversal do
+                # CLAUDE.md), e a lista NEGACAO já protege a menção defensiva. Espelha a
+                # promoção da assinatura em 16/08: requisito objetivo não fica em advisório.
+                issues.append(("VIOLACAO", "estetica_alongamento",
+                               f"'{est}' perto de alongamento SEM negação — ângulo estético/altura é tabu absoluto"))
 
     # 4) exame de imagem sem contexto de ilustração
     for termo in EXAME_TERMOS:
@@ -144,8 +154,9 @@ if __name__ == "__main__":
     # smoke test
     casos = [
         ("Garanto a cura da sua dismetria!", "publico"),
-        ("Alongamento ósseo pra ficar mais alto", "publico"),
-        ("Alongamento NÃO é sobre ficar mais alto — é função.", "publico"),
+        ("Alongamento ósseo pra ficar mais alto", "publico"),               # D17: tem de dar VIOLACAO
+        ("Alongamento estético para ganhar estatura", "publico"),           # D17: o furo original — VIOLACAO
+        ("Alongamento NÃO é sobre ficar mais alto — é função.", "publico"),  # negação: sem issue de estética
         ("Vou pedir um raio-x", "publico"),
         ("o esquema do raio-x didático mostra...", "publico"),
         ("Discrepância de membro: medir antes. CRM-SP 226103 RQE 137901", "publico"),
