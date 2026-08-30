@@ -368,6 +368,32 @@
           "hash_roteiro": null
         }
       ]
+    },
+    {
+      "lote": "REEL-CASO-PILOTOS-2026-08-30",
+      "nome": "Anatomia de um Caso — 3 pilotos (casos da literatura; ep 303 reservado)",
+      "escopo": [
+        "instagram"
+      ],
+      "status": "aprovado",
+      "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
+      "data": "2026-08-30",
+      "evidencia": "Decisão 'pode seguir' no chat auditoria-instagram-v1 (30/08), sobre o pacote com os 3 roteiros verificados contra o texto completo das fontes (PMC10226645, PMC9958936, PMC4955504) + resolução conservadora aplicada no P1 ('sem amputação' → 'a perna foi preservada').",
+      "observacoes": "ESTREIA DE FORMATO: enfileiramento condicionado ao aval do Rafael sobre o RENDER do piloto 1 (regra de revisão de 30/08 — estratégia nova passa por ele). Ilustrações esquemáticas originais; rotulagem de caso da literatura no vídeo e na caption.",
+      "episodios": [
+        {
+          "id": "caso_transporte_tibia",
+          "hash_roteiro": "sha256:6abb639f8f417342ce6865c9986baf7693d80d79c6a72e94c603a8d7ce3644d7"
+        },
+        {
+          "id": "caso_osteomielite_0cm",
+          "hash_roteiro": "sha256:fe1d9d4ed2983d9b518d2b5693bcb8becbf307d8c7ba01121984af7c55159577"
+        },
+        {
+          "id": "caso_silver_russell",
+          "hash_roteiro": "sha256:465f96046417fb99d7ce37696a9245cd3035d8dcacf802f3a18ddc6b4a4a8c8b"
+        }
+      ]
     }
   ]
 }

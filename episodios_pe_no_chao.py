@@ -215,6 +215,15 @@ try:
 except Exception as _e:
     print("AVISO: episodios_qa_lote2 não carregado:", _e)
 
+# SÉRIE "Anatomia de um Caso" (30/08/2026): 3 pilotos caso-da-literatura com ilustrações
+# esquemáticas por cena (ilustracoes_caso.py). Formato aprovado pelo Rafael 30/08 ("pode
+# seguir"); troca "sem amputação"→"a perna foi preservada" registrada no módulo. Mesmo motor.
+try:
+    from episodios_anatomia_caso import ANATOMIA_CASO
+    EPISODES = EPISODES + ANATOMIA_CASO
+except Exception as _e:
+    print("AVISO: episodios_anatomia_caso não carregado:", _e)
+
 def get(ep_id):
     for e in EPISODES:
         if e["id"]==ep_id: return e

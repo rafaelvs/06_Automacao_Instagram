@@ -9,6 +9,15 @@ barra de progresso, fundo com leve parallax.
 import os, glob, shutil, subprocess, math
 from PIL import Image, ImageDraw, ImageFont
 
+# ── SÉRIE "Anatomia de um Caso" (30/08/2026): ilustração esquemática por CENA (opt-in). ──
+# Cena com campo "ilustracao" ({"tipo": ..., params}) → ilustracoes_caso.desenhar ocupa a
+# banda média (y∈[870,1310]) e o motivo (_bone/_feet) é SUPRIMIDO naquela cena. Cena ou
+# episódio SEM o campo → caminho de código EXATAMENTE o atual (byte-idêntico).
+try:
+    import ilustracoes_caso as _ilus
+except Exception:
+    _ilus = None
+
 W, H, FPS = 1080, 1920, 30
 INK=(18,18,24); CREAM=(243,226,200); GOLD=(176,140,79); TXT_L=(206,198,184); MUT_L=(150,144,132); FAINT=(70,66,60); RED=(196,72,60)
 
@@ -324,8 +333,14 @@ def render_frames(episode, durs, frames_dir):
         # 2,3s medido no pulso v7 — o reel morria no gate de retencao antes do CTA importar.
         tlv=tl+0.72 if idx==0 else tl
         img=_bg(drift)
+        # ── ILUSTRAÇÃO DE CASO (opt-in por cena): desenha na banda média e SUPRIME o motivo ──
+        _il = s.get("ilustracao")
+        if _il is not None and _ilus is None:   # pedir ilustração sem o módulo = falhar ALTO
+            raise RuntimeError("cena pede 'ilustracao' mas ilustracoes_caso não importou")
         # ── MOTIVO: L0 = comportamento exato atual; demais layouts despacham por motif_mode ──
-        if is_L0:
+        if _il is not None:
+            _ilus.desenhar(img, _il, tlv, t1-t0)
+        elif is_L0:
             if motif_fam=="bone": _bone(img,t/total)
             else: _feet(img,t/total)
         else:
