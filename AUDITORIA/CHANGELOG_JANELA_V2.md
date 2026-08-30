@@ -79,3 +79,9 @@ Registrar em cada dump: `followers_count` (série de saldo líquido só tem 2 po
 ---
 
 *Criado em 30/08/2026 (S1 preparatória, Aposta 2e). AGUARDA AVAL — este arquivo ainda NÃO está no repo de produção; até migrar, o changelog oficial é este rascunho.*
+
+### 30/08/2026 — Estreia do formato reel-caso AGENDADA para pós-janela (não contamina a v2)
+
+- **O que muda:** 3 reels do formato novo "Anatomia de um Caso" (ilustração esquemática + caso da literatura) enfileirados para **23/09, 30/09 e 07/10** — todos APÓS o fechamento da janela (15/09). Render do motor: commit `ef150ab` (opt-in, byte-identidade provada — episódios antigos intocados). Piloto de render aprovado pelo Rafael em 30/08.
+- **O que contamina:** a janela, nada. A CAUDA sim: a partir de 23/09 o mix de reels ganha um formato novo — a v2.1 (28/10) deve ler os reel-casos em estrato próprio (formato estreia com hipótese de descoberta 10-40× do benchmark; não misturar com Q&A/narrados no watch time).
+- **Como ler:** estrato "reel-caso" na v2.1; métrica de prova da Aposta 6: ≥1 piloto ≥150 views em 14d; gate de morte barata: 3 pilotos <150 → revisar formato antes do lote 2.
