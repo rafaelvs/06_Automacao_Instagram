@@ -1,0 +1,62 @@
+name: render-verbetes
+# FÁBRICA DE VERBETES (Aposta 5): renderiza carrosséis-verbete 4:5 a partir das
+# sequências de stories (gerar_verbetes.py) e commita verbetes/ + verbetes_biblioteca.json.
+# BIBLIOTECA, não fila: NÃO toca posts.json — publicação liga só no D-day (17-18/09).
+on:
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: "ids de sequência-fonte/verbete separados por vírgula; vazio = os 20 da curadoria"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar fontes Liberation
+        run: sudo apt-get update && sudo apt-get install -y fonts-liberation
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Instalar Pillow
+        run: pip install pillow
+      - name: Renderizar verbetes
+        env:
+          IDS_CSV: ${{ github.event.inputs.ids }}
+        run: |
+          IDS=$(echo "$IDS_CSV" | tr ',' ' ')
+          # exit != 0 em qualquer guardrail reprovado (CFM, keyword, hashtags) — job VERMELHO,
+          # nada meio-commitado: o commit só roda se o render inteiro passar.
+          python gerar_verbetes.py $IDS
+          ls -la verbetes/
+      - name: Artefato (verbetes)
+        uses: actions/upload-artifact@v4
+        with:
+          name: verbetes
+          path: verbetes/
+          if-no-files-found: error
+      - name: Commit da biblioteca
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # `git add` explícito: `git diff` não vê arquivo NOVO (lição da casa)
+          git add verbetes/ verbetes_biblioteca.json
+          git diff --cached --quiet || git commit -m "Fábrica de verbetes: render da biblioteca (Aposta 5 — sem tocar posts.json)"
+          # retry com falha RUIDOSA — mesmo padrão do publish.yml (job verde ≠ trabalho salvo)
+          ok=0
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase origin main && git push; then ok=1; break; fi
+            git rebase --abort 2>/dev/null || true
+            echo "Push tentativa $attempt falhou — aguardando ${attempt}0s..."
+            sleep $((attempt * 10))
+          done
+          if [ "$ok" != "1" ]; then
+            echo "::error::Biblioteca renderizada mas NÃO commitada após 5 tentativas — render perdido."
+            exit 1
+          fi
