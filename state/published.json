@@ -1154,10 +1154,17 @@
       "kind": "seq",
       "media_id": "18593120464067470",
       "at": "2026-08-30T15:30:45.595916+00:00"
+    },
+    {
+      "id": "qa_ponta_dos_pes",
+      "kind": "reel",
+      "media_id": "18104596403166733",
+      "at": "2026-08-30T18:41:10.679229+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-08-30",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-08-28",
+  "last_reel_date": "2026-08-30",
   "last_seq_date": "2026-08-30"
 }
