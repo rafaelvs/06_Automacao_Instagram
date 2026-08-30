@@ -42,6 +42,17 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add state/stories_serie.json
           git diff --cached --quiet || git commit -m "Pulso de stories: serie do dia"
-          for i in 1 2 3; do
-            git push && break || { git pull --rebase --autostash && sleep 5; }
+          # retry com falha RUIDOSA — mesmo padrao ok-flag do render-verbetes.yml/publish.yml
+          # (auditoria v1.5 M1: o loop antigo engolia falha de push — job verde, medicao do dia
+          # PERDIDA para sempre, porque a edge /stories nao devolve ontem).
+          ok=0
+          for i in 1 2 3 4 5; do
+            if git pull --rebase --autostash origin main && git push; then ok=1; break; fi
+            git rebase --abort 2>/dev/null || true
+            echo "Push tentativa $i falhou — aguardando ${i}0s..."
+            sleep $((i * 10))
           done
+          if [ "$ok" != "1" ]; then
+            echo "::error::Serie do dia medida mas NAO commitada apos 5 tentativas — ponto perdido (a edge /stories nao devolve ontem)."
+            exit 1
+          fi

@@ -26,18 +26,34 @@ jobs:
           python-version: "3.11"
       - name: Instalar Pillow + edge-tts
         run: pip install pillow edge-tts
+      - name: Guarda-freio de voz (mudanca de voz exige piloto aprovado — regra 30/08/2026)
+        run: python checar_voz.py
       - name: Renderizar a serie inteira (voz Antonio afinada)
         env:
           VOZ_ENGINE: edge
           EDGE_VOICE: pt-BR-AntonioNeural
+          # Voz APROVADA pelo piloto de 30/08/2026 (Rafael): rate -8%, pitch -4Hz.
+          # Sem env explicito o gerar_reel_voz.py cairia em +0%/+0Hz — deriva sonora real.
           EDGE_RATE: ${{ github.event.inputs.rate || '-8%' }}
           EDGE_PITCH: ${{ github.event.inputs.pitch || '-4Hz' }}
         run: |
+          # fail-loud (auditoria v1.5 M1): retry cobre 503 intermitente do edge-tts, mas
+          # falha final e' COLETADA e derruba o job. (A versao anterior tinha "|| echo FALHOU $EP"
+          # colado no echo do endgroup na MESMA linha — o job nunca ficava vermelho.)
+          FALHAS=""
           for EP in andador pe_chato dor_crescimento displasia_quadril pernas_tortas ponta_dos_pes pe_torto quando_procurar; do
             echo "::group::render $EP"
-            python gerar_reel_voz.py $EP || python gerar_reel_voz.py $EP || python gerar_reel_voz.py $EP || python gerar_reel_voz.py $EP || echo FALHOU $EP            echo "::endgroup::"
+            if ! (python gerar_reel_voz.py "$EP" || python gerar_reel_voz.py "$EP" || python gerar_reel_voz.py "$EP" || python gerar_reel_voz.py "$EP"); then
+              echo "::error::render FALHOU apos 4 tentativas: $EP"
+              FALHAS="$FALHAS $EP"
+            fi
+            echo "::endgroup::"
           done
-          ls -la reels/_preview_*.mp4
+          ls -la reels/_preview_*.mp4 || true
+          if [ -n "$FALHAS" ]; then
+            echo "::error::Episodios que FALHARAM no render:$FALHAS — job VERMELHO (fail-loud)."
+            exit 1
+          fi
       - name: Artefato (serie completa)
         uses: actions/upload-artifact@v4
         with:

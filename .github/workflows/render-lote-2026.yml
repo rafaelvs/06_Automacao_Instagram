@@ -34,22 +34,36 @@ jobs:
           python-version: "3.11"
       - name: Instalar Pillow + edge-tts
         run: pip install pillow edge-tts
+      - name: Guarda-freio de voz (mudanca de voz exige piloto aprovado — regra 30/08/2026)
+        run: python checar_voz.py
       - name: Renderizar o lote 2026 (voz Antonio afinada)
         env:
           VOZ_ENGINE: edge
           EDGE_VOICE: pt-BR-AntonioNeural
+          # Voz APROVADA pelo piloto de 30/08/2026 (Rafael): rate -8%, pitch -4Hz.
+          # Sem env explicito o gerar_reel_voz.py cairia em +0%/+0Hz — deriva sonora real.
           EDGE_RATE: ${{ github.event.inputs.rate || '-8%' }}
           EDGE_PITCH: ${{ github.event.inputs.pitch || '-4Hz' }}
           ONLY: ${{ github.event.inputs.only }}
         run: |
           TODOS="on_osso_cresce on_regra_milimetro on_tres_fases on_pseudartrose on_tres_razoes on_cigarro on_osteomielite on_transporte_osseo on_osteotomia on_perna_torta_adulto on_discrepancia on_medir_antes on_fixador_vs_haste on_quanto_tempo on_cuidado_pinos on_fisioterapia on_pos_trauma on_nao_estetica pnc_marcos_andar pnc_pe_pra_dentro pnc_estalo_joelho pnc_tenis_caro pnc_perna_curta_crianca pnc_nao_dor_crescimento pnc_mancando pnc_mancar_febre pnc_escoliose pnc_cai_muito pnc_sentar_w pnc_mochila"
           if [ -n "$ONLY" ]; then LISTA="$ONLY"; else LISTA="$TODOS"; fi
+          # fail-loud (auditoria v1.5 M1): retry cobre 503 intermitente do edge-tts, mas
+          # falha final e' COLETADA e derruba o job — nada de "|| echo FALHOU" verde-mentiroso.
+          FALHAS=""
           for EP in $LISTA; do
             echo "::group::render $EP"
-            python gerar_reel_voz.py "$EP" || python gerar_reel_voz.py "$EP" || python gerar_reel_voz.py "$EP" || python gerar_reel_voz.py "$EP" || echo "FALHOU $EP"
+            if ! (python gerar_reel_voz.py "$EP" || python gerar_reel_voz.py "$EP" || python gerar_reel_voz.py "$EP" || python gerar_reel_voz.py "$EP"); then
+              echo "::error::render FALHOU apos 4 tentativas: $EP"
+              FALHAS="$FALHAS $EP"
+            fi
             echo "::endgroup::"
           done
           ls -la reels/_preview_*.mp4 || true
+          if [ -n "$FALHAS" ]; then
+            echo "::error::Episodios que FALHARAM no render:$FALHAS — job VERMELHO (fail-loud)."
+            exit 1
+          fi
       - name: Artefato (lote 2026)
         uses: actions/upload-artifact@v4
         with:
