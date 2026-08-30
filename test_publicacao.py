@@ -17,6 +17,8 @@ meio da execucao" com dois itens de tipos diferentes.
 Uso, dentro do repo:  python test_publicacao.py      (exit 0 = tudo passou)
 """
 import json, os, sys, subprocess, tempfile, shutil
+
+raise SystemExit("SEMENTE DE PROVA (auditoria v1.5): falha forcada para ver o ci-testes VERMELHO uma vez — removida no commit seguinte.")
 from pathlib import Path
 
 ROOT = Path(__file__).parent

@@ -820,5 +820,13 @@
     "music": "Breathe In, Breathe Out.mp4",
     "dur": 75.8,
     "serie": "Osso Novo"
+  },
+  {
+    "id": "prova_v15_semeado_sem_aval",
+    "video": "reels/_preview_prova_v15_semeado_sem_aval.mp4",
+    "caption": "SEMENTE DE PROVA (auditoria v1.5, branch auditoria/v15-provas): id novo SEM lote aprovado — existe so para provar o gate-aprovacoes VERMELHO. Nunca publicar; removida no commit seguinte.",
+    "music": "",
+    "dur": 1.0,
+    "serie": "PROVA"
   }
 ]
