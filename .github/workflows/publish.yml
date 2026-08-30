@@ -30,12 +30,25 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    # v1.5/M5: job travado (API pendurada, retry infinito) congelava a fila por ate 6h —
+    # o cron */30 seguinte nem entrava por causa do concurrency group. 15 min cobre com
+    # folga o pior caso legitimo (sequencia de 5 frames + retries).
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
       - run: pip install -r requirements.txt
+      - name: Checador CFM (ADVISORY — imprime, nao derruba)
+        # Por que ADVISORY e nao bloqueio (v1.5/M5): dentro da janela 16/08->15/09 e'
+        # proibido mudar o COMPORTAMENTO do caminho que publica; a barreira vinculante
+        # segue sendo o _cfm_guard in-process do publish.py (que bloqueia o item na hora).
+        # Este step da' VISIBILIDADE: antes so' stderr de job verde denunciava lint
+        # reprovado — e stderr de job verde ninguem le. Promover a bloqueio e' decisao
+        # explicita pos-janela (registrar no changelog quando acontecer).
+        run: |
+          python checar_cfm.py || echo "::warning::checar_cfm.py saiu com exit != 0 — ha VIOLACAO/REVISAR no acervo ou na fila; ver o log deste step (advisory, o publish continua)."
       - name: Publicar posts pendentes
         env:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}

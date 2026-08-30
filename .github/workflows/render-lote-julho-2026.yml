@@ -33,22 +33,36 @@ jobs:
           python-version: "3.11"
       - name: Instalar Pillow + edge-tts
         run: pip install pillow edge-tts
+      - name: Guarda-freio de voz (mudanca de voz exige piloto aprovado — regra 30/08/2026)
+        run: python checar_voz.py
       - name: Renderizar o lote julho/2026 (voz Antonio afinada)
         env:
           VOZ_ENGINE: edge
           EDGE_VOICE: pt-BR-AntonioNeural
+          # Voz APROVADA pelo piloto de 30/08/2026 (Rafael): rate -8%, pitch -4Hz.
+          # Sem env explicito o gerar_reel_voz.py cairia em +0%/+0Hz — deriva sonora real.
           EDGE_RATE: ${{ github.event.inputs.rate || '-8%' }}
           EDGE_PITCH: ${{ github.event.inputs.pitch || '-4Hz' }}
           ONLY: ${{ github.event.inputs.only }}
         run: |
           TODOS="pnc_joelho_valgo on_consolidacao_viciosa pnc_osgood on_salvamento_membro pnc_sever on_vitamina_d pnc_torcicolo on_diabetes_osso pnc_engatinhar on_haste_magnetica pnc_calcado_bebe on_dor_cronica_fratura pnc_hipermobilidade on_artrose_osteotomia pnc_cansa_andar on_falha_ossea"
           if [ -n "$ONLY" ]; then LISTA="$ONLY"; else LISTA="$TODOS"; fi
+          # fail-loud (auditoria v1.5 M1): retry cobre 503 intermitente do edge-tts, mas
+          # falha final e' COLETADA e derruba o job — nada de "|| echo FALHOU" verde-mentiroso.
+          FALHAS=""
           for EP in $LISTA; do
             echo "::group::render $EP"
-            python gerar_reel_voz.py "$EP" || python gerar_reel_voz.py "$EP" || python gerar_reel_voz.py "$EP" || python gerar_reel_voz.py "$EP" || echo "FALHOU $EP"
+            if ! (python gerar_reel_voz.py "$EP" || python gerar_reel_voz.py "$EP" || python gerar_reel_voz.py "$EP" || python gerar_reel_voz.py "$EP"); then
+              echo "::error::render FALHOU apos 4 tentativas: $EP"
+              FALHAS="$FALHAS $EP"
+            fi
             echo "::endgroup::"
           done
           ls -la reels/_preview_*.mp4 || true
+          if [ -n "$FALHAS" ]; then
+            echo "::error::Episodios que FALHARAM no render:$FALHAS — job VERMELHO (fail-loud)."
+            exit 1
+          fi
       - name: Anexar entradas no reels.json (assembler idempotente)
         run: python anexar_lote_julho.py
       - name: Artefato (lote julho)

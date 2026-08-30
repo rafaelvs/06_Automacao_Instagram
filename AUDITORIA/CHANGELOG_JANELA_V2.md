@@ -16,7 +16,8 @@
 ### 16/08/2026 — Ações da rodada v1 aplicadas em bloco (início da era 3)
 
 - **O que mudou:**
-  - **Card-resumo guardável**: gerador alterado (último slide dos carrosséis: "CONVERSE COMIGO/WhatsApp" → card-resumo clínico guardável, ação 3 da v1) e card **commitado — mas NENHUM card foi publicado até hoje (30/08)**. Pela fila FIFO, o 1º card (c_on_osso_cresce) só sai em **19/09** (fora da janela) e o card da ação de 16/08 (c_pnc_perna_curta_crianca) em **27/10**.
+  - **Card-resumo guardável**: **card one-off criado; geradores NÃO alterados** (correção 30/08, auditoria v1.5/A3 — a redação anterior "gerador alterado" era falsa: zero commits em `carrossel.py`/`posts_batch*.py` desde 10/08; a peça única saiu no commit `0dae7b5`). Nenhum card foi publicado até 30/08; pela fila FIFO, o 1º card (c_on_osso_cresce) só sai em **19/09** (fora da janela) e o card da ação de 16/08 (c_pnc_perna_curta_crianca) em **27/10**. A ação 3 da v1 segue substancialmente NÃO FEITA nos geradores.
+  - **Ação 14 da v1 (bomba do prepend)**: `publicar_narrativos.py` corrigido no commit `f23b683` (16/08) — `reels = reels + novos` (APPEND, com comentário citando o achado); o workflow segue dispatch-only. Mudança de código do motor dentro da janela; não altera peça publicada.
   - **`perfil.json`**: camada de perfil (bio, nome, categoria, link, destaques) passou a existir como artefato versionado (ação 7 da v1).
   - **Ação 11b**: gate CFM estendido — `_cfm_guard` chamado também em `publish_sequence`/`publish_story` e auditando a concatenação `scenes[].k+sc+sub+vo`; regra `assinatura` promovida de REVISAR para VIOLAÇÃO no contexto público; "antes e depois" reclassificado VIOLAÇÃO→REVISAR (Art. 14, II, b permite conjunto). Cobertura do gate: ~13% → ~100% das superfícies de texto.
 - **O que contamina:** a era 3 (16 peças de feed até 29/08) é "pós-ações", mas o efeito esperado da ação mais vendida (saves via card-resumo) é **estruturalmente impossível de aparecer na janela**: zero cards publicados dentro dela. Qualquer leitura "cards não geraram saves" na v2 seria falsa por construção. O gate estendido pode ter alterado texto de peças da era 3 (superfícies antes sem régua) — mudança de conteúdo, não só de medição.
@@ -30,7 +31,8 @@
   - 11 reels narrados da série **Alongamento Ósseo (adultos)** inseridos na fila ANTES de reel04 —
     o slot de qua 02/09 passa de reel mudo para `discrepancia_membro` (narrado, preview já renderizado).
   - **12 episódios Q&A lote 2** (`episodios_qa_lote2.py`) commitados e aprovados; renders disparados em
-    30/08; serão intercalados entre os adultos num segundo commit ANTES do slot de 04/09 (entrada futura).
+    30/08; a intercalação on/qa aconteceu no **commit 2 = `5ca3e3e` (30/08 01:37)**: 23 narrados aprovados
+    na frente de reel04 + este changelog migrado para `AUDITORIA/` no repo (registro 30/08, v1.5/A3).
   - Legendas dos 23 novos: CTA send/save (sem pedido de comentário) + linha "Narração com voz digital
     (IA)." (CFM 2.454, D6) — mudança de padrão de legenda vale só para as peças novas.
   - Gate de aprovação instalado (`aprovacoes.json` + `checar_aprovacoes.py`, hash por episódio; legado
@@ -52,6 +54,26 @@
 - **O que contamina:** os 8 slots de reel de 02–15/09 ficam, em qualquer hipótese, incomparáveis com o resto da era 3.
 - **Como a v2 deve ler:** os 8 slots entram em **estrato separado** (rotulado pela decisão tomada); a decisão e a data entram aqui como entrada definitiva; se 02/09 passar sem decisão, registrar "regressão por omissão" — escolha, não acidente.
 
+### 30/08/2026 — D17 EXECUTADA: ângulo estético/estatura promovido a VIOLAÇÃO no guardrail central (commit `33fdb5b`)
+
+- **Decisão:** Rafael, 30/08, chat da auditoria — enquadramento estético/de estatura do alongamento é VIOLAÇÃO (não REVISAR) no `cfm_guardrails.py`.
+- **O que mudou:** regra central do gate CFM endurecida DENTRO da janela (commit `33fdb5b`, 30/08 12:51). Re-varredura do acervo publicado e da fila após a mudança: **0 VIOLAÇÃO — contaminação nula no acervo**; o efeito é **prospectivo** (bloqueia peça futura com o enquadramento vetado).
+- **O que contamina:** nenhuma peça publicada mudou de texto; a régua de conformidade da era 3 ficou mais dura no meio da janela — comparações de "taxa de bloqueio/REVISAR" antes×depois de 30/08 não são a mesma régua.
+- **Como a v2 deve ler:** conformidade auditada com a régua PÓS-D17 (a vigente); qualquer contagem histórica de flags CFM anota a fronteira de 30/08. (Entrada adicionada em 30/08 pela rodada v1.5 — a mudança tinha ficado FORA do changelog, furando a regra 1; achado A3.)
+
+### 30/08/2026 — Fábrica de verbetes criada (commits `6910fa1`, `d5f9900`, `021b2ab`) — biblioteca, NÃO fila
+
+- **O que mudou:** `gerar_verbetes.py` + workflow `render-verbetes.yml` (commit `6910fa1`, 30/08 12:41) e 2 runs verdes de render da biblioteca (`d5f9900`/`021b2ab`, 30/08 15:43–15:45): 20 carrosséis-verbete 4:5 renderizados em `verbetes/` + `verbetes_biblioteca.json`. **`posts.json` intocado** — nada disso entra na fila publicável; publicação só liga no D-day (17–18/09), com lote de aprovação próprio (VERBETES-2026-09).
+- **O que contamina:** a janela, nada (nenhuma peça ao ar, nenhum item de fila). Repo ganhou ~20 renders novos (tamanho/histórico).
+- **Como a v2 deve ler:** verbetes não existem para a medição da janela; a v2.1 lê o pacote do D-day. (Entrada adicionada em 30/08 pela rodada v1.5 — os commits tinham ficado FORA do changelog; achado A3.)
+
+### 30/08/2026 — Rodada v1.5 da máquina: M1–M5 implementadas na branch `auditoria/v15-provas` (aguarda merge do dono)
+
+- **O que muda (só código/CI/registro — nenhuma peça, fila publicável ou perfil):** M1 freio de voz + fail-loud nos 3 lotes de render e nos pushes de render-reel-voz/stories, ramo Piper morto removido, fingerprint re-registrado (`bed45a4c…`, citando o piloto de 30/08, sem mudança sonora); M2 `gate-aprovacoes.yml` em CI (escopo id-novo, `--isentar-lote LEGADO-PRE-GATE` declarado) + `checar_aprovacoes.py` exigindo `aprovado_por`+`evidencia` e hash de prova com EOL normalizado; M3 este registro corrigido; M4 ferramenta de telemetria copiada p/ pasta durável da oficina; M5 `timeout-minutes: 15` + `checar_cfm.py` advisory no publish.yml + `ci-testes.yml`.
+- **Provas (checks novos vistos FALHAR uma vez, protocolo da casa):** gate-aprovacoes VERMELHO run `33336839874` (id semeado `prova_v15_semeado_sem_aval`) → VERDE runs `33336913006`/`33336927027`; ci-testes VERMELHO run `33336839881` (SystemExit semeado) → VERDE runs `33336913008`/`33336927006`. Sementes removidas; branch fecha byte-idêntica à main em `reels.json`/`test_publicacao.py`.
+- **O que contamina:** a janela, nada, enquanto na branch (o cron lê só a main). No MERGE, o step advisory e o timeout passam a valer no publish — mudança de CI, não de conteúdo; registrar a data do merge aqui.
+- **Como a v2 deve ler:** máquina auditada na v1.5 (baseline 69,0); a v2 (16/09) segue focada em desempenho do perfil.
+
 ### [PLANEJADO pós-15/09] Swap edge-tts → Azure Speech (pt-BR-AntonioNeural via endpoint oficial)
 
 - **O que muda:** `synth()` do motor de voz troca o endpoint não-oficial (edge-tts, 503 intermitentes) pelo Azure oficial (free tier). Mesma voz de catálogo; **equivalência sonora ASSUMIDA com base num A/B de 1 cena** — não provada em escala.
@@ -60,7 +82,7 @@
 
 ### [PLANEJADO 17–18/09] D-day de vitrine (pós-fechamento da janela, véspera da cauda)
 
-- **O que muda (em ~24–48h, tudo de uma vez):** 3 posts fixados (post01, post33, reel02); Reorder Grid; 5–6 destaques-menu por queixa; bio nova com disclosure de IA + wa.me com marcador de origem; SEO ligado no template global; toggle de indexação conferido; CTA textual nos frames de story; canário de arquivamento e, se D9 aprovado e canário passar, arquivo seletivo de ~15 peças da era trial (critério reach+views ≤ 17 no snapshot de 29/08).
+- **O que muda (em ~24–48h, tudo de uma vez):** 3 posts fixados (post01, post33, reel02); Reorder Grid; 5–6 destaques-menu por queixa; bio nova com disclosure de IA + wa.me com marcador de origem; SEO ligado no template global; toggle de indexação conferido; CTA textual nos frames de story; canário de arquivamento e, se D9 aprovado e canário passar, arquivo seletivo de ~15 peças da era trial (critério reach+views ≤ 17 no snapshot de 29/08). Inclui a **estreia dos verbetes**: cunhar o lote VERBETES-2026-09 (aprovação registrada) e enfileirar 2/semana a partir da biblioteca renderizada em 30/08 (ver entrada da fábrica de verbetes).
 - **O que contamina:** (a) séries de CONTA (profile_views, follows, website_clicks, reach) sofrem degrau simultâneo de N intervenções — nenhum efeito é isolável; (b) o arquivo seletivo pode cegar deltas da v3 se a media_id arquivada sumir da edge /media (por isso o canário ANTES, com direito a reprovar); (c) o marcador wa.me muda a semântica do KPI de clique (de "clique" para "clique atribuível") — série antiga e nova não se emendam sem nota.
 - **Como a v2 deve ler:** a v2 fecha TODA leitura com dados até 15/09 — nenhum dump pós-17/09 entra na janela. O D-day abre a **era 4**; a v2.1 (28/10) mede o pacote D-day como intervenção ÚNICA composta (sem decompor), sobre as métricas de funil (pv→follows, pv→wa.me por origem). Resultado do canário (passar OU falhar) vira entrada datada aqui.
 
@@ -77,8 +99,6 @@
 Registrar em cada dump: `followers_count` (série de saldo líquido só tem 2 pontos), `reach_por_follow_type` 30d (série de fadiga c1) e os insights por peça da era 3 (hoje 100% sem delta). Dump que não acontecer na data vira entrada de NÃO-ocorrência.
 
 ---
-
-*Criado em 30/08/2026 (S1 preparatória, Aposta 2e). AGUARDA AVAL — este arquivo ainda NÃO está no repo de produção; até migrar, o changelog oficial é este rascunho.*
 
 ### 30/08/2026 — Estreia do formato reel-caso AGENDADA para pós-janela (não contamina a v2)
 

@@ -3,7 +3,8 @@
 Reel-episódio FALADO "Pé no Chão" — roda no GitHub Actions (tem rede). Craft 30fps (render_reel) +
 locução por cena (durações seguem a voz) + CADEIA DE ÁUDIO DE ESTÚDIO + mix voz/música + loudnorm -14.
 
-VOZ PLUGÁVEL: por padrão usa edge-tts (Antonio). Alterna p/ Piper com VOZ_ENGINE=piper.
+VOZ: edge-tts (Antonio). O ramo Piper foi REMOVIDO em 30/08/2026 (auditoria v1.5 M1):
+era código morto apontando p/ um .onnx inexistente — VOZ_ENGINE != "edge" agora falha ALTO.
 
 Saída: reels/_preview_<ep_id>.mp4 (prefixo _, fora do reels.json -> NÃO publica sozinho).
 Uso: python gerar_reel_voz.py <ep_id>
@@ -13,13 +14,16 @@ import render_reel as R
 from episodios_pe_no_chao import get
 
 ROOT=os.path.dirname(os.path.abspath(__file__)); AUD=os.path.join(ROOT,"audio")
-# VOZ DO CANAL: motor padrao = edge-tts (vozes neurais Microsoft, gratis, sem chave de API).
-# Alterna p/ Piper com VOZ_ENGINE=piper. Botoes de edicao: EDGE_RATE (ritmo) e EDGE_PITCH (tom).
+# VOZ DO CANAL: motor UNICO = edge-tts (vozes neurais Microsoft, gratis, sem chave de API).
+# Botoes de edicao: EDGE_RATE (ritmo) e EDGE_PITCH (tom). A voz APROVADA (piloto 30/08/2026)
+# e' Antonio rate -8% pitch -4Hz — os workflows passam esses env explicitamente.
 ENGINE=os.environ.get("VOZ_ENGINE","edge")
+if ENGINE!="edge":
+    sys.exit(f"VOZ_ENGINE={ENGINE!r} nao suportado: o ramo Piper foi REMOVIDO (30/08/2026, "
+             "auditoria v1.5 M1 — apontava p/ .onnx inexistente). Voz do canal = edge-tts.")
 EDGE_VOICE=os.environ.get("EDGE_VOICE","pt-BR-AntonioNeural")
 EDGE_RATE=os.environ.get("EDGE_RATE","+0%")
 EDGE_PITCH=os.environ.get("EDGE_PITCH","+0Hz")
-VOICE=os.environ.get("PIPER_VOICE", os.path.join(ROOT,"voices","pt_BR-faber-medium.onnx"))
 # folgas entre fala e cena (encurtadas p/ a narracao fluir mais natural, menos "robotica"). Tunaveis por env.
 LEAD=float(os.environ.get("VOZ_LEAD","0.18")); TAIL=float(os.environ.get("VOZ_TAIL","0.45"))
 # RETENCAO-3s (v7): a voz da CENA 0 entra quase no frame 0 (0,05s) — sem "respiro" inicial. O watch
@@ -38,12 +42,9 @@ VOICE_CHAIN=("highpass=f=85,"
  "loudnorm=I=-16:TP=-1.5:LRA=11,aformat=sample_rates=48000:channel_layouts=stereo")
 
 def synth(text,out_wav):
-    raw=out_wav+(".mp3" if ENGINE=="edge" else ".raw.wav")
-    if ENGINE=="edge":
-        subprocess.run(["edge-tts","--voice",EDGE_VOICE,f"--rate={EDGE_RATE}",f"--pitch={EDGE_PITCH}",
-                        "--text",text,"--write-media",raw],check=True,capture_output=True)
-    else:
-        subprocess.run(["piper","-m",VOICE,"-f",raw],input=text.encode("utf-8"),check=True,capture_output=True)
+    raw=out_wav+".mp3"
+    subprocess.run(["edge-tts","--voice",EDGE_VOICE,f"--rate={EDGE_RATE}",f"--pitch={EDGE_PITCH}",
+                    "--text",text,"--write-media",raw],check=True,capture_output=True)
     subprocess.run(["ffmpeg","-y","-i",raw,"-af",TRIM_SIL+VOICE_CHAIN,out_wav],check=True,capture_output=True)
     os.remove(raw)
 def dur_of(w):

@@ -1,6 +1,6 @@
 {
-  "fingerprint": "6488eb26924c50b55141fc9d916ee63728fcb28c8bdc6be8e367e38d053ff2af",
-  "evidencia": "Voz vigente (edge-tts pt-BR-AntonioNeural, rate -8%, pitch -4Hz) — em producao desde junho/2026, conhecida e aceita pelo Rafael; equivale ao piloto historico ja no ar. Regra do piloto instituida em 30/08/2026 vale para QUALQUER mudanca a partir daqui.",
+  "fingerprint": "bed45a4c583871c62d6866343af275cba0a3ba91b1056639b1869e6456db4707",
+  "evidencia": "Piloto aprovado pelo Rafael em 30/08/2026 (_preview_qa_gesso_molhar.mp4, 'esta otimo esse audio', chat de 30/08): voz edge-tts pt-BR-AntonioNeural, rate -8%, pitch -4Hz. Re-registro de 30/08 (auditoria v1.5 M1/B6): remocao de codigo morto (ramo Piper) + alinhamento do fallback de pitch do render-reel-voz.yml (+0Hz -> -4Hz) e dos lotes a voz do piloto — SEM mudanca sonora do caminho aprovado (-8%/-4Hz permanece).",
   "partes_rotulos": [
     "engine_default",
     "leads",

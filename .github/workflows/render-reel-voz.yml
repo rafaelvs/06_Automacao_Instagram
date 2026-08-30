@@ -37,7 +37,9 @@ jobs:
           VOZ_ENGINE: edge
           EDGE_VOICE: pt-BR-AntonioNeural
           EDGE_RATE: ${{ github.event.inputs.rate || '-8%' }}
-          EDGE_PITCH: ${{ github.event.inputs.pitch || '+0Hz' }}
+          # Fallback alinhado a voz APROVADA no piloto de 30/08/2026 (-8%/-4Hz). O '+0Hz'
+          # antigo contradizia o default do input (-4Hz) e o registro humano do aceite (B6/v1.5).
+          EDGE_PITCH: ${{ github.event.inputs.pitch || '-4Hz' }}
         run: python gerar_reel_voz.py "${{ github.event.inputs.episodio || 'andador' }}"
       - name: Artefato
         uses: actions/upload-artifact@v4
@@ -51,8 +53,16 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add reels/_preview_*.mp4
           git commit -m "Render reel ${{ github.event.inputs.episodio || 'andador' }} (preview Antonio)" || echo "nada a commitar"
+          # retry com falha RUIDOSA — mesmo padrao ok-flag do render-verbetes.yml/publish.yml
+          # (auditoria v1.5 M1: o loop antigo engolia falha de push — job verde, artefato perdido).
+          ok=0
           for attempt in 1 2 3 4 5; do
-            git pull --rebase origin main && git push && break
+            if git pull --rebase origin main && git push; then ok=1; break; fi
+            git rebase --abort 2>/dev/null || true
             echo "Push tentativa $attempt falhou — aguardando ${attempt}0s..."
             sleep $((attempt * 10))
           done
+          if [ "$ok" != "1" ]; then
+            echo "::error::mp4 renderizado mas NAO commitado apos 5 tentativas — render perdido."
+            exit 1
+          fi
