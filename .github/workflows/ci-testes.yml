@@ -1,0 +1,25 @@
+name: ci-testes
+# CI de testes do caminho de publicacao (auditoria v1.5, achado A5: zero teste rodava na
+# main — o contrato de exit code do publish.py so era conferido a mao). Offline por
+# construcao: os dois testes stubam `requests` em sandbox temporario, nada toca a rede.
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - name: Contrato de EXIT do publish.py (job vermelho quando item falha)
+        run: python teste_publish_exit.py
+      - name: Caminho de erro de auth/rate-limit (token morre no meio, 400 OAuthException)
+        run: python test_publicacao.py
