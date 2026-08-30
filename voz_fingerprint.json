@@ -1,0 +1,14 @@
+{
+  "fingerprint": "6488eb26924c50b55141fc9d916ee63728fcb28c8bdc6be8e367e38d053ff2af",
+  "evidencia": "Voz vigente (edge-tts pt-BR-AntonioNeural, rate -8%, pitch -4Hz) — em producao desde junho/2026, conhecida e aceita pelo Rafael; equivale ao piloto historico ja no ar. Regra do piloto instituida em 30/08/2026 vale para QUALQUER mudanca a partir daqui.",
+  "partes_rotulos": [
+    "engine_default",
+    "leads",
+    "synth",
+    "trim_sil",
+    "voice_chain",
+    "voz_default",
+    "workflow_inputs",
+    "workflow_voz_env"
+  ]
+}

@@ -30,6 +30,8 @@ jobs:
           python-version: "3.11"
       - name: Instalar Pillow + edge-tts (voz neural Microsoft, gratis)
         run: pip install pillow edge-tts
+      - name: Guarda-freio de voz (mudanca de voz exige piloto aprovado — regra 30/08/2026)
+        run: python checar_voz.py
       - name: Renderizar reel-episodio (voz Antonio, ritmo afinado)
         env:
           VOZ_ENGINE: edge

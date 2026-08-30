@@ -375,6 +375,61 @@
     "dur": 11.8
   },
   {
+    "id": "discrepancia_membro",
+    "video": "reels/_preview_discrepancia_membro.mp4",
+    "caption": "Uma perna mais curta que a outra nem sempre precisa de cirurgia — o que decide é o quanto ela afeta a função. Diferenças pequenas são comuns e a conduta costuma ser acompanhar. O que pesa: tamanho, causa e impacto na marcha — em criança, o crescimento que ainda vem. Mancar novo ou dor no quadril: procure avaliação.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico.\n\nNarração com voz digital (IA)."
+  },
+  {
+    "id": "fixador_ou_haste",
+    "video": "reels/_preview_fixador_ou_haste.mp4",
+    "caption": "Fixador por fora ou haste por dentro? A escolha não é preferência. O fixador corrige o ângulo junto e permite ajuste, mas exige cuidado diário com os pinos. A haste não deixa nada para fora, mas depende do osso e não resolve toda deformidade. Quem decide é o caso.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico.\n\nNarração com voz digital (IA)."
+  },
+  {
+    "id": "tempo_tratamento",
+    "video": "reels/_preview_tempo_tratamento.mp4",
+    "caption": "Alongar o osso leva mais tempo do que a conta de 1mm por dia sugere. A fase de alongamento é a rápida; a consolidação — quando o osso novo endurece para aguentar carga — leva bem mais. Dor intensa em repouso, dormência que avança ou infecção nos pinos: pronto-socorro.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico.\n\nNarração com voz digital (IA)."
+  },
+  {
+    "id": "pseudartrose",
+    "video": "reels/_preview_pseudartrose.mp4",
+    "caption": "Fraturou, operou, e meses depois o osso não colou? Isso tem nome: pseudartrose — a consolidação não acontece e o foco continua se mexendo. Pesa a estabilidade, a circulação, infecção e o cigarro. Dor que persiste meses depois: procure avaliação com quem trata reconstrução óssea.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico.\n\nNarração com voz digital (IA)."
+  },
+  {
+    "id": "sequela_fratura",
+    "video": "reels/_preview_sequela_fratura.mp4",
+    "caption": "Fratura que colou em posição ruim, encurtada ou que infeccionou ainda dá para tratar. A sequela muda a marcha e sobrecarrega o resto do corpo. Havendo infecção no osso, ela é resolvida junto com a reconstrução, em etapas. Se convive com dor ou manca: vale uma segunda opinião.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico.\n\nNarração com voz digital (IA)."
+  },
+  {
+    "id": "primeira_consulta",
+    "video": "reels/_preview_primeira_consulta.mp4",
+    "caption": "Vai na primeira consulta sobre alongamento ósseo? Pergunte: qual o objetivo funcional e o que exatamente será corrigido; qual método, quanto tempo no total e como fica sua rotina; e quais os riscos e o plano se algo não sair como esperado. Leve seus exames e relatórios anteriores.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico.\n\nNarração com voz digital (IA)."
+  },
+  {
+    "id": "fim_tratamento",
+    "video": "reels/_preview_fim_tratamento.mp4",
+    "caption": "O fixador saiu, o raio-X está bom — mas o tratamento não termina nesse dia. O osso novo ainda está mais frágil que o osso maduro e segue ganhando resistência por meses. Carga e atividade voltam aos poucos, no ritmo que a equipe orienta. Dor nova ou insegurança ao apoiar: volte para reavaliação.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico.\n\nNarração com voz digital (IA)."
+  },
+  {
+    "id": "deformidade_angular",
+    "video": "reels/_preview_deformidade_angular.mp4",
+    "caption": "Perna torta e perna curta são problemas diferentes — e o tratamento também. Na deformidade angular o eixo do osso está desviado; no encurtamento, o osso é mais curto com o eixo reto. Muitas vezes aparecem juntos. Perna que muda de forma ou desconforto ao apoiar: procure avaliação.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico.\n\nNarração com voz digital (IA)."
+  },
+  {
+    "id": "quanto_alongar",
+    "video": "reels/_preview_quanto_alongar.mp4",
+    "caption": "Quantos centímetros dá para alongar? Não existe número fixo — pele, nervo e vaso esticam junto com o osso e ditam o limite seguro por etapa. Passar desse limite de uma vez aumenta o risco de lesão. Por isso casos maiores são feitos em mais de uma fase. Leve essa pergunta ao planejamento.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico.\n\nNarração com voz digital (IA)."
+  },
+  {
+    "id": "trabalho_escola",
+    "video": "reels/_preview_trabalho_escola.mp4",
+    "caption": "Voltar ao trabalho com fixador depende mais da função do cargo do que de uma data. Trabalho sentado libera mais cedo; esforço físico demora mais. Organize deslocamento e cuidado com os pinos. Dor que piora no fim do dia ou sinais de infecção: avise a equipe, pronto-socorro se vier com febre.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico.\n\nNarração com voz digital (IA)."
+  },
+  {
+    "id": "vida_cotidiana_fixador",
+    "video": "reels/_preview_vida_cotidiana_fixador.mp4",
+    "caption": "Banho, roupa e sono com fixador têm truques que facilitam o dia a dia. Banho normal costuma ser liberado — aproveite para lavar os pinos. Roupas largas e travesseiro de apoio ajudam. Secreção com mau cheiro, vermelhidão que avança ou febre: pronto-socorro, avisando a equipe.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico.\n\nNarração com voz digital (IA)."
+  },
+  {
     "id": "reel04",
     "video": "reels/reel04.mp4",
     "caption": "Joelhos arqueados nos primeiros 2 anos e em X dos 3 aos 6 costumam fazer parte do desenvolvimento e melhoram sozinhos. Vale avaliar na ortopedia pediátrica quando é só de um lado, piora com a idade ou é muito acentuado.\n\n📤 Se você conhece um pai ou uma mãe perdendo o sono com as perninhas tortas do filho, manda este vídeo pra ele.\n📌 Salve para consultar depois.\n💬 Chuta: até que idade o joelho em X costuma fazer parte do desenvolvimento — 4, 6 ou 8 anos? Responde só o número.\n📲 Para avaliar o seu caso, agende pelo WhatsApp no link da bio.\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\n\n#joelhovalgo #ortopediapediatrica #ortopediainfantil #saudedacrianca #ortopediasaopaulo",

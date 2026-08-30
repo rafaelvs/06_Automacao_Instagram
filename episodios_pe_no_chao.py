@@ -207,6 +207,14 @@ try:
 except Exception as _e:
     print("AVISO: episodios_alongamento não carregado:", _e)
 
+# SÉRIE "Respondendo" LOTE 2 (30/08/2026): +12 episódios de perguntas reais (Doctoralia).
+# Aprovado D3 30/08/2026; registro em aprovacoes.json. Mesmo motor.
+try:
+    from episodios_qa_lote2 import QA_LOTE2
+    EPISODES = EPISODES + QA_LOTE2
+except Exception as _e:
+    print("AVISO: episodios_qa_lote2 não carregado:", _e)
+
 def get(ep_id):
     for e in EPISODES:
         if e["id"]==ep_id: return e

@@ -1,0 +1,56 @@
+{
+  "script_sha256": "c45f5a8d62ac0dd25e3af1e4affe256d30891a2dd437f5b13371ebf6a10f1681",
+  "quando": "2026-08-30T04:29:13.337520+00:00",
+  "resultados": [
+    {
+      "caso": "T1 controle POSITIVO: órfão semeado na fila TEM de reprovar",
+      "exit_obtido": 1,
+      "exit_esperado": 1,
+      "id_semeado_visto": true,
+      "passou": true
+    },
+    {
+      "caso": "T2 controle POSITIVO: hash adulterado TEM de reprovar",
+      "exit_obtido": 1,
+      "exit_esperado": 1,
+      "id_semeado_visto": true,
+      "passou": true
+    },
+    {
+      "caso": "T3 controle POSITIVO: universo vazio TEM de reprovar",
+      "exit_obtido": 1,
+      "exit_esperado": 1,
+      "id_semeado_visto": null,
+      "passou": true
+    },
+    {
+      "caso": "T4 controle POSITIVO: registro-minuta TEM de reprovar",
+      "exit_obtido": 1,
+      "exit_esperado": 1,
+      "id_semeado_visto": null,
+      "passou": true
+    },
+    {
+      "caso": "T7 controle POSITIVO: item de fila sem campo 'id' TEM de reprovar",
+      "exit_obtido": 1,
+      "exit_esperado": 1,
+      "id_semeado_visto": null,
+      "passou": true
+    },
+    {
+      "caso": "T5 controle NEGATIVO: fila toda aprovada TEM de passar",
+      "exit_obtido": 0,
+      "exit_esperado": 0,
+      "id_semeado_visto": null,
+      "passou": true
+    },
+    {
+      "caso": "T6 controle NEGATIVO segue válido: aprovação extra fora da fila não atrapalha",
+      "exit_obtido": 0,
+      "exit_esperado": 0,
+      "id_semeado_visto": null,
+      "passou": true
+    }
+  ],
+  "nota": "O check demonstrou reprovar os 5 controles positivos semeados (exit 1 observado em subprocesso real) e aprovar os negativos (exit 0). Só a partir desta prova a execução normal passa a valer."
+}
