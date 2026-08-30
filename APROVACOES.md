@@ -158,3 +158,5 @@ este snapshot serve à revisão, não ao registro final.
 
 *Minuta preparada em 30/08/2026 · Aposta 3 (gate de aprovação clínica com enforcement) ·*
 *AGUARDA AVAL — nada foi gravado no repo, na fila ou no perfil.*
+
+**30/08/2026 — PROCESSO (regra do Rafael):** por padrão, episódio de formato ESTABELECIDO não passa por aval ativo peça a peça — entra na fila com data futura e o Rafael revisa/edita/suspende antes da publicação (janela de revisão passiva; ver PROGRAMACAO.md). Aval ativo/piloto fica reservado a: (a) estreia de formato ou estratégia NOVA (ex.: reel-caso), (b) qualquer mudança no motor de voz (guarda-freio checar_voz.py). O registro em aprovacoes.json continua obrigatório para todo lote novo — muda a FONTE da evidência, não a exigência do registro.
