@@ -4,6 +4,8 @@
 
 ---
 
+**30/08/2026 — piloto de voz do lote 2 APROVADO:** `_preview_qa_gesso_molhar.mp4` enviado ao Rafael antes da intercalação; resposta dele no chat: "está ótimo esse áudio". Motor de voz INALTERADO (edge-tts Antonio, fingerprint 6488eb26…); o piloto valida o formato do lote, conforme a regra de piloto instituída por ele em 30/08.
+
 # MINUTA — APROVACOES.md · Registro de aprovação clínica dos reels narrados
 
 > **STATUS: RASCUNHO LOCAL · AGUARDA AVAL DO RAFAEL.**
