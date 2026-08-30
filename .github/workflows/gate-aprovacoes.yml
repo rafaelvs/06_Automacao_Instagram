@@ -1,0 +1,41 @@
+name: gate-aprovacoes
+# Enforcement em CI do gate de aprovação clínica (auditoria máquina v1.5, achado A2:
+# o gate existia, provava-se, e NADA o executava). Roda a cada push que toca a fila,
+# o registro de aprovações ou as fontes de roteiro.
+#
+# ESCOPO: id NOVO pós-30/08/2026 — o lote LEGADO-PRE-GATE (fila pré-existente quando o
+# gate nasceu) fica ISENTO via --isentar-lote até a ratificação do Rafael (B3/pauta da
+# v2). A isenção é declarada AQUI e impressa pelo script — nunca embutida em código.
+# Quando o Rafael ratificar o legado, remova o --isentar-lote desta linha.
+on:
+  push:
+    paths:
+      - "reels.json"
+      - "aprovacoes.json"
+      - "episodios_*.py"
+      - "episodio_*.py"
+      - "checar_aprovacoes.py"
+      - "checar_aprovacoes.selftest.json"
+      - ".github/workflows/gate-aprovacoes.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Gate de aprovação clínica (id novo sem lote aprovado = VERMELHO)
+        run: >
+          python checar_aprovacoes.py
+          --fila reels.json
+          --aprovacoes aprovacoes.json
+          --publicados state/published.json
+          --fontes .
+          --isentar-lote LEGADO-PRE-GATE

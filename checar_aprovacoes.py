@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-MINUTA — checar_aprovacoes.py · Enforcement do gate de aprovação clínica (Aposta 3).
+checar_aprovacoes.py · Enforcement do gate de aprovação clínica (Aposta 3).
 
-STATUS: RASCUNHO LOCAL · AGUARDA AVAL DO RAFAEL. Nada aqui toca o motor, a fila nem o repo.
+STATUS: EM VIGOR desde 30/08/2026 (promovido da minuta; regra de processo registrada em
+APROVACOES.md). Executado em CI pelo workflow .github/workflows/gate-aprovacoes.yml com
+escopo "id novo pós-30/08" (lote LEGADO-PRE-GATE isento via --isentar-lote até a
+ratificação do Rafael — isenção declarada por flag, nunca silenciosa no código).
 
 O QUE FAZ
   Compara a fila (reels.json) com o registro de aprovações (aprovacoes.json) e REPROVA
@@ -42,7 +45,9 @@ USO
   python checar_aprovacoes.py --auto-teste          # roda os controles semeados e grava a prova
   python checar_aprovacoes.py --hash <id> --fontes <dir>   # hash canônico p/ registrar aprovação
   Universo padrão: ids de reels.json AINDA NÃO publicados (state_published.json);
-  --tudo verifica a biblioteca inteira.
+  --tudo verifica a biblioteca inteira. --isentar-lote <NOME> (repetível) tira do universo
+  os ids do lote nomeado (escopo "id novo": LEGADO-PRE-GATE isento até ratificação) —
+  a isenção é impressa e lote inexistente REPROVA (v1.5/M2).
 
 PLANO DE INTEGRAÇÃO (apenas descrito — o motor NÃO foi tocado nesta rodada)
   Onde os arquivos moram: raiz do repo de produção do motor Instagram, ao lado de
@@ -96,11 +101,12 @@ ENV_TESTE = "CHECAR_APROVACOES_MODO_TESTE"
 # ───────────────────────────── primitivas ─────────────────────────────
 
 def sha256_arquivo(caminho):
-    h = hashlib.sha256()
+    """sha256 do conteúdo com EOL normalizado a \\n (v1.5/M2): em repo multi-OS o checkout
+    Windows materializa CRLF e o hash bruto divergiria do blob LF — a prova do auto-teste
+    se AUTO-INVALIDARIA em clone Windows sem o script ter mudado uma letra."""
     with open(caminho, "rb") as f:
-        for bloco in iter(lambda: f.read(65536), b""):
-            h.update(bloco)
-    return h.hexdigest()
+        dados = f.read()
+    return hashlib.sha256(dados.replace(b"\r\n", b"\n")).hexdigest()
 
 
 def hash_canonico(episodio):
@@ -152,14 +158,46 @@ def carregar_fontes(diretorio):
 
 
 def indice_aprovados(registro):
-    """{id: (lote, hash)} considerando SÓ lotes com status 'aprovado'."""
-    indice = {}
+    """({id: (lote, hash)}, problemas) considerando SÓ lotes com status 'aprovado'.
+
+    v1.5/M2: lote 'aprovado' sem `aprovado_por` E `evidencia` NÃO-VAZIOS não conta — o
+    gate autenticava CONTEÚDO e não APROVAÇÃO (remover quem aprovou não mudava a saída).
+    Fail-closed: os episódios do lote defeituoso viram órfãos e o defeito é reportado."""
+    indice, problemas = {}, []
     for lote in registro.get("lotes", []):
         if lote.get("status") != "aprovado":
             continue
+        faltando = [c for c in ("aprovado_por", "evidencia")
+                    if not str(lote.get(c) or "").strip()]
+        if faltando:
+            problemas.append(f"LOTE 'aprovado' SEM {'+'.join(faltando)} não-vazio(s): "
+                             f"'{lote.get('lote', '?')}' — aprovação sem autor/evidência não "
+                             "autentica nada; os episódios dele NÃO contam (fail-closed)")
+            continue
         for ep in lote.get("episodios", []):
             indice.setdefault(ep.get("id"), (lote.get("lote", "?"), ep.get("hash_roteiro")))
-    return indice
+    return indice, problemas
+
+
+def ids_isentos(registro, nomes_isentar):
+    """(set de ids isentos, problemas, avisos) para --isentar-lote (v1.5/M2, escopo do gate).
+
+    Isenta do universo os ids dos lotes NOMEADOS (ex.: LEGADO-PRE-GATE até a ratificação
+    do Rafael) — isenção sempre DECLARADA na linha de comando e impressa, nunca embutida.
+    Lote nomeado que não existe no registro é PROBLEMA (isenção fantasma = furo do gate)."""
+    isentos, problemas, avisos = set(), [], []
+    por_nome = {l.get("lote"): l for l in registro.get("lotes", [])}
+    for nome in nomes_isentar:
+        lote = por_nome.get(nome)
+        if lote is None:
+            problemas.append(f"--isentar-lote '{nome}': lote INEXISTENTE no registro — "
+                             "isenção de lote fantasma seria furo silencioso do gate")
+            continue
+        ids_l = {e.get("id") for e in lote.get("episodios", []) if e.get("id")}
+        isentos |= ids_l
+        avisos.append(f"[isento] lote '{nome}' (status {lote.get('status', '?')}): "
+                      f"{len(ids_l)} id(s) fora do universo até ratificação (isenção por flag)")
+    return isentos, problemas, avisos
 
 
 # ───────────────────────────── o check ─────────────────────────────
@@ -223,6 +261,12 @@ def checar(args):
     for dup in duplicatas:
         problemas.append(f"FONTE AMBÍGUA: id '{dup}' definido em mais de um módulo de episódios")
 
+    # isenção declarada de lote (v1.5/M2) — escopo "id novo": legado nomeado sai do universo
+    isentos, prob_isencao, avisos_isencao = ids_isentos(registro, args.isentar_lote or [])
+    problemas.extend(prob_isencao)
+    for aviso in avisos_isencao:
+        print(aviso)
+
     # universo
     ids_fila = [item.get("id") for item in fila_bruta]
     sem_id = [f"posição {i}" for i, id_ in enumerate(ids_fila)
@@ -231,11 +275,18 @@ def checar(args):
         problemas.append(f"{len(sem_id)} ITEM(NS) DA FILA SEM CAMPO 'id' legível "
                          f"(fila malformada): " + ", ".join(sem_id))
     ids_fila = [i for i in ids_fila if isinstance(i, str) and i]
-    universo = ids_fila if args.tudo else [i for i in ids_fila if i not in publicados]
+    candidatos = ids_fila if args.tudo else [i for i in ids_fila if i not in publicados]
+    universo = [i for i in candidatos if i not in isentos]
+    n_isentados = len(candidatos) - len(universo)
     rotulo = "biblioteca inteira" if args.tudo else "itens ainda não publicados"
-    if len(universo) == 0:
+    if n_isentados:
+        rotulo += f"; {n_isentados} isentado(s) por --isentar-lote"
+    if len(candidatos) == 0:
         problemas.append(f"UNIVERSO VAZIO: 0 itens verificados ({rotulo}). Zero verificados "
                          "= FALHA, não sucesso — confira --fila/--publicados/--tudo.")
+    elif len(universo) == 0:
+        print(f"[aviso] 0 itens RESTANTES após a isenção ({n_isentados} isentado(s)) — "
+              "universo foi medido; nada novo a verificar.")
 
     # registro-minuta nunca aprova
     if registro.get("MINUTA_AGUARDA_AVAL"):
@@ -243,9 +294,10 @@ def checar(args):
                          "Rafael; nenhum lote dele conta como aprovação.")
         indice = {}
     else:
-        indice = indice_aprovados(registro)
+        indice, prob_lotes = indice_aprovados(registro)
+        problemas.extend(prob_lotes)
         if not indice:
-            problemas.append("REGISTRO SEM NENHUM LOTE 'aprovado': o gate não tem o que aceitar.")
+            problemas.append("REGISTRO SEM NENHUM LOTE 'aprovado' válido: o gate não tem o que aceitar.")
 
     # órfãos + hashes
     orfaos, hash_ruim = [], []
@@ -339,23 +391,35 @@ def auto_teste():
         def registro(lotes):
             return {"versao_schema": 1, "lotes": lotes}
 
-        lote_ok = {"lote": "T-OK", "status": "aprovado",
-                   "episodios": [{"id": "ep_ok", "hash_roteiro": hash_ok}]}
+        AVAL = {"aprovado_por": "Fixture Aprovador (auto-teste)",
+                "evidencia": "fixture do --auto-teste — nunca publicar"}
+        lote_ok = dict({"lote": "T-OK", "status": "aprovado",
+                        "episodios": [{"id": "ep_ok", "hash_roteiro": hash_ok}]}, **AVAL)
+        lote_legado = {"lote": "T-LEGADO", "status": "pendente_ratificacao",
+                       "episodios": [{"id": "ep_legado_isento", "hash_roteiro": None}]}
 
         fila_ok = escreve("fila_ok.json", [{"id": "ep_ok"}])
         fila_orfao = escreve("fila_orfao.json", [{"id": "ep_ok"}, {"id": "teste_semeado_sem_aval"}])
         fila_hash = escreve("fila_hash.json", [{"id": "ep_hash_trocado"}])
         fila_vazia = escreve("fila_vazia.json", [])
         fila_sem_id = escreve("fila_sem_id.json", [{"id": "ep_ok"}, {"caption": "item sem id"}])
+        fila_legado = escreve("fila_legado.json", [{"id": "ep_ok"}, {"id": "ep_legado_isento"}])
+        fila_legado_e_orfao = escreve("fila_legado_e_orfao.json",
+                                      [{"id": "ep_ok"}, {"id": "ep_legado_isento"},
+                                       {"id": "teste_semeado_sem_aval"}])
         reg_ok = escreve("reg_ok.json", registro([lote_ok]))
         reg_hash_errado = escreve("reg_hash_errado.json", registro([
-            {"lote": "T-HASH", "status": "aprovado",
-             "episodios": [{"id": "ep_hash_trocado", "hash_roteiro": hash_ok}]}]))
+            dict({"lote": "T-HASH", "status": "aprovado",
+                  "episodios": [{"id": "ep_hash_trocado", "hash_roteiro": hash_ok}]}, **AVAL)]))
         reg_minuta = escreve("reg_minuta.json",
                              dict(registro([lote_ok]), MINUTA_AGUARDA_AVAL=True))
-        reg_extra = escreve("reg_extra.json", registro([lote_ok, {
+        reg_extra = escreve("reg_extra.json", registro([lote_ok, dict({
             "lote": "T-EXTRA", "status": "aprovado",
-            "episodios": [{"id": "ep_fora_da_fila", "hash_roteiro": hash_ok}]}]))
+            "episodios": [{"id": "ep_fora_da_fila", "hash_roteiro": hash_ok}]}, **AVAL)]))
+        reg_sem_autor = escreve("reg_sem_autor.json", registro([
+            {"lote": "T-SEM-AUTOR", "status": "aprovado",
+             "episodios": [{"id": "ep_ok", "hash_roteiro": hash_ok}]}]))
+        reg_com_legado = escreve("reg_com_legado.json", registro([lote_ok, lote_legado]))
 
         base = ["--fontes", fontes, "--aprovacoes"]
 
@@ -371,10 +435,22 @@ def auto_teste():
              ["--fila", fila_ok] + base + [reg_minuta], EXIT_REPROVADO, None),
             ("T7 controle POSITIVO: item de fila sem campo 'id' TEM de reprovar",
              ["--fila", fila_sem_id] + base + [reg_ok], EXIT_REPROVADO, None),
+            ("T8 controle POSITIVO (v1.5/M2): lote 'aprovado' sem aprovado_por+evidencia "
+             "TEM de reprovar (gate autentica APROVAÇÃO, não só conteúdo)",
+             ["--fila", fila_ok] + base + [reg_sem_autor], EXIT_REPROVADO, "T-SEM-AUTOR"),
+            ("T9 controle POSITIVO (v1.5/M2): --isentar-lote NÃO absolve id novo órfão",
+             ["--fila", fila_legado_e_orfao] + base + [reg_com_legado,
+              "--isentar-lote", "T-LEGADO"], EXIT_REPROVADO, "teste_semeado_sem_aval"),
+            ("T11 controle POSITIVO (v1.5/M2): --isentar-lote de lote INEXISTENTE reprova",
+             ["--fila", fila_ok] + base + [reg_ok,
+              "--isentar-lote", "T-FANTASMA"], EXIT_REPROVADO, "T-FANTASMA"),
             ("T5 controle NEGATIVO: fila toda aprovada TEM de passar",
              ["--fila", fila_ok] + base + [reg_ok], EXIT_OK, None),
             ("T6 controle NEGATIVO segue válido: aprovação extra fora da fila não atrapalha",
              ["--fila", fila_ok] + base + [reg_extra], EXIT_OK, None),
+            ("T10 controle NEGATIVO (v1.5/M2): legado isentado por flag passa até ratificação",
+             ["--fila", fila_legado] + base + [reg_com_legado,
+              "--isentar-lote", "T-LEGADO"], EXIT_OK, None),
         ]
 
         for rotulo, cli, esperado, semeado in casos:
@@ -422,6 +498,10 @@ def main(argv=None):
     ap.add_argument("--publicados", help="state_published.json (universo = fila - publicados)")
     ap.add_argument("--fontes", help="diretório dos episodios_*.py (obrigatório: hash é dimensão do gate)")
     ap.add_argument("--tudo", action="store_true", help="verifica a biblioteca inteira, publicados inclusive")
+    ap.add_argument("--isentar-lote", action="append", metavar="LOTE",
+                    help="isenta do universo os ids do lote NOMEADO (ex.: LEGADO-PRE-GATE "
+                         "até ratificação) — isenção declarada e impressa, nunca embutida; "
+                         "repetível; lote inexistente REPROVA (v1.5/M2)")
     ap.add_argument("--auto-teste", action="store_true", help="roda os controles semeados e grava a prova")
     ap.add_argument("--hash", metavar="ID", help="imprime o hash canônico do episódio ID (exige --fontes)")
     args = ap.parse_args(argv)

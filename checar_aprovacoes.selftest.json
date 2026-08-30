@@ -1,6 +1,6 @@
 {
-  "script_sha256": "c45f5a8d62ac0dd25e3af1e4affe256d30891a2dd437f5b13371ebf6a10f1681",
-  "quando": "2026-08-30T04:29:13.337520+00:00",
+  "script_sha256": "70f54f10e2127139f02243595a029192cd6c825c1966c91b581f9a42a7713e2f",
+  "quando": "2026-08-30T21:29:23.209698+00:00",
   "resultados": [
     {
       "caso": "T1 controle POSITIVO: órfão semeado na fila TEM de reprovar",
@@ -38,6 +38,27 @@
       "passou": true
     },
     {
+      "caso": "T8 controle POSITIVO (v1.5/M2): lote 'aprovado' sem aprovado_por+evidencia TEM de reprovar (gate autentica APROVAÇÃO, não só conteúdo)",
+      "exit_obtido": 1,
+      "exit_esperado": 1,
+      "id_semeado_visto": true,
+      "passou": true
+    },
+    {
+      "caso": "T9 controle POSITIVO (v1.5/M2): --isentar-lote NÃO absolve id novo órfão",
+      "exit_obtido": 1,
+      "exit_esperado": 1,
+      "id_semeado_visto": true,
+      "passou": true
+    },
+    {
+      "caso": "T11 controle POSITIVO (v1.5/M2): --isentar-lote de lote INEXISTENTE reprova",
+      "exit_obtido": 1,
+      "exit_esperado": 1,
+      "id_semeado_visto": true,
+      "passou": true
+    },
+    {
       "caso": "T5 controle NEGATIVO: fila toda aprovada TEM de passar",
       "exit_obtido": 0,
       "exit_esperado": 0,
@@ -50,7 +71,14 @@
       "exit_esperado": 0,
       "id_semeado_visto": null,
       "passou": true
+    },
+    {
+      "caso": "T10 controle NEGATIVO (v1.5/M2): legado isentado por flag passa até ratificação",
+      "exit_obtido": 0,
+      "exit_esperado": 0,
+      "id_semeado_visto": null,
+      "passou": true
     }
   ],
-  "nota": "O check demonstrou reprovar os 5 controles positivos semeados (exit 1 observado em subprocesso real) e aprovar os negativos (exit 0). Só a partir desta prova a execução normal passa a valer."
+  "nota": "O check demonstrou reprovar os 8 controles positivos semeados (exit 1 observado em subprocesso real) e aprovar os negativos (exit 0). Só a partir desta prova a execução normal passa a valer."
 }
