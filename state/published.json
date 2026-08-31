@@ -1161,10 +1161,23 @@
       "media_id": "18104596403166733",
       "at": "2026-08-30T18:41:10.679229+00:00",
       "modo_reel": "normal"
+    },
+    {
+      "id": "complexos-seg",
+      "kind": "seq",
+      "media_id": "18005387945994762",
+      "at": "2026-08-31T20:26:42.172080+00:00"
+    },
+    {
+      "id": "pnc_mochila",
+      "kind": "reel",
+      "media_id": "18105540575232566",
+      "at": "2026-08-31T20:26:42.172080+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-08-30",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-08-30",
-  "last_seq_date": "2026-08-30"
+  "last_reel_date": "2026-08-31",
+  "last_seq_date": "2026-08-31"
 }
