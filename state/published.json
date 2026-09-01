@@ -1174,10 +1174,16 @@
       "media_id": "18105540575232566",
       "at": "2026-08-31T20:26:42.172080+00:00",
       "modo_reel": "normal"
+    },
+    {
+      "id": "complexos-ter",
+      "kind": "seq",
+      "media_id": "18112995215076710",
+      "at": "2026-09-01T15:30:50.680538+00:00"
     }
   ],
   "last_post_date": "2026-08-30",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-08-31",
-  "last_seq_date": "2026-08-31"
+  "last_seq_date": "2026-09-01"
 }
