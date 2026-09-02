@@ -1192,10 +1192,17 @@
       "kind": "seq",
       "media_id": "17975262413915504",
       "at": "2026-09-02T17:29:42.218100+00:00"
+    },
+    {
+      "id": "discrepancia_membro",
+      "kind": "reel",
+      "media_id": "18217336102342219",
+      "at": "2026-09-02T18:50:33.910497+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-09-01",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-08-31",
+  "last_reel_date": "2026-09-02",
   "last_seq_date": "2026-09-02"
 }
