@@ -1199,10 +1199,16 @@
       "media_id": "18217336102342219",
       "at": "2026-09-02T18:50:33.910497+00:00",
       "modo_reel": "normal"
+    },
+    {
+      "id": "complexos-qui",
+      "kind": "seq",
+      "media_id": "17878873692652626",
+      "at": "2026-09-03T15:30:44.699735+00:00"
     }
   ],
   "last_post_date": "2026-09-01",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-09-02",
-  "last_seq_date": "2026-09-02"
+  "last_seq_date": "2026-09-03"
 }
