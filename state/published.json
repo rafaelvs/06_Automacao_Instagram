@@ -1217,10 +1217,17 @@
       "kind": "seq",
       "media_id": "18095433158565104",
       "at": "2026-09-04T15:30:46.831818+00:00"
+    },
+    {
+      "id": "qa_gesso_molhar",
+      "kind": "reel",
+      "media_id": "18102868409205916",
+      "at": "2026-09-04T18:31:33.044629+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-09-03",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-09-02",
+  "last_reel_date": "2026-09-04",
   "last_seq_date": "2026-09-04"
 }
