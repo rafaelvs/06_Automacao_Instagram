@@ -1248,10 +1248,17 @@
       "kind": "seq",
       "media_id": "17909710335284401",
       "at": "2026-09-06T15:52:43.868060+00:00"
+    },
+    {
+      "id": "fixador_ou_haste",
+      "kind": "reel",
+      "media_id": "18115153069952022",
+      "at": "2026-09-06T19:39:38.890903+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-09-06",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-09-04",
+  "last_reel_date": "2026-09-06",
   "last_seq_date": "2026-09-06"
 }
