@@ -1255,10 +1255,16 @@
       "media_id": "18115153069952022",
       "at": "2026-09-06T19:39:38.890903+00:00",
       "modo_reel": "normal"
+    },
+    {
+      "id": "s_on_osso_cresce",
+      "kind": "seq",
+      "media_id": "18120989101924812",
+      "at": "2026-09-07T15:30:58.111834+00:00"
     }
   ],
   "last_post_date": "2026-09-06",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-09-06",
-  "last_seq_date": "2026-09-06"
+  "last_seq_date": "2026-09-07"
 }
