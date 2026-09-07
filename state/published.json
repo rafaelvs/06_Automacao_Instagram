@@ -1261,10 +1261,17 @@
       "kind": "seq",
       "media_id": "18120989101924812",
       "at": "2026-09-07T15:30:58.111834+00:00"
+    },
+    {
+      "id": "qa_tirar_placa",
+      "kind": "reel",
+      "media_id": "18003717998785418",
+      "at": "2026-09-07T19:18:49.031074+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-09-06",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-09-06",
+  "last_reel_date": "2026-09-07",
   "last_seq_date": "2026-09-07"
 }
