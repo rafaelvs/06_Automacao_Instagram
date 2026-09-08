@@ -1268,10 +1268,16 @@
       "media_id": "18003717998785418",
       "at": "2026-09-07T19:18:49.031074+00:00",
       "modo_reel": "normal"
+    },
+    {
+      "id": "s_on_regra_milimetro",
+      "kind": "seq",
+      "media_id": "18101107253631345",
+      "at": "2026-09-08T15:30:51.600148+00:00"
     }
   ],
   "last_post_date": "2026-09-06",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-09-07",
-  "last_seq_date": "2026-09-07"
+  "last_seq_date": "2026-09-08"
 }
