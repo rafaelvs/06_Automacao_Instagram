@@ -1286,10 +1286,17 @@
       "kind": "seq",
       "media_id": "17901745467352717",
       "at": "2026-09-09T15:30:58.511208+00:00"
+    },
+    {
+      "id": "tempo_tratamento",
+      "kind": "reel",
+      "media_id": "17880470169622984",
+      "at": "2026-09-09T18:45:08.834421+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-09-08",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-09-07",
+  "last_reel_date": "2026-09-09",
   "last_seq_date": "2026-09-09"
 }
