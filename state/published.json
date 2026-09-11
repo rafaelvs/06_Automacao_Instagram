@@ -1311,10 +1311,17 @@
       "kind": "seq",
       "media_id": "17966208807008613",
       "at": "2026-09-11T15:30:58.434483+00:00"
+    },
+    {
+      "id": "qa_cigarro_osso",
+      "kind": "reel",
+      "media_id": "18118293514959170",
+      "at": "2026-09-11T18:41:29.209323+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-09-10",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-09-09",
+  "last_reel_date": "2026-09-11",
   "last_seq_date": "2026-09-11"
 }
