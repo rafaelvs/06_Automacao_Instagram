@@ -92,9 +92,10 @@
 
 | Data prevista | Dump | Estado |
 |---|---|---|
-| 05/09 | pulso + insights por peça (1º delta da era 3) | [PLANEJADO] |
-| 12/09 | pulso + insights por peça | [PLANEJADO] |
-| 15/09 | pulso + insights por peça (fechamento da janela) | [PLANEJADO] |
+| 02/09 | pulso 30d (não previsto) | **RECUPERADO em 11/09** do log do run `33649533537` (dispatch avulso de 02/09 que nunca foi salvo). Proveniência diferente das demais — o arquivo carrega bloco `_procedencia`. Janela `2026-08-03 a 2026-09-02`, 36 peças, followers 1309. |
+| 05/09 | pulso + insights por peça (1º delta da era 3) | **NÃO OCORREU** (registrado em 11/09). A tarefa `instagram-dumps-janela-v2` está `enabled` e **nunca teve `lastRunAt`**: o cron de dias esparsos (`0 21 5,12,15 9 *`) não recuperou a ocorrência. Perda definitiva do corte temporal daquele dia; as métricas POR PEÇA são cumulativas e sobrevivem nos dumps seguintes. Cron corrigido em 11/09 para `0 21 12,13,14,15 9 *`. |
+| 11/09 (≡ 12/09 UTC) | pulso 30d + 90d (mitigação) | **OCORRIDO** — runs `34660456162` (30d) e `34660462168` (90d), salvos como `insights_2026-09-12_30d.json` / `_90d.json`. ⚠️ o `_90d` está **TRUNCADO** em 100 peças (janela declara 14/06; peça mais antiga 19/06) — a era 1/2 não está no arquivo. |
+| 12–15/09 | pulso + insights por peça (4 tentativas consecutivas) | [PLANEJADO] — em 15/09, disparar TAMBÉM `-f days=31`, único recorte que fecha exatamente 16/08→15/09. |
 
 Registrar em cada dump: `followers_count` (série de saldo líquido só tem 2 pontos), `reach_por_follow_type` 30d (série de fadiga c1) e os insights por peça da era 3 (hoje 100% sem delta). Dump que não acontecer na data vira entrada de NÃO-ocorrência.
 
@@ -105,3 +106,37 @@ Registrar em cada dump: `followers_count` (série de saldo líquido só tem 2 po
 - **O que muda:** 3 reels do formato novo "Anatomia de um Caso" (ilustração esquemática + caso da literatura) enfileirados para **23/09, 30/09 e 07/10** — todos APÓS o fechamento da janela (15/09). Render do motor: commit `ef150ab` (opt-in, byte-identidade provada — episódios antigos intocados). Piloto de render aprovado pelo Rafael em 30/08.
 - **O que contamina:** a janela, nada. A CAUDA sim: a partir de 23/09 o mix de reels ganha um formato novo — a v2.1 (28/10) deve ler os reel-casos em estrato próprio (formato estreia com hipótese de descoberta 10-40× do benchmark; não misturar com Q&A/narrados no watch time).
 - **Como ler:** estrato "reel-caso" na v2.1; métrica de prova da Aposta 6: ≥1 piloto ≥150 views em 14d; gate de morte barata: 3 pilotos <150 → revisar formato antes do lote 2.
+
+---
+
+### 11/09/2026 — MERGE da v1.5 (M1–M5) registrado com atraso
+
+- **O que muda:** as melhorias M1–M5 da rodada v1.5 saíram da branch `auditoria/v15-provas` e entraram na main em **`32fd4d9` (30/08/2026 18:43:56 BRT)**, com a rodada publicada em `c140994` (18:44:24). A entrada de 30/08 deste changelog ainda dizia "aguarda merge do dono" e pedia "registrar a data do merge aqui" — fica registrado agora, 12 dias depois. Desde o merge, o `timeout-minutes: 15` e o step advisory do `checar_cfm.py` valem no `publish.yml` em produção (156 execuções no período).
+- **O que contamina:** nada de conteúdo. Registro: durante 12 dias o changelog descreveu como "em branch" um estado que já estava em produção — exatamente a doença que ele existe para impedir.
+- **Como a v2 deve ler:** M1–M5 valendo em produção desde 30/08 18:43 BRT.
+
+### 11/09/2026 — 4 PUBLICAÇÕES DUPLICADAS na janela (2 no feed, 2 em stories) + 7 dias de stories contaminados
+
+- **O que muda (fato, não plano):** a máquina publicou em duplicidade dentro da janela limpa, por dois defeitos distintos, e o `state/published.json` registra **um** item por par (zero ids duplicados — o instrumento é cego por construção).
+  - **FEED/REELS — entram na edge `/media` e portanto na leitura da v2:**
+    `18108017225169506` + `18101453204354733` (reel `qa_pe_torto_bebe`, 19/08 18:15 e 18:17) e
+    `18037328645821486` + `18581696311066646` (carrossel `post45`, 20/08 18:19 e 18:21).
+    Os dois segundos elementos são **órfãos**: não constam do state. Causa: runs `32286338701` e `32402567094` publicaram, perderam o estado no `git pull --rebase` (5 conflitos idênticos em `state/published.json`) e o run seguinte republicou.
+  - **STORIES (efêmeros, 24 h — não entram em `/media`):** `stories_ativos` ≠ 5 em **18/08 (6), 24/08 (12), 30/08 (6), 01/09 (7), 03/09 (7), 07/09 (7), 09/09 (10)** — 20 frames a mais do que o desenho. Cada anomalia casa por `media_id` com um run vermelho do dia anterior.
+- **Causas, medidas (auditoria v1.6):** (i) `publish.py:_e_falha_de_auth` classificava erro transitório de container da Meta como falha de AUTENTICAÇÃO — a família `2207xxx` chega no `error_subcode` e o código só a procurava no `code`; o run abortava no frame 3/5, os frames 1–2 ficavam no ar sem registro, e o run seguinte republicava a sequência inteira; (ii) `actions/checkout@v4` sem `ref:` fixa o SHA do momento do evento — em 08/09 o run agendado leu um state anterior ao push do run gêmeo e republicou os 5 frames.
+- **O que contamina:** a leitura da v2. **Deduplicar os 2 pares de feed/reel antes de qualquer média, mediana ou contagem de peças** (mesma disciplina já aplicada à duplicata `18109531369972268` de 15/07). Nos stories, **excluir os 7 dias acima** ou normalizar por `stories_ativos` — 09/09 é o dia de maior views da janela e tem o dobro de telas no ar.
+- **Nota de semântica:** o campo `dia` de `state/stories_serie.json` é o dia da **MEDIÇÃO** (leitura da edge `/stories` ~07h UTC, 24 h para trás). A publicação correspondente é de **D−1**. Vale para a série inteira.
+
+### 11/09/2026 — 4 runs vermelhos desde a v1.5 gritaram "renove o token" com o token vivo
+
+- **O que muda:** runs `33408793664` (31/08), `33648947670` (02/09), `34042496969` (06/09) e `34245242476` (08/09) terminaram em `::error::AUTENTICACAO FALHOU` + "A fila esta PARADA". O token estava íntegro (renovações automáticas em 31/08 `ae8006d` e 07/09 `bde7df6`; `expira_em 2026-11-06`) e a fila NÃO parou. Dentro da janela inteira (16/08→15/09) são **13 runs vermelhos operacionais**, 6 deles com a mesma má classificação (`gh run list --workflow publish.yml --status failure --limit 100`).
+- **Efeito colateral medido:** atraso de horário em peças da janela — sequência de 31/08 às 17:26 BRT (alvo 12:30), reel de 06/09 às 16:39 e de 07/09 às 16:18 (alvo 15:00). A hora de publicação é confundidor não declarado na leitura por peça.
+- **Como a v2 deve ler:** 3 de 8 reels da janela saíram 1h18 a 2h26 depois do alvo; não ler diferença de reach como efeito de conteúdo sem estratificar por hora (o dado está em `state/published.json`).
+
+### 11/09/2026 — Mudanças de COLETA feitas dentro da janela (regra 1 do changelog cobre coleta)
+
+- Cron da tarefa `instagram-dumps-janela-v2`: `0 21 5,12,15 9 *` → `0 21 12,13,14,15 9 *` (dias consecutivos).
+- `SKILL.md` dos dumps: validações novas (e) `erros` só o crônico conhecido, (f) teste de truncamento, (g) nunca sobrescrever; e `-f days=31` no dia 15/09.
+- Tarefa `instagram-auditoria-v2`: one-time 16/09 → cron `0 9 16,17,18 9 *` com guarda de idempotência no passo 0 (o agendador tem modo de falha desconhecido: em 01/09 duas one-time a 30 min de distância tiveram destinos opostos).
+- 2 pulsos extras de leitura em 11/09 (runs `34660456162` e `34660462168`) — leitura, não publicação.
+- Patch proposto (NÃO commitado nesta sessão) em `AUDITORIA/patches/v16_2026-09-11_classificador-lint-pulso.diff`: classificador de erro da Meta, exit real do `checar_cfm.py`, nomeação de métrica + série diária de seguidores + paginação no `insights_pulse.py`, e `schedule` diário em `ci-testes.yml`/`gate-aprovacoes.yml`. Quando for mergeado, **registrar a data aqui** — e desta vez conferir em 24 h.

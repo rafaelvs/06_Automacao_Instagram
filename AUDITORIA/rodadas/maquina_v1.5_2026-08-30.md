@@ -121,7 +121,7 @@ Como cada dimensão foi medida (fonte da verdade, reexecutável):
 6. **Segurança** — greps de segredos/PII nos arquivos novos e working tree = só placeholders; banco_casos juridicamente correto; curl anônimo prova previews baixáveis (HTTP 206). Desconto: governança clínica exposta em repo público (54/60 sem registro de aprovação, com CRM, ao lado do calendário futuro), citações verbatim do chat + username em 6 pontos, ~782 MiB crescendo, histórico nunca varrido por conteúdo, logs de Actions públicos não medidos como superfície.
 
 ```bash
-python "C:\Users\rafae\Claude Code\_Ferramentas_Comuns\auditoria\fechar_rubrica.py" "C:\Users\rafae\AppData\Local\Temp\claude\C--Users-rafae-Claude-Code\525827ef-fe65-4881-a060-53ff1e22e671\scratchpad\rodada_maquina_v15.md"
+python "<workspace>/_Ferramentas_Comuns\auditoria\fechar_rubrica.py" "<scratchpad-da-sessao>"
 ```
 
 ---
@@ -210,7 +210,7 @@ Top 5, todas código/CI/registro — **nenhuma toca perfil nem fila publicável 
 
 **M4 — Ferramenta da v2 durável e à prova de armadilha (achado A4, dano: v2 abre cega)**
 - Copiar `resultado_series_temas.json`, `monta_master.py`, `analise_series_temas.py` do scratchpad p/ `_GRANDE_REVISAO_2026-08/`; trocar BASE por `os.path.dirname(__file__)` em `telemetria_sinais.py:16` e nos 2 copiados; rodar 1 vez do caminho novo (prova).
-- `C:/Users/rafae/.claude/scheduled-tasks/instagram-auditoria-v2/SKILL.md`: (i) rodar `fechar_rubrica.py` antes de publicar número; (ii) fadiga pelas séries reach-seguidores-30d/likes-por-peça/saldo, nunca o 512→390; (iii) `git log --since-as-filter="2026-08-16 00:00:00 -0300"`; (iv) pauta: decidir reel04–30 antes de 18/10 + re-rodar `--auto-teste` antes de julgar o gate; (v) item 9: auditar aprovacoes.json inteiro, sem lista fixa; (vi) passo D-day dos verbetes (lote VERBETES-2026-09 + 2/sem + regenerar PROGRAMACAO) e estado do lote KIDS.
+- `<home>/.claude/scheduled-tasks/instagram-auditoria-v2/SKILL.md`: (i) rodar `fechar_rubrica.py` antes de publicar número; (ii) fadiga pelas séries reach-seguidores-30d/likes-por-peça/saldo, nunca o 512→390; (iii) `git log --since-as-filter="2026-08-16 00:00:00 -0300"`; (iv) pauta: decidir reel04–30 antes de 18/10 + re-rodar `--auto-teste` antes de julgar o gate; (v) item 9: auditar aprovacoes.json inteiro, sem lista fixa; (vi) passo D-day dos verbetes (lote VERBETES-2026-09 + 2/sem + regenerar PROGRAMACAO) e estado do lote KIDS.
 - `.../instagram-dumps-janela-v2/SKILL.md`: selecionar runs por `gh run list --json databaseId,createdAt` com `createdAt` pós-dispatch; validar que `janela` do JSON termina HOJE; rotular _30d/_90d pelo conteúdo; exigir `conta.followers_count` (e `reach_por_follow_type` no 30d).
 
 **M5 — Checador no caminho vivo + tetos (achado A5, dano: fila congelada 6h / violação só descoberta às 15h)**
