@@ -125,6 +125,27 @@ if d:
     # dump de 05/09) por subtracao a partir do valor de hoje.
     out["conta"]["follower_count_diario"] = d[0].get("values", [])
 
+# ── 1b) QUEM SAO os seguidores (11/09/2026) ──────────────────────────────────────────────
+# Por que existe: em 30 dias com 36 pecas o perfil alcancou 196 das 1311 contas que o
+# seguem (15%); a mediana por peca e' 2,3% da base, contra 20-40% de referencia de mercado.
+# Sem a demografia nao da para separar "base inflada/inativa" (o denominador esta errado)
+# de "a plataforma parou de distribuir" — e as duas conclusoes levam a estrategias OPOSTAS.
+# `follower_demographics` e' lifetime e exige >=100 seguidores; cada breakdown vem numa
+# chamada propria porque a Meta recusa varios de uma vez. Degrada em silencio (o pulso NAO
+# pode quebrar por causa desta coleta nova) e o erro entra em `erros`, nomeado.
+for _bk in ("country", "city", "age", "gender"):
+    _r = get(f"{IG_USER}/insights", metric="follower_demographics", period="lifetime",
+             metric_type="total_value", timeframe="this_month", breakdown=_bk)
+    if "_erro" in _r:
+        out["erros"].append(f"[follower_demographics+{_bk}] {_r['_erro']}")
+        continue
+    try:
+        _res = _r["data"][0]["total_value"]["breakdowns"][0]["results"]
+        out.setdefault("seguidores_demografia", {})[_bk] = {
+            "/".join(x.get("dimension_values", ["?"])): x.get("value") for x in _res}
+    except (KeyError, IndexError, TypeError) as _e:
+        out["erros"].append(f"[follower_demographics+{_bk}] formato inesperado ({type(_e).__name__})")
+
 # ── 2) MIDIA: pecas da janela + insights POR PECA (o dado que o app nao da) ───────────────
 media = []
 _FIELDS = "id,media_type,media_product_type,timestamp,like_count,comments_count"
@@ -233,6 +254,11 @@ print("===INSIGHTS_JSON_END===")
 # portao reprova so' o que for NOVO: erro fora da lista de conhecidos derruba o run.
 ERROS_CONHECIDOS = {
     "total_interactions+follow_type",   # cronico desde 02/08/2026 (5 dumps medidos)
+    # Coleta NOVA e OPCIONAL (11/09/2026, diagnostico da estagnacao): o dump da janela
+    # v2 NAO pode ser reprovado por causa dela. Se a permissao faltar, o erro aparece
+    # nomeado em `erros` e o resto do pulso segue valendo.
+    "follower_demographics+country", "follower_demographics+city",
+    "follower_demographics+age", "follower_demographics+gender",
 }
 _novos = [e for e in out["erros"]
           if not (e.startswith("[") and e[1:e.find("]")] in ERROS_CONHECIDOS)]
