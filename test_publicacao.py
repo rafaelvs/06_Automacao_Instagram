@@ -185,6 +185,18 @@ TABELA = [
     ("parametro invalido (100)", 400, {"error": {"type": "OAuthException", "code": 100}}, False),
     ("video corrompido (2207026)", 400, {"error": {"type": "OAuthException", "code": 2207026}}, False),
     ("erro de midia novo (2207099)", 400, {"error": {"type": "OAuthException", "code": 2207099}}, False),
+    # --- FORMA REAL DA META (auditoria v1.6): a familia 2207xxx chega no error_subcode,
+    #     com code generico (24 / 9007 / 9004). Payloads colhidos dos runs vermelhos
+    #     33408793664 (31/08), 34042496969 (06/09) e 32043350962 (17/08).
+    ("Media Not Found (code 24 / sub 2207006)", 400,
+     {"error": {"type": "OAuthException", "code": 24, "error_subcode": 2207006}}, False),
+    ("container nao pronto (code 9007 / sub 2207027)", 400,
+     {"error": {"type": "OAuthException", "code": 9007, "error_subcode": 2207027}}, False),
+    ("midia nao baixavel (code 9004 / sub 2207052)", 400,
+     {"error": {"type": "OAuthException", "code": 9004, "error_subcode": 2207052}}, False),
+    # --- CONTROLE: token morto continua vermelho MESMO com subcode de midia junto ---
+    ("token morto + sub de midia (190 / 2207006)", 400,
+     {"error": {"type": "OAuthException", "code": 190, "error_subcode": 2207006}}, True),
     ("erro generico (500)", 500, {"error": {"type": "Exception", "code": 1}}, False),
     ("corpo vazio", 500, {}, False),
     ("corpo HTML/lista (gateway)", 502, ["gateway"], False),

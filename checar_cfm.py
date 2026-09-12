@@ -237,4 +237,12 @@ def imprimir_seo_advisory(seo_viol, seo_rev):
 
 
 if __name__ == "__main__":
-    main()
+    # v1.6 (11/09/2026): ate aqui o main() descartava o retorno e o script SEMPRE saia 0.
+    # O step advisory do publish.yml e' `python checar_cfm.py || echo "::warning::..."` —
+    # com exit fixo em 0 o `||` era codigo morto: uma VIOLACAO real de CFM nao acendia
+    # NADA (provado com semente: 5 VIOLACOES, exit 0). REVISAR nao muda o exit, senao os
+    # ~30 REVISAR cronicos do acervo viravam alarme permanente (falso alarme e' pior que
+    # ausencia). Import local para nao mexer no topo do arquivo.
+    import sys as _sys
+    _viol, _rev = main()
+    _sys.exit(1 if _viol else 0)

@@ -5,6 +5,14 @@ name: ci-testes
 on:
   push:
   pull_request:
+  # v1.6 (11/09/2026): `on: push` ficou 12 dias com ZERO execucoes — os 38 commits do
+  # periodo sao 100% do github-actions[bot], e push feito com GITHUB_TOKEN nao dispara
+  # workflow (guarda anti-recursao do GitHub). Num repo cujo unico committer diario e' o
+  # robo, `on: push` e' gatilho estruturalmente inalcancavel. O cron diario e' o batimento
+  # cardiaco: prova que a suite continua VIVA sem depender de push humano.
+  schedule:
+    - cron: "40 9 * * *"      # 06:40 BRT, fora de qualquer janela de publicacao
+  workflow_dispatch:
 
 permissions:
   contents: read

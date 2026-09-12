@@ -91,7 +91,7 @@ RATE_CODES     = {4, 17, 32, 341, 613}
 # 3) Parametro/midia invalida: problema DAQUELE item, nao do token. O robo loga e
 #    segue para os outros blocos (um reel corrompido nao pode travar a sequencia do dia).
 CONTEUDO_CODES = {100, 352, 2207001, 2207003, 2207004, 2207005, 2207006, 2207020,
-                  2207026, 2207032, 2207053}
+                  2207026, 2207027, 2207032, 2207052, 2207053}
 
 def _e_falha_de_auth(status, payload):
     # corpo pode vir vazio/HTML/lista (erro de gateway): nunca confiar no formato
@@ -103,6 +103,15 @@ def _e_falha_de_auth(status, payload):
     if isinstance(code, int) and 200 <= code <= 299: return True    # familia de permissao
     if code in RATE_CODES or code in CONTEUDO_CODES: return False
     if isinstance(code, int) and code >= 2207000: return False      # erros de container/midia
+    # v1.6 (11/09/2026): a familia 2207xxx chega no error_subcode, com `code` GENERICO
+    # (24 "Media Not Found", 9007 "media is not ready", 9004 "could not be fetched").
+    # Lendo so' o `code`, os 3 casos caiam no catch-all de OAuthException abaixo e viravam
+    # AuthError: 6 runs vermelhos na janela 16/08-08/09 abortaram a fila inteira e
+    # imprimiram "renove o token" com token vivo. As duas linhas abaixo vem DEPOIS de
+    # AUTH_CODES/AUTH_SUBCODES de proposito: token morto (190) com subcode de midia junto
+    # continua sendo tratado como token morto.
+    if sub in CONTEUDO_CODES: return False
+    if isinstance(sub, int) and sub >= 2207000: return False        # idem, pelo subcode
     if str(err.get("type", "")) == "OAuthException": return True
     return status in (401, 403)
 

@@ -18,6 +18,12 @@ on:
       - "checar_aprovacoes.selftest.json"
       - ".github/workflows/gate-aprovacoes.yml"
   workflow_dispatch:
+  # v1.6: mesmo motivo do ci-testes — push de bot nao dispara workflow. Aqui o silencio de
+  # 12 dias tinha causa legitima (a fila nao mudou), mas o gate compara FILA x REGISTRO e a
+  # fila muda tambem por state; o cron diario garante que ele seja exercitado contra a main
+  # viva antes da janela de publicacao das 15h BRT.
+  schedule:
+    - cron: "0 12 * * *"      # 09:00 BRT
 
 permissions:
   contents: read

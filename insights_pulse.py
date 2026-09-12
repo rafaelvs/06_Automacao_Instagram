@@ -50,11 +50,18 @@ out = {"janela": f"{JANELA[0]} a {JANELA[1]} (UTC, {DAYS}d)", "conta": {}, "erro
 
 # ── 1) CONTA: metricas de janela (total_value) ────────────────────────────────────────────
 # reach: serie diaria somada; demais: total_value no range. Cada metrica isolada em try p/ degradar bem.
+# v1.6: erro que nao diz QUAL metrica caiu e' indistinguivel do proximo erro. Os 5 dumps
+# de 02/08, 15/08, 02/09 e 12/09 trazem a MESMA linha generica ("unknown error"), e so' por
+# eliminacao se descobre que a metrica perdida e' total_interactions+follow_type.
+def _rotulo(metric, extra):
+    bd = extra.get("breakdown")
+    return f"{metric}+{bd}" if bd else metric
+
 def conta_metrica(metric, **extra):
     r = get(f"{IG_USER}/insights", metric=metric, period="day",
             since=SINCE, until=NOW, **extra)
     if "_erro" in r:
-        out["erros"].append(r["_erro"]); return None
+        out["erros"].append(f"[{_rotulo(metric, extra)}] {r['_erro']}"); return None
     return r.get("data", [])
 
 d = conta_metrica("reach")
@@ -82,8 +89,9 @@ for m in ("views", "reach", "total_interactions"):
             bks = d[0]["total_value"]["breakdowns"][0]["results"]
             out["conta"][f"{m}_por_follow_type"] = {
                 "/".join(b.get("dimension_values", ["?"])): b.get("value") for b in bks}
-        except Exception:
-            pass
+        except Exception as e:
+            # v1.6: era `pass` — breakdown ilegivel sumia sem deixar rastro em `erros`.
+            out["erros"].append(f"[{m}+follow_type] breakdown ilegivel: {e}")
 
 # TAMANHO DA BASE — sem ele nao da para separar "o Instagram parou de me entregar" de
 # "eu tenho poucos seguidores", nem dizer que fracao da base cada peca alcancou.
@@ -112,15 +120,36 @@ d = conta_metrica("follower_count")
 if d:
     vals = [v.get("value", 0) for v in d[0].get("values", [])]
     out["conta"]["novos_seguidores_janela"] = sum(vals)
+    # v1.6: a API devolve a SERIE DIARIA e o script jogava fora, guardando so' a soma —
+    # "coletado e nao lido". E' essa serie que reconstroi o saldo de um dia perdido (o
+    # dump de 05/09) por subtracao a partir do valor de hoje.
+    out["conta"]["follower_count_diario"] = d[0].get("values", [])
 
 # ── 2) MIDIA: pecas da janela + insights POR PECA (o dado que o app nao da) ───────────────
 media = []
-r = get(f"{IG_USER}/media", fields="id,media_type,media_product_type,timestamp,like_count,comments_count",
-        limit=100)
+_FIELDS = "id,media_type,media_product_type,timestamp,like_count,comments_count"
+r = get(f"{IG_USER}/media", fields=_FIELDS, limit=100)
 if "_erro" in r:
-    out["erros"].append(r["_erro"])
+    out["erros"].append(f"[media] {r['_erro']}")
 else:
-    media = [m for m in r.get("data", []) if m.get("timestamp", "")[:10] >= JANELA[0]]
+    _brutos = r.get("data", [])
+    # v1.6: sem paginacao, o 90d SATURA em 100 itens e come o inicio da propria janela que
+    # declara (o dump de 12/09 diz "desde 14/06" e a peca mais antiga e' 19/06) — a coorte
+    # velha some do arquivo SEM erro. Segue o `paging.next` ate' sair da janela.
+    _pag = r.get("paging", {}).get("cursors", {}).get("after")
+    _voltas = 0
+    while _pag and _voltas < 9:
+        _r2 = get(f"{IG_USER}/media", fields=_FIELDS, limit=100, after=_pag)
+        if "_erro" in _r2:
+            out["erros"].append(f"[media/pagina{_voltas+2}] {_r2['_erro']}"); break
+        _novos = _r2.get("data", [])
+        if not _novos: break
+        _brutos += _novos
+        if min(m.get("timestamp", "9") for m in _novos)[:10] < JANELA[0]: break
+        _pag = _r2.get("paging", {}).get("cursors", {}).get("after")
+        _voltas += 1
+    media = [m for m in _brutos if m.get("timestamp", "")[:10] >= JANELA[0]]
+    out["conta"]["media_varridas_brutas"] = len(_brutos)
 
 MET = {
     "REELS": "views,reach,likes,comments,saved,shares,total_interactions,ig_reels_avg_watch_time",
@@ -196,3 +225,19 @@ if out["erros"]:
 print("===INSIGHTS_JSON_BEGIN===")
 print(json.dumps(out, ensure_ascii=False, default=str))
 print("===INSIGHTS_JSON_END===")
+
+# ── portao de integridade do dump (v1.6) ─────────────────────────────────────────────────
+# C11 da v1.5 mandava `sys.exit(1) se erros != []`. Aplicado LITERALMENTE isso reprovaria
+# 5 de 5 dumps existentes, porque ha UM erro CRONICO da Meta (total_interactions com
+# breakdown=follow_type falha desde 02/08) — e falso alarme e' pior que ausencia. Entao o
+# portao reprova so' o que for NOVO: erro fora da lista de conhecidos derruba o run.
+ERROS_CONHECIDOS = {
+    "total_interactions+follow_type",   # cronico desde 02/08/2026 (5 dumps medidos)
+}
+_novos = [e for e in out["erros"]
+          if not (e.startswith("[") and e[1:e.find("]")] in ERROS_CONHECIDOS)]
+if _novos:
+    print(f"::error::dump PARCIAL — {len(_novos)} erro(s) fora da lista de conhecidos:")
+    for e in _novos[:12]:
+        print(f"::error::  {e[:200]}")
+    sys.exit(1)

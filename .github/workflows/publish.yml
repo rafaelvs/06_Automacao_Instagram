@@ -5,11 +5,21 @@ on:
     # GitHub usa UTC (BRT = UTC-3). O robo so publica no horario certo; o controle de
     # estado garante 1 post/1 story por dia, mesmo com varios disparos. Adensamos perto
     # das janelas-alvo porque o cron do GitHub e' "melhor esforco" e atrasa.
-    - cron: "*/30 * * * *"                  # catch-all backup (gatilho principal e cron-job.org)
+    # v1.6 (11/09/2026, P0-3): era "*/30 * * * *", que nasce nos minutos :00 e :30 — os
+    # MESMOS do gatilho externo (cron-job.org, 15:30:07). Tirar o :30 so' do cron de
+    # sequencias NAO fechava a colisao, porque este catch-all disparava no mesmo minuto.
+    # Deslocado para :05/:35: mesma frequencia de 30 min, fora dos minutos redondos que
+    # qualquer agendador externo escolhe por padrao.
+    - cron: "5,35 * * * *"                  # catch-all backup (gatilho principal e cron-job.org)
     - cron: "0,10,20,35,50 18 * * 2,4,6"    # POSTS ~15:00 BRT (Ter/Qui/Sab)
     - cron: "5,20,40 19 * * 2,4,6"          # POSTS reforco
     - cron: "0,15,35 14 * * 0"              # CARROSSEL EXTRA ~11:00 BRT (Dom) - 4o/sem, dia-duplo c/ Reel
-    - cron: "30,40,50 15 * * *"               # SEQUENCIAS ~12:30 BRT (TODOS os dias) - 5 frames em bloco
+    # v1.6 (11/09/2026, P0-3): o minuto :30 foi REMOVIDO daqui. O gatilho externo
+    # (cron-job.org) dispara 15:30:07 e o cron do GitHub nasce no mesmo minuto: os dois
+    # runs pegam o MESMO headSha, o segundo faz checkout ANTES do push do primeiro e
+    # republica o bloco inteiro. Medido em 08/09 (dois runs a 50 s, 5 frames 2x no ar).
+    # O concurrency serializa os JOBS mas nao reabre a LEITURA. :40 e :50 seguem cobrindo.
+    - cron: "40,50 15 * * *"                  # SEQUENCIAS ~12:30 BRT (TODOS os dias) - 5 frames em bloco
     - cron: "0,15,35 16 * * *"                # SEQUENCIAS reforco
     - cron: "0,10,20,35,50 18 * * 0,1,3,5"    # REELS ~15:00 BRT (Seg/Qua/Sex/Dom)
     - cron: "5,20,40 19 * * 0,1,3,5"          # REELS reforco
