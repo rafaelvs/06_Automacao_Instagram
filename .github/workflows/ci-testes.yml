@@ -31,3 +31,8 @@ jobs:
         run: python teste_publish_exit.py
       - name: Caminho de erro de auth/rate-limit (token morre no meio, 400 OAuthException)
         run: python test_publicacao.py
+      - name: Lint de LEGENDA da fila (A4, 12/09/2026: sem hashtag, 1 CTA, 1 mencao, assinatura com Medico)
+        # Auto-teste primeiro: detector que nunca reprovou nao vale (5 controles positivos semeados).
+        run: |
+          python checar_legenda.py --auto-teste
+          python checar_legenda.py

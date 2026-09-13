@@ -1,399 +1,549 @@
 {
-  "versao_schema": 1,
-  "_doc": "Registro de aprovação clínica — fonte de verdade de checar_aprovacoes.py. Só lote com status 'aprovado' libera enfileiramento; hash amarra a aprovação ao roteiro exato (edição posterior reprova).",
-  "criado_em": "2026-08-30",
-  "lotes": [
+ "versao_schema": 1,
+ "_doc": "Registro de aprovação clínica — fonte de verdade de checar_aprovacoes.py. Só lote com status 'aprovado' libera enfileiramento; hash amarra a aprovação ao roteiro exato (edição posterior reprova).",
+ "criado_em": "2026-08-30",
+ "lotes": [
+  {
+   "lote": "ALONGAMENTO-ADULTO-2026-08-30",
+   "nome": "Série Alongamento Ósseo — 11 episódios adultos",
+   "escopo": [
+    "instagram"
+   ],
+   "status": "substituido",
+   "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
+   "data": "2026-08-30",
+   "evidencia": "Decisão D2 ('D2 Alongamento adulto') no chat auditoria-instagram-v1, 30/08/2026; ratifica e estende o aval de 31/07/2026 (APROVACAO_SERIE_ALONGAMENTO_L1.md, projeto YouTube).",
+   "observacoes": "Enfileirados em 30/08/2026 (D1) com disclosure de IA na caption da ENTRADA da fila; os dicts dos episódios não foram alterados.",
+   "episodios": [
     {
-      "lote": "ALONGAMENTO-ADULTO-2026-08-30",
-      "nome": "Série Alongamento Ósseo — 11 episódios adultos",
-      "escopo": [
-        "instagram"
-      ],
-      "status": "aprovado",
-      "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
-      "data": "2026-08-30",
-      "evidencia": "Decisão D2 ('D2 Alongamento adulto') no chat auditoria-instagram-v1, 30/08/2026; ratifica e estende o aval de 31/07/2026 (APROVACAO_SERIE_ALONGAMENTO_L1.md, projeto YouTube).",
-      "observacoes": "Enfileirados em 30/08/2026 (D1) com disclosure de IA na caption da ENTRADA da fila; os dicts dos episódios não foram alterados.",
-      "episodios": [
-        {
-          "id": "discrepancia_membro",
-          "hash_roteiro": "sha256:95ee42980f5a72f2263676d5709ce80e9f27cf20611201c8937e9110fddac9a0"
-        },
-        {
-          "id": "fixador_ou_haste",
-          "hash_roteiro": "sha256:da836fb5e818c470ecb8d3fc9bb5ebe65a2691cfd526af21c4919a9159b271c8"
-        },
-        {
-          "id": "tempo_tratamento",
-          "hash_roteiro": "sha256:4700007c1f69c0ce82293dcb14af1e383c33ccfe5186f3edc3a4c1a330f795b0"
-        },
-        {
-          "id": "pseudartrose",
-          "hash_roteiro": "sha256:4b2aec4417677c229f635de9e8fdff7d912a6518bddc9e22ebb68449d2133818"
-        },
-        {
-          "id": "sequela_fratura",
-          "hash_roteiro": "sha256:ce60624d85124339edfc347e369a5eba1296c5170abb2dd2f75b31a878036356"
-        },
-        {
-          "id": "primeira_consulta",
-          "hash_roteiro": "sha256:4489a87714e4e499429cef31f5e937c861077d16fb312b9f695cba3f494cd5ec"
-        },
-        {
-          "id": "fim_tratamento",
-          "hash_roteiro": "sha256:df7370bf4da3df4d71bdf29dd178c5f5cc07cb2ca4cdae343a7adca50df29d99"
-        },
-        {
-          "id": "deformidade_angular",
-          "hash_roteiro": "sha256:6701cc048415d07f0470b25fa999495f079722f187481ea55412acdc6c691631"
-        },
-        {
-          "id": "quanto_alongar",
-          "hash_roteiro": "sha256:8cd8c0794f88e637e75e80eb292ce87314765283a7bfa8fe9665df7fdc4d0cd1"
-        },
-        {
-          "id": "trabalho_escola",
-          "hash_roteiro": "sha256:3cb4df440400d8bad8aa9ab1d916065f1d49d30797653f0e6974c398107dc02a"
-        },
-        {
-          "id": "vida_cotidiana_fixador",
-          "hash_roteiro": "sha256:98771de5c4ccca1c225356977e581c9872da49f7487979c8c369ff34af434315"
-        }
-      ]
+     "id": "discrepancia_membro",
+     "hash_roteiro": "sha256:95ee42980f5a72f2263676d5709ce80e9f27cf20611201c8937e9110fddac9a0"
     },
     {
-      "lote": "QA-LOTE2-2026-08-30",
-      "nome": "Série Respondendo (Você Perguntou) — lote 2, 12 episódios",
-      "escopo": [
-        "instagram"
-      ],
-      "status": "aprovado",
-      "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
-      "data": "2026-08-30",
-      "evidencia": "Decisão D3 ('D3 sim') no chat auditoria-instagram-v1, 30/08/2026, sobre o pacote que apresentou os 12 roteiros prontos.",
-      "observacoes": "Notas de consenso sinalizadas no cabeçalho do módulo (ep11 gesso; ep16 dor do crescimento) — apresentadas no pacote e cobertas pela aprovação.",
-      "episodios": [
-        {
-          "id": "qa_gesso_molhar",
-          "hash_roteiro": "sha256:b8e86943b962a20071a0f23d40dbb24de6af633d2aad65f6a9722c763a5f2683"
-        },
-        {
-          "id": "qa_tirar_placa",
-          "hash_roteiro": "sha256:99bcf8eb91356f5729b73ebed7e5c5ea45be44b932f5b58184fc5e35e171d920"
-        },
-        {
-          "id": "qa_cigarro_osso",
-          "hash_roteiro": "sha256:bc90751980e27015036afe5853c29f06636e6b639866e6552292ce2738976825"
-        },
-        {
-          "id": "qa_tempo_fixador",
-          "hash_roteiro": "sha256:50d32077f0fab2875c6a797123a2603202022efc3b7e804b7703cbfc0ffdad6e"
-        },
-        {
-          "id": "qa_banho_fixador",
-          "hash_roteiro": "sha256:6e854134859b61c28512fea4e3a084a2c57832a299a5797a02708dc8b6dbefad"
-        },
-        {
-          "id": "qa_dor_crescimento",
-          "hash_roteiro": "sha256:324b3fb458030bf3c733871dc137e78e81fbe92b692d90c4c8a0175c8640fcf8"
-        },
-        {
-          "id": "qa_crianca_mancando",
-          "hash_roteiro": "sha256:2d44ccbe49524df2c527a42d3688893e7499c78493167dcb8ab582d57d4bc51a"
-        },
-        {
-          "id": "qa_caroco_no_osso",
-          "hash_roteiro": "sha256:3b241f0bd3ea774974ff450f6c1013a46dd81744b0c796fb3e49c9fb5f08d357"
-        },
-        {
-          "id": "qa_perna_curta_operar",
-          "hash_roteiro": "sha256:b2945773eef7f147a9caa43e3fb6bbf16e6c25330cee16b85b9223b1e1e5104b"
-        },
-        {
-          "id": "qa_ajustar_fixador",
-          "hash_roteiro": "sha256:408ca4adae7c1676bc0ea38171dd57b7207c4e53ccd557313f81b05e62d5b1e0"
-        },
-        {
-          "id": "qa_calo_osseo",
-          "hash_roteiro": "sha256:06895382f75c243c441a1ad90cabdf7ab32c8e67078f2b85788f547cd91df475"
-        },
-        {
-          "id": "qa_refratura",
-          "hash_roteiro": "sha256:8ea0354074397884da782ac01ca092a14eb1b357e98ba7ac9ce7dded488bef84"
-        }
-      ]
+     "id": "fixador_ou_haste",
+     "hash_roteiro": "sha256:da836fb5e818c470ecb8d3fc9bb5ebe65a2691cfd526af21c4919a9159b271c8"
     },
     {
-      "lote": "ALONGAMENTO-KIDS",
-      "nome": "Série Alongamento Ósseo — 11 episódios _kids",
-      "escopo": [
-        "instagram"
-      ],
-      "status": "pendente",
-      "evidencia": "Pergunta aberta: docstring do módulo diz 'AGUARDANDO aval', mas o doc L3 (16/08, projeto YouTube) sugere 12 eps no ar — confirmar com o Rafael antes de ratificar.",
-      "episodios": [
-        {
-          "id": "discrepancia_membro_kids",
-          "hash_roteiro": "sha256:c0173e4ded86fbd575c8eea1852e7b6248e083fc1b8fcd3d0358d98919871d57"
-        },
-        {
-          "id": "fixador_ou_haste_kids",
-          "hash_roteiro": "sha256:191ed7ead5a0331c86c1095d85864f563adbea12b0ce5975136179f1854073ee"
-        },
-        {
-          "id": "tempo_tratamento_kids",
-          "hash_roteiro": "sha256:2645d9787bfabb149ede270c2c80d15164445d7246ab1118c49f5b85566f8401"
-        },
-        {
-          "id": "pseudartrose_kids",
-          "hash_roteiro": "sha256:3ecf7eb4029e73603cbe74eaf8d97c313f8f78ecc2f5f3fcb6d3ae00e1609c01"
-        },
-        {
-          "id": "sequela_fratura_kids",
-          "hash_roteiro": "sha256:007148661780d4248a2ac23cf1d524040a9637211ae6f6f10b44d8f0dce4e301"
-        },
-        {
-          "id": "primeira_consulta_kids",
-          "hash_roteiro": "sha256:488c4ad45eebc6596f988d317a4fe68de0000b97f5f326d1cb208b1863b2708e"
-        },
-        {
-          "id": "fim_tratamento_kids",
-          "hash_roteiro": "sha256:2108e4119ea684e45855249ae7f71eecc47fbf03046010eab8ccdee59ad58a7c"
-        },
-        {
-          "id": "deformidade_angular_kids",
-          "hash_roteiro": "sha256:6b3ef8cc60443244adcd268d739867210cefbf79f8bbabbf6b8e0b4c0b159192"
-        },
-        {
-          "id": "quanto_alongar_kids",
-          "hash_roteiro": "sha256:1c82e546f7378c8c553c5d17a2d9a2cb150f284c7cc2ac974dcc755dba9c07ec"
-        },
-        {
-          "id": "trabalho_escola_kids",
-          "hash_roteiro": "sha256:2e7734ee00aa1a523ea329ee674a81973777afb598ed6063d8532e6e6d73e2a0"
-        },
-        {
-          "id": "vida_cotidiana_fixador_kids",
-          "hash_roteiro": "sha256:37594267e0c8d84abc6943f29965cf7609ca5a71a51988ba5c3fbf9ab77fbe6e"
-        }
-      ]
+     "id": "tempo_tratamento",
+     "hash_roteiro": "sha256:4700007c1f69c0ce82293dcb14af1e383c33ccfe5186f3edc3a4c1a330f795b0"
     },
     {
-      "lote": "LEGADO-PRE-GATE",
-      "nome": "Fila pré-existente ao gate (ratificação pendente)",
-      "escopo": [
-        "instagram"
-      ],
-      "status": "pendente_ratificacao",
-      "evidencia": "Itens que já estavam na fila quando o gate nasceu (30/08/2026). A primeira execução real do gate REPROVA exatamente estes ids — estado conhecido e documentado; a ratificação sai do pacote de revisão (minuta_pacote_revisao.md).",
-      "episodios": [
-        {
-          "id": "on_artrose_osteotomia",
-          "hash_roteiro": null
-        },
-        {
-          "id": "on_consolidacao_viciosa",
-          "hash_roteiro": null
-        },
-        {
-          "id": "on_diabetes_osso",
-          "hash_roteiro": null
-        },
-        {
-          "id": "on_dor_cronica_fratura",
-          "hash_roteiro": null
-        },
-        {
-          "id": "on_falha_ossea",
-          "hash_roteiro": null
-        },
-        {
-          "id": "on_haste_magnetica",
-          "hash_roteiro": null
-        },
-        {
-          "id": "on_salvamento_membro",
-          "hash_roteiro": null
-        },
-        {
-          "id": "on_vitamina_d",
-          "hash_roteiro": null
-        },
-        {
-          "id": "pnc_calcado_bebe",
-          "hash_roteiro": null
-        },
-        {
-          "id": "pnc_cansa_andar",
-          "hash_roteiro": null
-        },
-        {
-          "id": "pnc_engatinhar",
-          "hash_roteiro": null
-        },
-        {
-          "id": "pnc_hipermobilidade",
-          "hash_roteiro": null
-        },
-        {
-          "id": "pnc_joelho_valgo",
-          "hash_roteiro": null
-        },
-        {
-          "id": "pnc_mochila",
-          "hash_roteiro": null
-        },
-        {
-          "id": "pnc_osgood",
-          "hash_roteiro": null
-        },
-        {
-          "id": "pnc_sever",
-          "hash_roteiro": null
-        },
-        {
-          "id": "pnc_torcicolo",
-          "hash_roteiro": null
-        },
-        {
-          "id": "qa_ponta_dos_pes",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel04",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel05",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel06",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel07",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel08",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel09",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel10",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel11",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel12",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel13",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel14",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel15",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel16",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel17",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel18",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel19",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel20",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel21",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel22",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel23",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel24",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel25",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel26",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel27",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel28",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel29",
-          "hash_roteiro": null
-        },
-        {
-          "id": "reel30",
-          "hash_roteiro": null
-        }
-      ]
+     "id": "pseudartrose",
+     "hash_roteiro": "sha256:4b2aec4417677c229f635de9e8fdff7d912a6518bddc9e22ebb68449d2133818"
     },
     {
-      "lote": "REEL-CASO-PILOTOS-2026-08-30",
-      "nome": "Anatomia de um Caso — 3 pilotos (casos da literatura; ep 303 reservado)",
-      "escopo": [
-        "instagram"
-      ],
-      "status": "aprovado",
-      "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
-      "data": "2026-08-30",
-      "evidencia": "Decisão 'pode seguir' no chat auditoria-instagram-v1 (30/08), sobre o pacote com os 3 roteiros verificados contra o texto completo das fontes (PMC10226645, PMC9958936, PMC4955504) + resolução conservadora aplicada no P1 ('sem amputação' → 'a perna foi preservada').",
-      "observacoes": "RENDER DO PILOTO 1 APROVADO pelo Rafael em 30/08 ('o resultado está absurdamente bom, vamos progredir') — condição de estreia cumprida. Enfileirados para as quartas 23/09, 30/09 e 07/10 (pós-janela v2). Ilustrações esquemáticas originais; rotulagem de caso da literatura no vídeo e na caption.",
-      "episodios": [
-        {
-          "id": "caso_transporte_tibia",
-          "hash_roteiro": "sha256:6abb639f8f417342ce6865c9986baf7693d80d79c6a72e94c603a8d7ce3644d7"
-        },
-        {
-          "id": "caso_osteomielite_0cm",
-          "hash_roteiro": "sha256:fe1d9d4ed2983d9b518d2b5693bcb8becbf307d8c7ba01121984af7c55159577"
-        },
-        {
-          "id": "caso_silver_russell",
-          "hash_roteiro": "sha256:465f96046417fb99d7ce37696a9245cd3035d8dcacf802f3a18ddc6b4a4a8c8b"
-        }
-      ]
+     "id": "sequela_fratura",
+     "hash_roteiro": "sha256:ce60624d85124339edfc347e369a5eba1296c5170abb2dd2f75b31a878036356"
+    },
+    {
+     "id": "primeira_consulta",
+     "hash_roteiro": "sha256:4489a87714e4e499429cef31f5e937c861077d16fb312b9f695cba3f494cd5ec"
+    },
+    {
+     "id": "fim_tratamento",
+     "hash_roteiro": "sha256:df7370bf4da3df4d71bdf29dd178c5f5cc07cb2ca4cdae343a7adca50df29d99"
+    },
+    {
+     "id": "deformidade_angular",
+     "hash_roteiro": "sha256:6701cc048415d07f0470b25fa999495f079722f187481ea55412acdc6c691631"
+    },
+    {
+     "id": "quanto_alongar",
+     "hash_roteiro": "sha256:8cd8c0794f88e637e75e80eb292ce87314765283a7bfa8fe9665df7fdc4d0cd1"
+    },
+    {
+     "id": "trabalho_escola",
+     "hash_roteiro": "sha256:3cb4df440400d8bad8aa9ab1d916065f1d49d30797653f0e6974c398107dc02a"
+    },
+    {
+     "id": "vida_cotidiana_fixador",
+     "hash_roteiro": "sha256:98771de5c4ccca1c225356977e581c9872da49f7487979c8c369ff34af434315"
     }
-  ]
+   ],
+   "substituido_por": "SAIDA-ESTAGNACAO-LEGENDA-2026-09-12",
+   "nota_substituicao": "12/09/2026: os roteiros deste lote foram editados SO na moldura (legenda normalizada A4 + CTA de locucao A2-i); o texto clinico e' o mesmo. O hash novo vive no lote SAIDA-ESTAGNACAO-LEGENDA-2026-09-12; este lote fica como historico e NAO conta mais para o gate (status != aprovado)."
+  },
+  {
+   "lote": "QA-LOTE2-2026-08-30",
+   "nome": "Série Respondendo (Você Perguntou) — lote 2, 12 episódios",
+   "escopo": [
+    "instagram"
+   ],
+   "status": "substituido",
+   "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
+   "data": "2026-08-30",
+   "evidencia": "Decisão D3 ('D3 sim') no chat auditoria-instagram-v1, 30/08/2026, sobre o pacote que apresentou os 12 roteiros prontos.",
+   "observacoes": "Notas de consenso sinalizadas no cabeçalho do módulo (ep11 gesso; ep16 dor do crescimento) — apresentadas no pacote e cobertas pela aprovação.",
+   "episodios": [
+    {
+     "id": "qa_gesso_molhar",
+     "hash_roteiro": "sha256:b8e86943b962a20071a0f23d40dbb24de6af633d2aad65f6a9722c763a5f2683"
+    },
+    {
+     "id": "qa_tirar_placa",
+     "hash_roteiro": "sha256:99bcf8eb91356f5729b73ebed7e5c5ea45be44b932f5b58184fc5e35e171d920"
+    },
+    {
+     "id": "qa_cigarro_osso",
+     "hash_roteiro": "sha256:bc90751980e27015036afe5853c29f06636e6b639866e6552292ce2738976825"
+    },
+    {
+     "id": "qa_tempo_fixador",
+     "hash_roteiro": "sha256:50d32077f0fab2875c6a797123a2603202022efc3b7e804b7703cbfc0ffdad6e"
+    },
+    {
+     "id": "qa_banho_fixador",
+     "hash_roteiro": "sha256:6e854134859b61c28512fea4e3a084a2c57832a299a5797a02708dc8b6dbefad"
+    },
+    {
+     "id": "qa_dor_crescimento",
+     "hash_roteiro": "sha256:324b3fb458030bf3c733871dc137e78e81fbe92b692d90c4c8a0175c8640fcf8"
+    },
+    {
+     "id": "qa_crianca_mancando",
+     "hash_roteiro": "sha256:2d44ccbe49524df2c527a42d3688893e7499c78493167dcb8ab582d57d4bc51a"
+    },
+    {
+     "id": "qa_caroco_no_osso",
+     "hash_roteiro": "sha256:3b241f0bd3ea774974ff450f6c1013a46dd81744b0c796fb3e49c9fb5f08d357"
+    },
+    {
+     "id": "qa_perna_curta_operar",
+     "hash_roteiro": "sha256:b2945773eef7f147a9caa43e3fb6bbf16e6c25330cee16b85b9223b1e1e5104b"
+    },
+    {
+     "id": "qa_ajustar_fixador",
+     "hash_roteiro": "sha256:408ca4adae7c1676bc0ea38171dd57b7207c4e53ccd557313f81b05e62d5b1e0"
+    },
+    {
+     "id": "qa_calo_osseo",
+     "hash_roteiro": "sha256:06895382f75c243c441a1ad90cabdf7ab32c8e67078f2b85788f547cd91df475"
+    },
+    {
+     "id": "qa_refratura",
+     "hash_roteiro": "sha256:8ea0354074397884da782ac01ca092a14eb1b357e98ba7ac9ce7dded488bef84"
+    }
+   ],
+   "substituido_por": "SAIDA-ESTAGNACAO-LEGENDA-2026-09-12",
+   "nota_substituicao": "12/09/2026: os roteiros deste lote foram editados SO na moldura (legenda normalizada A4 + CTA de locucao A2-i); o texto clinico e' o mesmo. O hash novo vive no lote SAIDA-ESTAGNACAO-LEGENDA-2026-09-12; este lote fica como historico e NAO conta mais para o gate (status != aprovado)."
+  },
+  {
+   "lote": "ALONGAMENTO-KIDS",
+   "nome": "Série Alongamento Ósseo — 11 episódios _kids",
+   "escopo": [
+    "instagram"
+   ],
+   "status": "pendente",
+   "evidencia": "Pergunta aberta: docstring do módulo diz 'AGUARDANDO aval', mas o doc L3 (16/08, projeto YouTube) sugere 12 eps no ar — confirmar com o Rafael antes de ratificar. | 12/09/2026: hashes recalculados apos a troca do CTA de locucao ('Se inscreve' -> 'Envia para quem precisa.'); continua PENDENTE de aval.",
+   "episodios": [
+    {
+     "id": "discrepancia_membro_kids",
+     "hash_roteiro": "sha256:052d54a9bc4b70d1895f1e06b3246bac8c5e6c1de253dc117708ecbf116c9782"
+    },
+    {
+     "id": "fixador_ou_haste_kids",
+     "hash_roteiro": "sha256:02674283222bc742dd0432777ba474ca2f4e13c6bdf6f8ee21b2bb0f6efdcfe2"
+    },
+    {
+     "id": "tempo_tratamento_kids",
+     "hash_roteiro": "sha256:10a1d2d108f0fa5ad6df8474db7b02ece7710d9ffee90500a56ebe2e9ff30727"
+    },
+    {
+     "id": "pseudartrose_kids",
+     "hash_roteiro": "sha256:186edc76ff5d77f4e93738f92ac77180838919caf38df9c1224689017ce6b175"
+    },
+    {
+     "id": "sequela_fratura_kids",
+     "hash_roteiro": "sha256:88157554822a8af54ace6dd5e8758e9da4f319766bdd77546e02fddee94da373"
+    },
+    {
+     "id": "primeira_consulta_kids",
+     "hash_roteiro": "sha256:4852d6d2d240b2ac4a3542844dc3c1f4c9433b31931640bb365572b72dcf17e6"
+    },
+    {
+     "id": "fim_tratamento_kids",
+     "hash_roteiro": "sha256:0f94cdb1e10af5cf428397e80790f68e75cc9e8b60d4371104e0a336505f5e31"
+    },
+    {
+     "id": "deformidade_angular_kids",
+     "hash_roteiro": "sha256:69c3c127ea99b1ee87036d2a300e5a3912e4e04bf9b8e7e426a8fe24c5671e4f"
+    },
+    {
+     "id": "quanto_alongar_kids",
+     "hash_roteiro": "sha256:bd5b55cde21996a8b753ddd4de02660ccb56103b1ad3bd8502ed560abd3fc30c"
+    },
+    {
+     "id": "trabalho_escola_kids",
+     "hash_roteiro": "sha256:7d9921b4245ae0115976ef1c4060f3f47bd6f0f3d0106552534326140e01eba5"
+    },
+    {
+     "id": "vida_cotidiana_fixador_kids",
+     "hash_roteiro": "sha256:e5dd064fe78228d49eaf69468b2d457165e60afd64b9e203afdb1ec928123d03"
+    }
+   ]
+  },
+  {
+   "lote": "LEGADO-PRE-GATE",
+   "nome": "Fila pré-existente ao gate (ratificação pendente)",
+   "escopo": [
+    "instagram"
+   ],
+   "status": "pendente_ratificacao",
+   "evidencia": "Itens que já estavam na fila quando o gate nasceu (30/08/2026). A primeira execução real do gate REPROVA exatamente estes ids — estado conhecido e documentado; a ratificação sai do pacote de revisão (minuta_pacote_revisao.md).",
+   "episodios": [
+    {
+     "id": "on_artrose_osteotomia",
+     "hash_roteiro": null
+    },
+    {
+     "id": "on_consolidacao_viciosa",
+     "hash_roteiro": null
+    },
+    {
+     "id": "on_diabetes_osso",
+     "hash_roteiro": null
+    },
+    {
+     "id": "on_dor_cronica_fratura",
+     "hash_roteiro": null
+    },
+    {
+     "id": "on_falha_ossea",
+     "hash_roteiro": null
+    },
+    {
+     "id": "on_haste_magnetica",
+     "hash_roteiro": null
+    },
+    {
+     "id": "on_salvamento_membro",
+     "hash_roteiro": null
+    },
+    {
+     "id": "on_vitamina_d",
+     "hash_roteiro": null
+    },
+    {
+     "id": "pnc_calcado_bebe",
+     "hash_roteiro": null
+    },
+    {
+     "id": "pnc_cansa_andar",
+     "hash_roteiro": null
+    },
+    {
+     "id": "pnc_engatinhar",
+     "hash_roteiro": null
+    },
+    {
+     "id": "pnc_hipermobilidade",
+     "hash_roteiro": null
+    },
+    {
+     "id": "pnc_joelho_valgo",
+     "hash_roteiro": null
+    },
+    {
+     "id": "pnc_mochila",
+     "hash_roteiro": null
+    },
+    {
+     "id": "pnc_osgood",
+     "hash_roteiro": null
+    },
+    {
+     "id": "pnc_sever",
+     "hash_roteiro": null
+    },
+    {
+     "id": "pnc_torcicolo",
+     "hash_roteiro": null
+    },
+    {
+     "id": "qa_ponta_dos_pes",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel04",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel05",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel06",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel07",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel08",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel09",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel10",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel11",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel12",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel13",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel14",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel15",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel16",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel17",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel18",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel19",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel20",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel21",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel22",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel23",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel24",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel25",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel26",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel27",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel28",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel29",
+     "hash_roteiro": null
+    },
+    {
+     "id": "reel30",
+     "hash_roteiro": null
+    }
+   ]
+  },
+  {
+   "lote": "REEL-CASO-PILOTOS-2026-08-30",
+   "nome": "Anatomia de um Caso — 3 pilotos (casos da literatura; ep 303 reservado)",
+   "escopo": [
+    "instagram"
+   ],
+   "status": "substituido",
+   "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
+   "data": "2026-08-30",
+   "evidencia": "Decisão 'pode seguir' no chat auditoria-instagram-v1 (30/08), sobre o pacote com os 3 roteiros verificados contra o texto completo das fontes (PMC10226645, PMC9958936, PMC4955504) + resolução conservadora aplicada no P1 ('sem amputação' → 'a perna foi preservada').",
+   "observacoes": "RENDER DO PILOTO 1 APROVADO pelo Rafael em 30/08 ('o resultado está absurdamente bom, vamos progredir') — condição de estreia cumprida. Enfileirados para as quartas 23/09, 30/09 e 07/10 (pós-janela v2). Ilustrações esquemáticas originais; rotulagem de caso da literatura no vídeo e na caption.",
+   "episodios": [
+    {
+     "id": "caso_transporte_tibia",
+     "hash_roteiro": "sha256:6abb639f8f417342ce6865c9986baf7693d80d79c6a72e94c603a8d7ce3644d7"
+    },
+    {
+     "id": "caso_osteomielite_0cm",
+     "hash_roteiro": "sha256:fe1d9d4ed2983d9b518d2b5693bcb8becbf307d8c7ba01121984af7c55159577"
+    },
+    {
+     "id": "caso_silver_russell",
+     "hash_roteiro": "sha256:465f96046417fb99d7ce37696a9245cd3035d8dcacf802f3a18ddc6b4a4a8c8b"
+    }
+   ],
+   "substituido_por": "SAIDA-ESTAGNACAO-LEGENDA-2026-09-12",
+   "nota_substituicao": "12/09/2026: os roteiros deste lote foram editados SO na moldura (legenda normalizada A4 + CTA de locucao A2-i); o texto clinico e' o mesmo. O hash novo vive no lote SAIDA-ESTAGNACAO-LEGENDA-2026-09-12; este lote fica como historico e NAO conta mais para o gate (status != aprovado)."
+  },
+  {
+   "lote": "SAIDA-ESTAGNACAO-LEGENDA-2026-09-12",
+   "nome": "Saída da estagnação — legenda normalizada (A4/B1) + CTA de locução (A2-i) nos 26 roteiros já aprovados",
+   "escopo": [
+    "instagram"
+   ],
+   "status": "aprovado",
+   "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
+   "data": "2026-09-12",
+   "evidencia": "Chat auditoria-instagram-v1, 12/09/2026: 'vamos fazer tudo, prossiga' sobre o PLANO_SAIDA_ESTAGNACAO.md (itens A2-i, A4 e B1). Mudancas restritas a: (1) ultima frase da locucao dos episodios Alongamento ('Se inscreve' -> 'Envia para quem precisa.'); (2) legenda: sem hashtags, UMA CTA, 1 mencao a sociedade da area, 'Medico' na assinatura, 1a linha na fala do paciente em 5 ids (primeira_consulta, qa_caroco_no_osso, qa_perna_curta_operar, qa_ajustar_fixador, qa_banho_fixador). Texto clinico INALTERADO — diff integral em APROVACOES.md e no relatorio lab/relatorio_legendas.md da sessao. Revisao passiva: Rafael edita/suspende antes da data de publicacao (regra de 30/08).",
+   "observacoes": "Substitui os lotes ALONGAMENTO-ADULTO-2026-08-30, QA-LOTE2-2026-08-30 e REEL-CASO-PILOTOS-2026-08-30 (status 'substituido', mantidos como historico).",
+   "episodios": [
+    {
+     "id": "discrepancia_membro",
+     "hash_roteiro": "sha256:3906126296d9d1038daea2c6abf336b32aab4e67040e6f61e3c1528bb30fb0f9",
+     "ja_publicado_em_12-09": true
+    },
+    {
+     "id": "fixador_ou_haste",
+     "hash_roteiro": "sha256:ee8b3620a92e30af1afa76f9047a8fdf822ae18c3f18484d113c3beb946f576c",
+     "ja_publicado_em_12-09": true
+    },
+    {
+     "id": "tempo_tratamento",
+     "hash_roteiro": "sha256:c51893daba23796c5a0ee383e01f6b5f7a94594f9c16f2a62d7352b3dc33bd7a",
+     "ja_publicado_em_12-09": true
+    },
+    {
+     "id": "pseudartrose",
+     "hash_roteiro": "sha256:65d75024b6e4253b99eb60d47980fc5b38042fcd208a26fa27895b073a68bfdd",
+     "ja_publicado_em_12-09": false
+    },
+    {
+     "id": "sequela_fratura",
+     "hash_roteiro": "sha256:c49f843047228e707458a73ad84a8bab4dfbe6b7c30d4f9a347ddb98e3ff58ec",
+     "ja_publicado_em_12-09": false
+    },
+    {
+     "id": "primeira_consulta",
+     "hash_roteiro": "sha256:bf6c5093961f9d6a8ff913f94a4e5d79a9d535ccc481c4a5ef84463ee5504aa1",
+     "ja_publicado_em_12-09": false
+    },
+    {
+     "id": "fim_tratamento",
+     "hash_roteiro": "sha256:3fe98ef99615ed8d769a043b2265ca5f8788bb1b2b9cb2bfb26aaa55ca0c452b",
+     "ja_publicado_em_12-09": false
+    },
+    {
+     "id": "deformidade_angular",
+     "hash_roteiro": "sha256:a89775eb7ca81064e13604e2c355f4c0927faa6fe9154e2b1746df2c31e194c9",
+     "ja_publicado_em_12-09": false
+    },
+    {
+     "id": "quanto_alongar",
+     "hash_roteiro": "sha256:f99ca891348b5f27bfd33c709ede4a38f7b0e47d9f16f2db4d89cb8ab3f7cfe3",
+     "ja_publicado_em_12-09": false
+    },
+    {
+     "id": "trabalho_escola",
+     "hash_roteiro": "sha256:e67875db6f5a29e1a5f8b9f11b0e4ab38400250dbad15aea5541cf51e927e762",
+     "ja_publicado_em_12-09": false
+    },
+    {
+     "id": "vida_cotidiana_fixador",
+     "hash_roteiro": "sha256:1d7dd2af08725ed1d32e7d161ef7bb09d93d58083964ac2697561b93b5caca6a",
+     "ja_publicado_em_12-09": false
+    },
+    {
+     "id": "qa_gesso_molhar",
+     "hash_roteiro": "sha256:b8e86943b962a20071a0f23d40dbb24de6af633d2aad65f6a9722c763a5f2683",
+     "ja_publicado_em_12-09": true
+    },
+    {
+     "id": "qa_tirar_placa",
+     "hash_roteiro": "sha256:99bcf8eb91356f5729b73ebed7e5c5ea45be44b932f5b58184fc5e35e171d920",
+     "ja_publicado_em_12-09": true
+    },
+    {
+     "id": "qa_cigarro_osso",
+     "hash_roteiro": "sha256:bc90751980e27015036afe5853c29f06636e6b639866e6552292ce2738976825",
+     "ja_publicado_em_12-09": true
+    },
+    {
+     "id": "qa_tempo_fixador",
+     "hash_roteiro": "sha256:6cc61ad6bc26a78e76450a8ace494affdab958578a1ab7e1cb6cc64a4eb26b83",
+     "ja_publicado_em_12-09": false
+    },
+    {
+     "id": "qa_banho_fixador",
+     "hash_roteiro": "sha256:26eba459c7a83c3442395e6d30dee0e049485534b5d4f9082a81eb44ac695fb1",
+     "ja_publicado_em_12-09": false
+    },
+    {
+     "id": "qa_dor_crescimento",
+     "hash_roteiro": "sha256:413620599832f6b6064dd9583ae44d2186fbb87aaa17a5cf8aa16dd1d7109fa4",
+     "ja_publicado_em_12-09": false
+    },
+    {
+     "id": "qa_crianca_mancando",
+     "hash_roteiro": "sha256:cb835e4ccd96a6c960f23979baa69d718956360d7776408fe4fe6ac9ea35d4d6",
+     "ja_publicado_em_12-09": false
+    },
+    {
+     "id": "qa_caroco_no_osso",
+     "hash_roteiro": "sha256:dcf00151bfc4d4888fba1eaeb2c2e7efb8525658f40a1ab54faf75a585e83a82",
+     "ja_publicado_em_12-09": false
+    },
+    {
+     "id": "qa_perna_curta_operar",
+     "hash_roteiro": "sha256:53f8dec90b9e5be08c44da5b63e0bf3ef05c2211cfb008ff06dbd01d3a3f0e9c",
+     "ja_publicado_em_12-09": false
+    },
+    {
+     "id": "qa_ajustar_fixador",
+     "hash_roteiro": "sha256:9a974ace1da0f8b6ad0af39005aeec5fc571f8cc122249cf7bdbbb6a96385a17",
+     "ja_publicado_em_12-09": false
+    },
+    {
+     "id": "qa_calo_osseo",
+     "hash_roteiro": "sha256:9c6fd76d0b89a6c71538cfbc72193c5fcb86375b7b1a5954c9e6bf6ebc296a05",
+     "ja_publicado_em_12-09": false
+    },
+    {
+     "id": "qa_refratura",
+     "hash_roteiro": "sha256:d349869ad640d6713ad6b959c636aee1c6a16031c078a29bdd8b868da6d46ac7",
+     "ja_publicado_em_12-09": false
+    },
+    {
+     "id": "caso_transporte_tibia",
+     "hash_roteiro": "sha256:85a709c7a82dd0ec21d0af0cc2695a0a2af5821cfce7cbd5ffcd709eb07ee5fc",
+     "ja_publicado_em_12-09": false
+    },
+    {
+     "id": "caso_osteomielite_0cm",
+     "hash_roteiro": "sha256:569e8828f266efde4b1bcf4b88adff9cc393e99fdf5f5be9a78bd822632fc776",
+     "ja_publicado_em_12-09": false
+    },
+    {
+     "id": "caso_silver_russell",
+     "hash_roteiro": "sha256:81c6074db276ee43df95e858f6a7521704ffe1034a02d1a8279e39227af06da1",
+     "ja_publicado_em_12-09": false
+    }
+   ]
+  }
+ ]
 }

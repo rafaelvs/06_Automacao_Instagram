@@ -134,7 +134,7 @@ QA_EPISODES_LOTE2 = [
    {"k":"Passa adiante","sc":["Manda pra quem","usa fixador."],"e":None,"sub":"Salva pra lembrar.","cta":True,
     "vo":"Manda pra quem usa fixador ou vai começar essa jornada, e salva pra lembrar."},
   ],
-  "caption":cap_rec("Fixador externo: quanto tempo de tratamento? Não existe prazo único — depende do objetivo (fratura complexa, correção de deformidade, reconstrução) e da evolução do osso, acompanhada por radiografias seriadas. Enquanto o aparelho está em uso, higiene diária dos pinos, ritmo de ajuste orientado pela equipe e fisioterapia fazem parte do método.","#fixadorexterno #ilizarov #reconstrucaoossea")},
+  "caption":"Fixador externo: quanto tempo de tratamento? Não existe prazo único — depende do objetivo (fratura complexa, correção de deformidade, reconstrução) e da evolução do osso, acompanhada por radiografias seriadas. Enquanto o aparelho está em uso, higiene diária dos pinos, ritmo de ajuste orientado pela equipe e fisioterapia fazem parte do método.\n\nEnvia para quem precisa disso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
 
  # ───────────── ep15 · reconstrução/NICHO · higiene dos pinos (pauta #5 · fixador_ilizarov, n=24) ─────────────
  {"id":"qa_banho_fixador","ep":15,"serie":"Respondendo","temporada":"Você Perguntou","motif_family":"bone",
@@ -151,7 +151,7 @@ QA_EPISODES_LOTE2 = [
    {"k":"Passa adiante","sc":["Manda pra quem","usa fixador."],"e":None,"sub":"Salva pra ter à mão.","cta":True,
     "vo":"Manda pra quem usa fixador e vive essa rotina, e salva pra ter à mão."},
   ],
-  "caption":cap_rec("Cuidados com o fixador externo: a higiene diária dos trajetos dos pinos é parte do tratamento e previne infecção — a equipe ensina a rotina, inclusive como fazer no banho. Pequenas reações na pele ao redor dos pinos costumam ocorrer e nem sempre indicam problema; já secreção purulenta ou com mau cheiro, vermelhidão que aumenta ou febre pedem contato precoce com a equipe.","#fixadorexterno #ilizarov #posoperatorio")},
+  "caption":"Pode tomar banho com o fixador externo? A higiene diária dos trajetos dos pinos é parte do tratamento e previne infecção — a equipe ensina a rotina, inclusive como fazer no banho. Pequenas reações na pele ao redor dos pinos costumam ocorrer e nem sempre indicam problema; já secreção purulenta ou com mau cheiro, vermelhidão que aumenta ou febre pedem contato precoce com a equipe.\n\nEnvia para quem precisa disso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
 
  # ───────────── ep16 · pediátrica · dor do crescimento (pauta #6 · pediatria, n=6) ─────────────
  {"id":"qa_dor_crescimento","ep":16,"serie":"Respondendo","temporada":"Você Perguntou","motif_family":"feet",
@@ -168,7 +168,7 @@ QA_EPISODES_LOTE2 = [
    {"k":"Passa adiante","sc":["Manda pra quem ouve","'é do crescimento'."],"e":None,"sub":"Salva pra observar com calma.","cta":True,
     "vo":"Manda pra quem sempre ouve que 'é do crescimento', e salva pra observar com calma."},
   ],
-  "caption":cap_ped("Dor do crescimento existe — é um quadro benigno e comum da infância, que vai e vem sem outros sinais. O que não é 'do crescimento': dor persistente, que acorda a criança à noite, com mancar, febre ou inchaço — esses sinais pedem avaliação com ortopedista pediátrico, para separar o que é fisiológico do que precisa de tratamento.","#dordocrescimento #ortopediapediatrica #saudeinfantil")},
+  "caption":"Dor do crescimento existe — é um quadro benigno e comum da infância, que vai e vem sem outros sinais. O que não é 'do crescimento': dor persistente, que acorda a criança à noite, com mancar, febre ou inchaço — esses sinais pedem avaliação com ortopedista pediátrico, para separar o que é fisiológico do que precisa de tratamento.\n\nEnvia para quem tem criança em casa.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
 
  # ───────────── ep17 · pediátrica · claudicação (pauta #7 · pediatria, n=6) ─────────────
  {"id":"qa_crianca_mancando","ep":17,"serie":"Respondendo","temporada":"Você Perguntou","motif_family":"feet",
@@ -185,7 +185,7 @@ QA_EPISODES_LOTE2 = [
    {"k":"Passa adiante","sc":["Manda pra quem viu","o filho mancar."],"e":None,"sub":"Salva pra agir cedo.","cta":True,
     "vo":"Manda pra quem já viu o filho mancar do nada, e salva pra agir cedo."},
   ],
-  "caption":cap_ped("Criança mancando sem trauma não é 'manha': claudicação persistente merece avaliação com ortopedista pediátrico, para separar o que é passageiro do que precisa de tratamento. Apressam a consulta: mancar que não melhora, dor que acorda a criança à noite, febre, inchaço ou perda de movimento.","#claudicacao #ortopediapediatrica #saudeinfantil")},
+  "caption":"Criança mancando sem trauma não é 'manha': claudicação persistente merece avaliação com ortopedista pediátrico, para separar o que é passageiro do que precisa de tratamento. Apressam a consulta: mancar que não melhora, dor que acorda a criança à noite, febre, inchaço ou perda de movimento.\n\nEnvia para quem tem criança em casa.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
 
  # ───────────── ep18 · pediátrica · lesão óssea benigna (pauta #8 · tumor_osseo, n=3) ─────────────
  {"id":"qa_caroco_no_osso","ep":18,"serie":"Respondendo","temporada":"Você Perguntou","motif_family":"feet",
@@ -202,7 +202,7 @@ QA_EPISODES_LOTE2 = [
    {"k":"Passa adiante","sc":["Manda pra quem notou","um caroço assim."],"e":None,"sub":"Salva pra levar na consulta.","cta":True,
     "vo":"Manda pra quem notou um caroço assim no filho, e salva pra levar na consulta."},
   ],
-  "caption":cap_ped("Osteocondroma (exostose) é uma das lesões benignas e comuns que aparecem como um 'caroço duro' no osso da criança. A maioria das lesões ósseas na infância é benigna — mas somente a avaliação especializada, com exame clínico e exames de imagem, define a natureza da lesão e a conduta. Apressam a consulta: aumento rápido da lesão, dor que acorda à noite ou febre.","#osteocondroma #exostose #ortopediapediatrica")},
+  "caption":"Um caroço duro no osso do seu filho? O osteocondroma (exostose) é uma das lesões benignas e comuns que aparecem assim na criança. A maioria das lesões ósseas na infância é benigna — mas somente a avaliação especializada, com exame clínico e exames de imagem, define a natureza da lesão e a conduta. Apressam a consulta: aumento rápido da lesão, dor que acorda à noite ou febre.\n\nEnvia para um pai ou uma mãe que precisa ver isso.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
 
  # ───────────── ep19 · reconstrução/NICHO · discrepância: conduta (pauta #9 · discrepância, >=4 reais) ─────────────
  {"id":"qa_perna_curta_operar","ep":19,"serie":"Respondendo","temporada":"Você Perguntou","motif_family":"bone",
@@ -219,7 +219,7 @@ QA_EPISODES_LOTE2 = [
    {"k":"Passa adiante","sc":["Manda pra quem convive","com essa diferença."],"e":None,"sub":"Salva pra levar numa avaliação.","cta":True,
     "vo":"Manda pra quem convive com essa diferença, e salva pra levar numa avaliação."},
   ],
-  "caption":cap_rec("Discrepância de membro (uma perna mais curta): nem sempre precisa operar. A diferença é medida com precisão por exame clínico e radiografias como a escanometria; diferenças pequenas costumam ser conduzidas com palmilha de compensação e observação, e as maiores podem ter indicação de correção — a conduta depende da magnitude, da idade e da causa, sempre de forma individualizada.","#discrepancia #anisomelia #reconstrucaoossea")},
+  "caption":"Uma perna mais curta que a outra (discrepância de membro): nem sempre precisa operar. A diferença é medida com precisão por exame clínico e radiografias como a escanometria; diferenças pequenas costumam ser conduzidas com palmilha de compensação e observação, e as maiores podem ter indicação de correção — a conduta depende da magnitude, da idade e da causa, sempre de forma individualizada.\n\nEnvia para quem precisa disso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
 
  # ───────────── ep20 · reconstrução/NICHO · ajuste do fixador (pauta #10 · fixador_ilizarov, n=24) ─────────────
  {"id":"qa_ajustar_fixador","ep":20,"serie":"Respondendo","temporada":"Você Perguntou","motif_family":"bone",
@@ -236,7 +236,7 @@ QA_EPISODES_LOTE2 = [
    {"k":"Passa adiante","sc":["Manda pra quem vai","começar a correção."],"e":None,"sub":"Salva pra lembrar.","cta":True,
     "vo":"Manda pra quem vai começar a correção, e salva pra lembrar."},
   ],
-  "caption":cap_rec("Método Ilizarov: ajustar o fixador dói? Desconfortos leves e reações discretas na pele ao redor dos pinos são comuns ao longo do tratamento, e o ajuste segue um ritmo programado, orientado pela equipe. Dor intensa e progressiva, porém, não é esperada — é caso de contato precoce com a equipe.","#ilizarov #fixadorexterno #reconstrucaoossea")},
+  "caption":"Ajustar o fixador externo dói? No método Ilizarov, desconfortos leves e reações discretas na pele ao redor dos pinos são comuns ao longo do tratamento, e o ajuste segue um ritmo programado, orientado pela equipe. Dor intensa e progressiva, porém, não é esperada — é caso de contato precoce com a equipe.\n\nEnvia para quem precisa disso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
 
  # ───────────── ep21 · reconstrução · calo ósseo (pauta #11 · fratura_consolidacao, n=46) ─────────────
  {"id":"qa_calo_osseo","ep":21,"serie":"Respondendo","temporada":"Você Perguntou","motif_family":"bone",
@@ -253,7 +253,7 @@ QA_EPISODES_LOTE2 = [
    {"k":"Passa adiante","sc":["Manda pra quem leu","isso no laudo."],"e":None,"sub":"Salva pra lembrar.","cta":True,
     "vo":"Manda pra quem leu isso no laudo e ficou na dúvida, e salva."},
   ],
-  "caption":cap_rec("Calo ósseo é o osso cicatrizando: na consolidação, o corpo forma tecido novo no lugar da fratura, e esse calo vai ganhando resistência com o tempo. As radiografias seriadas mostram a evolução e indicam quando liberar carga e movimento — por isso o acompanhamento faz diferença.","#caloosseo #consolidacaoossea #fratura")},
+  "caption":"Calo ósseo é o osso cicatrizando: na consolidação, o corpo forma tecido novo no lugar da fratura, e esse calo vai ganhando resistência com o tempo. As radiografias seriadas mostram a evolução e indicam quando liberar carga e movimento — por isso o acompanhamento faz diferença.\n\nEnvia para quem está passando por isso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
 
  # ───────────── ep22 · reconstrução/NICHO · refratura (pauta #12 · pseudartrose, n=2) ─────────────
  {"id":"qa_refratura","ep":22,"serie":"Respondendo","temporada":"Você Perguntou","motif_family":"bone",
@@ -270,7 +270,7 @@ QA_EPISODES_LOTE2 = [
    {"k":"Passa adiante","sc":["Manda pra quem passou","por uma refratura."],"e":None,"sub":"Salva pra levar na consulta.","cta":True,
     "vo":"Manda pra quem passou por uma refratura, e salva pra levar na consulta."},
   ],
-  "caption":cap_rec("Refratura — quebrar o mesmo osso de novo — pede investigação da causa: estabilidade da fixação, fatores do paciente (como tabagismo e diabetes) e o momento do retorno à carga entram na conta. O tratamento é individualizado e pode envolver revisão da fixação, enxerto ósseo e, em casos selecionados, reconstrução com fixador externo.","#refratura #pseudoartrose #reconstrucaoossea")},
+  "caption":"Refratura — quebrar o mesmo osso de novo — pede investigação da causa: estabilidade da fixação, fatores do paciente (como tabagismo e diabetes) e o momento do retorno à carga entram na conta. O tratamento é individualizado e pode envolver revisão da fixação, enxerto ósseo e, em casos selecionados, reconstrução com fixador externo.\n\nEnvia para quem precisa disso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
 
 ]
 

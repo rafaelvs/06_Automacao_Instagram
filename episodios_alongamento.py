@@ -46,7 +46,7 @@ ALONGAMENTO = [
     "vo":"Mancar que apareceu ou piorou, dor no quadril ou na coluna, ou diferença que aumenta rápido na criança: procure avaliação."},
    {"k":"Tem tratamento","sc":["E é","funcional."],"e":None,
     "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
-    "vo":"O tratamento existe e é funcional. Se inscreve para os próximos."},
+    "vo":"O tratamento existe e é funcional. Envia para quem precisa."},
   ],
   "caption":"Uma perna mais curta que a outra nem sempre precisa de cirurgia — o que decide é o quanto ela afeta a função. Diferenças pequenas são comuns e a conduta costuma ser acompanhar. O que pesa: tamanho, causa e impacto na marcha — em criança, o crescimento que ainda vem. Mancar novo ou dor no quadril: procure avaliação.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
@@ -67,7 +67,7 @@ ALONGAMENTO = [
     "vo":"Se ele começou a mancar, reclama de dor no quadril ou nas costas, ou a diferença aumentou rápido: leve para avaliação."},
    {"k":"Acompanhar é agir","sc":["Na hora certa.","Sempre."],"e":None,
     "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
-    "vo":"Acompanhar de perto é o que permite agir na hora certa. Se inscreve."},
+    "vo":"Acompanhar de perto é o que permite agir na hora certa. Envia para quem precisa."},
   ],
   "caption":"Uma perna do seu filho mais curta que a outra nem sempre é caso de cirurgia. Diferenças pequenas são comuns na infância. Na criança o crescimento muda a conta — por isso o acompanhamento é o tratamento. Mancar novo, dor no quadril ou diferença que aumentou rápido: leve para avaliação.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
@@ -89,7 +89,7 @@ ALONGAMENTO = [
     "vo":"Quem decide é o caso: tipo de deformidade, idade, qualidade do osso e infecção prévia. Os dois são bons quando bem indicados."},
    {"k":"Leve à consulta","sc":["Essa pergunta","é sua."],"e":None,
     "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
-    "vo":"Leve essa pergunta para a consulta. Se inscreve."},
+    "vo":"Leve essa pergunta para a consulta. Envia para quem precisa."},
   ],
   "caption":"Fixador por fora ou haste por dentro? A escolha não é preferência. O fixador corrige o ângulo junto e permite ajuste, mas exige cuidado diário com os pinos. A haste não deixa nada para fora, mas depende do osso e não resolve toda deformidade. Quem decide é o caso.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
@@ -110,7 +110,7 @@ ALONGAMENTO = [
     "vo":"Leve à consulta a rotina real do seu filho: escola, esporte, quem cuida dele. Isso entra na escolha tanto quanto o exame."},
    {"k":"Bem indicados","sc":["Os dois","funcionam."],"e":None,
     "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
-    "vo":"Os dois funcionam quando bem indicados. Se inscreve."},
+    "vo":"Os dois funcionam quando bem indicados. Envia para quem precisa."},
   ],
   "caption":"Fixador por fora ou haste por dentro no seu filho? Depende do osso dele. O fixador permite ajuste, mas o cuidado com os pinos vira rotina da família. Na criança pesa um fator a mais: as placas de crescimento. Leve a rotina real do seu filho para a consulta.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
@@ -132,7 +132,7 @@ ALONGAMENTO = [
     "vo":"Durante o tratamento: dor intensa em repouso, dormência que avança ou sinais de infecção nos pinos pedem pronto-socorro, avisando a equipe."},
    {"k":"A disciplina decide","sc":["No meio","do caminho."],"e":None,
     "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
-    "vo":"É longo, e a disciplina no meio do caminho define o resultado. Se inscreve."},
+    "vo":"É longo, e a disciplina no meio do caminho define o resultado. Envia para quem precisa."},
   ],
   "caption":"Alongar o osso leva mais tempo do que a conta de 1mm por dia sugere. A fase de alongamento é a rápida; a consolidação — quando o osso novo endurece para aguentar carga — leva bem mais. Dor intensa em repouso, dormência que avança ou infecção nos pinos: pronto-socorro.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
@@ -153,7 +153,7 @@ ALONGAMENTO = [
     "vo":"Durante o tratamento: dor intensa em repouso, criança prostrada, dormência, ou secreção nos pinos com febre — pronto-socorro, avisando a equipe."},
    {"k":"Organize a escola","sc":["Desde o","começo."],"e":None,
     "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
-    "vo":"Organize a rotina da escola desde o começo. Se inscreve."},
+    "vo":"Organize a rotina da escola desde o começo. Envia para quem precisa."},
   ],
   "caption":"Quanto tempo seu filho vai ficar com o fixador? São duas fases: o alongamento, mais rápido, e a consolidação, mais longa. A boa notícia é que criança costuma consolidar mais rápido que adulto — mas fisioterapia e consultas seguem iguais. Criança prostrada ou secreção nos pinos com febre: pronto-socorro.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
@@ -180,9 +180,9 @@ ALONGAMENTO = [
     "vo":"Dor que persiste no local da fratura meses depois, ou a sensação de que a perna não sustenta: leve para avaliação com quem trata reconstrução óssea."},
    {"k":"Tem tratamento","sc":["Pseudartrose","se trata."],"e":None,
     "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
-    "vo":"Pseudartrose tem tratamento. Se inscreve para os próximos."},
+    "vo":"Pseudartrose tem tratamento. Envia para quem precisa."},
   ],
-  "caption":"Fraturou, operou, e meses depois o osso não colou? Isso tem nome: pseudartrose — a consolidação não acontece e o foco continua se mexendo. Pesa a estabilidade, a circulação, infecção e o cigarro. Dor que persiste meses depois: procure avaliação com quem trata reconstrução óssea.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
+  "caption":"Fraturou, operou, e meses depois o osso não colou? Isso tem nome: pseudartrose — a consolidação não acontece e o foco continua se mexendo. Pesa a estabilidade, a circulação, infecção e o cigarro. Dor que persiste meses depois: procure avaliação com quem trata reconstrução óssea.\n\nEnvia para quem está passando por isso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
  {"id":"pseudartrose_kids","ep":208,"temporada":"alongamento","serie":"Alongamento Ósseo",
   "motif_family":"bone","palette":"noturno_azul","layout":"auto",
@@ -201,7 +201,7 @@ ALONGAMENTO = [
     "vo":"Dor que não passa no local, deformidade que apareceu, ou a criança evitando apoiar o membro: leve para avaliação."},
    {"k":"Quanto antes","sc":["Mais opções","existem."],"e":None,
     "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
-    "vo":"Quanto antes avaliar, mais opções existem. Se inscreve."},
+    "vo":"Quanto antes avaliar, mais opções existem. Envia para quem precisa."},
   ],
   "caption":"O osso do seu filho fraturou, tratou e não colou? Criança costuma consolidar bem — quando não cola, vale investigar a causa. Existe uma forma que aparece nos primeiros anos, às vezes ligada a manchas na pele: comente na consulta. Dor que não passa ou deformidade nova: leve para avaliação.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
@@ -222,9 +222,9 @@ ALONGAMENTO = [
     "vo":"Se você convive com dor, manca, ou foi informado que não havia mais o que fazer: vale uma segunda opinião com quem trata reconstrução óssea."},
    {"k":"Não é caso encerrado","sc":["Sequela antiga","tem opção."],"e":None,
     "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
-    "vo":"Sequela antiga não quer dizer caso encerrado. Se inscreve."},
+    "vo":"Sequela antiga não quer dizer caso encerrado. Envia para quem precisa."},
   ],
-  "caption":"Fratura que colou em posição ruim, encurtada ou que infeccionou ainda dá para tratar. A sequela muda a marcha e sobrecarrega o resto do corpo. Havendo infecção no osso, ela é resolvida junto com a reconstrução, em etapas. Se convive com dor ou manca: vale uma segunda opinião.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
+  "caption":"Fratura que colou em posição ruim, encurtada ou que infeccionou ainda dá para tratar. A sequela muda a marcha e sobrecarrega o resto do corpo. Havendo infecção no osso, ela é resolvida junto com a reconstrução, em etapas. Se convive com dor ou manca: vale uma segunda opinião.\n\nEnvia para quem precisa disso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
  {"id":"sequela_fratura_kids","ep":210,"temporada":"alongamento","serie":"Alongamento Ósseo",
   "motif_family":"bone","palette":"verde_clinico","layout":"auto",
@@ -243,7 +243,7 @@ ALONGAMENTO = [
     "vo":"Se ele manca, se a diferença está aumentando, ou se a fratura envolveu a região de crescimento: mantenha o acompanhamento de perto."},
    {"k":"Acompanhar é agir","sc":["Na hora","certa."],"e":None,
     "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
-    "vo":"Acompanhar é o que permite agir na hora certa. Se inscreve."},
+    "vo":"Acompanhar é o que permite agir na hora certa. Envia para quem precisa."},
   ],
   "caption":"A fratura do seu filho colou torta ou deixou a perna mais curta? Em criança a conta é diferente: ela remodela o osso, e parte dos desalinhamentos melhora com o crescimento. Mas tem limite — e se a placa de crescimento se machucou, a diferença pode aumentar. Mantenha o acompanhamento.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
@@ -264,9 +264,9 @@ ALONGAMENTO = [
     "vo":"E pergunte quais são os riscos e o que se faz se algo não sair como esperado. Um bom plano prevê isso."},
    {"k":"Leve os exames","sc":["E os relatórios","anteriores."],"e":None,
     "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
-    "vo":"Leve seus exames e os relatórios anteriores. Se inscreve."},
+    "vo":"Leve seus exames e os relatórios anteriores. Envia para quem precisa."},
   ],
-  "caption":"Vai na primeira consulta sobre alongamento ósseo? Pergunte: qual o objetivo funcional e o que exatamente será corrigido; qual método, quanto tempo no total e como fica sua rotina; e quais os riscos e o plano se algo não sair como esperado. Leve seus exames e relatórios anteriores.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
+  "caption":"Vai na primeira consulta por uma perna mais curta ou torta? Pergunte: qual o objetivo funcional e o que exatamente será corrigido; qual método, quanto tempo no total e como fica sua rotina; e quais os riscos e o plano se algo não sair como esperado. Leve seus exames e relatórios anteriores.\n\nEnvia para quem precisa disso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
  {"id":"primeira_consulta_kids","ep":212,"temporada":"alongamento","serie":"Alongamento Ósseo",
   "motif_family":"bone","palette":"carvao_quente","layout":"auto",
@@ -285,7 +285,7 @@ ALONGAMENTO = [
     "vo":"Pergunte como fica a escola, a educação física e o esporte durante o acompanhamento."},
    {"k":"Acompanhado de perto","sc":["Mais opções","na hora certa."],"e":None,
     "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
-    "vo":"Criança acompanhada de perto tem mais opções. Se inscreve."},
+    "vo":"Criança acompanhada de perto tem mais opções. Envia para quem precisa."},
   ],
   "caption":"Vai levar seu filho na primeira consulta de ortopedia? Leve os exames anteriores e, se tiver, vídeo de como ele anda. Pergunte o que dá para observar e o que precisa tratar agora, de quanto em quanto tempo voltar, e como fica escola, educação física e esporte.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
@@ -312,9 +312,9 @@ ALONGAMENTO = [
     "vo":"Dor nova depois da retirada, ou insegurança para apoiar o peso: volte para reavaliação antes de forçar."},
    {"k":"O acompanhamento continua","sc":["Mesmo depois","do fixador sair."],"e":None,
     "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
-    "vo":"O acompanhamento continua depois do fixador sair. Se inscreve."},
+    "vo":"O acompanhamento continua depois do fixador sair. Envia para quem precisa."},
   ],
-  "caption":"O fixador saiu, o raio-X está bom — mas o tratamento não termina nesse dia. O osso novo ainda está mais frágil que o osso maduro e segue ganhando resistência por meses. Carga e atividade voltam aos poucos, no ritmo que a equipe orienta. Dor nova ou insegurança ao apoiar: volte para reavaliação.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
+  "caption":"O fixador saiu, o raio-X está bom — mas o tratamento não termina nesse dia. O osso novo ainda está mais frágil que o osso maduro e segue ganhando resistência por meses. Carga e atividade voltam aos poucos, no ritmo que a equipe orienta. Dor nova ou insegurança ao apoiar: volte para reavaliação.\n\nEnvia para quem está passando por isso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
  {"id":"fim_tratamento_kids","ep":214,"temporada":"alongamento","serie":"Alongamento Ósseo",
   "motif_family":"bone","palette":"verde_clinico","layout":"auto",
@@ -333,7 +333,7 @@ ALONGAMENTO = [
     "vo":"Dor nova no local, ou ele evitando apoiar o membro depois da retirada: leve para reavaliação."},
    {"k":"Não acaba aqui","sc":["O acompanhamento","continua."],"e":None,
     "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
-    "vo":"O acompanhamento não acaba quando o fixador sai. Se inscreve."},
+    "vo":"O acompanhamento não acaba quando o fixador sai. Envia para quem precisa."},
   ],
   "caption":"O fixador do seu filho saiu — mas o cuidado com aquele osso continua. O osso novo segue ganhando resistência por meses; nessa fase, quedas merecem mais atenção. Esporte e educação física voltam aos poucos, no ritmo que a equipe orientar. Dor nova ou ele evitando apoiar: leve para reavaliação.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
@@ -365,9 +365,9 @@ ALONGAMENTO = [
     "vo":"Perna que muda de forma com o crescimento, ou desconforto ao apoiar que não melhora: procure avaliação com ortopedista."},
    {"k":"Sob medida","sc":["Para o seu","tipo de caso."],"e":None,
     "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
-    "vo":"O tratamento é sob medida para o que seu caso tem. Se inscreve."},
+    "vo":"O tratamento é sob medida para o que seu caso tem. Envia para quem precisa."},
   ],
-  "caption":"Perna torta e perna curta são problemas diferentes — e o tratamento também. Na deformidade angular o eixo do osso está desviado; no encurtamento, o osso é mais curto com o eixo reto. Muitas vezes aparecem juntos. Perna que muda de forma ou desconforto ao apoiar: procure avaliação.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
+  "caption":"Perna torta e perna curta são problemas diferentes — e o tratamento também. Na deformidade angular o eixo do osso está desviado; no encurtamento, o osso é mais curto com o eixo reto. Muitas vezes aparecem juntos. Perna que muda de forma ou desconforto ao apoiar: procure avaliação.\n\nEnvia para quem está passando por isso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
  {"id":"deformidade_angular_kids","ep":216,"temporada":"alongamento","serie":"Alongamento Ósseo",
   "motif_family":"bone","palette":"carvao_quente","layout":"auto",
@@ -386,7 +386,7 @@ ALONGAMENTO = [
     "vo":"A perna mudou de forma, ou ele começou a mancar: leve para avaliação com ortopedista pediátrico."},
    {"k":"Cada caso, seu plano","sc":["Acompanhar ou","tratar agora."],"e":None,
     "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
-    "vo":"Cada caso tem seu plano: acompanhar ou tratar agora. Se inscreve."},
+    "vo":"Cada caso tem seu plano: acompanhar ou tratar agora. Envia para quem precisa."},
   ],
   "caption":"No seu filho, perna torta e perna curta são coisas diferentes. A deformidade angular costuma chamar atenção pela forma do joelho ou tornozelo — na criança, alguns desvios pequenos melhoram sozinhos com o crescimento. Perna que mudou de forma ou passou a mancar: leve para avaliação.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
@@ -408,9 +408,9 @@ ALONGAMENTO = [
     "vo":"Leve essa pergunta para o planejamento com seu cirurgião — o número certo é o do seu caso."},
    {"k":"Feito por etapas","sc":["Com segurança.","No seu ritmo."],"e":None,
     "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
-    "vo":"O alongamento é feito por etapas, com segurança. Se inscreve."},
+    "vo":"O alongamento é feito por etapas, com segurança. Envia para quem precisa."},
   ],
-  "caption":"Quantos centímetros dá para alongar? Não existe número fixo — pele, nervo e vaso esticam junto com o osso e ditam o limite seguro por etapa. Passar desse limite de uma vez aumenta o risco de lesão. Por isso casos maiores são feitos em mais de uma fase. Leve essa pergunta ao planejamento.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
+  "caption":"Quantos centímetros dá para alongar? Não existe número fixo — pele, nervo e vaso esticam junto com o osso e ditam o limite seguro por etapa. Passar desse limite de uma vez aumenta o risco de lesão. Por isso casos maiores são feitos em mais de uma fase. Leve essa pergunta ao planejamento.\n\nEnvia para quem está passando por isso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
  {"id":"quanto_alongar_kids","ep":218,"temporada":"alongamento","serie":"Alongamento Ósseo",
   "motif_family":"bone","palette":"noturno_azul","layout":"auto",
@@ -429,7 +429,7 @@ ALONGAMENTO = [
     "vo":"Leve essa pergunta ao planejamento — o número certo para o seu filho se define na consulta."},
    {"k":"Passo a passo","sc":["Com segurança.","No tempo dele."],"e":None,
     "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
-    "vo":"O alongamento acontece passo a passo, com segurança. Se inscreve."},
+    "vo":"O alongamento acontece passo a passo, com segurança. Envia para quem precisa."},
   ],
   "caption":"Quanto dá para alongar na perna do seu filho? Não é um número fixo — pele, nervo e vaso limitam o quanto dá em cada etapa, e na criança o crescimento que ainda vem também entra na conta. Leve essa pergunta ao planejamento com o cirurgião.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
@@ -451,9 +451,9 @@ ALONGAMENTO = [
     "vo":"Dor que piora no fim do dia de trabalho, ou sinais de infecção nos pinos: avise a equipe, e pronto-socorro se vier com febre."},
    {"k":"Combine com a equipe","sc":["O retorno","certo para você."],"e":None,
     "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
-    "vo":"Combine com a equipe o retorno certo para o seu trabalho. Se inscreve."},
+    "vo":"Combine com a equipe o retorno certo para o seu trabalho. Envia para quem precisa."},
   ],
-  "caption":"Voltar ao trabalho com fixador depende mais da função do cargo do que de uma data. Trabalho sentado libera mais cedo; esforço físico demora mais. Organize deslocamento e cuidado com os pinos. Dor que piora no fim do dia ou sinais de infecção: avise a equipe, pronto-socorro se vier com febre.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
+  "caption":"Voltar ao trabalho com fixador depende mais da função do cargo do que de uma data. Trabalho sentado libera mais cedo; esforço físico demora mais. Organize deslocamento e cuidado com os pinos. Dor que piora no fim do dia ou sinais de infecção: avise a equipe, pronto-socorro se vier com febre.\n\nEnvia para quem está passando por isso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
  {"id":"trabalho_escola_kids","ep":220,"temporada":"alongamento","serie":"Alongamento Ósseo",
   "motif_family":"bone","palette":"verde_clinico","layout":"auto",
@@ -472,7 +472,7 @@ ALONGAMENTO = [
     "vo":"Dor que aparece depois do dia de aula, ou sinais de infecção nos pinos: avise a equipe, e pronto-socorro se vier com febre."},
    {"k":"Rotina possível","sc":["Com os","ajustes certos."],"e":None,
     "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
-    "vo":"A rotina da escola é possível com os ajustes certos. Se inscreve."},
+    "vo":"A rotina da escola é possível com os ajustes certos. Envia para quem precisa."},
   ],
   "caption":"Seu filho pode voltar à escola bem antes do que os pais imaginam. A sala de aula libera logo; recreio livre e educação física esperam a equipe. Converse com os professores sobre o fixador antes da volta. Dor após o dia de aula ou sinais de infecção: avise a equipe, pronto-socorro se vier com febre.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
@@ -494,9 +494,9 @@ ALONGAMENTO = [
     "vo":"Secreção com mau cheiro, vermelhidão que avança ao redor dos pinos, ou febre: pronto-socorro, avisando a equipe no caminho."},
    {"k":"Vira rotina","sc":["Depois das","primeiras semanas."],"e":None,
     "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
-    "vo":"Depois das primeiras semanas, isso tudo vira rotina. Se inscreve."},
+    "vo":"Depois das primeiras semanas, isso tudo vira rotina. Envia para quem precisa."},
   ],
-  "caption":"Banho, roupa e sono com fixador têm truques que facilitam o dia a dia. Banho normal costuma ser liberado — aproveite para lavar os pinos. Roupas largas e travesseiro de apoio ajudam. Secreção com mau cheiro, vermelhidão que avança ou febre: pronto-socorro, avisando a equipe.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
+  "caption":"Banho, roupa e sono com fixador têm truques que facilitam o dia a dia. Banho normal costuma ser liberado — aproveite para lavar os pinos. Roupas largas e travesseiro de apoio ajudam. Secreção com mau cheiro, vermelhidão que avança ou febre: pronto-socorro, avisando a equipe.\n\nEnvia para quem está passando por isso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 
  {"id":"vida_cotidiana_fixador_kids","ep":222,"temporada":"alongamento","serie":"Alongamento Ósseo",
   "motif_family":"bone","palette":"carvao_quente","layout":"auto",
@@ -515,7 +515,7 @@ ALONGAMENTO = [
     "vo":"Secreção com mau cheiro, vermelhidão que avança ao redor dos pinos, ou febre: pronto-socorro, avisando a equipe no caminho."},
    {"k":"Vira rotina da família","sc":["Depois das","primeiras semanas."],"e":None,
     "sub":"Dr. Rafael Vargas · CRM-SP 226103 · RQE 137901.",
-    "vo":"Depois das primeiras semanas, isso tudo vira rotina da família. Se inscreve."},
+    "vo":"Depois das primeiras semanas, isso tudo vira rotina da família. Envia para quem precisa."},
   ],
   "caption":"Banho, roupa e sono do seu filho com o fixador ficam mais fáceis com alguns ajustes. Banho normal costuma ser liberado — supervisione sempre e aproveite para lavar os pinos. Roupas largas e travesseiro de apoio ajudam. Secreção, vermelhidão que avança ou febre: pronto-socorro.\n\nDr. Rafael Vargas · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."},
 ]

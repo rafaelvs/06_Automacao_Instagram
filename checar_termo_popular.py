@@ -39,14 +39,14 @@ GLOSSARIO = {
     "pe plano":          ["pe chato"],
     # — reconstrução (jargão que o paciente não digita) —
     "consolidacao viciosa": ["colou torto", "osso torto", "entortado"],
-    "pseudartrose":         ["fratura que nao cola", "osso que nao cola", "nao cola"],
+    "pseudartrose":         ["fratura que nao cola", "osso que nao cola", "nao cola", "nao colou"],
     # grafia canônica com "o" (o match é substring literal: uma grafia NÃO casa a outra)
-    "pseudoartrose":        ["fratura que nao cola", "osso que nao cola", "nao cola"],
-    "discrepancia":         ["perna mais curta", "uma perna mais curta", "perna curta"],
+    "pseudoartrose":        ["fratura que nao cola", "osso que nao cola", "nao cola", "nao colou"],
+    "discrepancia":         ["perna mais curta", "uma perna mais curta", "perna curta", "mais curta"],
     "osteomielite":         ["infeccao no osso", "infeccao do osso", "infeccao"],
     "osteotomia":           ["cortar e realinhar", "realinhar", "muda o eixo", "corrige o eixo"],
     # "consolidação" (processo) -> o leigo diz "o osso/a fratura COLAR/colando/colou"
-    "consolidacao":         ["colar", "cola ", "colando", "colou", "colam"],
+    "consolidacao":         ["colar", "cola ", "colando", "colou", "colam", "cicatriz", "endurec"],
 }
 
 # TERMOS PROIBIDOS — o médico NUNCA deve usar (regra de terminologia, memória `terminologia-ortopedica`).

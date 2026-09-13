@@ -1,5 +1,14 @@
 # APROVAÇÕES — registro vivo (promovido da minuta em 30/08/2026)
 
+**12/09/2026 — SAÍDA DA ESTAGNAÇÃO (lote `SAIDA-ESTAGNACAO-LEGENDA-2026-09-12`, 26 eps, APROVADO):** decisão do Rafael no chat auditoria-instagram-v1 — *"vamos fazer tudo, prossiga"* — sobre o `PLANO_SAIDA_ESTAGNACAO.md` (dossiê da oficina, 11/09). O que mudou nos roteiros já aprovados (e SÓ isso):
+- **A2-i · locução:** a última frase dos 22 episódios da série Alongamento trocou o CTA de YouTube *"Se inscreve(para os próximos)."* por *"Envia para quem precisa."* — neutro para Instagram e YouTube (o mesmo mp4 serve aos dois).
+- **A4 · legenda (`legenda.py`, aplicado a TODA a fila: 63 reels + 33 posts):** sem hashtags; UMA CTA por peça (enviar no reel, salvar no carrossel); 1 menção à sociedade da área (`@asami.brasil` reconstrução / `@sbortopediapediatrica` pediatria / `@associacaoptc` pé torto); "Médico" na assinatura; sem CTA de contato na legenda (o wa.me segue na bio). Régua: Metricool 24,4 M posts (hashtag −31,7% views; curtida −4,9%; menção +108% de alcance na faixa <2K).
+- **B1 · 1ª linha na fala do paciente** em 12 ids (tabela `legenda.PRIMEIRA_LINHA`): `primeira_consulta`, `qa_caroco_no_osso`, `qa_perna_curta_operar`, `qa_ajustar_fixador`, `qa_banho_fixador`, `c_on_medir_antes`, `c_on_pseudartrose`, `c_on_osteomielite`, `c_on_transporte_osseo`, `c_on_osteotomia`, `c_on_tres_fases`, `on_haste_magnetica` (+ `on_salvamento_membro`/`on_falha_ossea` recuperam o nome popular "perna mais curta").
+- **Texto clínico INALTERADO.** Os lotes `ALONGAMENTO-ADULTO-2026-08-30`, `QA-LOTE2-2026-08-30` e `REEL-CASO-PILOTOS-2026-08-30` passam a `substituido` (histórico). `ALONGAMENTO-KIDS` segue `pendente` (hash recalculado). Gate: `checar_aprovacoes.py` exit 0 após o registro; lint novo `checar_legenda.py` (exit 0 na fila, auto-teste com 5 controles positivos).
+- **Revisão passiva (regra de 30/08):** as peças ficam dias na fila (`PROGRAMACAO.md`); o Rafael edita ou suspende antes da data.
+
+---
+
 **30/08/2026 — D2:** lote `alongamento_adulto` (11 eps) APROVADO pelo Rafael via chat (auditoria-instagram-v1). **D3:** lote `qa_lote2` (12 eps) APROVADO idem, com as 2 notas de consenso sinalizadas. `legado_pre_gate` documenta a fila pré-existente (ratificação pendente). Fonte de verdade da máquina: `aprovacoes.json` (hash por episódio; conferir com `python checar_aprovacoes.py --hash <id> --fontes .`).
 
 ---
