@@ -24,6 +24,8 @@ distribuição (regra permanente de auditoria, PLANO_SAIDA_ESTAGNACAO.md §9).
 ## E3 · Capa v2 (plano A3 / decisão D9) — todos os reels a partir de 16/09
 
 - **KPI gratuito:** alt text das 12 capas do grid reconhecidas pela Meta como *bone/xray/hospital*. Baseline 1 de 12 (11/09). Meta 30 dias: ≥ 6 de 12. Shares saindo de 0.
+- **Métrica secundária (só no app, medida em 13/09 no emulador — `AUDITORIA/evidencias/celular_2026-09-13_curado/`):** skip rate dos 6 reels de 02–11/09 = 61,1 / 71,4 / 75,0 / 85,7 / 67,7 / 78,3% (mediana 73,2%; ~110 de ~150 espectadores agregados); 51–71% saem nos 3 primeiros segundos nas 4 curvas medíveis. **Teste ESTRATIFICADO:** só os reels "capa v2 pura" (excluir os 4 trial de E1, os 8 braços A/B de E2 e os 3 "Anatomia de um Caso", cuja ilustração substitui o herói) — sobram ~5 em 16/09→14/10 — agregando espectadores (não mediana de taxas de n=14–43): **skip agregado < 60%**. Retenção @3 s é a mesma métrica vista do outro lado (≈ 100 − skip + 5 a 11 pp), não um segundo critério.
+- **Ressalva registrada pela refutação de 13/09:** a capa v2 ataca o MAIOR degrau da curva (56–79% da perda antes de 3,5 s), não o único (21–44% entre 3,5 e 10 s, trecho que o template não altera); e dentro da amostra o skip não ordena o desempenho contra o "typical reel" — audiência desalinhada é hipótese concorrente que só a distribuição emprestada (B3) testa.
 - **Se em 30 dias o alt text não mudar e shares continuarem 0:** o problema não é o template; o esforço vai inteiro para H5 (distribuição emprestada).
 
 ## E4 · Legenda normalizada (plano A4) — toda a fila desde 13/09
