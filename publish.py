@@ -45,7 +45,14 @@ POST_WEEKDAYS  = {1, 3, 5}
 POST_MIN       = 15*60                   # 15:00 BRT (pico de audiencia; era 19:00)
 POST2_WEEKDAYS = {6}                     # 4o carrossel/sem (feed 8/sem) — dia-duplo c/ Reel no domingo
 POST2_MIN      = 11*60                   # 11:00 BRT — escalonado p/ nao colidir com o Reel das 15h
-SEQ_WEEKDAYS   = {0, 1, 2, 3, 4, 5, 6}   # sequencia diaria
+# Saida da estagnacao (12/09/2026, plano §4 item 1): stories caem de ~35/semana para ~15/semana.
+# Era sequencia DIARIA (5 frames x 7 dias); os sinais de ranking de Stories sao de relacionamento
+# por espectador ("com que frequencia voce ve os stories desta conta") — cada seguidor que pula a
+# sequencia diaria gera exatamente o sinal negativo. Mediana de mercado: 8,39 stories/semana. A
+# sequencia continua um bloco de 5 frames (e' uma historia); o que muda e' a FREQUENCIA:
+# ter/qui/sab = 15 frames/semana (~2,1/dia), nos dias do CARROSSEL (a sequencia das 12:30
+# antecipa o post das 15h). Decisao do Rafael em 12/09 ("vamos fazer tudo").
+SEQ_WEEKDAYS   = {1, 3, 5}               # sequencia ter/qui/sab (era diaria ate 12/09/2026)
 SEQ_MIN        = 12*60 + 30              # 12:30
 REEL_WEEKDAYS  = {0, 2, 4, 6}
 REEL_MIN       = 15*60                   # 15:00 BRT (pico de audiencia; era 19:00)
@@ -72,6 +79,14 @@ LOCATION_ID = os.environ.get("LOCATION_ID", "").strip()   # SEO local: place id 
 # SS_PERFORMANCE promove sozinho aos seguidores se performar (sem passo manual). Default OFF.
 TRIAL_REELS = os.environ.get("TRIAL_REELS", "false").strip().lower() in ("1", "true", "yes", "sim")
 TRIAL_GRADUATION = os.environ.get("TRIAL_GRADUATION", "").strip() or "SS_PERFORMANCE"  # vazio -> default; SS_PERFORMANCE | MANUAL
+# Alarme fail-loud (plano de saida da estagnacao, B6-iii, 12/09/2026): se as N ultimas pecas do
+# feed (reels + carrosseis, o que entra em /media) somam ZERO curtidas, o motor esta publicando
+# no vazio e continuar so' treina o algoritmo no nao-engajamento. Nesse caso o run NAO publica,
+# grava o alarme no state e sai VERMELHO. Desliga-se por variavel de repositorio
+# ALARME_CURTIDAS=off (decisao humana declarada, nunca default). Falha de LEITURA da API nao
+# bloqueia (fail-open com ::warning::) — medidor quebrado nao pode parar a fila.
+ALARME_CURTIDAS = os.environ.get("ALARME_CURTIDAS", "on").strip().lower() not in ("off", "0", "false", "nao", "no")
+ALARME_N_PECAS  = int(os.environ.get("ALARME_N_PECAS", "6") or 6)
 HOST       = f"https://graph.instagram.com/{VER}"
 
 if not IG_USER_ID or not TOKEN:
@@ -218,6 +233,42 @@ def _loc(d):
         d = dict(d); d["location_id"] = LOCATION_ID
     return d
 
+def _collab(d, item):
+    """AUDIENCIA EMPRESTADA (plano de saida da estagnacao, B3, 12/09/2026): item["collaborators"]
+    = lista de ate 3 usernames (sem @) vira o parametro `collaborators` do container — a doc da
+    Graph API autoriza em imagem, carrossel e reel (NAO em story). Em 91 pecas publicadas ate
+    11/09 o motor NUNCA enviou este parametro. O parceiro precisa ACEITAR o convite no app para
+    a peca aparecer no perfil dele; ate la' ela sai normal no nosso. Username invalido faz a Meta
+    recusar o container (erro de CONTEUDO, item falha ALTO e nao trava o token) — e' exatamente o
+    que o canario `canario-collab.yml` prova antes de qualquer peca real levar o parametro."""
+    cols = item.get("collaborators") or []
+    if not isinstance(cols, list):
+        raise RuntimeError(f"collaborators do item {item.get('id')} deve ser lista, veio {type(cols).__name__}")
+    cols = [str(c).strip().lstrip("@") for c in cols if str(c).strip()]
+    if not cols:
+        return d
+    if len(cols) > 3:
+        raise RuntimeError(f"item {item.get('id')}: a API aceita no maximo 3 collaborators, vieram {len(cols)}")
+    d = dict(d); d["collaborators"] = json.dumps(cols)
+    print(f"  collaborators: {cols}", flush=True)
+    return d
+
+def _ultimas_pecas_sem_curtida():
+    """Le as N ultimas pecas do feed em /media e devolve (soma_de_curtidas, ids) — ou None se a
+    leitura falhar (fail-open: medidor quebrado nao para a fila). So' leitura, nunca publica."""
+    try:
+        r = api_get(f"{IG_USER_ID}/media", {"fields": "id,like_count,timestamp,media_product_type",
+                                            "limit": ALARME_N_PECAS})
+        pecas = [m for m in r.get("data", []) if m.get("media_product_type") != "STORY"][:ALARME_N_PECAS]
+        if len(pecas) < ALARME_N_PECAS:
+            return None
+        return sum(int(m.get("like_count") or 0) for m in pecas), [m["id"] for m in pecas]
+    except AuthError:
+        raise
+    except Exception as e:                       # leitura e' cosmetica para a publicacao: fail-open
+        print(f"::warning::alarme de curtidas: leitura de /media falhou ({type(e).__name__}) — alarme nao avaliado neste run.")
+        return None
+
 def _texto_auditavel(item):
     """Junta TODA superficie de texto do item, nao so a legenda.
 
@@ -266,11 +317,11 @@ def publish_post(item):
     _cfm_guard(item)
     imgs = item["images"]; cap = item.get("caption", ""); alt = _alt(item)
     if len(imgs) == 1:
-        cont = api_post(f"{IG_USER_ID}/media", _loc({"image_url": raw_url(imgs[0]), "caption": cap, "alt_text": alt}))["id"]
+        cont = api_post(f"{IG_USER_ID}/media", _collab(_loc({"image_url": raw_url(imgs[0]), "caption": cap, "alt_text": alt}), item))["id"]
     else:
         # alt_text por filho do carrossel (verificar no 1o publish real; se a API recusar, remover dos filhos).
         kids = [api_post(f"{IG_USER_ID}/media", {"image_url": raw_url(p), "is_carousel_item": "true", "alt_text": alt})["id"] for p in imgs]
-        cont = api_post(f"{IG_USER_ID}/media", _loc({"media_type": "CAROUSEL", "children": ",".join(kids), "caption": cap}))["id"]
+        cont = api_post(f"{IG_USER_ID}/media", _collab(_loc({"media_type": "CAROUSEL", "children": ",".join(kids), "caption": cap}), item))["id"]
     wait_finished(cont)
     return api_post(f"{IG_USER_ID}/media_publish", {"creation_id": cont})["id"]
 def publish_story_img(image_path):
@@ -302,12 +353,15 @@ _MODO_REEL = None   # "trial" | "fallback_normal" | "normal"
 def publish_reel(item):
     global _MODO_REEL
     _cfm_guard(item)
-    # alt_text NAO e' suportado em reels (so imagens); location_id e' suportado.
-    base = _loc({"media_type": "REELS", "video_url": raw_url(item["video"]),
-                 "caption": item.get("caption", "")})
+    # alt_text NAO e' suportado em reels (so imagens); location_id e collaborators sao suportados.
+    base = _collab(_loc({"media_type": "REELS", "video_url": raw_url(item["video"]),
+                         "caption": item.get("caption", "")}), item)
     cont = None
     _MODO_REEL = "normal"
-    if TRIAL_REELS:
+    # Trial por PECA (plano B5, 12/09/2026): item["trial"] = true publica SO' esta peca em modo
+    # trial (instrumento de diagnostico — 4 pecas, sorteio congelado em PLANO_EXPERIMENTOS.md),
+    # sem religar o modo global (TRIAL_REELS segue false desde 25/07). Trial tira a peca do grid.
+    if TRIAL_REELS or bool(item.get("trial")):
         # Trial Reel: so' para nao-seguidores; graduacao automatica (SS_PERFORMANCE) se performar.
         try:
             p = dict(base); p["trial_params"] = json.dumps({"graduation_strategy": TRIAL_GRADUATION})
@@ -351,6 +405,28 @@ def main():
     falhas = []         # falhas NAO-auth: o run termina VERMELHO (ver _falhou)
 
     _avisar_validade_do_token()
+
+    # ALARME FAIL-LOUD (B6-iii): N ultimas pecas do feed com ZERO curtidas = publicar no vazio.
+    # Avaliado antes de qualquer publicacao agendada (FORCE_ID e' decisao humana e passa direto).
+    if ALARME_CURTIDAS and not FORCE_ID:
+        try:
+            leitura = _ultimas_pecas_sem_curtida()
+        except AuthError as e:                   # token morto ja' na leitura: mesmo caminho de sempre
+            _avisar_token_parado(e)
+        if leitura is not None:
+            soma, ids_lidos = leitura
+            if soma == 0:
+                state["alarme_curtidas"] = {"quando": now.isoformat(), "pecas": ids_lidos, "curtidas": 0}
+                save_state(state)
+                print(f"::error::ALARME: as {len(ids_lidos)} ultimas pecas do feed somam ZERO curtidas "
+                      f"({', '.join(ids_lidos)}). O motor NAO vai publicar no vazio: fila PAUSADA ate' "
+                      "decisao humana (var ALARME_CURTIDAS=off no repo, ou FORCE_ID). Ver docs/02_RUNBOOK.md.")
+                falhas.append("alarme_zero_curtidas")
+                # exit explicito AQUI (como _avisar_token_parado): o estado ja' foi gravado e
+                # nada foi publicado — o job tem de ficar VERMELHO em qualquer chamador.
+                sys.exit(1)
+            elif "alarme_curtidas" in state:
+                del state["alarme_curtidas"]; changed = True
 
     if FORCE_ID == "destaques":
         for it in load_json(DESTAQUES_FILE, []):

@@ -1,0 +1,27 @@
+name: canario-collab
+# REFUTADOR do parametro `collaborators` (plano de saida da estagnacao, B3, 12/09/2026).
+# Cria UM container com username INVALIDO e exige que a Meta RECUSE. Nunca publica.
+# Verde = a API recusa (username errado em peca real falha ALTO). Vermelho = a API aceitou
+# (check morto) ou token invalido. Rodar ANTES de usar collaborators numa peca real e sempre
+# que a versao da Graph API mudar.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  canario:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - name: Canario (container com collaborator inexistente TEM de ser recusado)
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: python canario_collab.py

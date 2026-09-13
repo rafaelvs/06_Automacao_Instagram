@@ -124,3 +124,34 @@ O `IG_ACCESS_TOKEN` expira em ~60 dias. Quando expirar, as publicações falham 
 - **Quando a fila de um tipo < ~2 semanas:** reabastecer com os geradores 🔵.
 - ~~**A cada ~55 dias:** renovar o token.~~ → automático; ver `05_MANUTENCAO.md`.
 - **Trimestral:** revisar `images/_removidos_estetica/` e órfãs (limpeza).
+
+## 8. Saída da estagnação (12/09/2026) — alarme de curtidas, collab e trial por peça
+
+**Alarme fail-loud de curtidas (B6-iii).** Antes de publicar, `publish.py` lê as 6 últimas peças
+do feed (`/media`, reels + carrosséis) e, se a soma de `like_count` for **zero**, NÃO publica:
+grava `state.alarme_curtidas`, imprime `::error::ALARME` e sai vermelho — a fila fica pausada até
+decisão humana. Publicar no vazio só treina o algoritmo no não-engajamento (plano §4).
+- Para **despausar** (decisão declarada, nunca default):
+  `gh variable set ALARME_CURTIDAS --body off --repo rafaelvs/06_Automacao_Instagram`
+  (ou `ALARME_N_PECAS` para mudar o N; `FORCE_ID` passa direto pelo alarme).
+- Leitura da API falhou? O alarme **não** avalia (`::warning::`) e a publicação segue — medidor
+  quebrado não para a fila. Token morto na leitura segue o caminho normal (`AUTENTICACAO FALHOU`).
+
+**Collab / audiência emprestada (B3).** `item["collaborators"] = ["usuario1", "usuario2"]` (≤3,
+sem `@`) em posts.json/reels.json vira o parâmetro `collaborators` do container (imagem, carrossel
+e reel; story não aceita). O parceiro precisa **aceitar o convite no app** para a peça aparecer no
+perfil dele. Username inválido → a Meta recusa o container → o item falha ALTO (job vermelho) e
+não trava o token. **Antes de usar em peça real, rode o canário:**
+`gh workflow run canario-collab.yml --repo rafaelvs/06_Automacao_Instagram` — ele cria um container
+com username inválido e **exige que a API recuse** (refutador que nunca falhou não é refutador);
+nunca chama `media_publish`. Restrição CFM (Art. 10 §1º): peça em canal de terceiro **não** leva
+CTA de contato — a conversão acontece no perfil, que já carrega CRM/RQE.
+
+**Trial por peça (B5).** `item["trial"] = true` em reels.json publica SÓ aquela peça em modo trial
+(entrega exclusiva a não-seguidores; a peça sai do grid), sem religar `TRIAL_REELS` global. Uso:
+instrumento de diagnóstico com 4 peças sorteadas (ver `PLANO_EXPERIMENTOS.md`), nunca estratégia.
+O ramo tomado fica em `state.published[].modo_reel` (trial / fallback_normal / normal).
+
+**Cadência de stories.** Sequências passaram de diárias para **seg/qua/sex** (`SEQ_WEEKDAYS`),
+~15 frames/semana — mediana de mercado 8,39/semana; cada seguidor que pula a sequência diária gera
+o sinal negativo de ranking de Stories.

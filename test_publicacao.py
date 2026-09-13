@@ -27,10 +27,13 @@ CAP = ("Discrepancia de membro: medir antes de operar. Conteudo educativo.\n\n"
 # fixture sem ela travava no _cfm_guard antes mesmo de chegar no cenario de auth
 # que este teste quer exercitar. Toda legenda real ja carrega a assinatura.
 
-POSTS = [{"id": "t-post-1", "images": ["media/a.png"], "caption": CAP}]
+# 12/09/2026 (saida da estagnacao): o post leva `collaborators` (B3) e o reel leva `trial`
+# por peca (B5) — os stubs abaixo DENUNCIAM esses parametros na saida para os cenarios G/H.
+POSTS = [{"id": "t-post-1", "images": ["media/a.png"], "caption": CAP,
+          "collaborators": ["parceiro_a"]}]
 SEQS = [{"id": "t-seq-1", "theme": "teste",
          "images": [f"media/s{i}.png" for i in range(1, 6)]}]
-REELS = [{"id": "t-reel-1", "video": "media/v.mp4", "caption": CAP}]
+REELS = [{"id": "t-reel-1", "video": "media/v.mp4", "caption": CAP, "trial": True}]
 
 STUB = r'''
 import sys, json, types, datetime as _dt
@@ -72,10 +75,23 @@ def fake_post(url, data=None, timeout=None, **kw):
     if url.endswith("/media_publish"):
         _n["publicados"] += 1
         return R(200, {"id": "MID%03d" % _n["publicados"]})
+    data = data or {}
+    # denuncia os parametros de audiencia emprestada / trial (cenarios G/H) e o CONTROLE:
+    # story NUNCA pode levar collaborators (a API nao aceita).
+    if "collaborators" in data:
+        print("COLLAB_ENVIADO", data["collaborators"], "media_type=", data.get("media_type", "IMAGE"))
+    if "trial_params" in data:
+        print("TRIAL_PARAMS", data["trial_params"])
     return R(200, {"id": "CONT001"})
 def fake_get(url, params=None, timeout=None, **kw):
     r = _falha()
     if r is not None: return r
+    params = params or {}
+    if url.endswith("/media") and "like_count" in str(params.get("fields", "")):
+        # leitura do ALARME de curtidas (B6-iii): 6 pecas do feed
+        likes = 0 if CENARIO == "alarme_zero" else 1
+        return R(200, {"data": [{"id": "M%d" % i, "like_count": likes, "media_product_type": "FEED"}
+                                for i in range(6)]})
     return R(200, {"status_code": "FINISHED"})
 requests.post = fake_post
 requests.get = fake_get
@@ -105,11 +121,12 @@ def preparar():
     return tmp
 
 
-def rodar(cenario, tmp):
+def rodar(cenario, tmp, force_id=""):
     env = dict(os.environ)
     env.update({"IG_USER_ID": "1784", "IG_ACCESS_TOKEN": "fake",
                 "GITHUB_REPOSITORY": "rafaelvs/06_Automacao_Instagram",
-                "FORCE_ID": "", "LOCATION_ID": "", "TRIAL_REELS": "false",
+                "FORCE_ID": force_id, "LOCATION_ID": "", "TRIAL_REELS": "false",
+                "ALARME_CURTIDAS": "on", "ALARME_N_PECAS": "6",
                 "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8"})
     p = subprocess.run([sys.executable, str(tmp / "_stub.py"), cenario],
                        cwd=str(tmp), capture_output=True, text=True, env=env)
@@ -163,6 +180,30 @@ tmp = preparar(); rc, out, st = rodar("rate", tmp)
 checa("exit == 0", rc == 0, f"exit={rc}")
 checa("nada publicado", ids(st) == [], f"publicados={ids(st)}")
 shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nG) COLLAB (B3, 12/09/2026): post com collaborators ENVIA o parametro; story NAO leva")
+tmp = preparar(); rc, out, st = rodar("ok", tmp)
+checa("collaborators no container do post", 'COLLAB_ENVIADO ["parceiro_a"] media_type= IMAGE' in out, "parametro JSON com o username")
+checa("story sem collaborators (controle)", "media_type= STORIES" not in out, "sequencia publicou sem o parametro")
+checa("exit == 0", rc == 0, f"exit={rc}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nH) TRIAL POR PECA (B5): item['trial']=true publica em modo trial com TRIAL_REELS global OFF")
+tmp = preparar(); rc, out, st = rodar("ok", tmp, force_id="t-reel-1")
+checa("trial_params enviado", "TRIAL_PARAMS" in out and "SS_PERFORMANCE" in out, "graduation_strategy presente")
+checa("state registra modo trial", any(e.get("modo_reel") == "trial" for e in st["published"]), f"published={st['published']}")
+checa("exit == 0", rc == 0, f"exit={rc}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nI) ALARME DE CURTIDAS (B6-iii): 6 ultimas pecas com ZERO curtidas = NAO publica, job vermelho")
+tmp = preparar(); rc, out, st = rodar("alarme_zero", tmp)
+checa("exit != 0", rc != 0, f"exit={rc}")
+checa("nada publicado", ids(st) == [], f"publicados={ids(st)}")
+checa("alarme gravado no state", "alarme_curtidas" in st, f"chaves={sorted(st)}")
+checa("mensagem ::error::ALARME", "::error::ALARME" in out, "anotacao visivel no Actions")
+shutil.rmtree(tmp, ignore_errors=True)
+# controle negativo: com curtidas (cenario 'ok' devolve like_count=1) a publicacao seguiu — ver B/G.
+# e o alarme NAO se aplica a FORCE_ID (decisao humana): cenario H publicou com like_count irrelevante.
 
 print("\nF) CLASSIFICACAO dos erros da Meta (a parte sutil: quase tudo e' OAuthException)")
 os.environ.setdefault("IG_USER_ID", "1784")

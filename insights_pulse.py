@@ -125,9 +125,27 @@ if d:
     # dump de 05/09) por subtracao a partir do valor de hoje.
     out["conta"]["follower_count_diario"] = d[0].get("values", [])
 
+# ── 1a) CHURN medido, nao inferido (plano de saida da estagnacao, B6-i, 12/09/2026) ─────
+# `follower_count` e' BRUTO (so' entradas): 16/08->12/09 deu +16 brutos com saldo liquido +3,
+# ~81% de churn INFERIDO por subtracao. `follows_and_unfollows` com breakdown=follow_type
+# separa follows de unfollows na janela. Best-effort: metrica nova, erro rotulado e tolerado.
+_r = get(f"{IG_USER}/insights", metric="follows_and_unfollows", period="day",
+         metric_type="total_value", breakdown="follow_type", since=SINCE, until=NOW)
+if "_erro" in _r:
+    out["erros"].append(f"[follows_and_unfollows+follow_type] {_r['_erro']}")
+else:
+    try:
+        _res = _r["data"][0]["total_value"]["breakdowns"][0]["results"]
+        out["conta"]["follows_unfollows_janela"] = {
+            "/".join(x.get("dimension_values", ["?"])): x.get("value") for x in _res}
+    except (KeyError, IndexError, TypeError) as _e:
+        out["erros"].append(f"[follows_and_unfollows+follow_type] formato inesperado ({type(_e).__name__})")
+
 # ── 1b) QUEM SAO os seguidores (11/09/2026) ──────────────────────────────────────────────
 # Por que existe: em 30 dias com 36 pecas o perfil alcancou 196 das 1311 contas que o
-# seguem (15%); a mediana por peca e' 2,3% da base, contra 20-40% de referencia de mercado.
+# seguem (15%); a mediana por peca e' 2,3% da base, contra 9,78% de reach rate por Reel na
+# faixa 1-5K (Socialinsider, 140 mil Reels, jan-jun/2026) — a regua "20-40%" foi BANIDA em
+# 11/09 (sem fonte com metodo em 2026).
 # Sem a demografia nao da para separar "base inflada/inativa" (o denominador esta errado)
 # de "a plataforma parou de distribuir" — e as duas conclusoes levam a estrategias OPOSTAS.
 # `follower_demographics` e' lifetime e exige >=100 seguidores; cada breakdown vem numa
@@ -207,9 +225,16 @@ for p in pecas:
 out["agregado_por_formato"] = agg
 
 reels = [p for p in pecas if p["tipo"] == "REELS"]
-for p in reels:
+# SPR (sends por alcance) por PECA, para TODO formato — KPI primario do plano de saida da
+# estagnacao (B6-ii, 12/09/2026). Ate aqui so' os reels tinham spr_pct; carrossel e' o formato
+# com mais saves/shares na faixa 1-5K e ficava sem o numero.
+for p in pecas:
     rch = p.get("reach") or 0
     p["spr_pct"] = round(100.0 * (p.get("shares") or 0) / rch, 2) if rch else None
+    p["saves_por_reach_pct"] = round(100.0 * (p.get("saved") or 0) / rch, 2) if rch else None
+    p["likes_por_reach_pct"] = round(100.0 * (p.get("likes") or 0) / rch, 2) if rch else None
+    p["zero_curtidas"] = (p.get("likes") or 0) == 0
+out["pecas_zero_curtidas"] = sum(1 for p in pecas if p["zero_curtidas"])
 tot_sh = sum(p.get("shares") or 0 for p in reels)
 tot_rc = sum(p.get("reach") or 0 for p in reels)
 out["reels_janela"] = {
@@ -259,6 +284,7 @@ ERROS_CONHECIDOS = {
     # nomeado em `erros` e o resto do pulso segue valendo.
     "follower_demographics+country", "follower_demographics+city",
     "follower_demographics+age", "follower_demographics+gender",
+    "follows_and_unfollows+follow_type",   # B6-i (12/09/2026): metrica nova, best-effort
 }
 _novos = [e for e in out["erros"]
           if not (e.startswith("[") and e[1:e.find("]")] in ERROS_CONHECIDOS)]

@@ -70,6 +70,11 @@ jobs:
           # graduaram (perfil tinha 37 posts = 27 carrosseis + 10 reels pre-trial). Ver docs/06.
           TRIAL_REELS: ${{ vars.TRIAL_REELS || 'false' }}
           TRIAL_GRADUATION: ${{ vars.TRIAL_GRADUATION || 'SS_PERFORMANCE' }}
+          # Alarme fail-loud (B6-iii, 12/09/2026): 6 ultimas pecas do feed com ZERO curtidas =
+          # o run nao publica e sai vermelho. Desligar e' decisao humana declarada:
+          #   gh variable set ALARME_CURTIDAS --body off --repo rafaelvs/06_Automacao_Instagram
+          ALARME_CURTIDAS: ${{ vars.ALARME_CURTIDAS || 'on' }}
+          ALARME_N_PECAS: ${{ vars.ALARME_N_PECAS || '6' }}
         run: python publish.py
       - name: Salvar estado (evita repostar)
         # `always()` e' OBRIGATORIO: desde que o publish.py sai com exit 1 em falha de
