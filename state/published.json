@@ -1336,10 +1336,17 @@
       "kind": "post",
       "media_id": "18064437737779749",
       "at": "2026-09-13T15:30:49.111199+00:00"
+    },
+    {
+      "id": "pseudartrose",
+      "kind": "reel",
+      "media_id": "18109303895608119",
+      "at": "2026-09-13T18:19:58.344296+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-09-13",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-09-11",
+  "last_reel_date": "2026-09-13",
   "last_seq_date": "2026-09-12"
 }
