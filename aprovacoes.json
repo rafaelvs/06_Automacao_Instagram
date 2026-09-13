@@ -544,6 +544,78 @@
      "ja_publicado_em_12-09": false
     }
    ]
+  },
+  {
+   "lote": "FIXADOR-POR-DENTRO-2026-09-12",
+   "nome": "Série 'Fixador externo por dentro' — 8 episódios (B2 + teste de gancho B4)",
+   "escopo": [
+    "instagram"
+   ],
+   "status": "aprovado",
+   "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
+   "data": "2026-09-12",
+   "evidencia": "Chat auditoria-instagram-v1, 12/09/2026: 'vamos fazer tudo, prossiga' sobre PLANO_SAIDA_ESTAGNACAO.md, item B2 (série de 6-8 peças de convivência com o fixador) e B4 (teste controlado de gancho, sorteio congelado em PLANO_EXPERIMENTOS.md). Conteúdo = orientação geral já publicada pela casa (qa_banho_fixador, vida_cotidiana_fixador, c_on_cuidado_pinos, fim_tratamento); nenhuma afirmação clínica nova; 'quem decide é a equipe' em toda peça.",
+   "observacoes": "Revisão passiva na fila (regra de 30/08): o Rafael edita/suspende antes da data de cada peça (PROGRAMACAO.md).",
+   "episodios": [
+    {
+     "id": "fx_pino_inflamado",
+     "hash_roteiro": "sha256:3440cf5f268644ae194a86e3c16b21beba479e5bc5304d2399370d9689ecf91a"
+    },
+    {
+     "id": "fx_dormir",
+     "hash_roteiro": "sha256:941cacfa30f296ee821aca03e92c25b5127e750db4d6f29bbf32efa5436ba989"
+    },
+    {
+     "id": "fx_sentar_levantar",
+     "hash_roteiro": "sha256:311f0a18e34e9c58834fd36e40721eb2b5de46dac2566325d9427e7ab8301993"
+    },
+    {
+     "id": "fx_kit_casa",
+     "hash_roteiro": "sha256:1a7d32524a3430bd66c53fd724e7c022dbdcd7356795040642ddaa0155e98cc3"
+    },
+    {
+     "id": "fx_roupa",
+     "hash_roteiro": "sha256:891ee8bc5baf7de4c911736e8da9c6f6d2b457cb6d6e090278b1a2744f982975"
+    },
+    {
+     "id": "fx_viagem",
+     "hash_roteiro": "sha256:42d8f2dd46adac117caaac5d6c2db9634018a04a4f46972fe8fdff7d60fe441c"
+    },
+    {
+     "id": "fx_retirada",
+     "hash_roteiro": "sha256:465280e1305f344d8c28c0251682664b1a66a86328582d830ec80dab2036cd1c"
+    },
+    {
+     "id": "fx_curativo_pinos",
+     "hash_roteiro": "sha256:6c9a85e5ab5187721253a08a3ef9046a161dd82e602095e592cb63efbb6749f4"
+    }
+   ]
+  },
+  {
+   "lote": "ESCOLIOSE-RASTREIO-2026-09-12",
+   "nome": "Mini-série 'Escoliose — o sinal nas costas' — 3 episódios SÓ de rastreio (D5)",
+   "escopo": [
+    "instagram"
+   ],
+   "status": "aprovado",
+   "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
+   "data": "2026-09-12",
+   "evidencia": "Chat auditoria-instagram-v1, 12/09/2026: decisão D5 do plano ('sim, só rastreio') dentro do 'vamos fazer tudo, prossiga'. Conteúdo = consenso de rastreio já publicado (post27, reel06, c_pnc_escoliose): teste de Adams, sinais, estirão, 'quem decide é o ortopedista'; nunca tratamento, nunca comparação com outra categoria profissional.",
+   "observacoes": "Revisão passiva na fila (regra de 30/08): o Rafael edita/suspende antes da data de cada peça (PROGRAMACAO.md).",
+   "episodios": [
+    {
+     "id": "esc_teste_adams",
+     "hash_roteiro": "sha256:157370c945260388aaa0550eef0037ae83d2f0abd4b88789a5034163ae07b726"
+    },
+    {
+     "id": "esc_nao_doi",
+     "hash_roteiro": "sha256:86f69bbd46c5ba48a8235ee4bfe3ede6bca1cad038f16d1a0b9533730fff77d4"
+    },
+    {
+     "id": "esc_estirao",
+     "hash_roteiro": "sha256:7240188c6591fbd44974c3641dc579f0f5e518f92303bd5b82d4919f39b2e0bc"
+    }
+   ]
   }
  ]
 }

@@ -299,18 +299,69 @@ def _base(vid):
     return img, d, ac, dy, he
 
 
+def _hero_capa(img, fam, ac):
+    """ELEMENTO VISUAL DOMINANTE da capa (reformatação A7, 12/09/2026): o esquema da série — osso
+    com vão + régua (reconstrução) ou trilha de pegadas (pediatria) — grande e opaco, na banda
+    y∈[210, 470], onde a capa v1 era só texto (a Meta rotulava o grid como 'poster/text')."""
+    from PIL import Image, ImageDraw
+    ov = Image.new("RGBA", (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(ov)
+    if fam == "bone":
+        y = 300; x0, x1 = M + 30, W - M - 30; cx = (x0 + x1) // 2; gap = int((x1 - x0) * 0.22)
+        end = ac + (235,)
+        d.line([(x0, y), (cx - gap, y)], fill=end, width=22); d.line([(cx + gap, y), (x1, y)], fill=end, width=22)
+        for ex in (x0, x1): d.ellipse([ex - 28, y - 34, ex + 28, y + 34], fill=end)
+        for gx in (cx - gap, cx + gap): d.ellipse([gx - 16, y - 22, gx + 16, y + 22], fill=end)
+        half = int(gap * 0.45); nb = ac + (185,)
+        d.line([(cx - gap, y), (cx - gap + half, y)], fill=nb, width=26); d.line([(cx + gap, y), (cx + gap - half, y)], fill=nb, width=26)
+        for xx in range(cx - gap, cx - gap + half, 22): d.line([(xx, y - 16), (xx + 12, y + 16)], fill=C.CREAM + (90,), width=3)
+        for xx in range(cx + gap, cx + gap - half, -22): d.line([(xx, y - 16), (xx - 12, y + 16)], fill=C.CREAM + (90,), width=3)
+        for xx in range(cx - gap + half + 10, cx + gap - half - 10, 24): d.line([(xx, y), (xx + 11, y)], fill=C.CREAM + (90,), width=3)
+        ry = y + 84; d.line([(x0, ry), (x1, ry)], fill=ac + (110,), width=3)
+        for i, xx in enumerate(range(x0, x1 + 1, 26)):
+            hh = 20 if i % 5 == 0 else 10; d.line([(xx, ry), (xx, ry - hh)], fill=ac + (110,), width=3)
+    else:
+        n = 6; x0, x1 = M + 60, W - M - 60; ya, yb = 430, 240
+        for i in range(n):
+            fx = x0 + (x1 - x0) * i / (n - 1); fy = ya + (yb - ya) * i / (n - 1); side = 1 if i % 2 else -1
+            ft = _pegada(150, ac, 215).rotate(-16 + 9 * side, expand=True, resample=Image.BICUBIC)
+            ov.paste(ft, (int(fx - ft.width / 2 + side * 22), int(fy - ft.height / 2)), ft)
+    img.paste(Image.alpha_composite(img.convert("RGBA"), ov).convert("RGB"), (0, 0))
+
+
+def _pegada(sz, ac, alpha):
+    from PIL import Image, ImageDraw
+    t = Image.new("RGBA", (sz, sz), (0, 0, 0, 0)); d = ImageDraw.Draw(t); c = sz // 2; col = ac + (alpha,)
+    d.ellipse([c - 16, int(sz * 0.34), c + 16, int(sz * 0.70)], fill=col); d.ellipse([c - 11, int(sz * 0.72), c + 11, int(sz * 0.93)], fill=col)
+    for dx in (-15, -6, 3, 12): d.ellipse([c + dx - 4, int(sz * 0.26), c + dx + 4, int(sz * 0.345)], fill=col)
+    return t
+
+
+def _numero_serie(spec):
+    """'03/20' — posição do verbete na CURADORIA (série numerada no gancho, regra A7-4)."""
+    for i, s in enumerate(CURADORIA, 1):
+        if _vid(s) == _vid(spec):
+            return f"{i:02d}/{len(CURADORIA)}"
+    return ""
+
+
 def slide_capa(spec, vid, n):
+    """Capa v2 (A7): esquema dominante no topo + UMA frase (o título) + número da série.
+    O subtítulo (a resposta) sai da capa — vira o miolo; a capa só promete."""
     img, d, ac, dy, he = _base(vid)
-    C.trk(d, (M, 300), ("VERBETE · " + spec["kicker"]).upper(), C.F(C.NB, 24), ac, 5)
-    d.line([(M, 340), (M + 58, 340)], fill=ac, width=3)
+    fam = "bone" if spec["kicker"] == KICK_REC else "feet"
+    _hero_capa(img, fam, ac)
+    d = C.ImageDraw.Draw(img)
+    num = _numero_serie(spec)
+    C.trk(d, (M, 520), (f"VERBETE {num} · " + spec["kicker"]).upper(), C.F(C.NB, 24), ac, 5)
+    d.line([(M, 560), (M + 58, 560)], fill=ac, width=3)
     tf, linhas = _titulo_fit(d, spec["titulo"], int(96 * he), 4, W - 2 * M)
-    ty = 380 + dy
+    ty = 600
     for ln in linhas:
         d.text((M, ty), ln, font=tf, fill=C.CREAM); ty += int(tf.size * 1.08)
-    if spec.get("sub"):
-        ty += 24
-        for ln in C.wrap(spec["sub"], C.F(C.NR, 38), W - 2 * M):
-            d.text((M, ty), ln, font=C.F(C.NR, 38), fill=C.TXT); ty += 54
+    # número GRANDE dentro da arte (legível no celular) — canto superior direito
+    if num:
+        big = C.F(C.SB, 92); nw = d.textlength(num.split("/")[0], font=big)
+        d.text((W - M - nw, 470), num.split("/")[0], font=big, fill=ac)
     C.trk(d, (M, H - 210), "ARRASTE →", C.F(C.NB, 30), ac, 4)
     C.footer(d, 0, n, ac=ac)
     return img
@@ -320,6 +371,9 @@ def slide_conteudo(kicker, titulo, corpo, vid, page, n):
     img, d, ac, dy, _he = _base(vid)
     C.trk(d, (M, 300), kicker.upper(), C.F(C.NB, 24), ac, 5)
     d.line([(M, 340), (M + 58, 340)], fill=ac, width=3)
+    # número do PASSO dentro da arte (A7-3): grande, à direita, legível no celular
+    big = C.F(C.SB, 120); ntxt = str(page); nw = d.textlength(ntxt, font=big)
+    d.text((W - M - nw, 250), ntxt, font=big, fill=ac)
     tf, linhas = _titulo_fit(d, titulo, 70, 3, W - 2 * M)
     ty = 400 + dy
     for ln in linhas:
@@ -476,11 +530,12 @@ def _caption(spec, conteudo):
             corpo_pars.append(_junta(titulo, corpo))
     partes = [spec["primeira_linha"]]
     partes += corpo_pars
-    partes.append("📤 Envie este verbete para quem precisa ver. 📌 Salve para consultar depois.\n"
-                  "📲 Dúvidas? Fale comigo pelo WhatsApp — link na bio.")
+    # A4/A7 (12/09/2026): UMA CTA (salvar), sem hashtags, sem CTA de contato, 1 menção pertinente.
+    # legenda.normalizar() aplica a mesma régua da fila e VALIDA (levanta ValueError se violar).
+    import legenda
+    fam = "reconstrucao" if spec["kicker"] == KICK_REC else "pediatria"
     partes.append(SIG + "\n" + DISC)
-    partes.append(spec["tags"])
-    return "\n\n".join(partes)
+    return legenda.normalizar("\n\n".join(partes), "post", _vid(spec), fam=fam)
 
 
 # Ângulo estético/estatura — colocações PROMOCIONAIS vetadas no nicho (o cfm_guardrails
@@ -502,9 +557,14 @@ def _checagens(spec, caption, conteudo):
         erros.append(f"keyword fora do título da capa: {spec['keyword']!r}")
     if kw not in _norm(caption[:125]):
         erros.append(f"keyword fora dos primeiros 125 caracteres da legenda: {spec['keyword']!r}")
-    ntags = len(re.findall(r"#\S+", spec["tags"]))
-    if not (4 <= ntags <= 6):
-        erros.append(f"{ntags} hashtags (esperado 4–6)")
+    # A4 (12/09/2026): hashtags BANIDAS da legenda (−31,7% views / −33,9% interações, Metricool 24,4 M
+    # posts). spec["tags"] fica como metadado de tema; a legenda publicada tem de sair com ZERO.
+    ntags = len(re.findall(r"#\S+", caption))
+    if ntags:
+        erros.append(f"{ntags} hashtag(s) na legenda (esperado 0 desde 12/09)")
+    import legenda
+    for p in legenda.validar(caption, "post"):
+        erros.append("legenda: " + p)
     textos = caption + " " + " ".join(f"{k} {t} {c or ''}" for (k, t, c) in conteudo)
     viol = [p for p in auditar(textos, "publico") if p[0] == "VIOLACAO"]
     for _s, regra, det in viol:
@@ -525,14 +585,16 @@ def montar_verbete(spec, fontes, outdir):
     erros = _checagens(spec, caption, conteudo)
     if erros:
         raise RuntimeError(f"{vid} REPROVADO: " + " | ".join(erros))
-    # 8 slides; ou 7 quando o frame de abertura da fonte repetiria a capa-gancho
+    # 8 slides; ou 7 quando o frame de abertura da fonte repetiria a capa-gancho.
+    # A7-2 (12/09/2026): o ÚLTIMO frame é o MAPA COMPLETO (card-resumo) — é ele que se salva;
+    # o selo (quem assina) vem antes dele. Ordem: capa · conteúdo · selo · mapa.
     miolo = conteudo[1:] if _capa_duplica_frame0(spec, conteudo) else conteudo
     n = 1 + len(miolo) + 2
     slides_img = [slide_capa(spec, vid, n)]
     for i, (kick, tit, corpo) in enumerate(miolo, 1):
         slides_img.append(slide_conteudo(kick, tit, corpo, vid, i, n))
-    slides_img.append(slide_card_resumo(spec, _bullets_resumo(spec, conteudo), vid, n - 2, n))
-    slides_img.append(slide_selo(vid, n - 1, n))
+    slides_img.append(slide_selo(vid, n - 2, n))
+    slides_img.append(slide_card_resumo(spec, _bullets_resumo(spec, conteudo), vid, n - 1, n))
     pasta = os.path.join(outdir, vid)
     os.makedirs(pasta, exist_ok=True)
     paths = []

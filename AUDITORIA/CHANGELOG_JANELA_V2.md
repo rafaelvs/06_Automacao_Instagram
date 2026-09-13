@@ -140,3 +140,16 @@ Registrar em cada dump: `followers_count` (série de saldo líquido só tem 2 po
 - Tarefa `instagram-auditoria-v2`: one-time 16/09 → cron `0 9 16,17,18 9 *` com guarda de idempotência no passo 0 (o agendador tem modo de falha desconhecido: em 01/09 duas one-time a 30 min de distância tiveram destinos opostos).
 - 2 pulsos extras de leitura em 11/09 (runs `34660456162` e `34660462168`) — leitura, não publicação.
 - Patch proposto (NÃO commitado nesta sessão) em `AUDITORIA/patches/v16_2026-09-11_classificador-lint-pulso.diff`: classificador de erro da Meta, exit real do `checar_cfm.py`, nomeação de métrica + série diária de seguidores + paginação no `insights_pulse.py`, e `schedule` diário em `ci-testes.yml`/`gate-aprovacoes.yml`. Quando for mergeado, **registrar a data aqui** — e desta vez conferir em 24 h.
+## 12–13/09/2026 — Plano de saída da estagnação em execução (contaminação DECLARADA dos 3 últimos dias)
+
+Decisão do Rafael em 12/09 ("vamos fazer tudo, prossiga") sobre `PLANO_SAIDA_ESTAGNACAO.md`. Executado na noite de 12/09 (commits `6b289d0`, `94b02e4` e o de render A3 no repo de produção):
+
+| Quando (UTC) | O quê | Afeta a janela 16/08→15/09? |
+|---|---|---|
+| 13/09 00:10 | Legendas de TODA a fila normalizadas (`legenda.py`): sem hashtags, 1 CTA, 1 menção (`@asami.brasil` / `@sbortopediapediatrica` / `@associacaoptc`), "Médico" na assinatura, 1ª linha na fala do paciente em 12 ids | SIM — pseudartrose (13/09), post59 (13/09), qa_tempo_fixador (14/09), post60 (15/09) saem com legenda nova |
+| 13/09 00:17 | `pseudartrose` re-renderizado: locução "Se inscreve" → "Envia para quem precisa." (template de capa ANTIGO) | SIM — 13/09 |
+| 13/09 00:20 | `publish.py`: `collaborators` por item; trial por peça (`item.trial`); alarme fail-loud de curtidas; stories DIÁRIOS → ter/qui/sáb | SIM — 14/09 (dom) sem sequência de stories; alarme pode pausar a fila |
+| 13/09 00:2x | Render A3 (capa v2): uma frase + herói visual; kicker/sub/CTA/rodapé a partir de 3,5s; header só na última cena | NÃO — 1º reel com capa v2 = `sequela_fratura`, 16/09 |
+| 13/09 00:06 | Dumps 30d/90d feitos à mão (a tarefa agendada das 21h de 12/09 NÃO disparou — nenhuma tarefa agendada rodou em 12/09) | — |
+
+Leitura para a v2: a era 3 limpa termina em **12/09**; 13–15/09 é estrato separado. A tarefa agendada `instagram-auditoria-v2` recebeu o Adendo 4 com a régua nova (Socialinsider 6,65–9,78%, alvo 8%), os denominadores novos e as metas recalibradas.

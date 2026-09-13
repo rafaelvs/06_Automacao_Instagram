@@ -224,6 +224,21 @@ try:
 except Exception as _e:
     print("AVISO: episodios_anatomia_caso não carregado:", _e)
 
+# SÉRIE "Fixador externo por dentro" (12/09/2026, plano de saída da estagnação B2/B4): 8 episódios
+# de convivência com o aparelho — maior lacuna de busca medida em 11/09; teste de gancho A/B congelado.
+try:
+    from episodios_fixador_por_dentro import FIXADOR
+    EPISODES = EPISODES + FIXADOR
+except Exception as _e:
+    print("AVISO: episodios_fixador_por_dentro não carregado:", _e)
+
+# MINI-SÉRIE "Escoliose — o sinal nas costas" (12/09/2026, decisão D5): 3 episódios SÓ de rastreio.
+try:
+    from episodios_escoliose_rastreio import ESCOLIOSE
+    EPISODES = EPISODES + ESCOLIOSE
+except Exception as _e:
+    print("AVISO: episodios_escoliose_rastreio não carregado:", _e)
+
 def get(ep_id):
     for e in EPISODES:
         if e["id"]==ep_id: return e

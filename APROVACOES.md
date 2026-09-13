@@ -7,6 +7,11 @@
 - **Texto clínico INALTERADO.** Os lotes `ALONGAMENTO-ADULTO-2026-08-30`, `QA-LOTE2-2026-08-30` e `REEL-CASO-PILOTOS-2026-08-30` passam a `substituido` (histórico). `ALONGAMENTO-KIDS` segue `pendente` (hash recalculado). Gate: `checar_aprovacoes.py` exit 0 após o registro; lint novo `checar_legenda.py` (exit 0 na fila, auto-teste com 5 controles positivos).
 - **Revisão passiva (regra de 30/08):** as peças ficam dias na fila (`PROGRAMACAO.md`); o Rafael edita ou suspende antes da data.
 
+**12/09/2026 — LOTES NOVOS (decisão "vamos fazer tudo, prossiga", itens B2/B4/D5 do plano):**
+- `FIXADOR-POR-DENTRO-2026-09-12` (8 eps, APROVADO): série "Fixador externo por dentro" — `fx_pino_inflamado`, `fx_dormir`, `fx_sentar_levantar`, `fx_kit_casa`, `fx_roupa`, `fx_viagem`, `fx_retirada`, `fx_curativo_pinos`. Orientação geral de convivência com o aparelho (subconjunto do acervo aprovado: `qa_banho_fixador`, `vida_cotidiana_fixador`, `c_on_cuidado_pinos`, `fim_tratamento`); "quem decide é a equipe" em toda peça; sinais de alerta idênticos aos do acervo. Teste de gancho A/B sorteado (`PLANO_EXPERIMENTOS.md` E2).
+- `ESCOLIOSE-RASTREIO-2026-09-12` (3 eps, APROVADO — decisão D5, "só rastreio"): `esc_teste_adams`, `esc_nao_doi`, `esc_estirao`. Consenso já publicado (post27, reel06, `c_pnc_escoliose`): teste de Adams, sinais, estirão, "quem decide é o ortopedista". Nunca tratamento, nunca comparação com outra categoria profissional.
+- Fila: intercalados a partir de 18/09 (`PROGRAMACAO.md`); 4 reels sorteados saem em modo **trial** (`primeira_consulta`, `qa_dor_crescimento`, `deformidade_angular`, `quanto_alongar` — E1). Gate `checar_aprovacoes.py` exit 0; `checar_legenda.py` exit 0 (107 legendas).
+
 ---
 
 **30/08/2026 — D2:** lote `alongamento_adulto` (11 eps) APROVADO pelo Rafael via chat (auditoria-instagram-v1). **D3:** lote `qa_lote2` (12 eps) APROVADO idem, com as 2 notas de consenso sinalizadas. `legado_pre_gate` documenta a fila pré-existente (ratificação pendente). Fonte de verdade da máquina: `aprovacoes.json` (hash por episódio; conferir com `python checar_aprovacoes.py --hash <id> --fontes .`).
