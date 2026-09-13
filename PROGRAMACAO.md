@@ -93,35 +93,55 @@ Regenerado em 12/09/2026 por `_gen_programacao.py`. **Datas são projeção da f
 | dom 13/09 | `post59` | 5 |
 | ter 15/09 | `post60` | 5 |
 | qui 17/09 | `post61` | 5 |
-| sáb 19/09 | `c_on_osso_cresce` | 5 |
-| dom 20/09 | `c_on_regra_milimetro` | 5 |
-| ter 22/09 | `c_on_tres_fases` | 5 |
-| qui 24/09 | `c_on_pseudartrose` | 5 |
-| sáb 26/09 | `c_on_tres_razoes` | 5 |
-| dom 27/09 | `c_on_cigarro` | 5 |
-| ter 29/09 | `c_on_osteomielite` | 5 |
-| qui 01/10 | `c_on_transporte_osseo` | 5 |
-| sáb 03/10 | `c_on_osteotomia` | 5 |
-| dom 04/10 | `c_on_perna_torta_adulto` | 5 |
-| ter 06/10 | `c_on_discrepancia` | 5 |
-| qui 08/10 | `c_on_medir_antes` | 5 |
-| sáb 10/10 | `c_on_fixador_vs_haste` | 5 |
-| dom 11/10 | `c_on_quanto_tempo` | 5 |
-| ter 13/10 | `c_on_cuidado_pinos` | 5 |
-| qui 15/10 | `c_on_fisioterapia` | 5 |
-| sáb 17/10 | `c_on_pos_trauma` | 5 |
-| dom 18/10 | `c_on_nao_estetica` | 5 |
-| ter 20/10 | `c_pnc_marcos_andar` | 5 |
-| qui 22/10 | `c_pnc_pe_pra_dentro` | 5 |
-| sáb 24/10 | `c_pnc_estalo_joelho` | 5 |
-| dom 25/10 | `c_pnc_tenis_caro` | 5 |
-| ter 27/10 | `c_pnc_perna_curta_crianca` | 5 |
-| qui 29/10 | `c_pnc_nao_dor_crescimento` | 5 |
-| sáb 31/10 | `c_pnc_mancando` | 5 |
-| dom 01/11 | `c_pnc_mancar_febre` | 5 |
-| ter 03/11 | `c_pnc_escoliose` | 5 |
-| qui 05/11 | `c_pnc_cai_muito` | 5 |
-| sáb 07/11 | `c_pnc_sentar_w` | 5 |
-| dom 08/11 | `c_pnc_mochila` | 5 |
+| sáb 19/09 | `v_reconstrucao_ter` (verbete) | 7 |
+| dom 20/09 | `c_on_osso_cresce` | 5 |
+| ter 22/09 | `v_reconstrucao_qua` (verbete) | 7 |
+| qui 24/09 | `c_on_regra_milimetro` | 5 |
+| sáb 26/09 | `v_reconstrucao_qui` (verbete) | 8 |
+| dom 27/09 | `c_on_tres_fases` | 5 |
+| ter 29/09 | `v_reconstrucao_sex` (verbete) | 8 |
+| qui 01/10 | `c_on_pseudartrose` | 5 |
+| sáb 03/10 | `v_reconstrucao_sab` (verbete) | 8 |
+| dom 04/10 | `c_on_tres_razoes` | 5 |
+| ter 06/10 | `v_reconstrucao_dom` (verbete) | 8 |
+| qui 08/10 | `c_on_cigarro` | 5 |
+| sáb 10/10 | `v_reconstrucao_seg` (verbete) | 7 |
+| dom 11/10 | `c_on_osteomielite` | 5 |
+| ter 13/10 | `v_pernas_ter` (verbete) | 7 |
+| qui 15/10 | `c_on_transporte_osseo` | 5 |
+| sáb 17/10 | `v_pernas_qua` (verbete) | 7 |
+| dom 18/10 | `c_on_osteotomia` | 5 |
+| ter 20/10 | `v_pernas_sab` (verbete) | 7 |
+| qui 22/10 | `c_on_perna_torta_adulto` | 5 |
+| sáb 24/10 | `v_pernas_dom` (verbete) | 8 |
+| dom 25/10 | `c_on_discrepancia` | 5 |
+| ter 27/10 | `v_pernas_seg` (verbete) | 7 |
+| qui 29/10 | `c_on_medir_antes` | 5 |
+| sáb 31/10 | `v_pernas_qui` (verbete) | 8 |
+| dom 01/11 | `c_on_fixador_vs_haste` | 5 |
+| ter 03/11 | `v_pernas_sex` (verbete) | 8 |
+| qui 05/11 | `c_on_quanto_tempo` | 5 |
+| sáb 07/11 | `v_s_pnc_marcos_andar` (verbete) | 8 |
+| dom 08/11 | `c_on_cuidado_pinos` | 5 |
+| ter 10/11 | `v_marcha_ter` (verbete) | 7 |
+| qui 12/11 | `c_on_fisioterapia` | 5 |
+| sáb 14/11 | `v_joelho_dom` (verbete) | 7 |
+| dom 15/11 | `c_on_pos_trauma` | 5 |
+| ter 17/11 | `v_marcha_qua` (verbete) | 7 |
+| qui 19/11 | `c_on_nao_estetica` | 5 |
+| sáb 21/11 | `v_mitos_ossos_crianca` (verbete) | 8 |
+| dom 22/11 | `c_pnc_marcos_andar` | 5 |
+| ter 24/11 | `v_socorros_sex` (verbete) | 8 |
+| qui 26/11 | `c_pnc_pe_pra_dentro` | 5 |
+| sáb 28/11 | `c_pnc_estalo_joelho` | 5 |
+| dom 29/11 | `c_pnc_tenis_caro` | 5 |
+| ter 01/12 | `c_pnc_perna_curta_crianca` | 5 |
+| qui 03/12 | `c_pnc_nao_dor_crescimento` | 5 |
+| sáb 05/12 | `c_pnc_mancando` | 5 |
+| dom 06/12 | `c_pnc_mancar_febre` | 5 |
+| ter 08/12 | `c_pnc_escoliose` | 5 |
+| qui 10/12 | `c_pnc_cai_muito` | 5 |
+| sáb 12/12 | `c_pnc_sentar_w` | 5 |
+| dom 13/12 | `c_pnc_mochila` | 5 |
 
 *Sequências de stories: 53 restantes, publicadas ter/qui/sáb às 12:30 (cadência reduzida em 13/09). Quem edita a fila, regenera esta página.*
