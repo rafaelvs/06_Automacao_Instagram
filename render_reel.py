@@ -48,6 +48,22 @@ SERIE="Pé no Chão"
 # layout e é chamado por último em TODOS os ramos (ver _footer + CLAMP_Y) → presente, legível e na safe
 # zone em 100% dos layouts.
 CLAMP_Y = 1330   # teto único de qualquer texto de conteúdo (footer começa em fy=1380)
+
+# ── PRIMEIROS 3 SEGUNDOS (plano de saída da estagnação, A3, 12/09/2026 — decisão D9 do Rafael) ──
+# Medido em 11/09: 43–50 palavras na tela nos 3 primeiros segundos, 27 delas boilerplate fixo
+# (header institucional + kicker + rodapé CRM) = 54–63% da janela de decisão; a Meta classificava
+# 11 de 12 capas do grid como "poster, crossword puzzle and text" e declara tornar menos visível o
+# reel "majority text". O que muda (opt-out por episode["capa_v1"]=True):
+#   (i)   capa = UMA frase (o gancho); kicker e subtítulo (a resposta) entram só a partir de T_ID;
+#   (ii)  header (RV · nome · EP · série) migra para a ÚLTIMA cena;
+#   (iii) elemento visual DOMINANTE no topo (osso/pegadas grandes, opacos, em movimento);
+#   (iv)  rodapé CRM/RQE/disclaimer entra com fade a partir de T_ID e PERMANECE — a identificação
+#         continua obrigatória na peça e na legenda (CFM 2.336, Arts. 4º/6º); o que muda é o segundo;
+#   (v)   CTA de envio aparece já na cena 0 (a partir de T_ID) — o espectador médio sai antes do fim
+#         da cena 1 em 3 de 6 reels; a CTA da cena 5 nunca era vista (0 shares em 52 reels).
+T_ID = 3.5          # s — quando kicker/sub/rodapé/CTA entram na cena 0
+ID_FADE = 0.8       # s — duração do fade do rodapé CFM
+CTA_TXT = "Envia para quem precisa"
 LAYOUTS = {
  "classico":        dict(kind="L0"),
  "editorial_baixo": dict(kind="param", anchor="bottom", base_y=1300, align="L", big=98, small=82,
@@ -208,10 +224,62 @@ def _footer(d,prog):
     d.text((M,fy+22),"@rafaelvargasmd",font=F(NR,26),fill=MUT_L); d.text((M,fy+62),SIG,font=F(NR,21),fill=MUT_L); d.text((M,fy+94),DISC,font=F(NR,20),fill=MUT_L)
     by=fy-14; pw=int(prog*(W-2*M)); d.line([(M,by),(W-M,by)],fill=FAINT,width=4); d.line([(M,by),(M+pw,by)],fill=GOLD,width=4)
 
-def _draw_L0(img, d, s, tl):
-    """L0 'classico' — miolo de conteúdo ORIGINAL (não alterar o corpo; a cena 0 chega assentada via tlv)."""
+# ── camada com alpha: desenha via callback num overlay RGBA e compõe com opacidade global ──
+def _layer(img, fn, alpha):
+    """fn(d) desenha no overlay; alpha 0..1. alpha<=0 não desenha; alpha>=1 desenha direto."""
+    if alpha<=0: return
+    if alpha>=1:
+        fn(ImageDraw.Draw(img)); return
+    ov=Image.new("RGBA",(W,H),(0,0,0,0)); fn(ImageDraw.Draw(ov))
+    ov.putalpha(ov.split()[3].point(lambda v:int(v*alpha)))
+    img.paste(Image.alpha_composite(img.convert("RGBA"),ov).convert("RGB"),(0,0))
+def _footer_id(img,alpha):
+    """Rodapé CFM (linha, @handle, SIG, DISC) com fade — a barra de progresso fica em _footer_bar."""
+    def fn(d):
+        fy=1380; d.line([(M,fy),(W-M,fy)],fill=FAINT,width=2)
+        d.text((M,fy+22),"@rafaelvargasmd",font=F(NR,26),fill=MUT_L); d.text((M,fy+62),SIG,font=F(NR,21),fill=MUT_L); d.text((M,fy+94),DISC,font=F(NR,20),fill=MUT_L)
+    _layer(img,fn,alpha)
+def _footer_bar(d,prog):
+    by=1380-14; pw=int(prog*(W-2*M)); d.line([(M,by),(W-M,by)],fill=FAINT,width=4); d.line([(M,by),(M+pw,by)],fill=GOLD,width=4)
+def _hero(img,fam,prog,alpha,band_bottom=520):
+    """ELEMENTO VISUAL DOMINANTE (A3-iii): o mesmo motivo da série, grande e opaco, na banda do
+    topo (y∈[140, band_bottom]) — onde o header ficava. Progride com o vídeo (o osso novo fecha o
+    vão; as pegadas avançam): mecanismo em MOVIMENTO, não card de texto sobre fundo liso."""
+    if alpha<=0: return
+    top=140; h=max(180,band_bottom-top); A=alpha
+    ov=Image.new("RGBA",(W,H),(0,0,0,0)); d=ImageDraw.Draw(ov)
+    if fam=="bone":
+        y=top+int(h*0.46); x0,x1=M+40,W-M-40; cx=(x0+x1)//2; gap=int((x1-x0)*0.22)
+        end=GOLD+(int(235*A),)
+        d.line([(x0,y),(cx-gap,y)],fill=end,width=24); d.line([(cx+gap,y),(x1,y)],fill=end,width=24)
+        for ex in (x0,x1): d.ellipse([ex-30,y-36,ex+30,y+36],fill=end)
+        for gx in (cx-gap,cx+gap): d.ellipse([gx-18,y-24,gx+18,y+24],fill=end)
+        fill=eoutc(min(1.0,prog/0.85)); half=int(gap*fill); nb=GOLD+(int((150+85*fill)*A),)
+        if half>0:
+            d.line([(cx-gap,y),(cx-gap+half,y)],fill=nb,width=28); d.line([(cx+gap,y),(cx+gap-half,y)],fill=nb,width=28)
+            for xx in range(cx-gap,cx-gap+half,22): d.line([(xx,y-18),(xx+14,y+18)],fill=CREAM+(int(90*A),),width=3)
+            for xx in range(cx+gap,cx+gap-half,-22): d.line([(xx,y-18),(xx-14,y+18)],fill=CREAM+(int(90*A),),width=3)
+        # tracejado do vão ainda aberto + régua de milímetros por baixo
+        for xx in range(cx-gap+half+10,cx+gap-half-10,26): d.line([(xx,y),(xx+12,y)],fill=CREAM+(int(90*A),),width=3)
+        ry=y+int(h*0.30); d.line([(x0,ry),(x1,ry)],fill=GOLD+(int(110*A),),width=3)
+        for i,xx in enumerate(range(x0,x1+1,26)):
+            hh=22 if i%5==0 else 11; d.line([(xx,ry),(xx,ry-hh)],fill=GOLD+(int(110*A),),width=3)
+    else:
+        # trilha de pegadas SEMPRE visível (alpha mínimo 0,45) — a capa precisa do elemento dominante
+        # no frame 0; a progressão do vídeo "acende" cada pegada (o caminhar como mecanismo).
+        n=6; x0,x1=M+70,W-M-70; ya,yb=top+int(h*0.78),top+int(h*0.22)
+        for i in range(n):
+            a=0.85+0.15*eoutc((prog-i/(n+1))/0.10)
+            fx=x0+(x1-x0)*i/(n-1); fy=ya+(yb-ya)*i/(n-1); side=1 if i%2 else -1
+            ft=_foot(175,int(225*a*A)).rotate(-16+9*side,expand=True,resample=Image.BICUBIC)
+            ov.paste(ft,(int(fx-ft.width/2+side*26),int(fy-ft.height/2)),ft)
+    img.paste(Image.alpha_composite(img.convert("RGBA"),ov).convert("RGB"),(0,0))
+
+def _draw_L0(img, d, s, tl, late=1.0, cta0=False):
+    """L0 'classico' — miolo de conteúdo ORIGINAL (a cena 0 chega assentada via tlv).
+    late (A3): opacidade do kicker/sub/CTA na cena 0 — 0 até T_ID, 1 depois; cta0 = CTA na cena 0."""
     BIG=F(SB,98); SUB=F(NR,40); T82=F(SB,82)
-    trk(d,(M,560),s["k"].upper(),F(NB,28),GOLD,5); d.line([(M,602),(M+56,602)],fill=GOLD,width=3)
+    _layer(img,lambda dd:(trk(dd,(M,560),s["k"].upper(),F(NB,28),GOLD,5),dd.line([(M,602),(M+56,602)],fill=GOLD,width=3)),late)
     ln=s["sc"]; emph=s.get("e"); tf=BIG
     if any(_m.textlength(x,font=tf)>W-2*M for x in ln): tf=T82
     ty=680
@@ -225,10 +293,12 @@ def _draw_L0(img, d, s, tl):
         else: ptxt(img,M,ty+yo,L,tf,CREAM,a)
         ty+=int(tf.size*1.06)
     if s.get("sub"):
-        sy=ty+40; pa=int(255*eoutc((tl-0.5)/0.5))
+        sy=ty+40; pa=int(255*eoutc((tl-0.5)/0.5)*late)
         for sl in wrap(s["sub"],SUB,W-2*M): ptxt(img,M,sy,sl,SUB,TXT_L,pa); sy+=56
     if s.get("cta"):
-        pc=eoutc((tl-0.9)/0.6); ptxt(img,M,1330,"Compartilhar = enviar no direct",F(NB,46),GOLD,int(220*pc))
+        pc=eoutc((tl-0.9)/0.6); ptxt(img,M,1330,CTA_TXT,F(NB,46),GOLD,int(220*pc))
+    elif cta0:
+        ptxt(img,M,1330,CTA_TXT,F(NB,46),GOLD,int(220*late))
 
 def _dispatch_motif(img, motif_fam, prog, LP):
     """Motivo (feet/bone) por modo de layout. 'none' pula; 'wash' esmaece; 'center' aceita shift_x."""
@@ -241,10 +311,11 @@ def _dispatch_motif(img, motif_fam, prog, LP):
         sx=max(-30,min(30,LP.get("motif_shift_x",0)))  # clamp defensivo: motivo nunca vaza a moldura (x0=M+30+sx fica ≥ M)
         fn(img,prog,shift_x=sx)
 
-def _draw_content(img, d, s, tl, LP):
+def _draw_content(img, d, s, tl, LP, late=1.0, cta0=False):
     """Miolo de conteúdo dos layouts paramétricos (L1-L5): kicker + hook + sub + [régua] + cta.
     TODO y de conteúdo passa por _clamp_y (teto CLAMP_Y=1330) → nunca invade o footer, que é
-    desenhado DEPOIS e FORA daqui. A lógica de ênfase dourada (pop de escala) é escrita UMA vez aqui."""
+    desenhado DEPOIS e FORA daqui. A lógica de ênfase dourada (pop de escala) é escrita UMA vez aqui.
+    late/cta0 (A3): ver _draw_L0."""
     align=LP["align"]; line_h=LP["line_h"]; distico=LP.get("distico")
     ln=s["sc"]; emph=s.get("e"); no_present = s.get("motif")=="no"
     mw = W-2*M
@@ -270,18 +341,21 @@ def _draw_content(img, d, s, tl, LP):
         # ancora a BASE de todo o conteúdo (hook + sub) em base_y → o sub cabe acima do footer
         sub_lines = wrap(s["sub"], F(NR,40), mw) if s.get("sub") else []
         sub_h = (40 + len(sub_lines)*56) if sub_lines else 0
-        top_y = max(384, LP["base_y"] - block_h - sub_h)
+        base_y = LP["base_y"] - (76 if cta0 else 0)   # cena 0 (A3): sobe o bloco p/ a CTA caber abaixo do sub
+        top_y = max(384, base_y - block_h - sub_h)
     else:
         top_y = LP["hook_y"]
     # ── rótulo/kicker acima do hook, alinhado ──
     k=s["k"].upper(); fk=F(NB,24 if distico else 26); ky=max(352, top_y-52)
-    if align=="C":
-        kw=sum(_m.textlength(c,font=fk)+5 for c in k)-5; trk(d,((W-kw)/2,ky),k,fk,GOLD,5)
-        cx=W//2; d.line([(cx-28,ky+40),(cx+28,ky+40)],fill=GOLD,width=3)
-    elif align=="R":
-        trk(d,(W-M,ky),k,fk,GOLD,5,left=False); d.line([(W-M-56,ky+40),(W-M,ky+40)],fill=GOLD,width=3)
-    else:
-        trk(d,(M,ky),k,fk,GOLD,5); d.line([(M,ky+40),(M+56,ky+40)],fill=GOLD,width=3)
+    def _kicker(dd):
+        if align=="C":
+            kw=sum(_m.textlength(c,font=fk)+5 for c in k)-5; trk(dd,((W-kw)/2,ky),k,fk,GOLD,5)
+            cx=W//2; dd.line([(cx-28,ky+40),(cx+28,ky+40)],fill=GOLD,width=3)
+        elif align=="R":
+            trk(dd,(W-M,ky),k,fk,GOLD,5,left=False); dd.line([(W-M-56,ky+40),(W-M,ky+40)],fill=GOLD,width=3)
+        else:
+            trk(dd,(M,ky),k,fk,GOLD,5); dd.line([(M,ky+40),(M+56,ky+40)],fill=GOLD,width=3)
+    _layer(img,_kicker,late)
     # ── hook (linhas animadas, ênfase dourada com pop) ──
     ty=top_y
     for li,L in enumerate(ln):
@@ -301,14 +375,15 @@ def _draw_content(img, d, s, tl, LP):
     if LP.get("rule"):
         ry=_clamp_y(hook_bottom+26); d.line([(M,ry),(W-M,ry)],fill=GOLD,width=3); sy=_clamp_y(ry+36)
     if s.get("sub"):
-        SUB=F(NR,40); pa=int(255*eoutc((tl-0.5)/0.5))
+        SUB=F(NR,40); pa=int(255*eoutc((tl-0.5)/0.5)*late)
+        lim = 1290 if cta0 else 1360   # cena 0 (A3): reserva espaço para a CTA abaixo do sub
         for sl in wrap(s["sub"],SUB,mw):
-            if sy+50>1360: break   # reserva a altura do glifo do sub → base nunca encosta no footer (fy=1380)
+            if sy+50>lim: break   # reserva a altura do glifo do sub → base nunca encosta no footer (fy=1380)
             ptxt(img,_hook_x(sl,SUB,align),sy,sl,SUB,TXT_L,pa); sy+=56
     # ── cta (ancorado ACIMA do footer: base do glifo < 1360, contando a própria altura) ──
-    if s.get("cta"):
-        pc=eoutc((tl-0.9)/0.6); ct="Compartilhar = enviar no direct"; cf=F(NB,46)
-        cy=min(sy, 1360-int(cf.size*1.5))
+    if s.get("cta") or cta0:
+        pc=eoutc((tl-0.9)/0.6) if s.get("cta") else late; ct=CTA_TXT; cf=F(NB,42 if cta0 else 46)
+        cy=min(sy+(26 if cta0 else 0), 1360-int(cf.size*1.5))
         ptxt(img,_hook_x(ct,cf,align),cy,ct,cf,GOLD,int(220*pc))
 
 def render_frames(episode, durs, frames_dir):
@@ -322,38 +397,67 @@ def render_frames(episode, durs, frames_dir):
     total=acc; nf=int(total*FPS)
     lay_name, LP = _resolve_layout(episode)        # variação de composição por episódio
     hdr_style = LP.get("header","compact"); is_L0 = LP.get("kind")=="L0"
+    # A3 (12/09/2026): capa v2 é o padrão; episode["capa_v1"]=True mantém o template anterior
+    # (header sempre, rodapé desde o frame 0, sem herói). Vale para reels novos e re-renders.
+    capa_v2 = not episode.get("capa_v1", False)
+    last = len(S)-1
+    band_bottom = 400 if lay_name in ("manchete_regua","editorial_baixo") else 520   # herói acima do gancho
     for f in range(nf):
-        t=f/FPS; cur=bnd[-1]
-        for b in bnd:
-            if b[0]<=t<b[1]: cur=b; break
-        t0,t1,idx=cur; tl=t-t0; s=S[idx]; drift=int(8*math.sin(t*0.5))
-        # RETENCAO-3s (v7): a CENA 0 nasce ASSENTADA — o hook aparece INTEIRO no frame 0, sem rampa
-        # de entrada. Deslocar tl adianta todas as animacoes de entrada do miolo (slide/fade/sub) p/
-        # antes de t=0; cenas seguintes mantem o ritmo atual (viewer ja engajado). Motivo: watch medio
-        # 2,3s medido no pulso v7 — o reel morria no gate de retencao antes do CTA importar.
-        tlv=tl+0.72 if idx==0 else tl
-        img=_bg(drift)
-        # ── ILUSTRAÇÃO DE CASO (opt-in por cena): desenha na banda média e SUPRIME o motivo ──
-        _il = s.get("ilustracao")
-        if _il is not None and _ilus is None:   # pedir ilustração sem o módulo = falhar ALTO
-            raise RuntimeError("cena pede 'ilustracao' mas ilustracoes_caso não importou")
-        # ── MOTIVO: L0 = comportamento exato atual; demais layouts despacham por motif_mode ──
-        if _il is not None:
-            _ilus.desenhar(img, _il, tlv, t1-t0)
-        elif is_L0:
-            if motif_fam=="bone": _bone(img,t/total)
-            else: _feet(img,t/total)
-        else:
-            _dispatch_motif(img, motif_fam, t/total, LP)
-        d=ImageDraw.Draw(img)
-        if s.get("motif")=="no": _no(img,t/total,tlv); d=ImageDraw.Draw(img)   # SEMPRE (independe do motif_mode)
-        _header(d,ep,serie,style=hdr_style)
-        # ── CONTEÚDO: dispatch por layout (L0 = miolo com cena-0 assentada; L1-L5 = paramétrico clampado) ──
-        if is_L0: _draw_L0(img,d,s,tlv)
-        else:     _draw_content(img,d,s,tlv,LP)
-        _footer(d,t/total)                          # ← IMUTÁVEL, por último, em TODOS os ramos (CFM)
+        img = render_frame(episode, S, f, bnd, total, LP, lay_name, hdr_style, is_L0, serie, motif_fam, capa_v2, last, band_bottom)
         img.save(f"{frames_dir}/f{f:05d}.jpg","JPEG",quality=92)
     return total, nf
+
+def render_frame(episode, S, f, bnd, total, LP, lay_name, hdr_style, is_L0, serie, motif_fam, capa_v2, last, band_bottom):
+    """Um frame (extraído de render_frames para o laboratório local poder pedir frames avulsos)."""
+    ep=episode["ep"]
+    t=f/FPS; cur=bnd[-1]
+    for b in bnd:
+        if b[0]<=t<b[1]: cur=b; break
+    t0,t1,idx=cur; tl=t-t0; s=S[idx]; drift=int(8*math.sin(t*0.5))
+    # RETENCAO-3s (v7): a CENA 0 nasce ASSENTADA — o hook aparece INTEIRO no frame 0, sem rampa
+    # de entrada. Deslocar tl adianta todas as animacoes de entrada do miolo (slide/fade/sub) p/
+    # antes de t=0; cenas seguintes mantem o ritmo atual (viewer ja engajado). Motivo: watch medio
+    # 2,3s medido no pulso v7 — o reel morria no gate de retencao antes do CTA importar.
+    tlv=tl+0.72 if idx==0 else tl
+    # A3: na cena 0 o kicker/sub/CTA só entram a partir de T_ID (capa = UMA frase); o rodapé CFM
+    # entra com fade em T_ID e permanece; o header só existe na última cena; o herói ocupa o topo
+    # em todas as cenas menos a última (onde o header o substitui com crossfade).
+    if capa_v2:
+        late = 1.0 if idx>0 else eoutc((t-T_ID)/0.6)
+        id_alpha = 1.0 if total<6 else eoutc((t-T_ID)/ID_FADE)
+        hdr_alpha = eoutc(tl/0.4) if idx==last else 0.0
+        hero_alpha = (1.0-eoutc(tl/0.4)) if idx==last else 1.0
+    else:
+        late=1.0; id_alpha=1.0; hdr_alpha=1.0; hero_alpha=0.0
+    img=_bg(drift)
+    # ── ILUSTRAÇÃO DE CASO (opt-in por cena): desenha na banda média e SUPRIME o motivo ──
+    _il = s.get("ilustracao")
+    if _il is not None and _ilus is None:   # pedir ilustração sem o módulo = falhar ALTO
+        raise RuntimeError("cena pede 'ilustracao' mas ilustracoes_caso não importou")
+    # ── MOTIVO: L0 = comportamento exato atual; demais layouts despacham por motif_mode ──
+    if _il is not None:
+        _ilus.desenhar(img, _il, tlv, t1-t0)
+    elif capa_v2:
+        pass                                   # o herói do topo substitui o motivo tênue da base
+    elif is_L0:
+        if motif_fam=="bone": _bone(img,t/total)
+        else: _feet(img,t/total)
+    else:
+        _dispatch_motif(img, motif_fam, t/total, LP)
+    if capa_v2 and s.get("motif")!="no" and _il is None:   # ilustração de caso já é o elemento dominante
+        _hero(img, "bone" if motif_fam=="bone" else "feet", t/total, hero_alpha, band_bottom)
+    d=ImageDraw.Draw(img)
+    if s.get("motif")=="no": _no(img,t/total,tlv); d=ImageDraw.Draw(img)   # SEMPRE (independe do motif_mode)
+    _layer(img, lambda dd:_header(dd,ep,serie,style=hdr_style), hdr_alpha)
+    d=ImageDraw.Draw(img)
+    # ── CONTEÚDO: dispatch por layout (L0 = miolo com cena-0 assentada; L1-L5 = paramétrico clampado) ──
+    cta0 = capa_v2 and idx==0
+    if is_L0: _draw_L0(img,d,s,tlv,late=late,cta0=cta0)
+    else:     _draw_content(img,d,s,tlv,LP,late=late,cta0=cta0)
+    d=ImageDraw.Draw(img)
+    _footer_bar(d,t/total)                      # barra de progresso: sempre
+    _footer_id(img,id_alpha)                    # ← rodapé CFM por último, em TODOS os ramos; fade só na cena 0 (D9)
+    return img
 
 def encode(frames_dir, audio_args, out_mp4):
     cmd=["ffmpeg","-y","-framerate",str(FPS),"-i",f"{frames_dir}/f%05d.jpg"]+audio_args+[
