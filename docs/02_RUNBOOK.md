@@ -155,3 +155,17 @@ O ramo tomado fica em `state.published[].modo_reel` (trial / fallback_normal / n
 **Cadência de stories.** Sequências passaram de diárias para **seg/qua/sex** (`SEQ_WEEKDAYS`),
 ~15 frames/semana — mediana de mercado 8,39/semana; cada seguidor que pula a sequência diária gera
 o sinal negativo de ranking de Stories.
+
+## 9. Reordenar filas × `render.yml` (13/09/2026 — plano "núcleo primeiro")
+
+- As três filas (`reels.json`, `posts.json`, `sequences.json`) estão em ORDEM POR FASE do tratamento, não FIFO
+  (consulta de controle → gesso em casa → pisar ou não → fixador rotina → …). Quem inserir peça nova, insere na fase
+  certa e regenera `PROGRAMACAO.md` (`python _gen_programacao.py`).
+- **NUNCA disparar `render.yml` depois da reordenação.** Ele roda `gerar_temporadas.py`, que TRUNCA e reescreve
+  `sequences.json` inteiro — desfaz a ordem por fase. Frame de story é JPG pré-renderizado: para trocar UM frame,
+  regenerar só aquele JPG (script `rerender_frame.py`, a criar) sem tocar `sequences.json`.
+- `reels_legado_mudos.json`: os 27 reels mudos `reel04`–`reel30` retirados da fila em 13/09 (sem voz, sem aprovação
+  por peça). Reversível: copiar de volta para o fim de `reels.json`.
+- Stories saem seg/ter/sáb 12:30 (`SEQ_WEEKDAYS = {0, 1, 5}`): dias escolhidos pelos views/dia medidos em 83 dias
+  (SÁB 102,0 · SEG 100,7 · TER 91,3 · QUI 69,0 = pior). Reverter é 1 linha em `publish.py` + `publish_agenda.py`.
+- Plano completo e correções do crítico: oficina, `_GRANDE_REVISAO_2026-08/EVOLUCAO_NUCLEO_PRIMEIRO_2026-09-13.md`.

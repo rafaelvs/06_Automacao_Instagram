@@ -42,15 +42,24 @@ MENCOES = {
 }
 HANDLE_PROPRIO = "@rafaelvargasmd"
 
+# "Núcleo primeiro" (13/09/2026): o destinatário da CTA é quem CUIDA do paciente — a rede real por
+# onde o perfil cresce aos poucos. Nunca "marque", nunca "conte sua experiência" (CFM Art. 8º §4º).
 CTAS = {
     ("reel", "reconstrucao"): ["Envia para quem precisa disso.",
-                               "Envia para quem está passando por isso."],
+                               "Envia para quem está passando por isso.",
+                               "Envia para quem vai cuidar de você em casa.",
+                               "Envia para o seu fisioterapeuta.",
+                               "Manda para quem está na mesma fase."],
     ("reel", "pediatria"):    ["Envia para um pai ou uma mãe que precisa ver isso.",
-                               "Envia para quem tem criança em casa."],
+                               "Envia para quem tem criança em casa.",
+                               "Manda para a escola do seu filho.",
+                               "Envia para quem cuida do seu filho quando você não está."],
     ("post", "reconstrucao"): ["Salva para consultar depois.",
-                               "Salva para ter à mão quando precisar."],
+                               "Salva para ter à mão quando precisar.",
+                               "Salva para a próxima fase."],
     ("post", "pediatria"):    ["Salva para consultar depois.",
-                               "Salva para ter à mão quando a dúvida bater."],
+                               "Salva para ter à mão quando a dúvida bater.",
+                               "Salva para a próxima consulta."],
 }
 CTAS[("reel", "pe_torto")] = CTAS[("reel", "pediatria")]
 CTAS[("post", "pe_torto")] = CTAS[("post", "pediatria")]

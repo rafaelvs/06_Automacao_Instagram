@@ -443,7 +443,7 @@
   "id": "primeira_consulta",
   "video": "reels/_preview_primeira_consulta.mp4",
   "caption": "Vai na primeira consulta por uma perna mais curta ou torta? Pergunte: qual o objetivo funcional e o que exatamente será corrigido; qual método, quanto tempo no total e como fica sua rotina; e quais os riscos e o plano se algo não sair como esperado. Leve seus exames e relatórios anteriores.\n\nEnvia para quem precisa disso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico.",
-  "trial": true
+  "trial": false
  },
  {
   "id": "fx_sentar_levantar",
@@ -454,7 +454,7 @@
   "id": "qa_dor_crescimento",
   "video": "reels/_preview_qa_dor_crescimento.mp4",
   "caption": "Dor do crescimento existe — é um quadro benigno e comum da infância, que vai e vem sem outros sinais. O que não é 'do crescimento': dor persistente, que acorda a criança à noite, com mancar, febre ou inchaço — esses sinais pedem avaliação com ortopedista pediátrico, para separar o que é fisiológico do que precisa de tratamento.\n\nEnvia para quem tem criança em casa.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "trial": true
+  "trial": false
  },
  {
   "id": "fx_kit_casa",
@@ -462,14 +462,9 @@
   "caption": "O que ter em casa para cuidar do fixador externo? Um kit simples, montado com a orientação da equipe: para o curativo, gaze, solução e o que mais estiver na lista dela (pomada e produto por conta própria ficam fora); para o conforto, uma capa de tecido para o aparelho, um travesseiro firme para apoiar a perna e roupa larga com abertura lateral; para a organização, o contato da equipe anotado e o calendário de ajustes, curativos e consultas onde toda a casa veja.\n\nEnvia para quem está com o fixador — ou cuida de quem está.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo; não substitui avaliação individual."
  },
  {
-  "id": "caso_osteomielite_0cm",
-  "video": "reels/_preview_caso_osteomielite_0cm.mp4",
-  "caption": "Uma infecção no osso na infância deixou a perna dele arqueada e 14 cm mais curta — a correção veio 17 anos depois, e a diferença final ficou em 0,1 cm.\n\nCaso real publicado na literatura médica e tratado por outra equipe (Hong e colaboradores, 2023, revista Medicina — Kaunas). As ilustrações são esquemáticas: não são imagens do paciente.\n\nAos 24 anos, ele chegou ao hospital mancando. A correção teve 3 etapas: o fixador circular de Ilizarov endireitou e alongou a perna (1 mm por dia, por 4 meses); uma placa externa de perfil baixo substituiu o aparelho volumoso até o osso firmar; e, por fim, a placa foi retirada, 15 meses depois. A parte honesta do desfecho: o tornozelo ficou com rigidez importante — o joelho ficou quase normal — e houve duas infecções no trajeto dos pinos, tratadas com antibiótico.\n\nCada caso é único: este é o relato de UM paciente, publicado pelos médicos que o trataram. Não é promessa de resultado.\n\nEnvia para quem convive há anos com uma sequela e acha que não tem mais jeito.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nReferência: Hong P, Ding Y, Xu R, Rai S, Liu R, Li J. Medicina (Kaunas), 2023;59(2):262. doi: 10.3390/medicina59020262\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo; não substitui avaliação individual."
- },
- {
-  "id": "esc_teste_adams",
-  "video": "reels/_preview_esc_teste_adams.mp4",
-  "caption": "O teste das costas que você faz em casa: a criança fica de pé, pés juntos, e inclina o tronco para a frente com os braços soltos e os joelhos esticados; você olha as costas por trás. Um lado mais alto que o outro é a rotação da coluna aparecendo — o sinal que a escoliose costuma dar antes de qualquer dor. É sinal, não diagnóstico: quem confirma, decide se pede exame e define a conduta é o ortopedista.\n\nEnvia para um pai ou uma mãe de pré-adolescente.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo; não substitui avaliação individual."
+  "id": "qa_perna_curta_operar",
+  "video": "reels/_preview_qa_perna_curta_operar.mp4",
+  "caption": "Uma perna mais curta que a outra (discrepância de membro): nem sempre precisa operar. A diferença é medida com precisão por exame clínico e radiografias como a escanometria; diferenças pequenas costumam ser conduzidas com palmilha de compensação e observação, e as maiores podem ter indicação de correção — a conduta depende da magnitude, da idade e da causa, sempre de forma individualizada.\n\nEnvia para quem precisa disso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."
  },
  {
   "id": "fim_tratamento",
@@ -477,14 +472,19 @@
   "caption": "O fixador saiu, o raio-X está bom — mas o tratamento não termina nesse dia. O osso novo ainda está mais frágil que o osso maduro e segue ganhando resistência por meses. Carga e atividade voltam aos poucos, no ritmo que a equipe orienta. Dor nova ou insegurança ao apoiar: volte para reavaliação.\n\nEnvia para quem está passando por isso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."
  },
  {
+  "id": "qa_crianca_mancando",
+  "video": "reels/_preview_qa_crianca_mancando.mp4",
+  "caption": "Criança mancando sem trauma não é 'manha': claudicação persistente merece avaliação com ortopedista pediátrico, para separar o que é passageiro do que precisa de tratamento. Apressam a consulta: mancar que não melhora, dor que acorda a criança à noite, febre, inchaço ou perda de movimento.\n\nEnvia para quem tem criança em casa.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."
+ },
+ {
   "id": "fx_roupa",
   "video": "reels/_preview_fx_roupa.mp4",
   "caption": "Roupa e fixador externo: uma regra resolve quase tudo — a peça abre antes de entrar, nunca passa forçada por cima dos pinos. Calça larga com abertura lateral (velcro ou botões) ou shorts, com a perna do aparelho vestindo primeiro; no pé desse lado, calçado mais aberto ou com ajuste, porque ele pode inchar mais; e uma capa de tecido sobre o aparelho, que não enrosca, não expõe os pinos e fica mais confortável na rua. Detalhes do seu caso: com a sua equipe.\n\nEnvia para quem está com o fixador — ou cuida de quem está.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo; não substitui avaliação individual."
  },
  {
-  "id": "qa_crianca_mancando",
-  "video": "reels/_preview_qa_crianca_mancando.mp4",
-  "caption": "Criança mancando sem trauma não é 'manha': claudicação persistente merece avaliação com ortopedista pediátrico, para separar o que é passageiro do que precisa de tratamento. Apressam a consulta: mancar que não melhora, dor que acorda a criança à noite, febre, inchaço ou perda de movimento.\n\nEnvia para quem tem criança em casa.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."
+  "id": "caso_osteomielite_0cm",
+  "video": "reels/_preview_caso_osteomielite_0cm.mp4",
+  "caption": "Uma infecção no osso na infância deixou a perna dele arqueada e 14 cm mais curta — a correção veio 17 anos depois, e a diferença final ficou em 0,1 cm.\n\nCaso real publicado na literatura médica e tratado por outra equipe (Hong e colaboradores, 2023, revista Medicina — Kaunas). As ilustrações são esquemáticas: não são imagens do paciente.\n\nAos 24 anos, ele chegou ao hospital mancando. A correção teve 3 etapas: o fixador circular de Ilizarov endireitou e alongou a perna (1 mm por dia, por 4 meses); uma placa externa de perfil baixo substituiu o aparelho volumoso até o osso firmar; e, por fim, a placa foi retirada, 15 meses depois. A parte honesta do desfecho: o tornozelo ficou com rigidez importante — o joelho ficou quase normal — e houve duas infecções no trajeto dos pinos, tratadas com antibiótico.\n\nCada caso é único: este é o relato de UM paciente, publicado pelos médicos que o trataram. Não é promessa de resultado.\n\nEnvia para quem convive há anos com uma sequela e acha que não tem mais jeito.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nReferência: Hong P, Ding Y, Xu R, Rai S, Liu R, Li J. Medicina (Kaunas), 2023;59(2):262. doi: 10.3390/medicina59020262\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo; não substitui avaliação individual."
  },
  {
   "id": "fx_viagem",
@@ -495,17 +495,17 @@
   "id": "deformidade_angular",
   "video": "reels/_preview_deformidade_angular.mp4",
   "caption": "Perna torta e perna curta são problemas diferentes — e o tratamento também. Na deformidade angular o eixo do osso está desviado; no encurtamento, o osso é mais curto com o eixo reto. Muitas vezes aparecem juntos. Perna que muda de forma ou desconforto ao apoiar: procure avaliação.\n\nEnvia para quem está passando por isso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico.",
-  "trial": true
+  "trial": false
+ },
+ {
+  "id": "esc_teste_adams",
+  "video": "reels/_preview_esc_teste_adams.mp4",
+  "caption": "O teste das costas que você faz em casa: a criança fica de pé, pés juntos, e inclina o tronco para a frente com os braços soltos e os joelhos esticados; você olha as costas por trás. Um lado mais alto que o outro é a rotação da coluna aparecendo — o sinal que a escoliose costuma dar antes de qualquer dor. É sinal, não diagnóstico: quem confirma, decide se pede exame e define a conduta é o ortopedista.\n\nEnvia para um pai ou uma mãe de pré-adolescente.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo; não substitui avaliação individual."
  },
  {
   "id": "caso_silver_russell",
   "video": "reels/_preview_caso_silver_russell.mp4",
   "caption": "Uma perna 15 cm mais curta — e o plano de 6 anos de uma menina com síndrome de Silver-Russell. Caso real publicado na literatura médica e tratado por outra equipe — não é paciente meu. As ilustrações são esquemáticas: não são imagens da paciente.\n\nDos 7 aos 13 anos foram 7 cirurgias: corrigir o quadril, firmar a coluna e, com o fixador circular, alongar fêmur e tíbia, com o pé incluído no aparelho. No caminho, o osso novo se mostrou frágil e precisou de hastes internas de proteção. A discrepância caiu de 15 para 5 cm: ela anda com o apoio de uma órtese abaixo do joelho e com calçado 5 cm mais alto. E os próprios autores alertam para o alto risco de recidiva em síndromes assim. Cada caso é único: este é o relato de UMA paciente, publicado pelos médicos que a trataram.\n\nEnvia para uma família que vive um plano longo desses.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nFonte: Al Kaissi A, Ganger R, Mindler G, Karner C, Klaushofer K, Grill F. Correction of the axial and appendicular deformities in a patient with Silver-Russel syndrome. Afr J Paediatr Surg. 2015;12(1):36-40. doi: 10.4103/0189-6725.150969 (PMC4955504).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo; não substitui avaliação individual."
- },
- {
-  "id": "esc_nao_doi",
-  "video": "reels/_preview_esc_nao_doi.mp4",
-  "caption": "A escoliose costuma não doer no começo — por isso o sinal é visual, e quem vê é quem olha as costas: os pais, a escola, o pediatra. É um desvio em curva da coluna, visto por trás, que aparece mais no estirão da pré-adolescência. O que observar: um ombro mais alto que o outro, a cintura assimétrica, uma escápula mais saliente. Viu? Leve para avaliação.\n\nEnvia para um pai ou uma mãe de pré-adolescente.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo; não substitui avaliação individual."
  },
  {
   "id": "qa_caroco_no_osso",
@@ -521,7 +521,7 @@
   "id": "quanto_alongar",
   "video": "reels/_preview_quanto_alongar.mp4",
   "caption": "Quantos centímetros dá para alongar? Não existe número fixo — pele, nervo e vaso esticam junto com o osso e ditam o limite seguro por etapa. Passar desse limite de uma vez aumenta o risco de lesão. Por isso casos maiores são feitos em mais de uma fase. Leve essa pergunta ao planejamento.\n\nEnvia para quem está passando por isso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico.",
-  "trial": true
+  "trial": false
  },
  {
   "id": "fx_curativo_pinos",
@@ -529,19 +529,9 @@
   "caption": "Como limpar os pinos do fixador externo em casa? A rotina é a que a sua equipe ensinou; o que vale para todo mundo: mãos lavadas, um material para cada pino (nunca o mesmo de um pino para o outro), sem arrancar crostas e sem pomada ou produto por conta própria. Reações leves na pele são comuns — já secreção com pus ou mau cheiro, vermelhidão que aumenta, dor nova ou febre pedem contato precoce com a equipe (febre: pronto-socorro).\n\nEnvia para quem está com o fixador — ou cuida de quem está.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo; não substitui avaliação individual."
  },
  {
-  "id": "esc_estirao",
-  "video": "reels/_preview_esc_estirao.mp4",
-  "caption": "No estirão de crescimento, a curva da escoliose pode mudar mais rápido — coluna crescendo é coluna mudando, e enquanto o esqueleto amadurece uma curva pode progredir. O que isso muda é o intervalo entre as reavaliações, definido caso a caso pelo ortopedista que acompanha. Em casa: olhe as costas de tempos em tempos; mudou algo entre uma consulta e outra, antecipe a reavaliação.\n\nEnvia para um pai ou uma mãe de pré-adolescente.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo; não substitui avaliação individual."
- },
- {
-  "id": "qa_perna_curta_operar",
-  "video": "reels/_preview_qa_perna_curta_operar.mp4",
-  "caption": "Uma perna mais curta que a outra (discrepância de membro): nem sempre precisa operar. A diferença é medida com precisão por exame clínico e radiografias como a escanometria; diferenças pequenas costumam ser conduzidas com palmilha de compensação e observação, e as maiores podem ter indicação de correção — a conduta depende da magnitude, da idade e da causa, sempre de forma individualizada.\n\nEnvia para quem precisa disso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."
- },
- {
-  "id": "trabalho_escola",
-  "video": "reels/_preview_trabalho_escola.mp4",
-  "caption": "Voltar ao trabalho com fixador depende mais da função do cargo do que de uma data. Trabalho sentado libera mais cedo; esforço físico demora mais. Organize deslocamento e cuidado com os pinos. Dor que piora no fim do dia ou sinais de infecção: avise a equipe, pronto-socorro se vier com febre.\n\nEnvia para quem está passando por isso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."
+  "id": "esc_nao_doi",
+  "video": "reels/_preview_esc_nao_doi.mp4",
+  "caption": "A escoliose costuma não doer no começo — por isso o sinal é visual, e quem vê é quem olha as costas: os pais, a escola, o pediatra. É um desvio em curva da coluna, visto por trás, que aparece mais no estirão da pré-adolescência. O que observar: um ombro mais alto que o outro, a cintura assimétrica, uma escápula mais saliente. Viu? Leve para avaliação.\n\nEnvia para um pai ou uma mãe de pré-adolescente.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo; não substitui avaliação individual."
  },
  {
   "id": "qa_ajustar_fixador",
@@ -549,9 +539,19 @@
   "caption": "Ajustar o fixador externo dói? No método Ilizarov, desconfortos leves e reações discretas na pele ao redor dos pinos são comuns ao longo do tratamento, e o ajuste segue um ritmo programado, orientado pela equipe. Dor intensa e progressiva, porém, não é esperada — é caso de contato precoce com a equipe.\n\nEnvia para quem precisa disso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."
  },
  {
+  "id": "trabalho_escola",
+  "video": "reels/_preview_trabalho_escola.mp4",
+  "caption": "Voltar ao trabalho com fixador depende mais da função do cargo do que de uma data. Trabalho sentado libera mais cedo; esforço físico demora mais. Organize deslocamento e cuidado com os pinos. Dor que piora no fim do dia ou sinais de infecção: avise a equipe, pronto-socorro se vier com febre.\n\nEnvia para quem está passando por isso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."
+ },
+ {
   "id": "vida_cotidiana_fixador",
   "video": "reels/_preview_vida_cotidiana_fixador.mp4",
   "caption": "Banho, roupa e sono com fixador têm truques que facilitam o dia a dia. Banho normal costuma ser liberado — aproveite para lavar os pinos. Roupas largas e travesseiro de apoio ajudam. Secreção com mau cheiro, vermelhidão que avança ou febre: pronto-socorro, avisando a equipe.\n\nEnvia para quem está passando por isso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo, não substitui a avaliação do seu médico."
+ },
+ {
+  "id": "esc_estirao",
+  "video": "reels/_preview_esc_estirao.mp4",
+  "caption": "No estirão de crescimento, a curva da escoliose pode mudar mais rápido — coluna crescendo é coluna mudando, e enquanto o esqueleto amadurece uma curva pode progredir. O que isso muda é o intervalo entre as reavaliações, definido caso a caso pelo ortopedista que acompanha. Em casa: olhe as costas de tempos em tempos; mudou algo entre uma consulta e outra, antecipe a reavaliação.\n\nEnvia para um pai ou uma mãe de pré-adolescente.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo; não substitui avaliação individual."
  },
  {
   "id": "qa_calo_osseo",
@@ -562,195 +562,6 @@
   "id": "qa_refratura",
   "video": "reels/_preview_qa_refratura.mp4",
   "caption": "Refratura — quebrar o mesmo osso de novo — pede investigação da causa: estabilidade da fixação, fatores do paciente (como tabagismo e diabetes) e o momento do retorno à carga entram na conta. O tratamento é individualizado e pode envolver revisão da fixação, enxerto ósseo e, em casos selecionados, reconstrução com fixador externo.\n\nEnvia para quem precisa disso.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."
- },
- {
-  "id": "reel04",
-  "video": "reels/reel04.mp4",
-  "caption": "Joelhos arqueados nos primeiros 2 anos e em X dos 3 aos 6 costumam fazer parte do desenvolvimento e melhoram sozinhos. Vale avaliar na ortopedia pediátrica quando é só de um lado, piora com a idade ou é muito acentuado.\n\nEnvia para quem tem criança em casa.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Breathe In, Breathe Out.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel05",
-  "video": "reels/reel05.mp4",
-  "caption": "O pé plano flexível é comum na infância e o arco costuma se formar ao longo do crescimento — geralmente não precisa de palmilha. Vale avaliar na ortopedia pediátrica quando há dor, cansaço fácil, rigidez ou assimetria.\n\nEnvia para um pai ou uma mãe que precisa ver isso.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Clair De Lune Lofi.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel06",
-  "video": "reels/reel06.mp4",
-  "caption": "A escoliose costuma ser indolor no começo — por isso observar a postura ajuda. Ombros ou cintura assimétricos e, ao inclinar o tronco à frente, um lado das costas mais alto merecem avaliação na ortopedia pediátrica. Quanto antes, mais simples o acompanhamento.\n\nEnvia para um pai ou uma mãe que precisa ver isso.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Marry Me.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel07",
-  "video": "reels/reel07.mp4",
-  "caption": "A doença de Osgood-Schlatter causa dor logo abaixo da patela em adolescentes que treinam, no período do estirão. Costuma melhorar ajustando a carga, com gelo e alongamento. Se a dor persiste ou limita, vale avaliar na ortopedia pediátrica.\n\nEnvia para quem tem criança em casa.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Breathe In, Breathe Out.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel08",
-  "video": "reels/reel08.mp4",
-  "caption": "No pré-adolescente, dor no quadril ou no joelho com claudicação, sem trauma claro, merece avaliação sem demora na ortopedia pediátrica — o joelho às vezes \"avisa\" um problema do quadril. A avaliação precoce faz diferença no resultado.\n\nEnvia para um pai ou uma mãe que precisa ver isso.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Clair De Lune Lofi.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel09",
-  "video": "reels/reel09.mp4",
-  "caption": "O torcicolo muscular congênito faz o bebê preferir virar a cabeça para um lado, às vezes com um nódulo no pescoço. Identificado cedo, costuma responder bem a alongamentos orientados e acompanhamento na ortopedia pediátrica.\n\nEnvia para quem tem criança em casa.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Marry Me.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel10",
-  "video": "reels/reel10.mp4",
-  "caption": "A pronação dolorosa (\"cotovelo de babá\") acontece quando o bracinho é puxado, comum em crianças pequenas: ela passa a segurar o braço sem mexer. Não force — a correção pelo especialista em ortopedia pediátrica costuma ser rápida.\n\nEnvia para um pai ou uma mãe que precisa ver isso.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Breathe In, Breathe Out.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel11",
-  "video": "reels/reel11.mp4",
-  "caption": "O osso da criança tem a placa de crescimento (fise), uma região mais frágil e importante. Por isso fraturas infantis têm avaliação e acompanhamento próprios na ortopedia pediátrica — e costumam consolidar mais rápido que no adulto.\n\nEnvia para quem tem criança em casa.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Clair De Lune Lofi.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel12",
-  "video": "reels/reel12.mp4",
-  "caption": "Para a maioria dos bebês, andar descalço em casa ajuda a fortalecer o pé e o equilíbrio — algo bem estabelecido na ortopedia pediátrica. O sapato serve de proteção — prefira solado flexível e tamanho confortável, não \"sapato ortopédico\" sem indicação.\n\nEnvia para um pai ou uma mãe que precisa ver isso.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Marry Me.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel13",
-  "video": "reels/reel13.mp4",
-  "caption": "Andar entre 12 e 15 meses é o mais comum, mas a faixa normal vai além. Vale avaliar na ortopedia pediátrica quando a criança não anda após 18 meses, perde habilidades já conquistadas ou mostra assimetria de movimento.\n\nEnvia para um pai ou uma mãe que precisa ver isso.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Breathe In, Breathe Out.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel14",
-  "video": "reels/reel14.mp4",
-  "caption": "Articulação subitamente inchada, quente e dolorosa, com febre e recusa a movimentar o membro, pode ser artrite séptica — uma urgência da ortopedia pediátrica. Procure atendimento imediato: o diagnóstico e o tratamento precoces protegem a articulação.\n\nEnvia para um pai ou uma mãe que precisa ver isso.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Clair De Lune Lofi.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel15",
-  "video": "reels/reel15.mp4",
-  "caption": "Uma perna mais curta que a outra — a discrepância de membro — é mais comum do que parece. Diferenças pequenas costumam ser bem toleradas; maiores têm opções que vão de palmilha a alongamento, conforme a diferença, a causa, a idade e o crescimento.\n\nEnvia para quem está passando por isso.\n\nSociedade da área: @asami.brasil\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Marry Me.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel16",
-  "video": "reels/reel16.mp4",
-  "caption": "Na maioria dos casos é possível higienizar a região do fixador externo seguindo a orientação individual: manter limpo, secar bem os pinos e observar vermelhidão ou secreção. Suas orientações valem mais que qualquer regra geral — qualquer sinal diferente, avise.\n\nEnvia para quem precisa disso.\n\nSociedade da área: @asami.brasil\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Breathe In, Breathe Out.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel17",
-  "video": "reels/reel17.mp4",
-  "caption": "Algum desconforto pode aparecer no alongamento ósseo, sobretudo na fase de distração, e costuma ser controlável com o acompanhamento da equipe e fisioterapia. Cada fase tem seu cuidado — o plano é feito para o seu caso.\n\nEnvia para quem está passando por isso.\n\nSociedade da área: @asami.brasil\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Clair De Lune Lofi.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel18",
-  "video": "reels/reel18.mp4",
-  "caption": "Quando uma fratura não consolida (pseudoartrose), existe caminho: investigar a causa, estabilizar adequadamente e estimular a formação de osso, com acompanhamento próximo. Cada caso tem seu plano.\n\nEnvia para quem está passando por isso.\n\nSociedade da área: @asami.brasil\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Marry Me.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel19",
-  "video": "reels/reel19.mp4",
-  "caption": "Após infecções com perda óssea, a reconstrução é por etapas: controlar a infecção e, depois, recompor o osso — às vezes com transporte ósseo (técnica de Ilizarov), em que o próprio osso preenche a falha gradualmente. É o mesmo princípio do alongamento ósseo aplicado na discrepância de membro. São casos complexos, com plano individual.\n\nEnvia para quem está passando por isso.\n\nSociedade da área: @asami.brasil\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Breathe In, Breathe Out.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel20",
-  "video": "reels/reel20.mp4",
-  "caption": "O alinhamento das pernas distribui a carga na cartilagem. Um joelho muito desalinhado pode sobrecarregar um lado e acelerar o desgaste. Avaliar o eixo e, em casos selecionados, corrigi-lo (osteotomia) ajuda a proteger a articulação.\n\nEnvia para quem precisa disso.\n\nSociedade da área: @asami.brasil\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Clair De Lune Lofi.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel21",
-  "video": "reels/reel21.mp4",
-  "caption": "Andar com os pés para fora (ou para dentro) costuma fazer parte do desenvolvimento e melhora com o crescimento, refletindo a rotação natural dos ossos. Avalie na ortopedia pediátrica quando é muito assimétrico, causa quedas ou piora.\n\nEnvia para um pai ou uma mãe que precisa ver isso.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Marry Me.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel22",
-  "video": "reels/reel22.mp4",
-  "caption": "A vitamina D ajuda o corpo a usar o cálcio e sustenta o crescimento ósseo. Sol e alimentação contribuem, mas a necessidade de suplemento é individual — vale avaliar na ortopedia pediátrica antes de iniciar por conta própria.\n\nEnvia para quem tem criança em casa.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Breathe In, Breathe Out.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel23",
-  "video": "reels/reel23.mp4",
-  "caption": "Mochila pesada não causa escoliose, mas pode gerar dor e estimular má postura. Prefira mochila com as duas alças, bem ajustada às costas, levando só o necessário — a regra prática da ortopedia pediátrica é até cerca de 10 a 15% do peso da criança.\n\nEnvia para um pai ou uma mãe que precisa ver isso.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Clair De Lune Lofi.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel24",
-  "video": "reels/reel24.mp4",
-  "caption": "No metatarso aduto, a parte da frente do pé do bebê vira para dentro — é comum, costuma ser flexível e melhora sozinho na maioria. É diferente do pé torto. O acompanhamento define se há necessidade de tratamento.\n\nEnvia para quem tem criança em casa.\n\nAssociação de famílias: @associacaoptc\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Marry Me.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel25",
-  "video": "reels/reel25.mp4",
-  "caption": "Em casos complexos de deformidade e reconstrução — pseudoartrose, discrepância de membro, sequelas —, um segundo olhar cuidadoso às vezes revela opções que não pareciam existir. Não prometo milagre — proponho avaliação honesta, plano realista e acompanhamento próximo.\n\nEnvia para quem precisa disso.\n\nSociedade da área: @asami.brasil\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Breathe In, Breathe Out.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel26",
-  "video": "reels/reel26.mp4",
-  "caption": "Na primeira consulta — seja de reconstrução, alongamento ósseo, discrepância de membro ou ortopedia pediátrica —, escuto a história, examino com calma e explico o que está acontecendo em linguagem clara. A ideia é você sair entendendo o problema e os próximos passos, com espaço para todas as suas perguntas.\n\nEnvia para quem tem criança em casa.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Clair De Lune Lofi.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel27",
-  "video": "reels/reel27.mp4",
-  "caption": "Criança que cansa muito mais que os colegas, sente dor que limita o brincar ou muda o jeito de andar merece avaliação na ortopedia pediátrica. Muitas vezes é leve e tranquilizamos; quando há algo a tratar, quanto antes melhor.\n\nEnvia para quem tem criança em casa.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Marry Me.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel28",
-  "video": "reels/reel28.mp4",
-  "caption": "Deformidades angulares das pernas podem ser corrigidas com planejamento: medir o eixo com precisão, definir o ponto da osteotomia e, muitas vezes, corrigir de forma gradual e acompanhada. O foco é segurança e função.\n\nEnvia para quem precisa disso.\n\nSociedade da área: @asami.brasil\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Breathe In, Breathe Out.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel29",
-  "video": "reels/reel29.mp4",
-  "caption": "Fraturas repetidas com pequenos traumas, às vezes com histórico familiar, merecem investigação — pode haver uma condição óssea, como a osteogênese imperfeita. O cuidado é especializado, na ortopedia pediátrica, e acompanha o crescimento.\n\nEnvia para um pai ou uma mãe que precisa ver isso.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Clair De Lune Lofi.mp4",
-  "dur": 11.8
- },
- {
-  "id": "reel30",
-  "video": "reels/reel30.mp4",
-  "caption": "A indicação de alongamento ósseo é individual: pesa-se a discrepância de membro — a diferença de comprimento — ou a deformidade, o impacto na função e a expectativa realista. É uma decisão conjunta, conversando opções, riscos e benefícios — sem promessas, com plano feito para você.\n\nEnvia para quem precisa disso.\n\nSociedade da área: @asami.brasil\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-  "music": "Marry Me.mp4",
-  "dur": 11.8
  },
  {
   "id": "pnc_joelho_valgo",

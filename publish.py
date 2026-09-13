@@ -50,9 +50,11 @@ POST2_MIN      = 11*60                   # 11:00 BRT — escalonado p/ nao colid
 # por espectador ("com que frequencia voce ve os stories desta conta") — cada seguidor que pula a
 # sequencia diaria gera exatamente o sinal negativo. Mediana de mercado: 8,39 stories/semana. A
 # sequencia continua um bloco de 5 frames (e' uma historia); o que muda e' a FREQUENCIA:
-# ter/qui/sab = 15 frames/semana (~2,1/dia), nos dias do CARROSSEL (a sequencia das 12:30
-# antecipa o post das 15h). Decisao do Rafael em 12/09 ("vamos fazer tudo").
-SEQ_WEEKDAYS   = {1, 3, 5}               # sequencia ter/qui/sab (era diaria ate 12/09/2026)
+# 3 dias/semana = 15 frames/semana (~2,1/dia). Decisao do Rafael em 12/09 ("vamos fazer tudo");
+# dias escolhidos em 13/09 pelos views/dia MEDIDOS (relatorio_stories.md): SAB 102,0 > SEG 100,7 >
+# TER 91,3 ... QUI 69,0 (pior). Seg/ter/sab; a sequencia de ter antecipa o carrossel das 15h.
+SEQ_WEEKDAYS   = {0, 1, 5}               # sequencia seg/ter/sab (13/09/2026: SAB 102,0 e SEG 100,7 views/dia
+                                         # medidos vs QUI 69,0 — relatorio_stories.md; era ter/qui/sab por 1 dia)
 SEQ_MIN        = 12*60 + 30              # 12:30
 REEL_WEEKDAYS  = {0, 2, 4, 6}
 REEL_MIN       = 15*60                   # 15:00 BRT (pico de audiencia; era 19:00)
