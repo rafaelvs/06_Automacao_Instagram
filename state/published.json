@@ -1349,10 +1349,17 @@
       "kind": "seq",
       "media_id": "17878352613691784",
       "at": "2026-09-14T15:30:42.560810+00:00"
+    },
+    {
+      "id": "qa_tempo_fixador",
+      "kind": "reel",
+      "media_id": "17906769318507293",
+      "at": "2026-09-14T19:04:33.518456+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-09-13",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-09-13",
+  "last_reel_date": "2026-09-14",
   "last_seq_date": "2026-09-14"
 }
