@@ -1343,10 +1343,16 @@
       "media_id": "18109303895608119",
       "at": "2026-09-13T18:19:58.344296+00:00",
       "modo_reel": "normal"
+    },
+    {
+      "id": "s_on_consulta_de_controle",
+      "kind": "seq",
+      "media_id": "17878352613691784",
+      "at": "2026-09-14T15:30:42.560810+00:00"
     }
   ],
   "last_post_date": "2026-09-13",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-09-13",
-  "last_seq_date": "2026-09-12"
+  "last_seq_date": "2026-09-14"
 }
