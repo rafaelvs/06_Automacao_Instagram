@@ -1375,9 +1375,15 @@
       "media_id": "18110469977117449",
       "at": "2026-09-16T19:00:54.040370+00:00",
       "modo_reel": "normal"
+    },
+    {
+      "id": "v_reconstrucao_ter",
+      "kind": "post",
+      "media_id": "17988078981108707",
+      "at": "2026-09-17T19:10:55.735505+00:00"
     }
   ],
-  "last_post_date": "2026-09-15",
+  "last_post_date": "2026-09-17",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-09-16",
   "last_seq_date": "2026-09-15"
