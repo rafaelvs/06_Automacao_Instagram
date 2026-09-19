@@ -41,12 +41,34 @@ distribuição (regra permanente de auditoria, PLANO_SAIDA_ESTAGNACAO.md §9).
 - **Gatilho:** 6 últimas peças do feed somam 0 curtidas → o motor não publica e o job fica vermelho (`state.alarme_curtidas`).
 - **Métrica de dignidade mínima:** peças com ZERO curtidas 5 de 6 (11/09) → 0 de N.
 
-## E7 · Stories por fase, seg/ter/sáb (plano núcleo-primeiro, 13/09) — gate assimétrico em 15/10
+## E7 · Stories por fase (plano núcleo-primeiro, 13/09) — gate assimétrico em 15/10
 
-- **Mudou em 13/09:** dias ter/qui/sáb → **seg/ter/sáb** (views/dia medidos em 83 dias, `relatorio_stories.md`: SÁB 102,0 · SEG 100,7 · TER 91,3 · … · QUI 69,0, o pior); fila FIFO → ordem por FASE (controle → gesso em casa → pisar ou não → fixador rotina → depois do gesso → muletas → dirigir/trabalho …). Volume não muda (3 sequências × 5 frames).
-- **Baseline [DADO]:** 01–12/09 diário: reach mediano 84 contas/dia, 0 replies, 2 shares; 83 dias: 0,11% interação, 81% do alcance evapora em 24 h.
-- **Gate 15/10 (assimétrico):** reach mediano/dia < 60 → testar 5/semana com 3 frames; replies = 0 em 12 sequências → mexer no 5º frame (pergunta em texto), **nunca subir volume**; replies ≥ 6/30 d → manter e investir na "pergunta da semana".
-- **Limite conhecido:** frames são JPG pré-renderizados (`sequencias_avulsas_lote2.py` → `stories/`); editar 1 frame exige rerender do bloco. `render.yml` NÃO pode rodar após reordenar `sequences.json` (trunca a fila).
+- **O que ficou de 13/09:** a fila de sequências saiu de FIFO para **ordem por FASE** do tratamento
+  (controle → gesso em casa → pisar ou não → fixador rotina → depois do gesso → muletas → dirigir/trabalho …).
+  Volume inalterado: 3 sequências de 5 frames por semana.
+- **O que foi REVERTIDO em 19/09 (auditoria v2, achado D3):** a troca dos dias (ter/qui/sáb → seg/ter/sáb).
+  A decisão saiu de um eixo **deslocado um dia** — `stories_pulse.py` grava o dia em UTC e o workflow roda
+  às 23:00 BRT, então a medição do dia D é da sequência publicada em **D−1**, e o relatório agregou como se
+  fosse o dia do tema. Prova independente: dias sem sequência = 13, 16, 17, 18/09; dias com `stories_ativos=0`
+  = 14, 17, 18, 19/09, exatamente +1. Reatribuindo pelo D−1 sobre os 32 dias limpos disponíveis na decisão:
+  DOM 102,2 · SEX 100,7 · SEG 96,3 · QUI 92,0 · SÁB 90,5 · QUA 80,0 · TER 77,8 — os três dias escolhidos eram
+  o 3º, o 7º e o 5º. Além disso, "TER 91,3" não se reproduz em nenhuma janela e a série limpa tem **n = 23 dias**
+  (2 a 4 por dia da semana), não os "83 dias" que eu havia escrito aqui: com esse n a diferença entre o melhor e
+  o pior dia cabe no ruído. Os dias voltaram a **ter/qui/sáb** pelo critério que não depende dessa medição —
+  são os dias do carrossel, e a sequência das 12:30 antecipa o post das 15h.
+- **Baseline [DADO]:** 27 dias medidos (03–29/08): 2 replies + 1 share em 2.625 views (0,11%); 81% do alcance
+  evapora em 24 h; 01–12/09: mediana 84 contas/dia, 0 replies, 2 shares. **Replies = 0 nos 34 dias seguintes**
+  (medido na v2) — o único canal onde o perfil tinha conversa secou.
+- **Gate 15/10 (assimétrico):** reach mediano/dia < 60 → testar 5/semana com 3 frames; replies = 0 em 12
+  sequências → mexer no 5º frame (pergunta em texto), **nunca subir volume**; replies ≥ 6/30 d → manter e
+  investir na "pergunta da semana". **Dia da semana só volta à mesa com n ≥ 8 por dia**, medido pelo dia da
+  PUBLICAÇÃO, não pelo dia do pulso.
+- **CTA do 5º frame corrigida em 19/09:** 16 sequências pendentes terminavam em "Dúvidas? Manda DM →" —
+  o DM do Instagram não tem Davi, nem identificação de IA, nem rede de segurança, nem dono (CFM 2.314 Art. 4º §3º).
+  Passaram a "Dúvida? WhatsApp no link da bio →" (`rerender_frame.py`). As 2 que já tinham ido ao ar ficaram
+  como estavam: o que foi publicado não se reescreve no repo.
+- **Limite conhecido:** frames são JPG pré-renderizados. Editar 1 frame = `rerender_frame.py <id> <n>`, que não
+  toca `sequences.json`. `render.yml` NÃO pode rodar depois da reordenação (`gerar_temporadas.py` trunca a fila).
 
 ## E8 · Rede (P8) — 1 collab/mês, só com "sim" do parceiro
 

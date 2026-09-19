@@ -19,7 +19,7 @@ print("=== [1/2] Lint CFM ===")
 import checar_cfm
 # seo_advisory_inline=False: o advisory do SEO YouTube e impresso mais abaixo no bloco [extra]
 # do gate (para nao duplicar). A semantica de VIOLACOES/BLOQUEIOS/EXIT do IG NAO muda.
-violacoes, revisar = checar_cfm.main(seo_advisory_inline=False)
+violacoes, revisar, cobertura_auditada = checar_cfm.main(seo_advisory_inline=False)
 
 print("\n=== [2/2] Lint termo->popular / termo vetado ===")
 import checar_termo_popular

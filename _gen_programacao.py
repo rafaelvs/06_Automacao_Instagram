@@ -70,7 +70,7 @@ def main():
         n = len(next(x["images"] for x in posts if x["id"] == iid))
         rot = " (verbete)" if iid.startswith("v_") else ""
         L.append(f"| {DOW[d.weekday()]} {d:%d/%m} | `{iid}`{rot} | {n} |")
-    L += [f"\n*Sequências de stories: {len(seqs)} restantes, publicadas seg/ter/sáb às 12:30 (cadência reduzida em 12/09; dias trocados em 13/09 pelos melhores dias medidos). Quem edita a fila, regenera esta página.*\n"]
+    L += [f"\n*Sequências de stories: {len(seqs)} restantes, publicadas ter/qui/sáb às 12:30, nos dias do carrossel (cadência reduzida em 12/09; a troca de dias de 13/09 foi revertida em 19/09 — o eixo de dia da semana estava deslocado um dia, ver E7). Quem edita a fila, regenera esta página.*\n"]
     with open(os.path.join(ROOT, "PROGRAMACAO.md"), "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(L))
     print(f"PROGRAMACAO.md: {len(rp)} reels ({len(trial)} trial) até {rp[-1][0]:%d/%m} | {len(pp)} posts até {pp[-1][0]:%d/%m}")

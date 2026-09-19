@@ -1,1 +1,6 @@
 requests>=2.31
+# Pillow: o lint CFM do caminho de publicacao importa carrossel.POSTS para auditar os
+# slides. Sem Pillow no runner o import falha e o acervo de carrossel fica FORA do lint
+# em todo run (achado D5/D6 da auditoria v2, 19/09/2026 — o aviso saia como [REVISAR] e
+# ninguem lia). Versao livre: o render de producao roda em workflow proprio.
+pillow

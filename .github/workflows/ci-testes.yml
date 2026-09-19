@@ -36,3 +36,18 @@ jobs:
         run: |
           python checar_legenda.py --auto-teste
           python checar_legenda.py
+      - name: "Auto-teste dos checadores novos (auditoria v2, 19/09/2026)"
+        # Checador que nunca reprova nao e' checador: cada um destes tem controle POSITIVO
+        # (semeia o defeito e exige acusacao) e NEGATIVO (valor correto tem de passar).
+        # O de duracao pegou a si mesmo na primeira execucao: o controle negativo estava
+        # contaminado porque `conferir()` relia o disco e descartava a semente.
+        run: |
+          python checar_dur.py --auto-teste
+          python sincronizar_texto_sequencias.py --auto-teste
+          python rerender_frame.py --autoteste
+      - name: "Duracao real dos reels (dur e' o denominador da retencao)"
+        # A auditoria v1 publicou 9,5% de retencao onde o real era 3,5% porque `dur` vinha do
+        # storyboard, nao do MP4. 54 de 57 itens erravam >10%; 47 nao tinham dur nenhum.
+        run: python checar_dur.py
+      - name: "Cobertura do portao CFM (fila viva bloqueia; acervo publicado so reporta)"
+        run: python checar_cfm.py

@@ -50,15 +50,23 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install -r requirements.txt
-      - name: Checador CFM (ADVISORY — imprime, nao derruba)
-        # Por que ADVISORY e nao bloqueio (v1.5/M5): dentro da janela 16/08->15/09 e'
-        # proibido mudar o COMPORTAMENTO do caminho que publica; a barreira vinculante
-        # segue sendo o _cfm_guard in-process do publish.py (que bloqueia o item na hora).
-        # Este step da' VISIBILIDADE: antes so' stderr de job verde denunciava lint
-        # reprovado — e stderr de job verde ninguem le. Promover a bloqueio e' decisao
-        # explicita pos-janela (registrar no changelog quando acontecer).
+      - name: Checador CFM (BLOQUEIA — a janela fechou em 15/09)
+        # PROMOVIDO DE ADVISORY A BLOQUEIO em 19/09/2026 (auditoria v2, achado D5).
+        # Era advisory de proposito enquanto a janela limpa 16/08->15/09 estava aberta:
+        # mudar o COMPORTAMENTO do caminho que publica no meio da medicao contaminaria a
+        # rodada. A janela fechou em 15/09 e a v2 foi medida em 19/09, entao a condicao
+        # que justificava o advisory acabou — e a v2 mostrou por que ele nao bastava: o
+        # `|| echo` deixava passar exit 1 e o exit 1 so' passou a existir em 11/09.
+        # Agora o step derruba o run ANTES de qualquer POST na Meta. Nao publicar por
+        # engano e' barato; publicar peca fora da CFM nao e'.
+        # O checador so' bloqueia por violacao VIVA (peca que ainda pode ser publicada);
+        # divida de peca ja' publicada e' reportada e nao derruba (nao tem conserto no repo).
+        run: python checar_cfm.py
+      - name: Sequencia sem texto auditavel (ADVISORY)
+        # O portao acima so' audita o que consegue LER. Sequencia sem o texto dos frames dentro
+        # do item e' um ponto cego: da' verde por falta de conteudo, nao por conformidade.
         run: |
-          python checar_cfm.py || echo "::warning::checar_cfm.py saiu com exit != 0 — ha VIOLACAO/REVISAR no acervo ou na fila; ver o log deste step (advisory, o publish continua)."
+          python sincronizar_texto_sequencias.py --conferir || echo "::warning::ha sequencia na fila sem o texto dos frames — o portao CFM le so o rotulo dela. Rode sincronizar_texto_sequencias.py."
       - name: Publicar posts pendentes
         env:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}

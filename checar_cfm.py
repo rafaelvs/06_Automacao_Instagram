@@ -183,6 +183,7 @@ def main(seo_advisory_inline=True):
         print(f"carrossel.POSTS auditado: {len(POSTS)} posts / {n_slides} slides")
 
     # 2) Bibliotecas publicadas
+    sem_texto, total_itens, total_auditados = [], 0, 0
     for arq in ["reels.json", "posts.json", "sequences.json", "stories.json"]:
         p = os.path.join(ROOT, arq)
         if not os.path.exists(p):
@@ -192,16 +193,77 @@ def main(seo_advisory_inline=True):
             itens = d if isinstance(d, list) else []
             n = 0
             for it in itens:
-                cap = it.get("caption") if isinstance(it, dict) else None
-                if cap:
-                    registra(arq, it.get("id", "?"), auditar(cap, "publico"))
+                if not isinstance(it, dict):
+                    continue
+                # v2 (19/09/2026, achado D5): auditar SO' `caption` deixava sequencia inteira de
+                # fora — 150 itens sem caption liam "0 legendas auditadas ... VIOLACOES: 0",
+                # cobertura ZERO lida como resultado limpo. Agora entra toda superficie de texto
+                # que o item tiver (a mesma de publish._texto_auditavel), e o relatorio diz
+                # X DE Y: ausencia de texto passa a ser um numero visivel, nao silencio.
+                partes = [it[k] for k in ("caption", "label", "theme", "titulo", "title", "alt", "alt_text")
+                          if isinstance(it.get(k), str) and it[k].strip()]
+                for colecao in ("scenes", "slides", "frames"):
+                    for el in (it.get(colecao) or []):
+                        if isinstance(el, dict):
+                            partes += [v for v in el.values() if isinstance(v, str) and v.strip()]
+                        elif isinstance(el, str) and el.strip():
+                            partes.append(el)
+                texto = "\n".join(partes)
+                if texto.strip():
+                    # Sequencia e story sao formatos em que a identificacao vive no RENDER
+                    # (o template desenha "Médico · CRM-SP … · RQE …" no rodape de TODO frame) e
+                    # o texto do JSON e' o roteiro. Exigir a assinatura DENTRO do roteiro viraria
+                    # 198 VIOLACOES falsas de uma vez — alarme permanente e' pior que alarme
+                    # nenhum. Em reel e carrossel a legenda E' o que a pessoa le: la' continua
+                    # VIOLACAO (e' o que pegou qa_gesso_molhar, qa_tirar_placa e qa_cigarro_osso).
+                    assina_no_texto = arq in ("reels.json", "posts.json")
+                    registra(arq, it.get("id", "?"),
+                             auditar(texto, "publico", exigir_assinatura_texto=assina_no_texto))
                     n += 1
-            print(f"{arq}: {n} legendas auditadas")
+                else:
+                    sem_texto.append(f"{arq}:{it.get('id','?')}")
+            total_itens += len(itens)
+            total_auditados += n
+            print(f"{arq}: {n} de {len(itens)} itens auditados"
+                  f"{'' if n == len(itens) else f' — {len(itens) - n} SEM superficie de texto'}")
         except Exception as e:
             print(f"AVISO: {arq}:", e)
 
     # Relatório
     print("\n=== LINT CFM ===")
+    # v2 (19/09/2026): separar FILA VIVA de ACERVO PUBLICADO. Ao ligar a exigencia de
+    # "Médico" (achado D5) apareceram 44 violacoes de assinatura nas FONTES de episodio —
+    # 43 delas sao pecas que JA FORAM AO AR entre 10/06 e 31/07, antes do conserto de 02/08.
+    # Legenda publicada nao se conserta reescrevendo o .py: o texto ja' esta no Instagram.
+    # Bloquear por isso deixaria o portao vermelho para sempre por uma divida que nao tem
+    # conserto no repo — e alarme que nunca apaga e' alarme que ninguem le (licao da casa).
+    # Entao: o que ainda PODE ser publicado bloqueia; o que ja' foi ao ar e' reportado como
+    # divida historica, com numero visivel, e NAO bloqueia.
+    try:
+        _pub = {e["id"] for e in json.load(
+            open(os.path.join(ROOT, "state", "published.json"), encoding="utf-8"))["published"]}
+    except Exception as e:                                    # noqa: BLE001
+        print(f"::warning::checar_cfm: nao consegui ler state/published.json ({e}) — "
+              f"tratando TODA violacao como viva (fail-CLOSED).")
+        _pub = set()
+    historicas = [v for v in violacoes if v[1] in _pub]
+    violacoes = [v for v in violacoes if v[1] not in _pub]
+
+    cobertura = (100.0 * total_auditados / total_itens) if total_itens else 0.0
+    print(f"COBERTURA: {total_auditados} de {total_itens} itens de biblioteca com texto auditado "
+          f"({cobertura:.1f}%)" + (f" | {len(sem_texto)} sem nenhuma superficie de texto" if sem_texto else ""))
+    if sem_texto:
+        print("  sem texto:", ", ".join(sem_texto[:10]), "..." if len(sem_texto) > 10 else "")
+        print("  (sequencia sem texto: rode `python sincronizar_texto_sequencias.py`;"
+              " item cuja fonte nao existe mais no repo fica registrado aqui de proposito)")
+    if historicas:
+        regras = {}
+        for _o, _i, _s, regra, _d in historicas:
+            regras[regra] = regras.get(regra, 0) + 1
+        print(f"DIVIDA HISTORICA (peca JA PUBLICADA — nao bloqueia, nao tem conserto no repo): "
+              f"{len(historicas)} em {len({v[1] for v in historicas})} peca(s) -> {regras}")
+        print("   ", ", ".join(sorted({v[1] for v in historicas})[:8]),
+              "..." if len({v[1] for v in historicas}) > 8 else "")
     print("VIOLACOES (proibido — corrigir):", len(violacoes))
     for origem, _id, sev, regra, det in violacoes:
         print(f"   [VIOLACAO] {origem:22s} {str(_id):26s} {regra}: {det}")
@@ -223,7 +285,7 @@ def main(seo_advisory_inline=True):
         seo_viol, seo_rev = auditar_seo_youtube()
         imprimir_seo_advisory(seo_viol, seo_rev)
 
-    return violacoes, revisar
+    return violacoes, revisar, total_auditados
 
 
 def imprimir_seo_advisory(seo_viol, seo_rev):
@@ -244,5 +306,10 @@ if __name__ == "__main__":
     # ~30 REVISAR cronicos do acervo viravam alarme permanente (falso alarme e' pior que
     # ausencia). Import local para nao mexer no topo do arquivo.
     import sys as _sys
-    _viol, _rev = main()
+    _viol, _rev, _total_auditados = main()
+    # Universo vazio NAO e' aprovacao (licao da casa): se nada foi auditado, isto aqui nao
+    # mediu conformidade nenhuma e nao pode sair verde.
+    if _total_auditados == 0:
+        print("REPROVADO: ZERO itens auditados — universo vazio nao e' resultado limpo.")
+        _sys.exit(1)
     _sys.exit(1 if _viol else 0)

@@ -6,3 +6,6 @@ __pycache__/
 _local_frames/
 _local_frames_raw_*/
 _render_reel_OLD.py
+
+# backup que rerender_frame.py faz antes de editar o texto-fonte (nao versionar)
+*.py.bak

@@ -1,6 +1,6 @@
 # PROGRAMAÇÃO — o que vai ao ar e quando
 
-Regenerado em 13/09/2026 por `_gen_programacao.py`. **Datas são projeção da fila FIFO** a partir do último publicado — job vermelho, alarme de curtidas ou mudança na fila desloca tudo; a fonte de verdade é a fila.
+Regenerado em 19/09/2026 por `_gen_programacao.py`. **Datas são projeção da fila FIFO** a partir do último publicado — job vermelho, alarme de curtidas ou mudança na fila desloca tudo; a fonte de verdade é a fila.
 
 **Como revisar/suspender (regra de 30/08):** os itens ficam dias na fila antes de publicar — confira por aqui; para suspender ou editar, avise o chat da auditoria (ou remova a entrada do JSON, com lock `motor-instagram`). Piloto ativo só para formato/estratégia NOVA ou mudança de voz.
 
@@ -11,11 +11,7 @@ Regenerado em 13/09/2026 por `_gen_programacao.py`. **Datas são projeção da f
 
 | Data | Peça | Série | Vídeo |
 |---|---|---|---|
-| dom 13/09 | `pseudartrose`  | Alongamento Ósseo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_pseudartrose.mp4) |
-| seg 14/09 | `qa_tempo_fixador`  | Respondendo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_qa_tempo_fixador.mp4) |
-| qua 16/09 | `sequela_fratura` **← capa v2** | Alongamento Ósseo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_sequela_fratura.mp4) |
-| sex 18/09 | `fx_pino_inflamado` [A] | Fixador por dentro | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_fx_pino_inflamado.mp4) |
-| dom 20/09 | `qa_banho_fixador`  | Respondendo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_qa_banho_fixador.mp4) |
+| dom 20/09 | `qa_banho_fixador` **← capa v2** | Respondendo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_qa_banho_fixador.mp4) |
 | seg 21/09 | `fx_dormir` [B] | Fixador por dentro | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_fx_dormir.mp4) |
 | qua 23/09 | `caso_transporte_tibia`  | Anatomia de um Caso | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_caso_transporte_tibia.mp4) |
 | sex 25/09 | `primeira_consulta`  | Alongamento Ósseo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_primeira_consulta.mp4) |
@@ -63,10 +59,6 @@ Regenerado em 13/09/2026 por `_gen_programacao.py`. **Datas são projeção da f
 
 | Data | Peça | Nº imagens |
 |---|---|---|
-| dom 13/09 | `post60` | 5 |
-| ter 15/09 | `post61` | 5 |
-| qui 17/09 | `v_reconstrucao_ter` (verbete) | 7 |
-| sáb 19/09 | `c_on_tres_fases` | 5 |
 | dom 20/09 | `v_reconstrucao_qua` (verbete) | 7 |
 | ter 22/09 | `c_on_medir_antes` | 5 |
 | qui 24/09 | `v_reconstrucao_qui` (verbete) | 8 |
@@ -117,4 +109,4 @@ Regenerado em 13/09/2026 por `_gen_programacao.py`. **Datas são projeção da f
 | sáb 12/12 | `c_pnc_tenis_caro` | 5 |
 | dom 13/12 | `c_pnc_sentar_w` | 5 |
 
-*Sequências de stories: 53 restantes, publicadas seg/ter/sáb às 12:30 (cadência reduzida em 12/09; dias trocados em 13/09 pelos melhores dias medidos). Quem edita a fila, regenera esta página.*
+*Sequências de stories: 50 restantes, publicadas ter/qui/sáb às 12:30, nos dias do carrossel (cadência reduzida em 12/09; a troca de dias de 13/09 foi revertida em 19/09 — o eixo de dia da semana estava deslocado um dia, ver E7). Quem edita a fila, regenera esta página.*

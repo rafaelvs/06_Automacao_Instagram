@@ -142,10 +142,21 @@ def auditar(texto, contexto="publico", exigir_assinatura_texto=True):
     # 16/08/2026 (auditoria v1): e requisito OBJETIVAMENTE checavel (Arts. 4o/6o), nao
     # uma suspeita a confirmar. 91/183 legendas nao traziam a palavra "Médico" ate a
     # correção de 02/08; manter em REVISAR deixava passar sem alarme.
+    # v2 (19/09/2026, achado D5): a docstring deste modulo prometia CRM + RQE + "Médico"
+    # desde 02/08 e o codigo so' checava CRM e RQE. Nao e' preciosismo de texto: o Art. 4o
+    # da CFM 2.336 pede a IDENTIFICACAO do profissional, e "Médico" e' o que diz que aquele
+    # CRM e' de um medico. Prova de que o furo era vivo, nao teorico: qa_gesso_molhar (04/09),
+    # qa_tirar_placa (07/09) e qa_cigarro_osso (11/09) passaram por este guard e foram
+    # publicados sem a palavra. Conferido antes de promover: 92 de 92 legendas pendentes da
+    # fila (43 reels + 49 posts) ja' trazem "Médico" — ligar isto nao trava nada que esta' na fila.
     if contexto == "publico":
-        if not (("crm" in n) and ("rqe" in n)):
+        faltam = [rotulo for rotulo, chave in (("CRM", "crm"), ("RQE", "rqe"), ('"Médico"', "medico"))
+                  if chave not in n]
+        if faltam:
             sev = "VIOLACAO" if exigir_assinatura_texto else "REVISAR"
-            issues.append((sev, "assinatura", "material público sem CRM+RQE visível no texto (pode estar no rodapé do render)"))
+            issues.append((sev, "assinatura",
+                           f"material público sem {' + '.join(faltam)} no texto "
+                           f"(pode estar no rodapé do render)"))
 
     return issues
 

@@ -7,7 +7,7 @@ import re
 
 POST_WEEKDAYS = {1, 3, 5}
 POST2_WEEKDAYS = {6}
-SEQ_WEEKDAYS = {0, 1, 5}
+SEQ_WEEKDAYS = {1, 3, 5}
 REEL_WEEKDAYS = {0, 2, 4, 6}
 BRT = dt.timezone(dt.timedelta(hours=-3))
 

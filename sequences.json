@@ -1,1802 +1,2730 @@
 [
- {
-  "id": "joelho-seg",
-  "theme": "Semana do Joelho",
-  "label": "SEG · O que observar",
-  "images": [
-   "images/seq_joelho_seg_1.jpg",
-   "images/seq_joelho_seg_2.jpg",
-   "images/seq_joelho_seg_3.jpg",
-   "images/seq_joelho_seg_4.jpg",
-   "images/seq_joelho_seg_5.jpg"
-  ]
- },
- {
-  "id": "joelho-ter",
-  "theme": "Semana do Joelho",
-  "label": "TER · Na criança",
-  "images": [
-   "images/seq_joelho_ter_1.jpg",
-   "images/seq_joelho_ter_2.jpg",
-   "images/seq_joelho_ter_3.jpg",
-   "images/seq_joelho_ter_4.jpg",
-   "images/seq_joelho_ter_5.jpg"
-  ]
- },
- {
-  "id": "joelho-qua",
-  "theme": "Semana do Joelho",
-  "label": "QUA · Mito x Verdade",
-  "images": [
-   "images/seq_joelho_qua_1.jpg",
-   "images/seq_joelho_qua_2.jpg",
-   "images/seq_joelho_qua_3.jpg",
-   "images/seq_joelho_qua_4.jpg",
-   "images/seq_joelho_qua_5.jpg"
-  ]
- },
- {
-  "id": "joelho-qui",
-  "theme": "Semana do Joelho",
-  "label": "QUI · No esporte",
-  "images": [
-   "images/seq_joelho_qui_1.jpg",
-   "images/seq_joelho_qui_2.jpg",
-   "images/seq_joelho_qui_3.jpg",
-   "images/seq_joelho_qui_4.jpg",
-   "images/seq_joelho_qui_5.jpg"
-  ]
- },
- {
-  "id": "joelho-sex",
-  "theme": "Semana do Joelho",
-  "label": "SEX · Primeiros socorros",
-  "images": [
-   "images/seq_joelho_sex_1.jpg",
-   "images/seq_joelho_sex_2.jpg",
-   "images/seq_joelho_sex_3.jpg",
-   "images/seq_joelho_sex_4.jpg",
-   "images/seq_joelho_sex_5.jpg"
-  ]
- },
- {
-  "id": "joelho-sab",
-  "theme": "Semana do Joelho",
-  "label": "SAB · Quando procurar",
-  "images": [
-   "images/seq_joelho_sab_1.jpg",
-   "images/seq_joelho_sab_2.jpg",
-   "images/seq_joelho_sab_3.jpg",
-   "images/seq_joelho_sab_4.jpg",
-   "images/seq_joelho_sab_5.jpg"
-  ]
- },
- {
-  "id": "joelho-dom",
-  "theme": "Semana do Joelho",
-  "label": "DOM · Como eu penso",
-  "images": [
-   "images/seq_joelho_dom_1.jpg",
-   "images/seq_joelho_dom_2.jpg",
-   "images/seq_joelho_dom_3.jpg",
-   "images/seq_joelho_dom_4.jpg",
-   "images/seq_joelho_dom_5.jpg"
-  ]
- },
- {
-  "id": "tornozelo-seg",
-  "theme": "Semana do Tornozelo e Pé",
-  "label": "SEG · O que observar",
-  "images": [
-   "images/seq_tornozelo_seg_1.jpg",
-   "images/seq_tornozelo_seg_2.jpg",
-   "images/seq_tornozelo_seg_3.jpg",
-   "images/seq_tornozelo_seg_4.jpg",
-   "images/seq_tornozelo_seg_5.jpg"
-  ]
- },
- {
-  "id": "tornozelo-ter",
-  "theme": "Semana do Tornozelo e Pé",
-  "label": "TER · Na criança",
-  "images": [
-   "images/seq_tornozelo_ter_1.jpg",
-   "images/seq_tornozelo_ter_2.jpg",
-   "images/seq_tornozelo_ter_3.jpg",
-   "images/seq_tornozelo_ter_4.jpg",
-   "images/seq_tornozelo_ter_5.jpg"
-  ]
- },
- {
-  "id": "tornozelo-qua",
-  "theme": "Semana do Tornozelo e Pé",
-  "label": "QUA · Mito x Verdade",
-  "images": [
-   "images/seq_tornozelo_qua_1.jpg",
-   "images/seq_tornozelo_qua_2.jpg",
-   "images/seq_tornozelo_qua_3.jpg",
-   "images/seq_tornozelo_qua_4.jpg",
-   "images/seq_tornozelo_qua_5.jpg"
-  ]
- },
- {
-  "id": "tornozelo-qui",
-  "theme": "Semana do Tornozelo e Pé",
-  "label": "QUI · No esporte",
-  "images": [
-   "images/seq_tornozelo_qui_1.jpg",
-   "images/seq_tornozelo_qui_2.jpg",
-   "images/seq_tornozelo_qui_3.jpg",
-   "images/seq_tornozelo_qui_4.jpg",
-   "images/seq_tornozelo_qui_5.jpg"
-  ]
- },
- {
-  "id": "tornozelo-sex",
-  "theme": "Semana do Tornozelo e Pé",
-  "label": "SEX · Primeiros socorros",
-  "images": [
-   "images/seq_tornozelo_sex_1.jpg",
-   "images/seq_tornozelo_sex_2.jpg",
-   "images/seq_tornozelo_sex_3.jpg",
-   "images/seq_tornozelo_sex_4.jpg",
-   "images/seq_tornozelo_sex_5.jpg"
-  ]
- },
- {
-  "id": "tornozelo-sab",
-  "theme": "Semana do Tornozelo e Pé",
-  "label": "SAB · Quando procurar",
-  "images": [
-   "images/seq_tornozelo_sab_1.jpg",
-   "images/seq_tornozelo_sab_2.jpg",
-   "images/seq_tornozelo_sab_3.jpg",
-   "images/seq_tornozelo_sab_4.jpg",
-   "images/seq_tornozelo_sab_5.jpg"
-  ]
- },
- {
-  "id": "tornozelo-dom",
-  "theme": "Semana do Tornozelo e Pé",
-  "label": "DOM · Como eu penso",
-  "images": [
-   "images/seq_tornozelo_dom_1.jpg",
-   "images/seq_tornozelo_dom_2.jpg",
-   "images/seq_tornozelo_dom_3.jpg",
-   "images/seq_tornozelo_dom_4.jpg",
-   "images/seq_tornozelo_dom_5.jpg"
-  ]
- },
- {
-  "id": "quadril-seg",
-  "theme": "Semana do Quadril",
-  "label": "SEG · O que observar",
-  "images": [
-   "images/seq_quadril_seg_1.jpg",
-   "images/seq_quadril_seg_2.jpg",
-   "images/seq_quadril_seg_3.jpg",
-   "images/seq_quadril_seg_4.jpg",
-   "images/seq_quadril_seg_5.jpg"
-  ]
- },
- {
-  "id": "quadril-ter",
-  "theme": "Semana do Quadril",
-  "label": "TER · Na criança",
-  "images": [
-   "images/seq_quadril_ter_1.jpg",
-   "images/seq_quadril_ter_2.jpg",
-   "images/seq_quadril_ter_3.jpg",
-   "images/seq_quadril_ter_4.jpg",
-   "images/seq_quadril_ter_5.jpg"
-  ]
- },
- {
-  "id": "quadril-qua",
-  "theme": "Semana do Quadril",
-  "label": "QUA · Mito x Verdade",
-  "images": [
-   "images/seq_quadril_qua_1.jpg",
-   "images/seq_quadril_qua_2.jpg",
-   "images/seq_quadril_qua_3.jpg",
-   "images/seq_quadril_qua_4.jpg",
-   "images/seq_quadril_qua_5.jpg"
-  ]
- },
- {
-  "id": "quadril-qui",
-  "theme": "Semana do Quadril",
-  "label": "QUI · No esporte",
-  "images": [
-   "images/seq_quadril_qui_1.jpg",
-   "images/seq_quadril_qui_2.jpg",
-   "images/seq_quadril_qui_3.jpg",
-   "images/seq_quadril_qui_4.jpg",
-   "images/seq_quadril_qui_5.jpg"
-  ]
- },
- {
-  "id": "quadril-sex",
-  "theme": "Semana do Quadril",
-  "label": "SEX · Primeiros socorros",
-  "images": [
-   "images/seq_quadril_sex_1.jpg",
-   "images/seq_quadril_sex_2.jpg",
-   "images/seq_quadril_sex_3.jpg",
-   "images/seq_quadril_sex_4.jpg",
-   "images/seq_quadril_sex_5.jpg"
-  ]
- },
- {
-  "id": "quadril-sab",
-  "theme": "Semana do Quadril",
-  "label": "SAB · Quando procurar",
-  "images": [
-   "images/seq_quadril_sab_1.jpg",
-   "images/seq_quadril_sab_2.jpg",
-   "images/seq_quadril_sab_3.jpg",
-   "images/seq_quadril_sab_4.jpg",
-   "images/seq_quadril_sab_5.jpg"
-  ]
- },
- {
-  "id": "quadril-dom",
-  "theme": "Semana do Quadril",
-  "label": "DOM · Como eu penso",
-  "images": [
-   "images/seq_quadril_dom_1.jpg",
-   "images/seq_quadril_dom_2.jpg",
-   "images/seq_quadril_dom_3.jpg",
-   "images/seq_quadril_dom_4.jpg",
-   "images/seq_quadril_dom_5.jpg"
-  ]
- },
- {
-  "id": "coluna-seg",
-  "theme": "Semana da Coluna",
-  "label": "SEG · O que observar",
-  "images": [
-   "images/seq_coluna_seg_1.jpg",
-   "images/seq_coluna_seg_2.jpg",
-   "images/seq_coluna_seg_3.jpg",
-   "images/seq_coluna_seg_4.jpg",
-   "images/seq_coluna_seg_5.jpg"
-  ]
- },
- {
-  "id": "coluna-ter",
-  "theme": "Semana da Coluna",
-  "label": "TER · Na criança",
-  "images": [
-   "images/seq_coluna_ter_1.jpg",
-   "images/seq_coluna_ter_2.jpg",
-   "images/seq_coluna_ter_3.jpg",
-   "images/seq_coluna_ter_4.jpg",
-   "images/seq_coluna_ter_5.jpg"
-  ]
- },
- {
-  "id": "coluna-qua",
-  "theme": "Semana da Coluna",
-  "label": "QUA · Mito x Verdade",
-  "images": [
-   "images/seq_coluna_qua_1.jpg",
-   "images/seq_coluna_qua_2.jpg",
-   "images/seq_coluna_qua_3.jpg",
-   "images/seq_coluna_qua_4.jpg",
-   "images/seq_coluna_qua_5.jpg"
-  ]
- },
- {
-  "id": "coluna-qui",
-  "theme": "Semana da Coluna",
-  "label": "QUI · No esporte",
-  "images": [
-   "images/seq_coluna_qui_1.jpg",
-   "images/seq_coluna_qui_2.jpg",
-   "images/seq_coluna_qui_3.jpg",
-   "images/seq_coluna_qui_4.jpg",
-   "images/seq_coluna_qui_5.jpg"
-  ]
- },
- {
-  "id": "coluna-sex",
-  "theme": "Semana da Coluna",
-  "label": "SEX · Primeiros socorros",
-  "images": [
-   "images/seq_coluna_sex_1.jpg",
-   "images/seq_coluna_sex_2.jpg",
-   "images/seq_coluna_sex_3.jpg",
-   "images/seq_coluna_sex_4.jpg",
-   "images/seq_coluna_sex_5.jpg"
-  ]
- },
- {
-  "id": "coluna-sab",
-  "theme": "Semana da Coluna",
-  "label": "SAB · Quando procurar",
-  "images": [
-   "images/seq_coluna_sab_1.jpg",
-   "images/seq_coluna_sab_2.jpg",
-   "images/seq_coluna_sab_3.jpg",
-   "images/seq_coluna_sab_4.jpg",
-   "images/seq_coluna_sab_5.jpg"
-  ]
- },
- {
-  "id": "coluna-dom",
-  "theme": "Semana da Coluna",
-  "label": "DOM · Como eu penso",
-  "images": [
-   "images/seq_coluna_dom_1.jpg",
-   "images/seq_coluna_dom_2.jpg",
-   "images/seq_coluna_dom_3.jpg",
-   "images/seq_coluna_dom_4.jpg",
-   "images/seq_coluna_dom_5.jpg"
-  ]
- },
- {
-  "id": "pernas-seg",
-  "theme": "Semana das Pernas Tortas",
-  "label": "SEG · O que observar",
-  "images": [
-   "images/seq_pernas_seg_1.jpg",
-   "images/seq_pernas_seg_2.jpg",
-   "images/seq_pernas_seg_3.jpg",
-   "images/seq_pernas_seg_4.jpg",
-   "images/seq_pernas_seg_5.jpg"
-  ]
- },
- {
-  "id": "pernas-ter",
-  "theme": "Semana das Pernas Tortas",
-  "label": "TER · Na criança",
-  "images": [
-   "images/seq_pernas_ter_1.jpg",
-   "images/seq_pernas_ter_2.jpg",
-   "images/seq_pernas_ter_3.jpg",
-   "images/seq_pernas_ter_4.jpg",
-   "images/seq_pernas_ter_5.jpg"
-  ]
- },
- {
-  "id": "pernas-qua",
-  "theme": "Semana das Pernas Tortas",
-  "label": "QUA · Mito x Verdade",
-  "images": [
-   "images/seq_pernas_qua_1.jpg",
-   "images/seq_pernas_qua_2.jpg",
-   "images/seq_pernas_qua_3.jpg",
-   "images/seq_pernas_qua_4.jpg",
-   "images/seq_pernas_qua_5.jpg"
-  ]
- },
- {
-  "id": "pernas-qui",
-  "theme": "Semana das Pernas Tortas",
-  "label": "QUI · No esporte",
-  "images": [
-   "images/seq_pernas_qui_1.jpg",
-   "images/seq_pernas_qui_2.jpg",
-   "images/seq_pernas_qui_3.jpg",
-   "images/seq_pernas_qui_4.jpg",
-   "images/seq_pernas_qui_5.jpg"
-  ]
- },
- {
-  "id": "pernas-sex",
-  "theme": "Semana das Pernas Tortas",
-  "label": "SEX · No dia a dia",
-  "images": [
-   "images/seq_pernas_sex_1.jpg",
-   "images/seq_pernas_sex_2.jpg",
-   "images/seq_pernas_sex_3.jpg",
-   "images/seq_pernas_sex_4.jpg",
-   "images/seq_pernas_sex_5.jpg"
-  ]
- },
- {
-  "id": "pernas-sab",
-  "theme": "Semana das Pernas Tortas",
-  "label": "SAB · Quando procurar",
-  "images": [
-   "images/seq_pernas_sab_1.jpg",
-   "images/seq_pernas_sab_2.jpg",
-   "images/seq_pernas_sab_3.jpg",
-   "images/seq_pernas_sab_4.jpg",
-   "images/seq_pernas_sab_5.jpg"
-  ]
- },
- {
-  "id": "pernas-dom",
-  "theme": "Semana das Pernas Tortas",
-  "label": "DOM · Como eu penso",
-  "images": [
-   "images/seq_pernas_dom_1.jpg",
-   "images/seq_pernas_dom_2.jpg",
-   "images/seq_pernas_dom_3.jpg",
-   "images/seq_pernas_dom_4.jpg",
-   "images/seq_pernas_dom_5.jpg"
-  ]
- },
- {
-  "id": "fraturas-seg",
-  "theme": "Semana das Fraturas",
-  "label": "SEG · O que observar",
-  "images": [
-   "images/seq_fraturas_seg_1.jpg",
-   "images/seq_fraturas_seg_2.jpg",
-   "images/seq_fraturas_seg_3.jpg",
-   "images/seq_fraturas_seg_4.jpg",
-   "images/seq_fraturas_seg_5.jpg"
-  ]
- },
- {
-  "id": "fraturas-ter",
-  "theme": "Semana das Fraturas",
-  "label": "TER · Na criança",
-  "images": [
-   "images/seq_fraturas_ter_1.jpg",
-   "images/seq_fraturas_ter_2.jpg",
-   "images/seq_fraturas_ter_3.jpg",
-   "images/seq_fraturas_ter_4.jpg",
-   "images/seq_fraturas_ter_5.jpg"
-  ]
- },
- {
-  "id": "fraturas-qua",
-  "theme": "Semana das Fraturas",
-  "label": "QUA · Mito x Verdade",
-  "images": [
-   "images/seq_fraturas_qua_1.jpg",
-   "images/seq_fraturas_qua_2.jpg",
-   "images/seq_fraturas_qua_3.jpg",
-   "images/seq_fraturas_qua_4.jpg",
-   "images/seq_fraturas_qua_5.jpg"
-  ]
- },
- {
-  "id": "fraturas-qui",
-  "theme": "Semana das Fraturas",
-  "label": "QUI · No esporte",
-  "images": [
-   "images/seq_fraturas_qui_1.jpg",
-   "images/seq_fraturas_qui_2.jpg",
-   "images/seq_fraturas_qui_3.jpg",
-   "images/seq_fraturas_qui_4.jpg",
-   "images/seq_fraturas_qui_5.jpg"
-  ]
- },
- {
-  "id": "fraturas-sex",
-  "theme": "Semana das Fraturas",
-  "label": "SEX · Primeiros socorros",
-  "images": [
-   "images/seq_fraturas_sex_1.jpg",
-   "images/seq_fraturas_sex_2.jpg",
-   "images/seq_fraturas_sex_3.jpg",
-   "images/seq_fraturas_sex_4.jpg",
-   "images/seq_fraturas_sex_5.jpg"
-  ]
- },
- {
-  "id": "fraturas-sab",
-  "theme": "Semana das Fraturas",
-  "label": "SAB · Quando procurar",
-  "images": [
-   "images/seq_fraturas_sab_1.jpg",
-   "images/seq_fraturas_sab_2.jpg",
-   "images/seq_fraturas_sab_3.jpg",
-   "images/seq_fraturas_sab_4.jpg",
-   "images/seq_fraturas_sab_5.jpg"
-  ]
- },
- {
-  "id": "fraturas-dom",
-  "theme": "Semana das Fraturas",
-  "label": "DOM · Como eu penso",
-  "images": [
-   "images/seq_fraturas_dom_1.jpg",
-   "images/seq_fraturas_dom_2.jpg",
-   "images/seq_fraturas_dom_3.jpg",
-   "images/seq_fraturas_dom_4.jpg",
-   "images/seq_fraturas_dom_5.jpg"
-  ]
- },
- {
-  "id": "reconstrucao-seg",
-  "theme": "Semana da Reconstrução",
-  "label": "SEG · O que observar",
-  "images": [
-   "images/seq_reconstrucao_seg_1.jpg",
-   "images/seq_reconstrucao_seg_2.jpg",
-   "images/seq_reconstrucao_seg_3.jpg",
-   "images/seq_reconstrucao_seg_4.jpg",
-   "images/seq_reconstrucao_seg_5.jpg"
-  ]
- },
- {
-  "id": "reconstrucao-ter",
-  "theme": "Semana da Reconstrução",
-  "label": "TER · Na criança",
-  "images": [
-   "images/seq_reconstrucao_ter_1.jpg",
-   "images/seq_reconstrucao_ter_2.jpg",
-   "images/seq_reconstrucao_ter_3.jpg",
-   "images/seq_reconstrucao_ter_4.jpg",
-   "images/seq_reconstrucao_ter_5.jpg"
-  ]
- },
- {
-  "id": "reconstrucao-qua",
-  "theme": "Semana da Reconstrução",
-  "label": "QUA · Mito x Verdade",
-  "images": [
-   "images/seq_reconstrucao_qua_1.jpg",
-   "images/seq_reconstrucao_qua_2.jpg",
-   "images/seq_reconstrucao_qua_3.jpg",
-   "images/seq_reconstrucao_qua_4.jpg",
-   "images/seq_reconstrucao_qua_5.jpg"
-  ]
- },
- {
-  "id": "reconstrucao-qui",
-  "theme": "Semana da Reconstrução",
-  "label": "QUI · No dia a dia",
-  "images": [
-   "images/seq_reconstrucao_qui_1.jpg",
-   "images/seq_reconstrucao_qui_2.jpg",
-   "images/seq_reconstrucao_qui_3.jpg",
-   "images/seq_reconstrucao_qui_4.jpg",
-   "images/seq_reconstrucao_qui_5.jpg"
-  ]
- },
- {
-  "id": "reconstrucao-sex",
-  "theme": "Semana da Reconstrução",
-  "label": "SEX · Cuidados",
-  "images": [
-   "images/seq_reconstrucao_sex_1.jpg",
-   "images/seq_reconstrucao_sex_2.jpg",
-   "images/seq_reconstrucao_sex_3.jpg",
-   "images/seq_reconstrucao_sex_4.jpg",
-   "images/seq_reconstrucao_sex_5.jpg"
-  ]
- },
- {
-  "id": "reconstrucao-sab",
-  "theme": "Semana da Reconstrução",
-  "label": "SAB · Quando procurar",
-  "images": [
-   "images/seq_reconstrucao_sab_1.jpg",
-   "images/seq_reconstrucao_sab_2.jpg",
-   "images/seq_reconstrucao_sab_3.jpg",
-   "images/seq_reconstrucao_sab_4.jpg",
-   "images/seq_reconstrucao_sab_5.jpg"
-  ]
- },
- {
-  "id": "reconstrucao-dom",
-  "theme": "Semana da Reconstrução",
-  "label": "DOM · Como eu penso",
-  "images": [
-   "images/seq_reconstrucao_dom_1.jpg",
-   "images/seq_reconstrucao_dom_2.jpg",
-   "images/seq_reconstrucao_dom_3.jpg",
-   "images/seq_reconstrucao_dom_4.jpg",
-   "images/seq_reconstrucao_dom_5.jpg"
-  ]
- },
- {
-  "id": "crescimento-seg",
-  "theme": "Semana das Dores do Crescimento",
-  "label": "SEG · O que observar",
-  "images": [
-   "images/seq_crescimento_seg_1.jpg",
-   "images/seq_crescimento_seg_2.jpg",
-   "images/seq_crescimento_seg_3.jpg",
-   "images/seq_crescimento_seg_4.jpg",
-   "images/seq_crescimento_seg_5.jpg"
-  ]
- },
- {
-  "id": "crescimento-ter",
-  "theme": "Semana das Dores do Crescimento",
-  "label": "TER · Na criança",
-  "images": [
-   "images/seq_crescimento_ter_1.jpg",
-   "images/seq_crescimento_ter_2.jpg",
-   "images/seq_crescimento_ter_3.jpg",
-   "images/seq_crescimento_ter_4.jpg",
-   "images/seq_crescimento_ter_5.jpg"
-  ]
- },
- {
-  "id": "crescimento-qua",
-  "theme": "Semana das Dores do Crescimento",
-  "label": "QUA · Mito x Verdade",
-  "images": [
-   "images/seq_crescimento_qua_1.jpg",
-   "images/seq_crescimento_qua_2.jpg",
-   "images/seq_crescimento_qua_3.jpg",
-   "images/seq_crescimento_qua_4.jpg",
-   "images/seq_crescimento_qua_5.jpg"
-  ]
- },
- {
-  "id": "crescimento-qui",
-  "theme": "Semana das Dores do Crescimento",
-  "label": "QUI · No esporte",
-  "images": [
-   "images/seq_crescimento_qui_1.jpg",
-   "images/seq_crescimento_qui_2.jpg",
-   "images/seq_crescimento_qui_3.jpg",
-   "images/seq_crescimento_qui_4.jpg",
-   "images/seq_crescimento_qui_5.jpg"
-  ]
- },
- {
-  "id": "crescimento-sex",
-  "theme": "Semana das Dores do Crescimento",
-  "label": "SEX · Primeiros socorros",
-  "images": [
-   "images/seq_crescimento_sex_1.jpg",
-   "images/seq_crescimento_sex_2.jpg",
-   "images/seq_crescimento_sex_3.jpg",
-   "images/seq_crescimento_sex_4.jpg",
-   "images/seq_crescimento_sex_5.jpg"
-  ]
- },
- {
-  "id": "crescimento-sab",
-  "theme": "Semana das Dores do Crescimento",
-  "label": "SAB · Quando procurar",
-  "images": [
-   "images/seq_crescimento_sab_1.jpg",
-   "images/seq_crescimento_sab_2.jpg",
-   "images/seq_crescimento_sab_3.jpg",
-   "images/seq_crescimento_sab_4.jpg",
-   "images/seq_crescimento_sab_5.jpg"
-  ]
- },
- {
-  "id": "crescimento-dom",
-  "theme": "Semana das Dores do Crescimento",
-  "label": "DOM · Como eu penso",
-  "images": [
-   "images/seq_crescimento_dom_1.jpg",
-   "images/seq_crescimento_dom_2.jpg",
-   "images/seq_crescimento_dom_3.jpg",
-   "images/seq_crescimento_dom_4.jpg",
-   "images/seq_crescimento_dom_5.jpg"
-  ]
- },
- {
-  "id": "esporte-seg",
-  "theme": "Semana do Esporte Jovem",
-  "label": "SEG · O que observar",
-  "images": [
-   "images/seq_esporte_seg_1.jpg",
-   "images/seq_esporte_seg_2.jpg",
-   "images/seq_esporte_seg_3.jpg",
-   "images/seq_esporte_seg_4.jpg",
-   "images/seq_esporte_seg_5.jpg"
-  ]
- },
- {
-  "id": "esporte-ter",
-  "theme": "Semana do Esporte Jovem",
-  "label": "TER · Na criança",
-  "images": [
-   "images/seq_esporte_ter_1.jpg",
-   "images/seq_esporte_ter_2.jpg",
-   "images/seq_esporte_ter_3.jpg",
-   "images/seq_esporte_ter_4.jpg",
-   "images/seq_esporte_ter_5.jpg"
-  ]
- },
- {
-  "id": "esporte-qua",
-  "theme": "Semana do Esporte Jovem",
-  "label": "QUA · Mito x Verdade",
-  "images": [
-   "images/seq_esporte_qua_1.jpg",
-   "images/seq_esporte_qua_2.jpg",
-   "images/seq_esporte_qua_3.jpg",
-   "images/seq_esporte_qua_4.jpg",
-   "images/seq_esporte_qua_5.jpg"
-  ]
- },
- {
-  "id": "esporte-qui",
-  "theme": "Semana do Esporte Jovem",
-  "label": "QUI · No esporte",
-  "images": [
-   "images/seq_esporte_qui_1.jpg",
-   "images/seq_esporte_qui_2.jpg",
-   "images/seq_esporte_qui_3.jpg",
-   "images/seq_esporte_qui_4.jpg",
-   "images/seq_esporte_qui_5.jpg"
-  ]
- },
- {
-  "id": "esporte-sex",
-  "theme": "Semana do Esporte Jovem",
-  "label": "SEX · Primeiros socorros",
-  "images": [
-   "images/seq_esporte_sex_1.jpg",
-   "images/seq_esporte_sex_2.jpg",
-   "images/seq_esporte_sex_3.jpg",
-   "images/seq_esporte_sex_4.jpg",
-   "images/seq_esporte_sex_5.jpg"
-  ]
- },
- {
-  "id": "esporte-sab",
-  "theme": "Semana do Esporte Jovem",
-  "label": "SAB · Quando procurar",
-  "images": [
-   "images/seq_esporte_sab_1.jpg",
-   "images/seq_esporte_sab_2.jpg",
-   "images/seq_esporte_sab_3.jpg",
-   "images/seq_esporte_sab_4.jpg",
-   "images/seq_esporte_sab_5.jpg"
-  ]
- },
- {
-  "id": "esporte-dom",
-  "theme": "Semana do Esporte Jovem",
-  "label": "DOM · Como eu penso",
-  "images": [
-   "images/seq_esporte_dom_1.jpg",
-   "images/seq_esporte_dom_2.jpg",
-   "images/seq_esporte_dom_3.jpg",
-   "images/seq_esporte_dom_4.jpg",
-   "images/seq_esporte_dom_5.jpg"
-  ]
- },
- {
-  "id": "marcha-seg",
-  "theme": "Semana da Marcha e do Pé",
-  "label": "SEG · O que observar",
-  "images": [
-   "images/seq_marcha_seg_1.jpg",
-   "images/seq_marcha_seg_2.jpg",
-   "images/seq_marcha_seg_3.jpg",
-   "images/seq_marcha_seg_4.jpg",
-   "images/seq_marcha_seg_5.jpg"
-  ]
- },
- {
-  "id": "marcha-ter",
-  "theme": "Semana da Marcha e do Pé",
-  "label": "TER · Na criança",
-  "images": [
-   "images/seq_marcha_ter_1.jpg",
-   "images/seq_marcha_ter_2.jpg",
-   "images/seq_marcha_ter_3.jpg",
-   "images/seq_marcha_ter_4.jpg",
-   "images/seq_marcha_ter_5.jpg"
-  ]
- },
- {
-  "id": "marcha-qua",
-  "theme": "Semana da Marcha e do Pé",
-  "label": "QUA · Mito x Verdade",
-  "images": [
-   "images/seq_marcha_qua_1.jpg",
-   "images/seq_marcha_qua_2.jpg",
-   "images/seq_marcha_qua_3.jpg",
-   "images/seq_marcha_qua_4.jpg",
-   "images/seq_marcha_qua_5.jpg"
-  ]
- },
- {
-  "id": "marcha-qui",
-  "theme": "Semana da Marcha e do Pé",
-  "label": "QUI · No esporte",
-  "images": [
-   "images/seq_marcha_qui_1.jpg",
-   "images/seq_marcha_qui_2.jpg",
-   "images/seq_marcha_qui_3.jpg",
-   "images/seq_marcha_qui_4.jpg",
-   "images/seq_marcha_qui_5.jpg"
-  ]
- },
- {
-  "id": "marcha-sex",
-  "theme": "Semana da Marcha e do Pé",
-  "label": "SEX · Primeiros socorros",
-  "images": [
-   "images/seq_marcha_sex_1.jpg",
-   "images/seq_marcha_sex_2.jpg",
-   "images/seq_marcha_sex_3.jpg",
-   "images/seq_marcha_sex_4.jpg",
-   "images/seq_marcha_sex_5.jpg"
-  ]
- },
- {
-  "id": "marcha-sab",
-  "theme": "Semana da Marcha e do Pé",
-  "label": "SAB · Quando procurar",
-  "images": [
-   "images/seq_marcha_sab_1.jpg",
-   "images/seq_marcha_sab_2.jpg",
-   "images/seq_marcha_sab_3.jpg",
-   "images/seq_marcha_sab_4.jpg",
-   "images/seq_marcha_sab_5.jpg"
-  ]
- },
- {
-  "id": "marcha-dom",
-  "theme": "Semana da Marcha e do Pé",
-  "label": "DOM · Como eu penso",
-  "images": [
-   "images/seq_marcha_dom_1.jpg",
-   "images/seq_marcha_dom_2.jpg",
-   "images/seq_marcha_dom_3.jpg",
-   "images/seq_marcha_dom_4.jpg",
-   "images/seq_marcha_dom_5.jpg"
-  ]
- },
- {
-  "id": "cotovelo-seg",
-  "theme": "Semana do Cotovelo e Braço",
-  "label": "SEG · O que observar",
-  "images": [
-   "images/seq_cotovelo_seg_1.jpg",
-   "images/seq_cotovelo_seg_2.jpg",
-   "images/seq_cotovelo_seg_3.jpg",
-   "images/seq_cotovelo_seg_4.jpg",
-   "images/seq_cotovelo_seg_5.jpg"
-  ]
- },
- {
-  "id": "cotovelo-ter",
-  "theme": "Semana do Cotovelo e Braço",
-  "label": "TER · Na criança",
-  "images": [
-   "images/seq_cotovelo_ter_1.jpg",
-   "images/seq_cotovelo_ter_2.jpg",
-   "images/seq_cotovelo_ter_3.jpg",
-   "images/seq_cotovelo_ter_4.jpg",
-   "images/seq_cotovelo_ter_5.jpg"
-  ]
- },
- {
-  "id": "cotovelo-qua",
-  "theme": "Semana do Cotovelo e Braço",
-  "label": "QUA · Mito x Verdade",
-  "images": [
-   "images/seq_cotovelo_qua_1.jpg",
-   "images/seq_cotovelo_qua_2.jpg",
-   "images/seq_cotovelo_qua_3.jpg",
-   "images/seq_cotovelo_qua_4.jpg",
-   "images/seq_cotovelo_qua_5.jpg"
-  ]
- },
- {
-  "id": "cotovelo-qui",
-  "theme": "Semana do Cotovelo e Braço",
-  "label": "QUI · No esporte",
-  "images": [
-   "images/seq_cotovelo_qui_1.jpg",
-   "images/seq_cotovelo_qui_2.jpg",
-   "images/seq_cotovelo_qui_3.jpg",
-   "images/seq_cotovelo_qui_4.jpg",
-   "images/seq_cotovelo_qui_5.jpg"
-  ]
- },
- {
-  "id": "cotovelo-sex",
-  "theme": "Semana do Cotovelo e Braço",
-  "label": "SEX · Primeiros socorros",
-  "images": [
-   "images/seq_cotovelo_sex_1.jpg",
-   "images/seq_cotovelo_sex_2.jpg",
-   "images/seq_cotovelo_sex_3.jpg",
-   "images/seq_cotovelo_sex_4.jpg",
-   "images/seq_cotovelo_sex_5.jpg"
-  ]
- },
- {
-  "id": "cotovelo-sab",
-  "theme": "Semana do Cotovelo e Braço",
-  "label": "SAB · Quando procurar",
-  "images": [
-   "images/seq_cotovelo_sab_1.jpg",
-   "images/seq_cotovelo_sab_2.jpg",
-   "images/seq_cotovelo_sab_3.jpg",
-   "images/seq_cotovelo_sab_4.jpg",
-   "images/seq_cotovelo_sab_5.jpg"
-  ]
- },
- {
-  "id": "cotovelo-dom",
-  "theme": "Semana do Cotovelo e Braço",
-  "label": "DOM · Como eu penso",
-  "images": [
-   "images/seq_cotovelo_dom_1.jpg",
-   "images/seq_cotovelo_dom_2.jpg",
-   "images/seq_cotovelo_dom_3.jpg",
-   "images/seq_cotovelo_dom_4.jpg",
-   "images/seq_cotovelo_dom_5.jpg"
-  ]
- },
- {
-  "id": "socorros-seg",
-  "theme": "Semana dos Primeiros Socorros",
-  "label": "SEG · O que observar",
-  "images": [
-   "images/seq_socorros_seg_1.jpg",
-   "images/seq_socorros_seg_2.jpg",
-   "images/seq_socorros_seg_3.jpg",
-   "images/seq_socorros_seg_4.jpg",
-   "images/seq_socorros_seg_5.jpg"
-  ]
- },
- {
-  "id": "socorros-ter",
-  "theme": "Semana dos Primeiros Socorros",
-  "label": "TER · Na criança",
-  "images": [
-   "images/seq_socorros_ter_1.jpg",
-   "images/seq_socorros_ter_2.jpg",
-   "images/seq_socorros_ter_3.jpg",
-   "images/seq_socorros_ter_4.jpg",
-   "images/seq_socorros_ter_5.jpg"
-  ]
- },
- {
-  "id": "socorros-qua",
-  "theme": "Semana dos Primeiros Socorros",
-  "label": "QUA · Mito x Verdade",
-  "images": [
-   "images/seq_socorros_qua_1.jpg",
-   "images/seq_socorros_qua_2.jpg",
-   "images/seq_socorros_qua_3.jpg",
-   "images/seq_socorros_qua_4.jpg",
-   "images/seq_socorros_qua_5.jpg"
-  ]
- },
- {
-  "id": "socorros-qui",
-  "theme": "Semana dos Primeiros Socorros",
-  "label": "QUI · No esporte",
-  "images": [
-   "images/seq_socorros_qui_1.jpg",
-   "images/seq_socorros_qui_2.jpg",
-   "images/seq_socorros_qui_3.jpg",
-   "images/seq_socorros_qui_4.jpg",
-   "images/seq_socorros_qui_5.jpg"
-  ]
- },
- {
-  "id": "socorros-sex",
-  "theme": "Semana dos Primeiros Socorros",
-  "label": "SEX · Primeiros socorros",
-  "images": [
-   "images/seq_socorros_sex_1.jpg",
-   "images/seq_socorros_sex_2.jpg",
-   "images/seq_socorros_sex_3.jpg",
-   "images/seq_socorros_sex_4.jpg",
-   "images/seq_socorros_sex_5.jpg"
-  ]
- },
- {
-  "id": "socorros-sab",
-  "theme": "Semana dos Primeiros Socorros",
-  "label": "SAB · Quando procurar",
-  "images": [
-   "images/seq_socorros_sab_1.jpg",
-   "images/seq_socorros_sab_2.jpg",
-   "images/seq_socorros_sab_3.jpg",
-   "images/seq_socorros_sab_4.jpg",
-   "images/seq_socorros_sab_5.jpg"
-  ]
- },
- {
-  "id": "socorros-dom",
-  "theme": "Semana dos Primeiros Socorros",
-  "label": "DOM · Como eu penso",
-  "images": [
-   "images/seq_socorros_dom_1.jpg",
-   "images/seq_socorros_dom_2.jpg",
-   "images/seq_socorros_dom_3.jpg",
-   "images/seq_socorros_dom_4.jpg",
-   "images/seq_socorros_dom_5.jpg"
-  ]
- },
- {
-  "id": "complexos-seg",
-  "theme": "Semana dos Casos Complexos",
-  "label": "SEG · O que observar",
-  "images": [
-   "images/seq_complexos_seg_1.jpg",
-   "images/seq_complexos_seg_2.jpg",
-   "images/seq_complexos_seg_3.jpg",
-   "images/seq_complexos_seg_4.jpg",
-   "images/seq_complexos_seg_5.jpg"
-  ]
- },
- {
-  "id": "complexos-ter",
-  "theme": "Semana dos Casos Complexos",
-  "label": "TER · Na criança",
-  "images": [
-   "images/seq_complexos_ter_1.jpg",
-   "images/seq_complexos_ter_2.jpg",
-   "images/seq_complexos_ter_3.jpg",
-   "images/seq_complexos_ter_4.jpg",
-   "images/seq_complexos_ter_5.jpg"
-  ]
- },
- {
-  "id": "complexos-qua",
-  "theme": "Semana dos Casos Complexos",
-  "label": "QUA · Mito x Verdade",
-  "images": [
-   "images/seq_complexos_qua_1.jpg",
-   "images/seq_complexos_qua_2.jpg",
-   "images/seq_complexos_qua_3.jpg",
-   "images/seq_complexos_qua_4.jpg",
-   "images/seq_complexos_qua_5.jpg"
-  ]
- },
- {
-  "id": "complexos-qui",
-  "theme": "Semana dos Casos Complexos",
-  "label": "QUI · De longe",
-  "images": [
-   "images/seq_complexos_qui_1.jpg",
-   "images/seq_complexos_qui_2.jpg",
-   "images/seq_complexos_qui_3.jpg",
-   "images/seq_complexos_qui_4.jpg",
-   "images/seq_complexos_qui_5.jpg"
-  ]
- },
- {
-  "id": "complexos-sex",
-  "theme": "Semana dos Casos Complexos",
-  "label": "SEX · O acompanhamento",
-  "images": [
-   "images/seq_complexos_sex_1.jpg",
-   "images/seq_complexos_sex_2.jpg",
-   "images/seq_complexos_sex_3.jpg",
-   "images/seq_complexos_sex_4.jpg",
-   "images/seq_complexos_sex_5.jpg"
-  ]
- },
- {
-  "id": "complexos-sab",
-  "theme": "Semana dos Casos Complexos",
-  "label": "SAB · Quando procurar",
-  "images": [
-   "images/seq_complexos_sab_1.jpg",
-   "images/seq_complexos_sab_2.jpg",
-   "images/seq_complexos_sab_3.jpg",
-   "images/seq_complexos_sab_4.jpg",
-   "images/seq_complexos_sab_5.jpg"
-  ]
- },
- {
-  "id": "complexos-dom",
-  "theme": "Semana dos Casos Complexos",
-  "label": "DOM · Como eu penso",
-  "images": [
-   "images/seq_complexos_dom_1.jpg",
-   "images/seq_complexos_dom_2.jpg",
-   "images/seq_complexos_dom_3.jpg",
-   "images/seq_complexos_dom_4.jpg",
-   "images/seq_complexos_dom_5.jpg"
-  ]
- },
- {
-  "id": "s_on_osso_cresce",
-  "images": [
-   "images/s_on_osso_cresce_1.jpg",
-   "images/s_on_osso_cresce_2.jpg",
-   "images/s_on_osso_cresce_3.jpg",
-   "images/s_on_osso_cresce_4.jpg",
-   "images/s_on_osso_cresce_5.jpg"
-  ],
-  "label": "Osso Novo · Como assim?",
-  "theme": "Osso Novo"
- },
- {
-  "id": "s_on_regra_milimetro",
-  "images": [
-   "images/s_on_regra_milimetro_1.jpg",
-   "images/s_on_regra_milimetro_2.jpg",
-   "images/s_on_regra_milimetro_3.jpg",
-   "images/s_on_regra_milimetro_4.jpg",
-   "images/s_on_regra_milimetro_5.jpg"
-  ],
-  "label": "Osso Novo · O ritmo",
-  "theme": "Osso Novo"
- },
- {
-  "id": "s_on_tres_fases",
-  "images": [
-   "images/s_on_tres_fases_1.jpg",
-   "images/s_on_tres_fases_2.jpg",
-   "images/s_on_tres_fases_3.jpg",
-   "images/s_on_tres_fases_4.jpg",
-   "images/s_on_tres_fases_5.jpg"
-  ],
-  "label": "Osso Novo · As 3 fases",
-  "theme": "Osso Novo"
- },
- {
-  "id": "s_on_pseudartrose",
-  "images": [
-   "images/s_on_pseudartrose_1.jpg",
-   "images/s_on_pseudartrose_2.jpg",
-   "images/s_on_pseudartrose_3.jpg",
-   "images/s_on_pseudartrose_4.jpg",
-   "images/s_on_pseudartrose_5.jpg"
-  ],
-  "label": "Osso Novo · Existe isso?",
-  "theme": "Osso Novo"
- },
- {
-  "id": "s_on_tres_razoes",
-  "images": [
-   "images/s_on_tres_razoes_1.jpg",
-   "images/s_on_tres_razoes_2.jpg",
-   "images/s_on_tres_razoes_3.jpg",
-   "images/s_on_tres_razoes_4.jpg",
-   "images/s_on_tres_razoes_5.jpg"
-  ],
-  "label": "Osso Novo · 3 motivos",
-  "theme": "Osso Novo"
- },
- {
-  "id": "s_on_cigarro",
-  "images": [
-   "images/s_on_cigarro_1.jpg",
-   "images/s_on_cigarro_2.jpg",
-   "images/s_on_cigarro_3.jpg",
-   "images/s_on_cigarro_4.jpg",
-   "images/s_on_cigarro_5.jpg"
-  ],
-  "label": "Osso Novo · O vilão escondido",
-  "theme": "Osso Novo"
- },
- {
-  "id": "s_on_consulta_de_controle",
-  "theme": "Osso Novo",
-  "label": "Osso Novo · A consulta de controle",
-  "images": [
-   "images/s_on_consulta_de_controle_1.jpg",
-   "images/s_on_consulta_de_controle_2.jpg",
-   "images/s_on_consulta_de_controle_3.jpg",
-   "images/s_on_consulta_de_controle_4.jpg",
-   "images/s_on_consulta_de_controle_5.jpg"
-  ]
- },
- {
-  "id": "s_pnc_gesso_em_casa",
-  "theme": "Pé no Chão",
-  "label": "Pé no Chão · Gesso sem drama",
-  "images": [
-   "images/s_pnc_gesso_em_casa_1.jpg",
-   "images/s_pnc_gesso_em_casa_2.jpg",
-   "images/s_pnc_gesso_em_casa_3.jpg",
-   "images/s_pnc_gesso_em_casa_4.jpg",
-   "images/s_pnc_gesso_em_casa_5.jpg"
-  ]
- },
- {
-  "id": "s_on_pisar_ou_nao",
-  "theme": "Osso Novo",
-  "label": "Osso Novo · Pisa ou não pisa?",
-  "images": [
-   "images/s_on_pisar_ou_nao_1.jpg",
-   "images/s_on_pisar_ou_nao_2.jpg",
-   "images/s_on_pisar_ou_nao_3.jpg",
-   "images/s_on_pisar_ou_nao_4.jpg",
-   "images/s_on_pisar_ou_nao_5.jpg"
-  ]
- },
- {
-  "id": "s_on_fixador_rotina",
-  "theme": "Osso Novo",
-  "label": "Osso Novo · A vida com o fixador",
-  "images": [
-   "images/s_on_fixador_rotina_1.jpg",
-   "images/s_on_fixador_rotina_2.jpg",
-   "images/s_on_fixador_rotina_3.jpg",
-   "images/s_on_fixador_rotina_4.jpg",
-   "images/s_on_fixador_rotina_5.jpg"
-  ]
- },
- {
-  "id": "s_pnc_depois_do_gesso",
-  "theme": "Pé no Chão",
-  "label": "Pé no Chão · Depois do gesso",
-  "images": [
-   "images/s_pnc_depois_do_gesso_1.jpg",
-   "images/s_pnc_depois_do_gesso_2.jpg",
-   "images/s_pnc_depois_do_gesso_3.jpg",
-   "images/s_pnc_depois_do_gesso_4.jpg",
-   "images/s_pnc_depois_do_gesso_5.jpg"
-  ]
- },
- {
-  "id": "s_on_muletas_sem_erro",
-  "theme": "Osso Novo",
-  "label": "Osso Novo · Muleta sem erro",
-  "images": [
-   "images/s_on_muletas_sem_erro_1.jpg",
-   "images/s_on_muletas_sem_erro_2.jpg",
-   "images/s_on_muletas_sem_erro_3.jpg",
-   "images/s_on_muletas_sem_erro_4.jpg",
-   "images/s_on_muletas_sem_erro_5.jpg"
-  ]
- },
- {
-  "id": "s_on_dirigir_trabalho",
-  "theme": "Osso Novo",
-  "label": "Osso Novo · Trabalho e direção",
-  "images": [
-   "images/s_on_dirigir_trabalho_1.jpg",
-   "images/s_on_dirigir_trabalho_2.jpg",
-   "images/s_on_dirigir_trabalho_3.jpg",
-   "images/s_on_dirigir_trabalho_4.jpg",
-   "images/s_on_dirigir_trabalho_5.jpg"
-  ]
- },
- {
-  "id": "s_pnc_primeira_consulta",
-  "theme": "Pé no Chão",
-  "label": "Pé no Chão · A primeira consulta",
-  "images": [
-   "images/s_pnc_primeira_consulta_1.jpg",
-   "images/s_pnc_primeira_consulta_2.jpg",
-   "images/s_pnc_primeira_consulta_3.jpg",
-   "images/s_pnc_primeira_consulta_4.jpg",
-   "images/s_pnc_primeira_consulta_5.jpg"
-  ]
- },
- {
-  "id": "s_on_dor_no_alongamento",
-  "theme": "Osso Novo",
-  "label": "Osso Novo · E a dor?",
-  "images": [
-   "images/s_on_dor_no_alongamento_1.jpg",
-   "images/s_on_dor_no_alongamento_2.jpg",
-   "images/s_on_dor_no_alongamento_3.jpg",
-   "images/s_on_dor_no_alongamento_4.jpg",
-   "images/s_on_dor_no_alongamento_5.jpg"
-  ]
- },
- {
-  "id": "s_pnc_esporte_apos_fratura",
-  "theme": "Pé no Chão",
-  "label": "Pé no Chão · De volta ao jogo",
-  "images": [
-   "images/s_pnc_esporte_apos_fratura_1.jpg",
-   "images/s_pnc_esporte_apos_fratura_2.jpg",
-   "images/s_pnc_esporte_apos_fratura_3.jpg",
-   "images/s_pnc_esporte_apos_fratura_4.jpg",
-   "images/s_pnc_esporte_apos_fratura_5.jpg"
-  ]
- },
- {
-  "id": "s_on_dia_da_retirada",
-  "theme": "Osso Novo",
-  "label": "Osso Novo · O dia de tirar",
-  "images": [
-   "images/s_on_dia_da_retirada_1.jpg",
-   "images/s_on_dia_da_retirada_2.jpg",
-   "images/s_on_dia_da_retirada_3.jpg",
-   "images/s_on_dia_da_retirada_4.jpg",
-   "images/s_on_dia_da_retirada_5.jpg"
-  ]
- },
- {
-  "id": "s_on_osteomielite",
-  "images": [
-   "images/s_on_osteomielite_1.jpg",
-   "images/s_on_osteomielite_2.jpg",
-   "images/s_on_osteomielite_3.jpg",
-   "images/s_on_osteomielite_4.jpg",
-   "images/s_on_osteomielite_5.jpg"
-  ],
-  "label": "Osso Novo · Infecção no osso",
-  "theme": "Osso Novo"
- },
- {
-  "id": "s_on_transporte_osseo",
-  "images": [
-   "images/s_on_transporte_osseo_1.jpg",
-   "images/s_on_transporte_osseo_2.jpg",
-   "images/s_on_transporte_osseo_3.jpg",
-   "images/s_on_transporte_osseo_4.jpg",
-   "images/s_on_transporte_osseo_5.jpg"
-  ],
-  "label": "Osso Novo · Parece mágica",
-  "theme": "Osso Novo"
- },
- {
-  "id": "s_on_osteotomia",
-  "images": [
-   "images/s_on_osteotomia_1.jpg",
-   "images/s_on_osteotomia_2.jpg",
-   "images/s_on_osteotomia_3.jpg",
-   "images/s_on_osteotomia_4.jpg",
-   "images/s_on_osteotomia_5.jpg"
-  ],
-  "label": "Osso Novo · A palavra do dia",
-  "theme": "Osso Novo"
- },
- {
-  "id": "s_on_perna_torta_adulto",
-  "images": [
-   "images/s_on_perna_torta_adulto_1.jpg",
-   "images/s_on_perna_torta_adulto_2.jpg",
-   "images/s_on_perna_torta_adulto_3.jpg",
-   "images/s_on_perna_torta_adulto_4.jpg",
-   "images/s_on_perna_torta_adulto_5.jpg"
-  ],
-  "label": "Osso Novo · No adulto também",
-  "theme": "Osso Novo"
- },
- {
-  "id": "s_on_discrepancia",
-  "images": [
-   "images/s_on_discrepancia_1.jpg",
-   "images/s_on_discrepancia_2.jpg",
-   "images/s_on_discrepancia_3.jpg",
-   "images/s_on_discrepancia_4.jpg",
-   "images/s_on_discrepancia_5.jpg"
-  ],
-  "label": "Osso Novo · Recebendo a ponte",
-  "theme": "Osso Novo"
- },
- {
-  "id": "s_on_medir_antes",
-  "images": [
-   "images/s_on_medir_antes_1.jpg",
-   "images/s_on_medir_antes_2.jpg",
-   "images/s_on_medir_antes_3.jpg",
-   "images/s_on_medir_antes_4.jpg",
-   "images/s_on_medir_antes_5.jpg"
-  ],
-  "label": "Osso Novo · O passo que ninguém pula",
-  "theme": "Osso Novo"
- },
- {
-  "id": "s_on_fixador_vs_haste",
-  "images": [
-   "images/s_on_fixador_vs_haste_1.jpg",
-   "images/s_on_fixador_vs_haste_2.jpg",
-   "images/s_on_fixador_vs_haste_3.jpg",
-   "images/s_on_fixador_vs_haste_4.jpg",
-   "images/s_on_fixador_vs_haste_5.jpg"
-  ],
-  "label": "Osso Novo · Duas ferramentas",
-  "theme": "Osso Novo"
- },
- {
-  "id": "s_on_quanto_tempo",
-  "images": [
-   "images/s_on_quanto_tempo_1.jpg",
-   "images/s_on_quanto_tempo_2.jpg",
-   "images/s_on_quanto_tempo_3.jpg",
-   "images/s_on_quanto_tempo_4.jpg",
-   "images/s_on_quanto_tempo_5.jpg"
-  ],
-  "label": "Osso Novo · A pergunta nº1",
-  "theme": "Osso Novo"
- },
- {
-  "id": "s_on_cuidado_pinos",
-  "images": [
-   "images/s_on_cuidado_pinos_1.jpg",
-   "images/s_on_cuidado_pinos_2.jpg",
-   "images/s_on_cuidado_pinos_3.jpg",
-   "images/s_on_cuidado_pinos_4.jpg",
-   "images/s_on_cuidado_pinos_5.jpg"
-  ],
-  "label": "Osso Novo · O cuidado-chave",
-  "theme": "Osso Novo"
- },
- {
-  "id": "s_on_fisioterapia",
-  "images": [
-   "images/s_on_fisioterapia_1.jpg",
-   "images/s_on_fisioterapia_2.jpg",
-   "images/s_on_fisioterapia_3.jpg",
-   "images/s_on_fisioterapia_4.jpg",
-   "images/s_on_fisioterapia_5.jpg"
-  ],
-  "label": "Osso Novo · A metade esquecida",
-  "theme": "Osso Novo"
- },
- {
-  "id": "s_on_pos_trauma",
-  "images": [
-   "images/s_on_pos_trauma_1.jpg",
-   "images/s_on_pos_trauma_2.jpg",
-   "images/s_on_pos_trauma_3.jpg",
-   "images/s_on_pos_trauma_4.jpg",
-   "images/s_on_pos_trauma_5.jpg"
-  ],
-  "label": "Osso Novo · Tudo junto",
-  "theme": "Osso Novo"
- },
- {
-  "id": "s_on_nao_estetica",
-  "images": [
-   "images/s_on_nao_estetica_1.jpg",
-   "images/s_on_nao_estetica_2.jpg",
-   "images/s_on_nao_estetica_3.jpg",
-   "images/s_on_nao_estetica_4.jpg",
-   "images/s_on_nao_estetica_5.jpg"
-  ],
-  "label": "Osso Novo · O fecho da série",
-  "theme": "Osso Novo"
- },
- {
-  "id": "s_pnc_marcos_andar",
-  "images": [
-   "images/s_pnc_marcos_andar_1.jpg",
-   "images/s_pnc_marcos_andar_2.jpg",
-   "images/s_pnc_marcos_andar_3.jpg",
-   "images/s_pnc_marcos_andar_4.jpg",
-   "images/s_pnc_marcos_andar_5.jpg"
-  ],
-  "label": "Pé no Chão · A pergunta de todo pai",
-  "theme": "Pé no Chão"
- },
- {
-  "id": "s_pnc_pe_pra_dentro",
-  "images": [
-   "images/s_pnc_pe_pra_dentro_1.jpg",
-   "images/s_pnc_pe_pra_dentro_2.jpg",
-   "images/s_pnc_pe_pra_dentro_3.jpg",
-   "images/s_pnc_pe_pra_dentro_4.jpg",
-   "images/s_pnc_pe_pra_dentro_5.jpg"
-  ],
-  "label": "Pé no Chão · Pé pra dentro",
-  "theme": "Pé no Chão"
- },
- {
-  "id": "s_pnc_estalo_joelho",
-  "images": [
-   "images/s_pnc_estalo_joelho_1.jpg",
-   "images/s_pnc_estalo_joelho_2.jpg",
-   "images/s_pnc_estalo_joelho_3.jpg",
-   "images/s_pnc_estalo_joelho_4.jpg",
-   "images/s_pnc_estalo_joelho_5.jpg"
-  ],
-  "label": "Pé no Chão · Aquele 'crec'",
-  "theme": "Pé no Chão"
- },
- {
-  "id": "s_pnc_tenis_caro",
-  "images": [
-   "images/s_pnc_tenis_caro_1.jpg",
-   "images/s_pnc_tenis_caro_2.jpg",
-   "images/s_pnc_tenis_caro_3.jpg",
-   "images/s_pnc_tenis_caro_4.jpg",
-   "images/s_pnc_tenis_caro_5.jpg"
-  ],
-  "label": "Pé no Chão · Mito caro",
-  "theme": "Pé no Chão"
- },
- {
-  "id": "s_pnc_perna_curta_crianca",
-  "images": [
-   "images/s_pnc_perna_curta_crianca_1.jpg",
-   "images/s_pnc_perna_curta_crianca_2.jpg",
-   "images/s_pnc_perna_curta_crianca_3.jpg",
-   "images/s_pnc_perna_curta_crianca_4.jpg",
-   "images/s_pnc_perna_curta_crianca_5.jpg"
-  ],
-  "label": "Pé no Chão · A ponte",
-  "theme": "Pé no Chão"
- },
- {
-  "id": "s_pnc_nao_dor_crescimento",
-  "images": [
-   "images/s_pnc_nao_dor_crescimento_1.jpg",
-   "images/s_pnc_nao_dor_crescimento_2.jpg",
-   "images/s_pnc_nao_dor_crescimento_3.jpg",
-   "images/s_pnc_nao_dor_crescimento_4.jpg",
-   "images/s_pnc_nao_dor_crescimento_5.jpg"
-  ],
-  "label": "Pé no Chão · O outro lado",
-  "theme": "Pé no Chão"
- },
- {
-  "id": "s_pnc_mancando",
-  "images": [
-   "images/s_pnc_mancando_1.jpg",
-   "images/s_pnc_mancando_2.jpg",
-   "images/s_pnc_mancando_3.jpg",
-   "images/s_pnc_mancando_4.jpg",
-   "images/s_pnc_mancando_5.jpg"
-  ],
-  "label": "Pé no Chão · Regra de ouro",
-  "theme": "Pé no Chão"
- },
- {
-  "id": "s_pnc_mancar_febre",
-  "images": [
-   "images/s_pnc_mancar_febre_1.jpg",
-   "images/s_pnc_mancar_febre_2.jpg",
-   "images/s_pnc_mancar_febre_3.jpg",
-   "images/s_pnc_mancar_febre_4.jpg",
-   "images/s_pnc_mancar_febre_5.jpg"
-  ],
-  "label": "Pé no Chão · Combinação que apressa",
-  "theme": "Pé no Chão"
- },
- {
-  "id": "s_pnc_escoliose",
-  "images": [
-   "images/s_pnc_escoliose_1.jpg",
-   "images/s_pnc_escoliose_2.jpg",
-   "images/s_pnc_escoliose_3.jpg",
-   "images/s_pnc_escoliose_4.jpg",
-   "images/s_pnc_escoliose_5.jpg"
-  ],
-  "label": "Pé no Chão · Olhe as costas",
-  "theme": "Pé no Chão"
- },
- {
-  "id": "s_pnc_cai_muito",
-  "images": [
-   "images/s_pnc_cai_muito_1.jpg",
-   "images/s_pnc_cai_muito_2.jpg",
-   "images/s_pnc_cai_muito_3.jpg",
-   "images/s_pnc_cai_muito_4.jpg",
-   "images/s_pnc_cai_muito_5.jpg"
-  ],
-  "label": "Pé no Chão · Cai toda hora",
-  "theme": "Pé no Chão"
- },
- {
-  "id": "s_pnc_sentar_w",
-  "images": [
-   "images/s_pnc_sentar_w_1.jpg",
-   "images/s_pnc_sentar_w_2.jpg",
-   "images/s_pnc_sentar_w_3.jpg",
-   "images/s_pnc_sentar_w_4.jpg",
-   "images/s_pnc_sentar_w_5.jpg"
-  ],
-  "label": "Pé no Chão · O medo viral",
-  "theme": "Pé no Chão"
- },
- {
-  "id": "s_pnc_mochila",
-  "images": [
-   "images/s_pnc_mochila_1.jpg",
-   "images/s_pnc_mochila_2.jpg",
-   "images/s_pnc_mochila_3.jpg",
-   "images/s_pnc_mochila_4.jpg",
-   "images/s_pnc_mochila_5.jpg"
-  ],
-  "label": "Pé no Chão · O fecho da série",
-  "theme": "Pé no Chão"
- },
- {
-  "id": "s_pnc_torcicolo_bebe",
-  "theme": "Pé no Chão",
-  "label": "Pé no Chão · Pescoço torto do bebê",
-  "images": [
-   "images/s_pnc_torcicolo_bebe_1.jpg",
-   "images/s_pnc_torcicolo_bebe_2.jpg",
-   "images/s_pnc_torcicolo_bebe_3.jpg",
-   "images/s_pnc_torcicolo_bebe_4.jpg",
-   "images/s_pnc_torcicolo_bebe_5.jpg"
-  ]
- },
- {
-  "id": "s_pnc_charutinho_quadril",
-  "theme": "Pé no Chão",
-  "label": "Pé no Chão · Perninhas livres",
-  "images": [
-   "images/s_pnc_charutinho_quadril_1.jpg",
-   "images/s_pnc_charutinho_quadril_2.jpg",
-   "images/s_pnc_charutinho_quadril_3.jpg",
-   "images/s_pnc_charutinho_quadril_4.jpg",
-   "images/s_pnc_charutinho_quadril_5.jpg"
-  ]
- },
- {
-  "id": "s_pnc_osso_forte",
-  "theme": "Pé no Chão",
-  "label": "Pé no Chão · Poupança de osso",
-  "images": [
-   "images/s_pnc_osso_forte_1.jpg",
-   "images/s_pnc_osso_forte_2.jpg",
-   "images/s_pnc_osso_forte_3.jpg",
-   "images/s_pnc_osso_forte_4.jpg",
-   "images/s_pnc_osso_forte_5.jpg"
-  ]
- },
- {
-  "id": "s_pnc_hipermobilidade",
-  "theme": "Pé no Chão",
-  "label": "Pé no Chão · Elástica demais?",
-  "images": [
-   "images/s_pnc_hipermobilidade_1.jpg",
-   "images/s_pnc_hipermobilidade_2.jpg",
-   "images/s_pnc_hipermobilidade_3.jpg",
-   "images/s_pnc_hipermobilidade_4.jpg",
-   "images/s_pnc_hipermobilidade_5.jpg"
-  ]
- },
- {
-  "id": "s_pnc_crescer_dormindo",
-  "theme": "Pé no Chão",
-  "label": "Pé no Chão · Crescer dormindo",
-  "images": [
-   "images/s_pnc_crescer_dormindo_1.jpg",
-   "images/s_pnc_crescer_dormindo_2.jpg",
-   "images/s_pnc_crescer_dormindo_3.jpg",
-   "images/s_pnc_crescer_dormindo_4.jpg",
-   "images/s_pnc_crescer_dormindo_5.jpg"
-  ]
- },
- {
-  "id": "s_pnc_joanete_adolescente",
-  "theme": "Pé no Chão",
-  "label": "Pé no Chão · Joanete jovem",
-  "images": [
-   "images/s_pnc_joanete_adolescente_1.jpg",
-   "images/s_pnc_joanete_adolescente_2.jpg",
-   "images/s_pnc_joanete_adolescente_3.jpg",
-   "images/s_pnc_joanete_adolescente_4.jpg",
-   "images/s_pnc_joanete_adolescente_5.jpg"
-  ]
- },
- {
-  "id": "s_pnc_casa_segura",
-  "theme": "Pé no Chão",
-  "label": "Pé no Chão · Casa à prova de tombo",
-  "images": [
-   "images/s_pnc_casa_segura_1.jpg",
-   "images/s_pnc_casa_segura_2.jpg",
-   "images/s_pnc_casa_segura_3.jpg",
-   "images/s_pnc_casa_segura_4.jpg",
-   "images/s_pnc_casa_segura_5.jpg"
-  ]
- },
- {
-  "id": "s_on_comida_do_osso",
-  "theme": "Osso Novo",
-  "label": "Osso Novo · O prato do osso",
-  "images": [
-   "images/s_on_comida_do_osso_1.jpg",
-   "images/s_on_comida_do_osso_2.jpg",
-   "images/s_on_comida_do_osso_3.jpg",
-   "images/s_on_comida_do_osso_4.jpg",
-   "images/s_on_comida_do_osso_5.jpg"
-  ]
- },
- {
-  "id": "s_on_enxerto_osseo",
-  "theme": "Osso Novo",
-  "label": "Osso Novo · Osso emprestado",
-  "images": [
-   "images/s_on_enxerto_osseo_1.jpg",
-   "images/s_on_enxerto_osseo_2.jpg",
-   "images/s_on_enxerto_osseo_3.jpg",
-   "images/s_on_enxerto_osseo_4.jpg",
-   "images/s_on_enxerto_osseo_5.jpg"
-  ]
- },
- {
-  "id": "s_on_fratura_exposta",
-  "theme": "Osso Novo",
-  "label": "Osso Novo · Fratura exposta",
-  "images": [
-   "images/s_on_fratura_exposta_1.jpg",
-   "images/s_on_fratura_exposta_2.jpg",
-   "images/s_on_fratura_exposta_3.jpg",
-   "images/s_on_fratura_exposta_4.jpg",
-   "images/s_on_fratura_exposta_5.jpg"
-  ]
- },
- {
-  "id": "s_on_ilizarov_quem_foi",
-  "theme": "Osso Novo",
-  "label": "Osso Novo · Quem foi Ilizarov",
-  "images": [
-   "images/s_on_ilizarov_quem_foi_1.jpg",
-   "images/s_on_ilizarov_quem_foi_2.jpg",
-   "images/s_on_ilizarov_quem_foi_3.jpg",
-   "images/s_on_ilizarov_quem_foi_4.jpg",
-   "images/s_on_ilizarov_quem_foi_5.jpg"
-  ]
- },
- {
-  "id": "s_on_esporte_depois",
-  "theme": "Osso Novo",
-  "label": "Osso Novo · De volta ao movimento",
-  "images": [
-   "images/s_on_esporte_depois_1.jpg",
-   "images/s_on_esporte_depois_2.jpg",
-   "images/s_on_esporte_depois_3.jpg",
-   "images/s_on_esporte_depois_4.jpg",
-   "images/s_on_esporte_depois_5.jpg"
-  ]
- },
- {
-  "id": "s_on_colou_torto",
-  "theme": "Osso Novo",
-  "label": "Osso Novo · Colou torto. E agora?",
-  "images": [
-   "images/s_on_colou_torto_1.jpg",
-   "images/s_on_colou_torto_2.jpg",
-   "images/s_on_colou_torto_3.jpg",
-   "images/s_on_colou_torto_4.jpg",
-   "images/s_on_colou_torto_5.jpg"
-  ]
- },
- {
-  "id": "s_on_remedio_que_atrapalha",
-  "theme": "Osso Novo",
-  "label": "Osso Novo · Remédio que atrapalha",
-  "images": [
-   "images/s_on_remedio_que_atrapalha_1.jpg",
-   "images/s_on_remedio_que_atrapalha_2.jpg",
-   "images/s_on_remedio_que_atrapalha_3.jpg",
-   "images/s_on_remedio_que_atrapalha_4.jpg",
-   "images/s_on_remedio_que_atrapalha_5.jpg"
-  ]
- },
- {
-  "id": "s_inst_como_e_a_consulta",
-  "theme": "Como é a consulta",
-  "label": "Como é a consulta",
-  "images": [
-   "images/s_inst_como_e_a_consulta_1.jpg",
-   "images/s_inst_como_e_a_consulta_2.jpg",
-   "images/s_inst_como_e_a_consulta_3.jpg",
-   "images/s_inst_como_e_a_consulta_4.jpg",
-   "images/s_inst_como_e_a_consulta_5.jpg"
-  ]
- },
- {
-  "id": "s_pnc_cama_elastica",
-  "theme": "Pé no Chão",
-  "label": "Pé no Chão · Pula-pula em foco",
-  "images": [
-   "images/s_pnc_cama_elastica_1.jpg",
-   "images/s_pnc_cama_elastica_2.jpg",
-   "images/s_pnc_cama_elastica_3.jpg",
-   "images/s_pnc_cama_elastica_4.jpg",
-   "images/s_pnc_cama_elastica_5.jpg"
-  ]
- },
- {
-  "id": "s_pnc_capacete_protecao",
-  "theme": "Pé no Chão",
-  "label": "Pé no Chão · Sobre rodinhas",
-  "images": [
-   "images/s_pnc_capacete_protecao_1.jpg",
-   "images/s_pnc_capacete_protecao_2.jpg",
-   "images/s_pnc_capacete_protecao_3.jpg",
-   "images/s_pnc_capacete_protecao_4.jpg",
-   "images/s_pnc_capacete_protecao_5.jpg"
-  ]
- },
- {
-  "id": "s_pnc_musculacao",
-  "theme": "Pé no Chão",
-  "label": "Pé no Chão · Musculação trava?",
-  "images": [
-   "images/s_pnc_musculacao_1.jpg",
-   "images/s_pnc_musculacao_2.jpg",
-   "images/s_pnc_musculacao_3.jpg",
-   "images/s_pnc_musculacao_4.jpg",
-   "images/s_pnc_musculacao_5.jpg"
-  ]
- }
+  {
+    "id": "joelho-seg",
+    "theme": "Semana do Joelho",
+    "label": "SEG · O que observar",
+    "images": [
+      "images/seq_joelho_seg_1.jpg",
+      "images/seq_joelho_seg_2.jpg",
+      "images/seq_joelho_seg_3.jpg",
+      "images/seq_joelho_seg_4.jpg",
+      "images/seq_joelho_seg_5.jpg"
+    ]
+  },
+  {
+    "id": "joelho-ter",
+    "theme": "Semana do Joelho",
+    "label": "TER · Na criança",
+    "images": [
+      "images/seq_joelho_ter_1.jpg",
+      "images/seq_joelho_ter_2.jpg",
+      "images/seq_joelho_ter_3.jpg",
+      "images/seq_joelho_ter_4.jpg",
+      "images/seq_joelho_ter_5.jpg"
+    ]
+  },
+  {
+    "id": "joelho-qua",
+    "theme": "Semana do Joelho",
+    "label": "QUA · Mito x Verdade",
+    "images": [
+      "images/seq_joelho_qua_1.jpg",
+      "images/seq_joelho_qua_2.jpg",
+      "images/seq_joelho_qua_3.jpg",
+      "images/seq_joelho_qua_4.jpg",
+      "images/seq_joelho_qua_5.jpg"
+    ]
+  },
+  {
+    "id": "joelho-qui",
+    "theme": "Semana do Joelho",
+    "label": "QUI · No esporte",
+    "images": [
+      "images/seq_joelho_qui_1.jpg",
+      "images/seq_joelho_qui_2.jpg",
+      "images/seq_joelho_qui_3.jpg",
+      "images/seq_joelho_qui_4.jpg",
+      "images/seq_joelho_qui_5.jpg"
+    ]
+  },
+  {
+    "id": "joelho-sex",
+    "theme": "Semana do Joelho",
+    "label": "SEX · Primeiros socorros",
+    "images": [
+      "images/seq_joelho_sex_1.jpg",
+      "images/seq_joelho_sex_2.jpg",
+      "images/seq_joelho_sex_3.jpg",
+      "images/seq_joelho_sex_4.jpg",
+      "images/seq_joelho_sex_5.jpg"
+    ]
+  },
+  {
+    "id": "joelho-sab",
+    "theme": "Semana do Joelho",
+    "label": "SAB · Quando procurar",
+    "images": [
+      "images/seq_joelho_sab_1.jpg",
+      "images/seq_joelho_sab_2.jpg",
+      "images/seq_joelho_sab_3.jpg",
+      "images/seq_joelho_sab_4.jpg",
+      "images/seq_joelho_sab_5.jpg"
+    ]
+  },
+  {
+    "id": "joelho-dom",
+    "theme": "Semana do Joelho",
+    "label": "DOM · Como eu penso",
+    "images": [
+      "images/seq_joelho_dom_1.jpg",
+      "images/seq_joelho_dom_2.jpg",
+      "images/seq_joelho_dom_3.jpg",
+      "images/seq_joelho_dom_4.jpg",
+      "images/seq_joelho_dom_5.jpg"
+    ]
+  },
+  {
+    "id": "tornozelo-seg",
+    "theme": "Semana do Tornozelo e Pé",
+    "label": "SEG · O que observar",
+    "images": [
+      "images/seq_tornozelo_seg_1.jpg",
+      "images/seq_tornozelo_seg_2.jpg",
+      "images/seq_tornozelo_seg_3.jpg",
+      "images/seq_tornozelo_seg_4.jpg",
+      "images/seq_tornozelo_seg_5.jpg"
+    ]
+  },
+  {
+    "id": "tornozelo-ter",
+    "theme": "Semana do Tornozelo e Pé",
+    "label": "TER · Na criança",
+    "images": [
+      "images/seq_tornozelo_ter_1.jpg",
+      "images/seq_tornozelo_ter_2.jpg",
+      "images/seq_tornozelo_ter_3.jpg",
+      "images/seq_tornozelo_ter_4.jpg",
+      "images/seq_tornozelo_ter_5.jpg"
+    ]
+  },
+  {
+    "id": "tornozelo-qua",
+    "theme": "Semana do Tornozelo e Pé",
+    "label": "QUA · Mito x Verdade",
+    "images": [
+      "images/seq_tornozelo_qua_1.jpg",
+      "images/seq_tornozelo_qua_2.jpg",
+      "images/seq_tornozelo_qua_3.jpg",
+      "images/seq_tornozelo_qua_4.jpg",
+      "images/seq_tornozelo_qua_5.jpg"
+    ]
+  },
+  {
+    "id": "tornozelo-qui",
+    "theme": "Semana do Tornozelo e Pé",
+    "label": "QUI · No esporte",
+    "images": [
+      "images/seq_tornozelo_qui_1.jpg",
+      "images/seq_tornozelo_qui_2.jpg",
+      "images/seq_tornozelo_qui_3.jpg",
+      "images/seq_tornozelo_qui_4.jpg",
+      "images/seq_tornozelo_qui_5.jpg"
+    ]
+  },
+  {
+    "id": "tornozelo-sex",
+    "theme": "Semana do Tornozelo e Pé",
+    "label": "SEX · Primeiros socorros",
+    "images": [
+      "images/seq_tornozelo_sex_1.jpg",
+      "images/seq_tornozelo_sex_2.jpg",
+      "images/seq_tornozelo_sex_3.jpg",
+      "images/seq_tornozelo_sex_4.jpg",
+      "images/seq_tornozelo_sex_5.jpg"
+    ]
+  },
+  {
+    "id": "tornozelo-sab",
+    "theme": "Semana do Tornozelo e Pé",
+    "label": "SAB · Quando procurar",
+    "images": [
+      "images/seq_tornozelo_sab_1.jpg",
+      "images/seq_tornozelo_sab_2.jpg",
+      "images/seq_tornozelo_sab_3.jpg",
+      "images/seq_tornozelo_sab_4.jpg",
+      "images/seq_tornozelo_sab_5.jpg"
+    ]
+  },
+  {
+    "id": "tornozelo-dom",
+    "theme": "Semana do Tornozelo e Pé",
+    "label": "DOM · Como eu penso",
+    "images": [
+      "images/seq_tornozelo_dom_1.jpg",
+      "images/seq_tornozelo_dom_2.jpg",
+      "images/seq_tornozelo_dom_3.jpg",
+      "images/seq_tornozelo_dom_4.jpg",
+      "images/seq_tornozelo_dom_5.jpg"
+    ]
+  },
+  {
+    "id": "quadril-seg",
+    "theme": "Semana do Quadril",
+    "label": "SEG · O que observar",
+    "images": [
+      "images/seq_quadril_seg_1.jpg",
+      "images/seq_quadril_seg_2.jpg",
+      "images/seq_quadril_seg_3.jpg",
+      "images/seq_quadril_seg_4.jpg",
+      "images/seq_quadril_seg_5.jpg"
+    ]
+  },
+  {
+    "id": "quadril-ter",
+    "theme": "Semana do Quadril",
+    "label": "TER · Na criança",
+    "images": [
+      "images/seq_quadril_ter_1.jpg",
+      "images/seq_quadril_ter_2.jpg",
+      "images/seq_quadril_ter_3.jpg",
+      "images/seq_quadril_ter_4.jpg",
+      "images/seq_quadril_ter_5.jpg"
+    ]
+  },
+  {
+    "id": "quadril-qua",
+    "theme": "Semana do Quadril",
+    "label": "QUA · Mito x Verdade",
+    "images": [
+      "images/seq_quadril_qua_1.jpg",
+      "images/seq_quadril_qua_2.jpg",
+      "images/seq_quadril_qua_3.jpg",
+      "images/seq_quadril_qua_4.jpg",
+      "images/seq_quadril_qua_5.jpg"
+    ]
+  },
+  {
+    "id": "quadril-qui",
+    "theme": "Semana do Quadril",
+    "label": "QUI · No esporte",
+    "images": [
+      "images/seq_quadril_qui_1.jpg",
+      "images/seq_quadril_qui_2.jpg",
+      "images/seq_quadril_qui_3.jpg",
+      "images/seq_quadril_qui_4.jpg",
+      "images/seq_quadril_qui_5.jpg"
+    ]
+  },
+  {
+    "id": "quadril-sex",
+    "theme": "Semana do Quadril",
+    "label": "SEX · Primeiros socorros",
+    "images": [
+      "images/seq_quadril_sex_1.jpg",
+      "images/seq_quadril_sex_2.jpg",
+      "images/seq_quadril_sex_3.jpg",
+      "images/seq_quadril_sex_4.jpg",
+      "images/seq_quadril_sex_5.jpg"
+    ]
+  },
+  {
+    "id": "quadril-sab",
+    "theme": "Semana do Quadril",
+    "label": "SAB · Quando procurar",
+    "images": [
+      "images/seq_quadril_sab_1.jpg",
+      "images/seq_quadril_sab_2.jpg",
+      "images/seq_quadril_sab_3.jpg",
+      "images/seq_quadril_sab_4.jpg",
+      "images/seq_quadril_sab_5.jpg"
+    ]
+  },
+  {
+    "id": "quadril-dom",
+    "theme": "Semana do Quadril",
+    "label": "DOM · Como eu penso",
+    "images": [
+      "images/seq_quadril_dom_1.jpg",
+      "images/seq_quadril_dom_2.jpg",
+      "images/seq_quadril_dom_3.jpg",
+      "images/seq_quadril_dom_4.jpg",
+      "images/seq_quadril_dom_5.jpg"
+    ]
+  },
+  {
+    "id": "coluna-seg",
+    "theme": "Semana da Coluna",
+    "label": "SEG · O que observar",
+    "images": [
+      "images/seq_coluna_seg_1.jpg",
+      "images/seq_coluna_seg_2.jpg",
+      "images/seq_coluna_seg_3.jpg",
+      "images/seq_coluna_seg_4.jpg",
+      "images/seq_coluna_seg_5.jpg"
+    ]
+  },
+  {
+    "id": "coluna-ter",
+    "theme": "Semana da Coluna",
+    "label": "TER · Na criança",
+    "images": [
+      "images/seq_coluna_ter_1.jpg",
+      "images/seq_coluna_ter_2.jpg",
+      "images/seq_coluna_ter_3.jpg",
+      "images/seq_coluna_ter_4.jpg",
+      "images/seq_coluna_ter_5.jpg"
+    ]
+  },
+  {
+    "id": "coluna-qua",
+    "theme": "Semana da Coluna",
+    "label": "QUA · Mito x Verdade",
+    "images": [
+      "images/seq_coluna_qua_1.jpg",
+      "images/seq_coluna_qua_2.jpg",
+      "images/seq_coluna_qua_3.jpg",
+      "images/seq_coluna_qua_4.jpg",
+      "images/seq_coluna_qua_5.jpg"
+    ]
+  },
+  {
+    "id": "coluna-qui",
+    "theme": "Semana da Coluna",
+    "label": "QUI · No esporte",
+    "images": [
+      "images/seq_coluna_qui_1.jpg",
+      "images/seq_coluna_qui_2.jpg",
+      "images/seq_coluna_qui_3.jpg",
+      "images/seq_coluna_qui_4.jpg",
+      "images/seq_coluna_qui_5.jpg"
+    ]
+  },
+  {
+    "id": "coluna-sex",
+    "theme": "Semana da Coluna",
+    "label": "SEX · Primeiros socorros",
+    "images": [
+      "images/seq_coluna_sex_1.jpg",
+      "images/seq_coluna_sex_2.jpg",
+      "images/seq_coluna_sex_3.jpg",
+      "images/seq_coluna_sex_4.jpg",
+      "images/seq_coluna_sex_5.jpg"
+    ]
+  },
+  {
+    "id": "coluna-sab",
+    "theme": "Semana da Coluna",
+    "label": "SAB · Quando procurar",
+    "images": [
+      "images/seq_coluna_sab_1.jpg",
+      "images/seq_coluna_sab_2.jpg",
+      "images/seq_coluna_sab_3.jpg",
+      "images/seq_coluna_sab_4.jpg",
+      "images/seq_coluna_sab_5.jpg"
+    ]
+  },
+  {
+    "id": "coluna-dom",
+    "theme": "Semana da Coluna",
+    "label": "DOM · Como eu penso",
+    "images": [
+      "images/seq_coluna_dom_1.jpg",
+      "images/seq_coluna_dom_2.jpg",
+      "images/seq_coluna_dom_3.jpg",
+      "images/seq_coluna_dom_4.jpg",
+      "images/seq_coluna_dom_5.jpg"
+    ]
+  },
+  {
+    "id": "pernas-seg",
+    "theme": "Semana das Pernas Tortas",
+    "label": "SEG · O que observar",
+    "images": [
+      "images/seq_pernas_seg_1.jpg",
+      "images/seq_pernas_seg_2.jpg",
+      "images/seq_pernas_seg_3.jpg",
+      "images/seq_pernas_seg_4.jpg",
+      "images/seq_pernas_seg_5.jpg"
+    ]
+  },
+  {
+    "id": "pernas-ter",
+    "theme": "Semana das Pernas Tortas",
+    "label": "TER · Na criança",
+    "images": [
+      "images/seq_pernas_ter_1.jpg",
+      "images/seq_pernas_ter_2.jpg",
+      "images/seq_pernas_ter_3.jpg",
+      "images/seq_pernas_ter_4.jpg",
+      "images/seq_pernas_ter_5.jpg"
+    ]
+  },
+  {
+    "id": "pernas-qua",
+    "theme": "Semana das Pernas Tortas",
+    "label": "QUA · Mito x Verdade",
+    "images": [
+      "images/seq_pernas_qua_1.jpg",
+      "images/seq_pernas_qua_2.jpg",
+      "images/seq_pernas_qua_3.jpg",
+      "images/seq_pernas_qua_4.jpg",
+      "images/seq_pernas_qua_5.jpg"
+    ]
+  },
+  {
+    "id": "pernas-qui",
+    "theme": "Semana das Pernas Tortas",
+    "label": "QUI · No esporte",
+    "images": [
+      "images/seq_pernas_qui_1.jpg",
+      "images/seq_pernas_qui_2.jpg",
+      "images/seq_pernas_qui_3.jpg",
+      "images/seq_pernas_qui_4.jpg",
+      "images/seq_pernas_qui_5.jpg"
+    ]
+  },
+  {
+    "id": "pernas-sex",
+    "theme": "Semana das Pernas Tortas",
+    "label": "SEX · No dia a dia",
+    "images": [
+      "images/seq_pernas_sex_1.jpg",
+      "images/seq_pernas_sex_2.jpg",
+      "images/seq_pernas_sex_3.jpg",
+      "images/seq_pernas_sex_4.jpg",
+      "images/seq_pernas_sex_5.jpg"
+    ]
+  },
+  {
+    "id": "pernas-sab",
+    "theme": "Semana das Pernas Tortas",
+    "label": "SAB · Quando procurar",
+    "images": [
+      "images/seq_pernas_sab_1.jpg",
+      "images/seq_pernas_sab_2.jpg",
+      "images/seq_pernas_sab_3.jpg",
+      "images/seq_pernas_sab_4.jpg",
+      "images/seq_pernas_sab_5.jpg"
+    ]
+  },
+  {
+    "id": "pernas-dom",
+    "theme": "Semana das Pernas Tortas",
+    "label": "DOM · Como eu penso",
+    "images": [
+      "images/seq_pernas_dom_1.jpg",
+      "images/seq_pernas_dom_2.jpg",
+      "images/seq_pernas_dom_3.jpg",
+      "images/seq_pernas_dom_4.jpg",
+      "images/seq_pernas_dom_5.jpg"
+    ]
+  },
+  {
+    "id": "fraturas-seg",
+    "theme": "Semana das Fraturas",
+    "label": "SEG · O que observar",
+    "images": [
+      "images/seq_fraturas_seg_1.jpg",
+      "images/seq_fraturas_seg_2.jpg",
+      "images/seq_fraturas_seg_3.jpg",
+      "images/seq_fraturas_seg_4.jpg",
+      "images/seq_fraturas_seg_5.jpg"
+    ]
+  },
+  {
+    "id": "fraturas-ter",
+    "theme": "Semana das Fraturas",
+    "label": "TER · Na criança",
+    "images": [
+      "images/seq_fraturas_ter_1.jpg",
+      "images/seq_fraturas_ter_2.jpg",
+      "images/seq_fraturas_ter_3.jpg",
+      "images/seq_fraturas_ter_4.jpg",
+      "images/seq_fraturas_ter_5.jpg"
+    ]
+  },
+  {
+    "id": "fraturas-qua",
+    "theme": "Semana das Fraturas",
+    "label": "QUA · Mito x Verdade",
+    "images": [
+      "images/seq_fraturas_qua_1.jpg",
+      "images/seq_fraturas_qua_2.jpg",
+      "images/seq_fraturas_qua_3.jpg",
+      "images/seq_fraturas_qua_4.jpg",
+      "images/seq_fraturas_qua_5.jpg"
+    ]
+  },
+  {
+    "id": "fraturas-qui",
+    "theme": "Semana das Fraturas",
+    "label": "QUI · No esporte",
+    "images": [
+      "images/seq_fraturas_qui_1.jpg",
+      "images/seq_fraturas_qui_2.jpg",
+      "images/seq_fraturas_qui_3.jpg",
+      "images/seq_fraturas_qui_4.jpg",
+      "images/seq_fraturas_qui_5.jpg"
+    ]
+  },
+  {
+    "id": "fraturas-sex",
+    "theme": "Semana das Fraturas",
+    "label": "SEX · Primeiros socorros",
+    "images": [
+      "images/seq_fraturas_sex_1.jpg",
+      "images/seq_fraturas_sex_2.jpg",
+      "images/seq_fraturas_sex_3.jpg",
+      "images/seq_fraturas_sex_4.jpg",
+      "images/seq_fraturas_sex_5.jpg"
+    ]
+  },
+  {
+    "id": "fraturas-sab",
+    "theme": "Semana das Fraturas",
+    "label": "SAB · Quando procurar",
+    "images": [
+      "images/seq_fraturas_sab_1.jpg",
+      "images/seq_fraturas_sab_2.jpg",
+      "images/seq_fraturas_sab_3.jpg",
+      "images/seq_fraturas_sab_4.jpg",
+      "images/seq_fraturas_sab_5.jpg"
+    ]
+  },
+  {
+    "id": "fraturas-dom",
+    "theme": "Semana das Fraturas",
+    "label": "DOM · Como eu penso",
+    "images": [
+      "images/seq_fraturas_dom_1.jpg",
+      "images/seq_fraturas_dom_2.jpg",
+      "images/seq_fraturas_dom_3.jpg",
+      "images/seq_fraturas_dom_4.jpg",
+      "images/seq_fraturas_dom_5.jpg"
+    ]
+  },
+  {
+    "id": "reconstrucao-seg",
+    "theme": "Semana da Reconstrução",
+    "label": "SEG · O que observar",
+    "images": [
+      "images/seq_reconstrucao_seg_1.jpg",
+      "images/seq_reconstrucao_seg_2.jpg",
+      "images/seq_reconstrucao_seg_3.jpg",
+      "images/seq_reconstrucao_seg_4.jpg",
+      "images/seq_reconstrucao_seg_5.jpg"
+    ]
+  },
+  {
+    "id": "reconstrucao-ter",
+    "theme": "Semana da Reconstrução",
+    "label": "TER · Na criança",
+    "images": [
+      "images/seq_reconstrucao_ter_1.jpg",
+      "images/seq_reconstrucao_ter_2.jpg",
+      "images/seq_reconstrucao_ter_3.jpg",
+      "images/seq_reconstrucao_ter_4.jpg",
+      "images/seq_reconstrucao_ter_5.jpg"
+    ]
+  },
+  {
+    "id": "reconstrucao-qua",
+    "theme": "Semana da Reconstrução",
+    "label": "QUA · Mito x Verdade",
+    "images": [
+      "images/seq_reconstrucao_qua_1.jpg",
+      "images/seq_reconstrucao_qua_2.jpg",
+      "images/seq_reconstrucao_qua_3.jpg",
+      "images/seq_reconstrucao_qua_4.jpg",
+      "images/seq_reconstrucao_qua_5.jpg"
+    ]
+  },
+  {
+    "id": "reconstrucao-qui",
+    "theme": "Semana da Reconstrução",
+    "label": "QUI · No dia a dia",
+    "images": [
+      "images/seq_reconstrucao_qui_1.jpg",
+      "images/seq_reconstrucao_qui_2.jpg",
+      "images/seq_reconstrucao_qui_3.jpg",
+      "images/seq_reconstrucao_qui_4.jpg",
+      "images/seq_reconstrucao_qui_5.jpg"
+    ]
+  },
+  {
+    "id": "reconstrucao-sex",
+    "theme": "Semana da Reconstrução",
+    "label": "SEX · Cuidados",
+    "images": [
+      "images/seq_reconstrucao_sex_1.jpg",
+      "images/seq_reconstrucao_sex_2.jpg",
+      "images/seq_reconstrucao_sex_3.jpg",
+      "images/seq_reconstrucao_sex_4.jpg",
+      "images/seq_reconstrucao_sex_5.jpg"
+    ]
+  },
+  {
+    "id": "reconstrucao-sab",
+    "theme": "Semana da Reconstrução",
+    "label": "SAB · Quando procurar",
+    "images": [
+      "images/seq_reconstrucao_sab_1.jpg",
+      "images/seq_reconstrucao_sab_2.jpg",
+      "images/seq_reconstrucao_sab_3.jpg",
+      "images/seq_reconstrucao_sab_4.jpg",
+      "images/seq_reconstrucao_sab_5.jpg"
+    ]
+  },
+  {
+    "id": "reconstrucao-dom",
+    "theme": "Semana da Reconstrução",
+    "label": "DOM · Como eu penso",
+    "images": [
+      "images/seq_reconstrucao_dom_1.jpg",
+      "images/seq_reconstrucao_dom_2.jpg",
+      "images/seq_reconstrucao_dom_3.jpg",
+      "images/seq_reconstrucao_dom_4.jpg",
+      "images/seq_reconstrucao_dom_5.jpg"
+    ]
+  },
+  {
+    "id": "crescimento-seg",
+    "theme": "Semana das Dores do Crescimento",
+    "label": "SEG · O que observar",
+    "images": [
+      "images/seq_crescimento_seg_1.jpg",
+      "images/seq_crescimento_seg_2.jpg",
+      "images/seq_crescimento_seg_3.jpg",
+      "images/seq_crescimento_seg_4.jpg",
+      "images/seq_crescimento_seg_5.jpg"
+    ]
+  },
+  {
+    "id": "crescimento-ter",
+    "theme": "Semana das Dores do Crescimento",
+    "label": "TER · Na criança",
+    "images": [
+      "images/seq_crescimento_ter_1.jpg",
+      "images/seq_crescimento_ter_2.jpg",
+      "images/seq_crescimento_ter_3.jpg",
+      "images/seq_crescimento_ter_4.jpg",
+      "images/seq_crescimento_ter_5.jpg"
+    ]
+  },
+  {
+    "id": "crescimento-qua",
+    "theme": "Semana das Dores do Crescimento",
+    "label": "QUA · Mito x Verdade",
+    "images": [
+      "images/seq_crescimento_qua_1.jpg",
+      "images/seq_crescimento_qua_2.jpg",
+      "images/seq_crescimento_qua_3.jpg",
+      "images/seq_crescimento_qua_4.jpg",
+      "images/seq_crescimento_qua_5.jpg"
+    ]
+  },
+  {
+    "id": "crescimento-qui",
+    "theme": "Semana das Dores do Crescimento",
+    "label": "QUI · No esporte",
+    "images": [
+      "images/seq_crescimento_qui_1.jpg",
+      "images/seq_crescimento_qui_2.jpg",
+      "images/seq_crescimento_qui_3.jpg",
+      "images/seq_crescimento_qui_4.jpg",
+      "images/seq_crescimento_qui_5.jpg"
+    ]
+  },
+  {
+    "id": "crescimento-sex",
+    "theme": "Semana das Dores do Crescimento",
+    "label": "SEX · Primeiros socorros",
+    "images": [
+      "images/seq_crescimento_sex_1.jpg",
+      "images/seq_crescimento_sex_2.jpg",
+      "images/seq_crescimento_sex_3.jpg",
+      "images/seq_crescimento_sex_4.jpg",
+      "images/seq_crescimento_sex_5.jpg"
+    ]
+  },
+  {
+    "id": "crescimento-sab",
+    "theme": "Semana das Dores do Crescimento",
+    "label": "SAB · Quando procurar",
+    "images": [
+      "images/seq_crescimento_sab_1.jpg",
+      "images/seq_crescimento_sab_2.jpg",
+      "images/seq_crescimento_sab_3.jpg",
+      "images/seq_crescimento_sab_4.jpg",
+      "images/seq_crescimento_sab_5.jpg"
+    ]
+  },
+  {
+    "id": "crescimento-dom",
+    "theme": "Semana das Dores do Crescimento",
+    "label": "DOM · Como eu penso",
+    "images": [
+      "images/seq_crescimento_dom_1.jpg",
+      "images/seq_crescimento_dom_2.jpg",
+      "images/seq_crescimento_dom_3.jpg",
+      "images/seq_crescimento_dom_4.jpg",
+      "images/seq_crescimento_dom_5.jpg"
+    ]
+  },
+  {
+    "id": "esporte-seg",
+    "theme": "Semana do Esporte Jovem",
+    "label": "SEG · O que observar",
+    "images": [
+      "images/seq_esporte_seg_1.jpg",
+      "images/seq_esporte_seg_2.jpg",
+      "images/seq_esporte_seg_3.jpg",
+      "images/seq_esporte_seg_4.jpg",
+      "images/seq_esporte_seg_5.jpg"
+    ]
+  },
+  {
+    "id": "esporte-ter",
+    "theme": "Semana do Esporte Jovem",
+    "label": "TER · Na criança",
+    "images": [
+      "images/seq_esporte_ter_1.jpg",
+      "images/seq_esporte_ter_2.jpg",
+      "images/seq_esporte_ter_3.jpg",
+      "images/seq_esporte_ter_4.jpg",
+      "images/seq_esporte_ter_5.jpg"
+    ]
+  },
+  {
+    "id": "esporte-qua",
+    "theme": "Semana do Esporte Jovem",
+    "label": "QUA · Mito x Verdade",
+    "images": [
+      "images/seq_esporte_qua_1.jpg",
+      "images/seq_esporte_qua_2.jpg",
+      "images/seq_esporte_qua_3.jpg",
+      "images/seq_esporte_qua_4.jpg",
+      "images/seq_esporte_qua_5.jpg"
+    ]
+  },
+  {
+    "id": "esporte-qui",
+    "theme": "Semana do Esporte Jovem",
+    "label": "QUI · No esporte",
+    "images": [
+      "images/seq_esporte_qui_1.jpg",
+      "images/seq_esporte_qui_2.jpg",
+      "images/seq_esporte_qui_3.jpg",
+      "images/seq_esporte_qui_4.jpg",
+      "images/seq_esporte_qui_5.jpg"
+    ]
+  },
+  {
+    "id": "esporte-sex",
+    "theme": "Semana do Esporte Jovem",
+    "label": "SEX · Primeiros socorros",
+    "images": [
+      "images/seq_esporte_sex_1.jpg",
+      "images/seq_esporte_sex_2.jpg",
+      "images/seq_esporte_sex_3.jpg",
+      "images/seq_esporte_sex_4.jpg",
+      "images/seq_esporte_sex_5.jpg"
+    ]
+  },
+  {
+    "id": "esporte-sab",
+    "theme": "Semana do Esporte Jovem",
+    "label": "SAB · Quando procurar",
+    "images": [
+      "images/seq_esporte_sab_1.jpg",
+      "images/seq_esporte_sab_2.jpg",
+      "images/seq_esporte_sab_3.jpg",
+      "images/seq_esporte_sab_4.jpg",
+      "images/seq_esporte_sab_5.jpg"
+    ]
+  },
+  {
+    "id": "esporte-dom",
+    "theme": "Semana do Esporte Jovem",
+    "label": "DOM · Como eu penso",
+    "images": [
+      "images/seq_esporte_dom_1.jpg",
+      "images/seq_esporte_dom_2.jpg",
+      "images/seq_esporte_dom_3.jpg",
+      "images/seq_esporte_dom_4.jpg",
+      "images/seq_esporte_dom_5.jpg"
+    ]
+  },
+  {
+    "id": "marcha-seg",
+    "theme": "Semana da Marcha e do Pé",
+    "label": "SEG · O que observar",
+    "images": [
+      "images/seq_marcha_seg_1.jpg",
+      "images/seq_marcha_seg_2.jpg",
+      "images/seq_marcha_seg_3.jpg",
+      "images/seq_marcha_seg_4.jpg",
+      "images/seq_marcha_seg_5.jpg"
+    ]
+  },
+  {
+    "id": "marcha-ter",
+    "theme": "Semana da Marcha e do Pé",
+    "label": "TER · Na criança",
+    "images": [
+      "images/seq_marcha_ter_1.jpg",
+      "images/seq_marcha_ter_2.jpg",
+      "images/seq_marcha_ter_3.jpg",
+      "images/seq_marcha_ter_4.jpg",
+      "images/seq_marcha_ter_5.jpg"
+    ]
+  },
+  {
+    "id": "marcha-qua",
+    "theme": "Semana da Marcha e do Pé",
+    "label": "QUA · Mito x Verdade",
+    "images": [
+      "images/seq_marcha_qua_1.jpg",
+      "images/seq_marcha_qua_2.jpg",
+      "images/seq_marcha_qua_3.jpg",
+      "images/seq_marcha_qua_4.jpg",
+      "images/seq_marcha_qua_5.jpg"
+    ]
+  },
+  {
+    "id": "marcha-qui",
+    "theme": "Semana da Marcha e do Pé",
+    "label": "QUI · No esporte",
+    "images": [
+      "images/seq_marcha_qui_1.jpg",
+      "images/seq_marcha_qui_2.jpg",
+      "images/seq_marcha_qui_3.jpg",
+      "images/seq_marcha_qui_4.jpg",
+      "images/seq_marcha_qui_5.jpg"
+    ]
+  },
+  {
+    "id": "marcha-sex",
+    "theme": "Semana da Marcha e do Pé",
+    "label": "SEX · Primeiros socorros",
+    "images": [
+      "images/seq_marcha_sex_1.jpg",
+      "images/seq_marcha_sex_2.jpg",
+      "images/seq_marcha_sex_3.jpg",
+      "images/seq_marcha_sex_4.jpg",
+      "images/seq_marcha_sex_5.jpg"
+    ]
+  },
+  {
+    "id": "marcha-sab",
+    "theme": "Semana da Marcha e do Pé",
+    "label": "SAB · Quando procurar",
+    "images": [
+      "images/seq_marcha_sab_1.jpg",
+      "images/seq_marcha_sab_2.jpg",
+      "images/seq_marcha_sab_3.jpg",
+      "images/seq_marcha_sab_4.jpg",
+      "images/seq_marcha_sab_5.jpg"
+    ]
+  },
+  {
+    "id": "marcha-dom",
+    "theme": "Semana da Marcha e do Pé",
+    "label": "DOM · Como eu penso",
+    "images": [
+      "images/seq_marcha_dom_1.jpg",
+      "images/seq_marcha_dom_2.jpg",
+      "images/seq_marcha_dom_3.jpg",
+      "images/seq_marcha_dom_4.jpg",
+      "images/seq_marcha_dom_5.jpg"
+    ]
+  },
+  {
+    "id": "cotovelo-seg",
+    "theme": "Semana do Cotovelo e Braço",
+    "label": "SEG · O que observar",
+    "images": [
+      "images/seq_cotovelo_seg_1.jpg",
+      "images/seq_cotovelo_seg_2.jpg",
+      "images/seq_cotovelo_seg_3.jpg",
+      "images/seq_cotovelo_seg_4.jpg",
+      "images/seq_cotovelo_seg_5.jpg"
+    ]
+  },
+  {
+    "id": "cotovelo-ter",
+    "theme": "Semana do Cotovelo e Braço",
+    "label": "TER · Na criança",
+    "images": [
+      "images/seq_cotovelo_ter_1.jpg",
+      "images/seq_cotovelo_ter_2.jpg",
+      "images/seq_cotovelo_ter_3.jpg",
+      "images/seq_cotovelo_ter_4.jpg",
+      "images/seq_cotovelo_ter_5.jpg"
+    ]
+  },
+  {
+    "id": "cotovelo-qua",
+    "theme": "Semana do Cotovelo e Braço",
+    "label": "QUA · Mito x Verdade",
+    "images": [
+      "images/seq_cotovelo_qua_1.jpg",
+      "images/seq_cotovelo_qua_2.jpg",
+      "images/seq_cotovelo_qua_3.jpg",
+      "images/seq_cotovelo_qua_4.jpg",
+      "images/seq_cotovelo_qua_5.jpg"
+    ]
+  },
+  {
+    "id": "cotovelo-qui",
+    "theme": "Semana do Cotovelo e Braço",
+    "label": "QUI · No esporte",
+    "images": [
+      "images/seq_cotovelo_qui_1.jpg",
+      "images/seq_cotovelo_qui_2.jpg",
+      "images/seq_cotovelo_qui_3.jpg",
+      "images/seq_cotovelo_qui_4.jpg",
+      "images/seq_cotovelo_qui_5.jpg"
+    ]
+  },
+  {
+    "id": "cotovelo-sex",
+    "theme": "Semana do Cotovelo e Braço",
+    "label": "SEX · Primeiros socorros",
+    "images": [
+      "images/seq_cotovelo_sex_1.jpg",
+      "images/seq_cotovelo_sex_2.jpg",
+      "images/seq_cotovelo_sex_3.jpg",
+      "images/seq_cotovelo_sex_4.jpg",
+      "images/seq_cotovelo_sex_5.jpg"
+    ]
+  },
+  {
+    "id": "cotovelo-sab",
+    "theme": "Semana do Cotovelo e Braço",
+    "label": "SAB · Quando procurar",
+    "images": [
+      "images/seq_cotovelo_sab_1.jpg",
+      "images/seq_cotovelo_sab_2.jpg",
+      "images/seq_cotovelo_sab_3.jpg",
+      "images/seq_cotovelo_sab_4.jpg",
+      "images/seq_cotovelo_sab_5.jpg"
+    ]
+  },
+  {
+    "id": "cotovelo-dom",
+    "theme": "Semana do Cotovelo e Braço",
+    "label": "DOM · Como eu penso",
+    "images": [
+      "images/seq_cotovelo_dom_1.jpg",
+      "images/seq_cotovelo_dom_2.jpg",
+      "images/seq_cotovelo_dom_3.jpg",
+      "images/seq_cotovelo_dom_4.jpg",
+      "images/seq_cotovelo_dom_5.jpg"
+    ]
+  },
+  {
+    "id": "socorros-seg",
+    "theme": "Semana dos Primeiros Socorros",
+    "label": "SEG · O que observar",
+    "images": [
+      "images/seq_socorros_seg_1.jpg",
+      "images/seq_socorros_seg_2.jpg",
+      "images/seq_socorros_seg_3.jpg",
+      "images/seq_socorros_seg_4.jpg",
+      "images/seq_socorros_seg_5.jpg"
+    ]
+  },
+  {
+    "id": "socorros-ter",
+    "theme": "Semana dos Primeiros Socorros",
+    "label": "TER · Na criança",
+    "images": [
+      "images/seq_socorros_ter_1.jpg",
+      "images/seq_socorros_ter_2.jpg",
+      "images/seq_socorros_ter_3.jpg",
+      "images/seq_socorros_ter_4.jpg",
+      "images/seq_socorros_ter_5.jpg"
+    ]
+  },
+  {
+    "id": "socorros-qua",
+    "theme": "Semana dos Primeiros Socorros",
+    "label": "QUA · Mito x Verdade",
+    "images": [
+      "images/seq_socorros_qua_1.jpg",
+      "images/seq_socorros_qua_2.jpg",
+      "images/seq_socorros_qua_3.jpg",
+      "images/seq_socorros_qua_4.jpg",
+      "images/seq_socorros_qua_5.jpg"
+    ]
+  },
+  {
+    "id": "socorros-qui",
+    "theme": "Semana dos Primeiros Socorros",
+    "label": "QUI · No esporte",
+    "images": [
+      "images/seq_socorros_qui_1.jpg",
+      "images/seq_socorros_qui_2.jpg",
+      "images/seq_socorros_qui_3.jpg",
+      "images/seq_socorros_qui_4.jpg",
+      "images/seq_socorros_qui_5.jpg"
+    ]
+  },
+  {
+    "id": "socorros-sex",
+    "theme": "Semana dos Primeiros Socorros",
+    "label": "SEX · Primeiros socorros",
+    "images": [
+      "images/seq_socorros_sex_1.jpg",
+      "images/seq_socorros_sex_2.jpg",
+      "images/seq_socorros_sex_3.jpg",
+      "images/seq_socorros_sex_4.jpg",
+      "images/seq_socorros_sex_5.jpg"
+    ]
+  },
+  {
+    "id": "socorros-sab",
+    "theme": "Semana dos Primeiros Socorros",
+    "label": "SAB · Quando procurar",
+    "images": [
+      "images/seq_socorros_sab_1.jpg",
+      "images/seq_socorros_sab_2.jpg",
+      "images/seq_socorros_sab_3.jpg",
+      "images/seq_socorros_sab_4.jpg",
+      "images/seq_socorros_sab_5.jpg"
+    ]
+  },
+  {
+    "id": "socorros-dom",
+    "theme": "Semana dos Primeiros Socorros",
+    "label": "DOM · Como eu penso",
+    "images": [
+      "images/seq_socorros_dom_1.jpg",
+      "images/seq_socorros_dom_2.jpg",
+      "images/seq_socorros_dom_3.jpg",
+      "images/seq_socorros_dom_4.jpg",
+      "images/seq_socorros_dom_5.jpg"
+    ]
+  },
+  {
+    "id": "complexos-seg",
+    "theme": "Semana dos Casos Complexos",
+    "label": "SEG · O que observar",
+    "images": [
+      "images/seq_complexos_seg_1.jpg",
+      "images/seq_complexos_seg_2.jpg",
+      "images/seq_complexos_seg_3.jpg",
+      "images/seq_complexos_seg_4.jpg",
+      "images/seq_complexos_seg_5.jpg"
+    ]
+  },
+  {
+    "id": "complexos-ter",
+    "theme": "Semana dos Casos Complexos",
+    "label": "TER · Na criança",
+    "images": [
+      "images/seq_complexos_ter_1.jpg",
+      "images/seq_complexos_ter_2.jpg",
+      "images/seq_complexos_ter_3.jpg",
+      "images/seq_complexos_ter_4.jpg",
+      "images/seq_complexos_ter_5.jpg"
+    ]
+  },
+  {
+    "id": "complexos-qua",
+    "theme": "Semana dos Casos Complexos",
+    "label": "QUA · Mito x Verdade",
+    "images": [
+      "images/seq_complexos_qua_1.jpg",
+      "images/seq_complexos_qua_2.jpg",
+      "images/seq_complexos_qua_3.jpg",
+      "images/seq_complexos_qua_4.jpg",
+      "images/seq_complexos_qua_5.jpg"
+    ]
+  },
+  {
+    "id": "complexos-qui",
+    "theme": "Semana dos Casos Complexos",
+    "label": "QUI · De longe",
+    "images": [
+      "images/seq_complexos_qui_1.jpg",
+      "images/seq_complexos_qui_2.jpg",
+      "images/seq_complexos_qui_3.jpg",
+      "images/seq_complexos_qui_4.jpg",
+      "images/seq_complexos_qui_5.jpg"
+    ]
+  },
+  {
+    "id": "complexos-sex",
+    "theme": "Semana dos Casos Complexos",
+    "label": "SEX · O acompanhamento",
+    "images": [
+      "images/seq_complexos_sex_1.jpg",
+      "images/seq_complexos_sex_2.jpg",
+      "images/seq_complexos_sex_3.jpg",
+      "images/seq_complexos_sex_4.jpg",
+      "images/seq_complexos_sex_5.jpg"
+    ]
+  },
+  {
+    "id": "complexos-sab",
+    "theme": "Semana dos Casos Complexos",
+    "label": "SAB · Quando procurar",
+    "images": [
+      "images/seq_complexos_sab_1.jpg",
+      "images/seq_complexos_sab_2.jpg",
+      "images/seq_complexos_sab_3.jpg",
+      "images/seq_complexos_sab_4.jpg",
+      "images/seq_complexos_sab_5.jpg"
+    ]
+  },
+  {
+    "id": "complexos-dom",
+    "theme": "Semana dos Casos Complexos",
+    "label": "DOM · Como eu penso",
+    "images": [
+      "images/seq_complexos_dom_1.jpg",
+      "images/seq_complexos_dom_2.jpg",
+      "images/seq_complexos_dom_3.jpg",
+      "images/seq_complexos_dom_4.jpg",
+      "images/seq_complexos_dom_5.jpg"
+    ]
+  },
+  {
+    "id": "s_on_osso_cresce",
+    "images": [
+      "images/s_on_osso_cresce_1.jpg",
+      "images/s_on_osso_cresce_2.jpg",
+      "images/s_on_osso_cresce_3.jpg",
+      "images/s_on_osso_cresce_4.jpg",
+      "images/s_on_osso_cresce_5.jpg"
+    ],
+    "label": "Osso Novo · Como assim?",
+    "theme": "Osso Novo"
+  },
+  {
+    "id": "s_on_regra_milimetro",
+    "images": [
+      "images/s_on_regra_milimetro_1.jpg",
+      "images/s_on_regra_milimetro_2.jpg",
+      "images/s_on_regra_milimetro_3.jpg",
+      "images/s_on_regra_milimetro_4.jpg",
+      "images/s_on_regra_milimetro_5.jpg"
+    ],
+    "label": "Osso Novo · O ritmo",
+    "theme": "Osso Novo"
+  },
+  {
+    "id": "s_on_tres_fases",
+    "images": [
+      "images/s_on_tres_fases_1.jpg",
+      "images/s_on_tres_fases_2.jpg",
+      "images/s_on_tres_fases_3.jpg",
+      "images/s_on_tres_fases_4.jpg",
+      "images/s_on_tres_fases_5.jpg"
+    ],
+    "label": "Osso Novo · As 3 fases",
+    "theme": "Osso Novo"
+  },
+  {
+    "id": "s_on_pseudartrose",
+    "images": [
+      "images/s_on_pseudartrose_1.jpg",
+      "images/s_on_pseudartrose_2.jpg",
+      "images/s_on_pseudartrose_3.jpg",
+      "images/s_on_pseudartrose_4.jpg",
+      "images/s_on_pseudartrose_5.jpg"
+    ],
+    "label": "Osso Novo · Existe isso?",
+    "theme": "Osso Novo"
+  },
+  {
+    "id": "s_on_tres_razoes",
+    "images": [
+      "images/s_on_tres_razoes_1.jpg",
+      "images/s_on_tres_razoes_2.jpg",
+      "images/s_on_tres_razoes_3.jpg",
+      "images/s_on_tres_razoes_4.jpg",
+      "images/s_on_tres_razoes_5.jpg"
+    ],
+    "label": "Osso Novo · 3 motivos",
+    "theme": "Osso Novo"
+  },
+  {
+    "id": "s_on_cigarro",
+    "images": [
+      "images/s_on_cigarro_1.jpg",
+      "images/s_on_cigarro_2.jpg",
+      "images/s_on_cigarro_3.jpg",
+      "images/s_on_cigarro_4.jpg",
+      "images/s_on_cigarro_5.jpg"
+    ],
+    "label": "Osso Novo · O vilão escondido",
+    "theme": "Osso Novo"
+  },
+  {
+    "id": "s_on_consulta_de_controle",
+    "theme": "Osso Novo",
+    "label": "Osso Novo · A consulta de controle",
+    "images": [
+      "images/s_on_consulta_de_controle_1.jpg",
+      "images/s_on_consulta_de_controle_2.jpg",
+      "images/s_on_consulta_de_controle_3.jpg",
+      "images/s_on_consulta_de_controle_4.jpg",
+      "images/s_on_consulta_de_controle_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Osso Novo · A consulta de controle",
+        "titulo": "Por que tantos retornos no alongamento?",
+        "texto": "Quem trata osso com fixador vive de consulta em consulta. Não é exagero: é o método. O que se ajusta em cada visita.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "O que se avalia",
+        "titulo": "Ritmo e alinhamento",
+        "texto": "A formação do osso novo é acompanhada de perto para ajustar velocidade e direção. Osso vivo muda — e o plano acompanha.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "O que se ajusta",
+        "titulo": "Milímetros e prazos",
+        "texto": "Ajustes finos no aparelho, na carga liberada e na fisioterapia. Pequenas correções cedo costumam evitar grandes desvios depois.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Seu papel",
+        "titulo": "Anote entre as consultas",
+        "texto": "Dor nova, secreção no pino, dificuldade no ajuste: anotar e avisar cedo faz diferença. Consulta boa é via de mão dupla.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Controle de perto, plano no rumo",
+        "texto": "Salva pra lembrar de anotar antes do próximo retorno.",
+        "chamada": "Dúvidas? Manda DM →"
+      }
+    ]
+  },
+  {
+    "id": "s_pnc_gesso_em_casa",
+    "theme": "Pé no Chão",
+    "label": "Pé no Chão · Gesso sem drama",
+    "images": [
+      "images/s_pnc_gesso_em_casa_1.jpg",
+      "images/s_pnc_gesso_em_casa_2.jpg",
+      "images/s_pnc_gesso_em_casa_3.jpg",
+      "images/s_pnc_gesso_em_casa_4.jpg",
+      "images/s_pnc_gesso_em_casa_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Pé no Chão · Gesso sem drama",
+        "titulo": "Criança de gesso em casa: guia rápido",
+        "texto": "O gesso protege — mas a rotina muda. O que pode, o que não pode e os sinais que pedem contato imediato.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "O que não pode",
+        "titulo": "Molhar e cutucar",
+        "texto": "Gesso molhado perde a função e machuca a pele. E nada de enfiar objetos para coçar — arranhões escondidos podem infeccionar.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "O que ajuda",
+        "titulo": "Coceira e inchaço",
+        "texto": "Ar frio de secador (nunca quente) alivia a coceira. Manter o membro elevado nos primeiros dias reduz o inchaço.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Sinais de alerta",
+        "titulo": "Dor que só aumenta",
+        "texto": "Dedos roxos, gelados ou dormentes, dor que cresce apesar do remédio, cheiro forte ou febre: entre em contato no mesmo dia.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Gesso tranquilo é gesso vigiado",
+        "texto": "Salva pra consultar durante as semanas de gesso.",
+        "chamada": "Compartilha com quem precisa →"
+      }
+    ]
+  },
+  {
+    "id": "s_on_pisar_ou_nao",
+    "theme": "Osso Novo",
+    "label": "Osso Novo · Pisa ou não pisa?",
+    "images": [
+      "images/s_on_pisar_ou_nao_1.jpg",
+      "images/s_on_pisar_ou_nao_2.jpg",
+      "images/s_on_pisar_ou_nao_3.jpg",
+      "images/s_on_pisar_ou_nao_4.jpg",
+      "images/s_on_pisar_ou_nao_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Osso Novo · Pisa ou não pisa?",
+        "titulo": "Pisar com o fixador: pode?",
+        "texto": "Muita gente acha que osso em tratamento pede repouso absoluto. Na reconstrução, muitas vezes é o contrário.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "O princípio",
+        "titulo": "Osso responde a estímulo",
+        "texto": "Carga controlada 'avisa' o osso de que ele é necessário — o estímulo mecânico participa da consolidação (o colar do osso).",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Na prática",
+        "titulo": "Apoio progressivo",
+        "texto": "Começa parcial, com muletas ou andador, e evolui conforme a fase. Quem define o quanto pisar é o plano de tratamento — não a coragem.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "O equilíbrio",
+        "titulo": "Nem falta, nem excesso",
+        "texto": "Repouso demais enfraquece músculo e osso; carga além da liberada sobrecarrega a montagem. O meio-termo é individual.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Pisar faz parte do tratamento",
+        "texto": "Compartilha com quem está nessa fase e tem medo de apoiar.",
+        "chamada": "Dúvidas? Manda DM →"
+      }
+    ]
+  },
+  {
+    "id": "s_on_fixador_rotina",
+    "theme": "Osso Novo",
+    "label": "Osso Novo · A vida com o fixador",
+    "images": [
+      "images/s_on_fixador_rotina_1.jpg",
+      "images/s_on_fixador_rotina_2.jpg",
+      "images/s_on_fixador_rotina_3.jpg",
+      "images/s_on_fixador_rotina_4.jpg",
+      "images/s_on_fixador_rotina_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Osso Novo · A vida com o fixador",
+        "titulo": "Dá pra viver bem com fixador externo?",
+        "texto": "Roupa, sono, banho, sair de casa: o aparelho assusta no início, mas a rotina se adapta. Guia prático em 4 pontos.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "Roupa",
+        "titulo": "Largo, com botão ou velcro",
+        "texto": "Calças largas, abertas na lateral ou adaptadas com velcro vestem por cima do fixador. Uma costureira pode virar aliada do tratamento.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Sono",
+        "titulo": "Travesseiro é ferramenta",
+        "texto": "Apoiar a perna em travesseiros protege o aparelho e o outro membro. Capa de tecido no fixador evita enroscar no lençol.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Rua",
+        "titulo": "Sair de casa, sim",
+        "texto": "Com o apoio liberado e muletas quando indicadas, a maioria circula, estuda e convive normalmente durante o tratamento.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "O aparelho vira rotina",
+        "texto": "Manda pra quem vai começar um tratamento com fixador.",
+        "chamada": "Dúvida? WhatsApp no link da bio →"
+      }
+    ]
+  },
+  {
+    "id": "s_pnc_depois_do_gesso",
+    "theme": "Pé no Chão",
+    "label": "Pé no Chão · Depois do gesso",
+    "images": [
+      "images/s_pnc_depois_do_gesso_1.jpg",
+      "images/s_pnc_depois_do_gesso_2.jpg",
+      "images/s_pnc_depois_do_gesso_3.jpg",
+      "images/s_pnc_depois_do_gesso_4.jpg",
+      "images/s_pnc_depois_do_gesso_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Pé no Chão · Depois do gesso",
+        "titulo": "Tirou o gesso e o braço está fininho?",
+        "texto": "Calma: isso é esperado. Entenda o que acontece com o músculo e como costuma ser a volta ao normal.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "O que aconteceu",
+        "titulo": "Músculo parado encolhe",
+        "texto": "Semanas sem uso levam à atrofia (perda temporária de massa muscular). A pele descama e a articulação fica rígida no começo.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "A volta",
+        "titulo": "Movimento é o caminho",
+        "texto": "O uso no dia a dia recupera boa parte sozinho. Em alguns casos, a fisioterapia organiza e encurta essa fase.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "No esporte",
+        "titulo": "Retorno em etapas",
+        "texto": "Brincadeira leve primeiro, esporte com contato por último, conforme a liberação médica. Pressa aqui costuma custar caro.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Fininho é fase",
+        "texto": "Salva pra lembrar quando chegar o dia de tirar o gesso.",
+        "chamada": "Dúvida? WhatsApp no link da bio →"
+      }
+    ]
+  },
+  {
+    "id": "s_on_muletas_sem_erro",
+    "theme": "Osso Novo",
+    "label": "Osso Novo · Muleta sem erro",
+    "images": [
+      "images/s_on_muletas_sem_erro_1.jpg",
+      "images/s_on_muletas_sem_erro_2.jpg",
+      "images/s_on_muletas_sem_erro_3.jpg",
+      "images/s_on_muletas_sem_erro_4.jpg",
+      "images/s_on_muletas_sem_erro_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Osso Novo · Muleta sem erro",
+        "titulo": "Muleta mal ajustada atrapalha",
+        "texto": "Altura errada, apoio errado, medo de cair: os erros mais comuns — e os acertos que mudam a marcha na recuperação.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "Erro 1",
+        "titulo": "Apoiar na axila",
+        "texto": "O peso vai nas mãos, não na axila. Apoio axilar comprime nervos e pode causar formigamento e fraqueza no braço.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Erro 2",
+        "titulo": "Altura errada",
+        "texto": "Em pé: o topo da muleta fica 2 a 3 dedos abaixo da axila, com o cotovelo levemente dobrado no apoio das mãos. Ajustar vale a pena.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Escada",
+        "titulo": "A regra da escada",
+        "texto": "Subir: perna boa primeiro. Descer: muletas e perna em tratamento primeiro. Corrimão sempre que existir.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Ajuste fino, marcha melhor",
+        "texto": "Manda pra quem acabou de sair da cirurgia com muletas.",
+        "chamada": "Dúvida? WhatsApp no link da bio →"
+      }
+    ]
+  },
+  {
+    "id": "s_on_dirigir_trabalho",
+    "theme": "Osso Novo",
+    "label": "Osso Novo · Trabalho e direção",
+    "images": [
+      "images/s_on_dirigir_trabalho_1.jpg",
+      "images/s_on_dirigir_trabalho_2.jpg",
+      "images/s_on_dirigir_trabalho_3.jpg",
+      "images/s_on_dirigir_trabalho_4.jpg",
+      "images/s_on_dirigir_trabalho_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Osso Novo · Trabalho e direção",
+        "titulo": "Posso trabalhar e dirigir no tratamento?",
+        "texto": "Duas das primeiras perguntas de quem usa fixador ou está em recuperação óssea. A resposta honesta: depende — e de quê.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "Trabalho",
+        "titulo": "Depende da função",
+        "texto": "Trabalho de escritório costuma voltar mais cedo, com adaptações. Trabalho físico pesado espera mais — o osso em formação dita o ritmo.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Direção",
+        "titulo": "Perna, câmbio e remédio",
+        "texto": "Pesam: qual membro foi operado, câmbio manual ou automático e analgésicos que reduzem o reflexo. Sem liberação médica, não dirija.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "O caminho",
+        "titulo": "Combine, não arrisque",
+        "texto": "Cada liberação é individual e entra no plano de tratamento. Levar as demandas do seu trabalho à consulta ajuda a planejar as etapas.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "A rotina volta por etapas",
+        "texto": "Salva pra organizar essa conversa com o seu médico.",
+        "chamada": "Dúvida? WhatsApp no link da bio →"
+      }
+    ]
+  },
+  {
+    "id": "s_pnc_primeira_consulta",
+    "theme": "Pé no Chão",
+    "label": "Pé no Chão · A primeira consulta",
+    "images": [
+      "images/s_pnc_primeira_consulta_1.jpg",
+      "images/s_pnc_primeira_consulta_2.jpg",
+      "images/s_pnc_primeira_consulta_3.jpg",
+      "images/s_pnc_primeira_consulta_4.jpg",
+      "images/s_pnc_primeira_consulta_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Pé no Chão · A primeira consulta",
+        "titulo": "Vai ao ortopedista infantil? Leve isso",
+        "texto": "Uma consulta rende mais quando a família chega preparada. Quatro coisas que ajudam muito na avaliação.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "Dica 1",
+        "titulo": "Filme a queixa em casa",
+        "texto": "Mancar, andar 'torto', pé pra dentro: o celular mostra o que a criança nem sempre repete no consultório. Vídeos curtos, de frente e de costas.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Dica 2",
+        "titulo": "Linha do tempo da queixa",
+        "texto": "Quando começou, o que piora, o que melhora, se houve queda ou febre. Anotar antes evita esquecer na hora.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Dicas 3 e 4",
+        "titulo": "Roupa prática e exames antigos",
+        "texto": "Shorts facilita examinar joelhos e quadris. E leve relatórios e exames anteriores, se existirem — o histórico vale ouro.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Preparo ajuda o diagnóstico",
+        "texto": "Salva essa lista pra véspera da consulta.",
+        "chamada": "Dúvida? WhatsApp no link da bio →"
+      }
+    ]
+  },
+  {
+    "id": "s_on_dor_no_alongamento",
+    "theme": "Osso Novo",
+    "label": "Osso Novo · E a dor?",
+    "images": [
+      "images/s_on_dor_no_alongamento_1.jpg",
+      "images/s_on_dor_no_alongamento_2.jpg",
+      "images/s_on_dor_no_alongamento_3.jpg",
+      "images/s_on_dor_no_alongamento_4.jpg",
+      "images/s_on_dor_no_alongamento_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Osso Novo · E a dor?",
+        "titulo": "Alongamento ósseo dói?",
+        "texto": "Pergunta honesta merece resposta honesta: existe desconforto, sim — e existe manejo. O que esperar em cada fase.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "O esperado",
+        "titulo": "Desconforto que acompanha",
+        "texto": "Nos dias de ajuste, sensação de pressão e dor muscular são comuns. Analgesia planejada e fisioterapia fazem parte do plano desde o início.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "O que ajuda",
+        "titulo": "Manejo em camadas",
+        "texto": "Medicação em horários certos, alongamento muscular, posicionamento e sono cuidado. Dor controlada é meta de tratamento, não luxo.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "O alerta",
+        "titulo": "Dor que muda de padrão",
+        "texto": "Dor que dispara de repente, não cede com a medicação ou vem com vermelhidão e febre: avise a equipe — pode pedir ajuste do plano.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Dor se conversa, não se aguenta",
+        "texto": "Manda pra quem vai começar e tem essa dúvida calada.",
+        "chamada": "Dúvida? WhatsApp no link da bio →"
+      }
+    ]
+  },
+  {
+    "id": "s_pnc_esporte_apos_fratura",
+    "theme": "Pé no Chão",
+    "label": "Pé no Chão · De volta ao jogo",
+    "images": [
+      "images/s_pnc_esporte_apos_fratura_1.jpg",
+      "images/s_pnc_esporte_apos_fratura_2.jpg",
+      "images/s_pnc_esporte_apos_fratura_3.jpg",
+      "images/s_pnc_esporte_apos_fratura_4.jpg",
+      "images/s_pnc_esporte_apos_fratura_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Pé no Chão · De volta ao jogo",
+        "titulo": "Fraturou. Quando volta ao esporte?",
+        "texto": "A pergunta mais ouvida no consultório depois que o gesso sai. A resposta tem etapas — e bons motivos.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "Etapa 1",
+        "titulo": "O osso colar não basta",
+        "texto": "A consolidação (o osso 'colar') é só o começo. Músculo, movimento e confiança também precisam voltar.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Etapa 2",
+        "titulo": "Do leve ao contato",
+        "texto": "Primeiro o dia a dia sem dor, depois corrida e habilidades, por último contato e competição. Cada fase é liberada na consulta.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "O porquê",
+        "titulo": "Refraturar é o risco real",
+        "texto": "Voltar antes da hora aumenta a chance de nova fratura no mesmo lugar. Semanas de paciência agora costumam poupar meses depois.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Volta em fases, não em datas",
+        "texto": "Salva pra mostrar pro atleta apressado da casa.",
+        "chamada": "Dúvida? WhatsApp no link da bio →"
+      }
+    ]
+  },
+  {
+    "id": "s_on_dia_da_retirada",
+    "theme": "Osso Novo",
+    "label": "Osso Novo · O dia de tirar",
+    "images": [
+      "images/s_on_dia_da_retirada_1.jpg",
+      "images/s_on_dia_da_retirada_2.jpg",
+      "images/s_on_dia_da_retirada_3.jpg",
+      "images/s_on_dia_da_retirada_4.jpg",
+      "images/s_on_dia_da_retirada_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Osso Novo · O dia de tirar",
+        "titulo": "Chegou o dia de tirar o fixador. E agora?",
+        "texto": "A retirada é comemorada — e também abre uma fase que merece respeito: o osso novo ainda está amadurecendo.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "Como é",
+        "titulo": "A retirada em si",
+        "texto": "Em geral é um procedimento rápido, muitas vezes com sedação leve. Os pequenos orifícios dos pinos cicatrizam em poucos dias.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "A fase seguinte",
+        "titulo": "O osso ainda amadurece",
+        "texto": "O regenerado (o osso recém-formado) segue ganhando resistência por meses. Por isso alguns casos usam órtese ou carga controlada.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "O cuidado",
+        "titulo": "Proteção sem prisão",
+        "texto": "A vida avança, mas impacto e torção esperam a liberação por etapas. É a reta final — ainda não a linha de chegada.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Depois do fixador vem a maturação",
+        "texto": "Compartilha com quem está contando os dias pra retirada.",
+        "chamada": "Dúvida? WhatsApp no link da bio →"
+      }
+    ]
+  },
+  {
+    "id": "s_on_osteomielite",
+    "images": [
+      "images/s_on_osteomielite_1.jpg",
+      "images/s_on_osteomielite_2.jpg",
+      "images/s_on_osteomielite_3.jpg",
+      "images/s_on_osteomielite_4.jpg",
+      "images/s_on_osteomielite_5.jpg"
+    ],
+    "label": "Osso Novo · Infecção no osso",
+    "theme": "Osso Novo"
+  },
+  {
+    "id": "s_on_transporte_osseo",
+    "images": [
+      "images/s_on_transporte_osseo_1.jpg",
+      "images/s_on_transporte_osseo_2.jpg",
+      "images/s_on_transporte_osseo_3.jpg",
+      "images/s_on_transporte_osseo_4.jpg",
+      "images/s_on_transporte_osseo_5.jpg"
+    ],
+    "label": "Osso Novo · Parece mágica",
+    "theme": "Osso Novo"
+  },
+  {
+    "id": "s_on_osteotomia",
+    "images": [
+      "images/s_on_osteotomia_1.jpg",
+      "images/s_on_osteotomia_2.jpg",
+      "images/s_on_osteotomia_3.jpg",
+      "images/s_on_osteotomia_4.jpg",
+      "images/s_on_osteotomia_5.jpg"
+    ],
+    "label": "Osso Novo · A palavra do dia",
+    "theme": "Osso Novo"
+  },
+  {
+    "id": "s_on_perna_torta_adulto",
+    "images": [
+      "images/s_on_perna_torta_adulto_1.jpg",
+      "images/s_on_perna_torta_adulto_2.jpg",
+      "images/s_on_perna_torta_adulto_3.jpg",
+      "images/s_on_perna_torta_adulto_4.jpg",
+      "images/s_on_perna_torta_adulto_5.jpg"
+    ],
+    "label": "Osso Novo · No adulto também",
+    "theme": "Osso Novo"
+  },
+  {
+    "id": "s_on_discrepancia",
+    "images": [
+      "images/s_on_discrepancia_1.jpg",
+      "images/s_on_discrepancia_2.jpg",
+      "images/s_on_discrepancia_3.jpg",
+      "images/s_on_discrepancia_4.jpg",
+      "images/s_on_discrepancia_5.jpg"
+    ],
+    "label": "Osso Novo · Recebendo a ponte",
+    "theme": "Osso Novo"
+  },
+  {
+    "id": "s_on_medir_antes",
+    "images": [
+      "images/s_on_medir_antes_1.jpg",
+      "images/s_on_medir_antes_2.jpg",
+      "images/s_on_medir_antes_3.jpg",
+      "images/s_on_medir_antes_4.jpg",
+      "images/s_on_medir_antes_5.jpg"
+    ],
+    "label": "Osso Novo · O passo que ninguém pula",
+    "theme": "Osso Novo"
+  },
+  {
+    "id": "s_on_fixador_vs_haste",
+    "images": [
+      "images/s_on_fixador_vs_haste_1.jpg",
+      "images/s_on_fixador_vs_haste_2.jpg",
+      "images/s_on_fixador_vs_haste_3.jpg",
+      "images/s_on_fixador_vs_haste_4.jpg",
+      "images/s_on_fixador_vs_haste_5.jpg"
+    ],
+    "label": "Osso Novo · Duas ferramentas",
+    "theme": "Osso Novo"
+  },
+  {
+    "id": "s_on_quanto_tempo",
+    "images": [
+      "images/s_on_quanto_tempo_1.jpg",
+      "images/s_on_quanto_tempo_2.jpg",
+      "images/s_on_quanto_tempo_3.jpg",
+      "images/s_on_quanto_tempo_4.jpg",
+      "images/s_on_quanto_tempo_5.jpg"
+    ],
+    "label": "Osso Novo · A pergunta nº1",
+    "theme": "Osso Novo"
+  },
+  {
+    "id": "s_on_cuidado_pinos",
+    "images": [
+      "images/s_on_cuidado_pinos_1.jpg",
+      "images/s_on_cuidado_pinos_2.jpg",
+      "images/s_on_cuidado_pinos_3.jpg",
+      "images/s_on_cuidado_pinos_4.jpg",
+      "images/s_on_cuidado_pinos_5.jpg"
+    ],
+    "label": "Osso Novo · O cuidado-chave",
+    "theme": "Osso Novo"
+  },
+  {
+    "id": "s_on_fisioterapia",
+    "images": [
+      "images/s_on_fisioterapia_1.jpg",
+      "images/s_on_fisioterapia_2.jpg",
+      "images/s_on_fisioterapia_3.jpg",
+      "images/s_on_fisioterapia_4.jpg",
+      "images/s_on_fisioterapia_5.jpg"
+    ],
+    "label": "Osso Novo · A metade esquecida",
+    "theme": "Osso Novo"
+  },
+  {
+    "id": "s_on_pos_trauma",
+    "images": [
+      "images/s_on_pos_trauma_1.jpg",
+      "images/s_on_pos_trauma_2.jpg",
+      "images/s_on_pos_trauma_3.jpg",
+      "images/s_on_pos_trauma_4.jpg",
+      "images/s_on_pos_trauma_5.jpg"
+    ],
+    "label": "Osso Novo · Tudo junto",
+    "theme": "Osso Novo"
+  },
+  {
+    "id": "s_on_nao_estetica",
+    "images": [
+      "images/s_on_nao_estetica_1.jpg",
+      "images/s_on_nao_estetica_2.jpg",
+      "images/s_on_nao_estetica_3.jpg",
+      "images/s_on_nao_estetica_4.jpg",
+      "images/s_on_nao_estetica_5.jpg"
+    ],
+    "label": "Osso Novo · O fecho da série",
+    "theme": "Osso Novo"
+  },
+  {
+    "id": "s_pnc_marcos_andar",
+    "images": [
+      "images/s_pnc_marcos_andar_1.jpg",
+      "images/s_pnc_marcos_andar_2.jpg",
+      "images/s_pnc_marcos_andar_3.jpg",
+      "images/s_pnc_marcos_andar_4.jpg",
+      "images/s_pnc_marcos_andar_5.jpg"
+    ],
+    "label": "Pé no Chão · A pergunta de todo pai",
+    "theme": "Pé no Chão"
+  },
+  {
+    "id": "s_pnc_pe_pra_dentro",
+    "images": [
+      "images/s_pnc_pe_pra_dentro_1.jpg",
+      "images/s_pnc_pe_pra_dentro_2.jpg",
+      "images/s_pnc_pe_pra_dentro_3.jpg",
+      "images/s_pnc_pe_pra_dentro_4.jpg",
+      "images/s_pnc_pe_pra_dentro_5.jpg"
+    ],
+    "label": "Pé no Chão · Pé pra dentro",
+    "theme": "Pé no Chão"
+  },
+  {
+    "id": "s_pnc_estalo_joelho",
+    "images": [
+      "images/s_pnc_estalo_joelho_1.jpg",
+      "images/s_pnc_estalo_joelho_2.jpg",
+      "images/s_pnc_estalo_joelho_3.jpg",
+      "images/s_pnc_estalo_joelho_4.jpg",
+      "images/s_pnc_estalo_joelho_5.jpg"
+    ],
+    "label": "Pé no Chão · Aquele 'crec'",
+    "theme": "Pé no Chão"
+  },
+  {
+    "id": "s_pnc_tenis_caro",
+    "images": [
+      "images/s_pnc_tenis_caro_1.jpg",
+      "images/s_pnc_tenis_caro_2.jpg",
+      "images/s_pnc_tenis_caro_3.jpg",
+      "images/s_pnc_tenis_caro_4.jpg",
+      "images/s_pnc_tenis_caro_5.jpg"
+    ],
+    "label": "Pé no Chão · Mito caro",
+    "theme": "Pé no Chão"
+  },
+  {
+    "id": "s_pnc_perna_curta_crianca",
+    "images": [
+      "images/s_pnc_perna_curta_crianca_1.jpg",
+      "images/s_pnc_perna_curta_crianca_2.jpg",
+      "images/s_pnc_perna_curta_crianca_3.jpg",
+      "images/s_pnc_perna_curta_crianca_4.jpg",
+      "images/s_pnc_perna_curta_crianca_5.jpg"
+    ],
+    "label": "Pé no Chão · A ponte",
+    "theme": "Pé no Chão"
+  },
+  {
+    "id": "s_pnc_nao_dor_crescimento",
+    "images": [
+      "images/s_pnc_nao_dor_crescimento_1.jpg",
+      "images/s_pnc_nao_dor_crescimento_2.jpg",
+      "images/s_pnc_nao_dor_crescimento_3.jpg",
+      "images/s_pnc_nao_dor_crescimento_4.jpg",
+      "images/s_pnc_nao_dor_crescimento_5.jpg"
+    ],
+    "label": "Pé no Chão · O outro lado",
+    "theme": "Pé no Chão"
+  },
+  {
+    "id": "s_pnc_mancando",
+    "images": [
+      "images/s_pnc_mancando_1.jpg",
+      "images/s_pnc_mancando_2.jpg",
+      "images/s_pnc_mancando_3.jpg",
+      "images/s_pnc_mancando_4.jpg",
+      "images/s_pnc_mancando_5.jpg"
+    ],
+    "label": "Pé no Chão · Regra de ouro",
+    "theme": "Pé no Chão"
+  },
+  {
+    "id": "s_pnc_mancar_febre",
+    "images": [
+      "images/s_pnc_mancar_febre_1.jpg",
+      "images/s_pnc_mancar_febre_2.jpg",
+      "images/s_pnc_mancar_febre_3.jpg",
+      "images/s_pnc_mancar_febre_4.jpg",
+      "images/s_pnc_mancar_febre_5.jpg"
+    ],
+    "label": "Pé no Chão · Combinação que apressa",
+    "theme": "Pé no Chão"
+  },
+  {
+    "id": "s_pnc_escoliose",
+    "images": [
+      "images/s_pnc_escoliose_1.jpg",
+      "images/s_pnc_escoliose_2.jpg",
+      "images/s_pnc_escoliose_3.jpg",
+      "images/s_pnc_escoliose_4.jpg",
+      "images/s_pnc_escoliose_5.jpg"
+    ],
+    "label": "Pé no Chão · Olhe as costas",
+    "theme": "Pé no Chão"
+  },
+  {
+    "id": "s_pnc_cai_muito",
+    "images": [
+      "images/s_pnc_cai_muito_1.jpg",
+      "images/s_pnc_cai_muito_2.jpg",
+      "images/s_pnc_cai_muito_3.jpg",
+      "images/s_pnc_cai_muito_4.jpg",
+      "images/s_pnc_cai_muito_5.jpg"
+    ],
+    "label": "Pé no Chão · Cai toda hora",
+    "theme": "Pé no Chão"
+  },
+  {
+    "id": "s_pnc_sentar_w",
+    "images": [
+      "images/s_pnc_sentar_w_1.jpg",
+      "images/s_pnc_sentar_w_2.jpg",
+      "images/s_pnc_sentar_w_3.jpg",
+      "images/s_pnc_sentar_w_4.jpg",
+      "images/s_pnc_sentar_w_5.jpg"
+    ],
+    "label": "Pé no Chão · O medo viral",
+    "theme": "Pé no Chão"
+  },
+  {
+    "id": "s_pnc_mochila",
+    "images": [
+      "images/s_pnc_mochila_1.jpg",
+      "images/s_pnc_mochila_2.jpg",
+      "images/s_pnc_mochila_3.jpg",
+      "images/s_pnc_mochila_4.jpg",
+      "images/s_pnc_mochila_5.jpg"
+    ],
+    "label": "Pé no Chão · O fecho da série",
+    "theme": "Pé no Chão"
+  },
+  {
+    "id": "s_pnc_torcicolo_bebe",
+    "theme": "Pé no Chão",
+    "label": "Pé no Chão · Pescoço torto do bebê",
+    "images": [
+      "images/s_pnc_torcicolo_bebe_1.jpg",
+      "images/s_pnc_torcicolo_bebe_2.jpg",
+      "images/s_pnc_torcicolo_bebe_3.jpg",
+      "images/s_pnc_torcicolo_bebe_4.jpg",
+      "images/s_pnc_torcicolo_bebe_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Pé no Chão · Pescoço torto do bebê",
+        "titulo": "Cabeça sempre virada pro mesmo lado?",
+        "texto": "Pode ser torcicolo congênito (um encurtamento no músculo do pescoço). Quanto mais cedo se percebe, mais simples costuma ser o cuidado.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "O que é",
+        "titulo": "Um músculo mais curto",
+        "texto": "No torcicolo congênito, um músculo do pescoço (o esternocleidomastóideo) nasce mais tenso de um lado. A cabeça inclina para um lado e gira para o outro.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Como perceber",
+        "titulo": "Sinais no dia a dia",
+        "texto": "Bebê que só mama bem de um lado, cabeça inclinada nas fotos, achatamento atrás da cabeça sempre do mesmo lado: vale avaliação.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "O que ajuda",
+        "titulo": "Estímulo e fisioterapia",
+        "texto": "Alternar o lado no berço e no colo, estimular o bebê a olhar para os dois lados e fisioterapia orientada costumam responder bem na maioria dos casos.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Percebeu? Avalie cedo",
+        "texto": "Avaliação precoce simplifica o acompanhamento. Compartilha com quem tem bebê em casa.",
+        "chamada": "Dúvida? WhatsApp no link da bio →"
+      }
+    ]
+  },
+  {
+    "id": "s_pnc_charutinho_quadril",
+    "theme": "Pé no Chão",
+    "label": "Pé no Chão · Perninhas livres",
+    "images": [
+      "images/s_pnc_charutinho_quadril_1.jpg",
+      "images/s_pnc_charutinho_quadril_2.jpg",
+      "images/s_pnc_charutinho_quadril_3.jpg",
+      "images/s_pnc_charutinho_quadril_4.jpg",
+      "images/s_pnc_charutinho_quadril_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Pé no Chão · Perninhas livres",
+        "titulo": "Enfaixar o bebê apertado faz mal?",
+        "texto": "O famoso charutinho acalma, mas do jeito errado pode atrapalhar o quadril. Vem entender a posição que protege.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "O que acontece",
+        "titulo": "O quadril gosta de flexão",
+        "texto": "O quadril do bebê ainda está amadurecendo. Pernas esticadas e apertadas por muito tempo dificultam o encaixe natural da articulação.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "O jeito certo",
+        "titulo": "Enrole folgado embaixo",
+        "texto": "Se for enfaixar, deixe as perninhas soltas, dobradas e abertas — livres para mexer. Aperto só do tronco pra cima, e por períodos curtos.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "No canguru",
+        "titulo": "Posição de M",
+        "texto": "No carregador, joelhos mais altos que o bumbum, como um M. Essa posição respeita o desenvolvimento do quadril.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Perninhas livres, quadril protegido",
+        "texto": "Salva e manda pra quem vai ter bebê. Dúvida sobre o quadril do seu bebê? Fala com o consultório pelo WhatsApp, no link da bio.",
+        "chamada": "Compartilha com quem precisa →"
+      }
+    ]
+  },
+  {
+    "id": "s_pnc_osso_forte",
+    "theme": "Pé no Chão",
+    "label": "Pé no Chão · Poupança de osso",
+    "images": [
+      "images/s_pnc_osso_forte_1.jpg",
+      "images/s_pnc_osso_forte_2.jpg",
+      "images/s_pnc_osso_forte_3.jpg",
+      "images/s_pnc_osso_forte_4.jpg",
+      "images/s_pnc_osso_forte_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Pé no Chão · Poupança de osso",
+        "titulo": "Osso forte se constrói na infância",
+        "texto": "A infância e a adolescência são a janela de ouro para formar massa óssea. O que dá pra fazer em casa? Vem ver.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "No prato",
+        "titulo": "Cálcio todo dia",
+        "texto": "Leite e derivados, feijão, vegetais verde-escuros. O cálcio é o tijolo do osso — e a necessidade aumenta na adolescência.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "No sol",
+        "titulo": "Vitamina D de verdade",
+        "texto": "Sol no dia a dia, com bom senso, ajuda o corpo a produzir vitamina D — ela leva o cálcio até o osso. Suplemento, só com orientação.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "No movimento",
+        "titulo": "Pular, correr, pendurar",
+        "texto": "Impacto leve e variado (correr, pular corda, subir em árvore) estimula o osso a ficar mais denso. Tela demais rouba esse tempo.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "É poupança para a vida",
+        "texto": "O osso que se forma agora é a reserva lá na frente. Salva pra lembrar.",
+        "chamada": "Compartilha com quem tem filhos →"
+      }
+    ]
+  },
+  {
+    "id": "s_pnc_hipermobilidade",
+    "theme": "Pé no Chão",
+    "label": "Pé no Chão · Elástica demais?",
+    "images": [
+      "images/s_pnc_hipermobilidade_1.jpg",
+      "images/s_pnc_hipermobilidade_2.jpg",
+      "images/s_pnc_hipermobilidade_3.jpg",
+      "images/s_pnc_hipermobilidade_4.jpg",
+      "images/s_pnc_hipermobilidade_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Pé no Chão · Elástica demais?",
+        "titulo": "Criança que dobra demais as juntas",
+        "texto": "Dedos que vão longe, cotovelo que passa da linha, posições impossíveis no chão. Flexibilidade normal ou algo mais?",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "O que é",
+        "titulo": "Hipermobilidade articular",
+        "texto": "É quando as articulações têm mais amplitude que o habitual (juntas mais 'soltas'). Em muitas crianças é só uma característica, sem doença.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Quando observar",
+        "titulo": "Dor, entorses, cansaço",
+        "texto": "Dor frequente depois de atividade, tornozelos que torcem toda hora ou cansaço para acompanhar os colegas: vale avaliação.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "O que ajuda",
+        "titulo": "Músculo dá estabilidade",
+        "texto": "Fortalecer com atividade regular ajuda a estabilizar articulações mais frouxas. Esporte orientado costuma ser aliado, não vilão.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Flexível pode. Com dor, avalie",
+        "texto": "Salva esse resumo e manda pra quem tem uma criança 'elástica' em casa.",
+        "chamada": "Dúvida? WhatsApp no link da bio →"
+      }
+    ]
+  },
+  {
+    "id": "s_pnc_crescer_dormindo",
+    "theme": "Pé no Chão",
+    "label": "Pé no Chão · Crescer dormindo",
+    "images": [
+      "images/s_pnc_crescer_dormindo_1.jpg",
+      "images/s_pnc_crescer_dormindo_2.jpg",
+      "images/s_pnc_crescer_dormindo_3.jpg",
+      "images/s_pnc_crescer_dormindo_4.jpg",
+      "images/s_pnc_crescer_dormindo_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Pé no Chão · Crescer dormindo",
+        "titulo": "Seu filho cresce enquanto dorme",
+        "texto": "É durante o sono profundo que o corpo libera a maior parte do hormônio do crescimento. Rotina de sono é assunto de osso também.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "Como funciona",
+        "titulo": "O pico é à noite",
+        "texto": "O hormônio do crescimento (GH) tem seus maiores picos nas primeiras horas de sono profundo. Noites muito curtas encurtam esse estímulo.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Quanto precisa",
+        "titulo": "Horas por idade",
+        "texto": "Em média: pré-escolar, 10 a 13h; escolar, 9 a 12h; adolescente, 8 a 10h. O padrão da semana importa mais que um dia ruim.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "O que atrapalha",
+        "titulo": "Tela na cama",
+        "texto": "Luz de tela à noite atrasa o sono. Quarto escuro, horário regular e tela fora do quarto ajudam mais do que parecem.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Sono também é crescimento",
+        "texto": "Salva pra rever na próxima negociação de horário de dormir.",
+        "chamada": "Compartilha com outros pais →"
+      }
+    ]
+  },
+  {
+    "id": "s_pnc_joanete_adolescente",
+    "theme": "Pé no Chão",
+    "label": "Pé no Chão · Joanete jovem",
+    "images": [
+      "images/s_pnc_joanete_adolescente_1.jpg",
+      "images/s_pnc_joanete_adolescente_2.jpg",
+      "images/s_pnc_joanete_adolescente_3.jpg",
+      "images/s_pnc_joanete_adolescente_4.jpg",
+      "images/s_pnc_joanete_adolescente_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Pé no Chão · Joanete jovem",
+        "titulo": "Joanete não é só coisa de avó",
+        "texto": "O hálux valgo juvenil (o joanete do adolescente) existe — e costuma ter história de família. O que observar cedo.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "O que é",
+        "titulo": "O dedão que desvia",
+        "texto": "No hálux valgo (joanete), o dedão aponta para os outros dedos e o 'osso' salta na lateral do pé. No jovem, tende a progredir com o crescimento.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Por que aparece",
+        "titulo": "Genética na frente do sapato",
+        "texto": "A herança familiar pesa mais que o calçado. Sapato apertado e de bico fino não cria o joanete, mas pode incomodar mais.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "O que fazer",
+        "titulo": "Conforto e acompanhamento",
+        "texto": "Calçado confortável e avaliação periódica. Cirurgia no adolescente é decisão criteriosa, estudada caso a caso com a família.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Dedão desviando? Observa e avalia",
+        "texto": "Compartilha com quem já notou o pé parecido com o da família.",
+        "chamada": "Dúvida? WhatsApp no link da bio →"
+      }
+    ]
+  },
+  {
+    "id": "s_pnc_casa_segura",
+    "theme": "Pé no Chão",
+    "label": "Pé no Chão · Casa à prova de tombo",
+    "images": [
+      "images/s_pnc_casa_segura_1.jpg",
+      "images/s_pnc_casa_segura_2.jpg",
+      "images/s_pnc_casa_segura_3.jpg",
+      "images/s_pnc_casa_segura_4.jpg",
+      "images/s_pnc_casa_segura_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Pé no Chão · Casa à prova de tombo",
+        "titulo": "Onde a criança fratura? Muitas vezes em casa",
+        "texto": "Boa parte das fraturas infantis acontece dentro de casa. Quatro pontos para revisar hoje, cômodo por cômodo.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "Ponto 1",
+        "titulo": "Beliche e altura",
+        "texto": "Cama de cima só depois dos 6 anos, e com grade. Quedas de beliche, escada e trocador estão entre as mais sérias.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Ponto 2",
+        "titulo": "Janela e sacada",
+        "texto": "Rede de proteção instalada e móveis longe das janelas. Criança escala antes de entender o risco.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Pontos 3 e 4",
+        "titulo": "Tapete solto e chão molhado",
+        "texto": "Tapete com antiderrapante, brinquedo fora do caminho e atenção redobrada no banheiro — o cenário do escorregão clássico.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Prevenir é revisar",
+        "texto": "Salva e faz o tour pela casa ainda hoje.",
+        "chamada": "Compartilha com quem tem criança em casa →"
+      }
+    ]
+  },
+  {
+    "id": "s_on_comida_do_osso",
+    "theme": "Osso Novo",
+    "label": "Osso Novo · O prato do osso",
+    "images": [
+      "images/s_on_comida_do_osso_1.jpg",
+      "images/s_on_comida_do_osso_2.jpg",
+      "images/s_on_comida_do_osso_3.jpg",
+      "images/s_on_comida_do_osso_4.jpg",
+      "images/s_on_comida_do_osso_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Osso Novo · O prato do osso",
+        "titulo": "O que comer enquanto o osso consolida?",
+        "texto": "Nenhum alimento cola osso sozinho — mas a falta de alguns atrapalha, e muito. O que costuma entrar no radar nessa fase.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "Proteína",
+        "titulo": "O tijolo esquecido",
+        "texto": "A base do osso é colágeno — proteína. Carnes, ovos, leguminosas e laticínios todos os dias: na consolidação, a necessidade aumenta.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Cálcio e vitamina D",
+        "titulo": "A dupla clássica",
+        "texto": "Cálcio é matéria-prima; a vitamina D o leva até o osso. Sol com bom senso e, se o exame de sangue indicar, suplemento com orientação.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "O que atrapalha",
+        "titulo": "Cigarro, álcool e dieta pobre",
+        "texto": "Cigarro reduz a chegada de sangue ao osso; álcool em excesso e dieta pobre atrasam o processo. Hidratação também conta.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "O prato é parte do tratamento",
+        "texto": "Salva e revisa sua semana de refeições.",
+        "chamada": "Compartilha com quem precisa →"
+      }
+    ]
+  },
+  {
+    "id": "s_on_enxerto_osseo",
+    "theme": "Osso Novo",
+    "label": "Osso Novo · Osso emprestado",
+    "images": [
+      "images/s_on_enxerto_osseo_1.jpg",
+      "images/s_on_enxerto_osseo_2.jpg",
+      "images/s_on_enxerto_osseo_3.jpg",
+      "images/s_on_enxerto_osseo_4.jpg",
+      "images/s_on_enxerto_osseo_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Osso Novo · Osso emprestado",
+        "titulo": "Enxerto ósseo: a ajuda que o osso recebe",
+        "texto": "Em falhas ósseas e consolidações difíceis, dá para 'emprestar' osso. De onde ele vem e como funciona, sem mistério.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "O que é",
+        "titulo": "Um estímulo biológico",
+        "texto": "O enxerto preenche a falha e leva células e estrutura que estimulam o corpo a formar osso novo naquele lugar.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "De onde vem",
+        "titulo": "Do próprio corpo ou do banco",
+        "texto": "O mais comum é usar osso do próprio paciente (como o da bacia). Também existem enxertos de banco de tecidos e substitutos sintéticos.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Quando entra",
+        "titulo": "Cada caso, uma estratégia",
+        "texto": "Pseudoartrose (quando o osso não cola), falhas após trauma ou infecção: o enxerto é uma das ferramentas — às vezes somado ao transporte ósseo.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Falha óssea tem opções de tratamento",
+        "texto": "Salva e manda pra quem ouviu falar em enxerto na consulta.",
+        "chamada": "Dúvida? WhatsApp no link da bio →"
+      }
+    ]
+  },
+  {
+    "id": "s_on_fratura_exposta",
+    "theme": "Osso Novo",
+    "label": "Osso Novo · Fratura exposta",
+    "images": [
+      "images/s_on_fratura_exposta_1.jpg",
+      "images/s_on_fratura_exposta_2.jpg",
+      "images/s_on_fratura_exposta_3.jpg",
+      "images/s_on_fratura_exposta_4.jpg",
+      "images/s_on_fratura_exposta_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Osso Novo · Fratura exposta",
+        "titulo": "Fratura exposta: por que é outra história",
+        "texto": "Quando o osso rompe a pele, o cuidado muda de patamar. Entenda por que esse trauma exige mais etapas.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "O problema",
+        "titulo": "A porta aberta",
+        "texto": "Com a pele rompida, bactérias alcançam o osso. O risco de infecção é o que diferencia a fratura exposta das demais.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "O tratamento",
+        "titulo": "Limpeza antes de tudo",
+        "texto": "Limpeza cirúrgica, antibiótico precoce e estabilização — muitas vezes com fixador externo — vêm antes da reconstrução definitiva.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "O caminho",
+        "titulo": "Etapas, não pressa",
+        "texto": "Casos graves são tratados por fases: primeiro controlar ferida e infecção, depois reconstruir osso e cobertura. Cada etapa tem seu porquê.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Trauma grave pede plano",
+        "texto": "Compartilha — entender o processo acalma quem está vivendo isso.",
+        "chamada": "Dúvida? WhatsApp no link da bio →"
+      }
+    ]
+  },
+  {
+    "id": "s_on_ilizarov_quem_foi",
+    "theme": "Osso Novo",
+    "label": "Osso Novo · Quem foi Ilizarov",
+    "images": [
+      "images/s_on_ilizarov_quem_foi_1.jpg",
+      "images/s_on_ilizarov_quem_foi_2.jpg",
+      "images/s_on_ilizarov_quem_foi_3.jpg",
+      "images/s_on_ilizarov_quem_foi_4.jpg",
+      "images/s_on_ilizarov_quem_foi_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Osso Novo · Quem foi Ilizarov",
+        "titulo": "O médico que mudou a reconstrução óssea",
+        "texto": "A técnica que uso na reconstrução tem nome e história: Gavriil Ilizarov, um médico da Sibéria nos anos 1950.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "A história",
+        "titulo": "Da Sibéria para o mundo",
+        "texto": "Atendendo feridos de guerra com poucos recursos, Ilizarov criou um anel de fixação externa — e observou algo inesperado.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "A descoberta",
+        "titulo": "O osso que se regenera",
+        "texto": "Afastado aos poucos (a chamada osteogênese por distração), o osso forma osso novo no espaço. Nascia a base do alongamento e do transporte ósseo.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "O legado",
+        "titulo": "Método vivo até hoje",
+        "texto": "Décadas depois, os princípios de Ilizarov seguem na base dos fixadores circulares e das reconstruções modernas, com tecnologia somada.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Ciência com história",
+        "texto": "Salva e compartilha com quem gosta de saber de onde vêm as técnicas.",
+        "chamada": "Compartilha com quem precisa →"
+      }
+    ]
+  },
+  {
+    "id": "s_on_esporte_depois",
+    "theme": "Osso Novo",
+    "label": "Osso Novo · De volta ao movimento",
+    "images": [
+      "images/s_on_esporte_depois_1.jpg",
+      "images/s_on_esporte_depois_2.jpg",
+      "images/s_on_esporte_depois_3.jpg",
+      "images/s_on_esporte_depois_4.jpg",
+      "images/s_on_esporte_depois_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Osso Novo · De volta ao movimento",
+        "titulo": "Esporte depois da reconstrução: dá?",
+        "texto": "Depois de meses de fixador ou haste, o corpo pede movimento. A volta é possível em muitos casos — e tem método.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "Fase 1",
+        "titulo": "Base antes de impacto",
+        "texto": "Força, equilíbrio e amplitude vêm primeiro. Bicicleta ergométrica, piscina e musculação orientada costumam abrir o caminho.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Fase 2",
+        "titulo": "Impacto progressivo",
+        "texto": "Caminhada vira trote, trote vira corrida — conforme a maturação do osso e a resposta do corpo. Sem pular etapas.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "A régua",
+        "titulo": "O osso dita o calendário",
+        "texto": "Cada liberação depende da resistência do osso reconstruído, avaliada nas consultas. Cada osso tem seu tempo — comparação não ajuda.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Movimento é meta, não pressa",
+        "texto": "Manda pra quem está nessa jornada e sonha com a volta.",
+        "chamada": "Dúvida? WhatsApp no link da bio →"
+      }
+    ]
+  },
+  {
+    "id": "s_on_colou_torto",
+    "theme": "Osso Novo",
+    "label": "Osso Novo · Colou torto. E agora?",
+    "images": [
+      "images/s_on_colou_torto_1.jpg",
+      "images/s_on_colou_torto_2.jpg",
+      "images/s_on_colou_torto_3.jpg",
+      "images/s_on_colou_torto_4.jpg",
+      "images/s_on_colou_torto_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Osso Novo · Colou torto. E agora?",
+        "titulo": "Osso que colou torto: e agora?",
+        "texto": "A consolidação viciosa (quando a fratura cola fora do lugar) pode incomodar anos depois. Entenda quando tratar — e como.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "O que é",
+        "titulo": "Consolidação viciosa",
+        "texto": "O osso é eficiente em colar, mas nem sempre no alinhamento ideal. Desvios maiores mudam a mecânica de joelho, tornozelo e quadril.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Sinais",
+        "titulo": "Dor e sobrecarga fora de hora",
+        "texto": "Dor articular, sensação de membro torto ou mais curto (discrepância de membro) e desgaste de um lado só: vale investigar a origem.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "O tratamento",
+        "titulo": "Replanejar o alinhamento",
+        "texto": "Com osteotomia (um corte planejado no osso) e fixação, é possível realinhar. Cada caso é estudado — nem todo desvio precisa de cirurgia.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Torto não é sentença",
+        "texto": "Compartilha com quem convive com sequela de fratura antiga.",
+        "chamada": "Dúvida? WhatsApp no link da bio →"
+      }
+    ]
+  },
+  {
+    "id": "s_on_remedio_que_atrapalha",
+    "theme": "Osso Novo",
+    "label": "Osso Novo · Remédio que atrapalha",
+    "images": [
+      "images/s_on_remedio_que_atrapalha_1.jpg",
+      "images/s_on_remedio_que_atrapalha_2.jpg",
+      "images/s_on_remedio_que_atrapalha_3.jpg",
+      "images/s_on_remedio_que_atrapalha_4.jpg",
+      "images/s_on_remedio_que_atrapalha_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Osso Novo · Remédio que atrapalha",
+        "titulo": "O anti-inflamatório pode atrasar seu osso",
+        "texto": "Pouca gente sabe: alguns remédios comuns interferem na consolidação. Vale ler antes de tomar por conta própria.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "O motivo",
+        "titulo": "Inflamação é etapa",
+        "texto": "A primeira fase do osso colar é inflamatória. Bloquear demais esse processo com anti-inflamatórios pode atrapalhar o início da consolidação.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Quais",
+        "titulo": "AINEs em uso prolongado",
+        "texto": "Anti-inflamatórios não esteroides (ibuprofeno, diclofenaco e similares) em uso prolongado são os principais suspeitos nos estudos.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "O caminho",
+        "titulo": "Dor tem alternativa",
+        "texto": "Existem analgésicos que não interferem no osso. A equipe monta o esquema para cada fase — sempre informe tudo o que você toma.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Remédio também é assunto de consulta",
+        "texto": "Compartilha com quem está consolidando uma fratura.",
+        "chamada": "Dúvida? WhatsApp no link da bio →"
+      }
+    ]
+  },
+  {
+    "id": "s_inst_como_e_a_consulta",
+    "theme": "Como é a consulta",
+    "label": "Como é a consulta",
+    "images": [
+      "images/s_inst_como_e_a_consulta_1.jpg",
+      "images/s_inst_como_e_a_consulta_2.jpg",
+      "images/s_inst_como_e_a_consulta_3.jpg",
+      "images/s_inst_como_e_a_consulta_4.jpg",
+      "images/s_inst_como_e_a_consulta_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Como é a consulta",
+        "titulo": "Pensando em marcar? Veja como é a consulta",
+        "texto": "Sem mistério: um passo a passo do que acontece, o que levar e onde é o atendimento. Tudo informativo, para você chegar mais tranquilo.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "O que levar",
+        "titulo": "Exames e relatórios anteriores",
+        "texto": "Se já tiver, leve as imagens e os laudos de exames anteriores e relatórios de outros médicos. O histórico ajuda muito a entender o seu caso.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Como é a avaliação",
+        "titulo": "Conversa, exame e, se indicado, imagem",
+        "texto": "A consulta começa pela sua história, passa pelo exame clínico e, quando necessário, pela solicitação de exames de imagem para esclarecer o quadro.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Onde é",
+        "titulo": "Av. Angélica, 2491 — Consolação",
+        "texto": "O consultório principal é na Av. Angélica, 2491 (Consolação); em alguns dias o atendimento é na Av. Paulista, 2064. Por convênio, confirme a unidade pelo WhatsApp. De fora de São Paulo? A teleorientação organiza os próximos passos.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Ficou com dúvida?",
+        "texto": "Agende pelo WhatsApp no link da bio — é por lá que a equipe do consultório responde sobre agenda, convênio e documentos.",
+        "chamada": "Compartilha com quem pensa em marcar →"
+      }
+    ]
+  },
+  {
+    "id": "s_pnc_cama_elastica",
+    "theme": "Pé no Chão",
+    "label": "Pé no Chão · Pula-pula em foco",
+    "images": [
+      "images/s_pnc_cama_elastica_1.jpg",
+      "images/s_pnc_cama_elastica_2.jpg",
+      "images/s_pnc_cama_elastica_3.jpg",
+      "images/s_pnc_cama_elastica_4.jpg",
+      "images/s_pnc_cama_elastica_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Pé no Chão · Pula-pula em foco",
+        "titulo": "Cama elástica: diversão com regras",
+        "texto": "É uma das grandes fontes de fratura infantil em festas e parques. Dá pra pular com menos risco? Dá — com 4 regras.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "Regra 1",
+        "titulo": "Um por vez",
+        "texto": "A maioria das lesões acontece com duas ou mais crianças pulando juntas — e o menor costuma levar a pior no quique duplo.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Regra 2",
+        "titulo": "Idade mínima importa",
+        "texto": "Menores de 6 anos têm ossos e coordenação ainda em construção; para eles, o risco é desproporcional. Melhor esperar.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "Regras 3 e 4",
+        "titulo": "Rede fechada, zero acrobacia",
+        "texto": "Rede de proteção fechada, molas cobertas e nada de mortal ou estrela — as lesões mais graves costumam vir de acrobacia.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Festa boa termina sem gesso",
+        "texto": "Compartilha com quem vai alugar pula-pula na próxima festa.",
+        "chamada": "Compartilha com quem precisa →"
+      }
+    ]
+  },
+  {
+    "id": "s_pnc_capacete_protecao",
+    "theme": "Pé no Chão",
+    "label": "Pé no Chão · Sobre rodinhas",
+    "images": [
+      "images/s_pnc_capacete_protecao_1.jpg",
+      "images/s_pnc_capacete_protecao_2.jpg",
+      "images/s_pnc_capacete_protecao_3.jpg",
+      "images/s_pnc_capacete_protecao_4.jpg",
+      "images/s_pnc_capacete_protecao_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Pé no Chão · Sobre rodinhas",
+        "titulo": "Patinete, bike e skate com proteção",
+        "texto": "As rodinhas fazem bem ao corpo em crescimento — e boa parte das quedas com fratura tem um ponto em comum: faltou equipamento.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "O ponto fraco",
+        "titulo": "Punho é o primeiro a sofrer",
+        "texto": "Ao cair, a mão vai na frente. Fraturas de punho e antebraço estão entre as mais comuns da infância sobre rodinhas.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "O kit que importa",
+        "titulo": "Capacete + punho + joelho",
+        "texto": "Capacete do tamanho certo, protetor de punho, joelheira e cotoveleira. No patinete elétrico, redobre a atenção: velocidade muda tudo.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "O combinado",
+        "titulo": "Regra da casa, sem exceção",
+        "texto": "Proteção desde o primeiro dia, mesmo no trajeto curto. Criança copia o exemplo: adulto de capacete ensina mais que discurso.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Diversão sim, proteção junto",
+        "texto": "Salva e compartilha com a família que tem rodinhas em casa.",
+        "chamada": "Compartilha com quem precisa →"
+      }
+    ]
+  },
+  {
+    "id": "s_pnc_musculacao",
+    "theme": "Pé no Chão",
+    "label": "Pé no Chão · Musculação trava?",
+    "images": [
+      "images/s_pnc_musculacao_1.jpg",
+      "images/s_pnc_musculacao_2.jpg",
+      "images/s_pnc_musculacao_3.jpg",
+      "images/s_pnc_musculacao_4.jpg",
+      "images/s_pnc_musculacao_5.jpg"
+    ],
+    "frames": [
+      {
+        "segmento": "Pé no Chão · Musculação trava?",
+        "titulo": "Musculação trava o crescimento?",
+        "texto": "O mito que atravessa gerações de academia. O que a ortopedia pediátrica diz sobre treino de força na adolescência.",
+        "chamada": "deslize →"
+      },
+      {
+        "segmento": "O mito",
+        "titulo": "De onde veio a ideia",
+        "texto": "O medo era machucar a cartilagem de crescimento. Mas treino de força bem orientado não mostrou esse efeito nos estudos.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "A verdade",
+        "titulo": "Força bem feita ajuda",
+        "texto": "Com técnica, progressão e supervisão, o treino de força fortalece músculo e osso — e pode reduzir lesões no esporte.",
+        "chamada": "continua →"
+      },
+      {
+        "segmento": "O cuidado real",
+        "titulo": "O problema é o exagero",
+        "texto": "O risco mora na técnica ruim, na carga além da conta e na competição de ego. Adolescente não treina como adulto — e não precisa.",
+        "chamada": "quase lá →"
+      },
+      {
+        "segmento": "Guarde isso",
+        "titulo": "Supervisão vale mais que proibição",
+        "texto": "Manda pra quem ainda repete esse mito no grupo da família.",
+        "chamada": "Compartilha com quem precisa →"
+      }
+    ]
+  }
 ]

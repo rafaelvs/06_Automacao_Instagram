@@ -53,8 +53,24 @@ POST2_MIN      = 11*60                   # 11:00 BRT — escalonado p/ nao colid
 # 3 dias/semana = 15 frames/semana (~2,1/dia). Decisao do Rafael em 12/09 ("vamos fazer tudo");
 # dias escolhidos em 13/09 pelos views/dia MEDIDOS (relatorio_stories.md): SAB 102,0 > SEG 100,7 >
 # TER 91,3 ... QUI 69,0 (pior). Seg/ter/sab; a sequencia de ter antecipa o carrossel das 15h.
-SEQ_WEEKDAYS   = {0, 1, 5}               # sequencia seg/ter/sab (13/09/2026: SAB 102,0 e SEG 100,7 views/dia
-                                         # medidos vs QUI 69,0 — relatorio_stories.md; era ter/qui/sab por 1 dia)
+SEQ_WEEKDAYS   = {1, 3, 5}               # sequencia ter/qui/sab — dias do CARROSSEL (a de 12:30 antecipa
+                                         # o post das 15h). Era DIARIA ate 12/09/2026.
+# REVERTIDO em 19/09/2026 (auditoria v2, achado D3). Em 13/09 troquei para seg/ter/sab
+# citando "SAB 102,0 · SEG 100,7 · TER 91,3 vs QUI 69,0 views/dia". Estava errado por dois
+# motivos, os dois provados na v2:
+#   1. EIXO DESLOCADO UM DIA. stories_pulse.py grava `dia = agora UTC` e stories.yml roda
+#      `0 2 * * *` (23:00 BRT do dia anterior), entao a medicao do dia D e' da sequencia
+#      publicada em D-1. relatorio_stories.md agregou por `dia` como se fosse o dia do tema.
+#      Prova independente: dias SEM sequencia = 13, 16, 17, 18/09; dias com stories_ativos=0
+#      = 14, 17, 18, 19/09 — exatamente +1. Reatribuindo pelo D-1 sobre os 32 dias limpos
+#      disponiveis na decisao: DOM 102,2 · SEX 100,7 · SEG 96,3 · QUI 92,0 · SAB 90,5 ·
+#      QUA 80,0 · TER 77,8. Os tres dias que escolhi eram o 3o, o 7o e o 5o.
+#   2. "TER 91,3" nao se reproduz em janela nenhuma (93,0 ate 29/08; 96,3 ate 12/09) e a
+#      serie diaria tem n=23 dias limpos (2 a 4 por dia da semana), nao os "83 dias" que
+#      escrevi no PLANO_EXPERIMENTOS. Com esse n, a diferenca entre o melhor e o pior dia
+#      cabe no ruido: NAO da' para escolher dia por este dado.
+# Entao volta o criterio que nao dependia dessa medicao e que foi decidido em 12/09: casar a
+# sequencia com o dia do carrossel. E7 (PLANO_EXPERIMENTOS) decide em 15/10, com amostra.
 SEQ_MIN        = 12*60 + 30              # 12:30
 REEL_WEEKDAYS  = {0, 2, 4, 6}
 REEL_MIN       = 15*60                   # 15:00 BRT (pico de audiencia; era 19:00)
@@ -279,7 +295,10 @@ def _texto_auditavel(item):
     carrossel passavam batido. Varre tambem colecoes aninhadas para que qualquer campo
     de texto que venha a ser adicionado aos JSONs ja nasca coberto."""
     partes = []
-    for chave in ("caption", "label", "theme", "titulo", "title", "alt_text"):
+    # "alt" entrou em 19/09 (achado D5 da v2): o alt text PUBLICO vai para a API em
+    # item["alt"] (20 pecas, 1 ja' no ar) e o guard so' procurava "alt_text" — texto
+    # publicado que nenhuma regua lia.
+    for chave in ("caption", "label", "theme", "titulo", "title", "alt", "alt_text"):
         v = item.get(chave)
         if isinstance(v, str) and v.strip():
             partes.append(v)

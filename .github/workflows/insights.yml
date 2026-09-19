@@ -1,9 +1,22 @@
 name: Pulso de Insights (leitura)
 
-# Pulso de metricas p/ a auditoria evolutiva — SO LEITURA (GET na Graph API).
-# Nao publica, nao altera a conta, nao commita nada. Disparo manual:
-#   gh workflow run insights.yml            (janela padrao 30d)
-#   gh workflow run insights.yml -f days=7  (janela custom)
+# Pulso de metricas p/ a auditoria evolutiva — SO LEITURA na conta (GET na Graph API).
+# Nao publica e nao altera nada no Instagram. A UNICA escrita e' no proprio repo:
+# o JSON medido e' commitado em AUDITORIA/evidencias/, para a evidencia acumular sozinha.
+#
+# POR QUE ESTE CRON EXISTE (19/09/2026): a medicao desta frente ja se perdeu TRES vezes
+# por causa do agendador do Claude, que tem limite GLOBAL de 3 execucoes e trava inteiro
+# quando 3 sessoes ficam penduradas — 05/09 (dump perdido), 12/09 (dump perdido, refeito
+# a mao) e 16-18/09 (a auditoria v2 nunca disparou: tres sessoes de rotina congeladas em
+# 18/09 00:45 seguravam os 3 slots). Dado de janela nao volta: quando o snapshot atrasa,
+# a janela de 30d ja rolou e os dias limpos saem pela ponta de tras. Por isso a coleta
+# saiu do agendador do Claude e virou cron do GitHub, que nao depende da maquina do
+# Rafael nem de sessao nenhuma. A LEITURA (a auditoria) continua sendo trabalho de sessao;
+# o que este cron garante e' que o DADO exista quando a sessao acontecer.
+#
+# Disparo manual continua valendo:
+#   gh workflow run insights.yml             (janela padrao 30d)
+#   gh workflow run insights.yml -f days=90  (janela custom)
 on:
   workflow_dispatch:
     inputs:
@@ -11,9 +24,20 @@ on:
         description: "Janela em dias (padrao 30)"
         required: false
         default: "30"
+      commitar:
+        description: "Commitar o JSON em AUDITORIA/evidencias/ (padrao sim)"
+        required: false
+        default: "sim"
+  schedule:
+    - cron: "0 3 * * 1"     # toda segunda 03:00 UTC (00:00 BRT) — janela de 30 dias
+    - cron: "0 4 1 * *"     # dia 1 de cada mes 04:00 UTC — janela de 90 dias
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: insights-evidencia
+  cancel-in-progress: false
 
 jobs:
   pulso:
@@ -21,9 +45,52 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+
+      - name: Escolher janela
+        run: |
+          set -euo pipefail
+          if [ -n "${{ inputs.days }}" ]; then
+            DIAS="${{ inputs.days }}"
+          elif [ "${{ github.event.schedule }}" = "0 4 1 * *" ]; then
+            DIAS="90"
+          else
+            DIAS="30"
+          fi
+          echo "PULSE_DAYS=$DIAS" >> "$GITHUB_ENV"
+          echo "ARQUIVO=AUDITORIA/evidencias/insights_$(date -u +%Y-%m-%d)_${DIAS}d.json" >> "$GITHUB_ENV"
+          echo "Janela: ${DIAS}d"
+
       - name: Pulso de insights
         env:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
-          PULSE_DAYS: ${{ inputs.days }}
-        run: python3 insights_pulse.py
+        run: |
+          set -euo pipefail
+          python3 insights_pulse.py | tee pulso.out
+
+      - name: Extrair o JSON medido
+        run: |
+          set -euo pipefail
+          mkdir -p AUDITORIA/evidencias
+          sed -n '/===INSIGHTS_JSON_BEGIN===/,/===INSIGHTS_JSON_END===/p' pulso.out \
+            | grep -v 'INSIGHTS_JSON_' > "$ARQUIVO"
+          # Falha ALTO se o bloco veio vazio ou nao e' JSON: evidencia torta e' pior que evidencia
+          # ausente (a casa ja pagou por "artefato errado vira evidencia").
+          python3 -c "import json,os,sys; d=json.load(open(os.environ['ARQUIVO'],encoding='utf-8')); \
+            assert d.get('conta'), 'bloco conta vazio'; \
+            print('OK', os.environ['ARQUIVO'], '| janela:', d.get('janela'), '| pecas:', d.get('pecas_na_janela'))"
+
+      - name: Commitar a evidencia
+        if: always() && hashFiles(env.ARQUIVO) != '' && inputs.commitar != 'nao'
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$ARQUIVO"
+          if git diff --cached --quiet; then
+            echo "nada a commitar (evidencia identica ja no repo)"
+          else
+            git commit -m "Evidencia de insights: $ARQUIVO"
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi

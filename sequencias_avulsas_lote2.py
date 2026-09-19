@@ -58,7 +58,7 @@ NOVAS = [
  ("O que ajuda", "Estímulo e fisioterapia",
   "Alternar o lado no berço e no colo, estimular o bebê a olhar para os dois lados e fisioterapia orientada costumam responder bem na maioria dos casos.", "quase lá →"),
  ("Guarde isso", "Percebeu? Avalie cedo",
-  "Avaliação precoce simplifica o acompanhamento. Compartilha com quem tem bebê em casa.", "Dúvidas? Manda DM →")]),
+  "Avaliação precoce simplifica o acompanhamento. Compartilha com quem tem bebê em casa.", "Dúvida? WhatsApp no link da bio →")]),
 
 ("s_pnc_charutinho_quadril", "Pé no Chão", "light", [
  ("Pé no Chão · Perninhas livres", "Enfaixar o bebê apertado faz mal?",
@@ -70,7 +70,7 @@ NOVAS = [
  ("No canguru", "Posição de M",
   "No carregador, joelhos mais altos que o bumbum, como um M. Essa posição respeita o desenvolvimento do quadril.", "quase lá →"),
  ("Guarde isso", "Perninhas livres, quadril protegido",
-  "Salva e manda pra quem vai ter bebê. Ficou com dúvida sobre o quadril do seu bebê? Manda DM.", "Compartilha com quem precisa →")]),
+  "Salva e manda pra quem vai ter bebê. Dúvida sobre o quadril do seu bebê? Fala com o consultório pelo WhatsApp, no link da bio.", "Compartilha com quem precisa →")]),
 
 ("s_pnc_osso_forte", "Pé no Chão", "dark", [
  ("Pé no Chão · Poupança de osso", "Osso forte se constrói na infância",
@@ -94,7 +94,7 @@ NOVAS = [
  ("O que ajuda", "Músculo dá estabilidade",
   "Fortalecer com atividade regular ajuda a estabilizar articulações mais frouxas. Esporte orientado costuma ser aliado, não vilão.", "quase lá →"),
  ("Guarde isso", "Flexível pode. Com dor, avalie",
-  "Salva esse resumo e manda pra quem tem uma criança 'elástica' em casa.", "Dúvidas? Manda DM →")]),
+  "Salva esse resumo e manda pra quem tem uma criança 'elástica' em casa.", "Dúvida? WhatsApp no link da bio →")]),
 
 ("s_pnc_capacete_protecao", "Pé no Chão", "dark", [
  ("Pé no Chão · Sobre rodinhas", "Patinete, bike e skate com proteção",
@@ -130,7 +130,7 @@ NOVAS = [
  ("Dicas 3 e 4", "Roupa prática e exames antigos",
   "Shorts facilita examinar joelhos e quadris. E leve relatórios e exames anteriores, se existirem — o histórico vale ouro.", "quase lá →"),
  ("Guarde isso", "Preparo ajuda o diagnóstico",
-  "Salva essa lista pra véspera da consulta.", "Dúvidas? Manda DM →")]),
+  "Salva essa lista pra véspera da consulta.", "Dúvida? WhatsApp no link da bio →")]),
 
 ("s_pnc_gesso_em_casa", "Pé no Chão", "light", [
  ("Pé no Chão · Gesso sem drama", "Criança de gesso em casa: guia rápido",
@@ -154,7 +154,7 @@ NOVAS = [
  ("No esporte", "Retorno em etapas",
   "Brincadeira leve primeiro, esporte com contato por último, conforme a liberação médica. Pressa aqui costuma custar caro.", "quase lá →"),
  ("Guarde isso", "Fininho é fase",
-  "Salva pra lembrar quando chegar o dia de tirar o gesso.", "Dúvidas? Manda DM →")]),
+  "Salva pra lembrar quando chegar o dia de tirar o gesso.", "Dúvida? WhatsApp no link da bio →")]),
 
 ("s_pnc_joanete_adolescente", "Pé no Chão", "light", [
  ("Pé no Chão · Joanete jovem", "Joanete não é só coisa de avó",
@@ -166,7 +166,7 @@ NOVAS = [
  ("O que fazer", "Conforto e acompanhamento",
   "Calçado confortável e avaliação periódica. Cirurgia no adolescente é decisão criteriosa, estudada caso a caso com a família.", "quase lá →"),
  ("Guarde isso", "Dedão desviando? Observa e avalia",
-  "Compartilha com quem já notou o pé parecido com o da família.", "Dúvidas? Manda DM →")]),
+  "Compartilha com quem já notou o pé parecido com o da família.", "Dúvida? WhatsApp no link da bio →")]),
 
 ("s_pnc_musculacao", "Pé no Chão", "dark", [
  ("Pé no Chão · Musculação trava?", "Musculação trava o crescimento?",
@@ -190,7 +190,7 @@ NOVAS = [
  ("O porquê", "Refraturar é o risco real",
   "Voltar antes da hora aumenta a chance de nova fratura no mesmo lugar. Semanas de paciência agora costumam poupar meses depois.", "quase lá →"),
  ("Guarde isso", "Volta em fases, não em datas",
-  "Salva pra mostrar pro atleta apressado da casa.", "Dúvidas? Manda DM →")]),
+  "Salva pra mostrar pro atleta apressado da casa.", "Dúvida? WhatsApp no link da bio →")]),
 
 ("s_pnc_cama_elastica", "Pé no Chão", "dark", [
  ("Pé no Chão · Pula-pula em foco", "Cama elástica: diversão com regras",
@@ -228,7 +228,7 @@ NOVAS = [
  ("Rua", "Sair de casa, sim",
   "Com o apoio liberado e muletas quando indicadas, a maioria circula, estuda e convive normalmente durante o tratamento.", "quase lá →"),
  ("Guarde isso", "O aparelho vira rotina",
-  "Manda pra quem vai começar um tratamento com fixador.", "Dúvidas? Manda DM →")]),
+  "Manda pra quem vai começar um tratamento com fixador.", "Dúvida? WhatsApp no link da bio →")]),
 
 ("s_on_dirigir_trabalho", "Osso Novo", "light", [
  ("Osso Novo · Trabalho e direção", "Posso trabalhar e dirigir no tratamento?",
@@ -240,7 +240,7 @@ NOVAS = [
  ("O caminho", "Combine, não arrisque",
   "Cada liberação é individual e entra no plano de tratamento. Levar as demandas do seu trabalho à consulta ajuda a planejar as etapas.", "quase lá →"),
  ("Guarde isso", "A rotina volta por etapas",
-  "Salva pra organizar essa conversa com o seu médico.", "Dúvidas? Manda DM →")]),
+  "Salva pra organizar essa conversa com o seu médico.", "Dúvida? WhatsApp no link da bio →")]),
 
 ("s_on_pisar_ou_nao", "Osso Novo", "dark", [
  ("Osso Novo · Pisa ou não pisa?", "Pisar com o fixador: pode?",
@@ -276,7 +276,7 @@ NOVAS = [
  ("Escada", "A regra da escada",
   "Subir: perna boa primeiro. Descer: muletas e perna em tratamento primeiro. Corrimão sempre que existir.", "quase lá →"),
  ("Guarde isso", "Ajuste fino, marcha melhor",
-  "Manda pra quem acabou de sair da cirurgia com muletas.", "Dúvidas? Manda DM →")]),
+  "Manda pra quem acabou de sair da cirurgia com muletas.", "Dúvida? WhatsApp no link da bio →")]),
 
 ("s_on_dia_da_retirada", "Osso Novo", "light", [
  ("Osso Novo · O dia de tirar", "Chegou o dia de tirar o fixador. E agora?",
@@ -288,7 +288,7 @@ NOVAS = [
  ("O cuidado", "Proteção sem prisão",
   "A vida avança, mas impacto e torção esperam a liberação por etapas. É a reta final — ainda não a linha de chegada.", "quase lá →"),
  ("Guarde isso", "Depois do fixador vem a maturação",
-  "Compartilha com quem está contando os dias pra retirada.", "Dúvidas? Manda DM →")]),
+  "Compartilha com quem está contando os dias pra retirada.", "Dúvida? WhatsApp no link da bio →")]),
 
 ("s_on_enxerto_osseo", "Osso Novo", "dark", [
  ("Osso Novo · Osso emprestado", "Enxerto ósseo: a ajuda que o osso recebe",
@@ -300,7 +300,7 @@ NOVAS = [
  ("Quando entra", "Cada caso, uma estratégia",
   "Pseudoartrose (quando o osso não cola), falhas após trauma ou infecção: o enxerto é uma das ferramentas — às vezes somado ao transporte ósseo.", "quase lá →"),
  ("Guarde isso", "Falha óssea tem opções de tratamento",
-  "Salva e manda pra quem ouviu falar em enxerto na consulta.", "Dúvidas? Manda DM →")]),
+  "Salva e manda pra quem ouviu falar em enxerto na consulta.", "Dúvida? WhatsApp no link da bio →")]),
 
 ("s_on_fratura_exposta", "Osso Novo", "light", [
  ("Osso Novo · Fratura exposta", "Fratura exposta: por que é outra história",
@@ -312,7 +312,7 @@ NOVAS = [
  ("O caminho", "Etapas, não pressa",
   "Casos graves são tratados por fases: primeiro controlar ferida e infecção, depois reconstruir osso e cobertura. Cada etapa tem seu porquê.", "quase lá →"),
  ("Guarde isso", "Trauma grave pede plano",
-  "Compartilha — entender o processo acalma quem está vivendo isso.", "Dúvidas? Manda DM →")]),
+  "Compartilha — entender o processo acalma quem está vivendo isso.", "Dúvida? WhatsApp no link da bio →")]),
 
 ("s_on_ilizarov_quem_foi", "Osso Novo", "dark", [
  ("Osso Novo · Quem foi Ilizarov", "O médico que mudou a reconstrução óssea",
@@ -348,7 +348,7 @@ NOVAS = [
  ("A régua", "O osso dita o calendário",
   "Cada liberação depende da resistência do osso reconstruído, avaliada nas consultas. Cada osso tem seu tempo — comparação não ajuda.", "quase lá →"),
  ("Guarde isso", "Movimento é meta, não pressa",
-  "Manda pra quem está nessa jornada e sonha com a volta.", "Dúvidas? Manda DM →")]),
+  "Manda pra quem está nessa jornada e sonha com a volta.", "Dúvida? WhatsApp no link da bio →")]),
 
 ("s_on_colou_torto", "Osso Novo", "light", [
  ("Osso Novo · Colou torto. E agora?", "Osso que colou torto: e agora?",
@@ -360,7 +360,7 @@ NOVAS = [
  ("O tratamento", "Replanejar o alinhamento",
   "Com osteotomia (um corte planejado no osso) e fixação, é possível realinhar. Cada caso é estudado — nem todo desvio precisa de cirurgia.", "quase lá →"),
  ("Guarde isso", "Torto não é sentença",
-  "Compartilha com quem convive com sequela de fratura antiga.", "Dúvidas? Manda DM →")]),
+  "Compartilha com quem convive com sequela de fratura antiga.", "Dúvida? WhatsApp no link da bio →")]),
 
 ("s_on_dor_no_alongamento", "Osso Novo", "dark", [
  ("Osso Novo · E a dor?", "Alongamento ósseo dói?",
@@ -372,7 +372,7 @@ NOVAS = [
  ("O alerta", "Dor que muda de padrão",
   "Dor que dispara de repente, não cede com a medicação ou vem com vermelhidão e febre: avise a equipe — pode pedir ajuste do plano.", "quase lá →"),
  ("Guarde isso", "Dor se conversa, não se aguenta",
-  "Manda pra quem vai começar e tem essa dúvida calada.", "Dúvidas? Manda DM →")]),
+  "Manda pra quem vai começar e tem essa dúvida calada.", "Dúvida? WhatsApp no link da bio →")]),
 
 ("s_on_remedio_que_atrapalha", "Osso Novo", "light", [
  ("Osso Novo · Remédio que atrapalha", "O anti-inflamatório pode atrasar seu osso",
@@ -384,7 +384,7 @@ NOVAS = [
  ("O caminho", "Dor tem alternativa",
   "Existem analgésicos que não interferem no osso. A equipe monta o esquema para cada fase — sempre informe tudo o que você toma.", "quase lá →"),
  ("Guarde isso", "Remédio também é assunto de consulta",
-  "Compartilha com quem está consolidando uma fratura.", "Dúvidas? Manda DM →")]),
+  "Compartilha com quem está consolidando uma fratura.", "Dúvida? WhatsApp no link da bio →")]),
 
 # ======================= INSTITUCIONAL (1) =======================
 
@@ -395,10 +395,10 @@ NOVAS = [
   "Se já tiver, leve as imagens e os laudos de exames anteriores e relatórios de outros médicos. O histórico ajuda muito a entender o seu caso.", "continua →"),
  ("Como é a avaliação", "Conversa, exame e, se indicado, imagem",
   "A consulta começa pela sua história, passa pelo exame clínico e, quando necessário, pela solicitação de exames de imagem para esclarecer o quadro.", "continua →"),
- ("Onde é", "Av. Paulista 2064, São Paulo",
-  "O atendimento presencial é na Av. Paulista, 2064. Para quem é de fora de São Paulo, a teleorientação ajuda a ouvir o caso, revisar exames e organizar os próximos passos.", "quase lá →"),
+ ("Onde é", "Av. Angélica, 2491 — Consolação",
+  "O consultório principal é na Av. Angélica, 2491 (Consolação); em alguns dias o atendimento é na Av. Paulista, 2064. Por convênio, confirme a unidade pelo WhatsApp. De fora de São Paulo? A teleorientação organiza os próximos passos.", "quase lá →"),
  ("Guarde isso", "Ficou com dúvida?",
-  "Agende pelo WhatsApp no link da bio. Dúvidas sobre como funciona? Manda uma DM.", "Compartilha com quem pensa em marcar →")]),
+  "Agende pelo WhatsApp no link da bio — é por lá que a equipe do consultório responde sobre agenda, convênio e documentos.", "Compartilha com quem pensa em marcar →")]),
 ]
 
 
