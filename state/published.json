@@ -1388,10 +1388,16 @@
       "media_id": "18229535785325907",
       "at": "2026-09-18T18:06:33.084541+00:00",
       "modo_reel": "normal"
+    },
+    {
+      "id": "s_on_pisar_ou_nao",
+      "kind": "seq",
+      "media_id": "18113659114815603",
+      "at": "2026-09-19T15:31:11.472200+00:00"
     }
   ],
   "last_post_date": "2026-09-17",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-09-18",
-  "last_seq_date": "2026-09-15"
+  "last_seq_date": "2026-09-19"
 }
