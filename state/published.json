@@ -1406,10 +1406,17 @@
       "kind": "post",
       "media_id": "18131738173738646",
       "at": "2026-09-20T15:30:39.900687+00:00"
+    },
+    {
+      "id": "qa_banho_fixador",
+      "kind": "reel",
+      "media_id": "18113413415118306",
+      "at": "2026-09-20T18:17:32.733279+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-09-20",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-09-18",
+  "last_reel_date": "2026-09-20",
   "last_seq_date": "2026-09-19"
 }
