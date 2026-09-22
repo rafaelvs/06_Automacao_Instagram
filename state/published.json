@@ -1420,10 +1420,22 @@
       "media_id": "18103567184255150",
       "at": "2026-09-21T20:06:59.990969+00:00",
       "modo_reel": "normal"
+    },
+    {
+      "id": "c_on_medir_antes",
+      "kind": "post",
+      "media_id": "18010631675988869",
+      "at": "2026-09-22T18:13:09.921815+00:00"
+    },
+    {
+      "id": "s_on_fixador_rotina",
+      "kind": "seq",
+      "media_id": "18079488047345857",
+      "at": "2026-09-22T18:13:09.921815+00:00"
     }
   ],
-  "last_post_date": "2026-09-20",
+  "last_post_date": "2026-09-22",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-09-21",
-  "last_seq_date": "2026-09-19"
+  "last_seq_date": "2026-09-22"
 }
