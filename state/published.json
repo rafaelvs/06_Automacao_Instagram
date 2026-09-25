@@ -1451,10 +1451,17 @@
       "kind": "seq",
       "media_id": "18029083895683592",
       "at": "2026-09-24T19:29:42.810709+00:00"
+    },
+    {
+      "id": "primeira_consulta",
+      "kind": "reel",
+      "media_id": "18019881695928892",
+      "at": "2026-09-25T19:31:48.411080+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-09-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-09-23",
+  "last_reel_date": "2026-09-25",
   "last_seq_date": "2026-09-24"
 }
