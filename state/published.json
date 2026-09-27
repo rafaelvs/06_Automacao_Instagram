@@ -1476,10 +1476,17 @@
       "kind": "post",
       "media_id": "17900488647371857",
       "at": "2026-09-27T15:30:44.454524+00:00"
+    },
+    {
+      "id": "fx_sentar_levantar",
+      "kind": "reel",
+      "media_id": "18431784274149657",
+      "at": "2026-09-27T18:02:24.910982+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-09-27",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-09-25",
+  "last_reel_date": "2026-09-27",
   "last_seq_date": "2026-09-26"
 }
