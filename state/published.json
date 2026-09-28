@@ -1483,10 +1483,17 @@
       "media_id": "18431784274149657",
       "at": "2026-09-27T18:02:24.910982+00:00",
       "modo_reel": "normal"
+    },
+    {
+      "id": "qa_dor_crescimento",
+      "kind": "reel",
+      "media_id": "18499529428101860",
+      "at": "2026-09-28T21:22:16.641939+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-09-27",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-09-27",
+  "last_reel_date": "2026-09-28",
   "last_seq_date": "2026-09-26"
 }
