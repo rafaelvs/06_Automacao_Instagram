@@ -1490,10 +1490,16 @@
       "media_id": "18499529428101860",
       "at": "2026-09-28T21:22:16.641939+00:00",
       "modo_reel": "normal"
+    },
+    {
+      "id": "s_on_dirigir_trabalho",
+      "kind": "seq",
+      "media_id": "18137646151545478",
+      "at": "2026-09-29T15:30:49.171296+00:00"
     }
   ],
   "last_post_date": "2026-09-27",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-09-28",
-  "last_seq_date": "2026-09-26"
+  "last_seq_date": "2026-09-29"
 }
