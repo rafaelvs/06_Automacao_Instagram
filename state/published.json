@@ -1502,10 +1502,17 @@
       "kind": "post",
       "media_id": "18215128198356665",
       "at": "2026-09-29T20:09:05.023947+00:00"
+    },
+    {
+      "id": "fx_kit_casa",
+      "kind": "reel",
+      "media_id": "18107541743071689",
+      "at": "2026-09-30T20:17:18.748591+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-09-29",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-09-28",
+  "last_reel_date": "2026-09-30",
   "last_seq_date": "2026-09-29"
 }
