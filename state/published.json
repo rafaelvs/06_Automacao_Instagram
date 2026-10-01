@@ -1509,10 +1509,16 @@
       "media_id": "18107541743071689",
       "at": "2026-09-30T20:17:18.748591+00:00",
       "modo_reel": "normal"
+    },
+    {
+      "id": "s_pnc_primeira_consulta",
+      "kind": "seq",
+      "media_id": "18479057605112185",
+      "at": "2026-10-01T15:30:55.762320+00:00"
     }
   ],
   "last_post_date": "2026-09-29",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-09-30",
-  "last_seq_date": "2026-09-29"
+  "last_seq_date": "2026-10-01"
 }
