@@ -1521,10 +1521,17 @@
       "kind": "post",
       "media_id": "18096899336553460",
       "at": "2026-10-01T19:42:52.509000+00:00"
+    },
+    {
+      "id": "qa_perna_curta_operar",
+      "kind": "reel",
+      "media_id": "17908407342557982",
+      "at": "2026-10-02T20:07:45.464979+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-10-01",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-09-30",
+  "last_reel_date": "2026-10-02",
   "last_seq_date": "2026-10-01"
 }
