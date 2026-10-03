@@ -1528,10 +1528,22 @@
       "media_id": "17908407342557982",
       "at": "2026-10-02T20:07:45.464979+00:00",
       "modo_reel": "normal"
+    },
+    {
+      "id": "c_on_fixador_vs_haste",
+      "kind": "post",
+      "media_id": "17948633676324581",
+      "at": "2026-10-03T18:47:21.702938+00:00"
+    },
+    {
+      "id": "s_on_dor_no_alongamento",
+      "kind": "seq",
+      "media_id": "18116490979810647",
+      "at": "2026-10-03T18:47:21.702938+00:00"
     }
   ],
-  "last_post_date": "2026-10-01",
+  "last_post_date": "2026-10-03",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-10-02",
-  "last_seq_date": "2026-10-01"
+  "last_seq_date": "2026-10-03"
 }
