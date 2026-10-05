@@ -1553,10 +1553,17 @@
       "media_id": "18384957022225214",
       "at": "2026-10-04T18:46:53.609877+00:00",
       "modo_reel": "normal"
+    },
+    {
+      "id": "qa_crianca_mancando",
+      "kind": "reel",
+      "media_id": "18335178850261512",
+      "at": "2026-10-05T18:45:15.267321+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-10-04",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-10-04",
+  "last_reel_date": "2026-10-05",
   "last_seq_date": "2026-10-03"
 }
