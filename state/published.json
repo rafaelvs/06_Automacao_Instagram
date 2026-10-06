@@ -1566,10 +1566,16 @@
       "kind": "post",
       "media_id": "17938801617384117",
       "at": "2026-10-06T19:44:02.732339+00:00"
+    },
+    {
+      "id": "s_pnc_esporte_apos_fratura",
+      "kind": "seq",
+      "media_id": "17991582603108428",
+      "at": "2026-10-06T20:41:19.558652+00:00"
     }
   ],
   "last_post_date": "2026-10-06",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-10-05",
-  "last_seq_date": "2026-10-03"
+  "last_seq_date": "2026-10-06"
 }
