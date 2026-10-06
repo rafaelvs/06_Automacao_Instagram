@@ -1560,9 +1560,15 @@
       "media_id": "18335178850261512",
       "at": "2026-10-05T18:45:15.267321+00:00",
       "modo_reel": "normal"
+    },
+    {
+      "id": "c_on_discrepancia",
+      "kind": "post",
+      "media_id": "17938801617384117",
+      "at": "2026-10-06T19:44:02.732339+00:00"
     }
   ],
-  "last_post_date": "2026-10-04",
+  "last_post_date": "2026-10-06",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-10-05",
   "last_seq_date": "2026-10-03"
