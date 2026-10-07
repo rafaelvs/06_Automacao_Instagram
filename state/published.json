@@ -1572,10 +1572,17 @@
       "kind": "seq",
       "media_id": "17991582603108428",
       "at": "2026-10-06T20:41:19.558652+00:00"
+    },
+    {
+      "id": "fx_roupa",
+      "kind": "reel",
+      "media_id": "18074106053723792",
+      "at": "2026-10-07T20:46:16.290170+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-10-06",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-10-05",
+  "last_reel_date": "2026-10-07",
   "last_seq_date": "2026-10-06"
 }
