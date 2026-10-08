@@ -1579,10 +1579,16 @@
       "media_id": "18074106053723792",
       "at": "2026-10-07T20:46:16.290170+00:00",
       "modo_reel": "normal"
+    },
+    {
+      "id": "s_on_dia_da_retirada",
+      "kind": "seq",
+      "media_id": "18130719142685764",
+      "at": "2026-10-08T15:30:48.565301+00:00"
     }
   ],
   "last_post_date": "2026-10-06",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-10-07",
-  "last_seq_date": "2026-10-06"
+  "last_seq_date": "2026-10-08"
 }
