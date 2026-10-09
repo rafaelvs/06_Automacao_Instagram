@@ -1591,10 +1591,17 @@
       "kind": "post",
       "media_id": "18023758019870486",
       "at": "2026-10-08T20:48:22.124053+00:00"
+    },
+    {
+      "id": "caso_osteomielite_0cm",
+      "kind": "reel",
+      "media_id": "18106503614138769",
+      "at": "2026-10-09T20:16:25.519358+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-10-08",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-10-07",
+  "last_reel_date": "2026-10-09",
   "last_seq_date": "2026-10-08"
 }
