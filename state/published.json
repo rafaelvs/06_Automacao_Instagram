@@ -1598,10 +1598,16 @@
       "media_id": "18106503614138769",
       "at": "2026-10-09T20:16:25.519358+00:00",
       "modo_reel": "normal"
+    },
+    {
+      "id": "s_on_osteomielite",
+      "kind": "seq",
+      "media_id": "18001402259806380",
+      "at": "2026-10-10T15:30:39.979325+00:00"
     }
   ],
   "last_post_date": "2026-10-08",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-10-09",
-  "last_seq_date": "2026-10-08"
+  "last_seq_date": "2026-10-10"
 }
