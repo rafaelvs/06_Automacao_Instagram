@@ -1616,10 +1616,17 @@
       "kind": "post",
       "media_id": "17877501984568201",
       "at": "2026-10-11T15:30:44.042178+00:00"
+    },
+    {
+      "id": "fx_viagem",
+      "kind": "reel",
+      "media_id": "18146154328532000",
+      "at": "2026-10-11T18:19:24.197401+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-10-11",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-10-09",
+  "last_reel_date": "2026-10-11",
   "last_seq_date": "2026-10-10"
 }
