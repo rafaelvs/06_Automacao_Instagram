@@ -1630,10 +1630,16 @@
       "media_id": "18444971041135105",
       "at": "2026-10-12T22:00:50.729191+00:00",
       "modo_reel": "normal"
+    },
+    {
+      "id": "s_on_transporte_osseo",
+      "kind": "seq",
+      "media_id": "18118385830963075",
+      "at": "2026-10-13T15:30:46.672216+00:00"
     }
   ],
   "last_post_date": "2026-10-11",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-10-12",
-  "last_seq_date": "2026-10-10"
+  "last_seq_date": "2026-10-13"
 }
