@@ -1,0 +1,346 @@
+{
+ "_leia": "Texto EXATO da arte que está na fila destes carrosséis (gerada em 20/06/2026, commit 08c7fe1, a partir de episodios_novos_2026.py daquela data). O texto-fonte foi revisado depois para os reels (CTA send-first, sem referências à 'temporada', Retenção-3s com cena 0 cortada), mas a arte destes carrosséis nunca foi regenerada. A troca de visual de 14/10/2026 (rerender_fila_v2.py) preserva este texto palavra por palavra — conferido pixel a pixel contra a arte da fila com o template original. Atualizar para o texto atual é decisão editorial do Rafael: basta remover o id daqui.",
+ "itens": {
+  "c_pnc_perna_curta_crianca": {
+   "origem": "episodios_novos_2026.py @ 08c7fe1 (20/06/2026)",
+   "slides": [
+    {
+     "kicker": "Educativo",
+     "title": "Uma perna mais curta que a outra.",
+     "sub": "Na criança a história é diferente da do adulto — e se conecta."
+    },
+    {
+     "kicker": "Pequena é comum",
+     "title": "Diferença mínima quase todo mundo tem.",
+     "body": "Diferenças bem pequenas são comuns e não dão sintoma."
+    },
+    {
+     "kicker": "O diferencial da criança",
+     "title": "Ela ainda está crescendo.",
+     "body": "Como cresce, dá pra prever a diferença final e planejar com tempo."
+    },
+    {
+     "kicker": "Quando observar",
+     "title": "Manca, ou a diferença é visível.",
+     "body": "Mancar, desnível no quadril ou diferença nítida pede avaliação."
+    },
+    {
+     "cta": true,
+     "kicker": "Passa adiante",
+     "title": "Salva e compartilha",
+     "sub": "Na criança a gente acompanha; no adulto, mede e corrige."
+    }
+   ]
+  },
+  "c_pnc_mancando": {
+   "origem": "episodios_novos_2026.py @ 08c7fe1 (20/06/2026)",
+   "slides": [
+    {
+     "kicker": "Educativo",
+     "title": "Criança mancando sempre se avalia.",
+     "sub": "Manqueira não é manha — é um sinal que pede explicação."
+    },
+    {
+     "kicker": "Por que levar a sério",
+     "title": "O corpo está protegendo algo.",
+     "body": "Mancar é o jeito de fugir de uma dor ou de uma fraqueza."
+    },
+    {
+     "kicker": "As causas mudam",
+     "title": "Depende muito da idade.",
+     "body": "De um calçado apertado a quadril ou joelho que pedem mais pressa."
+    },
+    {
+     "kicker": "O que observar",
+     "title": "Há quanto tempo, e com o quê.",
+     "body": "Tempo de manqueira, dor, febre e o lado ajudam muito o médico."
+    },
+    {
+     "cta": true,
+     "kicker": "Passa adiante",
+     "title": "Salva e compartilha",
+     "sub": "Manda pra quem acha que vai passar sozinho."
+    }
+   ]
+  },
+  "c_pnc_mancar_febre": {
+   "origem": "episodios_novos_2026.py @ 08c7fe1 (20/06/2026)",
+   "slides": [
+    {
+     "kicker": "Educativo",
+     "title": "Mancar + febre pede pressa.",
+     "sub": "Juntos, são um sinal de urgência — eu explico sem alarde."
+    },
+    {
+     "kicker": "Por que correr",
+     "title": "Pode ser infecção na articulação.",
+     "body": "Uma articulação infectada precisa de avaliação urgente para se proteger."
+    },
+    {
+     "kicker": "O que observar",
+     "title": "Não dobra, não apoia, chora ao mexer.",
+     "body": "Recusa total de mexer ou apoiar a perna reforça a pressa."
+    },
+    {
+     "kicker": "O que fazer",
+     "title": "Procure atendimento. Não espere passar.",
+     "body": "Com febre + manqueira, leve para avaliação no mesmo dia."
+    },
+    {
+     "cta": true,
+     "kicker": "Passa adiante",
+     "title": "Salva e compartilha",
+     "sub": "Manda pra todo pai e mãe — esse pode importar muito."
+    }
+   ]
+  },
+  "c_pnc_nao_dor_crescimento": {
+   "origem": "episodios_novos_2026.py @ 08c7fe1 (20/06/2026)",
+   "slides": [
+    {
+     "kicker": "Educativo",
+     "title": "Nem toda dor é de crescimento.",
+     "sub": "Já falamos do padrão que acalma; agora, o que NÃO é."
+    },
+    {
+     "kicker": "Sinal 1",
+     "title": "Sempre no mesmo ponto.",
+     "body": "Dor de crescimento é difusa; dor fixa num lugar pede atenção."
+    },
+    {
+     "kicker": "Sinais 2 e 3",
+     "title": "Inchaço, calor ou febre junto.",
+     "body": "Articulação inchada, quente, ou febre não combinam com dor de crescimento."
+    },
+    {
+     "kicker": "Sinal 4",
+     "title": "Atrapalha o dia, não só a noite.",
+     "body": "Dor que faz mancar, acorda toda noite ou limita o brincar: avalie."
+    },
+    {
+     "cta": true,
+     "kicker": "Passa adiante",
+     "title": "Salva e compartilha",
+     "sub": "Manda pra quem fica na dúvida toda noite."
+    }
+   ]
+  },
+  "c_pnc_escoliose": {
+   "origem": "episodios_novos_2026.py @ 08c7fe1 (20/06/2026)",
+   "slides": [
+    {
+     "kicker": "Educativo",
+     "title": "Nem todo sinal está nas pernas.",
+     "sub": "A coluna também dá pistas — e dá pra checar em casa."
+    },
+    {
+     "kicker": "O que é",
+     "title": "A coluna entorta para o lado.",
+     "body": "Um desvio em curva, que costuma aparecer no estirão da adolescência."
+    },
+    {
+     "kicker": "O teste de casa",
+     "title": "Peça pra inclinar o corpo à frente.",
+     "body": "Ao se curvar pra frente, um lado das costas mais alto chama atenção."
+    },
+    {
+     "kicker": "Por que cedo importa",
+     "title": "Acompanhar cedo amplia as opções.",
+     "body": "Quanto antes se percebe, mais simples costuma ser o acompanhamento."
+    },
+    {
+     "cta": true,
+     "kicker": "Passa adiante",
+     "title": "Salva e compartilha",
+     "sub": "Manda pra pais de pré-adolescentes."
+    }
+   ]
+  },
+  "c_pnc_pe_pra_dentro": {
+   "origem": "episodios_novos_2026.py @ 08c7fe1 (20/06/2026)",
+   "slides": [
+    {
+     "kicker": "Educativo",
+     "title": "Anda com o pé virado pra dentro?",
+     "sub": "Tem nome, tem idade e quase sempre tem final feliz."
+    },
+    {
+     "kicker": "De onde vem",
+     "title": "Do pé, da canela ou do quadril.",
+     "body": "Uma leve torção do pé, da perna ou do fêmur — todas comuns."
+    },
+    {
+     "kicker": "A regra do tempo",
+     "title": "A maioria alinha com os anos.",
+     "body": "Conforme cresce, a rotação dos ossos costuma se ajustar sozinha."
+    },
+    {
+     "kicker": "Quando avaliar",
+     "title": "Só um lado, dói, ou piora.",
+     "body": "Assimetria, dor, quedas demais ou piora progressiva pedem avaliação."
+    },
+    {
+     "cta": true,
+     "kicker": "Passa adiante",
+     "title": "Salva e compartilha",
+     "sub": "Manda pra mãe preocupada com o 'andar de pombinho'."
+    }
+   ]
+  },
+  "c_pnc_estalo_joelho": {
+   "origem": "episodios_novos_2026.py @ 08c7fe1 (20/06/2026)",
+   "slides": [
+    {
+     "kicker": "Educativo",
+     "title": "O joelho da criança estala?",
+     "sub": "Som sem dor quase sempre é inofensivo — eu te explico."
+    },
+    {
+     "kicker": "Por que estala",
+     "title": "Tendão, articulação, bolha de ar.",
+     "body": "Tendões deslizando, gás dentro da articulação — fenômenos normais."
+    },
+    {
+     "kicker": "O que tranquiliza",
+     "title": "Sem dor e sem inchaço: relaxa.",
+     "body": "Se ela brinca, corre e não reclama, o estalo é só som."
+    },
+    {
+     "kicker": "Quando olhar de perto",
+     "title": "Estala e dói, trava ou incha.",
+     "body": "Estalo com dor, travamento ou inchaço merece avaliação."
+    },
+    {
+     "cta": true,
+     "kicker": "Passa adiante",
+     "title": "Salva e compartilha",
+     "sub": "Manda pra quem se assusta com o joelho que estala."
+    }
+   ]
+  },
+  "c_pnc_cai_muito": {
+   "origem": "episodios_novos_2026.py @ 08c7fe1 (20/06/2026)",
+   "slides": [
+    {
+     "kicker": "Educativo",
+     "title": "Criança que cai muito: é normal?",
+     "sub": "Tem uma dose de tombo que faz parte — e um ponto que pede olhar."
+    },
+    {
+     "kicker": "Por que cai",
+     "title": "Equilíbrio ainda está em obras.",
+     "body": "Nos primeiros anos, cair é como o corpo calibra o equilíbrio."
+    },
+    {
+     "kicker": "Quando reparar",
+     "title": "Piora, ou só tropeça de um lado.",
+     "body": "Cair cada vez mais, tropeçar sempre do mesmo lado ou regredir pede atenção."
+    },
+    {
+     "kicker": "O que ajuda em casa",
+     "title": "Chão livre e pé no chão.",
+     "body": "Espaço seguro pra praticar e tempo descalço ajudam o equilíbrio."
+    },
+    {
+     "cta": true,
+     "kicker": "Passa adiante",
+     "title": "Salva e compartilha",
+     "sub": "Manda pra quem se preocupa com cada tombo."
+    }
+   ]
+  },
+  "c_pnc_mochila": {
+   "origem": "episodios_novos_2026.py @ 08c7fe1 (20/06/2026)",
+   "slides": [
+    {
+     "kicker": "Educativo",
+     "title": "Mochila pesada estraga a coluna?",
+     "sub": "A pergunta que fecha a temporada — com resposta equilibrada."
+    },
+    {
+     "kicker": "O que ela faz",
+     "title": "Causa dor e má postura no dia.",
+     "body": "Peso excessivo gera dor nas costas e ombros e postura ruim na hora."
+    },
+    {
+     "kicker": "O que ela não faz",
+     "title": "Não 'entorta' a coluna pra sempre.",
+     "body": "Não há prova de que mochila cause escoliose ou deformidade permanente."
+    },
+    {
+     "kicker": "A regra prática",
+     "title": "Até uns 10 a 15% do peso da criança.",
+     "body": "Mochila leve, duas alças, ajustada às costas, e só o essencial dentro."
+    },
+    {
+     "cta": true,
+     "kicker": "Passa adiante",
+     "title": "Salva e compartilha",
+     "sub": "Manda pro grupo da escola. E recomeça a série!"
+    }
+   ]
+  },
+  "c_pnc_tenis_caro": {
+   "origem": "episodios_novos_2026.py @ 08c7fe1 (20/06/2026)",
+   "slides": [
+    {
+     "kicker": "Educativo",
+     "title": "Tênis caro NÃO corrige o pé.",
+     "sub": "O pé da criança não se molda pelo calçado — eu explico."
+    },
+    {
+     "kicker": "Como o pé se forma",
+     "title": "Andando, correndo, sentindo o chão.",
+     "body": "O arco e a musculatura se desenvolvem com movimento, não com solado."
+    },
+    {
+     "kicker": "O que o calçado faz",
+     "title": "Protege. Só isso. E está ótimo.",
+     "body": "O papel do sapato é proteger; flexível e do tamanho certo basta."
+    },
+    {
+     "kicker": "A dica que vale",
+     "title": "Pé no chão, quando der.",
+     "body": "Tempo descalço em casa, em piso seguro, estimula o pé de verdade."
+    },
+    {
+     "cta": true,
+     "kicker": "Passa adiante",
+     "title": "Salva e compartilha",
+     "sub": "Manda pra quem vai gastar caro achando que corrige."
+    }
+   ]
+  },
+  "c_pnc_sentar_w": {
+   "origem": "episodios_novos_2026.py @ 08c7fe1 (20/06/2026)",
+   "slides": [
+    {
+     "kicker": "Educativo",
+     "title": "Sentar em 'W' faz mal?",
+     "sub": "Viralizou como vilão — mas a real é mais tranquila."
+    },
+    {
+     "kicker": "Por que fazem",
+     "title": "É a base mais estável pra brincar.",
+     "body": "O W dá uma base larga; muita criança escolhe pra ter as mãos livres."
+    },
+    {
+     "kicker": "O que se entende hoje",
+     "title": "Na maioria, não causa deformidade.",
+     "body": "Em criança que cresce bem, alternar posições costuma bastar."
+    },
+    {
+     "kicker": "O bom senso",
+     "title": "Variar é melhor que proibir.",
+     "body": "Se ela só senta em W, ou já tem outro sinal, vale comentar com o médico."
+    },
+    {
+     "cta": true,
+     "kicker": "Passa adiante",
+     "title": "Salva e compartilha",
+     "sub": "Manda pra quem vive corrigindo o filho no chão."
+    }
+   ]
+  }
+ }
+}

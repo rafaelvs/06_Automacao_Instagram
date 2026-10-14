@@ -14,8 +14,8 @@ posts de adulto (c_on_discrepancia, c_on_medir_antes etc.) seria transplantar co
 pediatrica para contexto errado — o mais perto que este script chega de "inventar
 dado clinico" e por isso o script recusa fazer isso.
 
-Reusa as primitivas de desenho de carrossel.py (mesma identidade visual dos outros
-4 slides do post: base(), footer() com paginacao, trk(), wrap(), fontes).
+Reusa as primitivas de carrossel.py / marca.py (v2 da marca, 14/10/2026): mesmo
+card-resumo dos verbetes (slide_resumo), rodapé CFM com paginação.
 """
 import os
 import sys
@@ -34,40 +34,30 @@ TIERS = [
 FECHO = "Guia geral — a avaliação do seu filho é sempre individual."
 
 
+TITULO = "Diferença de perna: quando avaliar"
+
+
+def slide():
+    """Spec do slide no formato de carrossel.render_post (v2 da marca, 14/10/2026)."""
+    return {"resumo": True, "kicker": "Para guardar", "title": TITULO,
+            "bullets": [list(t) for t in TIERS], "fecho": FECHO}
+
+
 def render():
-    img, d = C.base(motif=True, var=None)
-    AC = C.GOLD
-
-    C.trk(d, (C.M, 300), "PARA GUARDAR", C.F(C.NB, 24), AC, 5)
-    d.line([(C.M, 340), (C.M + 58, 340)], fill=AC, width=3)
-
-    tf = C.F(C.SB, 66)
-    ty = 380
-    for ln in C.wrap("Diferença de perna: quando avaliar", tf, C.W - 2 * C.M):
-        d.text((C.M, ty), ln, font=tf, fill=C.CREAM)
-        ty += int(tf.size * 1.1)
-    ty += 26
-
-    lead_f = C.F(C.NB, 32)
-    body_f = C.F(C.NR, 34)
-    for lead, corpo in TIERS:
-        d.text((C.M, ty), lead, font=lead_f, fill=AC)
-        ty += int(lead_f.size * 1.15)
-        for ln in C.wrap(corpo, body_f, C.W - 2 * C.M):
-            d.text((C.M, ty), ln, font=body_f, fill=C.TXT)
-            ty += int(body_f.size * 1.28)
-        ty += 22
-
-    ty += 10
-    for ln in C.wrap(FECHO, C.F(C.NR, 26), C.W - 2 * C.M):
-        d.text((C.M, ty), ln, font=C.F(C.NR, 26), fill=C.MUT)
-        ty += 34
-
-    C.footer(d, SLIDE_INDEX, 5, ac=AC)
-
+    """Re-renderiza SÓ o 5º slide do post-alvo, no visual v2 (marca.py)."""
+    from PIL import ImageDraw
+    import marca as K
+    var = C._var(POST_ALVO)
+    ac = var["acento"] if var else C.GOLD
+    img = K.fundo({"motivo": "diagonais"})
+    K.cabecalho(img, x=C.M)
+    d = ImageDraw.Draw(img)
+    s = slide()
+    C.slide_resumo(img, d, s["title"], s["bullets"], var, ac, fecho=s["fecho"], rotulo=s["kicker"])
+    C.footer(d, SLIDE_INDEX, 5, ac=ac)
     outdir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "images")
     caminho = os.path.join(outdir, f"{POST_ALVO}_{SLIDE_INDEX + 1}.jpg")
-    img.save(caminho, "JPEG", quality=92)
+    img.convert("RGB").save(caminho, "JPEG", quality=92)
     return caminho
 
 

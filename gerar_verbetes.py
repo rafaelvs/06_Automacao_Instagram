@@ -51,6 +51,8 @@ import unicodedata
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import carrossel as C
+import marca as K
+from PIL import ImageDraw
 from cfm_guardrails import auditar
 from temporadas_data import SEASONS
 
@@ -290,50 +292,13 @@ def _titulo_fit(d, txt, tam_ini, max_linhas, largura):
         tam -= 8
 
 
-def _base(vid):
+def _base(vid, motivo=True):
+    """Fundo da marca + cabeçalho (v2 — marca.py). Devolve (img RGBA, draw, var, acento)."""
     var = C._var(vid)
-    img, d = C.base(motif=True, var=var)
     ac = var["acento"] if var else C.GOLD
-    dy = var["dy"] if var else 0
-    he = var["hook_escala"] if var else 1.0
-    return img, d, ac, dy, he
-
-
-def _hero_capa(img, fam, ac):
-    """ELEMENTO VISUAL DOMINANTE da capa (reformatação A7, 12/09/2026): o esquema da série — osso
-    com vão + régua (reconstrução) ou trilha de pegadas (pediatria) — grande e opaco, na banda
-    y∈[210, 470], onde a capa v1 era só texto (a Meta rotulava o grid como 'poster/text')."""
-    from PIL import Image, ImageDraw
-    ov = Image.new("RGBA", (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(ov)
-    if fam == "bone":
-        y = 300; x0, x1 = M + 30, W - M - 30; cx = (x0 + x1) // 2; gap = int((x1 - x0) * 0.22)
-        end = ac + (235,)
-        d.line([(x0, y), (cx - gap, y)], fill=end, width=22); d.line([(cx + gap, y), (x1, y)], fill=end, width=22)
-        for ex in (x0, x1): d.ellipse([ex - 28, y - 34, ex + 28, y + 34], fill=end)
-        for gx in (cx - gap, cx + gap): d.ellipse([gx - 16, y - 22, gx + 16, y + 22], fill=end)
-        half = int(gap * 0.45); nb = ac + (185,)
-        d.line([(cx - gap, y), (cx - gap + half, y)], fill=nb, width=26); d.line([(cx + gap, y), (cx + gap - half, y)], fill=nb, width=26)
-        for xx in range(cx - gap, cx - gap + half, 22): d.line([(xx, y - 16), (xx + 12, y + 16)], fill=C.CREAM + (90,), width=3)
-        for xx in range(cx + gap, cx + gap - half, -22): d.line([(xx, y - 16), (xx - 12, y + 16)], fill=C.CREAM + (90,), width=3)
-        for xx in range(cx - gap + half + 10, cx + gap - half - 10, 24): d.line([(xx, y), (xx + 11, y)], fill=C.CREAM + (90,), width=3)
-        ry = y + 84; d.line([(x0, ry), (x1, ry)], fill=ac + (110,), width=3)
-        for i, xx in enumerate(range(x0, x1 + 1, 26)):
-            hh = 20 if i % 5 == 0 else 10; d.line([(xx, ry), (xx, ry - hh)], fill=ac + (110,), width=3)
-    else:
-        n = 6; x0, x1 = M + 60, W - M - 60; ya, yb = 430, 240
-        for i in range(n):
-            fx = x0 + (x1 - x0) * i / (n - 1); fy = ya + (yb - ya) * i / (n - 1); side = 1 if i % 2 else -1
-            ft = _pegada(150, ac, 215).rotate(-16 + 9 * side, expand=True, resample=Image.BICUBIC)
-            ov.paste(ft, (int(fx - ft.width / 2 + side * 22), int(fy - ft.height / 2)), ft)
-    img.paste(Image.alpha_composite(img.convert("RGBA"), ov).convert("RGB"), (0, 0))
-
-
-def _pegada(sz, ac, alpha):
-    from PIL import Image, ImageDraw
-    t = Image.new("RGBA", (sz, sz), (0, 0, 0, 0)); d = ImageDraw.Draw(t); c = sz // 2; col = ac + (alpha,)
-    d.ellipse([c - 16, int(sz * 0.34), c + 16, int(sz * 0.70)], fill=col); d.ellipse([c - 11, int(sz * 0.72), c + 11, int(sz * 0.93)], fill=col)
-    for dx in (-15, -6, 3, 12): d.ellipse([c + dx - 4, int(sz * 0.26), c + dx + 4, int(sz * 0.345)], fill=col)
-    return t
+    img = K.fundo(var if motivo else {"motivo": "diagonais"})
+    K.cabecalho(img, x=M)
+    return img, ImageDraw.Draw(img), var, ac
 
 
 def _numero_serie(spec):
@@ -345,114 +310,70 @@ def _numero_serie(spec):
 
 
 def slide_capa(spec, vid, n):
-    """Capa v2 (A7): esquema dominante no topo + UMA frase (o título) + número da série.
-    O subtítulo (a resposta) sai da capa — vira o miolo; a capa só promete."""
-    img, d, ac, dy, he = _base(vid)
-    fam = "bone" if spec["kicker"] == KICK_REC else "feet"
-    _hero_capa(img, fam, ac)
-    d = C.ImageDraw.Draw(img)
+    """Capa (A7, refeita na v2 da marca): ilustração DOMINANTE em traço fino — fixador circular
+    com regenerado (Reconstrução) ou eixo do membro com placas de crescimento (Pediatria) —
+    + número da série grande (A7-4) + UMA frase (o título). A capa só promete."""
+    img, d, var, ac = _base(vid)
     num = _numero_serie(spec)
-    C.trk(d, (M, 520), (f"VERBETE {num} · " + spec["kicker"]).upper(), C.F(C.NB, 24), ac, 5)
-    d.line([(M, 560), (M + 58, 560)], fill=ac, width=3)
-    tf, linhas = _titulo_fit(d, spec["titulo"], int(96 * he), 4, W - 2 * M)
-    ty = 600
-    for ln in linhas:
-        d.text((M, ty), ln, font=tf, fill=C.CREAM); ty += int(tf.size * 1.08)
-    # número GRANDE dentro da arte (legível no celular) — canto superior direito
-    if num:
-        big = C.F(C.SB, 92); nw = d.textlength(num.split("/")[0], font=big)
-        d.text((W - M - nw, 470), num.split("/")[0], font=big, fill=ac)
-    C.trk(d, (M, H - 210), "ARRASTE →", C.F(C.NB, 30), ac, 4)
+    ns = tuple(num.split("/")) if num else None
+    heroi = "fixador" if spec["kicker"] == KICK_REC else "eixo"
+    C.slide_capa(img, d, {"title": spec["titulo"]}, vid, 0, n, var, ac, heroi=heroi,
+                 numero_serie=ns, rotulo="Verbete · " + spec["kicker"])
     C.footer(d, 0, n, ac=ac)
-    return img
+    return img.convert("RGB")
 
 
 def slide_conteudo(kicker, titulo, corpo, vid, page, n):
-    img, d, ac, dy, _he = _base(vid)
-    C.trk(d, (M, 300), kicker.upper(), C.F(C.NB, 24), ac, 5)
-    d.line([(M, 340), (M + 58, 340)], fill=ac, width=3)
-    # número do PASSO dentro da arte (A7-3): grande, à direita, legível no celular
-    big = C.F(C.SB, 120); ntxt = str(page); nw = d.textlength(ntxt, font=big)
-    d.text((W - M - nw, 250), ntxt, font=big, fill=ac)
-    tf, linhas = _titulo_fit(d, titulo, 70, 3, W - 2 * M)
-    ty = 400 + dy
-    for ln in linhas:
-        d.text((M, ty), ln, font=tf, fill=C.CREAM); ty += int(tf.size * 1.12)
-    ty += 28
-    if corpo:
-        tam_corpo = 42
-        while True:  # encolhe o corpo se estourar a área útil (rodapé CFM intocável)
-            bf = C.F(C.NR, tam_corpo)
-            linhas_c = C.wrap(corpo, bf, W - 2 * M)
-            alt = len(linhas_c) * int(tam_corpo * 1.42)
-            if ty + alt <= H - 180 or tam_corpo <= 32:
-                break
-            tam_corpo -= 4
-        for ln in linhas_c:
-            d.text((M, ty), ln, font=bf, fill=C.TXT); ty += int(tam_corpo * 1.42)
+    """Passo numerado (A7-3: número grande, legível no celular) — layout de conteúdo da casa."""
+    img, d, var, ac = _base(vid, motivo=False)
+    rot = (kicker[:1].upper() + kicker[1:]) if kicker else ""
+    C.slide_conteudo(img, d, {"kicker": kicker, "title": titulo, "body": corpo or ""}, page, n,
+                     var, ac, numero=str(page), rotulo=rot)
     C.footer(d, page, n, ac=ac)
-    return img
+    return img.convert("RGB")
 
 
 def slide_card_resumo(spec, bullets, vid, page, n):
-    """Card-resumo guardável — padrão do card de 16/08 (lead dourado + corpo)."""
+    """Card-resumo guardável (o MAPA COMPLETO, último slide — A7-2)."""
     fecho = "Resumo educativo — cada caso pede avaliação individual."
-    img, d, ac, dy, _he = _base(vid)
-    C.trk(d, (M, 300), "PARA GUARDAR", C.F(C.NB, 24), ac, 5)
-    d.line([(M, 340), (M + 58, 340)], fill=ac, width=3)
-    tf, linhas = _titulo_fit(d, spec["titulo"], 62, 2, W - 2 * M)
-    corpo_tam = 32
-    while True:  # dry-run de altura antes de desenhar; encolhe o corpo se preciso
-        lead_f = C.F(C.NB, 30)
-        body_f = C.F(C.NR, corpo_tam)
-        alt = len(linhas) * int(tf.size * 1.1) + 30
-        for lead, corpo in bullets:
-            alt += len(C.wrap(lead, lead_f, W - 2 * M - 40)) * int(30 * 1.2)
-            if corpo:
-                alt += len(C.wrap(corpo, body_f, W - 2 * M - 40)) * int(corpo_tam * 1.3)
-            alt += 22
-        alt += 44
-        if 380 + alt <= H - 175 or corpo_tam <= 24:
-            break
-        corpo_tam -= 2
-    ty = 380
-    for ln in linhas:
-        d.text((M, ty), ln, font=tf, fill=C.CREAM); ty += int(tf.size * 1.1)
-    ty += 30
-    for lead, corpo in bullets:
-        d.ellipse([M, ty + 11, M + 12, ty + 23], fill=ac)
-        for ln in C.wrap(lead, lead_f, W - 2 * M - 40):
-            d.text((M + 40, ty), ln, font=lead_f, fill=ac); ty += int(30 * 1.2)
-        if corpo:
-            for ln in C.wrap(corpo, body_f, W - 2 * M - 40):
-                d.text((M + 40, ty), ln, font=body_f, fill=C.TXT); ty += int(corpo_tam * 1.3)
-        ty += 22
-    ty += 10
-    for ln in C.wrap(fecho, C.F(C.NR, 26), W - 2 * M):
-        d.text((M, ty), ln, font=C.F(C.NR, 26), fill=C.MUT); ty += 34
+    img, d, var, ac = _base(vid, motivo=False)
+    C.slide_resumo(img, d, spec["titulo"], bullets, var, ac, fecho=fecho)
     C.footer(d, page, n, ac=ac)
-    return img
+    return img.convert("RGB")
 
 
 def slide_selo(vid, page, n):
-    img, d, ac, _dy, _he = _base(vid)
-    C.trk(d, (M, 340), "QUEM ASSINA ESTE VERBETE", C.F(C.NB, 24), ac, 5)
-    d.line([(M, 380), (M + 58, 380)], fill=ac, width=3)
-    ty = 430
-    for ln in C.wrap("Dr. Rafael Vargas", C.F(C.SB, 84), W - 2 * M):
-        d.text((M, ty), ln, font=C.F(C.SB, 84), fill=C.CREAM); ty += 96
-    ty += 8
-    d.text((M, ty), "Médico · CRM-SP 226103 · RQE 137901", font=C.F(C.NB, 36), fill=C.TXT); ty += 56
-    d.text((M, ty), "Ortopedia · São Paulo", font=C.F(C.NR, 34), fill=C.TXT); ty += 76
-    d.text((M, ty), "@rafaelvargasmd", font=C.F(C.NB, 44), fill=ac); ty += 84
-    for ln in C.wrap("Conteúdo educativo — não substitui avaliação médica.",
-                     C.F(C.NR, 32), W - 2 * M):
-        d.text((M, ty), ln, font=C.F(C.NR, 32), fill=C.TXT); ty += 46
-    ty += 30
-    for ln in C.wrap("Salve este verbete e envie para quem precisa.", C.F(C.NB, 32), W - 2 * M):
-        d.text((M, ty), ln, font=C.F(C.NB, 32), fill=C.CREAM); ty += 46
+    """Quem assina — composição centrada, a mesma da frente do cartão de visita."""
+    img, d, var, ac = _base(vid)
+    cx = W // 2
+    MONO = 176
+    alt = 40 + MONO + 92 + 40 + 64 + 46 + 44 + 72 + 62 + 46
+    y = int(215 + (1165 - 215 - alt) / 2)
+    K.escreve(d, cx, y + 22, "Quem assina este verbete", K.TEXTO_MED, 24, ac, tr=1.4, alinha="centro")
+    y += 40 + 28
+    K.monograma(img, cx, y + MONO / 2, MONO, C.CREAM, ancora="centro")
+    y += MONO + 92
+    K.escreve(d, cx, y, "Dr. Rafael Vargas", K.TITULO, 70, C.CREAM, alinha="centro")
+    y += 40
+    d.line([(cx - 160, y), (cx + 160, y)], fill=ac, width=2)
+    d.ellipse([cx - 5, y - 5, cx + 5, y + 5], fill=ac)
+    y += 64
+    K.escreve(d, cx, y, "ORTOPEDIA E TRAUMATOLOGIA", K.TEXTO_MED, 23, C.CREAM, tr=4.2, alinha="centro")
+    y += 46
+    K.escreve(d, cx, y, "Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica", K.TEXTO, 26,
+              C.TXT, alinha="centro")
+    y += 44
+    K.escreve(d, cx, y, "Médico · CRM-SP 226103 · RQE 137901", K.TEXTO, 25, K.CINZA, alinha="centro")
+    y += 72
+    K.escreve(d, cx, y, "@rafaelvargasmd", K.TEXTO_MED, 34, ac, alinha="centro")
+    y += 62
+    K.escreve(d, cx, y, "Conteúdo educativo — não substitui avaliação médica.", K.TEXTO, 25,
+              K.CINZA, alinha="centro")
+    y += 46
+    K.escreve(d, cx, y, "Salve este verbete e envie para quem precisa.", K.TEXTO_MED, 28,
+              C.CREAM, alinha="centro")
     C.footer(d, page, n, ac=ac)
-    return img
+    return img.convert("RGB")
 
 
 # ---------------------------------------------------------------------------
