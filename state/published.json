@@ -1642,10 +1642,17 @@
       "kind": "post",
       "media_id": "18118317167318718",
       "at": "2026-10-13T20:06:38.361765+00:00"
+    },
+    {
+      "id": "esc_teste_adams",
+      "kind": "reel",
+      "media_id": "18077915411416732",
+      "at": "2026-10-14T19:13:14.053414+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-10-13",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-10-12",
+  "last_reel_date": "2026-10-14",
   "last_seq_date": "2026-10-13"
 }
