@@ -1661,10 +1661,17 @@
       "kind": "post",
       "media_id": "17990016174099486",
       "at": "2026-10-15T19:19:29.790813+00:00"
+    },
+    {
+      "id": "caso_silver_russell",
+      "kind": "reel",
+      "media_id": "18105321938201713",
+      "at": "2026-10-16T18:39:33.113662+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-10-15",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-10-14",
+  "last_reel_date": "2026-10-16",
   "last_seq_date": "2026-10-15"
 }
