@@ -1686,10 +1686,17 @@
       "kind": "post",
       "media_id": "17961796388996724",
       "at": "2026-10-18T14:46:48.037958+00:00"
+    },
+    {
+      "id": "qa_caroco_no_osso",
+      "kind": "reel",
+      "media_id": "18127366583491518",
+      "at": "2026-10-18T18:16:19.798773+00:00",
+      "modo_reel": "normal"
     }
   ],
   "last_post_date": "2026-10-18",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-10-16",
+  "last_reel_date": "2026-10-18",
   "last_seq_date": "2026-10-17"
 }
