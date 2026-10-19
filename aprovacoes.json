@@ -696,6 +696,52 @@
      "hash_roteiro": "sha256:8384209a3deae45fe33efb39070a2b8bb9e4732ee27a322bf0453ea63c110c24"
     }
    ]
+  },
+  {
+   "lote": "ENTRETENIMENTO-2026-10-19-L3",
+   "nome": "Geração nova — lote 3: só COMO FUNCIONA (o formato principal), oito mecanismos do nicho",
+   "escopo": [
+    "instagram"
+   ],
+   "status": "aprovado",
+   "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
+   "data": "2026-10-19",
+   "evidencia": "Chat auditoria-instagram-v1, 19/10/2026: depois de conferir os 13 vídeos da fila, o Rafael escreveu 'essa serie \\\"e se ... pudesse responder\\\" é legal, mas tem que ser mais espaçada, você precisa de produzir mais conteudos como o de alongamento para poder deixar essa serie de responder vez ou outra somente, pq é um modelo mais cansativo' e 'pode deixar a cada 10 dias'. Este lote produz esses COMO FUNCIONA. Roteiros por roteirista + verificador adversarial (workflow lote-3-como-funciona); todo fato com trecho LITERAL de peça PUBLICADA ou de lote APROVADO (152 fontes conferidas mecanicamente; o lote LEGADO-PRE-GATE, pendente de ratificação, ficou de fora). Cenas: construção + revisor adversarial + correção (cenas-lote3-como-funciona); rótulos de tela só com palavras do roteiro/legenda; portão CFM limpo.",
+   "observacoes": "Revisão passiva na fila (regra de 30/08): entram a partir de 02/11, no fim do bloco da geração nova, e o Rafael edita/suspende antes da data (PROGRAMACAO.md; cópias para conferência em _GRANDE_REVISAO_2026-08/videos_geracao_nova_2026-10). Implantes desenhados genéricos, sem modelo comercial; nenhum exame de imagem simulado.",
+   "episodios": [
+    {
+     "id": "cf_eixo_perna",
+     "hash_roteiro": "sha256:76c1b9098f4c80e02d3e25a8c138917b3de774d955b805063873a0cbf2ea15ce"
+    },
+    {
+     "id": "cf_fixador_circular",
+     "hash_roteiro": "sha256:adfdda9c7672b9e67e1fffaa0ff753500fc6710ad4274e6d850fb47b39d7c84a"
+    },
+    {
+     "id": "cf_gesso_placa",
+     "hash_roteiro": "sha256:68ef64133a52e2a6f620d426fd75499c030e7a832cb42d910b9a22c9c2e980f2"
+    },
+    {
+     "id": "cf_pseudartrose",
+     "hash_roteiro": "sha256:27ceac3ff24f182753fcba27175fc1fa8d8fe3be75dcabd6b6591c8b2a1d7b8e"
+    },
+    {
+     "id": "cf_pe_torto",
+     "hash_roteiro": "sha256:95e145db0b7c9db939a41bc2a3db486420e331ad932a8d65e57f7b015bae84d3"
+    },
+    {
+     "id": "cf_escoliose",
+     "hash_roteiro": "sha256:a1e70163ca5b8fc0194f3ae4dda11f9e5469fbdb572c194b6e2446b64a02fd6c"
+    },
+    {
+     "id": "cf_quadril_bebe",
+     "hash_roteiro": "sha256:ffdf807ffbbd432d63d8e0432fd601ff8f68ba1a98f6fc16a36be76077c5f88b"
+    },
+    {
+     "id": "cf_placa_crescimento",
+     "hash_roteiro": "sha256:14cdaf4c0ea0a3cd6c3861ea297e5985f39412edcd5c4604ac805b45df72c91c"
+    }
+   ]
   }
  ]
 }

@@ -512,4 +512,421 @@ EPISODIOS_ENTRETENIMENTO = [
             "ajudam: o celular mostra o que a criança nem sempre repete no consultório."
         ),
     },
+    # ------------------------------------------------------------ lote 3 — 19/10/2026 (só COMO FUNCIONA)
+    # "você precisa de produzir mais conteudos como o de alongamento para poder deixar essa serie de
+    # responder vez ou outra somente" (Rafael, 19/10). Fatos SÓ de fonte publicada ou de lote aprovado
+    # (lab/lote3/fontes.json; o lote LEGADO-PRE-GATE pendente de ratificação não vale): 152 fontes
+    # conferidas literalmente. Roteirista + verificador adversarial (workflow lote-3-como-funciona) e
+    # cena construída, revisada por revisor adversarial e corrigida (cenas-lote3-como-funciona).
+    {
+        "id": "cf_eixo_perna",
+        "formato": "como_funciona",
+        "serie": "Como funciona",
+        "familia": "reconstrucao",
+        "cena": "cf_eixo_perna",
+        "gancho": ["TODA PERNA TEM", "UMA LINHA"],
+        "tela": [
+            "LINHA INVISÍVEL",
+            "O EIXO",
+            "PESO",
+            "REPARTE O PESO",
+            "CARGA DEMAIS",
+            "UM LADO",
+            "ANTES DA HORA",
+            "NO ADULTO",
+            "NÃO SE AJEITA SOZINHA",
+            "OSTEOTOMIA",
+            "OSTEO = OSSO",
+            "TOMIA = CORTE",
+            "CORTE PLANEJADO",
+            "MEDE O EIXO",
+            "ONDE",
+            "QUANTO",
+            "EIXO CERTO",
+            "FIXA",
+            "JÁ ALINHADO",
+            "REORGANIZAR",
+            "A CARGA",
+            "FUNÇÃO, NUNCA ESTÉTICA",
+        ],
+        "roteiro": [
+            "Toda perna tem uma linha invisível: o eixo.",
+            "Perna alinhada reparte o peso no joelho.",
+            "Torta, joga carga demais num lado. E pode desgastar antes da hora.",
+            "No adulto, quando entorta, não se ajeita sozinha.",
+            "O caminho costuma ser a osteotomia: um corte planejado no osso.",
+            "Antes, mede o eixo e define onde e quanto corrigir.",
+            "Corta, reposiciona no eixo certo e fixa, pra cicatrizar já alinhado. É reorganizar a carga.",
+            "Manda pra quem convive com uma perna torta.",
+        ],
+        "cta": "Manda pra quem convive com uma perna torta.",
+        "legenda": (
+            "Toda perna tem um eixo, e o alinhamento das pernas distribui a carga na cartilagem. Na "
+            "deformidade angular, o eixo do osso está desviado: um osso fora de eixo joga carga demais num "
+            "canto da articulação, pode sobrecarregar um lado e acelerar o desgaste. No adulto, a perna "
+            "torta não se ajeita sozinha e costuma vir de uma fratura que colou torta (a consolidação "
+            "viciosa, quando o osso cola, mas torto), de sequelas antigas ou de desgaste. O caminho costuma "
+            "ser a osteotomia (osteo = osso, tomia = corte), um corte planejado no osso: antes, mede-se o "
+            "eixo e define-se o ponto da osteotomia; depois, o osso é cortado, reposicionado no eixo certo e "
+            "fixado para cicatrizar alinhado, e às vezes a correção é gradual, com um aparelho. O objetivo é "
+            "um membro alinhado e funcional: função, nunca estética."
+            "\n\n"
+            "Perna que muda de forma, ou desconforto ao apoiar que não melhora: procure avaliação."
+        ),
+    },
+    {
+        "id": "cf_fixador_circular",
+        "formato": "como_funciona",
+        "serie": "Como funciona",
+        "familia": "reconstrucao",
+        "cena": "cf_fixador_circular",
+        "gancho": ["QUE GAIOLA É ESSA", "NA PERNA?"],
+        "tela": [
+            "FIXADOR CIRCULAR",
+            "DE ILIZAROV",
+            "PINOS",
+            "ATÉ O OSSO",
+            "ANÉIS",
+            "SEGURA O OSSO",
+            "POR FORA DA PELE",
+            "AOS POUQUINHOS",
+            "SEM REABRIR A CADA ETAPA",
+            "CORTE ÓSSEO",
+            "PLANEJADO",
+            "ENDIREITA",
+            "ALONGA",
+            "ALONGAMENTO ÓSSEO",
+            "PUXA UM PEDAÇO DE OSSO",
+            "TRANSPORTE ÓSSEO",
+            "FALHA",
+            "O RITMO É DA EQUIPE",
+            "NADA DE APERTAR PEÇA",
+            "POR CONTA PRÓPRIA",
+            "COSTUMA SAIR",
+            "QUANDO O OSSO CUMPRE SEU PAPEL",
+        ],
+        "roteiro": [
+            "Essa gaiola tem nome: fixador circular, de Ilizarov.",
+            "Pinos atravessam até o osso, presos nos anéis.",
+            "Ele segura o osso por fora da pele.",
+            "Como fica por fora, ajusta aos pouquinhos, sem reabrir a cada etapa.",
+            "Endireita, alonga e até puxa um pedaço de osso pra dentro de uma falha.",
+            "O ritmo é da equipe: nada de apertar peça por conta própria.",
+            "O aparelho costuma sair quando o osso cumpre seu papel.",
+            "Manda pra quem se assustou com esse aparelho.",
+        ],
+        "cta": "Manda pra quem se assustou com esse aparelho.",
+        "legenda": (
+            "Aquela “gaiola” de metal na perna é o fixador circular tipo Ilizarov, um fixador externo: pinos "
+            "que atravessam até o osso, presos nos anéis, seguram o osso por fora da pele enquanto ele cura "
+            "ou se reconstrói. Por ficar por fora, dá para ajustar aos poucos, sem reabrir a cada etapa: a "
+            "partir de um corte ósseo planejado, ele permite corrigir o ângulo do osso, fazer o alongamento "
+            "ósseo e até o transporte ósseo, puxando um segmento do próprio osso para dentro de uma falha. "
+            "Ele trata fraturas complexas, deformidades e a discrepância de membro (uma perna mais curta que "
+            "a outra), sempre para devolver função, nunca por estética. O ajuste segue um ritmo programado, "
+            "orientado pela equipe: não aperte nem mexa nas peças por conta própria e, se um pino parecer "
+            "frouxo, comunique logo a equipe. Nos pinos, o cuidado é diário: reação leve na pele é comum, "
+            "mas pus, mau cheiro, vermelhidão que cresce ou dor nova pedem que você avise cedo a equipe; com "
+            "febre, pronto-socorro. É uma ferramenta precisa e temporária: costuma sair quando o osso cumpre "
+            "seu papel."
+        ),
+    },
+    {
+        "id": "cf_gesso_placa",
+        "formato": "como_funciona",
+        "serie": "Como funciona",
+        "familia": "reconstrucao",
+        "cena": "cf_gesso_placa",
+        "gancho": ["GESSO, PLACA", "OU HASTE?"],
+        "tela": [
+            "SE MEXE DEMAIS, NÃO COLA",
+            "QUEM SEGURA?",
+            "?",
+            "GESSO",
+            "IMOBILIZA",
+            "PLACA E PARAFUSOS",
+            "HASTE",
+            "POR DENTRO DO OSSO",
+            "FIXADOR",
+            "PINOS ATÉ O OSSO",
+            "POR FORA",
+            "QUEM DECIDE É O CASO",
+            "COLOU?",
+            "TIRAR A PLACA?",
+            "NEM SEMPRE",
+            "a decisão é do cirurgião",
+        ],
+        "roteiro": [
+            "Osso quebrado só cola firme se ficar estável. Se mexe demais, não cola.",
+            "Então alguém segura o osso enquanto cicatriza.",
+            "Pode ser o gesso, que imobiliza. Ou placa e parafusos.",
+            "Ou uma haste, por dentro do osso.",
+            "Ou o fixador: pinos atravessam até o osso, presos numa estrutura por fora.",
+            "Qual deles? Quem decide é o caso, não a moda.",
+            "Colou? Tirar a placa nem sempre é necessário.",
+            "Manda pra quem tá com gesso, placa, haste ou fixador.",
+        ],
+        "cta": "Manda pra quem tá com gesso, placa, haste ou fixador.",
+        "legenda": (
+            "Quem segura o osso quebrado enquanto ele cicatriza? A consolidação óssea precisa de "
+            "estabilidade (osso que se mexe demais não cola), e por isso existem o gesso, que imobiliza, e "
+            "as placas, hastes e fixadores: a haste fica por dentro do osso, e no fixador externo os pinos "
+            "vão até o osso, presos numa estrutura por fora da pele. A escolha não é preferência: quem "
+            "decide é o caso. Depois que o osso colou, a retirada da placa e dos parafusos (o material de "
+            "síntese) nem sempre é necessária; quando indicada, tem um tempo próprio, e a decisão é do "
+            "cirurgião que acompanha o caso, com apoio das radiografias. Dor intensa nova, febre, inchaço "
+            "súbito ou membro que parece estar em ângulo diferente: pronto-socorro e avise a equipe, sem "
+            "esperar a consulta. Com gesso, dedos roxos, pálidos ou frios, formigamento, inchaço forte ou "
+            "dor que cresce apesar do remédio também não esperam: pronto-socorro na hora, avisando a equipe "
+            "no caminho."
+        ),
+    },
+    {
+        "id": "cf_pseudartrose",
+        "formato": "como_funciona",
+        "serie": "Como funciona",
+        "familia": "reconstrucao",
+        "cena": "cf_pseudartrose",
+        "gancho": ["CIGARRO ATRASA", "O OSSO A COLAR?"],
+        "tela": [
+            "CIGARRO",
+            "ATRASA",
+            "TRIPÉ",
+            "FIRMEZA",
+            "SANGUE CHEGANDO",
+            "NENHUMA INFECÇÃO",
+            "NICOTINA",
+            "APERTA OS VASOS",
+            "MENOS SANGUE E OXIGÊNIO",
+            "CURA LENTA OU NENHUMA",
+            "A PONTE NÃO FECHA",
+            "PONTO QUE MEXE",
+            "FALSA JUNTA",
+            "PSEUDARTROSE",
+            "a fratura que não cola",
+            "RISCO MAIOR",
+            "ESTABILIZAR MELHOR",
+            "ESTIMULAR O OSSO",
+            "CASO A CASO",
+            "PARAR DE FUMAR",
+            "FAZ DIFERENÇA",
+        ],
+        "roteiro": [
+            "Cigarro atrasa o osso a colar? Atrasa.",
+            "Pra colar, precisa de um tripé: firmeza, sangue chegando e nenhuma infecção.",
+            "A nicotina aperta os vasos: chega menos sangue e oxigênio.",
+            "Pouco sangue, cura lenta ou nenhuma.",
+            "Às vezes, a ponte não fecha: fica um ponto que mexe. Uma falsa junta.",
+            "É a pseudartrose. Quem fuma tem risco maior.",
+            "Tem caminho: estabilizar melhor, estimular o osso. E parar de fumar faz diferença.",
+            "Manda pra quem fuma e tá esperando o osso colar.",
+        ],
+        "cta": "Manda pra quem fuma e tá esperando o osso colar.",
+        "legenda": (
+            "Cigarro atrasa o osso a colar, sim: o tabagismo está entre os fatores que retardam a "
+            "consolidação óssea. Para colar, o osso precisa de um tripé: estabilidade, sangue chegando e "
+            "nenhuma infecção. A nicotina aperta os vasos e reduz o oxigênio e o sangue que chegam ao osso. "
+            "Quando a consolidação falha, vira pseudartrose, a fratura que não cola: o osso fica com "
+            "mobilidade onde deveria estar firme, uma 'falsa junta', e quem fuma tem risco maior. Tem "
+            "caminho, sempre caso a caso: estabilizar melhor, estimular o osso e, às vezes, refazer o "
+            "trecho; parar de fumar durante a recuperação também faz diferença, e vale conversar com a sua "
+            "equipe. Dor que persiste no local da fratura meses depois, ou a sensação de que a perna não "
+            "sustenta: leve para avaliação com quem trata reconstrução óssea."
+        ),
+    },
+    {
+        "id": "cf_pe_torto",
+        "formato": "como_funciona",
+        "serie": "Como funciona",
+        "familia": "pediatria",
+        "cena": "cf_pe_torto",
+        "gancho": ["PÉ TORTO SE", "CORRIGE COM GESSO?"],
+        "tela": [
+            "PÉ TORTO CONGÊNITO",
+            "PRA BAIXO",
+            "PRA DENTRO",
+            "É COMUM",
+            "NÃO É CULPA",
+            "GESSOS",
+            "aos poucos",
+            "MANIPULAÇÃO SUAVE",
+            "TROCA O GESSO",
+            "GESSO APÓS GESSO",
+            "COMEÇAR CEDO",
+            "FLEXIBILIDADE DO BEBÊ",
+            "ÓRTESE",
+            "pra manter",
+            "ACOMPANHAMENTO",
+            "no crescimento",
+        ],
+        "roteiro": [
+            "O pé torto já nasce virado: pra baixo e pra dentro.",
+            "É comum, e não é culpa de nada na gravidez.",
+            "Quem corrige? Gessos, aos poucos, começando nas primeiras semanas de vida.",
+            "Uma manipulação suave, e o gesso. Troca o gesso, e o pé corrige mais um pouco.",
+            "Gesso após gesso. Começar cedo aproveita a flexibilidade do bebê.",
+            "Depois, uma órtese pra manter. E o acompanhamento segue no crescimento.",
+            "Manda pra quem recebeu esse diagnóstico.",
+        ],
+        "cta": "Manda pra quem recebeu esse diagnóstico.",
+        "legenda": (
+            "O pé torto congênito (equinovaro) já nasce com o pé virado para baixo e para dentro. É comum e "
+            "não tem relação com algo feito na gestação. O tratamento começa nas primeiras semanas de vida, "
+            "com manipulação suave e gessos seriados (método de Ponseti): trocas de gesso que corrigem o pé "
+            "aos poucos, em etapas. Começar cedo aproveita a flexibilidade do bebê; depois vem uma órtese de "
+            "manutenção, e o acompanhamento segue no crescimento. Com o gesso, dedos roxos, pálidos ou "
+            "frios, inchaço forte ou a criança muito agitada e chorando sem parar: isso não espera. "
+            "Pronto-socorro na hora, avisando a equipe no caminho."
+        ),
+    },
+    {
+        "id": "cf_escoliose",
+        "formato": "como_funciona",
+        "serie": "Como funciona",
+        "familia": "pediatria",
+        "cena": "cf_escoliose",
+        "gancho": ["A COLUNA ENTORTA", "E NÃO DÓI?"],
+        "tela": [
+            "ESCOLIOSE",
+            "COLUNA",
+            "COSTUMA NÃO DOER",
+            "NO COMEÇO",
+            "O SINAL ESTÁ NAS COSTAS",
+            "CURVA PRO LADO",
+            "E GIRA JUNTO",
+            "?",
+            "NÃO HÁ PROVA",
+            "DE QUE CAUSE ESCOLIOSE",
+            "O TESTE",
+            "PÉS JUNTOS",
+            "JOELHOS ESTICADOS",
+            "TRONCO INCLINADO À FRENTE",
+            "BRAÇOS SOLTOS",
+            "OLHE AS COSTAS POR TRÁS",
+            "UM LADO MAIS ALTO",
+            "ROTAÇÃO DA COLUNA",
+            "SINAL, NÃO DIAGNÓSTICO",
+            "LEVE PARA AVALIAÇÃO",
+            "COM O ORTOPEDISTA",
+            "NO ESTIRÃO",
+            "PODE MUDAR MAIS RÁPIDO",
+        ],
+        "roteiro": [
+            "A escoliose costuma não doer no começo. O sinal está nas costas.",
+            "A coluna faz uma curva pro lado. E gira junto.",
+            "Mochila? Não há prova de que cause escoliose.",
+            "O teste: pés juntos, joelhos esticados, tronco inclinado à frente.",
+            "Olhe as costas por trás. Um lado mais alto é a rotação da coluna aparecendo.",
+            "Sinal, não diagnóstico: leve para avaliação com o ortopedista.",
+            "No estirão, a curva pode mudar mais rápido.",
+            "Manda pra quem tem filho no estirão.",
+        ],
+        "cta": "Manda pra quem tem filho no estirão.",
+        "legenda": (
+            "A escoliose costuma não doer no começo, por isso o sinal é visual: é um desvio em curva da "
+            "coluna, visto por trás, e a coluna gira junto. O teste das costas: a criança fica de pé, pés "
+            "juntos, e inclina o tronco para a frente com os braços soltos e os joelhos esticados; você olha "
+            "as costas por trás. Um lado mais alto que o outro é a rotação da coluna aparecendo, e é sinal, "
+            "não diagnóstico. Com o sinal presente, ou na dúvida, leve para avaliação: quem confirma, decide "
+            "se pede exame e define a conduta é o ortopedista. No estirão de crescimento, a curva da "
+            "escoliose pode mudar mais rápido; em casa, olhe as costas de tempos em tempos. Quanto à "
+            "mochila, o peso exagerado causa, sim, dor nas costas e ombros, mas não há prova de que ela "
+            "cause escoliose ou deformidade permanente."
+        ),
+    },
+    {
+        "id": "cf_quadril_bebe",
+        "formato": "como_funciona",
+        "serie": "Como funciona",
+        "familia": "pediatria",
+        "cena": "cf_quadril_bebe",
+        "gancho": ["O TESTE DO PEZINHO", "NÃO DETECTA ISSO."],
+        "tela": [
+            "ENCAIXE",
+            "DISPLASIA",
+            "CABEÇA DO FÊMUR",
+            "NÃO ENCAIXA BEM",
+            "TESTE DO PEZINHO",
+            "NÃO DETECTA",
+            "EXAME DO BEBÊ",
+            "ÀS VEZES, COM ULTRASSOM",
+            "NA TROCA DE FRALDA",
+            "DOBRINHAS DA COXA DIFERENTES",
+            "PERNA PARECENDO MAIS CURTA",
+            "UM LADO QUE ABRE MENOS",
+            "NA DÚVIDA",
+            "ORTOPEDISTA PEDIÁTRICO",
+            "ACHADO CEDO",
+            "SUSPENSÓRIO DE PAVLIK",
+            "REPOSICIONA O QUADRIL",
+            "AO LONGO DE SEMANAS",
+            "com acompanhamento de perto",
+        ],
+        "roteiro": [
+            "O quadril é um encaixe.",
+            "Na displasia, a cabeça do fêmur não encaixa bem, desde cedo.",
+            "O teste do pezinho não detecta.",
+            "A avaliação é no exame do bebê, às vezes com ultrassom.",
+            "Na troca de fralda, repare: dobrinhas da coxa diferentes, perna parecendo mais curta, um lado que abre menos.",
+            "Na dúvida, leve ao ortopedista pediátrico.",
+            "Achado cedo, costuma ser tratado com um suspensório que reposiciona o quadril ao longo de semanas.",
+            "Manda pra quem tem bebê em casa.",
+        ],
+        "cta": "Manda pra quem tem bebê em casa.",
+        "legenda": (
+            "Na displasia do desenvolvimento do quadril, a cabeça do fêmur não se encaixa bem desde cedo, e "
+            "o teste do pezinho não detecta isso. A avaliação é clínica e, às vezes, com ultrassom: por isso "
+            "o exame do bebê pelo ortopedista faz diferença. Na troca de fralda, observe assimetria nas "
+            "pregas (dobrinhas) da coxa, uma perna parecendo mais curta, um lado do quadril que abre menos "
+            "ou um clique no quadril. Identificar nos primeiros meses costuma tornar o tratamento mais "
+            "simples: achado cedo, costuma ser tratado com o suspensório de Pavlik, um aparelho que "
+            "reposiciona o quadril ao longo de semanas, com acompanhamento de perto. Na dúvida, leve ao "
+            "ortopedista pediátrico."
+        ),
+    },
+    {
+        "id": "cf_placa_crescimento",
+        "formato": "como_funciona",
+        "serie": "Como funciona",
+        "familia": "pediatria",
+        "cena": "cf_placa_crescimento",
+        "gancho": ["ONDE O OSSO", "DA CRIANÇA CRESCE?"],
+        "tela": [
+            "?",
+            "ÁREA DE CARTILAGEM",
+            "PLACA DE CRESCIMENTO",
+            "fise",
+            "MAIS FRÁGIL",
+            "OSSO JÁ FORMADO",
+            "FRATURA",
+            "ACIDENTE GRAVE",
+            "FIM DO CRESCIMENTO",
+            "DO LADO BOM",
+        ],
+        "roteiro": [
+            "Onde o osso da criança cresce? Numa área de cartilagem, a placa de crescimento.",
+            "É por ali que o osso aumenta.",
+            "Só que ela é mais frágil que o osso já formado.",
+            "Fratura ali pede acompanhamento mais cuidadoso, pro osso crescer alinhado.",
+            "Num acidente grave, lesão nessa cartilagem pode deixar a perna mais curta.",
+            "Por isso: acompanhar até o fim do crescimento.",
+            "Do lado bom: osso de criança costuma colar mais rápido.",
+            "Manda pra quem tem criança ativa.",
+        ],
+        "cta": "Manda pra quem tem criança ativa.",
+        "legenda": (
+            "O osso da criança cresce pela placa de crescimento (fise), uma área de cartilagem por onde o "
+            "osso aumenta, mais frágil que o osso já formado. Por isso, fraturas infantis têm avaliação "
+            "própria na ortopedia pediátrica: quando a fratura envolve a placa, o acompanhamento é mais "
+            "cuidadoso para o osso crescer alinhado. Depois de um acidente grave, a lesão da cartilagem de "
+            "crescimento em quem ainda cresce pode levar a uma discrepância de membro (perna mais curta), e "
+            "por isso fraturas importantes pedem acompanhamento até o fim do crescimento. Do lado bom, o "
+            "osso da criança costuma consolidar mais rápido que no adulto."
+            "\n\n"
+            "Na criança, o que parece “só torção” às vezes é uma fratura que não aparece fácil; dor "
+            "exatamente sobre o osso, não apoiar o pé ou inchaço importante: avalie, pode precisar de "
+            "imagem. Deformidade visível, osso exposto, dormência ou pé/mão muito pálido: emergência, vá ao "
+            "pronto-socorro."
+        ),
+    },
 ]
