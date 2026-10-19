@@ -227,6 +227,16 @@ def normalizar(caption, formato, item_id="", fam=None, motif_family=None):
     return saida
 
 
+_RE_ENVIO = re.compile(r"^(envia|manda)\s+(pra|para)\s+(quem|a|o|as|os|um|uma|alguém|aquele|aquela|seu|sua)\b", re.I)
+_RE_CONTATO = re.compile(r"\b(direct|dm|inbox|mensagem|agend\w*|coment\w*|consulta\w*|whats\w*|link|bio)\b", re.I)
+
+
+def cta_de_envio(cta):
+    """CTA de reel = pedido de ENVIO a alguém, nunca de contato/agenda/comentário."""
+    c = cta.strip()
+    return bool(_RE_ENVIO.match(c)) and not _RE_CONTATO.search(c)
+
+
 def validar(caption, formato):
     """Lista de violações (vazia = ok). Usada por normalizar() e por checar_legenda.py."""
     p = []
@@ -243,8 +253,13 @@ def validar(caption, formato):
     ctas = [l for l in caption.split("\n") if _RE_CTA_CORPO.match(l.strip())]
     if len(ctas) != 1:
         p.append(f"{len(ctas)} CTA(s) — exigida exatamente 1")
-    elif formato == "reel" and not ctas[0].strip().lower().startswith("envia"):
-        p.append("CTA de reel tem de ser ENVIAR")
+    elif formato == "reel" and not cta_de_envio(ctas[0]):
+        # "Manda pra quem..." também é pedido de ENVIO (19/10/2026): os vídeos da geração nova
+        # falam "Manda" e a legenda repete a CTA do vídeo. Antes, a variante "Manda para quem está
+        # na mesma fase." de CTAS (13/09) quebraria normalizar() no primeiro reel que a sorteasse.
+        # Mas o verbo sozinho não basta (auditoria 19/10): "Manda um direct pra agendar" passava.
+        # Confere o DESTINO (pra quem / para um... ) e recusa contato, agenda e comentário.
+        p.append("CTA de reel tem de pedir ENVIO a alguém (Envia/Manda pra quem…), sem contato")
     elif formato == "post" and not ctas[0].strip().lower().startswith("salva"):
         p.append("CTA de carrossel tem de ser SALVAR")
     mencoes = [m for m in re.findall(r"@[a-z0-9_.]+", caption.lower()) if m != HANDLE_PROPRIO]

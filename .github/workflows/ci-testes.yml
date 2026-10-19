@@ -58,3 +58,13 @@ jobs:
         run: |
           python checar_entretenimento.py --auto-teste
           python checar_entretenimento.py
+      - name: "Agenda = robo (auditoria 19/10/2026): a pagina projeta com a MESMA regra do publish"
+        # regra_reels.py e' a fonte unica da cota; o teste confere os dias, que o publish usa a regra
+        # unica, que o publish.yml nao sobrescreve a cota por variavel e casos calculados a mao.
+        run: python publish_agenda.py
+      - name: "Guarda de voz (regra do piloto, 30/08/2026): auto-teste + voz vigente = aprovada"
+        # Antes so' rodava na hora do render e o auto-teste em lugar nenhum: o controle 3 virou no-op
+        # em 18/10 e so' foi notado a mao. Aqui roda no push e no cron diario.
+        run: |
+          python checar_voz.py --auto-teste
+          python checar_voz.py

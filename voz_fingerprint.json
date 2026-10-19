@@ -1,7 +1,10 @@
 {
-  "fingerprint": "54acedb09bd2fb8cc94e30f3a66f516fa8cd71883f32f745cfc6ed508d087bdb",
-  "evidencia": "Pilotos A ('Cortar o osso de proposito?', motor animado, Antonio +10%) e B ('Se o seu fixador pudesse responder', Antonio +8%) enviados ao Rafael em 18/10/2026; resposta no chat auditoria-instagram-v1 em 18/10/2026 ~23:20 BRT: 'pode seguir com tudo'. Este registro cobre: render-reel-voz.yml +8%/+0Hz E a voz do motor novo animado/voz.py (RITMO_COMO_FUNCIONA +10%, RITMO_CONVERSA +8%, TOM +0Hz) — exatamente a dos pilotos aprovados.",
+  "fingerprint": "4b88a330dd8142c425aead76b06d9600bc0a7df7c22f2650a79111aa4b475742",
+  "evidencia": "Mesma voz do piloto aprovado pelo Rafael em 18/10/2026 ('pode seguir com tudo', pilotos A e B): Antonio, +8% conversa / +10% como funciona, tom +0Hz, VOICE_CHAIN identica. O guarda ANTIGO (54acedb09bd2fb8c) segue dando ok sobre os arquivos atuais. O hash mudou em 19/10 so porque o fingerprint foi AMPLIADO (auditoria adversarial): agora cobre o corpo de _tts() e narrar() e as chamadas narrar(...) dos modulos. Em narrar() entrou a conferencia palavra a palavra (falha alto se a voz nao bater com o texto) e a chave de cache com a masterizacao; o audio gerado e a mesma chamada ao edge-tts com a mesma cadeia de ffmpeg.",
   "partes_rotulos": [
+    "animado_chamadas",
+    "animado_narrar",
+    "animado_tts",
     "animado_voz",
     "engine_default",
     "leads",

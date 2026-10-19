@@ -21,6 +21,7 @@ Uso:
   python checar_voz.py --registrar --evidencia "..."   # registra fingerprint novo (pós-piloto)
 """
 import argparse
+import os
 import hashlib
 import io
 import json
@@ -44,13 +45,25 @@ def _extrai(texto, padrao, rotulo, obrigatorio=True):
     return m.group(0)
 
 
-def fingerprint(gerar_path=None, wf_path=None, animado_path=None):
+def _chamadas_narrar(pasta):
+    """Toda chamada narrar(...) do motor novo, por arquivo: é ali que o RITMO é passado. Um
+    `voz.narrar(txt, "+25%", tmp)` num chamador trocava o ritmo sem tocar em voz.py."""
+    out = []
+    for f in sorted(os.listdir(pasta)):
+        if f.endswith(".py") and f != "voz.py":
+            t = (Path(pasta) / f).read_text(encoding="utf-8")
+            out += [f"{f}: {c}" for c in re.findall(r"narrar\([^)\n]*\)", t)]
+    return "\n".join(out)
+
+
+def fingerprint(gerar_path=None, wf_path=None, animado_path=None, animado_dir=None):
     g = (gerar_path or ROOT / "gerar_reel_voz.py").read_text(encoding="utf-8")
     w = (wf_path or ROOT / ".github" / "workflows" / "render-reel-voz.yml").read_text(encoding="utf-8")
     # 18/10/2026: o motor NOVO (animado/, formatos CONVERSA e COMO FUNCIONA) tem a sua própria
     # voz — mesma Antonio, ritmo próprio. A regra do piloto vale para ela também: sem isto,
     # o ritmo da animação poderia mudar sem passar por ninguém.
-    a = (animado_path or ROOT / "animado" / "voz.py").read_text(encoding="utf-8")
+    pasta = Path(animado_dir) if animado_dir else ROOT / "animado"
+    a = (animado_path or pasta / "voz.py").read_text(encoding="utf-8")
     partes = {
         "engine_default": _extrai(g, r'ENGINE\s*=\s*os\.environ\.get\("VOZ_ENGINE"[^\n]*', "ENGINE"),
         "voz_default": _extrai(g, r'EDGE_VOICE\s*=\s*os\.environ\.get\("EDGE_VOICE"[^\n]*', "EDGE_VOICE"),
@@ -65,6 +78,12 @@ def fingerprint(gerar_path=None, wf_path=None, animado_path=None):
                         + _extrai(a, r'RITMO_CONVERSA\s*=\s*"[^"\n]*"', "animado RITMO_CONVERSA")
                         + _extrai(a, r'TOM\s*=\s*"[^"\n]*"', "animado TOM")
                         + _extrai(a, r'VOICE_CHAIN\s*=\s*\(.*?\)\n', "animado VOICE_CHAIN")),
+        # auditoria 19/10: as constantes sozinhas não bastavam — trocar a voz DENTRO de _tts(),
+        # fixar rate/pitch, tirar o "-af VOICE_CHAIN" de narrar() ou passar outro ritmo num
+        # chamador davam o MESMO fingerprint. Agora entram os corpos e as chamadas.
+        "animado_tts": _extrai(a, r'async def _tts\(.*?\n(?=\n\S|\Z)', "animado _tts()"),
+        "animado_narrar": _extrai(a, r'def narrar\(.*?\n(?=\n\S|\Z)', "animado narrar()"),
+        "animado_chamadas": _chamadas_narrar(pasta),
     }
     blob = json.dumps(partes, ensure_ascii=False, sort_keys=True)
     return hashlib.sha256(blob.encode("utf-8")).hexdigest(), partes
@@ -123,6 +142,25 @@ def main():
             r4 = fp4 != fp
             print(f"[{'ok' if r4 else 'FALHOU'}] positivo 4: mudar o ritmo da voz do motor novo muda o fingerprint")
             ok &= r4
+            # controles POSITIVOS 5-8 (auditoria 19/10): as quatro mutações que passavam batido
+            import shutil
+            mut = {
+                "5: voz trocada dentro de _tts()": ("voz.py", "edge_tts.Communicate(texto, VOZ,",
+                                                    'edge_tts.Communicate(texto, "pt-BR-FranciscaNeural",'),
+                "6: rate/pitch fixos em _tts()": ("voz.py", "rate=rate, pitch=pitch", 'rate="+40%", pitch="-12Hz"'),
+                "7: masterização tirada de narrar()": ("voz.py", '"-af", VOICE_CHAIN, ', ""),
+                "8: chamador passa outro ritmo": ("conversa.py", "voz.RITMO_CONVERSA", '"+25%"'),
+            }
+            for nome, (arq, de, para) in mut.items():
+                d = td / f"anim_{nome[0]}"
+                shutil.copytree(ROOT / "animado", d, ignore=shutil.ignore_patterns("__pycache__"))
+                t = (d / arq).read_text(encoding="utf-8")
+                assert de in t, f"controle {nome}: trecho {de!r} sumiu de {arq} — atualize o controle"
+                (d / arq).write_text(t.replace(de, para, 1), encoding="utf-8")
+                fpm, _ = fingerprint(animado_dir=d)
+                r = fpm != fp
+                print(f"[{'ok' if r else 'FALHOU'}] positivo {nome} muda o fingerprint")
+                ok &= r
             # controle NEGATIVO: comentário fora dos blocos de voz NÃO muda
             (td / "g4.py").write_text(g + "\n# comentário inócuo\n", encoding="utf-8")
             fp4, _ = fingerprint(gerar_path=td / "g4.py")

@@ -114,14 +114,16 @@ ALARME_N_PECAS  = int(os.environ.get("ALARME_N_PECAS", "6") or 6)
 # REEL com voz sintetica: imagem e carrossel sao isentos pela propria Meta. Desliga-se por
 # variavel de repositorio ROTULO_IA=off (decisao humana declarada, nunca default).
 ROTULO_IA = os.environ.get("ROTULO_IA", "on").strip().lower() not in ("off", "0", "false", "nao", "no")
-MARCAS_VOZ_IA = ("voz digital (ia)",)          # a legenda de todo reel narrado declara isto (CFM 2.454)
+MARCAS_VOZ_IA = ("voz digital (ia)",)          # declaracao da legenda (CFM 2.454); o portao exige voz_ia explicito
 # COTA DE LAMINAS (decisao do Rafael, 18/10/2026: "desacelerar as laminas antigas"). O reel em
 # lamina de texto lida em voz alta virou "mural informativo": 36 pecas em 30 dias, ZERO envios.
 # Os formatos novos (item["formato"] = "conversa" | "como_funciona") entram sem cota; lamina
 # (item sem "formato") sai no maximo LAMINAS_POR_SEMANA vezes por semana (segunda a domingo,
 # horario de Brasilia). Dia de reel sem peca permitida = sem reel nesse dia (o motor NAO para:
-# regra de 27/09 — nunca desligar, sempre reativar). -1 = sem cota.
-LAMINAS_POR_SEMANA = int(os.environ.get("LAMINAS_POR_SEMANA", "1") or 1)
+# regra de 27/09 — nunca desligar, sempre reativar). -1 = sem cota. A REGRA mora em regra_reels.py
+# (fonte unica com a agenda do PROGRAMACAO.md — auditoria 19/10); aqui so' o nome de sempre.
+import regra_reels
+LAMINAS_POR_SEMANA = regra_reels.cota_laminas()
 HOST       = f"https://graph.instagram.com/{VER}"
 
 if not IG_USER_ID or not TOKEN:
@@ -389,11 +391,11 @@ _MODO_REEL = None   # "trial" | "fallback_normal" | "normal"
 
 
 def _voz_ia(item):
-    """Reel com voz sintetica? Campo explicito vence; senao, a declaracao na legenda."""
-    if "voz_ia" in item:
-        return bool(item["voz_ia"])
+    """Reel com voz sintetica? Basta UM sinal: `voz_ia` verdadeiro OU a declaracao na legenda.
+    Antes um `voz_ia: false` explicito vencia a marca da legenda e o reel saia sem rotulo; o
+    portao (checar_entretenimento) agora exige os dois coerentes em todo reel pendente."""
     cap = (item.get("caption") or "").lower()
-    return any(m in cap for m in MARCAS_VOZ_IA)
+    return bool(item.get("voz_ia")) or any(m in cap for m in MARCAS_VOZ_IA)
 
 _ROTULO_REEL = None
 def _rotulo_ia(d, item):
@@ -404,38 +406,20 @@ def _rotulo_ia(d, item):
         print("  rotulo de IA: is_ai_generated=true (reel com voz sintetica)", flush=True)
     return d
 
-def _formato(item):
-    return (item.get("formato") or "lamina").strip().lower()
+_formato = regra_reels.formato
+
 
 def _laminas_na_semana(state, reels, agora_brt):
-    """Quantas laminas ja sairam nesta semana (segunda 00:00 BRT ate agora)."""
-    fmt = {r["id"]: _formato(r) for r in reels}
-    ini = (agora_brt - dt.timedelta(days=agora_brt.weekday())).date()
-    n = 0
-    for e in state.get("published", []):
-        if e.get("kind") != "reel" or not e.get("at"):
-            continue
-        try:
-            quando = dt.datetime.fromisoformat(e["at"]).astimezone(BRT).date()
-        except ValueError:
-            continue
-        if quando >= ini and fmt.get(e["id"], "lamina") == "lamina":
-            n += 1
-    return n
+    return regra_reels.laminas_na_semana(state, reels, agora_brt)
+
 
 def proximo_reel(reels, done, state, agora_brt):
-    """Primeiro reel da fila que pode sair hoje: formato novo sempre; lamina so' dentro da cota."""
-    cota_livre = LAMINAS_POR_SEMANA < 0 or _laminas_na_semana(state, reels, agora_brt) < LAMINAS_POR_SEMANA
-    for x in reels:
-        if x["id"] in done:
-            continue
-        if _formato(x) == "lamina" and not cota_livre:
-            continue
-        return x
-    return None
+    return regra_reels.proximo_reel(reels, done, state, agora_brt, cota=LAMINAS_POR_SEMANA)
 
+_FORMATO_REEL = None
 def publish_reel(item):
-    global _MODO_REEL
+    global _MODO_REEL, _FORMATO_REEL
+    _FORMATO_REEL = _formato(item)
     _cfm_guard(item)
     # alt_text NAO e' suportado em reels (so imagens); location_id e collaborators sao suportados.
     base = _rotulo_ia(_collab(_loc({"media_type": "REELS", "video_url": raw_url(item["video"]),
@@ -474,6 +458,10 @@ def log(state, item_id, kind, mid, now):
         print(f"  modo do reel: {_MODO_REEL}", flush=True)
     if kind == "reel" and _ROTULO_REEL is not None:
         reg["rotulo_ia"] = _ROTULO_REEL
+    if kind == "reel" and _FORMATO_REEL:
+        # o formato vai no registro: a cota de laminas conta pelo que SAIU, nao pelo reels.json de
+        # hoje (peca nova retirada da fila depois de publicada passava a contar como lamina)
+        reg["formato"] = _FORMATO_REEL
     state["published"].append(reg)
 def next_item(items, done): return next((x for x in items if x["id"] not in done), None)
 

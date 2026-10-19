@@ -59,10 +59,12 @@ def texto(cv, s, x, y, papel, tam, cor, a=255, centro=True, contorno=0, track=0.
     larg = f.measureText(s) + track * max(0, len(s) - 1)
     x0 = x - larg / 2 if centro else x
     if track:
+        getattr(cv, "registra", lambda _s: None)(s)
+        real = getattr(cv, "real", cv)
         cx = x0
         for ch in s:
-            if contorno: cv.drawString(ch, cx, y, f, paint("#000000", int(a * 0.85), "stroke", contorno))
-            cv.drawString(ch, cx, y, f, paint(cor, a)); cx += f.measureText(ch) + track
+            if contorno: real.drawString(ch, cx, y, f, paint("#000000", int(a * 0.85), "stroke", contorno))
+            real.drawString(ch, cx, y, f, paint(cor, a)); cx += f.measureText(ch) + track
     else:
         if contorno: cv.drawString(s, x0, y, f, paint("#000000", int(a * 0.85), "stroke", contorno))
         cv.drawString(s, x0, y, f, paint(cor, a))
@@ -108,8 +110,31 @@ def cartao_id(cv, a, y=1060):
     texto(cv, DISC, W / 2, y + 130, "reg", 22, "#FFFFFF", int(170 * a))
 
 
-def codificar(quadro_fn, total, wav, mp4):
-    """Renderiza quadro a quadro (quadro_fn(canvas, t)) direto para o ffmpeg, sem PNG em disco."""
+class CanvasRegistrador:
+    """Canvas que anota TODO texto desenhado (drawString) num conjunto. O render compara esse
+    conjunto com o texto aprovado do episódio: rótulo de tela fora do episódio = vídeo recusado
+    (auditoria 19/10: 'DIA 40' e 'RAIO-X CONFIRMA' estavam só no código, fora do hash e do CFM)."""
+    def __init__(self, real, registro):
+        self.real = real; self._registro = registro
+
+    def registra(self, s):
+        self._registro.add(s)
+
+    def drawString(self, s, *a, **k):
+        self._registro.add(s)
+        return self.real.drawString(s, *a, **k)
+
+    def __getattr__(self, nome):
+        return getattr(self.real, nome)
+
+
+REGISTRO_ATIVO = None      # animado.render liga (set) antes de renderizar: anota o texto de TODOS os quadros
+
+
+def codificar(quadro_fn, total, wav, mp4, registro=None):
+    """Renderiza quadro a quadro (quadro_fn(canvas, t)) direto para o ffmpeg, sem PNG em disco.
+    `registro` (set): recebe todo texto desenhado em todos os quadros."""
+    registro = REGISTRO_ATIVO if registro is None else registro
     os.makedirs(os.path.dirname(os.path.abspath(mp4)), exist_ok=True)
     proc = subprocess.Popen([voz.ffmpeg(), "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgba",
                              "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-", "-i", wav,
@@ -118,7 +143,8 @@ def codificar(quadro_fn, total, wav, mp4):
                              "-shortest", "-movflags", "+faststart", mp4], stdin=subprocess.PIPE)
     surf = skia.Surface(W, H); n = int(total * FPS)
     for i in range(n):
-        cv = surf.getCanvas(); cv.clear(C(BG_OUT)); quadro_fn(cv, i / FPS)
+        cv = surf.getCanvas(); cv.clear(C(BG_OUT))
+        quadro_fn(CanvasRegistrador(cv, registro) if registro is not None else cv, i / FPS)
         proc.stdin.write(surf.makeImageSnapshot().toarray(colorType=skia.kRGBA_8888_ColorType).tobytes())
         if i % 150 == 0:
             print(f"  quadro {i}/{n}", flush=True)

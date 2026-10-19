@@ -104,13 +104,18 @@ import publish
 publish.dt = types.SimpleNamespace(datetime=FakeDT, timezone=_dt.timezone,
                                    timedelta=_dt.timedelta)
 publish.time.sleep = lambda *a, **k: None
-publish.main()
+# mesmo veredito do __main__ do publish.py: falha registrada por _falhou = exit 1. Antes o stub
+# descartava o retorno e todo "exit == 0" era cego a falha (auditoria 19/10).
+_falhas = publish.main() or []
+if _falhas:
+    print("::error::FALHAS " + "; ".join(_falhas))
+sys.exit(1 if _falhas else 0)
 '''
 
 
 def preparar(reels=None, publicados=None, last_reel=""):
     tmp = Path(tempfile.mkdtemp(prefix="igtest_"))
-    for f in ["publish.py", "cfm_guardrails.py"]:
+    for f in ["publish.py", "cfm_guardrails.py", "regra_reels.py"]:
         shutil.copy(ROOT / f, tmp / f)
     (tmp / "posts.json").write_text(json.dumps(POSTS, ensure_ascii=False), encoding="utf-8")
     (tmp / "sequences.json").write_text(json.dumps(SEQS, ensure_ascii=False), encoding="utf-8")
@@ -179,15 +184,20 @@ checa("gravou o post que saiu antes da falha", ids(st) == ["t-post-1"], f"public
 checa("nao marcou a sequencia que falhou", "t-seq-1" not in ids(st), "sequencia fora do estado")
 shutil.rmtree(tmp, ignore_errors=True)
 
-print("\nD) REGRESSAO — erro COMUM (HTTP 500) segue tolerado, job continua verde")
+print("\nD) erro COMUM (HTTP 500): NAO e' falha de auth; item que falha sem publicar deixa o job vermelho")
+# Ate 19/10 este cenario afirmava "job verde" porque o stub descartava o retorno de main(); a
+# producao sempre saiu com exit 1 aqui (o __main__ do publish.py), e e' o certo: o cron retenta e
+# o vermelho avisa. O que este cenario protege: NAO tratar como token morto e nao marcar publicado.
 tmp = preparar(); rc, out, st = rodar("erro_comum", tmp)
-checa("exit == 0", rc == 0, f"exit={rc}")
+checa("exit == 1 (falha registrada, nao engolida)", rc == 1, f"exit={rc}")
+checa("nao classificou como token morto", "AUTENTICACAO FALHOU" not in out, "sem alarme de token")
 checa("nada publicado", ids(st) == [], f"publicados={ids(st)}")
 shutil.rmtree(tmp, ignore_errors=True)
 
-print("\nE) RATE LIMIT (OAuthException code 4) NAO e' falha de auth — job verde")
+print("\nE) RATE LIMIT (OAuthException code 4) NAO e' falha de auth; job vermelho, item fica para o proximo cron")
 tmp = preparar(); rc, out, st = rodar("rate", tmp)
-checa("exit == 0", rc == 0, f"exit={rc}")
+checa("exit == 1 (falha registrada; o item fica para o proximo cron)", rc == 1, f"exit={rc}")
+checa("nao classificou como token morto", "AUTENTICACAO FALHOU" not in out, "sem alarme de token")
 checa("nada publicado", ids(st) == [], f"publicados={ids(st)}")
 shutil.rmtree(tmp, ignore_errors=True)
 
@@ -252,6 +262,8 @@ checa("nenhum reel publicado", "t-lamina-1" not in ids(st) and "t-lamina-2" not 
 checa("mensagem de cota (nao 'esgotada')", "cota de 1 lamina" in out and "esgotada" not in out.split("REELS")[-1], "texto certo no log")
 checa("exit == 0", rc == 0, f"exit={rc}")
 checa("last_reel_date NAO avancou", st["last_reel_date"] == "", f"={st['last_reel_date']!r}")
+sem_erro = "::error::" not in out
+checa("sem ::error:: (dia sem reel nao e falha)", sem_erro, "log limpo")
 shutil.rmtree(tmp, ignore_errors=True)
 
 print("\nM) CONTROLE: cota livre (lamina so na semana anterior) -> a lamina da frente sai normalmente")
@@ -262,6 +274,26 @@ checa("exit == 0", rc == 0, f"exit={rc}")
 shutil.rmtree(tmp, ignore_errors=True)
 tmp = preparar(reels=[R_LAMINA, R_CONVERSA], publicados=[LAMINA_SEG]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H, extra={"LAMINAS_POR_SEMANA": "-1"})
 checa("LAMINAS_POR_SEMANA=-1 desliga a cota", "t-lamina-1" in ids(st), f"publicados={ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nN) FORMATO NO REGISTRO (auditoria 19/10): a cota conta pelo que SAIU, nao pelo reels.json de hoje")
+tmp = preparar(reels=[R_CONVERSA, R_LAMINA]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H)
+reg = next((e for e in st["published"] if e["id"] == "t-conversa-1"), {})
+checa("registro do reel grava formato", reg.get("formato") == "conversa", f"registro={reg}")
+shutil.rmtree(tmp, ignore_errors=True)
+CONVERSA_SEG = {"id": "t-conversa-0", "kind": "reel", "media_id": "M9", "at": "2026-07-27T18:30:00+00:00", "formato": "conversa"}
+tmp = preparar(reels=[R_LAMINA], publicados=[CONVERSA_SEG]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H)
+checa("peca nova ja publicada e fora da fila NAO conta como lamina", "t-lamina-1" in ids(st), f"publicados={ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nO) LAMINAS_POR_SEMANA ilegivel/'off' NAO derruba o motor (posts e stories seguem)")
+tmp = preparar(reels=[R_LAMINA, R_CONVERSA], publicados=[LAMINA_SEG]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H, extra={"LAMINAS_POR_SEMANA": "off"})
+checa("'off' = sem cota (a lamina sai)", "t-lamina-1" in ids(st), f"publicados={ids(st)}")
+checa("exit == 0 com 'off'", rc == 0, f"exit={rc}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(); rc, out, st = rodar("ok", tmp, extra={"LAMINAS_POR_SEMANA": "banana"})
+checa("valor ilegivel: motor roda (post e sequencia saem)", len(ids(st)) >= 2 and rc == 0, f"exit={rc} publicados={ids(st)}")
+checa("valor ilegivel: avisa", "LAMINAS_POR_SEMANA='banana'" in out, "warning no log")
 shutil.rmtree(tmp, ignore_errors=True)
 
 print("\nF) CLASSIFICACAO dos erros da Meta (a parte sutil: quase tudo e' OAuthException)")

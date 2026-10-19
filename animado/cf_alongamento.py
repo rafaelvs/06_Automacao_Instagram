@@ -80,7 +80,9 @@ def alinhar(palavras, roteiro):
         alvo = p["w"].lower()
         while j < len(toks) and re.sub(r"[.,:;!?—]", "", toks[j]).lower() != alvo:
             j += 1
-        tok = toks[j] if j < len(toks) else p["w"]
+        if j >= len(toks):                     # palavra da voz sem par no roteiro: dessincronizaria
+            raise SystemExit(f"ERRO: palavra da voz {p['w']!r} não achada no roteiro — legenda sairia torta.")
+        tok = toks[j]
         out.append(dict(p, tok=tok, fim_frase=bool(re.search(r"[.!?:]$", tok)), virg=tok.endswith(",")))
         j += 1
     return out
@@ -101,10 +103,12 @@ def texto(cv, s, x, y, fonte, tam, cor, a=255, centro=True, contorno=0, track=0.
     larg = f.measureText(s) + track * max(0, len(s) - 1)
     x0 = x - larg / 2 if centro else x
     if track:
+        getattr(cv, "registra", lambda _s: None)(s)
+        real = getattr(cv, "real", cv)
         cx = x0
         for ch in s:
-            if contorno: cv.drawString(ch, cx, y, f, paint("#000000", int(a * 0.85), "stroke", contorno))
-            cv.drawString(ch, cx, y, f, paint(cor, a)); cx += f.measureText(ch) + track
+            if contorno: real.drawString(ch, cx, y, f, paint("#000000", int(a * 0.85), "stroke", contorno))
+            real.drawString(ch, cx, y, f, paint(cor, a)); cx += f.measureText(ch) + track
     else:
         if contorno: cv.drawString(s, x0, y, f, paint("#000000", int(a * 0.85), "stroke", contorno))
         cv.drawString(s, x0, y, f, paint(cor, a))
@@ -450,7 +454,7 @@ def montar(pal):
     T["total"] = fim_fala + 2.2
     return T
 
-LAT_DIAS, MM_TOTAL = 5, 35
+LAT_DIAS, MM_TOTAL = 5, 35       # geometria da animação (NÃO vai para a tela: sem fonte no acervo)
 
 def estado(T, t):
     """Quanto o osso já separou (mm) e em que dia do tratamento estamos."""
@@ -578,13 +582,27 @@ def quadro(cv, t, T, blocos, eventos_clique):
         cv.drawRRect(rr, paint("#FFFFFF", int(28 * a0)))
         texto(cv, "COMO FUNCIONA", CX, 190, F_BLACK, 32, OURO, int(255 * a0), track=4)
 
-    # contador de dias e régua
+    # fases do tratamento + régua. Auditoria 19/10: aqui havia um contador "DIA n" que chegava a
+    # "DIA 40" quando o aparelho saía (5 dias de pausa + 35 mm) — a "conta do milímetro" que o próprio
+    # acervo desmente (a consolidação "costuma ser a fase mais longa", on_tres_fases) — e a pausa de
+    # 5 dias não tinha fonte (o acervo diz "alguns dias"). Agora: as 3 fases do acervo, sem número de
+    # dia; a régua continua mostrando o osso se afastando, sem total em milímetros.
     a_ui = prog(t, T["alguns"] - 0.2, T["alguns"] + 0.3) * (1 - prog(t, T["sai"] + 0.6, T["sai"] + 1.1))
     if a_ui > 0:
-        texto(cv, "DIA", 92, 250, F_BLACK, 34, OURO, int(255 * a_ui), centro=False, track=3)
-        texto(cv, f"{max(dia, 1)}", 88, 360, F_BLACK, 116, "#FFFFFF", int(255 * a_ui), centro=False)
-        if t < T["dist_ini"]:
-            texto(cv, "pausa", 94, 410, F_SEMI, 34, "#9CC9FF", int(255 * a_ui), centro=False)
+        fases = (("FASE 1", "PAUSA", "alguns dias", -1e9, T["dist_ini"]),
+                 ("FASE 2", "1 MM", "por dia", T["dist_ini"], T["dist_fim"] + 0.1),
+                 ("FASE 3", "CONSOLIDAÇÃO", "a fase mais longa", T["dist_fim"] + 0.1, 1e9))
+        for cab, grande, sub, t0, t1 in fases:
+            a = a_ui * prog(t, t0, t0 + 0.3) * (1 - prog(t, t1, t1 + 0.3))
+            if a <= 0:
+                continue
+            tam = min(110, 340 * 100 / larg_texto(grande, F_BLACK, 100))
+            larg = max(larg_texto(grande, F_BLACK, tam), larg_texto(sub, F_SEMI, 34))
+            cartao = skia.RRect.MakeRectXY(skia.Rect(66, 208, 66 + larg + 50, 252 + tam * 0.92 + 70), 20, 20)
+            cv.drawRRect(cartao, paint("#0B1824", int(200 * a)))
+            texto(cv, cab, 92, 250, F_BLACK, 34, OURO, int(255 * a), centro=False, track=3)
+            texto(cv, grande, 88, 252 + tam * 0.92, F_BLACK, tam, "#FFFFFF", int(255 * a), centro=False)
+            texto(cv, sub, 94, 252 + tam * 0.92 + 48, F_SEMI, 34, "#9CC9FF", int(255 * a), centro=False)
         x = 968; ytop, ybot = 300, 1060
         cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(x - 16, ytop, x + 16, ybot), 16, 16), paint("#FFFFFF", int(40 * a_ui)))
         alt = (ybot - ytop - 8) * (mm / MM_TOTAL)
@@ -594,7 +612,6 @@ def quadro(cv, t, T, blocos, eventos_clique):
         for k in range(0, MM_TOTAL + 1, 5):
             yy = ybot - 4 - (ybot - ytop - 8) * k / MM_TOTAL
             cv.drawLine(x - 30, yy, x - 20, yy, paint("#FFFFFF", int(120 * a_ui), "stroke", 2))
-        texto(cv, f"+{int(round(mm))} mm", x - 4, ybot - 4 - alt - 22, F_BLACK, 40, OURO, int(255 * a_ui))
 
     # legendas (área segura: acima da faixa onde o Instagram desenha nome e legenda do post)
     t_cta = T["manda"] - 0.15

@@ -62,6 +62,18 @@ jobs:
         # O checador so' bloqueia por violacao VIVA (peca que ainda pode ser publicada);
         # divida de peca ja' publicada e' reportada e nao derruba (nao tem conserto no repo).
         run: python checar_cfm.py
+      - name: Portao de aprovacao clinica (BLOQUEIA)
+        # Auditoria 19/10: este portao so' rodava no gate-aprovacoes.yml, um workflow separado —
+        # CI vermelho NAO segurava a publicacao. Agora id sem lote aprovado ou com hash divergente
+        # derruba o run ANTES de qualquer POST na Meta.
+        run: >
+          python checar_aprovacoes.py --fila reels.json --aprovacoes aprovacoes.json
+          --publicados state/published.json --fontes . --isentar-lote LEGADO-PRE-GATE
+      - name: Portao da geracao nova + declaracao de IA da fila (BLOQUEIA)
+        # Video amarrado ao texto aprovado (arquivo-irmao com hash do episodio e do motor), legenda
+        # = a do episodio, texto desenhado na tela dentro do episodio, voz_ia coerente em TODO reel
+        # pendente (rotulo da Meta + linha da legenda).
+        run: python checar_entretenimento.py
       - name: Sequencia sem texto auditavel (ADVISORY)
         # O portao acima so' audita o que consegue LER. Sequencia sem o texto dos frames dentro
         # do item e' um ponto cego: da' verde por falta de conteudo, nao por conformidade.
@@ -87,9 +99,9 @@ jobs:
           # rotulo em reel narrado com voz realista de IA). Desligar so' por decisao humana:
           #   gh variable set ROTULO_IA --body off --repo rafaelvs/06_Automacao_Instagram
           ROTULO_IA: ${{ vars.ROTULO_IA || 'on' }}
-          # Lamina de texto (reel antigo) no maximo N por semana (Rafael, 18/10/2026: "desacelerar
-          # as laminas"); formato novo (conversa / como_funciona) sem cota. -1 = sem cota.
-          LAMINAS_POR_SEMANA: ${{ vars.LAMINAS_POR_SEMANA || '1' }}
+          # Cota de laminas (Rafael, 18/10/2026): NAO e' variavel de repositorio. Mora em
+          # regra_reels.py (LAMINAS_POR_SEMANA_PADRAO), a mesma fonte que projeta o PROGRAMACAO.md;
+          # com variavel aqui a pagina mostrava uma cota e o robo usava outra (auditoria 19/10).
         run: python publish.py
       - name: Salvar estado (evita repostar)
         # `always()` e' OBRIGATORIO: desde que o publish.py sai com exit 1 em falha de

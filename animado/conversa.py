@@ -7,7 +7,7 @@ acende. O balão é a própria legenda: funciona sem som. Começa por um gancho 
 é a capa no perfil) e fecha com a CTA de envio dirigida a alguém específico + identificação CFM.
 
 Totalmente guiado por dados — o episódio é um dict em `episodios_entretenimento.py`:
-  {"id", "formato": "conversa", "icone": "fixador|gesso|muleta|pinos|osso", "personagem",
+  {"id", "formato": "conversa", "icone": "<chave de animado.icones.ICONES>", "personagem",
    "gancho": [linha1, linha2], "falas": [{"quem": "P"|"F", "texto"}...], "cta", "caption"}
 """
 import math

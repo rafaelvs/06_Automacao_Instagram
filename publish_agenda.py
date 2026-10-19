@@ -1,64 +1,82 @@
 # -*- coding: utf-8 -*-
 """Agenda do publish.py exposta SEM importar o publish (que exige os secrets e aborta sem eles).
-Fonte única: os mesmos valores de publish.py — se mudar lá, mude aqui (teste_agenda abaixo confere)."""
+Os dias da semana são cópia dos literais do publish.py (teste_agenda confere); a REGRA de qual reel
+sai em cada dia NÃO é cópia: é a mesma função do robô (regra_reels.proximo_reel), chamada dia a
+dia sobre a fila e o estado reais. Antes havia uma reimplementação aqui, e a cota vinha do
+ambiente local enquanto o publish lia a variável do repositório (auditoria 19/10/2026)."""
 import datetime as dt
 import os
 import re
+
+import regra_reels
 
 POST_WEEKDAYS = {1, 3, 5}
 POST2_WEEKDAYS = {6}
 SEQ_WEEKDAYS = {1, 3, 5}
 REEL_WEEKDAYS = {0, 2, 4, 6}
-BRT = dt.timezone(dt.timedelta(hours=-3))
-# Cota de laminas (18/10/2026): mesmo default e mesma variavel do publish.py.
-LAMINAS_POR_SEMANA = int(os.environ.get("LAMINAS_POR_SEMANA", "1") or 1)
+REEL_MIN = 15 * 60
+BRT = regra_reels.BRT
+formato = regra_reels.formato
 
 
-def formato(item):
-    return (item.get("formato") or "lamina").strip().lower()
+def cota_vigente():
+    return regra_reels.cota_laminas()
 
 
-def projeta_reels(itens, base, ja_hoje, laminas_ja_na_semana=0, cota=None, horizonte_dias=730):
-    """Datas de reel com a MESMA regra do publish.proximo_reel: em cada dia de reel sai o primeiro
-    item da fila permitido — formato novo sempre, lamina so' dentro da cota semanal. Dia sem item
-    permitido fica sem reel. Devolve [(data, id)]."""
-    cota = LAMINAS_POR_SEMANA if cota is None else cota
-    pend = list(itens); out = []
+def projeta_reels(fila, published, base, ja_hoje, cota=None, horizonte_dias=730):
+    """[(data, id)] dos reels que vão sair, simulando o publish em cada dia de reel às 15h:
+    `fila` = reels.json INTEIRO (na ordem), `published` = state['published'] real. Cada peça
+    projetada entra no estado simulado com o formato — exatamente o que o log() do publish grava."""
+    cota = cota_vigente() if cota is None else cota
+    st = {"published": list(published)}
+    done = {e["id"] for e in published}
+    out = []
     d = base + dt.timedelta(days=1 if ja_hoje else 0)
-    semana = (d - dt.timedelta(days=d.weekday()))
-    usadas = laminas_ja_na_semana if (base - dt.timedelta(days=base.weekday())) == semana else 0
     fim = base + dt.timedelta(days=horizonte_dias)
-    while pend and d <= fim:
-        seg = d - dt.timedelta(days=d.weekday())
-        if seg != semana:
-            semana, usadas = seg, 0
+    while d <= fim and any(x["id"] not in done for x in fila):
         if d.weekday() in REEL_WEEKDAYS:
-            livre = cota < 0 or usadas < cota
-            esc = next((x for x in pend if formato(x) != "lamina" or livre), None)
+            agora = dt.datetime(d.year, d.month, d.day, REEL_MIN // 60, REEL_MIN % 60 + 5, tzinfo=BRT)
+            esc = regra_reels.proximo_reel(fila, done, st, agora, cota=cota)
             if esc is not None:
-                out.append((d, esc["id"])); pend.remove(esc)
-                if formato(esc) == "lamina":
-                    usadas += 1
+                out.append((d, esc["id"])); done.add(esc["id"])
+                st["published"].append({"id": esc["id"], "kind": "reel", "at": agora.isoformat(),
+                                        "formato": formato(esc)})
         d += dt.timedelta(days=1)
     return out
 
 
 def teste_agenda():
-    """Confere que os conjuntos acima batem com os literais do publish.py (sem importá-lo)."""
-    src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "publish.py"), encoding="utf-8").read()
+    """Confere (1) os dias da semana contra os literais do publish.py; (2) que o publish usa a
+    regra única e que o publish.yml não sobrescreve a cota por variável; (3) a simulação contra
+    um caso calculado à mão, incluindo id repetido e peça nova publicada fora da fila."""
+    raiz = os.path.dirname(os.path.abspath(__file__))
+    src = open(os.path.join(raiz, "publish.py"), encoding="utf-8").read()
     for nome, val in (("POST_WEEKDAYS", POST_WEEKDAYS), ("POST2_WEEKDAYS", POST2_WEEKDAYS),
                       ("SEQ_WEEKDAYS", SEQ_WEEKDAYS), ("REEL_WEEKDAYS", REEL_WEEKDAYS)):
         m = re.search(nome + r"\s*=\s*\{([^}]*)\}", src)
         assert m, nome
         assert {int(x) for x in m.group(1).split(",")} == val, f"{nome} divergente do publish.py"
-    m = re.search(r'LAMINAS_POR_SEMANA\s*=\s*int\(os\.environ\.get\("LAMINAS_POR_SEMANA",\s*"(-?\d+)"', src)
-    assert m and int(m.group(1)) == int(os.environ.get("LAMINAS_POR_SEMANA_PADRAO", "1")), \
-        "default de LAMINAS_POR_SEMANA divergente do publish.py"
-    # controle da simulacao: 2 laminas + 1 conversa a partir de uma segunda, cota 1 ->
-    # seg lamina, qua conversa, sex NADA (cota cheia), dom NADA, seg seguinte a 2a lamina
+    m = re.search(r"REEL_MIN\s*=\s*(\d+)\s*\*\s*60", src)
+    assert m and int(m.group(1)) * 60 == REEL_MIN, "REEL_MIN divergente do publish.py"
+    assert "regra_reels.proximo_reel(" in src and "regra_reels.cota_laminas()" in src, \
+        "publish.py deixou de usar a regra única (regra_reels)"
+    yml = open(os.path.join(raiz, ".github", "workflows", "publish.yml"), encoding="utf-8").read()
+    assert not re.search(r"^\s*LAMINAS_POR_SEMANA\s*:", yml, re.M), \
+        "publish.yml voltou a definir LAMINAS_POR_SEMANA — a página leria outra cota que o robô"
     seg = dt.date(2026, 10, 19)
-    r = projeta_reels([{"id": "l1"}, {"id": "l2"}, {"id": "c1", "formato": "conversa"}], seg, False, 0, cota=1)
+    l1, l2, c1 = {"id": "l1"}, {"id": "l2"}, {"id": "c1", "formato": "conversa"}
+    # 2 lâminas + 1 conversa a partir de uma segunda, cota 1: seg l1, qua c1, sex/dom nada, seg seguinte l2
+    r = projeta_reels([l1, l2, c1], [], seg, False, cota=1)
     assert r == [(seg, "l1"), (seg + dt.timedelta(days=2), "c1"), (seg + dt.timedelta(days=7), "l2")], r
+    # id repetido na fila: sai uma vez só (o publish só publica uma vez)
+    r = projeta_reels([c1, l1, dict(c1)], [], seg, False, cota=1)
+    assert [i for _, i in r] == ["c1", "l1"], r
+    # conversa publicada na segunda e JÁ FORA da fila: não conta como lâmina (formato no registro)
+    pub = [{"id": "c0", "kind": "reel", "at": "2026-10-19T15:05:00-03:00", "formato": "conversa"}]
+    r = projeta_reels([l1], pub, seg, True, cota=1)
+    assert r == [(seg + dt.timedelta(days=2), "l1")], r
+    # cota 0 = lâminas suspensas: nada sai, e a projeção fica vazia (o gerador tem de avisar)
+    assert projeta_reels([l1], [], seg, False, cota=0, horizonte_dias=30) == []
     return True
 
 

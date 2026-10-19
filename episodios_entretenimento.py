@@ -14,9 +14,17 @@ humor da situação e nunca do paciente, nenhuma complicação vira piada, along
 Campos:
   CONVERSA:      id, formato="conversa", serie, familia, icone, personagem, gancho[2], falas[{quem, texto}],
                  cta, legenda
-  COMO FUNCIONA: id, formato="como_funciona", serie, familia, cena (módulo em animado/), roteiro[frases],
-                 cta (= última frase do roteiro), legenda
+  COMO FUNCIONA: id, formato="como_funciona", serie, familia, cena (módulo em animado/), gancho[2],
+                 roteiro[frases], cta (= última frase do roteiro), legenda,
+                 tela[rótulos] = TODO texto que a cena desenha além da legenda karaokê e da identificação
+  opcional:      cta_legenda — a CTA da LEGENDA quando a do vídeo usa pronome do personagem ("a gente",
+                 "um de nós"): na legenda, assinada pelo médico, o pronome mudaria de dono.
 `familia` escolhe a menção da legenda (reconstrucao | pediatria).
+
+`tela` (auditoria 19/10): rótulos como "RAIO-X CONFIRMA" ou um contador "DIA 40" ficavam só no
+código da cena, fora do hash de aprovação e do portão CFM. Agora o render anota todo texto
+desenhado e RECUSA o vídeo se algo não estiver no episódio; a lista vai para o arquivo-irmão
+reels/_preview_<id>.json, que o checar_entretenimento audita.
 """
 
 EPISODIOS_ENTRETENIMENTO = [
@@ -27,6 +35,11 @@ EPISODIOS_ENTRETENIMENTO = [
         "serie": "Como funciona",
         "familia": "reconstrucao",
         "cena": "cf_alongamento",
+        "gancho": ["CORTAR O OSSO", "DE PROPÓSITO?"],
+        # fases: on_tres_fases (latência "alguns dias", distração "o milímetro por dia", consolidação
+        # "costuma ser a fase mais longa"); "Z" = o osso dormindo na pausa ("pro osso acordar")
+        "tela": ["PELE", "NERVO", "VASO", "DE PROPÓSITO", "Z", "FASE 1", "PAUSA", "alguns dias",
+                 "FASE 2", "1 MM", "por dia", "FASE 3", "CONSOLIDAÇÃO", "a fase mais longa"],
         "roteiro": [
             "Pra alongar uma perna mais curta, o primeiro passo é cortar o osso. De propósito.",
             "Um aparelho por fora, o fixador, segura as duas partes.",
@@ -203,6 +216,10 @@ EPISODIOS_ENTRETENIMENTO = [
         "serie": "Como funciona",
         "familia": "reconstrucao",
         "cena": "cf_fratura_cola",
+        "gancho": ["QUEM COLA UM", "OSSO QUEBRADO?"],
+        "tela": ["COÁGULO", "INFLAMAÇÃO", "ETAPA 1", "EM OBRAS", "CALO ÓSSEO", "OSSO ESTÁVEL", "SANGUE CHEGANDO",
+                 "SEM INFECÇÃO", "RESISTÊNCIA", "OSSO MADURO", "1 COÁGULO", "2 CALO", "3 OSSO MADURO",
+                 "SEMANAS A MESES", "sem prazo único", "RAIO-X", "RAIO-X CONFIRMA"],
         "roteiro": [
             "Quem cola um osso quebrado? O próprio corpo.",
             "Primeiro, coágulo e inflamação. Faz parte: é a primeira etapa.",

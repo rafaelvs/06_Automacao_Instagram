@@ -81,7 +81,9 @@ def alinhar(palavras, roteiro):
         alvo = p["w"].lower()
         while j < len(toks) and re.sub(r"[.,:;!?—]", "", toks[j]).lower() != alvo:
             j += 1
-        tok = toks[j] if j < len(toks) else p["w"]
+        if j >= len(toks):                     # palavra da voz sem par no roteiro: dessincronizaria
+            raise SystemExit(f"ERRO: palavra da voz {p['w']!r} não achada no roteiro — legenda sairia torta.")
+        tok = toks[j]
         out.append(dict(p, tok=tok, fim_frase=bool(re.search(r"[.!?:]$", tok)), virg=tok.endswith(",")))
         j += 1
     return out

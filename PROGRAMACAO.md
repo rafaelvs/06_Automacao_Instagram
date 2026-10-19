@@ -1,19 +1,19 @@
 # PROGRAMAÇÃO — o que vai ao ar e quando
 
-Regenerado em 18/10/2026 por `_gen_programacao.py`. **Datas são projeção da fila FIFO** a partir do último publicado — job vermelho, alarme de curtidas ou mudança na fila desloca tudo; a fonte de verdade é a fila.
+Regenerado em 19/10/2026 por `_gen_programacao.py`. **Datas são projeção da fila FIFO** a partir do último publicado — job vermelho, alarme de curtidas ou mudança na fila desloca tudo; a fonte de verdade é a fila.
 
 **Como revisar/suspender (regra de 30/08):** os itens ficam dias na fila antes de publicar — confira por aqui; para suspender ou editar, avise o chat da auditoria (ou remova a entrada do JSON, com lock `motor-instagram`). Piloto ativo só para formato/estratégia NOVA ou mudança de voz.
 
 **Marcações:** `[TRIAL]` = publica só para não-seguidores e fora do grid (B5, 4 peças sorteadas); `[A]`/`[B]` = braço do teste de gancho (B4); `← capa v2` = primeiro reel com o template novo.
 
-**Formatos (18/10/2026):** `[CONVERSA]` e `[COMO FUNCIONA]` são a geração nova (animação, sem rosto) e saem sem limite; a lâmina antiga sai no máximo 1 vez(es) por semana. Dia de reel sem peça permitida fica sem reel.
+**Formatos (18/10/2026):** `[CONVERSA]` e `[COMO FUNCIONA]` são a geração nova (animação, sem rosto) e saem sem limite; a lâmina antiga sai no máximo 1 vez(es) por semana (regra_reels.py). Dia de reel sem peça permitida fica sem reel.
 
 
 ## Reels (seg · qua · sex · dom, ~15h BRT)
 
 | Data | Peça | Série | Vídeo |
 |---|---|---|---|
-| seg 19/10 | `fx_retirada` [A] **← capa v2** | Fixador por dentro | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_fx_retirada.mp4) |
+| seg 19/10 | `fx_retirada` [A] | Fixador por dentro | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_fx_retirada.mp4) |
 | seg 26/10 | `quanto_alongar`  | Alongamento Ósseo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_quanto_alongar.mp4) |
 | seg 02/11 | `fx_curativo_pinos` [B] | Fixador por dentro | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_fx_curativo_pinos.mp4) |
 | seg 09/11 | `esc_nao_doi`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_esc_nao_doi.mp4) |

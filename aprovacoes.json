@@ -627,11 +627,11 @@
    "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
    "data": "2026-10-18",
    "evidencia": "Chat auditoria-instagram-v1, 18/10/2026: o Rafael pediu que o perfil virasse entretenimento ('os posts se tornaram murais informativos levemente cansativos [...] o Instagram é entreterimento'); recebeu os pilotos A (cf_alongamento) e B (cv_fixador) em vídeo e respondeu 'pode seguir com tudo' (~23:20 BRT), aprovando as duas direções, a voz mais viva, a cota de lâminas e o rótulo de IA. Em seguida: 'esse novo video marca uma geração completamente diferente de videos [...] podemos ter temas levemente repetidos, dessa vez, priorizando aqueles que tiveram mais sucesso'. O lote 1 (cv_gesso_filho, cv_osso, cv_muleta, cv_pinos, cf_fratura_cola) foi escrito por roteirista e refutado por verificador adversarial (workflow lote-entretenimento-1): cada fala com fato tem trecho LITERAL do acervo já aprovado; portão CFM limpo.",
-   "observacoes": "Revisão passiva na fila (regra de 30/08): o Rafael edita/suspende antes da data de cada peça (PROGRAMACAO.md). PONTO PARA ELE CONFIRMAR: em cv_gesso_filho, dedos roxos/frios no gesso -> 'pronto-socorro na hora, avisando a equipe' (conduta mais urgente do acervo, gesso_pos_op_kids); a sequência s_pnc_gesso_em_casa, publicada em 15/09, dá 'contato no mesmo dia' para o mesmo sinal.",
+   "observacoes": "Revisão passiva na fila (regra de 30/08): o Rafael edita/suspende antes da data de cada peça (PROGRAMACAO.md). PONTO PARA ELE CONFIRMAR: em cv_gesso_filho, dedos roxos/frios no gesso -> 'pronto-socorro na hora, avisando a equipe' (conduta mais urgente do acervo, gesso_pos_op_kids); a sequência s_pnc_gesso_em_casa, publicada em 15/09, dá 'contato no mesmo dia' para o mesmo sinal. 19/10 (auditoria adversarial): cf_alongamento e cf_fratura_cola ganharam os campos `gancho` e `tela` (todo rótulo desenhado na tela passa a ser texto do episódio, sob este hash e o CFM); no cf_alongamento o contador 'DIA n' (chegava a 'DIA 40' quando o aparelho saía, e a pausa de 5 dias não tinha fonte) virou as 3 fases do acervo (on_tres_fases: 'alguns dias', 'o milímetro por dia', consolidação 'costuma ser a fase mais longa'). Falas, roteiros e legendas não mudaram. Conduta do cv_pinos (avisa a equipe cedo; febre: pronto-socorro) revisada e mantida: é literal de fx_curativo_pinos/fx_pino_inflamado, aprovados.",
    "episodios": [
     {
      "id": "cf_alongamento",
-     "hash_roteiro": "sha256:f2d69eeaf5d7910f75b6cfa9e21d6d1153735d997530120814290ab010c77d03"
+     "hash_roteiro": "sha256:0635d56adbc552f028a1306533192cae7cbbb52b6ed7e3b962acfd747e4c12af"
     },
     {
      "id": "cv_fixador",
@@ -655,7 +655,7 @@
     },
     {
      "id": "cf_fratura_cola",
-     "hash_roteiro": "sha256:66d58bbbb0e08ce98b2da0aa457368df37d873b158060da3efebdbc250e76cd1"
+     "hash_roteiro": "sha256:c6c493d7defd0b16faf3da0f7caaf532972b043ff82dfb9fc61230ab6d4402a6"
     }
    ]
   }

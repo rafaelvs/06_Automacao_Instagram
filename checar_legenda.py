@@ -67,7 +67,13 @@ def auto_teste():
         ("controle POSITIVO: duas CTAs", [("posts.json", "post", "t_2cta", ok_cap)], 1),   # reel-CTA num post
         ("controle POSITIVO: sem menção", [("reels.json", "reel", "t_menc", ok_cap.replace("Sociedade da área: @asami.brasil\n\n", ""))], 1),
         ("controle POSITIVO: universo vazio", [], 1),
+        ("controle NEGATIVO: 'Manda pra quem' é envio", [("reels.json", "reel", "t_manda", ok_cap.replace("Envia para quem precisa disso.", "Manda pra quem tá esperando o osso colar."))], 0),
     ]
+    for cta in ("Manda um direct pra agendar sua avaliação.", "Manda mensagem que eu te respondo.",
+                "Manda sua dúvida nos comentários.", "Manda o seu raio-X por direct.",
+                "Manda pra quem quer agendar consulta."):
+        casos.append((f"controle POSITIVO: CTA de contato {cta!r}",
+                      [("reels.json", "reel", "t_contato", ok_cap.replace("Envia para quem precisa disso.", cta))], 1))
     falhas = 0
     for rotulo, itens, esperado in casos:
         rc = main(itens)

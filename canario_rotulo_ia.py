@@ -62,8 +62,19 @@ st1, c1, e1 = conteiner("true")
 st2, c2, e2 = conteiner("banana")
 
 aceitou_true = st1 < 400 and isinstance(c1, dict) and bool(c1.get("id"))
-recusou_lixo = st2 >= 400 and isinstance(e2, dict)
+# A recusa só PROVA que a API lê o campo se for a recusa DO CAMPO: parâmetro inválido (code 100)
+# citando is_ai_generated. Antes qualquer erro na 2ª chamada servia — um rate limit (4/17/32/613)
+# ou erro de vídeo (2207xxx / 9004 / 9007) virava "a API lê o campo" (auditoria 19/10).
+msg2 = str((e2 or {}).get("message", "")) + " " + str((e2 or {}).get("error_user_msg", ""))
+recusou_lixo = (st2 >= 400 and isinstance(e2, dict) and int(e2.get("code") or 0) == 100
+                and "is_ai_generated" in msg2)
+inconclusivo = st2 >= 400 and isinstance(e2, dict) and not recusou_lixo
 
+if inconclusivo:
+    print(f"::error::CANÁRIO INCONCLUSIVO: a 2ª chamada falhou por outro motivo (code {e2.get('code')} / "
+          f"subcode {e2.get('error_subcode')}: {msg2.strip()[:160]}) — isso NÃO prova que a API lê o campo. "
+          "Rode de novo mais tarde.")
+    sys.exit(1)
 if aceitou_true and recusou_lixo:
     print(f"CANÁRIO PASSOU: `is_ai_generated=true` foi ACEITO (contêiner {c1['id']}, não publicado) e o "
           f"valor inválido foi RECUSADO (code {e2.get('code')} / subcode {e2.get('error_subcode')}) — "

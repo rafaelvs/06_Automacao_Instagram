@@ -2,7 +2,7 @@ name: render-animado
 # GERACAO NOVA de reels (Rafael, 18/10/2026): animacao sem rosto comandada pelo tempo das
 # palavras — formatos CONVERSA ("Se o seu ___ pudesse responder") e COMO FUNCIONA (mecanismo
 # animado). Renderiza UM episodio de episodios_entretenimento.py e commita
-# reels/_preview_<id>.mp4. NAO mexe em reels.json: a peca so' entra na fila depois que o video
+# reels/_preview_<id>.mp4 + o irmao .json. NAO mexe em reels.json: a peca so' entra na fila depois que o video
 # existe no repo (publicar reel sem mp4 falha ALTO no publish.py).
 #   gh workflow run render-animado.yml -f episodio=cv_fixador --repo rafaelvs/06_Automacao_Instagram
 on:
@@ -23,7 +23,14 @@ jobs:
   render:
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    env:
+      # a entrada vai por variavel de ambiente e e' validada: interpolar ${{ }} direto no shell
+      # deixava um id com aspas/; virar comando (auditoria 19/10)
+      EP: ${{ github.event.inputs.episodio }}
     steps:
+      - name: Validar o id do episodio
+        run: |
+          if ! [[ "$EP" =~ ^[a-z0-9_]{3,60}$ ]]; then echo "::error::id de episodio invalido: '$EP'"; exit 1; fi
       - uses: actions/checkout@v4
       - name: Fontes (Roboto, reserva Liberation/DejaVu) + ffmpeg + libEGL (o skia-python exige no Linux)
         # 19/10/2026: o 1o lote de renders falhou com 'libEGL.so.1: cannot open shared object file'.
@@ -35,27 +42,20 @@ jobs:
         run: pip install skia-python edge-tts numpy imageio-ffmpeg
       - name: Guarda-freio de voz (mudanca de voz exige piloto aprovado — regra 30/08/2026)
         run: python checar_voz.py
-      - name: Renderizar (portao CFM roda ANTES de desenhar o primeiro quadro)
-        run: python -m animado.render "${{ github.event.inputs.episodio }}"
-      - name: Quadros de conferencia
-        run: python -m animado.render "${{ github.event.inputs.episodio }}" --previa --tmp previa_out
-      - name: Artefato (video + quadros)
-        uses: actions/upload-artifact@v4
-        with:
-          name: animado-${{ github.event.inputs.episodio }}
-          path: |
-            reels/_preview_${{ github.event.inputs.episodio }}.mp4
-            previa_out/*.png
-          if-no-files-found: error
-      - name: Commit do mp4
+      - name: Renderizar (portao do episodio + CFM antes do 1o quadro; texto da tela conferido; irmao .json)
+        run: python -m animado.render "$EP"
+      - name: Commit do mp4 + arquivo-irmao (hash do texto e do motor que geraram o video)
+        # ANTES das previas: previa que falha (edge-tts instavel) nao pode perder o video pronto
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add "reels/_preview_${{ github.event.inputs.episodio }}.mp4"
-          git commit -m "Render animado ${{ github.event.inputs.episodio }} (geracao nova)" || echo "nada a commitar"
+          git add "reels/_preview_${EP}.mp4" "reels/_preview_${EP}.json"
+          git commit -m "Render animado ${EP} (geracao nova)" || echo "nada a commitar"
           ok=0
           for attempt in 1 2 3 4 5; do
-            if git pull --rebase origin main && git push; then ok=1; break; fi
+            # -X theirs: num rebase, "theirs" e' o commit deste render. Re-render do mesmo episodio
+            # em sequencia dava conflito BINARIO no mp4 e as 5 tentativas falhavam (auditoria 19/10)
+            if git pull --rebase -X theirs origin main && git push; then ok=1; break; fi
             git rebase --abort 2>/dev/null || true
             echo "Push tentativa $attempt falhou — aguardando ${attempt}0s..."
             sleep $((attempt * 10))
@@ -64,3 +64,16 @@ jobs:
             echo "::error::mp4 renderizado mas NAO commitado apos 5 tentativas — render perdido."
             exit 1
           fi
+      - name: Quadros de conferencia (reusa o cache de voz do render)
+        continue-on-error: true
+        run: python -m animado.render "$EP" --previa --tmp ".animado_tmp/$EP"
+      - name: Artefato (video + irmao + quadros)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: animado-${{ env.EP }}
+          path: |
+            reels/_preview_${{ env.EP }}.mp4
+            reels/_preview_${{ env.EP }}.json
+            .animado_tmp/${{ env.EP }}/*.png
+          if-no-files-found: warn

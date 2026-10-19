@@ -2,10 +2,17 @@
 """Entrada única da geração nova: `python -m animado.render <id> [--previa]`.
 
 1. Acha o episódio em `episodios_entretenimento.py`.
-2. PORTÃO CFM ANTES DE DESENHAR: todo texto que vai para a tela, para a voz e para a legenda
-   passa por `cfm_guardrails.auditar`. VIOLAÇÃO = aborta (exit 1), não renderiza 1 quadro.
-3. Despacha para o formato (conversa) ou para a cena (como_funciona -> animado/<cena>.py).
-4. Grava `reels/_preview_<id>.mp4` (mesma convenção dos reels de voz) e confere a duração real.
+2. PORTÃO ANTES DE DESENHAR: o episódio passa por `checar_entretenimento.checar_episodio` (forma,
+   CTA de envio, rótulos de tela) e todo texto dele por `cfm_guardrails.auditar`. Problema = aborta
+   (exit 1), não renderiza 1 quadro.
+3. Despacha para o formato (conversa) ou para a cena (como_funciona -> animado/<cena>.py), com o
+   canvas anotando todo texto desenhado em todos os quadros.
+4. Grava `reels/_preview_<id>.mp4` (mesma convenção dos reels de voz), confere a duração real e
+   RECUSA o vídeo se algum texto desenhado não estiver no episódio (rótulo só no código = fora do
+   hash de aprovação e do CFM — auditoria 19/10).
+5. Grava o arquivo-irmão `reels/_preview_<id>.json`: hash do episódio, hash dos módulos do motor e
+   o texto desenhado. O checar_entretenimento (CI e antes de publicar) recusa vídeo cujo irmão não
+   bate com o episódio e o motor atuais — vídeo velho não sai com legenda nova.
 `--previa` gera só quadros PNG de conferência em tmp/ (iteração rápida, sem codificar vídeo).
 """
 import argparse
@@ -30,15 +37,15 @@ def episodio(ep_id):
     raise SystemExit(f"ERRO: episódio {ep_id!r} não existe em episodios_entretenimento.py")
 
 
-def textos(ep):
-    """Toda superfície de texto do episódio (tela, voz e legenda)."""
-    t = list(ep.get("gancho", [])) + [f["texto"] for f in ep.get("falas", [])] + list(ep.get("roteiro", []))
-    return t + [ep.get("cta", ""), ep.get("legenda", ""), ep.get("personagem", "")]
-
-
 def portao_cfm(ep):
     from cfm_guardrails import auditar
     from animado.base import SIG
+    from checar_entretenimento import checar_episodio, textos
+    probs = checar_episodio(ep)
+    if probs:
+        for x in probs:
+            print(f"  [EPISÓDIO] {x}")
+        raise SystemExit(f"ABORTADO: {len(probs)} problema(s) em {ep['id']} — nada foi renderizado.")
     viol, rev = [], []
     for s in [x for x in textos(ep) if x]:
         # a assinatura vai em todo quadro (rodapé) e na legenda: entra no texto auditado
@@ -72,14 +79,44 @@ def main():
         mod = importlib.import_module(f"animado.{ep['cena']}")
     else:
         raise SystemExit(f"ERRO: formato desconhecido {ep['formato']!r}")
-    saida, total = mod.render(ep, mp4, tmp, previa=a.previa)
+    from animado import base
+    base.REGISTRO_ATIVO = set()
     if a.previa:
+        saida, total = mod.render(ep, mp4, tmp, previa=True)
         print("prévias:", *saida, sep="\n  ")
         return 0
-    from checar_dur import duracao_mp4
-    real = duracao_mp4(mp4)
-    if not real or abs(real - total) > 1.0:
-        raise SystemExit(f"ERRO: {mp4} saiu com {real}s, esperado ~{total:.1f}s")
+    # grava num PARCIAL e só promove ao caminho final depois de todas as checagens: render que
+    # falha no meio fechava um mp4 válido e curto por cima do vídeo bom (auditoria 19/10)
+    parcial = mp4 + ".parcial.mp4"
+    try:
+        _, total = mod.render(ep, parcial, tmp, previa=False)
+        from checar_dur import duracao_mp4
+        real = duracao_mp4(parcial)
+        if not real or abs(real - total) > 1.0:
+            raise SystemExit(f"ERRO: o vídeo saiu com {real}s, esperado ~{total:.1f}s")
+        import checar_entretenimento as ce
+        desenhados = sorted(base.REGISTRO_ATIVO)
+        fora = ce.tela_fora_do_episodio(ep, desenhados)
+        if not desenhados or fora:
+            raise SystemExit(f"ERRO: texto desenhado fora do episódio {fora[:8] or '(nenhum registrado)'} — ponha no "
+                             f"campo `tela` (que passa por aprovação e CFM) ou tire do desenho.")
+    except BaseException:
+        if os.path.exists(parcial):
+            os.remove(parcial)
+        print(f"render de {ep['id']} FALHOU — {mp4} ficou intocado")
+        raise
+    os.replace(parcial, mp4)
+    if not a.saida:                                   # só o vídeo da fila ganha o arquivo-irmão
+        import datetime as dt
+        import json
+        irmao = os.path.join(ROOT, ce.sidecar_de(ep).replace("/", os.sep))
+        with open(irmao, "w", encoding="utf-8", newline="\n") as f:
+            json.dump({"id": ep["id"], "hash_episodio": ce.hash_episodio(ep), "hash_motor": ce.hash_motor(ep),
+                       "modulos": ce.modulos_do_motor(ep), "textos_tela": desenhados, "dur": round(real, 2),
+                       "renderizado_em": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")},
+                      f, ensure_ascii=False, indent=1)
+            f.write("\n")
+        print(f"irmão: {ce.sidecar_de(ep)} ({len(desenhados)} textos desenhados, todos do episódio)")
     print(f"OK {mp4} | {real:.1f}s | {os.path.getsize(mp4) / 1e6:.1f} MB")
     return 0
 

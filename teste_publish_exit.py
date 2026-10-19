@@ -40,7 +40,7 @@ CAPTION_VIOLACAO = "Tratamento de dismetria dos membros." + ASSINATURA
 
 def montar(caption, token_state=None):
     d = tempfile.mkdtemp(prefix="ig_teste_")
-    for f in ("publish.py", "cfm_guardrails.py"):
+    for f in ("publish.py", "cfm_guardrails.py", "regra_reels.py"):
         shutil.copy(os.path.join(REPO, f), d)
     json.dump([{"id": "post01", "images": ["images/p1.jpg"], "caption": caption}],
               open(os.path.join(d, "posts.json"), "w", encoding="utf-8"))

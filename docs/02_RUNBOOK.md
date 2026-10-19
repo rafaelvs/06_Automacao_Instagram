@@ -175,16 +175,36 @@ o sinal negativo de ranking de Stories.
 Decisão do Rafael em 18/10/2026 ("pode seguir com tudo"), depois de ver os dois pilotos de entretenimento.
 
 - **Rótulo "Conteúdo de IA"** — todo reel com voz sintética sai com `is_ai_generated=true` no contêiner. "Voz
-  sintética" = campo `voz_ia` do item, ou a legenda contendo "voz digital (IA)" (todo reel narrado declara isso).
+  sintética" = campo `voz_ia` verdadeiro OU a legenda contendo "voz digital (IA)". Desde 19/10 o
+  `checar_entretenimento.py` (no CI e ANTES de cada publicação) exige em TODO reel pendente `voz_ia` explícito
+  (true/false) e coerente com a linha da legenda — 16 lâminas narradas de julho estavam sem nenhum dos dois.
   Imagem, carrossel e story não levam rótulo: a Meta os isenta. Prova de que a API lê o campo:
   `canario_rotulo_ia.py` / `canario-rotulo-ia.yml` (`true` aceito, valor inválido recusado com "Param
   is_ai_generated must be a boolean"). O estado grava `rotulo_ia` em cada reel. Desligar só por decisão humana:
   `gh variable set ROTULO_IA --body off --repo rafaelvs/06_Automacao_Instagram`.
 - **Cota de lâminas** — o reel antigo (lâmina de texto lida em voz alta, item sem `formato`) sai no máximo
-  `LAMINAS_POR_SEMANA` vezes por semana (padrão 1, semana de segunda a domingo, horário de Brasília). Formato novo
-  (`"formato": "conversa"` ou `"como_funciona"`) sai sem cota. Em dia de reel sem peça permitida, não sai reel — o
-  log diz "cota ... cumprida", não "esgotada". `FORCE_ID` passa por cima da cota (decisão humana). `-1` desliga.
-  `publish_agenda.projeta_reels` simula a mesma regra para o `PROGRAMACAO.md`.
+  `LAMINAS_POR_SEMANA_PADRAO` vezes por semana (`regra_reels.py`, padrão 1, semana de segunda a domingo, horário de
+  Brasília). Formato novo (`"formato": "conversa"` ou `"como_funciona"`) sai sem cota. Em dia de reel sem peça
+  permitida, não sai reel — o log diz "cota ... cumprida", não "esgotada". `FORCE_ID` passa por cima da cota
+  (decisão humana; o reel forçado SOMA ao agendado do dia). **Mudar a cota = editar `regra_reels.py` e commitar**
+  (não é variável de repositório desde 19/10: com variável, a página mostrava uma cota e o robô usava outra).
+  `-1` = sem cota, `0` = lâminas suspensas. O `publish_agenda.py` projeta o `PROGRAMACAO.md` chamando a MESMA
+  função do robô (`regra_reels.proximo_reel`), e o publish grava `formato` em cada reel publicado.
 - **Voz** — a aprovada passou a Antonio **+8% / +0Hz** (era −8%/−4Hz desde 30/08). `checar_voz.py` re-registrado
   com a evidência; o autoteste dele não depende mais de um valor fixo de ritmo.
 
+## 11. Geração nova: render, fila e portões (auditoria adversarial de 19/10/2026)
+
+- **Peça nova** = um dict em `episodios_entretenimento.py` (+ lote em `aprovacoes.json`). Como funciona também
+  declara `gancho` e `tela` (TODO rótulo que a cena desenha). Render só na nuvem:
+  `gh workflow run render-animado.yml -f episodio=<id> --repo rafaelvs/06_Automacao_Instagram`.
+- O render recusa: episódio mal formado ou com violação CFM (antes do 1º quadro); voz cujas palavras não batem
+  com o texto (legenda sairia torta); texto desenhado na tela fora do episódio. Grava num `.parcial.mp4` e só
+  promove o vídeo no fim, junto com o irmão `reels/_preview_<id>.json` (hash do episódio, hash dos módulos do
+  motor, texto desenhado).
+- **Fila:** `python -m animado.anexar <id>` — por padrão no FIM do bloco da geração nova (revisão passiva do Rafael
+  precisa de janela); `--depois-de <id>` ou `--frente` (só com motivo). Recusa vídeo cujo irmão não bata com o
+  episódio e o motor atuais.
+- **Portões no caminho da publicação** (publish.yml, antes de qualquer POST): `checar_aprovacoes.py` e
+  `checar_entretenimento.py`. Episódio editado ou motor mexido depois do render = publish VERMELHO até re-renderizar
+  (de propósito: vídeo velho não sai com legenda nova). Editou o episódio? Re-registre o hash no lote e re-renderize.

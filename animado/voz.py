@@ -10,6 +10,7 @@ import asyncio
 import hashlib
 import json
 import os
+import re
 import shutil
 import subprocess
 
@@ -54,11 +55,43 @@ async def _tts(texto, rate, pitch):
     return bytes(audio), palavras
 
 
+def _norm(w):
+    return re.sub(r"[^\w-]", "", w.lower())
+
+
+def _expandir(pal):
+    """O edge-tts às vezes junta palavras num boundary só ('2 a', '3 dedos'): reparte em uma
+    entrada por palavra, dividindo o tempo pelo número de letras."""
+    out = []
+    for p in pal:
+        ws = p["w"].split()
+        if len(ws) <= 1:
+            out.append(p); continue
+        tot = sum(len(w) for w in ws); t = p["t"]
+        for w in ws:
+            d = p["d"] * len(w) / tot
+            out.append({"t": t, "d": d, "w": w}); t += d
+    return out
+
+
+def conferir_palavras(texto, pal):
+    """As palavras da voz têm de ser EXATAMENTE as do texto, na ordem (a legenda acende a palavra
+    pelo índice). Auditoria 19/10: no cv_muleta o boundary '2 a' deixou as 2 últimas palavras
+    apagadas e o render saiu verde. Também pega narração truncada (o stream fecha sem erro)."""
+    a = [_norm(w) for w in texto.split()]
+    b = [_norm(p["w"]) for p in pal]
+    if a != b:
+        i = next((k for k in range(min(len(a), len(b))) if a[k] != b[k]), min(len(a), len(b)))
+        raise SystemExit(f"ERRO: palavras da voz não batem com o texto (posição {i}: texto={a[i:i + 3]} "
+                         f"voz={b[i:i + 3]}; {len(a)} x {len(b)}) — vídeo sairia com legenda dessincronizada.")
+
+
 def narrar(texto, rate, tmp_dir, pitch=TOM, tentativas=4):
-    """-> (audio mono float32 48 kHz, [{t, d, w}]). Cacheia por (voz, ritmo, tom, texto) em tmp_dir.
-    Falha ALTO se o serviço não devolver áudio ou palavras (edge-tts muda de token às vezes)."""
+    """-> (audio mono float32 48 kHz, [{t, d, w}]). Cacheia por (voz, ritmo, tom, masterização,
+    texto) em tmp_dir. Falha ALTO se o serviço não devolver áudio ou palavras (edge-tts muda de
+    token às vezes) ou se as palavras não baterem com o texto."""
     os.makedirs(tmp_dir, exist_ok=True)
-    chave = hashlib.sha1(f"{VOZ}|{rate}|{pitch}|{texto}".encode("utf-8")).hexdigest()[:16]
+    chave = hashlib.sha1(f"{VOZ}|{rate}|{pitch}|{VOICE_CHAIN}|{texto}".encode("utf-8")).hexdigest()[:16]
     wav = os.path.join(tmp_dir, f"{chave}.wav"); meta = os.path.join(tmp_dir, f"{chave}.json")
     if not (os.path.exists(wav) and os.path.exists(meta)):
         erro = None
@@ -77,4 +110,6 @@ def narrar(texto, rate, tmp_dir, pitch=TOM, tentativas=4):
         open(mp3, "wb").write(audio)
         subprocess.run([ffmpeg(), "-y", "-loglevel", "error", "-i", mp3, "-af", VOICE_CHAIN, wav], check=True)
         json.dump(pal, open(meta, "w", encoding="utf-8"), ensure_ascii=False)
-    return som.ler_wav(wav), json.load(open(meta, encoding="utf-8"))
+    pal = _expandir(json.load(open(meta, encoding="utf-8")))
+    conferir_palavras(texto, pal)
+    return som.ler_wav(wav), pal
