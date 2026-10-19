@@ -1,6 +1,6 @@
 {
-  "fingerprint": "4b88a330dd8142c425aead76b06d9600bc0a7df7c22f2650a79111aa4b475742",
-  "evidencia": "Mesma voz do piloto aprovado pelo Rafael em 18/10/2026 ('pode seguir com tudo', pilotos A e B): Antonio, +8% conversa / +10% como funciona, tom +0Hz, VOICE_CHAIN identica. O guarda ANTIGO (54acedb09bd2fb8c) segue dando ok sobre os arquivos atuais. O hash mudou em 19/10 so porque o fingerprint foi AMPLIADO (auditoria adversarial): agora cobre o corpo de _tts() e narrar() e as chamadas narrar(...) dos modulos. Em narrar() entrou a conferencia palavra a palavra (falha alto se a voz nao bater com o texto) e a chave de cache com a masterizacao; o audio gerado e a mesma chamada ao edge-tts com a mesma cadeia de ffmpeg.",
+  "fingerprint": "ae03d584785169ca0f733197f1489acde74e36eb4002cce222c702f5a9211a31",
+  "evidencia": "Mesma voz do piloto aprovado pelo Rafael em 18/10/2026 ('pode seguir com tudo', pilotos A e B): Antonio, +8% conversa / +10% como funciona, tom +0Hz, VOICE_CHAIN identica. animado/voz.py, gerar_reel_voz.py e render-reel-voz.yml sem NENHUMA alteracao desde o registro anterior (664dc9c, fingerprint 4b88a330dd8142c4): git diff vazio. O hash mudou em 19/10 so porque a parte 'animado_chamadas' do guarda passou a contar os RITMOS passados a narrar() (conjunto normalizado) em vez de listar arquivo a arquivo: a cena nova cf_fixador_circular narra com o mesmo RITMO_COMO_FUNCIONA e a lista antiga acusava mudanca de voz (falso positivo que travou 8 renders). Ritmos em uso: RITMO_COMO_FUNCIONA e RITMO_CONVERSA, ambos aprovados.",
   "partes_rotulos": [
     "animado_chamadas",
     "animado_narrar",

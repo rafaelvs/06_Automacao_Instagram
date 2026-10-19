@@ -46,14 +46,22 @@ def _extrai(texto, padrao, rotulo, obrigatorio=True):
 
 
 def _chamadas_narrar(pasta):
-    """Toda chamada narrar(...) do motor novo, por arquivo: é ali que o RITMO é passado. Um
-    `voz.narrar(txt, "+25%", tmp)` num chamador trocava o ritmo sem tocar em voz.py."""
-    out = []
+    """O CONJUNTO de ritmos (2º argumento) e de `pitch=` que os chamadores passam a narrar() no motor
+    novo: é ali que o ritmo é escolhido. Um `voz.narrar(txt, "+25%", tmp)` num chamador trocava o
+    ritmo sem tocar em voz.py. Conta O QUE é passado, não ONDE: em 19/10 a lista arquivo a arquivo
+    acusou mudança de voz quando uma cena nova (cf_fixador_circular) narrou com o MESMO ritmo
+    aprovado — falso positivo que travou 8 renders. Alias do módulo (`_voz.`, `voz.`) é normalizado."""
+    usos = set()
     for f in sorted(os.listdir(pasta)):
-        if f.endswith(".py") and f != "voz.py":
-            t = (Path(pasta) / f).read_text(encoding="utf-8")
-            out += [f"{f}: {c}" for c in re.findall(r"narrar\([^)\n]*\)", t)]
-    return "\n".join(out)
+        if not f.endswith(".py") or f == "voz.py":
+            continue
+        t = (Path(pasta) / f).read_text(encoding="utf-8")
+        for c in re.findall(r"narrar\(([^)\n]*)\)", t):
+            args = [a.strip() for a in c.split(",")]
+            ritmo = re.sub(r"^\w*voz\.", "", args[1]) if len(args) > 1 else "?"
+            pitch = next((re.sub(r"^\w*voz\.", "", a.split("=", 1)[1].strip()) for a in args if a.startswith("pitch")), "TOM")
+            usos.add(f"ritmo={ritmo} pitch={pitch}")
+    return "\n".join(sorted(usos))
 
 
 def fingerprint(gerar_path=None, wf_path=None, animado_path=None, animado_dir=None):
@@ -161,6 +169,16 @@ def main():
                 r = fpm != fp
                 print(f"[{'ok' if r else 'FALHOU'}] positivo {nome} muda o fingerprint")
                 ok &= r
+            # controle NEGATIVO (19/10): cena NOVA que narra com o ritmo aprovado NÃO muda a voz
+            d = td / "anim_neg_cena"
+            shutil.copytree(ROOT / "animado", d, ignore=shutil.ignore_patterns("__pycache__"))
+            (d / "cf_cena_nova_teste.py").write_text(
+                "from . import voz as _voz\n\ndef render(ep, mp4, tmp, previa=False):\n"
+                "    v, p = _voz.narrar(ep['x'], _voz.RITMO_COMO_FUNCIONA, tmp)\n", encoding="utf-8")
+            fpn, _ = fingerprint(animado_dir=d)
+            rn = fpn == fp
+            print(f"[{'ok' if rn else 'FALHOU'}] negativo: cena nova narrando com o ritmo aprovado não muda o fingerprint")
+            ok &= rn
             # controle NEGATIVO: comentário fora dos blocos de voz NÃO muda
             (td / "g4.py").write_text(g + "\n# comentário inócuo\n", encoding="utf-8")
             fp4, _ = fingerprint(gerar_path=td / "g4.py")
