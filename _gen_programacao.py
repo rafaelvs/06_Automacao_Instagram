@@ -41,7 +41,7 @@ def projeta(ids, weekdays, base, ja_hoje):
 
 
 def main():
-    if os.environ.get("LAMINAS_POR_SEMANA"):
+    if os.environ.get("LAMINAS_POR_SEMANA") or os.environ.get("CONVERSAS_POR_SEMANA"):
         # a produção não lê variável (regra_reels.py é a fonte única); página gerada com outra cota mentiria
         raise SystemExit("ERRO: LAMINAS_POR_SEMANA está definida no ambiente local — a produção usa "
                          "regra_reels.LAMINAS_POR_SEMANA_PADRAO. Tire a variável e rode de novo.")
@@ -57,13 +57,15 @@ def main():
     fora = [x["id"] for x in reels if x["id"] not in projetados]
     txt_cota = ("sem limite" if cota < 0 else "suspensa (nenhuma lâmina sai)" if cota == 0
                 else f"no máximo {cota} vez(es) por semana")
+    cc = PA.regra_reels.cota_conversas()
+    txt_conv = ("sem limite" if cc < 0 else "suspensa" if cc == 0 else f"no máximo {cc} por semana")
     pp = projeta([x["id"] for x in posts], PA.POST_WEEKDAYS | PA.POST2_WEEKDAYS, hoje, st.get("last_post_date") == hoje.isoformat())
     trial = {x["id"] for x in reels if x.get("trial")}
     L = [f"# PROGRAMAÇÃO — o que vai ao ar e quando\n",
          f"Regenerado em {hoje:%d/%m/%Y} por `_gen_programacao.py`. **Datas são projeção da fila FIFO** a partir do último publicado — job vermelho, alarme de curtidas ou mudança na fila desloca tudo; a fonte de verdade é a fila.\n",
          "**Como revisar/suspender (regra de 30/08):** os itens ficam dias na fila antes de publicar — confira por aqui; para suspender ou editar, avise o chat da auditoria (ou remova a entrada do JSON, com lock `motor-instagram`). Piloto ativo só para formato/estratégia NOVA ou mudança de voz.\n",
          "**Marcações:** `[TRIAL]` = publica só para não-seguidores e fora do grid (B5, 4 peças sorteadas); `[A]`/`[B]` = braço do teste de gancho (B4); `← capa v2` = primeiro reel com o template novo.\n",
-         f"**Formatos (18/10/2026):** `[CONVERSA]` e `[COMO FUNCIONA]` são a geração nova (animação, sem rosto) e saem sem limite; a lâmina antiga sai {txt_cota} (regra_reels.py). Dia de reel sem peça permitida fica sem reel.\n",
+         f"**Formatos (18/10/2026):** `[COMO FUNCIONA]` e `[CONVERSA]` são a geração nova (animação, sem rosto). COMO FUNCIONA é o formato principal e sai sem limite; a CONVERSA sai {txt_conv} (19/10: “vez ou outra”); a lâmina antiga sai {txt_cota} (regra_reels.py). Dia de reel sem peça permitida fica sem reel.\n",
          "\n## Reels (seg · qua · sex · dom, ~15h BRT)\n", "| Data | Peça | Série | Vídeo |", "|---|---|---|---|"]
     braco = {"fx_sentar_levantar": "A", "fx_roupa": "A", "fx_pino_inflamado": "A", "fx_retirada": "A",
              "fx_kit_casa": "B", "fx_viagem": "B", "fx_curativo_pinos": "B", "fx_dormir": "B"}

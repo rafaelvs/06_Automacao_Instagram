@@ -190,6 +190,10 @@ Decisão do Rafael em 18/10/2026 ("pode seguir com tudo"), depois de ver os dois
   (não é variável de repositório desde 19/10: com variável, a página mostrava uma cota e o robô usava outra).
   `-1` = sem cota, `0` = lâminas suspensas. O `publish_agenda.py` projeta o `PROGRAMACAO.md` chamando a MESMA
   função do robô (`regra_reels.proximo_reel`), e o publish grava `formato` em cada reel publicado.
+- **Cota de conversa** (19/10/2026) — a série CONVERSA ("Se o seu ___ pudesse responder") sai no máximo
+  `CONVERSAS_POR_SEMANA_PADRAO` vez por semana (`regra_reels.py`, padrão 1). Rafael: "é legal, mas tem que ser
+  mais espaçada [...] vez ou outra somente, pq é um modelo mais cansativo". COMO FUNCIONA é o formato
+  principal, sem cota. Fila com só conversa e lâmina nas cotas = dia sem reel: produzir COMO FUNCIONA.
 - **Voz** — a aprovada passou a Antonio **+8% / +0Hz** (era −8%/−4Hz desde 30/08). `checar_voz.py` re-registrado
   com a evidência; o autoteste dele não depende mais de um valor fixo de ritmo.
 

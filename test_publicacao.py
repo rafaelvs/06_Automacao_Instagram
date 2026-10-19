@@ -135,6 +135,7 @@ def rodar(cenario, tmp, force_id="", agora="", extra=None):
     env.pop("FAKE_NOW", None)
     env.pop("ROTULO_IA", None)
     env.pop("LAMINAS_POR_SEMANA", None)
+    env.pop("CONVERSAS_POR_SEMANA", None)
     if agora:
         env["FAKE_NOW"] = agora
     env.update({"IG_USER_ID": "1784", "IG_ACCESS_TOKEN": "fake",
@@ -284,6 +285,26 @@ shutil.rmtree(tmp, ignore_errors=True)
 CONVERSA_SEG = {"id": "t-conversa-0", "kind": "reel", "media_id": "M9", "at": "2026-07-27T18:30:00+00:00", "formato": "conversa"}
 tmp = preparar(reels=[R_LAMINA], publicados=[CONVERSA_SEG]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H)
 checa("peca nova ja publicada e fora da fila NAO conta como lamina", "t-lamina-1" in ids(st), f"publicados={ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nP) COTA DE CONVERSA (19/10/2026, 'vez ou outra'): conversa ja saiu na semana -> pula a conversa, sai o COMO FUNCIONA")
+R_CONVERSA2 = {"id": "t-conversa-2", "video": "media/c2.mp4", "caption": CAP_IA, "formato": "conversa"}
+R_CF = {"id": "t-cf-1", "video": "media/f1.mp4", "caption": CAP_IA, "formato": "como_funciona"}
+CONVERSA_SEG_P = {"id": "t-conversa-0", "kind": "reel", "media_id": "M8", "at": "2026-07-27T18:30:00+00:00", "formato": "conversa"}
+tmp = preparar(reels=[R_CONVERSA2, R_CF], publicados=[CONVERSA_SEG_P]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H)
+checa("publicou o COMO FUNCIONA, nao a 2a conversa da semana", "t-cf-1" in ids(st) and "t-conversa-2" not in ids(st), f"publicados={ids(st)}")
+checa("exit == 0", rc == 0, f"exit={rc}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(reels=[R_CONVERSA2], publicados=[CONVERSA_SEG_P]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H)
+checa("so conversa na fila e cota cheia -> sem reel, sem erro", "t-conversa-2" not in ids(st) and rc == 0 and "::error::" not in out, f"exit={rc} publicados={ids(st)}")
+checa("mensagem cita as cotas", "conversa(s) por semana cumprida" in out, "texto no log")
+shutil.rmtree(tmp, ignore_errors=True)
+CONVERSA_SEMANA_PASSADA = dict(CONVERSA_SEG_P, at="2026-07-25T18:30:00+00:00")
+tmp = preparar(reels=[R_CONVERSA2, R_CF], publicados=[CONVERSA_SEMANA_PASSADA]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H)
+checa("controle: conversa so na semana anterior -> a conversa da frente sai", "t-conversa-2" in ids(st), f"publicados={ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(reels=[R_CONVERSA2, R_CF], publicados=[CONVERSA_SEG_P]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H, extra={"CONVERSAS_POR_SEMANA": "-1"})
+checa("CONVERSAS_POR_SEMANA=-1 desliga a cota", "t-conversa-2" in ids(st), f"publicados={ids(st)}")
 shutil.rmtree(tmp, ignore_errors=True)
 
 print("\nO) LAMINAS_POR_SEMANA ilegivel/'off' NAO derruba o motor (posts e stories seguem)")
