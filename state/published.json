@@ -1693,10 +1693,19 @@
       "media_id": "18127366583491518",
       "at": "2026-10-18T18:16:19.798773+00:00",
       "modo_reel": "normal"
+    },
+    {
+      "id": "cv_fixador",
+      "kind": "reel",
+      "media_id": "18641800081046560",
+      "at": "2026-10-19T20:42:41.063608+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "conversa"
     }
   ],
   "last_post_date": "2026-10-18",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-10-18",
+  "last_reel_date": "2026-10-19",
   "last_seq_date": "2026-10-17"
 }
