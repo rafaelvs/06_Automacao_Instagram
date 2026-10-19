@@ -41,7 +41,7 @@ def projeta(ids, weekdays, base, ja_hoje):
 
 
 def main():
-    if os.environ.get("LAMINAS_POR_SEMANA") or os.environ.get("CONVERSAS_POR_SEMANA"):
+    if os.environ.get("LAMINAS_POR_SEMANA") or os.environ.get("DIAS_ENTRE_CONVERSAS"):
         # a produção não lê variável (regra_reels.py é a fonte única); página gerada com outra cota mentiria
         raise SystemExit("ERRO: LAMINAS_POR_SEMANA está definida no ambiente local — a produção usa "
                          "regra_reels.LAMINAS_POR_SEMANA_PADRAO. Tire a variável e rode de novo.")
@@ -57,8 +57,8 @@ def main():
     fora = [x["id"] for x in reels if x["id"] not in projetados]
     txt_cota = ("sem limite" if cota < 0 else "suspensa (nenhuma lâmina sai)" if cota == 0
                 else f"no máximo {cota} vez(es) por semana")
-    cc = PA.regra_reels.cota_conversas()
-    txt_conv = ("sem limite" if cc < 0 else "suspensa" if cc == 0 else f"no máximo {cc} por semana")
+    cc = PA.regra_reels.dias_entre_conversas()
+    txt_conv = ("sem intervalo mínimo" if cc <= 0 else f"no máximo 1 a cada {cc} dias")
     pp = projeta([x["id"] for x in posts], PA.POST_WEEKDAYS | PA.POST2_WEEKDAYS, hoje, st.get("last_post_date") == hoje.isoformat())
     trial = {x["id"] for x in reels if x.get("trial")}
     L = [f"# PROGRAMAÇÃO — o que vai ao ar e quando\n",

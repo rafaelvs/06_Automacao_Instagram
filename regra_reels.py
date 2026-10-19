@@ -11,7 +11,9 @@ os testes; o publish.yml NÃO as define.
     as lâminas" -> no máximo 1 por semana.
   * conversa ("Se o seu ___ pudesse responder") — Rafael, 19/10/2026: "é legal, mas tem que ser mais
     espaçada [...] deixar essa série de responder vez ou outra somente, pq é um modelo mais
-    cansativo" -> no máximo 1 por semana.
+    cansativo". A 1ª versão (1 por semana) punha conversa numa segunda e outra na segunda seguinte,
+    e ele estranhou ("conversa fixador hoje e já conversa com pinos na segunda?") -> agora é
+    INTERVALO: no mínimo DIAS_ENTRE_CONVERSAS_PADRAO dias desde a última conversa publicada.
   * como_funciona — sem cota: é o formato principal.
 """
 import datetime as dt
@@ -19,7 +21,7 @@ import os
 
 BRT = dt.timezone(dt.timedelta(hours=-3))
 LAMINAS_POR_SEMANA_PADRAO = 1
-CONVERSAS_POR_SEMANA_PADRAO = 1
+DIAS_ENTRE_CONVERSAS_PADRAO = 10          # Rafael, 19/10: "pode deixar a cada 10 dias"
 _SEM_COTA = ("off", "nao", "não", "no", "false", "sem", "-1")
 
 
@@ -43,8 +45,26 @@ def cota_laminas(valor=None):
     return _cota("LAMINAS_POR_SEMANA", LAMINAS_POR_SEMANA_PADRAO, valor)
 
 
-def cota_conversas(valor=None):
-    return _cota("CONVERSAS_POR_SEMANA", CONVERSAS_POR_SEMANA_PADRAO, valor)
+def dias_entre_conversas(valor=None):
+    """Intervalo mínimo (dias) entre duas conversas publicadas; -1/'off' = sem intervalo."""
+    return _cota("DIAS_ENTRE_CONVERSAS", DIAS_ENTRE_CONVERSAS_PADRAO, valor)
+
+
+def ultima_publicacao(state, reels, fmt_alvo):
+    """Data BRT do último reel publicado do formato `fmt_alvo` (None se nunca saiu)."""
+    fmt = {r["id"]: formato(r) for r in reels}
+    ult = None
+    for e in state.get("published", []):
+        if e.get("kind") != "reel" or not e.get("at"):
+            continue
+        if (e.get("formato") or fmt.get(e["id"], "lamina")) != fmt_alvo:
+            continue
+        try:
+            d = dt.datetime.fromisoformat(e["at"]).astimezone(BRT).date()
+        except ValueError:
+            continue
+        ult = d if ult is None or d > ult else ult
+    return ult
 
 
 def formato(item):
@@ -75,12 +95,15 @@ def laminas_na_semana(state, reels, agora_brt):
     return publicados_na_semana(state, reels, agora_brt, "lamina")
 
 
-def proximo_reel(reels, done, state, agora_brt, cota=None, cota_conversa=None):
-    """Primeiro reel da fila que pode sair hoje: como_funciona sempre; lâmina e conversa só dentro
-    da cota semanal de cada uma. `cota` = cota de lâminas (nome histórico)."""
-    cotas = {"lamina": cota_laminas() if cota is None else cota,
-             "conversa": cota_conversas() if cota_conversa is None else cota_conversa}
-    livre = {f: c < 0 or publicados_na_semana(state, reels, agora_brt, f) < c for f, c in cotas.items()}
+def proximo_reel(reels, done, state, agora_brt, cota=None, dias_conversa=None):
+    """Primeiro reel da fila que pode sair hoje: como_funciona sempre; lâmina só dentro da cota
+    semanal; conversa só se a última saiu há pelo menos `dias_conversa` dias. `cota` = cota de
+    lâminas (nome histórico)."""
+    cota = cota_laminas() if cota is None else cota
+    dias = dias_entre_conversas() if dias_conversa is None else dias_conversa
+    ult = ultima_publicacao(state, reels, "conversa")
+    livre = {"lamina": cota < 0 or publicados_na_semana(state, reels, agora_brt, "lamina") < cota,
+             "conversa": dias < 0 or ult is None or (agora_brt.date() - ult).days >= dias}
     for x in reels:
         if x["id"] in done:
             continue

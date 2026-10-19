@@ -6,7 +6,7 @@ Regenerado em 19/10/2026 por `_gen_programacao.py`. **Datas são projeção da f
 
 **Marcações:** `[TRIAL]` = publica só para não-seguidores e fora do grid (B5, 4 peças sorteadas); `[A]`/`[B]` = braço do teste de gancho (B4); `← capa v2` = primeiro reel com o template novo.
 
-**Formatos (18/10/2026):** `[COMO FUNCIONA]` e `[CONVERSA]` são a geração nova (animação, sem rosto). COMO FUNCIONA é o formato principal e sai sem limite; a CONVERSA sai no máximo 1 por semana (19/10: “vez ou outra”); a lâmina antiga sai no máximo 1 vez(es) por semana (regra_reels.py). Dia de reel sem peça permitida fica sem reel.
+**Formatos (18/10/2026):** `[COMO FUNCIONA]` e `[CONVERSA]` são a geração nova (animação, sem rosto). COMO FUNCIONA é o formato principal e sai sem limite; a CONVERSA sai no máximo 1 a cada 10 dias (19/10: “vez ou outra”); a lâmina antiga sai no máximo 1 vez(es) por semana (regra_reels.py). Dia de reel sem peça permitida fica sem reel.
 
 
 ## Reels (seg · qua · sex · dom, ~15h BRT)
@@ -17,25 +17,25 @@ Regenerado em 19/10/2026 por `_gen_programacao.py`. **Datas são projeção da f
 | qua 21/10 | `cf_alongamento` **[COMO FUNCIONA]** | Como funciona | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cf_alongamento.mp4) |
 | sex 23/10 | `cf_fratura_cola` **[COMO FUNCIONA]** | Como funciona | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cf_fratura_cola.mp4) |
 | dom 25/10 | `cf_transporte_osseo` **[COMO FUNCIONA]** | Como funciona | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cf_transporte_osseo.mp4) |
-| seg 26/10 | `cv_pinos` **[CONVERSA]** | Se pudesse responder | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cv_pinos.mp4) |
-| qua 28/10 | `cf_osteomielite` **[COMO FUNCIONA]** | Como funciona | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cf_osteomielite.mp4) |
-| sex 30/10 | `cf_pe_virado` **[COMO FUNCIONA]** | Como funciona | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cf_pe_virado.mp4) |
+| seg 26/10 | `cf_osteomielite` **[COMO FUNCIONA]** | Como funciona | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cf_osteomielite.mp4) |
+| qua 28/10 | `cf_pe_virado` **[COMO FUNCIONA]** | Como funciona | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cf_pe_virado.mp4) |
+| sex 30/10 | `cv_pinos` **[CONVERSA]** | Se pudesse responder | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cv_pinos.mp4) |
 | dom 01/11 | `fx_retirada` [A] | Fixador por dentro | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_fx_retirada.mp4) |
-| seg 02/11 | `cv_gesso_filho` **[CONVERSA]** | Se pudesse responder | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cv_gesso_filho.mp4) |
-| qua 04/11 | `quanto_alongar`  | Alongamento Ósseo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_quanto_alongar.mp4) |
-| seg 09/11 | `cv_osso` **[CONVERSA]** | Se pudesse responder | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cv_osso.mp4) |
+| seg 02/11 | `quanto_alongar`  | Alongamento Ósseo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_quanto_alongar.mp4) |
+| seg 09/11 | `cv_gesso_filho` **[CONVERSA]** | Se pudesse responder | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cv_gesso_filho.mp4) |
 | qua 11/11 | `fx_curativo_pinos` [B] | Fixador por dentro | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_fx_curativo_pinos.mp4) |
-| seg 16/11 | `cv_muleta` **[CONVERSA]** | Se pudesse responder | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cv_muleta.mp4) |
-| qua 18/11 | `esc_nao_doi`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_esc_nao_doi.mp4) |
-| seg 23/11 | `cv_pe_chato` **[CONVERSA]** | Se pudesse responder | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cv_pe_chato.mp4) |
-| qua 25/11 | `qa_ajustar_fixador`  | Respondendo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_qa_ajustar_fixador.mp4) |
-| seg 30/11 | `cv_dor_crescimento` **[CONVERSA]** | Se pudesse responder | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cv_dor_crescimento.mp4) |
+| seg 16/11 | `esc_nao_doi`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_esc_nao_doi.mp4) |
+| sex 20/11 | `cv_osso` **[CONVERSA]** | Se pudesse responder | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cv_osso.mp4) |
+| seg 23/11 | `qa_ajustar_fixador`  | Respondendo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_qa_ajustar_fixador.mp4) |
+| seg 30/11 | `cv_muleta` **[CONVERSA]** | Se pudesse responder | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cv_muleta.mp4) |
 | qua 02/12 | `trabalho_escola`  | Alongamento Ósseo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_trabalho_escola.mp4) |
-| seg 07/12 | `cv_perna_curta` **[CONVERSA]** | Se pudesse responder | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cv_perna_curta.mp4) |
-| qua 09/12 | `vida_cotidiana_fixador`  | Alongamento Ósseo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_vida_cotidiana_fixador.mp4) |
+| seg 07/12 | `vida_cotidiana_fixador`  | Alongamento Ósseo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_vida_cotidiana_fixador.mp4) |
+| sex 11/12 | `cv_pe_chato` **[CONVERSA]** | Se pudesse responder | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cv_pe_chato.mp4) |
 | seg 14/12 | `esc_estirao`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_esc_estirao.mp4) |
-| seg 21/12 | `qa_calo_osseo`  | Respondendo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_qa_calo_osseo.mp4) |
+| seg 21/12 | `cv_dor_crescimento` **[CONVERSA]** | Se pudesse responder | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cv_dor_crescimento.mp4) |
+| qua 23/12 | `qa_calo_osseo`  | Respondendo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_qa_calo_osseo.mp4) |
 | seg 28/12 | `qa_refratura`  | Respondendo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_qa_refratura.mp4) |
+| sex 01/01 | `cv_perna_curta` **[CONVERSA]** | Se pudesse responder | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cv_perna_curta.mp4) |
 | seg 04/01 | `pnc_joelho_valgo`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_pnc_joelho_valgo.mp4) |
 | seg 11/01 | `on_consolidacao_viciosa`  | Osso Novo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_on_consolidacao_viciosa.mp4) |
 | seg 18/01 | `pnc_osgood`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_pnc_osgood.mp4) |
