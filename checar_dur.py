@@ -27,7 +27,10 @@ import os
 import struct
 import sys
 
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+# reconfigure (e nao um TextIOWrapper novo): quem importa este modulo ja pode ter
+# embrulhado o stdout, e o embrulho antigo, ao ser coletado, FECHA o buffer — o
+# render de 19/10 perdeu 3 videos prontos com "I/O operation on closed file".
+sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 ROOT = os.path.dirname(os.path.abspath(__file__))
 FILAS = ["reels.json", "reels_legado_mudos.json"]
 TOLERANCIA = 0.10
