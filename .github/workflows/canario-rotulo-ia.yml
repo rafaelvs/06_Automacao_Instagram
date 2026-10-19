@@ -1,0 +1,26 @@
+name: canario-rotulo-ia
+# Prova que a Graph API RECONHECE `is_ai_generated` em reel pelo caminho do motor
+# (graph.instagram.com). Dois contêineres, nenhum publicado: `true` tem de ser ACEITO e
+# um valor invalido tem de ser RECUSADO (senao a API esta ignorando o campo). Rodar antes
+# de ligar o rotulo e sempre que a versao da Graph API mudar. Decisao do Rafael, 18/10/2026.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  canario:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - name: Canario do rotulo de IA (true aceito + invalido recusado)
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: python canario_rotulo_ia.py
