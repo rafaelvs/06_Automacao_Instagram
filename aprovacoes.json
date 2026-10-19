@@ -680,8 +680,20 @@
      "hash_roteiro": "sha256:6e457815196d5362887ce44b9f3a59be28fb7f00c539650fbdd7377cd9385276"
     },
     {
+     "id": "cf_transporte_osseo",
+     "hash_roteiro": "sha256:dd258f58cefac411c6eac705d9f5774e98c527a444c4f3a3a41f5c0ed99b9ea3"
+    },
+    {
+     "id": "cf_osteomielite",
+     "hash_roteiro": "sha256:7aeaefd2041ee37176de04e261f745a0d35294bddcbb92fe164cbb4c284d2d1b"
+    },
+    {
      "id": "cv_perna_curta",
      "hash_roteiro": "sha256:7bfacf15f1cbf178338faf8811436e72e28ee6f2d39d64ee63f444e54fd50506"
+    },
+    {
+     "id": "cf_pe_virado",
+     "hash_roteiro": "sha256:8384209a3deae45fe33efb39070a2b8bb9e4732ee27a322bf0453ea63c110c24"
     }
    ]
   }

@@ -336,4 +336,180 @@ EPISODIOS_ENTRETENIMENTO = [
             "coluna, ou diferença que aumenta rápido na criança: procure avaliação."
         ),
     },
+    # cf_transporte_osseo: caso da literatura tratado por OUTRA equipe (Pentela et al., J Orthop Case Rep
+    # 2023) — atribuição na tela o vídeo inteiro, "ilustração esquemática", desfecho honesto (1,5 cm de
+    # encurtamento e rigidez no tornozelo) e a fonte na legenda. cf_osteomielite: tom sóbrio, bactéria não
+    # vira personagem; conduta pós-cirurgia = infeccao_ferida_curto (aprovado 30/07). Cenas construídas,
+    # revisadas por revisor adversarial e corrigidas (workflow cenas-lote2-como-funciona, 19/10).
+    {
+        "id": "cf_transporte_osseo",
+        "formato": "como_funciona",
+        "serie": "Como funciona",
+        "familia": "reconstrucao",
+        "cena": "cf_transporte_osseo",
+        "gancho": ["FALTAVAM 17 CM", "DE OSSO. E AGORA?"],
+        "tela": [
+            "Caso real da literatura",
+            "tratado por outra equipe",
+            "ilustração esquemática",
+            "17 cm",
+            "osso da canela (tíbia)",
+            "fixador de Ilizarov",
+            "corte no osso saudável",
+            "DE PROPÓSITO",
+            "UM PEDAÇO VIAJA",
+            "osso novo",
+            "atrás do segmento",
+            "4 MESES",
+            "aos poucos",
+            "TRANSPORTE ÓSSEO",
+            "mesmo princípio do alongamento ósseo",
+            "OSSO",
+            "COMPRIMENTO",
+            "FUNÇÃO",
+            "neste caso: ficou 1,5 cm",
+            "de encurtamento e rigidez",
+            "no tornozelo",
+            "cada caso é único",
+            "Caso publicado, tratado por outra equipe",
+        ],
+        "roteiro": [
+            "Caso real: ele perdeu dezessete centímetros do osso da canela num acidente.",
+            "Com o fixador de Ilizarov segurando a perna, os médicos cortaram o osso saudável. De propósito.",
+            "O pedaço cortado foi deslizando, devagarinho, pra dentro da falha.",
+            "Atrás dele, no rastro, o corpo fabricava osso novo.",
+            "Quatro meses assim. É o transporte ósseo, o mesmo princípio do alongamento.",
+            "O objetivo é devolver osso, comprimento e função.",
+            "Manda pra quem acha que falta de osso não tem solução.",
+        ],
+        "cta": "Manda pra quem acha que falta de osso não tem solução.",
+        "legenda": (
+            "Ele perdeu 17,2 cm do osso da canela (tíbia) num acidente de trânsito. Caso real publicado na "
+            "literatura médica, tratado por outra equipe."
+            "\n\n"
+            "Com o fixador circular de Ilizarov, os médicos cortaram o osso saudável e foram puxando o "
+            "segmento aos poucos, por 4 meses, para dentro da falha. Atrás dele, o corpo fabricava osso "
+            "novo. É o transporte ósseo: a mesma osteogênese por distração do alongamento ósseo, usada para "
+            "vencer perdas grandes de osso depois de trauma ou infecção, num tratamento longo, em etapas. O "
+            "objetivo é devolver osso, comprimento e função. Reconstrução de função, nunca estética."
+            "\n\n"
+            "O desfecho, com a parte honesta: ele voltou ao trabalho andando sem apoio e a perna foi "
+            "preservada, mas ficou com 1,5 cm de encurtamento e uma contratura de 10° no tornozelo. Cada "
+            "caso é único: este é o relato de um paciente, publicado pelos médicos que o trataram. As "
+            "ilustrações são esquemáticas, não são imagens do paciente."
+            "\n\n"
+            "Fonte: Pentela HK, Harshavardhan JKG, Suriyakumar S. Journal of Orthopaedic Case Reports, "
+            "2023;13(5):9-13."
+        ),
+    },
+    {
+        "id": "cf_osteomielite",
+        "formato": "como_funciona",
+        "serie": "Como funciona",
+        "familia": "reconstrucao",
+        "cena": "cf_osteomielite",
+        "gancho": ["OSSO TAMBÉM", "PEGA INFECÇÃO?"],
+        "tela": [
+            "OSTEOMIELITE",
+            "infecção no osso",
+            "PORTAS DE ENTRADA",
+            "FRATURA EXPOSTA",
+            "CIRURGIA",
+            "SANGUE",
+            "POR DENTRO",
+            "DOR QUE NÃO PASSA",
+            "INCHAÇO",
+            "CALOR",
+            "VERMELHIDÃO",
+            "ÀS VEZES FEBRE",
+            "OU SECREÇÃO",
+            "NÃO IGNORE",
+            "1 COMBATER A INFECÇÃO",
+            "2 REMOVER O OSSO DOENTE",
+            "3 RECONSTRUIR, SE SOBRAR VÃO",
+            "OSSO DOENTE",
+            "VÃO",
+            "SEMPRE INDIVIDUALIZADO",
+            "DEPOIS DA CIRURGIA",
+            "FEBRE",
+            "PUS",
+            "FERIDA QUE ABRIU",
+            "VERMELHIDÃO SE ALASTRANDO",
+            "PRONTO-SOCORRO NA HORA",
+            "AVISE A EQUIPE",
+        ],
+        "roteiro": [
+            "Osso também pega infecção? Pega. Tem nome: osteomielite.",
+            "Pode entrar por fratura exposta, cirurgia ou pelo sangue.",
+            "Instalada, pode ir destruindo o osso por dentro.",
+            "Dor que não passa, inchaço, calor, vermelhidão, às vezes febre ou secreção: não ignore.",
+            "Tem tratamento: combater a infecção, remover o osso doente e, se sobrar um vão, reconstruir.",
+            "Operou e veio febre, pus, ferida que abriu ou vermelhidão se alastrando? Pronto-socorro na hora, avisando a equipe.",
+            "Manda pra quem operou há pouco.",
+        ],
+        "cta": "Manda pra quem operou há pouco.",
+        "legenda": (
+            "O osso também pega infecção: a osteomielite. Ela pode entrar por uma fratura exposta, depois de "
+            "uma cirurgia, ou até viajar pelo sangue, vinda de uma infecção em outro lugar do corpo. Quando "
+            "se instala, pode ir destruindo o osso por dentro. Sinais comuns: dor que não passa, inchaço, "
+            "calor e vermelhidão no local, às vezes febre ou secreção. Não é pra ignorar. Tem tratamento: "
+            "combater a infecção, remover o osso doente e, quando sobra um vão, reconstruir o que se perdeu "
+            "com as técnicas do alongamento ósseo, sempre de forma individualizada. Sem resolver a infecção, "
+            "nenhuma reconstrução se sustenta. Após infecções com perda óssea, a reconstrução é por etapas: "
+            "controlar a infecção e depois recompor o osso, às vezes com transporte ósseo."
+            "\n\n"
+            "Depois de uma cirurgia, se houver febre, pus, ferida que abriu ou vermelhidão se alastrando "
+            "pela pele: pronto-socorro na hora, avisando a equipe no caminho."
+        ),
+    },
+    {
+        "id": "cf_pe_virado",
+        "formato": "como_funciona",
+        "serie": "Como funciona",
+        "familia": "pediatria",
+        "cena": "cf_pe_virado",
+        "gancho": ["ANDAR DE POMBINHO?", "PODE SER A COXA."],
+        "tela": [
+            "PRA DENTRO",
+            "?",
+            "PÉ",
+            "CANELA",
+            "COXA",
+            "ROTAÇÃO NATURAL",
+            "PRA FORA",
+            "NA MAIORIA DAS VEZES",
+            "SOZINHO",
+            "SÓ DE UM LADO",
+            "DOR",
+            "QUEDAS DEMAIS",
+            "PIORA EM VEZ",
+            "DE MELHORA",
+            "VALE O ORTOPEDISTA OLHAR",
+        ],
+        "roteiro": [
+            "Andar de pombinho: o pé vira pra dentro.",
+            "De onde vem? Pode ser um leve giro no pé, na canela ou até na coxa.",
+            "Costuma ser a rotação natural dos ossos na infância, pra dentro ou pra fora.",
+            "Com o crescimento, na maioria das vezes, o pé alinha sozinho.",
+            "O alerta: só de um lado, dor, quedas demais, ou piora em vez de melhora.",
+            "Aí vale o ortopedista olhar.",
+            "Manda pra quem se preocupa com o andar de pombinho.",
+        ],
+        "cta": "Manda pra quem se preocupa com o andar de pombinho.",
+        "legenda": (
+            "Pé pra dentro ao andar, o famoso andar de pombinho. Pode vir de uma leve torção (um giro) do "
+            "pé, da canela ou do osso da coxa, todas variações comuns do crescimento, bem conhecidas da "
+            "ortopedia pediátrica. Costuma refletir a rotação natural dos ossos, que na infância faz muitos "
+            "pés virarem para dentro (ou para fora). A regra é o tempo: conforme a criança cresce, a rotação "
+            "costuma se ajustar sozinha, na maioria das vezes sem precisar de tratamento."
+            "\n\n"
+            "No bebê existe também o metatarso aduto, em que a parte da frente do pé vira para dentro: é "
+            "comum, costuma ser flexível e é diferente do pé torto. O acompanhamento define a necessidade de "
+            "tratamento."
+            "\n\n"
+            "O alerta é quando ocorre só de um lado, dói, causa quedas demais, ou piora em vez de melhorar. "
+            "Aí vale o ortopedista olhar. Para a consulta, vídeos curtos do andar, de frente e de costas, "
+            "ajudam: o celular mostra o que a criança nem sempre repete no consultório."
+        ),
+    },
 ]
