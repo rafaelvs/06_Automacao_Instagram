@@ -89,9 +89,17 @@ def main():
             r2 = fp2 != fp
             print(f"[{'ok' if r2 else 'FALHOU'}] positivo 2: mexer na VOICE_CHAIN muda o fingerprint")
             ok &= r2
-            # controle POSITIVO 3: mexer no rate default do workflow TEM de mudar
+            # controle POSITIVO 3: mexer no rate default do workflow TEM de mudar.
+            # 18/10/2026: o controle antigo trocava o texto literal 'default: "-8%"'. Quando a voz
+            # aprovada passou a +8%, a troca virou no-op e o controle "falhou" sem o guarda ter
+            # mudado — controle preso a um valor fixo apodrece na primeira mudança legítima. Agora
+            # troca QUALQUER rate default por outro garantidamente diferente.
             w = (ROOT / ".github" / "workflows" / "render-reel-voz.yml").read_text(encoding="utf-8")
-            (td / "w3.yml").write_text(w.replace('default: "-8%"', 'default: "+4%"'), encoding="utf-8")
+            atual = re.search(r'default: "([+-]\d+%)"', w)
+            novo = "+37%" if not atual or atual.group(1) != "+37%" else "-37%"
+            w3 = re.sub(r'default: "[+-]\d+%"', f'default: "{novo}"', w, count=1)
+            assert w3 != w, "controle 3 nao conseguiu alterar o rate default (estrutura do workflow mudou)"
+            (td / "w3.yml").write_text(w3, encoding="utf-8")
             fp3, _ = fingerprint(wf_path=td / "w3.yml")
             r3 = fp3 != fp
             print(f"[{'ok' if r3 else 'FALHOU'}] positivo 3: mudar rate default do workflow muda o fingerprint")

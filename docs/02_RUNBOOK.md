@@ -169,3 +169,22 @@ o sinal negativo de ranking de Stories.
 - Stories saem seg/ter/sáb 12:30 (`SEQ_WEEKDAYS = {0, 1, 5}`): dias escolhidos pelos views/dia medidos em 83 dias
   (SÁB 102,0 · SEG 100,7 · TER 91,3 · QUI 69,0 = pior). Reverter é 1 linha em `publish.py` + `publish_agenda.py`.
 - Plano completo e correções do crítico: oficina, `_GRANDE_REVISAO_2026-08/EVOLUCAO_NUCLEO_PRIMEIRO_2026-09-13.md`.
+
+## 10. Geração nova: rótulo de IA, cota de lâminas e voz (18–19/10/2026)
+
+Decisão do Rafael em 18/10/2026 ("pode seguir com tudo"), depois de ver os dois pilotos de entretenimento.
+
+- **Rótulo "Conteúdo de IA"** — todo reel com voz sintética sai com `is_ai_generated=true` no contêiner. "Voz
+  sintética" = campo `voz_ia` do item, ou a legenda contendo "voz digital (IA)" (todo reel narrado declara isso).
+  Imagem, carrossel e story não levam rótulo: a Meta os isenta. Prova de que a API lê o campo:
+  `canario_rotulo_ia.py` / `canario-rotulo-ia.yml` (`true` aceito, valor inválido recusado com "Param
+  is_ai_generated must be a boolean"). O estado grava `rotulo_ia` em cada reel. Desligar só por decisão humana:
+  `gh variable set ROTULO_IA --body off --repo rafaelvs/06_Automacao_Instagram`.
+- **Cota de lâminas** — o reel antigo (lâmina de texto lida em voz alta, item sem `formato`) sai no máximo
+  `LAMINAS_POR_SEMANA` vezes por semana (padrão 1, semana de segunda a domingo, horário de Brasília). Formato novo
+  (`"formato": "conversa"` ou `"como_funciona"`) sai sem cota. Em dia de reel sem peça permitida, não sai reel — o
+  log diz "cota ... cumprida", não "esgotada". `FORCE_ID` passa por cima da cota (decisão humana). `-1` desliga.
+  `publish_agenda.projeta_reels` simula a mesma regra para o `PROGRAMACAO.md`.
+- **Voz** — a aprovada passou a Antonio **+8% / +0Hz** (era −8%/−4Hz desde 30/08). `checar_voz.py` re-registrado
+  com a evidência; o autoteste dele não depende mais de um valor fixo de ritmo.
+

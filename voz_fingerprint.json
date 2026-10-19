@@ -1,6 +1,6 @@
 {
-  "fingerprint": "bed45a4c583871c62d6866343af275cba0a3ba91b1056639b1869e6456db4707",
-  "evidencia": "Piloto aprovado pelo Rafael em 30/08/2026 (_preview_qa_gesso_molhar.mp4, 'esta otimo esse audio', chat de 30/08): voz edge-tts pt-BR-AntonioNeural, rate -8%, pitch -4Hz. Re-registro de 30/08 (auditoria v1.5 M1/B6): remocao de codigo morto (ramo Piper) + alinhamento do fallback de pitch do render-reel-voz.yml (+0Hz -> -4Hz) e dos lotes a voz do piloto — SEM mudanca sonora do caminho aprovado (-8%/-4Hz permanece).",
+  "fingerprint": "ebb5464d49323f26ef23c55b94e5f8ef5af9f958c9b2bc3f9e6b5f38eeac0fc3",
+  "evidencia": "Pilotos A ('Cortar o osso de proposito?', Antonio +10%) e B ('Se o seu fixador pudesse responder', Antonio +8%) enviados ao Rafael em 18/10/2026; resposta dele no chat auditoria-instagram-v1 em 18/10/2026 ~23:20 BRT: 'pode seguir com tudo' (aprovou a voz mais viva). Mudanca: render-reel-voz.yml passa de -8%/-4Hz (piloto 30/08) para +8%/+0Hz.",
   "partes_rotulos": [
     "engine_default",
     "leads",

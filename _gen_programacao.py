@@ -46,13 +46,19 @@ def main():
     reels = [x for x in carrega("reels.json") if x["id"] not in done]
     posts = [x for x in carrega("posts.json") if x["id"] not in done]
     seqs = [x for x in carrega("sequences.json") if x["id"] not in done]
-    rp = projeta([x["id"] for x in reels], PA.REEL_WEEKDAYS, hoje, st.get("last_reel_date") == hoje.isoformat())
+    fmt_de = {x["id"]: PA.formato(x) for x in carrega("reels.json")}
+    seg = hoje - dt.timedelta(days=hoje.weekday())
+    laminas_semana = sum(1 for e in st["published"] if e.get("kind") == "reel" and e.get("at")
+                         and dt.datetime.fromisoformat(e["at"]).astimezone(PA.BRT).date() >= seg
+                         and fmt_de.get(e["id"], "lamina") == "lamina")
+    rp = PA.projeta_reels(reels, hoje, st.get("last_reel_date") == hoje.isoformat(), laminas_semana)
     pp = projeta([x["id"] for x in posts], PA.POST_WEEKDAYS | PA.POST2_WEEKDAYS, hoje, st.get("last_post_date") == hoje.isoformat())
     trial = {x["id"] for x in reels if x.get("trial")}
     L = [f"# PROGRAMAÇÃO — o que vai ao ar e quando\n",
          f"Regenerado em {hoje:%d/%m/%Y} por `_gen_programacao.py`. **Datas são projeção da fila FIFO** a partir do último publicado — job vermelho, alarme de curtidas ou mudança na fila desloca tudo; a fonte de verdade é a fila.\n",
          "**Como revisar/suspender (regra de 30/08):** os itens ficam dias na fila antes de publicar — confira por aqui; para suspender ou editar, avise o chat da auditoria (ou remova a entrada do JSON, com lock `motor-instagram`). Piloto ativo só para formato/estratégia NOVA ou mudança de voz.\n",
          "**Marcações:** `[TRIAL]` = publica só para não-seguidores e fora do grid (B5, 4 peças sorteadas); `[A]`/`[B]` = braço do teste de gancho (B4); `← capa v2` = primeiro reel com o template novo.\n",
+         f"**Formatos (18/10/2026):** `[CONVERSA]` e `[COMO FUNCIONA]` são a geração nova (animação, sem rosto) e saem sem limite; a lâmina antiga sai no máximo {PA.LAMINAS_POR_SEMANA} vez(es) por semana. Dia de reel sem peça permitida fica sem reel.\n",
          "\n## Reels (seg · qua · sex · dom, ~15h BRT)\n", "| Data | Peça | Série | Vídeo |", "|---|---|---|---|"]
     braco = {"fx_sentar_levantar": "A", "fx_roupa": "A", "fx_pino_inflamado": "A", "fx_retirada": "A",
              "fx_kit_casa": "B", "fx_viagem": "B", "fx_curativo_pinos": "B", "fx_dormir": "B"}
@@ -61,6 +67,8 @@ def main():
         tags = []
         if iid in trial: tags.append("**[TRIAL]**")
         if iid in braco: tags.append(f"[{braco[iid]}]")
+        f = next((PA.formato(x) for x in reels if x["id"] == iid), "lamina")
+        if f != "lamina": tags.append("**[" + f.replace("_", " ").upper() + "]**")
         if primeiro_v2 and d >= dt.date(2026, 9, 16) and not iid.startswith("reel"):
             tags.append("**← capa v2**"); primeiro_v2 = False
         v = next(x["video"] for x in reels if x["id"] == iid)
@@ -73,7 +81,8 @@ def main():
     L += [f"\n*Sequências de stories: {len(seqs)} restantes, publicadas ter/qui/sáb às 12:30, nos dias do carrossel (cadência reduzida em 12/09; a troca de dias de 13/09 foi revertida em 19/09 — o eixo de dia da semana estava deslocado um dia, ver E7). Quem edita a fila, regenera esta página.*\n"]
     with open(os.path.join(ROOT, "PROGRAMACAO.md"), "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(L))
-    print(f"PROGRAMACAO.md: {len(rp)} reels ({len(trial)} trial) até {rp[-1][0]:%d/%m} | {len(pp)} posts até {pp[-1][0]:%d/%m}")
+    novos = sum(1 for _, i in rp if fmt_de.get(i, "lamina") != "lamina")
+    print(f"PROGRAMACAO.md: {len(rp)} reels ({novos} de formato novo) até {rp[-1][0]:%d/%m} | {len(pp)} posts até {pp[-1][0]:%d/%m}")
 
 
 if __name__ == "__main__":

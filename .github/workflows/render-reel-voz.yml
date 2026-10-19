@@ -7,13 +7,13 @@ on:
         required: false
         default: "andador"
       rate:
-        description: "Ritmo do Antonio (ex.: -8% mais devagar/conversacional, +0% padrão)"
+        description: "Ritmo do Antonio (aprovado 18/10/2026: +8% = mais vivo; -8% era o de 30/08)"
         required: false
-        default: "-8%"
+        default: "+8%"
       pitch:
-        description: "Tom (ex.: -4Hz grave/autoridade, -6Hz bem grave, +0Hz padrão)"
+        description: "Tom (aprovado 18/10/2026: +0Hz; -4Hz era o grave de 30/08)"
         required: false
-        default: "-4Hz"
+        default: "+0Hz"
 
 permissions:
   contents: write
@@ -36,10 +36,10 @@ jobs:
         env:
           VOZ_ENGINE: edge
           EDGE_VOICE: pt-BR-AntonioNeural
-          EDGE_RATE: ${{ github.event.inputs.rate || '-8%' }}
-          # Fallback alinhado a voz APROVADA no piloto de 30/08/2026 (-8%/-4Hz). O '+0Hz'
-          # antigo contradizia o default do input (-4Hz) e o registro humano do aceite (B6/v1.5).
-          EDGE_PITCH: ${{ github.event.inputs.pitch || '-4Hz' }}
+          EDGE_RATE: ${{ github.event.inputs.rate || '+8%' }}
+          # Voz APROVADA em 18/10/2026 (pilotos A e B, "pode seguir com tudo"): Antonio +8% / +0Hz,
+          # mais viva que a de 30/08 (-8%/-4Hz), que soava como aula. Mudar de novo exige piloto.
+          EDGE_PITCH: ${{ github.event.inputs.pitch || '+0Hz' }}
         run: python gerar_reel_voz.py "${{ github.event.inputs.episodio || 'andador' }}"
       - name: Artefato
         uses: actions/upload-artifact@v4

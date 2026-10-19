@@ -105,6 +105,23 @@ TRIAL_GRADUATION = os.environ.get("TRIAL_GRADUATION", "").strip() or "SS_PERFORM
 # bloqueia (fail-open com ::warning::) — medidor quebrado nao pode parar a fila.
 ALARME_CURTIDAS = os.environ.get("ALARME_CURTIDAS", "on").strip().lower() not in ("off", "0", "false", "nao", "no")
 ALARME_N_PECAS  = int(os.environ.get("ALARME_N_PECAS", "6") or 6)
+# ROTULO DE IA (decisao do Rafael, 18/10/2026). A Central de Ajuda do Instagram exige rotulo em
+# "um reel narrado com uma sobreposicao de voz realista gerada por IA" e avisa que pode haver
+# penalidade sem ele. A API aceita `is_ai_generated` na criacao do conteiner desde 22/06/2026
+# (changelog oficial, Instagram Login incluido). PROVADO antes de ligar: canario_rotulo_ia.py
+# (run 39189956255) — `true` aceito e `banana` recusado com "Param is_ai_generated must be a
+# boolean", ou seja, a API LE o campo (aceitar `true` sozinho nao provaria nada). Vale so' para
+# REEL com voz sintetica: imagem e carrossel sao isentos pela propria Meta. Desliga-se por
+# variavel de repositorio ROTULO_IA=off (decisao humana declarada, nunca default).
+ROTULO_IA = os.environ.get("ROTULO_IA", "on").strip().lower() not in ("off", "0", "false", "nao", "no")
+MARCAS_VOZ_IA = ("voz digital (ia)",)          # a legenda de todo reel narrado declara isto (CFM 2.454)
+# COTA DE LAMINAS (decisao do Rafael, 18/10/2026: "desacelerar as laminas antigas"). O reel em
+# lamina de texto lida em voz alta virou "mural informativo": 36 pecas em 30 dias, ZERO envios.
+# Os formatos novos (item["formato"] = "conversa" | "como_funciona") entram sem cota; lamina
+# (item sem "formato") sai no maximo LAMINAS_POR_SEMANA vezes por semana (segunda a domingo,
+# horario de Brasilia). Dia de reel sem peca permitida = sem reel nesse dia (o motor NAO para:
+# regra de 27/09 — nunca desligar, sempre reativar). -1 = sem cota.
+LAMINAS_POR_SEMANA = int(os.environ.get("LAMINAS_POR_SEMANA", "1") or 1)
 HOST       = f"https://graph.instagram.com/{VER}"
 
 if not IG_USER_ID or not TOKEN:
@@ -371,12 +388,58 @@ def publish_sequence(seq):
 _MODO_REEL = None   # "trial" | "fallback_normal" | "normal"
 
 
+def _voz_ia(item):
+    """Reel com voz sintetica? Campo explicito vence; senao, a declaracao na legenda."""
+    if "voz_ia" in item:
+        return bool(item["voz_ia"])
+    cap = (item.get("caption") or "").lower()
+    return any(m in cap for m in MARCAS_VOZ_IA)
+
+_ROTULO_REEL = None
+def _rotulo_ia(d, item):
+    global _ROTULO_REEL
+    _ROTULO_REEL = bool(ROTULO_IA and _voz_ia(item))
+    if _ROTULO_REEL:
+        d["is_ai_generated"] = "true"
+        print("  rotulo de IA: is_ai_generated=true (reel com voz sintetica)", flush=True)
+    return d
+
+def _formato(item):
+    return (item.get("formato") or "lamina").strip().lower()
+
+def _laminas_na_semana(state, reels, agora_brt):
+    """Quantas laminas ja sairam nesta semana (segunda 00:00 BRT ate agora)."""
+    fmt = {r["id"]: _formato(r) for r in reels}
+    ini = (agora_brt - dt.timedelta(days=agora_brt.weekday())).date()
+    n = 0
+    for e in state.get("published", []):
+        if e.get("kind") != "reel" or not e.get("at"):
+            continue
+        try:
+            quando = dt.datetime.fromisoformat(e["at"]).astimezone(BRT).date()
+        except ValueError:
+            continue
+        if quando >= ini and fmt.get(e["id"], "lamina") == "lamina":
+            n += 1
+    return n
+
+def proximo_reel(reels, done, state, agora_brt):
+    """Primeiro reel da fila que pode sair hoje: formato novo sempre; lamina so' dentro da cota."""
+    cota_livre = LAMINAS_POR_SEMANA < 0 or _laminas_na_semana(state, reels, agora_brt) < LAMINAS_POR_SEMANA
+    for x in reels:
+        if x["id"] in done:
+            continue
+        if _formato(x) == "lamina" and not cota_livre:
+            continue
+        return x
+    return None
+
 def publish_reel(item):
     global _MODO_REEL
     _cfm_guard(item)
     # alt_text NAO e' suportado em reels (so imagens); location_id e collaborators sao suportados.
-    base = _collab(_loc({"media_type": "REELS", "video_url": raw_url(item["video"]),
-                         "caption": item.get("caption", "")}), item)
+    base = _rotulo_ia(_collab(_loc({"media_type": "REELS", "video_url": raw_url(item["video"]),
+                                    "caption": item.get("caption", "")}), item), item)
     cont = None
     _MODO_REEL = "normal"
     # Trial por PECA (plano B5, 12/09/2026): item["trial"] = true publica SO' esta peca em modo
@@ -409,6 +472,8 @@ def log(state, item_id, kind, mid, now):
         # nao conseguiu confirmar isso em 18 reels de julho porque nada era gravado.
         reg["modo_reel"] = _MODO_REEL
         print(f"  modo do reel: {_MODO_REEL}", flush=True)
+    if kind == "reel" and _ROTULO_REEL is not None:
+        reg["rotulo_ia"] = _ROTULO_REEL
     state["published"].append(reg)
 def next_item(items, done): return next((x for x in items if x["id"] not in done), None)
 
@@ -524,14 +589,19 @@ def main():
 
     # REELS
     if not auth_error and brt.weekday() in REEL_WEEKDAYS and mod >= REEL_MIN and state["last_reel_date"] != today:
-        it = next_item(reels, done)
+        it = proximo_reel(reels, done, state, brt)
         if it:
             try:
                 mid = publish_reel(it); log(state, it["id"], "reel", mid, now)
                 done.add(it["id"]); state["last_reel_date"] = today; changed = True
-                print(f"Reel {it['id']} OK -> {mid}")
+                print(f"Reel {it['id']} ({_formato(it)}) OK -> {mid}")
             except AuthError as e: auth_error = e
             except Exception as e: _falhou(falhas, f"reel {it['id']}", e)
+        elif any(x["id"] not in done for x in reels):
+            # Nao e' falha nem biblioteca vazia: a cota de laminas da semana ja' saiu e nao ha'
+            # peca de formato novo pronta. Dia sem reel, por decisao (18/10/2026).
+            print(f"Reels: cota de {LAMINAS_POR_SEMANA} lamina(s) por semana cumprida e nenhuma peca de "
+                  "formato novo pronta na fila — sem reel hoje.")
         else:
             print("Biblioteca de REELS esgotada — hora de reabastecer.")
 

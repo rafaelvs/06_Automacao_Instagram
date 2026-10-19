@@ -40,7 +40,9 @@ import sys, json, types, datetime as _dt
 CENARIO = sys.argv[1]
 
 # 2026-07-28 21:00Z = terca 18:00 BRT -> abre POST (15h) e SEQUENCIA (12:30)
-FIXO = _dt.datetime(2026, 7, 28, 21, 0, tzinfo=_dt.timezone.utc)
+import os as _os
+FIXO = _dt.datetime.fromisoformat(_os.environ["FAKE_NOW"]) if _os.environ.get("FAKE_NOW") \
+    else _dt.datetime(2026, 7, 28, 21, 0, tzinfo=_dt.timezone.utc)
 class FakeDT(_dt.datetime):
     @classmethod
     def now(cls, tz=None):
@@ -82,6 +84,8 @@ def fake_post(url, data=None, timeout=None, **kw):
         print("COLLAB_ENVIADO", data["collaborators"], "media_type=", data.get("media_type", "IMAGE"))
     if "trial_params" in data:
         print("TRIAL_PARAMS", data["trial_params"])
+    if "is_ai_generated" in data:
+        print("ROTULO_IA", data["is_ai_generated"], "media_type=", data.get("media_type", "IMAGE"))
     return R(200, {"id": "CONT001"})
 def fake_get(url, params=None, timeout=None, **kw):
     r = _falha()
@@ -104,30 +108,36 @@ publish.main()
 '''
 
 
-def preparar():
+def preparar(reels=None, publicados=None, last_reel=""):
     tmp = Path(tempfile.mkdtemp(prefix="igtest_"))
     for f in ["publish.py", "cfm_guardrails.py"]:
         shutil.copy(ROOT / f, tmp / f)
     (tmp / "posts.json").write_text(json.dumps(POSTS, ensure_ascii=False), encoding="utf-8")
     (tmp / "sequences.json").write_text(json.dumps(SEQS, ensure_ascii=False), encoding="utf-8")
-    (tmp / "reels.json").write_text(json.dumps(REELS, ensure_ascii=False), encoding="utf-8")
+    (tmp / "reels.json").write_text(json.dumps(REELS if reels is None else reels, ensure_ascii=False), encoding="utf-8")
     (tmp / "stories.json").write_text("[]", encoding="utf-8")
     (tmp / "destaques.json").write_text("[]", encoding="utf-8")
     (tmp / "state").mkdir(exist_ok=True)
     (tmp / "state" / "published.json").write_text(json.dumps(
-        {"published": [], "last_post_date": "", "last_seq_date": "", "last_reel_date": ""}),
+        {"published": publicados or [], "last_post_date": "", "last_seq_date": "", "last_reel_date": last_reel}),
         encoding="utf-8")
     (tmp / "_stub.py").write_text(STUB, encoding="utf-8")
     return tmp
 
 
-def rodar(cenario, tmp, force_id=""):
+def rodar(cenario, tmp, force_id="", agora="", extra=None):
     env = dict(os.environ)
+    env.pop("FAKE_NOW", None)
+    env.pop("ROTULO_IA", None)
+    env.pop("LAMINAS_POR_SEMANA", None)
+    if agora:
+        env["FAKE_NOW"] = agora
     env.update({"IG_USER_ID": "1784", "IG_ACCESS_TOKEN": "fake",
                 "GITHUB_REPOSITORY": "rafaelvs/06_Automacao_Instagram",
                 "FORCE_ID": force_id, "LOCATION_ID": "", "TRIAL_REELS": "false",
                 "ALARME_CURTIDAS": "on", "ALARME_N_PECAS": "6",
                 "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8"})
+    env.update(extra or {})
     p = subprocess.run([sys.executable, str(tmp / "_stub.py"), cenario],
                        cwd=str(tmp), capture_output=True, text=True, env=env)
     st = json.loads((tmp / "state" / "published.json").read_text(encoding="utf-8"))
@@ -204,6 +214,55 @@ checa("mensagem ::error::ALARME", "::error::ALARME" in out, "anotacao visivel no
 shutil.rmtree(tmp, ignore_errors=True)
 # controle negativo: com curtidas (cenario 'ok' devolve like_count=1) a publicacao seguiu — ver B/G.
 # e o alarme NAO se aplica a FORCE_ID (decisao humana): cenario H publicou com like_count irrelevante.
+
+CAP_IA = CAP + "\nNarração com voz digital (IA)."
+R_LAMINA = {"id": "t-lamina-1", "video": "media/l1.mp4", "caption": CAP_IA}
+R_LAMINA2 = {"id": "t-lamina-2", "video": "media/l2.mp4", "caption": CAP_IA}
+R_CONVERSA = {"id": "t-conversa-1", "video": "media/c1.mp4", "caption": CAP_IA, "formato": "conversa"}
+R_MUDO = {"id": "t-mudo-1", "video": "media/m1.mp4", "caption": CAP}          # sem voz sintetica
+QUARTA_16H = "2026-07-29T19:00:00+00:00"                                       # qua 16:00 BRT: dia de reel
+LAMINA_SEG = {"id": "t-lamina-0", "kind": "reel", "media_id": "M0", "at": "2026-07-27T18:30:00+00:00"}
+
+print("\nJ) ROTULO DE IA (18/10/2026): reel com voz sintetica leva is_ai_generated=true; sem voz, nao")
+tmp = preparar(reels=[R_LAMINA, R_MUDO]); rc, out, st = rodar("ok", tmp, force_id="t-lamina-1")
+checa("rotulo enviado no conteiner do reel", "ROTULO_IA true media_type= REELS" in out, "is_ai_generated=true")
+checa("state registra rotulo_ia=true", any(e.get("rotulo_ia") is True for e in st["published"]), f"published={st['published']}")
+checa("exit == 0", rc == 0, f"exit={rc}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(reels=[R_LAMINA, R_MUDO]); rc, out, st = rodar("ok", tmp, force_id="t-mudo-1")
+checa("controle: reel SEM voz sintetica nao leva rotulo", "ROTULO_IA" not in out, "parametro ausente")
+checa("controle: state registra rotulo_ia=false", any(e.get("rotulo_ia") is False for e in st["published"]), f"published={st['published']}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(reels=[R_LAMINA]); rc, out, st = rodar("ok", tmp, force_id="t-lamina-1", extra={"ROTULO_IA": "off"})
+checa("ROTULO_IA=off desliga (decisao humana)", "ROTULO_IA" not in out, "parametro ausente com a chave desligada")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(); rc, out, st = rodar("ok", tmp)
+checa("controle: post (carrossel/imagem) NUNCA leva rotulo", "ROTULO_IA" not in out, "Meta isenta imagem")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nK) COTA DE LAMINAS (18/10/2026): lamina da semana ja saiu -> pula a lamina e publica o formato novo")
+tmp = preparar(reels=[R_LAMINA, R_CONVERSA], publicados=[LAMINA_SEG]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H)
+checa("publicou a CONVERSA, nao a lamina", "t-conversa-1" in ids(st) and "t-lamina-1" not in ids(st), f"publicados={ids(st)}")
+checa("exit == 0", rc == 0, f"exit={rc}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nL) COTA cumprida e NENHUMA peca nova pronta -> sem reel hoje, sem erro, sem 'esgotada'")
+tmp = preparar(reels=[R_LAMINA, R_LAMINA2], publicados=[LAMINA_SEG]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H)
+checa("nenhum reel publicado", "t-lamina-1" not in ids(st) and "t-lamina-2" not in ids(st), f"publicados={ids(st)}")
+checa("mensagem de cota (nao 'esgotada')", "cota de 1 lamina" in out and "esgotada" not in out.split("REELS")[-1], "texto certo no log")
+checa("exit == 0", rc == 0, f"exit={rc}")
+checa("last_reel_date NAO avancou", st["last_reel_date"] == "", f"={st['last_reel_date']!r}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nM) CONTROLE: cota livre (lamina so na semana anterior) -> a lamina da frente sai normalmente")
+LAMINA_SEMANA_PASSADA = dict(LAMINA_SEG, at="2026-07-25T18:30:00+00:00")   # sabado da semana anterior
+tmp = preparar(reels=[R_LAMINA, R_CONVERSA], publicados=[LAMINA_SEMANA_PASSADA]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H)
+checa("publicou a lamina da frente da fila", "t-lamina-1" in ids(st), f"publicados={ids(st)}")
+checa("exit == 0", rc == 0, f"exit={rc}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(reels=[R_LAMINA, R_CONVERSA], publicados=[LAMINA_SEG]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H, extra={"LAMINAS_POR_SEMANA": "-1"})
+checa("LAMINAS_POR_SEMANA=-1 desliga a cota", "t-lamina-1" in ids(st), f"publicados={ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
 
 print("\nF) CLASSIFICACAO dos erros da Meta (a parte sutil: quase tudo e' OAuthException)")
 os.environ.setdefault("IG_USER_ID", "1784")

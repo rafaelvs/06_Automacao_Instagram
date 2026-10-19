@@ -83,6 +83,13 @@ jobs:
           #   gh variable set ALARME_CURTIDAS --body off --repo rafaelvs/06_Automacao_Instagram
           ALARME_CURTIDAS: ${{ vars.ALARME_CURTIDAS || 'on' }}
           ALARME_N_PECAS: ${{ vars.ALARME_N_PECAS || '6' }}
+          # Rotulo "Conteudo de IA" nos reels com voz sintetica (Rafael, 18/10/2026; Meta exige
+          # rotulo em reel narrado com voz realista de IA). Desligar so' por decisao humana:
+          #   gh variable set ROTULO_IA --body off --repo rafaelvs/06_Automacao_Instagram
+          ROTULO_IA: ${{ vars.ROTULO_IA || 'on' }}
+          # Lamina de texto (reel antigo) no maximo N por semana (Rafael, 18/10/2026: "desacelerar
+          # as laminas"); formato novo (conversa / como_funciona) sem cota. -1 = sem cota.
+          LAMINAS_POR_SEMANA: ${{ vars.LAMINAS_POR_SEMANA || '1' }}
         run: python publish.py
       - name: Salvar estado (evita repostar)
         # `always()` e' OBRIGATORIO: desde que o publish.py sai com exit 1 em falha de
