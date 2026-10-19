@@ -2248,6 +2248,814 @@
   ]
  },
  {
+  "id": "cf_discrepancia_causas",
+  "video": "reels/_preview_cf_discrepancia_causas.mp4",
+  "caption": "Quase todo mundo tem uma perna milímetros diferente da outra, e pequenas diferenças costumam ser bem toleradas. Uma perna mais curta que a outra (discrepância de membro, ou anisomelia) pode ser de nascença ou vir de fratura, infecção antiga ou doença. Traumas de alta energia às vezes fazem o osso consolidar encurtado, ou lesam a cartilagem de crescimento em quem ainda cresce: por isso, fraturas importantes pedem acompanhamento até o fim do crescimento. Na infância, a osteomielite (infecção no osso) também pode alterar o crescimento do osso, e há diferenças que crescem com a criança. Saber a origem importa: o tamanho da diferença, a causa e o quanto ela afeta a marcha mudam a conduta, e a escanometria mostra no milímetro o comprimento real de cada osso. Mancar que apareceu ou piorou, dor no quadril ou na coluna, ou diferença que aumenta rápido na criança: procure avaliação.\n\nManda pra quem notou uma perna mais curta.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+  "formato": "como_funciona",
+  "serie": "Como funciona",
+  "dur": 31.8,
+  "voz_ia": true,
+  "scenes": [
+   {
+    "vo": "Quase todo mundo tem uma perna milímetros diferente da outra."
+   },
+   {
+    "vo": "Pequena assim, costuma ser bem tolerada. E a maior vem de onde?"
+   },
+   {
+    "vo": "Pode ser de nascença. Ou de acidente grave: às vezes, o osso cola encurtado."
+   },
+   {
+    "vo": "Na infância, lesão na cartilagem de crescimento ou infecção no osso podem afetar o crescimento."
+   },
+   {
+    "vo": "A diferença pode crescer com a criança."
+   },
+   {
+    "vo": "Mancar que apareceu ou piorou, ou diferença que aumenta rápido na criança: procure avaliação."
+   },
+   {
+    "vo": "Manda pra quem notou uma perna mais curta."
+   },
+   {
+    "tela": "SUAS PERNAS TÊM"
+   },
+   {
+    "tela": "O MESMO TAMANHO?"
+   },
+   {
+    "tela": "MILÍMETROS"
+   },
+   {
+    "tela": "BEM TOLERADA"
+   },
+   {
+    "tela": "?"
+   },
+   {
+    "tela": "DE NASCENÇA"
+   },
+   {
+    "tela": "ACIDENTE GRAVE"
+   },
+   {
+    "tela": "ÀS VEZES"
+   },
+   {
+    "tela": "NA INFÂNCIA"
+   },
+   {
+    "tela": "LESÃO"
+   },
+   {
+    "tela": "CARTILAGEM"
+   },
+   {
+    "tela": "DE CRESCIMENTO"
+   },
+   {
+    "tela": "INFECÇÃO NO OSSO"
+   },
+   {
+    "tela": "A DIFERENÇA PODE CRESCER"
+   },
+   {
+    "tela": "COM A CRIANÇA"
+   },
+   {
+    "tela": "MANCAR QUE APARECEU OU PIOROU"
+   },
+   {
+    "tela": "DIFERENÇA QUE AUMENTA RÁPIDO"
+   },
+   {
+    "tela": "PROCURE AVALIAÇÃO"
+   }
+  ]
+ },
+ {
+  "id": "cf_cotovelo_baba",
+  "video": "reels/_preview_cf_cotovelo_baba.mp4",
+  "caption": "A pronação dolorosa, o “cotovelo de babá”, é comum em crianças pequenas e acontece quando se puxa a criança pela mão ou pelo braço: um ligamento “escorrega” no cotovelo. A criança chora, deixa o braço esticado ao lado do corpo e não quer mexer, sem inchaço aparente. Não puxe nem force: evite tracionar de novo e procure avaliação. A redução deve ser feita por quem sabe, após avaliar: a correção é com o ortopedista. Levantar a criança pelas axilas, e não pelas mãos ou pulsos, ajuda a prevenir.\n\nSe a criança caiu sobre a mão ou o braço e há deformidade, muito inchaço, dormência ou mão pálida/fria: pronto-socorro sem demora.\n\nManda pra quem cuida de criança pequena.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+  "formato": "como_funciona",
+  "serie": "Como funciona",
+  "dur": 31.3,
+  "voz_ia": true,
+  "scenes": [
+   {
+    "vo": "Um puxão pela mão. A criança chora e não quer mexer o braço."
+   },
+   {
+    "vo": "Tem nome: cotovelo de babá, ou pronação dolorosa."
+   },
+   {
+    "vo": "O puxão foi na mão. Mas, lá no cotovelo, um ligamento escorrega."
+   },
+   {
+    "vo": "O braço fica esticado, ao lado do corpo, sem inchaço aparente."
+   },
+   {
+    "vo": "Não puxe nem force. Procure avaliação: a correção é com o ortopedista."
+   },
+   {
+    "vo": "Levantar pelas axilas, e não pelas mãos ou pulsos, ajuda a prevenir."
+   },
+   {
+    "vo": "Manda pra quem cuida de criança pequena."
+   },
+   {
+    "tela": "NÃO MEXE O BRAÇO"
+   },
+   {
+    "tela": "DEPOIS DO PUXÃO?"
+   },
+   {
+    "tela": "PUXÃO PELA MÃO"
+   },
+   {
+    "tela": "NÃO QUER MEXER"
+   },
+   {
+    "tela": "COTOVELO DE BABÁ"
+   },
+   {
+    "tela": "PRONAÇÃO DOLOROSA"
+   },
+   {
+    "tela": "NA MÃO"
+   },
+   {
+    "tela": "NO COTOVELO"
+   },
+   {
+    "tela": "UM LIGAMENTO"
+   },
+   {
+    "tela": "ESCORREGA"
+   },
+   {
+    "tela": "BRAÇO ESTICADO"
+   },
+   {
+    "tela": "AO LADO DO CORPO"
+   },
+   {
+    "tela": "SEM INCHAÇO APARENTE"
+   },
+   {
+    "tela": "NÃO PUXE NEM FORCE"
+   },
+   {
+    "tela": "PROCURE AVALIAÇÃO"
+   },
+   {
+    "tela": "A CORREÇÃO É COM O ORTOPEDISTA"
+   },
+   {
+    "tela": "PELAS AXILAS"
+   },
+   {
+    "tela": "NÃO PELAS MÃOS"
+   },
+   {
+    "tela": "OU PULSOS"
+   },
+   {
+    "tela": "AJUDA A PREVENIR"
+   }
+  ]
+ },
+ {
+  "id": "cf_quando_pisar",
+  "video": "reels/_preview_cf_quando_pisar.mp4",
+  "caption": "Voltar a pisar depois de uma cirurgia de fratura não tem data fixa no calendário: a liberação de carga é individual e depende da estabilidade da fixação e do estágio de consolidação (o quanto o osso já colou). No lugar da fratura, o corpo forma o calo ósseo, que vai ganhando resistência com o tempo, e as radiografias seriadas mostram a evolução e indicam quando liberar carga e movimento. O retorno é progressivo, guiado por quem conhece a fixação usada, e a carga controlada “avisa” o osso de que ele é necessário: o estímulo mecânico participa da consolidação. Repouso demais enfraquece músculo e osso, e antecipar carga por conta própria pode comprometer o resultado; por isso, quem define o quanto pisar é o plano de tratamento, não a coragem.\n\nDor intensa nova, febre, inchaço súbito ou membro que parece estar em ângulo diferente: pronto-socorro e avise a equipe, sem esperar a consulta.\n\nManda pra quem vai voltar a pisar.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+  "formato": "como_funciona",
+  "serie": "Como funciona",
+  "dur": 30.4,
+  "voz_ia": true,
+  "scenes": [
+   {
+    "vo": "Quando volto a pisar? Não tem data fixa."
+   },
+   {
+    "vo": "Depende da fixação e do quanto o osso colou."
+   },
+   {
+    "vo": "Na fratura, nasce um calo que vai ganhando resistência."
+   },
+   {
+    "vo": "A carga acompanha: o retorno é progressivo, conforme o osso evolui."
+   },
+   {
+    "vo": "Pisar na dose liberada avisa o osso de que ele é necessário."
+   },
+   {
+    "vo": "Repouso demais enfraquece. Carga além da liberada pode comprometer o resultado."
+   },
+   {
+    "vo": "Quem libera é a equipe, com o raio-X. Não a coragem."
+   },
+   {
+    "vo": "Manda pra quem vai voltar a pisar."
+   },
+   {
+    "tela": "QUANDO EU POSSO"
+   },
+   {
+    "tela": "VOLTAR A PISAR?"
+   },
+   {
+    "tela": "?"
+   },
+   {
+    "tela": "NÃO TEM DATA FIXA"
+   },
+   {
+    "tela": "FIXAÇÃO"
+   },
+   {
+    "tela": "QUANTO O OSSO COLOU"
+   },
+   {
+    "tela": "CALO ÓSSEO"
+   },
+   {
+    "tela": "RESISTÊNCIA"
+   },
+   {
+    "tela": "CARGA"
+   },
+   {
+    "tela": "PROGRESSIVO"
+   },
+   {
+    "tela": "NA DOSE LIBERADA"
+   },
+   {
+    "tela": "AVISA O OSSO"
+   },
+   {
+    "tela": "ESTÍMULO MECÂNICO"
+   },
+   {
+    "tela": "ELE É NECESSÁRIO"
+   },
+   {
+    "tela": "REPOUSO DEMAIS"
+   },
+   {
+    "tela": "ENFRAQUECE"
+   },
+   {
+    "tela": "ALÉM DA LIBERADA"
+   },
+   {
+    "tela": "QUEM LIBERA É A EQUIPE"
+   },
+   {
+    "tela": "CONSOLIDAÇÃO"
+   },
+   {
+    "tela": "RAIO-X"
+   },
+   {
+    "tela": "NÃO A CORAGEM"
+   }
+  ]
+ },
+ {
+  "id": "cf_crianca_mancando",
+  "video": "reels/_preview_cf_crianca_mancando.mp4",
+  "caption": "Criança mancando (claudicação), na ortopedia pediátrica, sempre se avalia: manqueira não é manha, é o corpo protegendo algo, fugindo de uma dor ou compensando uma fraqueza. As causas mudam com a idade, de um sapato apertado a questões no quadril ou joelho que pedem mais pressa; observar há quanto tempo manca, se há dor, se veio febre e se é sempre do mesmo lado ajuda o médico. Mancar que não melhora, dor que acorda a criança à noite, febre, inchaço ou perda de movimento apressam a consulta. Mancar com febre é a combinação que pede pressa: uma das causas é uma infecção dentro da articulação, e articulação infectada é das poucas urgências da ortopedia pediátrica que não esperam. Reforçam a urgência: a criança não quer dobrar nem apoiar a perna, chora ao mexerem na articulação e fica protegendo o membro. Com febre e manqueira juntas, procure atendimento no mesmo dia.\n\nManda pra quem viu o filho mancar.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+  "formato": "como_funciona",
+  "serie": "Como funciona",
+  "dur": 31.7,
+  "voz_ia": true,
+  "scenes": [
+   {
+    "vo": "Mancar não é manha: é o corpo protegendo algo."
+   },
+   {
+    "vo": "Foge de uma dor ou compensa uma fraqueza. Criança mancando sempre se avalia."
+   },
+   {
+    "vo": "Repare: desde quando, se dói, se veio febre."
+   },
+   {
+    "vo": "Mancar que não melhora, dor que acorda à noite ou inchaço apressam a consulta."
+   },
+   {
+    "vo": "Mancar com febre pede pressa: pode ser infecção na articulação."
+   },
+   {
+    "vo": "Não apoia a perna, chora ao mexer? A pressa aumenta."
+   },
+   {
+    "vo": "Febre e manqueira juntas: procure atendimento no mesmo dia."
+   },
+   {
+    "vo": "Manda pra quem viu o filho mancar."
+   },
+   {
+    "tela": "CRIANÇA MANCANDO?"
+   },
+   {
+    "tela": "NÃO É MANHA."
+   },
+   {
+    "tela": "CLAUDICAÇÃO"
+   },
+   {
+    "tela": "NÃO É MANHA"
+   },
+   {
+    "tela": "O CORPO PROTEGENDO ALGO"
+   },
+   {
+    "tela": "FOGE DE UMA DOR"
+   },
+   {
+    "tela": "COMPENSA UMA FRAQUEZA"
+   },
+   {
+    "tela": "SEMPRE SE AVALIA"
+   },
+   {
+    "tela": "DESDE QUANDO?"
+   },
+   {
+    "tela": "DÓI?"
+   },
+   {
+    "tela": "FEBRE?"
+   },
+   {
+    "tela": "NÃO MELHORA"
+   },
+   {
+    "tela": "DOR QUE ACORDA À NOITE"
+   },
+   {
+    "tela": "INCHAÇO"
+   },
+   {
+    "tela": "APRESSAM A CONSULTA"
+   },
+   {
+    "tela": "MANCAR"
+   },
+   {
+    "tela": "FEBRE"
+   },
+   {
+    "tela": "PEDE PRESSA"
+   },
+   {
+    "tela": "PODE SER INFECÇÃO NA ARTICULAÇÃO"
+   },
+   {
+    "tela": "NÃO APOIA A PERNA"
+   },
+   {
+    "tela": "CHORA AO MEXER"
+   },
+   {
+    "tela": "A PRESSA AUMENTA"
+   },
+   {
+    "tela": "FEBRE E MANQUEIRA JUNTAS"
+   },
+   {
+    "tela": "NO MESMO DIA"
+   }
+  ]
+ },
+ {
+  "id": "cf_fisioterapia",
+  "video": "reels/_preview_cf_fisioterapia.mp4",
+  "caption": "No alongamento ósseo, o fixador externo afasta as partes do osso cerca de um milímetro por dia, e a fisioterapia faz parte do plano desde o início, junto com a higiene dos pinos e o ritmo de ajuste. O motivo: osso novo e articulação não gostam de ficar parados; movimento e carga na dose certa, apoiando o quanto foi combinado, mantêm a articulação solta e fortalecem o osso. Quem pula essa parte corre o risco de a articulação enrijecer e de o músculo encolher, e aí a rigidez rouba parte do ganho que a cirurgia deu. O segredo não é treino pesado: é constância, um pouco todo dia, guiado pela equipe, e a fisioterapia continua depois que o fixador sai. Nos dias de ajuste, sensação de pressão e dor muscular são comuns. Dor que dispara de repente, não cede com a medicação ou vem com vermelhidão: avise a equipe; com febre, pronto-socorro.\n\nManda pra quem acha que fisioterapia fica pra depois.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+  "formato": "como_funciona",
+  "serie": "Como funciona",
+  "dur": 32.6,
+  "voz_ia": true,
+  "scenes": [
+   {
+    "vo": "No alongamento, o fixador afasta as pontas do osso cerca de um milímetro por dia."
+   },
+   {
+    "vo": "Osso novo e articulação não gostam de ficar parados."
+   },
+   {
+    "vo": "Parada, a articulação pode enrijecer. E o músculo, encolher."
+   },
+   {
+    "vo": "Aí a rigidez rouba parte do ganho da cirurgia."
+   },
+   {
+    "vo": "Fisioterapia desde o início."
+   },
+   {
+    "vo": "Movimento e carga, na dose certa, mantêm a articulação solta e fortalecem o osso."
+   },
+   {
+    "vo": "Nada de treino pesado: um pouco todo dia, guiado pela equipe."
+   },
+   {
+    "vo": "Manda pra quem acha que fisioterapia fica pra depois."
+   },
+   {
+    "tela": "O OSSO ALONGA."
+   },
+   {
+    "tela": "E A ARTICULAÇÃO?"
+   },
+   {
+    "tela": "FIXADOR"
+   },
+   {
+    "tela": "CERCA DE UM MILÍMETRO POR DIA"
+   },
+   {
+    "tela": "OSSO NOVO"
+   },
+   {
+    "tela": "ARTICULAÇÃO"
+   },
+   {
+    "tela": "NÃO GOSTAM DE FICAR PARADOS"
+   },
+   {
+    "tela": "PODE ENRIJECER"
+   },
+   {
+    "tela": "MÚSCULO"
+   },
+   {
+    "tela": "ENCOLHER"
+   },
+   {
+    "tela": "GANHO"
+   },
+   {
+    "tela": "RIGIDEZ"
+   },
+   {
+    "tela": "FISIOTERAPIA"
+   },
+   {
+    "tela": "DESDE O INÍCIO"
+   },
+   {
+    "tela": "MOVIMENTO"
+   },
+   {
+    "tela": "CARGA"
+   },
+   {
+    "tela": "NA DOSE CERTA"
+   },
+   {
+    "tela": "SOLTA"
+   },
+   {
+    "tela": "FORTALECEM O OSSO"
+   },
+   {
+    "tela": "TREINO PESADO"
+   },
+   {
+    "tela": "UM POUCO TODO DIA"
+   },
+   {
+    "tela": "GUIADO PELA EQUIPE"
+   }
+  ]
+ },
+ {
+  "id": "cf_pernas_x_o",
+  "video": "reels/_preview_cf_pernas_x_o.mp4",
+  "caption": "Perna torta na criança quase sempre é fase, e tem cronograma: até por volta dos 2 anos é comum a perna arqueada para fora (varo), a perna em O; dos 3 aos 4 anos ela inverte e fica em X (valgo); e por volta dos 6 a 7 anos costuma alinhar sozinha. Pernas que mudam juntas costumam ser desenvolvimento, e o mais importante não é uma foto isolada, e sim como a perna muda ao longo dos meses: fotos de frente, pés juntos, ajudam a perceber se está alinhando ou piorando.\n\nO alerta é quando a curvatura é muito acentuada, só de um lado, vem com dor ou mancar, piora em vez de alinhar ou persiste depois dos 6 a 7 anos: aí vale avaliar na ortopedia pediátrica. Às vezes há uma causa, como o raquitismo: por isso avaliar importa.\n\nManda pra quem tá achando a perna do filho torta.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+  "formato": "como_funciona",
+  "serie": "Como funciona",
+  "dur": 33.6,
+  "voz_ia": true,
+  "scenes": [
+   {
+    "vo": "Perna torta na criança? Quase sempre é fase, com cronograma."
+   },
+   {
+    "vo": "Até uns dois anos, é comum arquear pra fora: perna de cowboy."
+   },
+   {
+    "vo": "Depois, inverte: por volta dos três, quatro anos, vira um X."
+   },
+   {
+    "vo": "Lá pelos seis, sete anos, costuma alinhar sozinha."
+   },
+   {
+    "vo": "As duas mudam juntas? Costuma ser desenvolvimento."
+   },
+   {
+    "vo": "O alerta: só de um lado, dói, ou piora em vez de alinhar."
+   },
+   {
+    "vo": "Aí vale avaliar: pode ter uma causa, como raquitismo."
+   },
+   {
+    "vo": "Manda pra quem tá achando a perna do filho torta."
+   },
+   {
+    "tela": "PERNA EM O"
+   },
+   {
+    "tela": "QUE VIRA X?"
+   },
+   {
+    "tela": "PERNA TORTA"
+   },
+   {
+    "tela": "QUASE SEMPRE É FASE"
+   },
+   {
+    "tela": "CRONOGRAMA"
+   },
+   {
+    "tela": "ATÉ POR VOLTA DOS 2 ANOS"
+   },
+   {
+    "tela": "ARQUEADA PARA FORA"
+   },
+   {
+    "tela": "PERNA EM O"
+   },
+   {
+    "tela": "VARO"
+   },
+   {
+    "tela": "INVERTE"
+   },
+   {
+    "tela": "DOS 3 AOS 4 ANOS"
+   },
+   {
+    "tela": "EM X"
+   },
+   {
+    "tela": "VALGO"
+   },
+   {
+    "tela": "POR VOLTA DOS 6 A 7 ANOS"
+   },
+   {
+    "tela": "COSTUMA ALINHAR SOZINHA"
+   },
+   {
+    "tela": "AS DUAS MUDAM JUNTAS"
+   },
+   {
+    "tela": "DESENVOLVIMENTO"
+   },
+   {
+    "tela": "O ALERTA"
+   },
+   {
+    "tela": "SÓ DE UM LADO"
+   },
+   {
+    "tela": "DÓI"
+   },
+   {
+    "tela": "PIORA EM VEZ DE ALINHAR"
+   },
+   {
+    "tela": "VALE AVALIAR"
+   },
+   {
+    "tela": "PODE TER UMA CAUSA"
+   },
+   {
+    "tela": "RAQUITISMO"
+   }
+  ]
+ },
+ {
+  "id": "cf_quanto_tempo",
+  "video": "reels/_preview_cf_quanto_tempo.mp4",
+  "caption": "A resposta honesta para “quanto tempo fico com o fixador externo?” é “depende”, mas tem lógica. No alongamento ósseo e na reconstrução, depois de alguns dias de pausa (a latência), as pontas do osso são afastadas cerca de 1 mm por dia: quanto maior a correção, mais dias nessa fase, que é a parte curta do tratamento. A parte longa é a consolidação, quando o osso novo endurece o suficiente para aguentar carga, e isso não se apressa: idade, saúde, nutrição e tabagismo mudam a velocidade. Mesmo depois que o aparelho sai, o osso novo segue ganhando resistência por meses; não existe prazo único, e quem mostra o caminho é a evolução do osso nas radiografias seriadas, num acompanhamento de perto. O foco é sempre devolver função, nunca estética. Durante o tratamento, dor intensa em repouso, dormência que avança ou sinais de infecção nos pinos pedem pronto-socorro, avisando a equipe; depois da retirada, dor nova ou insegurança para apoiar o peso: volte para reavaliação antes de forçar.\n\nManda pra quem tá contando os dias.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+  "formato": "como_funciona",
+  "serie": "Como funciona",
+  "dur": 34.3,
+  "voz_ia": true,
+  "scenes": [
+   {
+    "vo": "Quanto tempo com o fixador, no alongamento? Primeiro, alguns dias de pausa."
+   },
+   {
+    "vo": "Depois, cerca de um milímetro por dia: quanto maior a correção, mais dias."
+   },
+   {
+    "vo": "É a parte curta."
+   },
+   {
+    "vo": "A longa é a consolidação: o osso novo endurece pra aguentar carga. Não dá pra apressar."
+   },
+   {
+    "vo": "Idade, saúde, alimentação e cigarro mudam a velocidade."
+   },
+   {
+    "vo": "O aparelho sai, e o osso segue ganhando resistência por meses."
+   },
+   {
+    "vo": "Prazo único não existe. O raio-X mostra o caminho."
+   },
+   {
+    "vo": "Manda pra quem tá contando os dias."
+   },
+   {
+    "tela": "QUANTO TEMPO"
+   },
+   {
+    "tela": "COM O FIXADOR?"
+   },
+   {
+    "tela": "NO ALONGAMENTO"
+   },
+   {
+    "tela": "PAUSA"
+   },
+   {
+    "tela": "alguns dias"
+   },
+   {
+    "tela": "ALONGAMENTO"
+   },
+   {
+    "tela": "1 MM"
+   },
+   {
+    "tela": "por dia"
+   },
+   {
+    "tela": "QUANTO MAIOR"
+   },
+   {
+    "tela": "A CORREÇÃO"
+   },
+   {
+    "tela": "MAIS DIAS"
+   },
+   {
+    "tela": "A PARTE CURTA"
+   },
+   {
+    "tela": "CONSOLIDAÇÃO"
+   },
+   {
+    "tela": "A PARTE LONGA"
+   },
+   {
+    "tela": "AGUENTAR CARGA"
+   },
+   {
+    "tela": "NÃO DÁ PRA APRESSAR"
+   },
+   {
+    "tela": "IDADE"
+   },
+   {
+    "tela": "SAÚDE"
+   },
+   {
+    "tela": "ALIMENTAÇÃO"
+   },
+   {
+    "tela": "CIGARRO"
+   },
+   {
+    "tela": "MUDAM A VELOCIDADE"
+   },
+   {
+    "tela": "APARELHO SAI"
+   },
+   {
+    "tela": "GANHANDO"
+   },
+   {
+    "tela": "RESISTÊNCIA"
+   },
+   {
+    "tela": "por meses"
+   },
+   {
+    "tela": "PRAZO ÚNICO NÃO EXISTE"
+   },
+   {
+    "tela": "RAIO-X"
+   }
+  ]
+ },
+ {
+  "id": "cf_osgood_sever",
+  "video": "reels/_preview_cf_osgood_sever.mp4",
+  "caption": "Dor no calcanhar da criança ou do adolescente que treina costuma ser a doença de Sever: uma inflamação na região de crescimento do calcâneo. Já a dor logo abaixo da patela, em quem treina no período do estirão, costuma ser a doença de Osgood-Schlatter, em geral benigna. Nas duas, o que ajuda é ajustar a carga: equilibrar treino e descanso, gelo após a atividade e alongar a coxa (no Osgood-Schlatter) ou alongar a panturrilha (no Sever). Com esses cuidados, costumam melhorar. Dor que persiste, que atrapalha o esporte, que não melhora ou que trava o joelho merece avaliação na ortopedia pediátrica.\n\nManda pra quem tem filho que treina.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+  "formato": "como_funciona",
+  "serie": "Como funciona",
+  "dur": 33.5,
+  "voz_ia": true,
+  "scenes": [
+   {
+    "vo": "Dor no calcanhar da criança que treina? Costuma ser a doença de Sever."
+   },
+   {
+    "vo": "Ali, o osso tem uma área de crescimento. É ela que inflama."
+   },
+   {
+    "vo": "Dor abaixo do joelho, no estirão? Costuma ser Osgood-Schlatter."
+   },
+   {
+    "vo": "O que ajuda: equilibrar treino e descanso, gelo após a atividade."
+   },
+   {
+    "vo": "E alongar: a coxa, pro joelho; a panturrilha, pro calcanhar."
+   },
+   {
+    "vo": "Com esses cuidados, costumam melhorar."
+   },
+   {
+    "vo": "Se a dor persiste, limita o esporte ou trava o joelho, vale avaliar."
+   },
+   {
+    "vo": "Manda pra quem tem filho que treina."
+   },
+   {
+    "tela": "JOELHO E CALCANHAR"
+   },
+   {
+    "tela": "DOENDO NO ESPORTE?"
+   },
+   {
+    "tela": "CALCANHAR"
+   },
+   {
+    "tela": "DOENÇA DE SEVER"
+   },
+   {
+    "tela": "ÁREA DE CRESCIMENTO"
+   },
+   {
+    "tela": "INFLAMAÇÃO"
+   },
+   {
+    "tela": "ABAIXO DO JOELHO"
+   },
+   {
+    "tela": "ESTIRÃO"
+   },
+   {
+    "tela": "OSGOOD-SCHLATTER"
+   },
+   {
+    "tela": "O QUE AJUDA"
+   },
+   {
+    "tela": "EQUILIBRAR"
+   },
+   {
+    "tela": "TREINO"
+   },
+   {
+    "tela": "DESCANSO"
+   },
+   {
+    "tela": "GELO APÓS A ATIVIDADE"
+   },
+   {
+    "tela": "ALONGAR"
+   },
+   {
+    "tela": "COXA"
+   },
+   {
+    "tela": "PANTURRILHA"
+   },
+   {
+    "tela": "SE A DOR PERSISTE"
+   },
+   {
+    "tela": "LIMITA O ESPORTE"
+   },
+   {
+    "tela": "TRAVA O JOELHO"
+   },
+   {
+    "tela": "VALE AVALIAR"
+   },
+   {
+    "tela": "ORTOPEDIA PEDIÁTRICA"
+   }
+  ]
+ },
+ {
   "id": "fx_retirada",
   "video": "reels/_preview_fx_retirada.mp4",
   "caption": "O dia de tirar o fixador externo: a retirada é um procedimento feito pela equipe, em ambiente adequado e conforme o caso. Depois, os trajetos dos pinos cicatrizam ao longo das semanas seguintes, com curativo simples, do jeito que a equipe orientar. E o osso novo, ainda mais frágil que o osso maduro, segue ganhando resistência por meses: carga e atividade voltam aos poucos, e a fisioterapia continua.\n\nEnvia para quem está com o fixador — ou cuida de quem está.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo; não substitui avaliação individual.",
