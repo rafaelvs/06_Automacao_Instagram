@@ -550,6 +550,455 @@
   "dur": 30.0
  },
  {
+  "id": "cv_fixador",
+  "video": "reels/_preview_cv_fixador.mp4",
+  "caption": "Conviver com o fixador externo tem truques: calça com zíper lateral veste sem esbarrar no aparelho, e um travesseiro de apoio embaixo da perna protege o fixador e a outra perna durante o sono. A higiene diária dos trajetos dos pinos faz parte da rotina. E quem define quando o fixador sai é o raio-X, que confirma a fase da consolidação do osso.\n\nManda pra quem tá convivendo com um de nós.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+  "formato": "conversa",
+  "serie": "Se pudesse responder",
+  "dur": 38.0,
+  "voz_ia": true,
+  "scenes": [
+   {
+    "quem": "P",
+    "vo": "Você engancha em toda calça."
+   },
+   {
+    "quem": "F",
+    "vo": "Eu sei. Calça com zíper do lado veste sem esbarrar em mim."
+   },
+   {
+    "quem": "P",
+    "vo": "E de noite? Não acho posição."
+   },
+   {
+    "quem": "F",
+    "vo": "Travesseiro de apoio embaixo da perna. Ele me protege, e protege a outra perna."
+   },
+   {
+    "quem": "P",
+    "vo": "Todo mundo fica olhando."
+   },
+   {
+    "quem": "F",
+    "vo": "Deixa olhar. Enquanto isso, eu seguro o seu osso, e ele vai se refazendo."
+   },
+   {
+    "quem": "P",
+    "vo": "Quando você vai embora?"
+   },
+   {
+    "quem": "F",
+    "vo": "Quem decide quando eu saio é o raio-X. Até lá, limpa meus pinos todo dia, combinado?"
+   },
+   {
+    "quem": "F",
+    "vo": "Manda pra quem tá convivendo com um de nós."
+   },
+   {
+    "tela": "SE O SEU FIXADOR"
+   },
+   {
+    "tela": "PUDESSE RESPONDER…"
+   },
+   {
+    "tela": "seu fixador"
+   }
+  ]
+ },
+ {
+  "id": "cf_alongamento",
+  "video": "reels/_preview_cf_alongamento.mp4",
+  "caption": "Pra alongar uma perna mais curta que a outra (discrepância de membro), o primeiro passo é cortar o osso — de propósito. Depois de alguns dias parado, o fixador externo começa a separar as partes, cerca de um milímetro por dia, em pequenos ajustes, e o corpo preenche o espaço com osso novo. Pele, nervo e vaso esticam junto com o osso, e são eles que ditam o limite seguro: por isso o alongamento ósseo é devagar. Depois vem a consolidação, quando o osso novo endurece o suficiente para aguentar carga, e o aparelho sai.\n\nManda pra quem não sabia que isso era possível.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+  "formato": "como_funciona",
+  "serie": "Como funciona",
+  "dur": 30.6,
+  "voz_ia": true,
+  "scenes": [
+   {
+    "vo": "Pra alongar uma perna mais curta, o primeiro passo é cortar o osso. De propósito."
+   },
+   {
+    "vo": "Um aparelho por fora, o fixador, segura as duas partes."
+   },
+   {
+    "vo": "Alguns dias parado, pro osso acordar. Aí começa a separar: cerca de um milímetro por dia."
+   },
+   {
+    "vo": "E o corpo preenche o espaço com osso novo."
+   },
+   {
+    "vo": "Pele, nervo e vaso esticam junto. Por isso é devagar, de propósito."
+   },
+   {
+    "vo": "Depois, o osso novo endurece. E o aparelho sai."
+   },
+   {
+    "vo": "Manda pra quem não sabia que isso era possível."
+   },
+   {
+    "tela": "CORTAR O OSSO"
+   },
+   {
+    "tela": "DE PROPÓSITO?"
+   },
+   {
+    "tela": "PELE"
+   },
+   {
+    "tela": "NERVO"
+   },
+   {
+    "tela": "VASO"
+   },
+   {
+    "tela": "DE PROPÓSITO"
+   },
+   {
+    "tela": "Z"
+   },
+   {
+    "tela": "FASE 1"
+   },
+   {
+    "tela": "PAUSA"
+   },
+   {
+    "tela": "alguns dias"
+   },
+   {
+    "tela": "FASE 2"
+   },
+   {
+    "tela": "1 MM"
+   },
+   {
+    "tela": "por dia"
+   },
+   {
+    "tela": "FASE 3"
+   },
+   {
+    "tela": "CONSOLIDAÇÃO"
+   },
+   {
+    "tela": "a fase mais longa"
+   }
+  ]
+ },
+ {
+  "id": "cv_pinos",
+  "video": "reels/_preview_cv_pinos.mp4",
+  "caption": "Os pinos do fixador externo pedem higiene diária dos trajetos, do jeito que a sua equipe ensinou: mãos lavadas e um material para cada pino, nunca a mesma gaze de um pino para o outro. Reação leve na pele ao redor do pino é comum; o que muda a leitura é a evolução. Secreção com pus ou mau cheiro, vermelhidão que aumenta ou dor nova pedem contato precoce com a equipe; com febre, pronto-socorro. Pino que parece frouxo: comunique logo a equipe e não aperte por conta própria.\n\nManda pra quem limpa a gente todo dia.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+  "formato": "conversa",
+  "serie": "Se pudesse responder",
+  "dur": 44.0,
+  "voz_ia": true,
+  "scenes": [
+   {
+    "quem": "P",
+    "vo": "Limpar vocês todo santo dia?"
+   },
+   {
+    "quem": "F",
+    "vo": "Todo dia. Mãos lavadas e uma gaze pra cada um: a gente é vizinho, mas não divide gaze."
+   },
+   {
+    "quem": "P",
+    "vo": "Um de vocês tá meio vermelhinho."
+   },
+   {
+    "quem": "F",
+    "vo": "Calma: reação leve na pele em volta da gente é comum. O que importa é se piora em vez de melhorar."
+   },
+   {
+    "quem": "P",
+    "vo": "E se piorar, espero a consulta?"
+   },
+   {
+    "quem": "F",
+    "vo": "Não. Pus, mau cheiro, vermelhidão que cresce, dor nova: avisa a equipe cedo. Febre: pronto-socorro."
+   },
+   {
+    "quem": "P",
+    "vo": "E se um de vocês parecer frouxo?"
+   },
+   {
+    "quem": "F",
+    "vo": "Dá vontade de apertar, a gente sabe. Não aperta por conta própria: avisa logo a equipe."
+   },
+   {
+    "quem": "F",
+    "vo": "Manda pra quem limpa a gente todo dia."
+   },
+   {
+    "tela": "SE OS SEUS PINOS"
+   },
+   {
+    "tela": "PUDESSEM RESPONDER…"
+   },
+   {
+    "tela": "seus pinos"
+   }
+  ]
+ },
+ {
+  "id": "cv_gesso_filho",
+  "video": "reels/_preview_cv_gesso_filho.mp4",
+  "caption": "Na ortopedia pediátrica, o gesso protege, mas a rotina da casa muda. Coceira se alivia com ar frio de secador (nunca quente e nunca com objeto lá dentro), o banho é com capa impermeável, sem mergulhar o gesso, e a abertura fica coberta para brinquedo, areia ou migalha não caírem. Dedos roxos, pálidos ou frios, formigamento, inchaço forte, dor que cresce apesar do remédio, ou a criança muito agitada e chorando sem parar: isso não espera. Pronto-socorro na hora, avisando a equipe no caminho.\n\nManda pra quem tem criança engessada em casa.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+  "formato": "conversa",
+  "serie": "Se pudesse responder",
+  "dur": 44.3,
+  "voz_ia": true,
+  "scenes": [
+   {
+    "quem": "P",
+    "vo": "Ele quer enfiar a régua em você pra coçar."
+   },
+   {
+    "quem": "F",
+    "vo": "Régua não! Arranhão aqui dentro pode infeccionar. Coçou? Ar frio de secador, nunca quente."
+   },
+   {
+    "quem": "P",
+    "vo": "Dar banho com você virou uma novela."
+   },
+   {
+    "quem": "F",
+    "vo": "Pra mim também. Capa impermeável e nunca me mergulha: molhado, eu perco a função e machuco a pele."
+   },
+   {
+    "quem": "P",
+    "vo": "Ele quer guardar carrinho dentro de você."
+   },
+   {
+    "quem": "F",
+    "vo": "Não sou garagem! Cobre a minha abertura: brinquedo, areia e migalha não podem cair aqui."
+   },
+   {
+    "quem": "P",
+    "vo": "Os dedinhos dele ficaram frios e roxos."
+   },
+   {
+    "quem": "F",
+    "vo": "Isso não espera: pronto-socorro na hora, avisando a equipe. Posso estar apertando a circulação."
+   },
+   {
+    "quem": "F",
+    "vo": "Manda pra quem tem criança engessada em casa."
+   },
+   {
+    "tela": "SE O GESSO DO SEU"
+   },
+   {
+    "tela": "FILHO RESPONDESSE…"
+   },
+   {
+    "tela": "o gesso do seu filho"
+   }
+  ]
+ },
+ {
+  "id": "cv_osso",
+  "video": "reels/_preview_cv_osso.mp4",
+  "caption": "Cada osso tem seu ritmo: o tempo de consolidação varia de semanas a meses, sem prazo único. Na cicatrização, o corpo forma um calo, tecido novo no lugar da fratura, que vai ganhando resistência com o tempo. O cigarro atrapalha porque a nicotina aperta os vasos e reduz o sangue e o oxigênio que chegam ao osso; parar durante a recuperação faz diferença. Pisar conforme a equipe liberar estimula a consolidação, e quem define o quanto pisar é o plano de tratamento. Quem mostra a evolução são as radiografias seriadas, por isso não pule os raio-X de controle.\n\nManda pra quem tá esperando o osso colar.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+  "formato": "conversa",
+  "serie": "Se pudesse responder",
+  "dur": 45.0,
+  "voz_ia": true,
+  "scenes": [
+   {
+    "quem": "P",
+    "vo": "Já faz semanas. Por que você não cola logo?"
+   },
+   {
+    "quem": "F",
+    "vo": "Calma, cada osso tem seu ritmo. Faço um calo no lugar da fratura, e ele vai ganhando resistência."
+   },
+   {
+    "quem": "P",
+    "vo": "E um cigarrinho, atrapalha?"
+   },
+   {
+    "quem": "F",
+    "vo": "Pra você, um cigarrinho. Pra mim, vaso apertado e menos sangue e oxigênio. Parar faz diferença."
+   },
+   {
+    "quem": "P",
+    "vo": "Como eu sei que você tá colando?"
+   },
+   {
+    "quem": "F",
+    "vo": "Pergunta pro raio-X: ele é meu boletim. A cada controle, mostra minha evolução. Não pula nenhum."
+   },
+   {
+    "quem": "P",
+    "vo": "Tô me sentindo ótimo. Já posso pisar?"
+   },
+   {
+    "quem": "F",
+    "vo": "Pisar conforme a equipe liberar me estimula. O quanto pisar, quem define é o plano, não a coragem."
+   },
+   {
+    "quem": "F",
+    "vo": "Manda pra quem tá esperando o osso colar."
+   },
+   {
+    "tela": "SE O SEU OSSO"
+   },
+   {
+    "tela": "PUDESSE RESPONDER…"
+   },
+   {
+    "tela": "seu osso"
+   }
+  ]
+ },
+ {
+  "id": "cv_muleta",
+  "video": "reels/_preview_cv_muleta.mp4",
+  "caption": "Muleta mal ajustada atrapalha. O peso vai nas mãos, não na axila: o apoio axilar comprime nervos e pode causar formigamento e fraqueza no braço. Em pé, o topo da muleta fica 2 a 3 dedos abaixo da axila, com o cotovelo levemente dobrado no apoio das mãos. Na escada, a perna boa sobe primeiro; na descida, vão primeiro as muletas e a perna em tratamento, com corrimão sempre que existir. E, no pós-operatório ou na reconstrução óssea com fixador externo, o quanto pisar não é data fixa nem questão de coragem: a liberação de carga é individual, e quem define é o plano de tratamento, no ritmo da sua equipe.\n\nManda pra quem tá de muleta ou cuida de quem tá.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+  "formato": "conversa",
+  "serie": "Se pudesse responder",
+  "dur": 45.3,
+  "voz_ia": true,
+  "scenes": [
+   {
+    "quem": "P",
+    "vo": "Minha axila tá me odiando."
+   },
+   {
+    "quem": "F",
+    "vo": "Ela tem razão: o peso vai nas mãos, não nela. Apoiar ali comprime nervo e o braço pode formigar."
+   },
+   {
+    "quem": "P",
+    "vo": "Te regulei no olhômetro. Tá bom?"
+   },
+   {
+    "quem": "F",
+    "vo": "Tira a prova: em pé, meu topo fica 2 a 3 dedos abaixo da axila, com o cotovelo levemente dobrado."
+   },
+   {
+    "quem": "P",
+    "vo": "A escada lá de casa tá me encarando."
+   },
+   {
+    "quem": "F",
+    "vo": "Subindo: perna boa primeiro. Descendo: eu e a perna em tratamento primeiro. Corrimão, se tiver."
+   },
+   {
+    "quem": "P",
+    "vo": "Hoje bateu coragem. Posso pisar com tudo?"
+   },
+   {
+    "quem": "F",
+    "vo": "Adoro a coragem, mas quem decide o quanto você pisa é a sua equipe, não ela. Até lá, conta comigo."
+   },
+   {
+    "quem": "F",
+    "vo": "Manda pra quem tá de muleta ou cuida de quem tá."
+   },
+   {
+    "tela": "SE A SUA MULETA"
+   },
+   {
+    "tela": "PUDESSE RESPONDER…"
+   },
+   {
+    "tela": "sua muleta"
+   }
+  ]
+ },
+ {
+  "id": "cf_fratura_cola",
+  "video": "reels/_preview_cf_fratura_cola.mp4",
+  "caption": "Quem cola um osso quebrado é o próprio corpo. A consolidação (o osso colar) vai do coágulo e da inflamação, que é a primeira etapa, ao calo ósseo, o tecido novo que o corpo forma no lugar da fratura, e daí ao osso maduro. Para firmar, precisa de um tripé: estabilidade, sangue chegando e nenhuma infecção. Quando um desses falha, a consolidação emperra. A estabilidade é o motivo de existirem placas, hastes e fixadores: segurar o osso enquanto ele cicatriza. Com o tempo, o calo vai ganhando resistência. Leva de semanas a meses, sem prazo único, e é o raio-X que acompanha e confirma: não pule as consultas de raio-X de controle.\n\nDor intensa nova, febre, inchaço súbito ou membro que parece estar em ângulo diferente: pronto-socorro e avise a equipe. Não espere a consulta.\n\nManda pra quem tá esperando o osso colar.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+  "formato": "como_funciona",
+  "serie": "Como funciona",
+  "dur": 31.4,
+  "voz_ia": true,
+  "scenes": [
+   {
+    "vo": "Quem cola um osso quebrado? O próprio corpo."
+   },
+   {
+    "vo": "Primeiro, coágulo e inflamação. Faz parte: é a primeira etapa."
+   },
+   {
+    "vo": "Depois, começa a obra: o corpo forma tecido novo, o calo ósseo, uma ponte entre as pontas."
+   },
+   {
+    "vo": "Pra ponte firmar, precisa de osso estável, sangue chegando e nenhuma infecção."
+   },
+   {
+    "vo": "Com o tempo, o calo ganha resistência e vira osso maduro."
+   },
+   {
+    "vo": "Leva semanas a meses. Quem confirma o fim da obra é o raio-X."
+   },
+   {
+    "vo": "Manda pra quem tá esperando o osso colar."
+   },
+   {
+    "tela": "QUEM COLA UM"
+   },
+   {
+    "tela": "OSSO QUEBRADO?"
+   },
+   {
+    "tela": "COÁGULO"
+   },
+   {
+    "tela": "INFLAMAÇÃO"
+   },
+   {
+    "tela": "ETAPA 1"
+   },
+   {
+    "tela": "EM OBRAS"
+   },
+   {
+    "tela": "CALO ÓSSEO"
+   },
+   {
+    "tela": "OSSO ESTÁVEL"
+   },
+   {
+    "tela": "SANGUE CHEGANDO"
+   },
+   {
+    "tela": "SEM INFECÇÃO"
+   },
+   {
+    "tela": "RESISTÊNCIA"
+   },
+   {
+    "tela": "OSSO MADURO"
+   },
+   {
+    "tela": "1 COÁGULO"
+   },
+   {
+    "tela": "2 CALO"
+   },
+   {
+    "tela": "3 OSSO MADURO"
+   },
+   {
+    "tela": "SEMANAS A MESES"
+   },
+   {
+    "tela": "sem prazo único"
+   },
+   {
+    "tela": "RAIO-X"
+   },
+   {
+    "tela": "RAIO-X CONFIRMA"
+   }
+  ]
+ },
+ {
   "id": "fx_retirada",
   "video": "reels/_preview_fx_retirada.mp4",
   "caption": "O dia de tirar o fixador externo: a retirada é um procedimento feito pela equipe, em ambiente adequado e conforme o caso. Depois, os trajetos dos pinos cicatrizam ao longo das semanas seguintes, com curativo simples, do jeito que a equipe orientar. E o osso novo, ainda mais frágil que o osso maduro, segue ganhando resistência por meses: carga e atividade voltam aos poucos, e a fisioterapia continua.\n\nEnvia para quem está com o fixador — ou cuida de quem está.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo; não substitui avaliação individual.",

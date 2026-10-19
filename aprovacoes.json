@@ -658,6 +658,32 @@
      "hash_roteiro": "sha256:c6c493d7defd0b16faf3da0f7caaf532972b043ff82dfb9fc61230ab6d4402a6"
     }
    ]
+  },
+  {
+   "lote": "ENTRETENIMENTO-2026-10-19-L2",
+   "nome": "Geração nova — lote 2: os temas de MAIOR SUCESSO medido refeitos em CONVERSA e COMO FUNCIONA",
+   "escopo": [
+    "instagram"
+   ],
+   "status": "aprovado",
+   "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
+   "data": "2026-10-19",
+   "evidencia": "Chat auditoria-instagram-v1: em 18/10/2026 o Rafael aprovou a geração nova ('pode seguir com tudo', depois de ver os pilotos A e B) e em seguida pediu: 'esse novo video marca uma geração completamente diferente de videos, então, acredito que podemos ter temas levemente repetidos, dessa vez, priorizando aqueles que tiveram mais sucesso até o momento visto as poucas metricas que temos'. Os temas vêm do ranking refutado com correção de época (pé chato/palmilha 1,22; dor de crescimento 1,19; transporte ósseo 1,16; osteomielite 1,13; perna curta 1,07; pé virado 1,05 — pino e alongamento já refeitos no lote 1). Roteiros escritos por roteirista e refutados por verificador adversarial (workflow lote-entretenimento-2, 19/10/2026): toda fala com fato tem trecho LITERAL do acervo já aprovado; portão CFM limpo.",
+   "observacoes": "Revisão passiva na fila (regra de 30/08): as peças entram no FIM do bloco da geração nova (animado.anexar) e o Rafael edita/suspende antes da data (PROGRAMACAO.md). Conduta de alarme sempre a literal do acervo; na dor de crescimento, febre + manqueira = atendimento no mesmo dia (pnc_mancar_febre); na osteomielite, a conduta pós-cirurgia é a do infeccao_ferida_curto (aprovado em 30/07). Transporte ósseo: caso da literatura tratado por outra equipe, com o desfecho honesto (1,5 cm de encurtamento) e a fonte na legenda.",
+   "episodios": [
+    {
+     "id": "cv_pe_chato",
+     "hash_roteiro": "sha256:4f17474615f5f948fc2f6626dd1ab27ac3abac3a9d9ce5ebea4debb09c0cf9bb"
+    },
+    {
+     "id": "cv_dor_crescimento",
+     "hash_roteiro": "sha256:6e457815196d5362887ce44b9f3a59be28fb7f00c539650fbdd7377cd9385276"
+    },
+    {
+     "id": "cv_perna_curta",
+     "hash_roteiro": "sha256:7bfacf15f1cbf178338faf8811436e72e28ee6f2d39d64ee63f444e54fd50506"
+    }
+   ]
   }
  ]
 }

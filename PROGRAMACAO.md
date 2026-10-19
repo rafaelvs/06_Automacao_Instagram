@@ -13,32 +13,39 @@ Regenerado em 19/10/2026 por `_gen_programacao.py`. **Datas são projeção da f
 
 | Data | Peça | Série | Vídeo |
 |---|---|---|---|
-| seg 19/10 | `fx_retirada` [A] | Fixador por dentro | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_fx_retirada.mp4) |
-| seg 26/10 | `quanto_alongar`  | Alongamento Ósseo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_quanto_alongar.mp4) |
-| seg 02/11 | `fx_curativo_pinos` [B] | Fixador por dentro | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_fx_curativo_pinos.mp4) |
-| seg 09/11 | `esc_nao_doi`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_esc_nao_doi.mp4) |
-| seg 16/11 | `qa_ajustar_fixador`  | Respondendo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_qa_ajustar_fixador.mp4) |
-| seg 23/11 | `trabalho_escola`  | Alongamento Ósseo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_trabalho_escola.mp4) |
-| seg 30/11 | `vida_cotidiana_fixador`  | Alongamento Ósseo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_vida_cotidiana_fixador.mp4) |
-| seg 07/12 | `esc_estirao`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_esc_estirao.mp4) |
-| seg 14/12 | `qa_calo_osseo`  | Respondendo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_qa_calo_osseo.mp4) |
-| seg 21/12 | `qa_refratura`  | Respondendo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_qa_refratura.mp4) |
-| seg 28/12 | `pnc_joelho_valgo`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_pnc_joelho_valgo.mp4) |
-| seg 04/01 | `on_consolidacao_viciosa`  | Osso Novo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_on_consolidacao_viciosa.mp4) |
-| seg 11/01 | `pnc_osgood`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_pnc_osgood.mp4) |
-| seg 18/01 | `on_salvamento_membro`  | Osso Novo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_on_salvamento_membro.mp4) |
-| seg 25/01 | `pnc_sever`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_pnc_sever.mp4) |
-| seg 01/02 | `on_vitamina_d`  | Osso Novo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_on_vitamina_d.mp4) |
-| seg 08/02 | `pnc_torcicolo`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_pnc_torcicolo.mp4) |
-| seg 15/02 | `on_diabetes_osso`  | Osso Novo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_on_diabetes_osso.mp4) |
-| seg 22/02 | `pnc_engatinhar`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_pnc_engatinhar.mp4) |
-| seg 01/03 | `on_haste_magnetica`  | Osso Novo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_on_haste_magnetica.mp4) |
-| seg 08/03 | `pnc_calcado_bebe`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_pnc_calcado_bebe.mp4) |
-| seg 15/03 | `on_dor_cronica_fratura`  | Osso Novo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_on_dor_cronica_fratura.mp4) |
-| seg 22/03 | `pnc_hipermobilidade`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_pnc_hipermobilidade.mp4) |
-| seg 29/03 | `on_artrose_osteotomia`  | Osso Novo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_on_artrose_osteotomia.mp4) |
-| seg 05/04 | `pnc_cansa_andar`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_pnc_cansa_andar.mp4) |
-| seg 12/04 | `on_falha_ossea`  | Osso Novo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_on_falha_ossea.mp4) |
+| seg 19/10 | `cv_fixador` **[CONVERSA]** | Se pudesse responder | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cv_fixador.mp4) |
+| qua 21/10 | `cf_alongamento` **[COMO FUNCIONA]** | Como funciona | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cf_alongamento.mp4) |
+| sex 23/10 | `cv_pinos` **[CONVERSA]** | Se pudesse responder | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cv_pinos.mp4) |
+| dom 25/10 | `cv_gesso_filho` **[CONVERSA]** | Se pudesse responder | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cv_gesso_filho.mp4) |
+| seg 26/10 | `cv_osso` **[CONVERSA]** | Se pudesse responder | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cv_osso.mp4) |
+| qua 28/10 | `cv_muleta` **[CONVERSA]** | Se pudesse responder | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cv_muleta.mp4) |
+| sex 30/10 | `cf_fratura_cola` **[COMO FUNCIONA]** | Como funciona | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cf_fratura_cola.mp4) |
+| dom 01/11 | `fx_retirada` [A] | Fixador por dentro | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_fx_retirada.mp4) |
+| seg 02/11 | `quanto_alongar`  | Alongamento Ósseo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_quanto_alongar.mp4) |
+| seg 09/11 | `fx_curativo_pinos` [B] | Fixador por dentro | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_fx_curativo_pinos.mp4) |
+| seg 16/11 | `esc_nao_doi`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_esc_nao_doi.mp4) |
+| seg 23/11 | `qa_ajustar_fixador`  | Respondendo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_qa_ajustar_fixador.mp4) |
+| seg 30/11 | `trabalho_escola`  | Alongamento Ósseo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_trabalho_escola.mp4) |
+| seg 07/12 | `vida_cotidiana_fixador`  | Alongamento Ósseo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_vida_cotidiana_fixador.mp4) |
+| seg 14/12 | `esc_estirao`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_esc_estirao.mp4) |
+| seg 21/12 | `qa_calo_osseo`  | Respondendo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_qa_calo_osseo.mp4) |
+| seg 28/12 | `qa_refratura`  | Respondendo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_qa_refratura.mp4) |
+| seg 04/01 | `pnc_joelho_valgo`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_pnc_joelho_valgo.mp4) |
+| seg 11/01 | `on_consolidacao_viciosa`  | Osso Novo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_on_consolidacao_viciosa.mp4) |
+| seg 18/01 | `pnc_osgood`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_pnc_osgood.mp4) |
+| seg 25/01 | `on_salvamento_membro`  | Osso Novo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_on_salvamento_membro.mp4) |
+| seg 01/02 | `pnc_sever`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_pnc_sever.mp4) |
+| seg 08/02 | `on_vitamina_d`  | Osso Novo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_on_vitamina_d.mp4) |
+| seg 15/02 | `pnc_torcicolo`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_pnc_torcicolo.mp4) |
+| seg 22/02 | `on_diabetes_osso`  | Osso Novo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_on_diabetes_osso.mp4) |
+| seg 01/03 | `pnc_engatinhar`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_pnc_engatinhar.mp4) |
+| seg 08/03 | `on_haste_magnetica`  | Osso Novo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_on_haste_magnetica.mp4) |
+| seg 15/03 | `pnc_calcado_bebe`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_pnc_calcado_bebe.mp4) |
+| seg 22/03 | `on_dor_cronica_fratura`  | Osso Novo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_on_dor_cronica_fratura.mp4) |
+| seg 29/03 | `pnc_hipermobilidade`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_pnc_hipermobilidade.mp4) |
+| seg 05/04 | `on_artrose_osteotomia`  | Osso Novo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_on_artrose_osteotomia.mp4) |
+| seg 12/04 | `pnc_cansa_andar`  | Pé no Chão | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_pnc_cansa_andar.mp4) |
+| seg 19/04 | `on_falha_ossea`  | Osso Novo | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_on_falha_ossea.mp4) |
 
 ## Posts de feed (ter · qui · sáb 15h · dom 11h)
 

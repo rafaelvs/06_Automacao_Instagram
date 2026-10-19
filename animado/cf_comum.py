@@ -7,8 +7,11 @@ Contrato de uma cena nova `animado/cf_<nome>.py`:
   * `ANCORAS`: {chave: (palavra, ocorrência, prefixo)} — palavras do roteiro que disparam cada
     acontecimento. Palavra ausente = KeyError no render (vídeo dessincronizado não sai).
   * `DESTAQUE`: palavras que ficam douradas na legenda depois de ditas.
-  * `quadro(cv, t, T, blocos)` desenha o mundo e chama `interface(...)` no fim.
-  * `render = fazer_render(quadro, ANCORAS, DESTAQUE, sons, tempos_previa)`.
+  * `quadro(cv, t, T, blocos, ep)` desenha o mundo e chama `interface(...)` no fim. O gancho vem de
+    `ep["gancho"]` e todo rótulo desenhado tem de estar em `ep["tela"]` (o render recusa o vídeo se
+    algum texto desenhado não for do episódio).
+  * `render = fazer_render(quadro, ANCORAS, sons, tempos_previa)` no nível de cima do módulo (é
+    isso que faz o portão reconhecer o arquivo como cena).
 """
 import math
 import os
@@ -155,7 +158,7 @@ def fazer_render(quadro, mapa_ancoras, sons, tempos_previa, respiro_cta=1.6):
         blocos = montar_blocos(pal)
 
         def quadro_t(cv, t):
-            quadro(cv, t, T, blocos)
+            quadro(cv, t, T, blocos, ep)
 
         if previa:
             return _previas(quadro_t, tempos_previa(T), tmp, ep["id"]), T["total"]

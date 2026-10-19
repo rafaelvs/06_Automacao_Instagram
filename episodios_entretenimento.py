@@ -242,4 +242,98 @@ EPISODIOS_ENTRETENIMENTO = [
             "diferente: pronto-socorro e avise a equipe. Não espere a consulta."
         ),
     },
+    # ------------------------------------------------------------ lote 2 — 19/10/2026
+    # "temas levemente repetidos, priorizando aqueles que tiveram mais sucesso" (Rafael, 19/10): os
+    # temas vêm do ranking refutado (correção de época). Escrito por roteirista + refutado por
+    # verificador adversarial (workflow lote-entretenimento-2): cada fala com fato tem trecho LITERAL
+    # do acervo aprovado. cv_dor_crescimento: a conduta mais urgente do acervo (febre + manqueira =
+    # atendimento no mesmo dia, pnc_mancar_febre) fica para a combinação que a pede.
+    {
+        "id": "cv_pe_chato",
+        "formato": "conversa",
+        "serie": "Se pudesse responder",
+        "familia": "pediatria",
+        "icone": "tenis",
+        "personagem": "o tênis do seu filho",
+        "gancho": ["SE O TÊNIS DO SEU", "FILHO RESPONDESSE…"],
+        "falas": [
+            {"quem": "P", "texto": "Paguei caro pra você corrigir o pé chato."},
+            {"quem": "F", "texto": "Essa ideia vende muito, mas não corrijo pé: eu protejo. Flexível, leve e no tamanho certo já basta."},
+            {"quem": "P", "texto": "E a palmilha que a loja ofereceu?"},
+            {"quem": "F", "texto": "Mora aqui dentro e também não esculpe arco. Pé chato flexível e sem dor costuma melhorar crescendo."},
+            {"quem": "P", "texto": "Então o que ajuda de verdade?"},
+            {"quem": "F", "texto": "Me tirar em casa! É minha folga: tempo descalço, num chão seguro, estimula o pé de verdade."},
+            {"quem": "P", "texto": "E quando eu devo me preocupar?"},
+            {"quem": "F", "texto": "Se o pé dói, é durinho e travado, ou só um lado é chato: aí vale passar com o ortopedista."},
+        ],
+        "cta": "Manda pra quem ia gastar achando que corrige.",
+        "cta_destaque": ["manda", "corrige"],
+        "legenda": (
+            "Tênis caro não molda nem corrige o pé da criança: o arco e a musculatura se desenvolvem com o "
+            "movimento, andando, correndo, sentindo o chão, e o papel do calçado é proteger: flexível, leve "
+            "e no tamanho certo já basta. A palmilha também não molda o arco, e o pé chato (pé plano) "
+            "flexível e indolor, na maioria das vezes, melhora com o crescimento, sem tratamento. O que de "
+            "fato ajuda não custa nada: tempo descalço em casa, em piso seguro, estimula o pé de verdade. O "
+            "que merece avaliação é o pé que dói, que é rígido ou que ficou chato só de um lado."
+        ),
+    },
+    {
+        "id": "cv_dor_crescimento",
+        "formato": "conversa",
+        "serie": "Se pudesse responder",
+        "familia": "pediatria",
+        "icone": "pernas",
+        "personagem": "as pernas do seu filho",
+        "gancho": ["SE AS PERNAS DO SEU", "FILHO RESPONDESSEM…"],
+        "falas": [
+            {"quem": "P", "texto": "Ontem à noite ele chorou de dor nas pernas."},
+            {"quem": "F", "texto": "Nas duas, né? No fim do dia ou de noite, sem inchar e sem febre: esse é o nosso jeitão clássico."},
+            {"quem": "P", "texto": "E hoje cedo já saiu correndo pela casa."},
+            {"quem": "F", "texto": "De noite a gente reclama; de dia, quer pular. É justamente esse contraste que tranquiliza."},
+            {"quem": "P", "texto": "Dor de crescimento existe ou é desculpa?"},
+            {"quem": "F", "texto": "Existe, e é comum na infância. Não é frescura: nem nossa, nem dele."},
+            {"quem": "P", "texto": "E quando não é do crescimento?"},
+            {"quem": "F", "texto": "Dor num ponto só, inchaço, manqueira ou febre: não espera, avalia. Mancou com febre? No mesmo dia."},
+        ],
+        "cta": "Manda pra quem já perdeu o sono com essa dor.",
+        "cta_destaque": ["manda", "sono"],
+        "legenda": (
+            "Dor de crescimento existe, é comum na infância e não é frescura. O padrão que tranquiliza: dói "
+            "nas duas pernas, no fim do dia ou à noite, sem inchaço e sem febre, e some pela manhã, com a "
+            "criança brincando normal no dia seguinte. Fogem desse padrão e merecem avaliação na ortopedia "
+            "pediátrica: dor sempre no mesmo ponto; inchaço, calor ou febre junto; e dor que invade o dia, "
+            "fazendo mancar, limitar o brincar ou acordar sempre. Com febre e manqueira juntas, procure "
+            "atendimento no mesmo dia."
+        ),
+    },
+    {
+        "id": "cv_perna_curta",
+        "formato": "conversa",
+        "serie": "Se pudesse responder",
+        "familia": "reconstrucao",
+        "icone": "fita",
+        "personagem": "a fita métrica",
+        "gancho": ["SE A FITA MÉTRICA", "PUDESSE RESPONDER…"],
+        "falas": [
+            {"quem": "P", "texto": "Vou medir essa perna mais curta com você."},
+            {"quem": "F", "texto": "Comigo? Sou de costura, não de osso! Osso se mede no milímetro: exame de imagem, a escanometria."},
+            {"quem": "P", "texto": "Deu diferença. Vai ter que operar?"},
+            {"quem": "F", "texto": "Nem sempre. Pequena costuma pedir palmilha e observação. Maior pode ter indicação de correção."},
+            {"quem": "P", "texto": "E se for criança, que ainda tá crescendo?"},
+            {"quem": "F", "texto": "Aí nem uma medida só basta, imagina eu. Mede e remede, prevendo a diferença no fim do crescimento."},
+            {"quem": "P", "texto": "E quando eu me preocupo?"},
+            {"quem": "F", "texto": "Mancar novo ou piorando, dor no quadril ou na coluna, diferença crescendo rápido: procure avaliação."},
+        ],
+        "cta": "Manda pra quem convive com essa diferença.",
+        "cta_destaque": ["manda", "diferença"],
+        "legenda": (
+            "Uma perna mais curta que a outra (discrepância de membro) se mede com exame de imagem, não no "
+            "olho nem na fita métrica: a escanometria mostra no milímetro o comprimento real de cada osso. E "
+            "nem sempre precisa operar: diferenças pequenas costumam ser conduzidas com palmilha de "
+            "compensação e observação, e as maiores podem ter indicação de correção, conforme a magnitude, a "
+            "idade e a causa. Na criança, que ainda cresce, mede-se e remede-se ao longo do tempo, prevendo "
+            "a diferença no final do crescimento. Mancar que apareceu ou piorou, dor no quadril ou na "
+            "coluna, ou diferença que aumenta rápido na criança: procure avaliação."
+        ),
+    },
 ]
