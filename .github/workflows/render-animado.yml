@@ -1,0 +1,65 @@
+name: render-animado
+# GERACAO NOVA de reels (Rafael, 18/10/2026): animacao sem rosto comandada pelo tempo das
+# palavras — formatos CONVERSA ("Se o seu ___ pudesse responder") e COMO FUNCIONA (mecanismo
+# animado). Renderiza UM episodio de episodios_entretenimento.py e commita
+# reels/_preview_<id>.mp4. NAO mexe em reels.json: a peca so' entra na fila depois que o video
+# existe no repo (publicar reel sem mp4 falha ALTO no publish.py).
+#   gh workflow run render-animado.yml -f episodio=cv_fixador --repo rafaelvs/06_Automacao_Instagram
+on:
+  workflow_dispatch:
+    inputs:
+      episodio:
+        description: "ID do episodio em episodios_entretenimento.py (ex.: cv_fixador, cf_alongamento)"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: render-animado-${{ github.event.inputs.episodio }}
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fontes (Roboto, reserva Liberation/DejaVu) + ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y fonts-roboto fonts-liberation fonts-dejavu-core ffmpeg
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Dependencias (skia-python, edge-tts, numpy)
+        run: pip install skia-python edge-tts numpy imageio-ffmpeg
+      - name: Guarda-freio de voz (mudanca de voz exige piloto aprovado — regra 30/08/2026)
+        run: python checar_voz.py
+      - name: Renderizar (portao CFM roda ANTES de desenhar o primeiro quadro)
+        run: python -m animado.render "${{ github.event.inputs.episodio }}"
+      - name: Quadros de conferencia
+        run: python -m animado.render "${{ github.event.inputs.episodio }}" --previa --tmp previa_out
+      - name: Artefato (video + quadros)
+        uses: actions/upload-artifact@v4
+        with:
+          name: animado-${{ github.event.inputs.episodio }}
+          path: |
+            reels/_preview_${{ github.event.inputs.episodio }}.mp4
+            previa_out/*.png
+          if-no-files-found: error
+      - name: Commit do mp4
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "reels/_preview_${{ github.event.inputs.episodio }}.mp4"
+          git commit -m "Render animado ${{ github.event.inputs.episodio }} (geracao nova)" || echo "nada a commitar"
+          ok=0
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase origin main && git push; then ok=1; break; fi
+            git rebase --abort 2>/dev/null || true
+            echo "Push tentativa $attempt falhou — aguardando ${attempt}0s..."
+            sleep $((attempt * 10))
+          done
+          if [ "$ok" != "1" ]; then
+            echo "::error::mp4 renderizado mas NAO commitado apos 5 tentativas — render perdido."
+            exit 1
+          fi

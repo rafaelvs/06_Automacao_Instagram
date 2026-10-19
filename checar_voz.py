@@ -44,9 +44,13 @@ def _extrai(texto, padrao, rotulo, obrigatorio=True):
     return m.group(0)
 
 
-def fingerprint(gerar_path=None, wf_path=None):
+def fingerprint(gerar_path=None, wf_path=None, animado_path=None):
     g = (gerar_path or ROOT / "gerar_reel_voz.py").read_text(encoding="utf-8")
     w = (wf_path or ROOT / ".github" / "workflows" / "render-reel-voz.yml").read_text(encoding="utf-8")
+    # 18/10/2026: o motor NOVO (animado/, formatos CONVERSA e COMO FUNCIONA) tem a sua própria
+    # voz — mesma Antonio, ritmo próprio. A regra do piloto vale para ela também: sem isto,
+    # o ritmo da animação poderia mudar sem passar por ninguém.
+    a = (animado_path or ROOT / "animado" / "voz.py").read_text(encoding="utf-8")
     partes = {
         "engine_default": _extrai(g, r'ENGINE\s*=\s*os\.environ\.get\("VOZ_ENGINE"[^\n]*', "ENGINE"),
         "voz_default": _extrai(g, r'EDGE_VOICE\s*=\s*os\.environ\.get\("EDGE_VOICE"[^\n]*', "EDGE_VOICE"),
@@ -56,6 +60,11 @@ def fingerprint(gerar_path=None, wf_path=None):
         "leads": _extrai(g, r'LEAD\s*=.*?\n', "LEAD") + _extrai(g, r'LEAD0\s*=.*?\n', "LEAD0"),
         "workflow_voz_env": _extrai(w, r'env:\s*\n\s*VOZ_ENGINE:.*?run: python gerar_reel_voz\.py[^\n]*', "env do workflow"),
         "workflow_inputs": _extrai(w, r'inputs:\s*\n.*?permissions:', "inputs do workflow"),
+        "animado_voz": (_extrai(a, r'VOZ\s*=\s*"[^"\n]*"', "animado VOZ")
+                        + _extrai(a, r'RITMO_COMO_FUNCIONA\s*=\s*"[^"\n]*"', "animado RITMO_COMO_FUNCIONA")
+                        + _extrai(a, r'RITMO_CONVERSA\s*=\s*"[^"\n]*"', "animado RITMO_CONVERSA")
+                        + _extrai(a, r'TOM\s*=\s*"[^"\n]*"', "animado TOM")
+                        + _extrai(a, r'VOICE_CHAIN\s*=\s*\(.*?\)\n', "animado VOICE_CHAIN")),
     }
     blob = json.dumps(partes, ensure_ascii=False, sort_keys=True)
     return hashlib.sha256(blob.encode("utf-8")).hexdigest(), partes
@@ -104,6 +113,16 @@ def main():
             r3 = fp3 != fp
             print(f"[{'ok' if r3 else 'FALHOU'}] positivo 3: mudar rate default do workflow muda o fingerprint")
             ok &= r3
+            # controle POSITIVO 4 (18/10/2026): mexer no ritmo da voz do motor NOVO TEM de mudar
+            av = (ROOT / "animado" / "voz.py").read_text(encoding="utf-8")
+            av4 = re.sub(r'RITMO_CONVERSA\s*=\s*"[^"]*"', 'RITMO_CONVERSA = "+37%"', av, count=1)
+            if av4 == av:
+                av4 = av.replace('RITMO_CONVERSA = "+37%"', 'RITMO_CONVERSA = "-37%"')
+            (td / "a4.py").write_text(av4, encoding="utf-8")
+            fp4, _ = fingerprint(animado_path=td / "a4.py")
+            r4 = fp4 != fp
+            print(f"[{'ok' if r4 else 'FALHOU'}] positivo 4: mudar o ritmo da voz do motor novo muda o fingerprint")
+            ok &= r4
             # controle NEGATIVO: comentário fora dos blocos de voz NÃO muda
             (td / "g4.py").write_text(g + "\n# comentário inócuo\n", encoding="utf-8")
             fp4, _ = fingerprint(gerar_path=td / "g4.py")

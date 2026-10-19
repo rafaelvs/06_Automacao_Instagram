@@ -9,3 +9,7 @@ _render_reel_OLD.py
 
 # backup que rerender_frame.py faz antes de editar o texto-fonte (nao versionar)
 *.py.bak
+
+# pasta de trabalho do motor animado (voz em cache, quadros de previa)
+.animado_tmp/
+previa_out/

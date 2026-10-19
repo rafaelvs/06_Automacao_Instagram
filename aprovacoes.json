@@ -616,6 +616,48 @@
      "hash_roteiro": "sha256:7240188c6591fbd44974c3641dc579f0f5e518f92303bd5b82d4919f39b2e0bc"
     }
    ]
+  },
+  {
+   "lote": "ENTRETENIMENTO-2026-10-18",
+   "nome": "Geração nova de reels — formatos CONVERSA ('Se o seu ___ pudesse responder') e COMO FUNCIONA (mecanismo animado): 2 pilotos + lote 1",
+   "escopo": [
+    "instagram"
+   ],
+   "status": "aprovado",
+   "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
+   "data": "2026-10-18",
+   "evidencia": "Chat auditoria-instagram-v1, 18/10/2026: o Rafael pediu que o perfil virasse entretenimento ('os posts se tornaram murais informativos levemente cansativos [...] o Instagram é entreterimento'); recebeu os pilotos A (cf_alongamento) e B (cv_fixador) em vídeo e respondeu 'pode seguir com tudo' (~23:20 BRT), aprovando as duas direções, a voz mais viva, a cota de lâminas e o rótulo de IA. Em seguida: 'esse novo video marca uma geração completamente diferente de videos [...] podemos ter temas levemente repetidos, dessa vez, priorizando aqueles que tiveram mais sucesso'. O lote 1 (cv_gesso_filho, cv_osso, cv_muleta, cv_pinos, cf_fratura_cola) foi escrito por roteirista e refutado por verificador adversarial (workflow lote-entretenimento-1): cada fala com fato tem trecho LITERAL do acervo já aprovado; portão CFM limpo.",
+   "observacoes": "Revisão passiva na fila (regra de 30/08): o Rafael edita/suspende antes da data de cada peça (PROGRAMACAO.md). PONTO PARA ELE CONFIRMAR: em cv_gesso_filho, dedos roxos/frios no gesso -> 'pronto-socorro na hora, avisando a equipe' (conduta mais urgente do acervo, gesso_pos_op_kids); a sequência s_pnc_gesso_em_casa, publicada em 15/09, dá 'contato no mesmo dia' para o mesmo sinal.",
+   "episodios": [
+    {
+     "id": "cf_alongamento",
+     "hash_roteiro": "sha256:f2d69eeaf5d7910f75b6cfa9e21d6d1153735d997530120814290ab010c77d03"
+    },
+    {
+     "id": "cv_fixador",
+     "hash_roteiro": "sha256:5d06e7a0d4265efce286f05c23ae72a96aaa68931afd0a1a9e787e397e887607"
+    },
+    {
+     "id": "cv_gesso_filho",
+     "hash_roteiro": "sha256:bda3de9f5cd9a89f88eab68324582dc7f11004ce12b8b10106681fe2c7bf360d"
+    },
+    {
+     "id": "cv_osso",
+     "hash_roteiro": "sha256:5e0156edb7bab247ab2a9cc361e9c9505c1844ea78814202cadf9f0d20ebc773"
+    },
+    {
+     "id": "cv_muleta",
+     "hash_roteiro": "sha256:480c83645bb3d8aba16082bf72fd9d569bde27bd6b2e2894f0f2a2b3c6b4df4c"
+    },
+    {
+     "id": "cv_pinos",
+     "hash_roteiro": "sha256:9fb0653b30ff41d86885aa5b12ceb6cc5675d2d466a07a73487f15882be88c9c"
+    },
+    {
+     "id": "cf_fratura_cola",
+     "hash_roteiro": "sha256:66d58bbbb0e08ce98b2da0aa457368df37d873b158060da3efebdbc250e76cd1"
+    }
+   ]
   }
  ]
 }

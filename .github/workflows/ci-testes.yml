@@ -51,3 +51,10 @@ jobs:
         run: python checar_dur.py
       - name: "Cobertura do portao CFM (fila viva bloqueia; acervo publicado so reporta)"
         run: python checar_cfm.py
+      - name: "Geracao nova (18/10/2026): episodios e fila de formato novo"
+        # Episodio mal formado, texto com violacao CFM, peca de formato novo na fila sem video,
+        # sem legenda valida, sem declaracao de voz de IA (que liga o rotulo) ou com `scenes`
+        # divergente do video = VERMELHO. Auto-teste primeiro: portao que nunca reprova nao vale.
+        run: |
+          python checar_entretenimento.py --auto-teste
+          python checar_entretenimento.py
