@@ -1111,6 +1111,232 @@
   ]
  },
  {
+  "id": "cf_transporte_osseo",
+  "video": "reels/_preview_cf_transporte_osseo.mp4",
+  "caption": "Ele perdeu 17,2 cm do osso da canela (tíbia) num acidente de trânsito. Caso real publicado na literatura médica, tratado por outra equipe.\n\nCom o fixador circular de Ilizarov, os médicos cortaram o osso saudável e foram puxando o segmento aos poucos, por 4 meses, para dentro da falha. Atrás dele, o corpo fabricava osso novo. É o transporte ósseo: a mesma osteogênese por distração do alongamento ósseo, usada para vencer perdas grandes de osso depois de trauma ou infecção, num tratamento longo, em etapas. O objetivo é devolver osso, comprimento e função. Reconstrução de função, nunca estética.\n\nO desfecho, com a parte honesta: ele voltou ao trabalho andando sem apoio e a perna foi preservada, mas ficou com 1,5 cm de encurtamento e uma contratura de 10° no tornozelo. Cada caso é único: este é o relato de um paciente, publicado pelos médicos que o trataram. As ilustrações são esquemáticas, não são imagens do paciente.\n\nManda pra quem acha que falta de osso não tem solução.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nFonte: Pentela HK, Harshavardhan JKG, Suriyakumar S. Journal of Orthopaedic Case Reports, 2023;13(5):9-13.\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+  "formato": "como_funciona",
+  "serie": "Como funciona",
+  "dur": 34.1,
+  "voz_ia": true,
+  "scenes": [
+   {
+    "vo": "Caso real: ele perdeu dezessete centímetros do osso da canela num acidente."
+   },
+   {
+    "vo": "Com o fixador de Ilizarov segurando a perna, os médicos cortaram o osso saudável. De propósito."
+   },
+   {
+    "vo": "O pedaço cortado foi deslizando, devagarinho, pra dentro da falha."
+   },
+   {
+    "vo": "Atrás dele, no rastro, o corpo fabricava osso novo."
+   },
+   {
+    "vo": "Quatro meses assim. É o transporte ósseo, o mesmo princípio do alongamento."
+   },
+   {
+    "vo": "O objetivo é devolver osso, comprimento e função."
+   },
+   {
+    "vo": "Manda pra quem acha que falta de osso não tem solução."
+   },
+   {
+    "tela": "FALTAVAM 17 CM"
+   },
+   {
+    "tela": "DE OSSO. E AGORA?"
+   },
+   {
+    "tela": "Caso real da literatura"
+   },
+   {
+    "tela": "tratado por outra equipe"
+   },
+   {
+    "tela": "ilustração esquemática"
+   },
+   {
+    "tela": "17 cm"
+   },
+   {
+    "tela": "osso da canela (tíbia)"
+   },
+   {
+    "tela": "fixador de Ilizarov"
+   },
+   {
+    "tela": "corte no osso saudável"
+   },
+   {
+    "tela": "DE PROPÓSITO"
+   },
+   {
+    "tela": "UM PEDAÇO VIAJA"
+   },
+   {
+    "tela": "osso novo"
+   },
+   {
+    "tela": "atrás do segmento"
+   },
+   {
+    "tela": "4 MESES"
+   },
+   {
+    "tela": "aos poucos"
+   },
+   {
+    "tela": "TRANSPORTE ÓSSEO"
+   },
+   {
+    "tela": "mesmo princípio do alongamento ósseo"
+   },
+   {
+    "tela": "OSSO"
+   },
+   {
+    "tela": "COMPRIMENTO"
+   },
+   {
+    "tela": "FUNÇÃO"
+   },
+   {
+    "tela": "neste caso: ficou 1,5 cm"
+   },
+   {
+    "tela": "de encurtamento e rigidez"
+   },
+   {
+    "tela": "no tornozelo"
+   },
+   {
+    "tela": "cada caso é único"
+   },
+   {
+    "tela": "Caso publicado, tratado por outra equipe"
+   }
+  ]
+ },
+ {
+  "id": "cf_osteomielite",
+  "video": "reels/_preview_cf_osteomielite.mp4",
+  "caption": "O osso também pega infecção: a osteomielite. Ela pode entrar por uma fratura exposta, depois de uma cirurgia, ou até viajar pelo sangue, vinda de uma infecção em outro lugar do corpo. Quando se instala, pode ir destruindo o osso por dentro. Sinais comuns: dor que não passa, inchaço, calor e vermelhidão no local, às vezes febre ou secreção. Não é pra ignorar. Tem tratamento: combater a infecção, remover o osso doente e, quando sobra um vão, reconstruir o que se perdeu com as técnicas do alongamento ósseo, sempre de forma individualizada. Sem resolver a infecção, nenhuma reconstrução se sustenta. Após infecções com perda óssea, a reconstrução é por etapas: controlar a infecção e depois recompor o osso, às vezes com transporte ósseo.\n\nDepois de uma cirurgia, se houver febre, pus, ferida que abriu ou vermelhidão se alastrando pela pele: pronto-socorro na hora, avisando a equipe no caminho.\n\nManda pra quem operou há pouco.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+  "formato": "como_funciona",
+  "serie": "Como funciona",
+  "dur": 34.7,
+  "voz_ia": true,
+  "scenes": [
+   {
+    "vo": "Osso também pega infecção? Pega. Tem nome: osteomielite."
+   },
+   {
+    "vo": "Pode entrar por fratura exposta, cirurgia ou pelo sangue."
+   },
+   {
+    "vo": "Instalada, pode ir destruindo o osso por dentro."
+   },
+   {
+    "vo": "Dor que não passa, inchaço, calor, vermelhidão, às vezes febre ou secreção: não ignore."
+   },
+   {
+    "vo": "Tem tratamento: combater a infecção, remover o osso doente e, se sobrar um vão, reconstruir."
+   },
+   {
+    "vo": "Operou e veio febre, pus, ferida que abriu ou vermelhidão se alastrando? Pronto-socorro na hora, avisando a equipe."
+   },
+   {
+    "vo": "Manda pra quem operou há pouco."
+   },
+   {
+    "tela": "OSSO TAMBÉM"
+   },
+   {
+    "tela": "PEGA INFECÇÃO?"
+   },
+   {
+    "tela": "OSTEOMIELITE"
+   },
+   {
+    "tela": "infecção no osso"
+   },
+   {
+    "tela": "PORTAS DE ENTRADA"
+   },
+   {
+    "tela": "FRATURA EXPOSTA"
+   },
+   {
+    "tela": "CIRURGIA"
+   },
+   {
+    "tela": "SANGUE"
+   },
+   {
+    "tela": "POR DENTRO"
+   },
+   {
+    "tela": "DOR QUE NÃO PASSA"
+   },
+   {
+    "tela": "INCHAÇO"
+   },
+   {
+    "tela": "CALOR"
+   },
+   {
+    "tela": "VERMELHIDÃO"
+   },
+   {
+    "tela": "ÀS VEZES FEBRE"
+   },
+   {
+    "tela": "OU SECREÇÃO"
+   },
+   {
+    "tela": "NÃO IGNORE"
+   },
+   {
+    "tela": "1 COMBATER A INFECÇÃO"
+   },
+   {
+    "tela": "2 REMOVER O OSSO DOENTE"
+   },
+   {
+    "tela": "3 RECONSTRUIR, SE SOBRAR VÃO"
+   },
+   {
+    "tela": "OSSO DOENTE"
+   },
+   {
+    "tela": "VÃO"
+   },
+   {
+    "tela": "SEMPRE INDIVIDUALIZADO"
+   },
+   {
+    "tela": "DEPOIS DA CIRURGIA"
+   },
+   {
+    "tela": "FEBRE"
+   },
+   {
+    "tela": "PUS"
+   },
+   {
+    "tela": "FERIDA QUE ABRIU"
+   },
+   {
+    "tela": "VERMELHIDÃO SE ALASTRANDO"
+   },
+   {
+    "tela": "PRONTO-SOCORRO NA HORA"
+   },
+   {
+    "tela": "AVISE A EQUIPE"
+   }
+  ]
+ },
+ {
   "id": "cv_perna_curta",
   "video": "reels/_preview_cv_perna_curta.mp4",
   "caption": "Uma perna mais curta que a outra (discrepância de membro) se mede com exame de imagem, não no olho nem na fita métrica: a escanometria mostra no milímetro o comprimento real de cada osso. E nem sempre precisa operar: diferenças pequenas costumam ser conduzidas com palmilha de compensação e observação, e as maiores podem ter indicação de correção, conforme a magnitude, a idade e a causa. Na criança, que ainda cresce, mede-se e remede-se ao longo do tempo, prevendo a diferença no final do crescimento. Mancar que apareceu ou piorou, dor no quadril ou na coluna, ou diferença que aumenta rápido na criança: procure avaliação.\n\nManda pra quem convive com essa diferença.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
@@ -1163,6 +1389,89 @@
    },
    {
     "tela": "a fita métrica"
+   }
+  ]
+ },
+ {
+  "id": "cf_pe_virado",
+  "video": "reels/_preview_cf_pe_virado.mp4",
+  "caption": "Pé pra dentro ao andar, o famoso andar de pombinho. Pode vir de uma leve torção (um giro) do pé, da canela ou do osso da coxa, todas variações comuns do crescimento, bem conhecidas da ortopedia pediátrica. Costuma refletir a rotação natural dos ossos, que na infância faz muitos pés virarem para dentro (ou para fora). A regra é o tempo: conforme a criança cresce, a rotação costuma se ajustar sozinha, na maioria das vezes sem precisar de tratamento.\n\nNo bebê existe também o metatarso aduto, em que a parte da frente do pé vira para dentro: é comum, costuma ser flexível e é diferente do pé torto. O acompanhamento define a necessidade de tratamento.\n\nO alerta é quando ocorre só de um lado, dói, causa quedas demais, ou piora em vez de melhorar. Aí vale o ortopedista olhar. Para a consulta, vídeos curtos do andar, de frente e de costas, ajudam: o celular mostra o que a criança nem sempre repete no consultório.\n\nManda pra quem se preocupa com o andar de pombinho.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+  "formato": "como_funciona",
+  "serie": "Como funciona",
+  "dur": 28.9,
+  "voz_ia": true,
+  "scenes": [
+   {
+    "vo": "Andar de pombinho: o pé vira pra dentro."
+   },
+   {
+    "vo": "De onde vem? Pode ser um leve giro no pé, na canela ou até na coxa."
+   },
+   {
+    "vo": "Costuma ser a rotação natural dos ossos na infância, pra dentro ou pra fora."
+   },
+   {
+    "vo": "Com o crescimento, na maioria das vezes, o pé alinha sozinho."
+   },
+   {
+    "vo": "O alerta: só de um lado, dor, quedas demais, ou piora em vez de melhora."
+   },
+   {
+    "vo": "Aí vale o ortopedista olhar."
+   },
+   {
+    "vo": "Manda pra quem se preocupa com o andar de pombinho."
+   },
+   {
+    "tela": "ANDAR DE POMBINHO?"
+   },
+   {
+    "tela": "PODE SER A COXA."
+   },
+   {
+    "tela": "PRA DENTRO"
+   },
+   {
+    "tela": "?"
+   },
+   {
+    "tela": "PÉ"
+   },
+   {
+    "tela": "CANELA"
+   },
+   {
+    "tela": "COXA"
+   },
+   {
+    "tela": "ROTAÇÃO NATURAL"
+   },
+   {
+    "tela": "PRA FORA"
+   },
+   {
+    "tela": "NA MAIORIA DAS VEZES"
+   },
+   {
+    "tela": "SOZINHO"
+   },
+   {
+    "tela": "SÓ DE UM LADO"
+   },
+   {
+    "tela": "DOR"
+   },
+   {
+    "tela": "QUEDAS DEMAIS"
+   },
+   {
+    "tela": "PIORA EM VEZ"
+   },
+   {
+    "tela": "DE MELHORA"
+   },
+   {
+    "tela": "VALE O ORTOPEDISTA OLHAR"
    }
   ]
  },
