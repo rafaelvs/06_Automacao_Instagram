@@ -742,6 +742,52 @@
      "hash_roteiro": "sha256:14cdaf4c0ea0a3cd6c3861ea297e5985f39412edcd5c4604ac805b45df72c91c"
     }
    ]
+  },
+  {
+   "lote": "ENTRETENIMENTO-2026-10-19-L4",
+   "nome": "Geração nova — lote 4: COMO FUNCIONA para fechar novembro (oito mecanismos do nicho)",
+   "escopo": [
+    "instagram"
+   ],
+   "status": "aprovado",
+   "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
+   "data": "2026-10-19",
+   "evidencia": "Chat auditoria-instagram-v1, 19/10/2026: depois do lote 3, o Rafael pediu 'já faz um lote até fim de novembro', na linha do pedido anterior ('você precisa de produzir mais conteudos como o de alongamento'). Roteiros por roteirista + verificador adversarial (workflow lote-4-como-funciona): todo fato com trecho LITERAL de peça PUBLICADA ou de lote APROVADO (152 fontes conferidas mecanicamente; o LEGADO-PRE-GATE pendente ficou de fora). Cenas: construção + revisor adversarial + correção (cenas-lote4-como-funciona); rótulos de tela só com palavras do roteiro/legenda; portão CFM limpo.",
+   "observacoes": "Revisão passiva na fila (regra de 30/08): entram de 16/11 em diante, no fim do bloco da geração nova; cópias para conferência em _GRANDE_REVISAO_2026-08/videos_geracao_nova_2026-10. Conduta de alarme literal em cada peça (ex.: febre + manqueira = atendimento no mesmo dia; cotovelo de babá = correção com o ortopedista, nunca em casa).",
+   "episodios": [
+    {
+     "id": "cf_discrepancia_causas",
+     "hash_roteiro": "sha256:979dbf5efdd4a73379b72227f372e365f326609fd133980b945b366138420c15"
+    },
+    {
+     "id": "cf_cotovelo_baba",
+     "hash_roteiro": "sha256:c0c0f462f867b08fa4015dc856eb331b7d5df68f976b861f5f274c3b5fa2496a"
+    },
+    {
+     "id": "cf_quando_pisar",
+     "hash_roteiro": "sha256:4df48cf6e1eb10f6460d7c39d1ba2e8e317b37ce6c41aeb769933f716e324df9"
+    },
+    {
+     "id": "cf_crianca_mancando",
+     "hash_roteiro": "sha256:93cc42a03abf99dcc2ed38f92e1b609b4924c5b642552435269794419da4e2a9"
+    },
+    {
+     "id": "cf_fisioterapia",
+     "hash_roteiro": "sha256:e6c3919ca032899eaeab48b66e06f1b51d3695d0743f3396b405f2e400982ca8"
+    },
+    {
+     "id": "cf_pernas_x_o",
+     "hash_roteiro": "sha256:b7c3ed7c40b7a35baaad6e6002401eab6e3f5321ee1018b5953f90c78477336e"
+    },
+    {
+     "id": "cf_quanto_tempo",
+     "hash_roteiro": "sha256:44493f211313d39b7b35d92ed1f6cdcdd612f13f5b37ae91df728b3efb94bb79"
+    },
+    {
+     "id": "cf_osgood_sever",
+     "hash_roteiro": "sha256:03869718d2399554b24cc84a33f86c797941a8429cce53b12fd81214840eca5a"
+    }
+   ]
   }
  ]
 }
