@@ -753,7 +753,7 @@
    "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
    "data": "2026-10-19",
    "evidencia": "Chat auditoria-instagram-v1, 19/10/2026: depois do lote 3, o Rafael pediu 'já faz um lote até fim de novembro', na linha do pedido anterior ('você precisa de produzir mais conteudos como o de alongamento'). Roteiros por roteirista + verificador adversarial (workflow lote-4-como-funciona): todo fato com trecho LITERAL de peça PUBLICADA ou de lote APROVADO (152 fontes conferidas mecanicamente; o LEGADO-PRE-GATE pendente ficou de fora). Cenas: construção + revisor adversarial + correção (cenas-lote4-como-funciona); rótulos de tela só com palavras do roteiro/legenda; portão CFM limpo.",
-   "observacoes": "Revisão passiva na fila (regra de 30/08): entram de 16/11 em diante, no fim do bloco da geração nova; cópias para conferência em _GRANDE_REVISAO_2026-08/videos_geracao_nova_2026-10. Conduta de alarme literal em cada peça (ex.: febre + manqueira = atendimento no mesmo dia; cotovelo de babá = correção com o ortopedista, nunca em casa).",
+   "observacoes": "Revisão passiva na fila (regra de 30/08): entram de 16/11 em diante, no fim do bloco da geração nova; cópias para conferência em _GRANDE_REVISAO_2026-08/videos_geracao_nova_2026-10. Conduta de alarme literal em cada peça (ex.: febre + manqueira = atendimento no mesmo dia; cotovelo de babá = 'Não puxe nem force. Procure avaliação: a correção é com o ortopedista', literal na fala e na tela).",
    "episodios": [
     {
      "id": "cf_discrepancia_causas",
