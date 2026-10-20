@@ -1702,10 +1702,16 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "conversa"
+    },
+    {
+      "id": "s_on_discrepancia",
+      "kind": "seq",
+      "media_id": "18217658251358542",
+      "at": "2026-10-20T15:31:26.620530+00:00"
     }
   ],
   "last_post_date": "2026-10-18",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-10-19",
-  "last_seq_date": "2026-10-17"
+  "last_seq_date": "2026-10-20"
 }
