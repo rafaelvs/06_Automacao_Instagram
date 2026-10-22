@@ -1723,9 +1723,15 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "como_funciona"
+    },
+    {
+      "id": "v_pernas_dom",
+      "kind": "post",
+      "media_id": "18126090112928770",
+      "at": "2026-10-22T19:05:08.671717+00:00"
     }
   ],
-  "last_post_date": "2026-10-20",
+  "last_post_date": "2026-10-22",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-10-21",
   "last_seq_date": "2026-10-20"
