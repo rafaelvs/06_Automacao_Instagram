@@ -127,6 +127,8 @@ LAMINAS_POR_SEMANA = regra_reels.cota_laminas()
 # Conversa ("Se o seu ___ pudesse responder") so' depois de N dias da ultima (Rafael, 19/10/2026:
 # "tem que ser mais espacada [...] vez ou outra somente, pq e' um modelo mais cansativo"). Mesma regra unica.
 DIAS_ENTRE_CONVERSAS = regra_reels.dias_entre_conversas()
+# All-in COMO FUNCIONA (Rafael, 24/10/2026): conversa suspensa por padrao (regra_reels.py).
+CONVERSAS_ATIVAS = regra_reels.conversas_ativas()
 HOST       = f"https://graph.instagram.com/{VER}"
 
 if not IG_USER_ID or not TOKEN:
@@ -418,7 +420,7 @@ def _laminas_na_semana(state, reels, agora_brt):
 
 def proximo_reel(reels, done, state, agora_brt):
     return regra_reels.proximo_reel(reels, done, state, agora_brt, cota=LAMINAS_POR_SEMANA,
-                                    dias_conversa=DIAS_ENTRE_CONVERSAS)
+                                    dias_conversa=DIAS_ENTRE_CONVERSAS, conversa_ativa=CONVERSAS_ATIVAS)
 
 _FORMATO_REEL = None
 def publish_reel(item):
@@ -592,8 +594,9 @@ def main():
         elif any(x["id"] not in done for x in reels):
             # Nao e' falha nem biblioteca vazia: as cotas da semana (lamina, conversa) ja' sairam e
             # nao ha' COMO FUNCIONA pronto. Dia sem reel, por decisao (18 e 19/10/2026).
-            print(f"Reels: cota de {LAMINAS_POR_SEMANA} lamina(s) por semana cumprida, conversa so' a cada "
-                  f"{DIAS_ENTRE_CONVERSAS} dias e nenhum COMO FUNCIONA pronto na fila — sem reel hoje.")
+            print(f"Reels: nenhum COMO FUNCIONA pronto na fila — sem reel hoje (lamina: cota {LAMINAS_POR_SEMANA}/semana; "
+                  f"conversa: {'so a cada ' + str(DIAS_ENTRE_CONVERSAS) + ' dias' if CONVERSAS_ATIVAS else 'suspensa'}). "
+                  "Produza COMO FUNCIONA para a fila nao parar.")
         else:
             print("Biblioteca de REELS esgotada — hora de reabastecer.")
 

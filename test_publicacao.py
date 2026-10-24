@@ -136,6 +136,15 @@ def rodar(cenario, tmp, force_id="", agora="", extra=None):
     env.pop("ROTULO_IA", None)
     env.pop("LAMINAS_POR_SEMANA", None)
     env.pop("DIAS_ENTRE_CONVERSAS", None)
+    env.pop("CONVERSAS_ATIVAS", None)
+    # regime de 19/10 (lâmina 1/semana, conversa ligada) como base dos cenários de mecânica; o
+    # cenário Q testa o padrão de produção (all-in, 24/10) tirando estas chaves com None
+    base = {"LAMINAS_POR_SEMANA": "1", "CONVERSAS_ATIVAS": "on"}
+    for k, v in base.items():
+        env[k] = v
+    for k, v in (extra or {}).items():
+        if v is None:
+            env.pop(k, None)
     if agora:
         env["FAKE_NOW"] = agora
     env.update({"IG_USER_ID": "1784", "IG_ACCESS_TOKEN": "fake",
@@ -143,7 +152,7 @@ def rodar(cenario, tmp, force_id="", agora="", extra=None):
                 "FORCE_ID": force_id, "LOCATION_ID": "", "TRIAL_REELS": "false",
                 "ALARME_CURTIDAS": "on", "ALARME_N_PECAS": "6",
                 "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8"})
-    env.update(extra or {})
+    env.update({k: v for k, v in (extra or {}).items() if v is not None})
     p = subprocess.run([sys.executable, str(tmp / "_stub.py"), cenario],
                        cwd=str(tmp), capture_output=True, text=True, env=env)
     st = json.loads((tmp / "state" / "published.json").read_text(encoding="utf-8"))
@@ -260,7 +269,7 @@ shutil.rmtree(tmp, ignore_errors=True)
 print("\nL) COTA cumprida e NENHUMA peca nova pronta -> sem reel hoje, sem erro, sem 'esgotada'")
 tmp = preparar(reels=[R_LAMINA, R_LAMINA2], publicados=[LAMINA_SEG]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H)
 checa("nenhum reel publicado", "t-lamina-1" not in ids(st) and "t-lamina-2" not in ids(st), f"publicados={ids(st)}")
-checa("mensagem de cota (nao 'esgotada')", "cota de 1 lamina" in out and "esgotada" not in out.split("REELS")[-1], "texto certo no log")
+checa("mensagem de cota (nao 'esgotada')", "lamina: cota 1/semana" in out and "esgotada" not in out.split("REELS")[-1], "texto certo no log")
 checa("exit == 0", rc == 0, f"exit={rc}")
 checa("last_reel_date NAO avancou", st["last_reel_date"] == "", f"={st['last_reel_date']!r}")
 sem_erro = "::error::" not in out
@@ -297,7 +306,7 @@ checa("exit == 0", rc == 0, f"exit={rc}")
 shutil.rmtree(tmp, ignore_errors=True)
 tmp = preparar(reels=[R_CONVERSA2], publicados=[CONVERSA_SEG_P]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H)
 checa("so conversa na fila e cota cheia -> sem reel, sem erro", "t-conversa-2" not in ids(st) and rc == 0 and "::error::" not in out, f"exit={rc} publicados={ids(st)}")
-checa("mensagem cita o intervalo", "conversa so' a cada 10 dias" in out, "texto no log")
+checa("mensagem cita o intervalo", "conversa: so a cada 10 dias" in out, "texto no log")
 shutil.rmtree(tmp, ignore_errors=True)
 CONVERSA_7_DIAS = dict(CONVERSA_SEG_P, at="2026-07-22T18:30:00+00:00")    # quarta anterior: 7 dias
 tmp = preparar(reels=[R_CONVERSA2, R_CF], publicados=[CONVERSA_7_DIAS]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H)
@@ -309,6 +318,20 @@ checa("controle: conversa ha 10 dias -> a conversa da frente sai", "t-conversa-2
 shutil.rmtree(tmp, ignore_errors=True)
 tmp = preparar(reels=[R_CONVERSA2, R_CF], publicados=[CONVERSA_SEG_P]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H, extra={"DIAS_ENTRE_CONVERSAS": "-1"})
 checa("DIAS_ENTRE_CONVERSAS=-1 desliga o intervalo", "t-conversa-2" in ids(st), f"publicados={ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nQ) ALL-IN (24/10/2026): padrao de producao = so COMO FUNCIONA (lamina e conversa suspensas)")
+PROD = {"LAMINAS_POR_SEMANA": None, "CONVERSAS_ATIVAS": None}     # tira as chaves: vale o padrao do regra_reels
+tmp = preparar(reels=[R_LAMINA, R_CONVERSA, R_CF]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H, extra=PROD)
+checa("publicou o COMO FUNCIONA e nao a lamina nem a conversa da frente", ids(st) == ["t-cf-1"], f"publicados={ids(st)}")
+checa("exit == 0", rc == 0, f"exit={rc}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(reels=[R_LAMINA, R_CONVERSA]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H, extra=PROD)
+checa("fila so com lamina e conversa -> sem reel, sem erro", ids(st) == [] and rc == 0 and "::error::" not in out, f"exit={rc} publicados={ids(st)}")
+checa("log pede COMO FUNCIONA", "nenhum COMO FUNCIONA pronto" in out and "conversa: suspensa" in out, "texto no log")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(reels=[R_CONVERSA, R_CF]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H, extra={"LAMINAS_POR_SEMANA": None, "CONVERSAS_ATIVAS": "on"})
+checa("controle: CONVERSAS_ATIVAS=on religa a conversa", ids(st) == ["t-conversa-1"], f"publicados={ids(st)}")
 shutil.rmtree(tmp, ignore_errors=True)
 
 print("\nO) LAMINAS_POR_SEMANA ilegivel/'off' NAO derruba o motor (posts e stories seguem)")
