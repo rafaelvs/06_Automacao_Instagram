@@ -233,7 +233,8 @@ for m in media:
 # ela pode vir vazia em reel pequeno. Uma metrica recusada nao pode levar as outras junto, por isso
 # cada uma vai sozinha; e so' para reels de ate 15 dias (o regime novo), para nao gastar a cota da
 # API com o acervo velho no dump de 90d.
-EXTRA_REELS = ("reels_skip_rate", "reposts", "ig_reels_video_view_total_time")
+# `reposts` saiu em 24/10: a v21.0 responde "does not support the metrics: reposts" (run 40123232760).
+EXTRA_REELS = ("reels_skip_rate", "ig_reels_video_view_total_time")
 _corte = datetime.datetime.utcfromtimestamp(NOW - 15 * 86400).strftime("%Y-%m-%d")
 for row in pecas:
     if row["tipo"] != "REELS" or row.get("quando", "")[:10] < _corte:
@@ -333,7 +334,7 @@ ERROS_CONHECIDOS = {
     # 24/10/2026 (regime COMO FUNCIONA): coletas novas e opcionais — nunca reprovam o dump.
     "reached_audience_demographics+country", "reached_audience_demographics+city",
     "reached_audience_demographics+age",
-    "reel_extra+reels_skip_rate", "reel_extra+reposts", "reel_extra+ig_reels_video_view_total_time",
+    "reel_extra+reels_skip_rate", "reel_extra+ig_reels_video_view_total_time",
 }
 _novos = [e for e in out["erros"]
           if not (e.startswith("[") and e[1:e.find("]")] in ERROS_CONHECIDOS)]
