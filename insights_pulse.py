@@ -164,6 +164,23 @@ for _bk in ("country", "city", "age", "gender"):
     except (KeyError, IndexError, TypeError) as _e:
         out["erros"].append(f"[follower_demographics+{_bk}] formato inesperado ({type(_e).__name__})")
 
+# ── 1c) DE ONDE VEM o alcance (24/10/2026, regime COMO FUNCIONA) ───────────────────────────
+# Os 2 primeiros COMO FUNCIONA levaram o alcance de nao seguidores de 373 para 3.555 em 30 dias.
+# Antes de decidir volume, saber QUEM e' esse publico (Brasil/SP ou fora). `reached_audience_
+# demographics` exige piso de alcance (o unico de 30d foi 3.813 — passa). Best-effort, nomeado.
+for _bk in ("country", "city", "age"):
+    _r = get(f"{IG_USER}/insights", metric="reached_audience_demographics", period="lifetime",
+             metric_type="total_value", timeframe="this_month", breakdown=_bk)
+    if "_erro" in _r:
+        out["erros"].append(f"[reached_audience_demographics+{_bk}] {_r['_erro']}")
+        continue
+    try:
+        _res = _r["data"][0]["total_value"]["breakdowns"][0]["results"]
+        out.setdefault("alcancados_demografia", {})[_bk] = {
+            "/".join(x.get("dimension_values", ["?"])): x.get("value") for x in _res}
+    except (KeyError, IndexError, TypeError) as _e:
+        out["erros"].append(f"[reached_audience_demographics+{_bk}] formato inesperado ({type(_e).__name__})")
+
 # ── 2) MIDIA: pecas da janela + insights POR PECA (o dado que o app nao da) ───────────────
 media = []
 _FIELDS = "id,media_type,media_product_type,timestamp,like_count,comments_count"
@@ -209,6 +226,26 @@ for m in media:
             vals = item.get("values", [{}])
             row[item.get("name")] = vals[0].get("value") if vals else None
     pecas.append(row)
+
+# ── 2b) REELS RECENTES: metricas novas, uma chamada por metrica (24/10/2026) ──────────────
+# reels_skip_rate (% que pulou nos 3 primeiros segundos) e' a metrica da hipotese principal do
+# regime novo (os primeiros segundos), mas a Meta a marca como "estimated and in development" e
+# ela pode vir vazia em reel pequeno. Uma metrica recusada nao pode levar as outras junto, por isso
+# cada uma vai sozinha; e so' para reels de ate 15 dias (o regime novo), para nao gastar a cota da
+# API com o acervo velho no dump de 90d.
+EXTRA_REELS = ("reels_skip_rate", "reposts", "ig_reels_video_view_total_time")
+_corte = datetime.datetime.utcfromtimestamp(NOW - 15 * 86400).strftime("%Y-%m-%d")
+for row in pecas:
+    if row["tipo"] != "REELS" or row.get("quando", "")[:10] < _corte:
+        continue
+    for _met in EXTRA_REELS:
+        _r = get(f"{row['id']}/insights", metric=_met)
+        if "_erro" in _r:
+            out["erros"].append(f"[reel_extra+{_met}] {row['id']}: {_r['_erro'][:120]}")
+            continue
+        for item in _r.get("data", []):
+            vals = item.get("values", [{}])
+            row[item.get("name")] = vals[0].get("value") if vals else None
 
 out["pecas_na_janela"] = len(pecas)
 
@@ -264,6 +301,14 @@ print(f"== PULSO {out['janela']} ==")
 print(f"conta: {json.dumps(out['conta'], ensure_ascii=False)}")
 print(f"pecas na janela: {len(pecas)} | agregado: {json.dumps(agg, ensure_ascii=False)}")
 print(f"reels: {json.dumps(out['reels_janela'], ensure_ascii=False)}")
+for p in pecas:
+    if any(k in p for k in EXTRA_REELS):
+        print(f"reel recente {p['quando']}: alcance={p.get('reach')} envios={p.get('shares')} "
+              + " ".join(f"{k}={p.get(k)}" for k in EXTRA_REELS))
+if out.get("alcancados_demografia"):
+    for _bk, _v in out["alcancados_demografia"].items():
+        _top = sorted(_v.items(), key=lambda kv: -(kv[1] or 0))[:6]
+        print(f"alcancados por {_bk}: {_top}")
 if out["erros"]:
     print(f"erros ({len(out['erros'])}):")
     for e in out["erros"][:12]:
@@ -285,6 +330,10 @@ ERROS_CONHECIDOS = {
     "follower_demographics+country", "follower_demographics+city",
     "follower_demographics+age", "follower_demographics+gender",
     "follows_and_unfollows+follow_type",   # B6-i (12/09/2026): metrica nova, best-effort
+    # 24/10/2026 (regime COMO FUNCIONA): coletas novas e opcionais — nunca reprovam o dump.
+    "reached_audience_demographics+country", "reached_audience_demographics+city",
+    "reached_audience_demographics+age",
+    "reel_extra+reels_skip_rate", "reel_extra+reposts", "reel_extra+ig_reels_video_view_total_time",
 }
 _novos = [e for e in out["erros"]
           if not (e.startswith("[") and e[1:e.find("]")] in ERROS_CONHECIDOS)]
