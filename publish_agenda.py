@@ -62,11 +62,13 @@ def teste_agenda():
         assert {int(x) for x in m.group(1).split(",")} == val, f"{nome} divergente do publish.py"
     m = re.search(r"REEL_MIN\s*=\s*(\d+)\s*\*\s*60", src)
     assert m and int(m.group(1)) * 60 == REEL_MIN, "REEL_MIN divergente do publish.py"
+    assert "regra_reels.posts_ativos()" in src and "regra_reels.sequencias_ativas()" in src, \
+        "publish.py deixou de ler a suspensão de carrossel/sequência da regra única"
     assert "regra_reels.proximo_reel(" in src and "regra_reels.cota_laminas()" in src \
         and "regra_reels.dias_entre_conversas()" in src and "regra_reels.conversas_ativas()" in src, \
         "publish.py deixou de usar a regra única (regra_reels)"
     yml = open(os.path.join(raiz, ".github", "workflows", "publish.yml"), encoding="utf-8").read()
-    for var in ("LAMINAS_POR_SEMANA", "DIAS_ENTRE_CONVERSAS", "CONVERSAS_ATIVAS"):
+    for var in ("LAMINAS_POR_SEMANA", "DIAS_ENTRE_CONVERSAS", "CONVERSAS_ATIVAS", "POSTS_ATIVOS", "SEQUENCIAS_ATIVAS"):
         assert not re.search(r"^\s*" + var + r"\s*:", yml, re.M), \
             f"publish.yml voltou a definir {var} — a página leria outra cota que o robô"
     seg = dt.date(2026, 10, 19)

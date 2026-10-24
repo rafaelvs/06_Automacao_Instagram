@@ -200,6 +200,10 @@ Decisão do Rafael em 18/10/2026 ("pode seguir com tudo"), depois de ver os dois
   decidiu "dar all-in". Padrões em `regra_reels.py`: `LAMINAS_POR_SEMANA_PADRAO = 0` e `CONVERSAS_ATIVAS_PADRAO =
   False` — só COMO FUNCIONA sai; lâminas e conversas ficam na fila, sem apagar. Dia sem COMO FUNCIONA = dia sem
   reel: a produção tem de manter ~4 por semana na fila (o log do publish avisa).
+  Minutos depois, o all-in passou a valer para TODO o conteúdo ("não é só do Reels [...] como se a gente estivesse
+  praticamente começando do zero"): `POSTS_ATIVOS_PADRAO = False` (carrossel estático) e `SEQUENCIAS_ATIVAS_PADRAO =
+  False` (sequência de stories antiga). O PROGRAMACAO.md mostra o que está parado. A versão nova de carrossel e de
+  stories vem do estudo de 24/10 (workflow revisao-modelo-como-funciona).
 - **Voz** — a aprovada passou a Antonio **+8% / +0Hz** (era −8%/−4Hz desde 30/08). `checar_voz.py` re-registrado
   com a evidência; o autoteste dele não depende mais de um valor fixo de ritmo.
 

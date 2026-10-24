@@ -41,7 +41,8 @@ def projeta(ids, weekdays, base, ja_hoje):
 
 
 def main():
-    if os.environ.get("LAMINAS_POR_SEMANA") or os.environ.get("DIAS_ENTRE_CONVERSAS") or os.environ.get("CONVERSAS_ATIVAS"):
+    if any(os.environ.get(v) for v in ("LAMINAS_POR_SEMANA", "DIAS_ENTRE_CONVERSAS", "CONVERSAS_ATIVAS",
+                                         "POSTS_ATIVOS", "SEQUENCIAS_ATIVAS")):
         # a produção não lê variável (regra_reels.py é a fonte única); página gerada com outra cota mentiria
         raise SystemExit("ERRO: LAMINAS_POR_SEMANA está definida no ambiente local — a produção usa "
                          "regra_reels.LAMINAS_POR_SEMANA_PADRAO. Tire a variável e rode de novo.")
@@ -54,13 +55,16 @@ def main():
     cota = PA.cota_vigente()
     rp = PA.projeta_reels(carrega("reels.json"), st["published"], hoje, st.get("last_reel_date") == hoje.isoformat())
     projetados = {i for _, i in rp}
-    fora = [x["id"] for x in reels if x["id"] not in projetados]
+    fora = [x["id"] for x in reels if x["id"] not in projetados and x.get("formato") == "como_funciona"]
+    parados = [x for x in reels if x["id"] not in projetados and x.get("formato") != "como_funciona"]
     txt_cota = ("sem limite" if cota < 0 else "SUSPENSA (all-in COMO FUNCIONA, 24/10)" if cota == 0
                 else f"no máximo {cota} vez(es) por semana")
     cc = PA.regra_reels.dias_entre_conversas()
     txt_conv = ("SUSPENSA (all-in COMO FUNCIONA, 24/10)" if not PA.regra_reels.conversas_ativas()
                 else "sem intervalo mínimo" if cc <= 0 else f"no máximo 1 a cada {cc} dias")
-    pp = projeta([x["id"] for x in posts], PA.POST_WEEKDAYS | PA.POST2_WEEKDAYS, hoje, st.get("last_post_date") == hoje.isoformat())
+    posts_on = PA.regra_reels.posts_ativos(); seqs_on = PA.regra_reels.sequencias_ativas()
+    pp = projeta([x["id"] for x in posts], PA.POST_WEEKDAYS | PA.POST2_WEEKDAYS, hoje,
+                 st.get("last_post_date") == hoje.isoformat()) if posts_on else []
     trial = {x["id"] for x in reels if x.get("trial")}
     L = [f"# PROGRAMAÇÃO — o que vai ao ar e quando\n",
          f"Regenerado em {hoje:%d/%m/%Y} por `_gen_programacao.py`. **Datas são projeção da fila FIFO** a partir do último publicado — job vermelho, alarme de curtidas ou mudança na fila desloca tudo; a fonte de verdade é a fila.\n",
@@ -83,14 +87,24 @@ def main():
     if not rp:
         L.append("| — | **nenhum reel projetado** | | |")
     if fora:
-        L.append(f"\n*{len(fora)} reel(s) da fila FORA desta projeção (cota de lâminas / horizonte de 2 anos): "
+        L.append(f"\n*{len(fora)} COMO FUNCIONA da fila FORA desta projeção (horizonte de 2 anos): "
                  f"{', '.join('`' + i + '`' for i in fora[:12])}{' …' if len(fora) > 12 else ''}*")
+    if parados:
+        nconv = sum(1 for x in parados if x.get("formato") == "conversa")
+        L.append(f"\n*Parados na fila (all-in no formato novo, 24/10 — nada apagado, religar em regra_reels.py): "
+                 f"{nconv} conversa(s) e {len(parados) - nconv} lâmina(s).*")
     L += ["\n## Posts de feed (ter · qui · sáb 15h · dom 11h)\n", "| Data | Peça | Nº imagens |", "|---|---|---|"]
+    if not posts_on:
+        L.append(f"| — | **SUSPENSOS** — all-in no formato novo (24/10); {len(posts)} carrossel(éis) estático(s) parado(s) na fila | |")
     for d, iid in pp:
         n = len(next(x["images"] for x in posts if x["id"] == iid))
         rot = " (verbete)" if iid.startswith("v_") else ""
         L.append(f"| {DOW[d.weekday()]} {d:%d/%m} | `{iid}`{rot} | {n} |")
-    L += [f"\n*Sequências de stories: {len(seqs)} restantes, publicadas ter/qui/sáb às 12:30, nos dias do carrossel (cadência reduzida em 12/09; a troca de dias de 13/09 foi revertida em 19/09 — o eixo de dia da semana estava deslocado um dia, ver E7). Quem edita a fila, regenera esta página.*\n"]
+    if not seqs_on:
+        L += [f"\n*Sequências de stories antigas: SUSPENSAS — all-in no formato novo (24/10); {len(seqs)} parada(s) na fila. "
+              "O formato novo de stories está em estudo.*\n"]
+    else:
+      L += [f"\n*Sequências de stories: {len(seqs)} restantes, publicadas ter/qui/sáb às 12:30, nos dias do carrossel (cadência reduzida em 12/09; a troca de dias de 13/09 foi revertida em 19/09 — o eixo de dia da semana estava deslocado um dia, ver E7). Quem edita a fila, regenera esta página.*\n"]
     with open(os.path.join(ROOT, "PROGRAMACAO.md"), "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(L))
     novos = sum(1 for _, i in rp if fmt_de.get(i, "lamina") != "lamina")

@@ -23,6 +23,13 @@ gente vai colocar todas as postagens dentro de um modelo parecido". Por padrão 
 cota 0 (suspensa) e a conversa desligada (CONVERSAS_ATIVAS_PADRAO = False): só COMO FUNCIONA sai.
 Nada é apagado da fila — religar é mudar um padrão aqui. Dia de reel sem COMO FUNCIONA = dia sem
 reel: a produção tem de manter a fila cheia (~4 por semana).
+
+ALL-IN EM TUDO (Rafael, 24/10/2026, minutos depois): "o all-in que eu quero dar não é só do Reels
+[...] mas sim de todas as postagens, de todo o conteúdo que produz do Instagram [...] como se a gente
+estivesse praticamente começando do zero agora, fazendo esse formato novo". Por padrão, os carrosséis
+estáticos (posts.json) e as sequências de stories antigas (sequences.json) também ficam suspensos
+(POSTS_ATIVOS_PADRAO / SEQUENCIAS_ATIVAS_PADRAO = False) até existir a versão no formato novo.
+Mesma lógica: nada é apagado; religar é mudar o padrão.
 """
 import datetime as dt
 import os
@@ -31,6 +38,8 @@ BRT = dt.timezone(dt.timedelta(hours=-3))
 LAMINAS_POR_SEMANA_PADRAO = 0            # 24/10: all-in COMO FUNCIONA (era 1 por semana desde 18/10)
 DIAS_ENTRE_CONVERSAS_PADRAO = 10          # Rafael, 19/10: "pode deixar a cada 10 dias" (vale se religar)
 CONVERSAS_ATIVAS_PADRAO = False           # 24/10: all-in COMO FUNCIONA — conversa suspensa
+POSTS_ATIVOS_PADRAO = False               # 24/10: carrossel estático antigo suspenso (all-in em tudo)
+SEQUENCIAS_ATIVAS_PADRAO = False          # 24/10: sequência de stories antiga suspensa (all-in em tudo)
 _SEM_COTA = ("off", "nao", "não", "no", "false", "sem", "-1")
 
 
@@ -59,12 +68,26 @@ def dias_entre_conversas(valor=None):
     return _cota("DIAS_ENTRE_CONVERSAS", DIAS_ENTRE_CONVERSAS_PADRAO, valor)
 
 
+def _chave(var, padrao, valor=None):
+    v = os.environ.get(var) if valor is None else valor
+    if v is None or str(v).strip() == "":
+        return padrao
+    return str(v).strip().lower() in ("on", "1", "true", "sim", "yes")
+
+
 def conversas_ativas(valor=None):
     """A série CONVERSA está ligada? Padrão False desde 24/10 (all-in COMO FUNCIONA)."""
-    v = os.environ.get("CONVERSAS_ATIVAS") if valor is None else valor
-    if v is None or str(v).strip() == "":
-        return CONVERSAS_ATIVAS_PADRAO
-    return str(v).strip().lower() in ("on", "1", "true", "sim", "yes")
+    return _chave("CONVERSAS_ATIVAS", CONVERSAS_ATIVAS_PADRAO, valor)
+
+
+def posts_ativos(valor=None):
+    """Os carrosséis do posts.json saem? Padrão False desde 24/10 (all-in em todo o conteúdo)."""
+    return _chave("POSTS_ATIVOS", POSTS_ATIVOS_PADRAO, valor)
+
+
+def sequencias_ativas(valor=None):
+    """As sequências de stories do sequences.json saem? Padrão False desde 24/10 (all-in em tudo)."""
+    return _chave("SEQUENCIAS_ATIVAS", SEQUENCIAS_ATIVAS_PADRAO, valor)
 
 
 def ultima_publicacao(state, reels, fmt_alvo):

@@ -137,9 +137,11 @@ def rodar(cenario, tmp, force_id="", agora="", extra=None):
     env.pop("LAMINAS_POR_SEMANA", None)
     env.pop("DIAS_ENTRE_CONVERSAS", None)
     env.pop("CONVERSAS_ATIVAS", None)
+    env.pop("POSTS_ATIVOS", None)
+    env.pop("SEQUENCIAS_ATIVAS", None)
     # regime de 19/10 (lâmina 1/semana, conversa ligada) como base dos cenários de mecânica; o
     # cenário Q testa o padrão de produção (all-in, 24/10) tirando estas chaves com None
-    base = {"LAMINAS_POR_SEMANA": "1", "CONVERSAS_ATIVAS": "on"}
+    base = {"LAMINAS_POR_SEMANA": "1", "CONVERSAS_ATIVAS": "on", "POSTS_ATIVOS": "on", "SEQUENCIAS_ATIVAS": "on"}
     for k, v in base.items():
         env[k] = v
     for k, v in (extra or {}).items():
@@ -332,6 +334,16 @@ checa("log pede COMO FUNCIONA", "nenhum COMO FUNCIONA pronto" in out and "conver
 shutil.rmtree(tmp, ignore_errors=True)
 tmp = preparar(reels=[R_CONVERSA, R_CF]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H, extra={"LAMINAS_POR_SEMANA": None, "CONVERSAS_ATIVAS": "on"})
 checa("controle: CONVERSAS_ATIVAS=on religa a conversa", ids(st) == ["t-conversa-1"], f"publicados={ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nR) ALL-IN EM TUDO (24/10/2026): padrao de producao = carrossel e sequencia antigos suspensos")
+TUDO = {"POSTS_ATIVOS": None, "SEQUENCIAS_ATIVAS": None}
+tmp = preparar(); rc, out, st = rodar("ok", tmp, extra=TUDO)              # terca 18h: abriria post e sequencia
+checa("nada de carrossel nem sequencia antigos com o padrao", ids(st) == [] and rc == 0, f"exit={rc} publicados={ids(st)}")
+checa("log diz que estao suspensos", "carrosseis estaticos): SUSPENSOS" in out and "Sequencias de stories antigas: SUSPENSAS" in out, "texto no log")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(); rc, out, st = rodar("ok", tmp, extra={"POSTS_ATIVOS": "on", "SEQUENCIAS_ATIVAS": None})
+checa("controle: POSTS_ATIVOS=on religa o carrossel (sequencia segue suspensa)", "t-post-1" in ids(st) and len(ids(st)) == 1, f"publicados={ids(st)}")
 shutil.rmtree(tmp, ignore_errors=True)
 
 print("\nO) LAMINAS_POR_SEMANA ilegivel/'off' NAO derruba o motor (posts e stories seguem)")

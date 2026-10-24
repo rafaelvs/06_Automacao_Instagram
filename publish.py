@@ -129,6 +129,10 @@ LAMINAS_POR_SEMANA = regra_reels.cota_laminas()
 DIAS_ENTRE_CONVERSAS = regra_reels.dias_entre_conversas()
 # All-in COMO FUNCIONA (Rafael, 24/10/2026): conversa suspensa por padrao (regra_reels.py).
 CONVERSAS_ATIVAS = regra_reels.conversas_ativas()
+# All-in em TODO o conteudo (Rafael, 24/10/2026): carrossel estatico e sequencia de stories antigos
+# suspensos por padrao ate existir a versao no formato novo (regra_reels.py). Religar = mudar o padrao.
+POSTS_ATIVOS = regra_reels.posts_ativos()
+SEQUENCIAS_ATIVAS = regra_reels.sequencias_ativas()
 HOST       = f"https://graph.instagram.com/{VER}"
 
 if not IG_USER_ID or not TOKEN:
@@ -541,8 +545,13 @@ def main():
         except Exception as e: _falhou(falhas, f"FORCE {FORCE_ID}", e)
         return falhas
 
+    if not POSTS_ATIVOS:
+        print("Posts (carrosseis estaticos): SUSPENSOS — all-in no formato novo (24/10/2026, regra_reels.py).")
+    if not SEQUENCIAS_ATIVAS:
+        print("Sequencias de stories antigas: SUSPENSAS — all-in no formato novo (24/10/2026, regra_reels.py).")
+
     # POSTS (feed)
-    if brt.weekday() in POST_WEEKDAYS and mod >= POST_MIN and state["last_post_date"] != today:
+    if POSTS_ATIVOS and brt.weekday() in POST_WEEKDAYS and mod >= POST_MIN and state["last_post_date"] != today:
         it = next_item(posts, done)
         if it:
             try:
@@ -555,7 +564,7 @@ def main():
             print("Biblioteca de POSTS esgotada — hora de reabastecer.")
 
     # CARROSSEL EXTRA (4o/sem) — dia-duplo com o Reel; horario escalonado (11h) p/ nao colidir
-    if not auth_error and brt.weekday() in POST2_WEEKDAYS and mod >= POST2_MIN and state["last_post_date"] != today:
+    if POSTS_ATIVOS and not auth_error and brt.weekday() in POST2_WEEKDAYS and mod >= POST2_MIN and state["last_post_date"] != today:
         it = next_item(posts, done)
         if it:
             try:
@@ -568,7 +577,7 @@ def main():
             print("Biblioteca de POSTS esgotada (extra) — hora de reabastecer.")
 
     # SEQUENCIA DIARIA (story serializado, 5 frames)
-    if not auth_error and brt.weekday() in SEQ_WEEKDAYS and mod >= SEQ_MIN and state["last_seq_date"] != today:
+    if SEQUENCIAS_ATIVAS and not auth_error and brt.weekday() in SEQ_WEEKDAYS and mod >= SEQ_MIN and state["last_seq_date"] != today:
         it = next_item(seqs, done)
         if it:
             try:

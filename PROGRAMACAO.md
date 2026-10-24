@@ -33,41 +33,12 @@ Regenerado em 24/10/2026 por `_gen_programacao.py`. **Datas são projeção da f
 | seg 23/11 | `cf_quanto_tempo` **[COMO FUNCIONA]** | Como funciona | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cf_quanto_tempo.mp4) |
 | qua 25/11 | `cf_osgood_sever` **[COMO FUNCIONA]** | Como funciona | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cf_osgood_sever.mp4) |
 
-*33 reel(s) da fila FORA desta projeção (cota de lâminas / horizonte de 2 anos): `cv_pinos`, `cv_gesso_filho`, `cv_osso`, `cv_muleta`, `cv_pe_chato`, `cv_dor_crescimento`, `cv_perna_curta`, `fx_retirada`, `quanto_alongar`, `fx_curativo_pinos`, `esc_nao_doi`, `qa_ajustar_fixador` …*
+*Parados na fila (all-in no formato novo, 24/10 — nada apagado, religar em regra_reels.py): 7 conversa(s) e 26 lâmina(s).*
 
 ## Posts de feed (ter · qui · sáb 15h · dom 11h)
 
 | Data | Peça | Nº imagens |
 |---|---|---|
-| sáb 24/10 | `c_on_regra_milimetro` | 5 |
-| dom 25/10 | `v_pernas_seg` (verbete) | 7 |
-| ter 27/10 | `c_on_cigarro` | 5 |
-| qui 29/10 | `v_pernas_qui` (verbete) | 8 |
-| sáb 31/10 | `c_on_transporte_osseo` | 5 |
-| dom 01/11 | `v_pernas_sex` (verbete) | 8 |
-| ter 03/11 | `c_on_osteotomia` | 5 |
-| qui 05/11 | `v_s_pnc_marcos_andar` (verbete) | 8 |
-| sáb 07/11 | `c_on_perna_torta_adulto` | 5 |
-| dom 08/11 | `v_marcha_ter` (verbete) | 7 |
-| ter 10/11 | `c_on_fisioterapia` | 5 |
-| qui 12/11 | `v_joelho_dom` (verbete) | 7 |
-| sáb 14/11 | `c_on_pos_trauma` | 5 |
-| dom 15/11 | `v_marcha_qua` (verbete) | 7 |
-| ter 17/11 | `c_on_nao_estetica` | 5 |
-| qui 19/11 | `v_mitos_ossos_crianca` (verbete) | 8 |
-| sáb 21/11 | `c_pnc_perna_curta_crianca` | 5 |
-| dom 22/11 | `v_socorros_sex` (verbete) | 8 |
-| ter 24/11 | `c_pnc_mancando` | 5 |
-| qui 26/11 | `c_pnc_mancar_febre` | 5 |
-| sáb 28/11 | `c_pnc_nao_dor_crescimento` | 5 |
-| dom 29/11 | `c_pnc_marcos_andar` | 5 |
-| ter 01/12 | `c_pnc_escoliose` | 5 |
-| qui 03/12 | `c_pnc_pe_pra_dentro` | 5 |
-| sáb 05/12 | `c_pnc_estalo_joelho` | 5 |
-| dom 06/12 | `c_pnc_cai_muito` | 5 |
-| ter 08/12 | `post59` | 5 |
-| qui 10/12 | `c_pnc_mochila` | 5 |
-| sáb 12/12 | `c_pnc_tenis_caro` | 5 |
-| dom 13/12 | `c_pnc_sentar_w` | 5 |
+| — | **SUSPENSOS** — all-in no formato novo (24/10); 30 carrossel(éis) estático(s) parado(s) na fila | |
 
-*Sequências de stories: 35 restantes, publicadas ter/qui/sáb às 12:30, nos dias do carrossel (cadência reduzida em 12/09; a troca de dias de 13/09 foi revertida em 19/09 — o eixo de dia da semana estava deslocado um dia, ver E7). Quem edita a fila, regenera esta página.*
+*Sequências de stories antigas: SUSPENSAS — all-in no formato novo (24/10); 35 parada(s) na fila. O formato novo de stories está em estudo.*
