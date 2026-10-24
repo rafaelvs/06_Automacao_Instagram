@@ -1355,4 +1355,429 @@ EPISODIOS_ENTRETENIMENTO = [
             "merece avaliação na ortopedia pediátrica."
         ),
     },
+    # ------------------------------------------------------------ lote 5 — 24/10/2026 (all-in COMO FUNCIONA, depois de 25/11)
+    # "já vamos adiantar aí e rodar o motor para poder fazer mais coisa" (Rafael, 24/10, depois do all-in).
+    # Pauta por 3 ângulos (acervo, dados de desempenho, perguntas do público) + editor; fatos SÓ de fonte
+    # publicada ou de lote aprovado (lab/lote5/fontes.json; 147 trechos conferidos mecanicamente, com controle
+    # positivo); roteirista + verificador adversarial (lote-5-como-funciona); tipo de chamada SORTEADO antes
+    # de qualquer dado (semente lote5-cta-2026-10-24: A universal / B situacional); cena construída + revisor
+    # adversarial + correção (cenas-lote5-como-funciona). Lição dos dados: o gancho é o único texto no quadro 0.
+    {
+        "id": "cf_regra_milimetro",
+        "formato": "como_funciona",
+        "serie": "Como funciona",
+        "familia": "reconstrucao",
+        "cena": "cf_regra_milimetro",
+        "gancho": ["1 MM POR DIA.", "POR QUE NÃO MAIS?"],
+        "tela": [
+            "RÁPIDO DEMAIS",
+            "cerca de",
+            "1 MM POR DIA",
+            "PEQUENOS AJUSTES",
+            "DEVAGAR DEMAIS",
+            "RITMO CERTO",
+            "PELA EQUIPE",
+            "TECIDO",
+            "SÓ ESTICA",
+            "ENDURECE",
+            "ANTES DA HORA",
+            "OSSO NOVO",
+            "PONTE",
+            "ACOMPANHADO",
+            "DE PERTO",
+            "O OSSO NOVO NÃO SE FORMA",
+            "DE PROPÓSITO",
+            "TRAVA A CORREÇÃO",
+            "NÃO EXISTE",
+            "PILOTO AUTOMÁTICO",
+        ],
+        "roteiro": [
+            "Alongar o osso mais rápido? O osso novo não se forma: o tecido só estica.",
+            "Por isso, cerca de um milímetro por dia, em pequenos ajustes. Devagar de propósito.",
+            "E devagar demais também atrapalha: o osso endurece antes da hora e trava a correção.",
+            "No ritmo certo, o corpo preenche o vão com osso novo: uma ponte.",
+            "O ritmo é acompanhado de perto pela equipe.",
+            "Não existe piloto automático.",
+            "Manda pra quem tá no alongamento ósseo e acha devagar.",
+        ],
+        "cta": "Manda pra quem tá no alongamento ósseo e acha devagar.",
+        "legenda": (
+            "No alongamento ósseo (por exemplo, diante de uma discrepância de membro), o fixador externo "
+            "afasta as pontas do osso cerca de 1 mm por dia, em pequenos ajustes ao longo do dia. É a "
+            "osteogênese por distração: quando se separam lentamente as duas pontas de um osso, o corpo "
+            "preenche o vão com osso novo. Rápido demais, o osso novo não se forma e o tecido só estica; "
+            "devagar demais, ele endurece antes da hora e trava a correção. Por isso, a formação do osso "
+            "novo é acompanhada de perto, e o ajuste segue um ritmo programado, orientado pela equipe: não "
+            "aperte nem mexa nas peças por conta própria. É sobre devolver função, nunca estética."
+            "\n\n"
+            "Ao longo do tratamento, dor intensa e progressiva não é esperada: é caso de contato precoce com "
+            "a equipe."
+        ),
+    },
+    {
+        "id": "cf_retirada_fixador",
+        "formato": "como_funciona",
+        "serie": "Como funciona",
+        "familia": "reconstrucao",
+        "cena": "cf_retirada_fixador",
+        "gancho": ["COMO SE TIRA", "ESSA GAIOLA?"],
+        "tela": [
+            "FIXADOR EXTERNO",
+            "NÃO SE FAZ EM CASA",
+            "PROCEDIMENTO DA EQUIPE",
+            "EM GERAL É RÁPIDO",
+            "MUITAS VEZES COM SEDAÇÃO LEVE",
+            "APARELHO SAI",
+            "FUROS DOS PINOS",
+            "CICATRIZAM COM O TEMPO",
+            "OSSO NOVO",
+            "MAIS FRÁGIL",
+            "OSSO MADURO",
+            "GANHANDO RESISTÊNCIA",
+            "POR MESES",
+            "CARGA VOLTA AOS POUCOS",
+            "IMPACTO E TORÇÃO",
+            "ESPERAM A LIBERAÇÃO",
+            "RETA FINAL",
+            "LINHA DE CHEGADA",
+        ],
+        "roteiro": [
+            "Como se tira essa gaiola? Em casa, não: é procedimento da equipe.",
+            "Em geral é rápido, muitas vezes com sedação leve.",
+            "O aparelho sai. Os furos dos pinos cicatrizam com o tempo.",
+            "Mas o osso novo, mais frágil que o maduro, segue ganhando resistência por meses.",
+            "Carga volta aos poucos. Impacto e torção esperam a liberação.",
+            "É a reta final, ainda não a linha de chegada.",
+            "Manda pra quem acha que tirar o fixador encerra o tratamento.",
+        ],
+        "cta": "Manda pra quem acha que tirar o fixador encerra o tratamento.",
+        "legenda": (
+            "No alongamento ósseo e na reconstrução com fixador externo, a retirada do aparelho é "
+            "procedimento da equipe, em ambiente adequado, conforme o caso: não se faz em casa. Em geral é "
+            "rápido, muitas vezes com sedação leve, e os furos dos pinos cicatrizam com o tempo, com "
+            "curativo simples, do jeito que a equipe orientar. Mas o osso novo (o regenerado, o osso "
+            "recém-formado) ainda é mais frágil que o osso maduro e segue ganhando resistência por meses: "
+            "por isso alguns casos usam órtese ou carga controlada. Carga e atividade voltam aos poucos, no "
+            "ritmo que a equipe orienta, e a fisioterapia continua; impacto e torção esperam a liberação por "
+            "etapas. É a reta final, ainda não a linha de chegada: o tratamento não termina no dia em que o "
+            "fixador sai."
+            "\n\n"
+            "Dor nova depois da retirada, ou insegurança para apoiar o peso: volte para reavaliação antes de "
+            "forçar."
+        ),
+    },
+    {
+        "id": "cf_dor_alongamento",
+        "formato": "como_funciona",
+        "serie": "Como funciona",
+        "familia": "reconstrucao",
+        "cena": "cf_dor_alongamento",
+        "gancho": ["ALONGAR O OSSO", "DÓI?"],
+        "tela": [
+            "DESCONFORTO",
+            "MANEJO",
+            "DIAS DE AJUSTE",
+            "PRESSÃO",
+            "DOR MUSCULAR",
+            "SÃO COMUNS",
+            "ANALGESIA E FISIOTERAPIA",
+            "DESDE O INÍCIO",
+            "EM CAMADAS",
+            "MEDICAÇÃO EM HORÁRIOS CERTOS",
+            "ALONGAMENTO MUSCULAR",
+            "POSICIONAMENTO",
+            "SONO CUIDADO",
+            "META DE TRATAMENTO",
+            "DISPARA DE REPENTE",
+            "NÃO CEDE COM A MEDICAÇÃO",
+            "AVISE A EQUIPE",
+            "COM FEBRE, PRONTO-SOCORRO",
+            "DOR SE CONVERSA",
+            "NÃO SE AGUENTA",
+        ],
+        "roteiro": [
+            "Alongar o osso dói? Existe desconforto, sim. E existe manejo.",
+            "Nos dias de ajuste, pressão e dor muscular são comuns.",
+            "Analgesia e fisioterapia, desde o início.",
+            "Em camadas: medicação em horários certos, alongamento muscular, posicionamento e sono cuidado.",
+            "Dor controlada é meta de tratamento, não luxo.",
+            "Dor que dispara de repente ou não cede com a medicação: avise a equipe. Com febre, pronto-socorro.",
+            "Dor se conversa, não se aguenta.",
+            "Manda pra quem vai começar e tem essa dúvida calada.",
+        ],
+        "cta": "Manda pra quem vai começar e tem essa dúvida calada.",
+        "legenda": (
+            "A pergunta que abre quase toda conversa sobre alongamento ósseo na discrepância de membro é uma "
+            "só: dói? Algum desconforto pode aparecer, sobretudo na fase de distração: nos dias de ajuste do "
+            "fixador externo, sensação de pressão e dor muscular são comuns. Analgesia planejada e "
+            "fisioterapia fazem parte do plano desde o início, e o manejo é em camadas: medicação em "
+            "horários certos, alongamento muscular, posicionamento e sono cuidado. Dor controlada é meta de "
+            "tratamento, não luxo, e dor se conversa, não se aguenta."
+            "\n\n"
+            "Dor que dispara de repente ou não cede com a medicação: avise a equipe; com febre, "
+            "pronto-socorro. Durante o tratamento, dor intensa em repouso, dormência que avança ou sinais de "
+            "infecção nos pinos pedem pronto-socorro, avisando a equipe."
+        ),
+    },
+    {
+        "id": "cf_corrigir_e_alongar",
+        "formato": "como_funciona",
+        "serie": "Como funciona",
+        "familia": "reconstrucao",
+        "cena": "cf_corrigir_e_alongar",
+        "gancho": ["PERNA ARQUEADA E", "14 CM MAIS CURTA"],
+        "tela": [
+            "Caso real da literatura",
+            "tratado por outra equipe",
+            "ilustração esquemática",
+            "ARQUEADA",
+            "14 cm",
+            "infecção no osso",
+            "INFÂNCIA",
+            "AOS 24 ANOS",
+            "chegou ao hospital mancando",
+            "fixador de Ilizarov",
+            "AS DUAS COISAS",
+            "ENDIREITOU",
+            "E ALONGOU",
+            "1 MM",
+            "por dia",
+            "4 MESES",
+            "PLACA EXTERNA",
+            "15 MESES DEPOIS",
+            "O CUSTO HONESTO",
+            "neste caso: rigidez no tornozelo",
+            "duas infecções no trajeto dos pinos",
+            "tratadas com antibiótico",
+            "cada caso é único",
+            "Hong e colaboradores, 2023",
+        ],
+        "roteiro": [
+            "Perna arqueada e catorze centímetros mais curta. Caso real.",
+            "A causa: uma infecção no osso, na infância.",
+            "Aos vinte e quatro anos, chegou ao hospital mancando.",
+            "O fixador de Ilizarov fez as duas coisas: endireitou e alongou.",
+            "Um milímetro por dia, por quatro meses.",
+            "Uma placa externa discreta substituiu o aparelho até o osso firmar.",
+            "A placa saiu quinze meses depois. O custo honesto: rigidez no tornozelo.",
+            "Manda pra quem não sabia que o mesmo aparelho endireita e alonga.",
+        ],
+        "cta": "Manda pra quem não sabia que o mesmo aparelho endireita e alonga.",
+        "legenda": (
+            "Uma infecção no osso na infância deixou a perna dele arqueada e 14 cm mais curta, uma "
+            "discrepância de membro: caso real da literatura médica, publicado e tratado por outra equipe "
+            "(Hong e colaboradores, 2023), contado em ilustração esquemática, sem imagens do paciente. A "
+            "osteomielite (infecção no osso) na infância pode alterar o crescimento do osso; aos 24 anos, "
+            "ele chegou ao hospital mancando."
+            "\n\n"
+            "O fixador circular de Ilizarov endireitou e alongou a perna (1 mm por dia, por 4 meses); "
+            "depois, uma placa externa de perfil baixo substituiu o aparelho volumoso até o osso firmar, e a "
+            "placa foi retirada 15 meses depois. Neste caso, houve um custo honesto: rigidez no tornozelo e "
+            "duas infecções no trajeto dos pinos, tratadas com antibiótico."
+            "\n\n"
+            "Cada caso é único: este é o relato de um paciente, publicado pelos médicos que o trataram; não "
+            "é promessa de resultado, e o foco é sempre devolver função, nunca estética. Nos pinos do "
+            "fixador, o cuidado é diário: reação leve na pele é comum, mas pus, mau cheiro, vermelhidão que "
+            "cresce ou dor nova pedem que você avise cedo a equipe; com febre, pronto-socorro."
+            "\n\n"
+            "Fonte: Hong P, Ding Y, Xu R, Rai S, Liu R, Li J. Medicina (Kaunas), 2023;59(2):262."
+        ),
+    },
+    {
+        "id": "cf_refratura",
+        "formato": "como_funciona",
+        "serie": "Como funciona",
+        "familia": "reconstrucao",
+        "cena": "cf_refratura",
+        "gancho": ["QUEBROU DE NOVO", "NO MESMO LUGAR?"],
+        "tela": [
+            "MESMO LUGAR",
+            "INVESTIGAÇÃO DA CAUSA",
+            "ANTES DE TRATAR IGUAL",
+            "REFRATURA",
+            "quebrar o mesmo osso de novo",
+            "TRÊS POSSÍVEIS CAUSAS",
+            "ESTABILIDADE DA FIXAÇÃO",
+            "FATORES DO PACIENTE",
+            "RETORNO À CARGA",
+            "ESPORTE",
+            "ANTES DA HORA",
+            "NOVA FRATURA",
+            "O TRATAMENTO É INDIVIDUALIZADO",
+            "REVISÃO DA FIXAÇÃO",
+            "ENXERTO ÓSSEO",
+            "em casos selecionados",
+            "FIXADOR EXTERNO",
+        ],
+        "roteiro": [
+            "Quebrou o mesmo osso, no mesmo lugar? Antes de tratar igual, se investiga a causa.",
+            "Na refratura, três possíveis causas entram na conta.",
+            "A estabilidade da fixação. Os fatores do paciente. E o momento de voltar à carga.",
+            "Voltar ao esporte antes da hora aumenta a chance de nova fratura no mesmo lugar.",
+            "O tratamento é individualizado.",
+            "Pode envolver revisão da fixação, enxerto ósseo e, em casos selecionados, fixador externo.",
+            "Manda pra quem quebrou o mesmo osso duas vezes.",
+        ],
+        "cta": "Manda pra quem quebrou o mesmo osso duas vezes.",
+        "legenda": (
+            "Refratura, quebrar o mesmo osso de novo, pede investigação da causa: estabilidade da fixação, "
+            "fatores do paciente (como tabagismo e diabetes) e o momento do retorno à carga entram na conta. "
+            "Por isso se investiga antes de simplesmente tratar de novo do mesmo jeito. Na volta ao esporte "
+            "depois de uma fratura, a consolidação (o osso colar) é só o começo: músculo, movimento e "
+            "confiança também precisam voltar, e voltar antes da hora aumenta a chance de nova fratura no "
+            "mesmo lugar. O tratamento é individualizado e pode envolver revisão da fixação, enxerto ósseo "
+            "e, em casos selecionados, reconstrução com fixador externo."
+            "\n\n"
+            "Dor intensa nova, febre, inchaço súbito ou membro que parece estar em ângulo diferente: "
+            "pronto-socorro e avise a equipe. Não espere a consulta."
+        ),
+    },
+    {
+        "id": "cf_fratura_estresse",
+        "formato": "como_funciona",
+        "serie": "Como funciona",
+        "familia": "pediatria",
+        "cena": "cf_fratura_estresse",
+        "gancho": ["OSSO QUEBRA", "SEM QUEDA?"],
+        "tela": [
+            "SEM QUEDA",
+            "TREINO",
+            "AOS POUCOS",
+            "SEM UMA PANCADA",
+            "ÚNICA",
+            "FRATURA POR ESTRESSE",
+            "DOR",
+            "ATIVIDADE",
+            "REPOUSO",
+            "MESMO PONTO",
+            "A CADA TREINO",
+            "MERECE AVALIAÇÃO",
+            "ORTOPEDIA PEDIÁTRICA",
+            "DOR É AVISO",
+            "NÃO TROFÉU",
+            "AUMENTAR O TREINO AOS POUCOS",
+            "DESCANSO",
+            "PREVINE BOA PARTE",
+        ],
+        "roteiro": [
+            "Dá pra trincar um osso sem nenhuma queda.",
+            "Treino intenso e repetitivo pode trincar o osso aos poucos, sem uma pancada única.",
+            "É a fratura por estresse.",
+            "O sinal: dor que piora com a atividade e melhora no repouso.",
+            "Dor sempre no mesmo ponto, a cada treino, merece avaliação.",
+            "Dor é aviso, não troféu.",
+            "Aumentar o treino aos poucos e respeitar o descanso previne boa parte dessas fraturas.",
+            "Manda pra quem acha que osso só quebra em queda.",
+        ],
+        "cta": "Manda pra quem acha que osso só quebra em queda.",
+        "legenda": (
+            "Nem toda fratura de quem treina vem de uma queda. Na fratura por estresse, treino intenso e "
+            "repetitivo pode trincar o osso aos poucos, sem um trauma único, com dor que piora com a "
+            "atividade e melhora no repouso. Dor localizada que reaparece a cada treino, mesmo sem “a” "
+            "pancada, merece avaliação, e a dor que persiste mesmo parando o treino por dias também. Dor é "
+            "aviso, não troféu: dor que persiste ou limita o esporte deve ser avaliada na ortopedia "
+            "pediátrica, não é normal. Aumentar o treino aos poucos e respeitar o descanso previne boa parte "
+            "dessas fraturas no jovem atleta."
+        ),
+    },
+    {
+        "id": "cf_joelho_quadril",
+        "formato": "como_funciona",
+        "serie": "Como funciona",
+        "familia": "pediatria",
+        "cena": "cf_joelho_quadril",
+        "gancho": ["DÓI O JOELHO.", "E É O QUADRIL?"],
+        "tela": [
+            "JOELHO",
+            "?",
+            "AVISA",
+            "QUADRIL",
+            "NA CRIANÇA",
+            "COXA",
+            "DOR NO JOELHO",
+            "SEM MOTIVO?",
+            "TAMBÉM SE OLHA O QUADRIL",
+            "PRÉ-ADOLESCENTE",
+            "VIRILHA",
+            "MANCANDO",
+            "SEM TRAUMA CLARO",
+            "AVALIAÇÃO",
+            "SEM DEMORA",
+            "EXAME CLÍNICO",
+            "QUANDO INDICADO",
+            "RADIOGRAFIA",
+            "AVALIAR CEDO",
+        ],
+        "roteiro": [
+            "Dor no joelho? Às vezes, quem está avisando é o quadril.",
+            "Na criança, dói no joelho ou na coxa, mas pode vir do quadril.",
+            "Dor no joelho sem motivo? Também se olha o quadril.",
+            "No pré-adolescente, dor na virilha, coxa ou joelho, mancando, sem trauma claro?",
+            "Merece avaliação sem demora.",
+            "O exame clínico e, quando indicado, a radiografia ajudam a esclarecer.",
+            "Avaliar cedo faz diferença.",
+            "Manda pra quem acha que dor no joelho vem sempre do joelho.",
+        ],
+        "cta": "Manda pra quem acha que dor no joelho vem sempre do joelho.",
+        "legenda": (
+            "O quadril às vezes “avisa” doendo no joelho ou na coxa: na criança, dor no joelho ou na coxa, "
+            "com mancar e sem trauma claro, pode ter origem no quadril. Por isso, diante de dor no joelho "
+            "sem motivo, também se olha o quadril. No pré-adolescente, dor no quadril, na virilha, na coxa "
+            "ou no joelho com claudicação (o mancar) e sem trauma claro merece avaliação sem demora na "
+            "ortopedia pediátrica. O exame clínico e, quando indicado, a radiografia ajudam a esclarecer, e "
+            "a avaliação precoce faz diferença. Mancar que aparece sem queda nem pancada, ou que dura mais "
+            "de um dia, merece atenção. Com febre e manqueira juntas, procure atendimento no mesmo dia."
+        ),
+    },
+    {
+        "id": "cf_andador",
+        "formato": "como_funciona",
+        "serie": "Como funciona",
+        "familia": "pediatria",
+        "cena": "cf_andador",
+        "gancho": ["ANDADOR ENSINA", "A ANDAR?"],
+        "tela": [
+            "NÃO ENSINA",
+            "PARECE QUE AJUDA",
+            "SÓ DESLIZA",
+            "PONTA DOS PÉS",
+            "EQUILÍBRIO",
+            "CAINDO",
+            "LEVANTANDO",
+            "FIRMANDO",
+            "O PRÓPRIO PESO",
+            "NÃO ANTECIPA O ANDAR",
+            "USADO EM EXCESSO",
+            "QUEDAS",
+            "O QUE AJUDA",
+            "CHÃO LIVRE",
+            "DESCALÇO",
+            "TEMPO",
+            "EMPURRADOR",
+            "quando o bebê já fica de pé sozinho",
+        ],
+        "roteiro": [
+            "O andador não ensina o bebê a andar.",
+            "Parece que ajuda: a criança se move.",
+            "Mas ali ela só desliza, empurrando com a ponta dos pés.",
+            "Andar é equilíbrio. Equilíbrio se aprende caindo, levantando e firmando o próprio peso.",
+            "O andador não antecipa o andar. Usado em excesso, está associado a quedas.",
+            "O que ajuda: chão livre, descalço e tempo.",
+            "O empurrador entra quando o bebê já fica de pé sozinho.",
+            "Manda pra quem tá esperando o primeiro passo.",
+        ],
+        "cta": "Manda pra quem tá esperando o primeiro passo.",
+        "legenda": (
+            "O andador não ensina o bebê a andar: parece que ajuda porque a criança se move, mas ali ela só "
+            "desliza, empurrando com a ponta dos pés. Andar é equilíbrio, e equilíbrio se aprende caindo, "
+            "levantando e firmando o próprio peso. O andador não antecipa o andar e, usado em excesso, está "
+            "associado a quedas e muda o apoio do quadril enquanto ele se forma; sociedades de pediatria "
+            "desaconselham o uso. O que fortalece de verdade é engatinhar e explorar o chão com segurança, "
+            "no tempo da criança: chão livre, descalço e tempo. O empurrador entra quando o bebê já fica de "
+            "pé sozinho."
+            "\n\n"
+            "Não andar até por volta dos 18 meses, ou perder uma habilidade já conquistada, merece avaliação "
+            "na ortopedia pediátrica."
+        ),
+    },
 ]

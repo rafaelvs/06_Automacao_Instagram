@@ -788,6 +788,52 @@
      "hash_roteiro": "sha256:03869718d2399554b24cc84a33f86c797941a8429cce53b12fd81214840eca5a"
     }
    ]
+  },
+  {
+   "lote": "ENTRETENIMENTO-2026-10-24-L5",
+   "nome": "Geração nova — lote 5: COMO FUNCIONA depois de 25/11 (all-in; chamada sorteada A/B)",
+   "escopo": [
+    "instagram"
+   ],
+   "status": "aprovado",
+   "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
+   "data": "2026-10-24",
+   "evidencia": "Chat auditoria-instagram-v1, 24/10/2026: depois dos primeiros números (cf_alongamento 2.049 contas, cf_fratura_cola 1.333; pulo nos 3 s de 32-43% contra 64-78% das lâminas) o Rafael decidiu o all-in ('a gente tem que dar all-in agora nesse novo modelo') e pediu 'já vamos adiantar aí e rodar o motor para poder fazer mais coisa'. Pauta por 3 ângulos + editor (workflow lote-5-como-funciona); todo fato com trecho LITERAL de peça PUBLICADA ou de lote APROVADO (conferência mecânica: 0 trechos sem lastro; controle positivo com 2 fontes falsas reprovou as 2); tipo de chamada sorteado (semente lote5-cta-2026-10-24). Cenas: construção + revisor adversarial + correção (cenas-lote5-como-funciona); --completo OK em todas; portão CFM limpo.",
+   "observacoes": "Revisão passiva na fila (regra de 30/08): entram depois do lote 4, no fim do bloco da geração nova; cópias para conferência em _GRANDE_REVISAO_2026-08/videos_geracao_nova_2026-10. Correção conservadora no cf_corrigir_e_alongar: saiu da legenda 'voltou ao dia a dia sem mancar' (antes e depois em texto); ficou só o custo honesto do caso. Regra de temas (24/10): na fila, nada do mesmo tema a menos de 14 dias.",
+   "episodios": [
+    {
+     "id": "cf_regra_milimetro",
+     "hash_roteiro": "sha256:d6488715a8a3f85266be4219babcaadbad4ceece5a0a67254b053b3ae4b1b038"
+    },
+    {
+     "id": "cf_retirada_fixador",
+     "hash_roteiro": "sha256:75ddc85adbeceed33d6080459d6e02d726e22292442d6677a404d5c094bd17f0"
+    },
+    {
+     "id": "cf_dor_alongamento",
+     "hash_roteiro": "sha256:d7b549e56a3819256692d375860bb91f2c29e2aafa4304e0a777aa5afff712e4"
+    },
+    {
+     "id": "cf_corrigir_e_alongar",
+     "hash_roteiro": "sha256:a6513ac871a584b8fbc1ded8e618b630af540b2dcafb8d28df842182871e3aa9"
+    },
+    {
+     "id": "cf_refratura",
+     "hash_roteiro": "sha256:b1b44fe4b4cf81c707432e1151223affa936f21d0ad7929b101562c3f9f73620"
+    },
+    {
+     "id": "cf_fratura_estresse",
+     "hash_roteiro": "sha256:60894e26a10d1fbff859d4e0dd51714c53bbff9d95280c48ea496e94ccf07cca"
+    },
+    {
+     "id": "cf_joelho_quadril",
+     "hash_roteiro": "sha256:471008fe2d85fbca3e5a28af4783acf464ef1e90802343a2ba3a28bc60d64169"
+    },
+    {
+     "id": "cf_andador",
+     "hash_roteiro": "sha256:76c438d508ecf2deb4d5fc22d46372fcb9df284281ad8157c45c10a2b7856793"
+    }
+   ]
   }
  ]
 }
