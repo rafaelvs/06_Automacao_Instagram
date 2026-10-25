@@ -1,0 +1,163 @@
+[
+ {
+  "id": "stn_quanto_tempo",
+  "tema": "tempo_tratamento",
+  "reel_ref": "cf_alongamento",
+  "reel_sha256": "sha256:a731953b7a0ad2fc8bef46faabd5a673b9344a3a0b14ae86da1cd7470b3c5ab2",
+  "resposta_no_reel_em": 22.0,
+  "angulo": "Quanto tempo com o fixador no alongamento: o vão já encheu de osso e o fixador continua, porque o osso novo ainda precisa endurecer (encher não é endurecer). Refaz a sequência parada s_on_quanto_tempo.",
+  "variante": "A",
+  "cta": "Manda pra quem está com fixador agora.",
+  "telas": [
+   {
+    "papel": "espanto",
+    "titulo": ["SE JÁ TEM OSSO NOVO,", "O FIXADOR FICA?"],
+    "texto": "",
+    "trecho": [15.8, 17.2],
+    "crop": [270, 470, 540, 812],
+    "zoom": [[0.0, 1.0], [2.6, 1.0], [4.5, 1.05]],
+    "ancora": [540, 800],
+    "esmaecer": [40, 16, 30, 16],
+    "dur": 4.5,
+    "t_toca": 2.6,
+    "rotulos_reel": [],
+    "nota_render": "v2 (leitor frio de 24/10): recorte abaixo do cartão FASE 2 / 1 MM / por dia e à esquerda da barra de progresso (os dois saem do quadro); trecho antes de pele/nervo/vaso, com o osso novo acendendo entre as duas partes do osso."
+   },
+   {
+    "papel": "mecanismo",
+    "titulo": ["O OSSO AINDA", "PRECISA ENDURECER"],
+    "texto": "E isso não se apressa.",
+    "trecho": [24.63, 24.75],
+    "crop": [270, 415, 540, 863],
+    "zoom": [[0.0, 1.0], [6.0, 1.12]],
+    "ancora": [540, 800],
+    "esmaecer": [40, 16, 30, 16],
+    "dur": 6.0,
+    "t_titulo": 0.4,
+    "t_texto": 1.2,
+    "t_toca": 3.6,
+    "rotulos_reel": [],
+    "nota_render": "v2: só a janela 24,63–24,75 s do reel: o osso novo já cor de osso, o fixador ainda parado; antes disso nervo, vaso e o contorno da perna estão no quadro (a virada de dourado para osso, 23,4–24,6 s, acontece junto com eles), então ela aparece no toque entre a tela 1 (dourado) e a 2. O cartão FASE 3 / CONSOLIDAÇÃO (fase 3 sem 1 e 2, em cima do anel de cima) e a barra ficam fora do recorte; o movimento é a câmera."
+   },
+   {
+    "papel": "significado",
+    "titulo": ["CADA OSSO TEM", "SEU RITMO"],
+    "texto": "Entender as fases tira a ansiedade.",
+    "trecho": [24.75, 25.75],
+    "crop": [270, 415, 540, 863],
+    "zoom": [[0.0, 1.12], [0.6, 1.0]],
+    "ancora": [540, 800],
+    "esmaecer": [40, 16, 30, 16],
+    "dur": 8.8,
+    "t_titulo": 0.4,
+    "t_texto": 1.0,
+    "t_cartao": 5.3,
+    "t_perfil": 5.9,
+    "t_nome": 6.5,
+    "rotulos_reel": [],
+    "nota_render": "v2: mesmo recorte da tela 2 (sem a barra, que antes continuava na tela sem o fixador); os anéis saem pelos lados."
+   }
+  ],
+  "fontes": [
+   {"campo": "titulo_t1", "id_fonte": null, "trecho_literal": "", "nota": "pergunta nova e condicional: não afirma fato; vai à aprovação como texto. v2 (leitor frio de 24/10): 'SE O VÃO JÁ ENCHEU,' virou 'SE JÁ TEM OSSO NOVO,' — 'vão' só se entendia pelo desenho, e o trecho que a tela 1 pode usar (antes da resposta do reel) mostra o osso novo ainda crescendo, não o vão cheio"},
+   {"campo": "apoio_premissa_t1", "id_fonte": "cf_alongamento", "trecho_literal": "E o corpo preenche o espaço com osso novo."},
+   {"campo": "apoio_premissa_t1", "id_fonte": "on_tres_fases", "trecho_literal": "É aqui que o osso novo vai sendo formado dentro do vão."},
+   {"campo": "apoio_premissa_t1", "id_fonte": "on_osso_cresce", "trecho_literal": "As duas pontas afastam pouquíssimo por dia — e o vão não fica vazio."},
+   {"campo": "desenho_t1", "id_fonte": "cf_alongamento", "trecho_literal": "E o corpo preenche o espaço com osso novo."},
+   {"campo": "resposta_t2", "id_fonte": "on_quanto_tempo", "trecho_literal": "Depois de afastar, o osso ainda precisa endurecer — e isso não se apressa."},
+   {"campo": "texto_t2", "id_fonte": "on_quanto_tempo", "trecho_literal": "Depois de afastar, o osso ainda precisa endurecer — e isso não se apressa."},
+   {"campo": "desenho_t2", "id_fonte": "cf_alongamento", "trecho_literal": "Depois, o osso novo endurece. E o aparelho sai."},
+   {"campo": "titulo_t3", "id_fonte": "on_quanto_tempo", "trecho_literal": "\"sc\":[\"Cada osso tem\",\"seu ritmo.\"]"},
+   {"campo": "texto_t3", "id_fonte": "on_tres_fases", "trecho_literal": "Entender as fases tira a ansiedade de quem está no meio."},
+   {"campo": "desenho_t3", "id_fonte": "cf_alongamento", "trecho_literal": "Depois, o osso novo endurece. E o aparelho sai."},
+   {"campo": "cta", "id_fonte": "on_cuidado_pinos", "trecho_literal": "Manda pra quem está com fixador agora."}
+  ],
+  "revisao": {
+   "leitor_frio": "v1 (24/10, lab/leitor_frio_story/resultado_v1.json): entendeu o essencial, clareza 6/10 (tela 1) e 7/10 (story); confundiram 'FASE 2' sem fase 1, '1 MM por dia' sem dizer o quê, a barra vertical sem legenda, a palavra 'vão' e o título 'já encheu' sobre um vão que ainda enchia. v2: cartão de fase e barra fora do recorte; 1ª linha 'SE JÁ TEM OSSO NOVO,' (fallback já registrado aqui). PENDENTE: revisor sem o reel no contexto responde 'do que trata a tela 1?' sobre os quadros do MP4 v2.",
+   "sem_texto": "v1: passou só pelo cartão do reel ('Fase 3 – Consolidação – a fase mais longa'); confundiram as linhas vermelha/amarela, o contorno da perna e o cartão em cima do anel de cima. v2: o cartão FASE 3 saiu do recorte (fase 3 sem 1 e 2 repete o problema da tela 1) e a tela 2 usa só a janela do reel em que nervo, vaso e o contorno da perna já sumiram (nenhum quadro da tela 2 tem as linhas). PENDENTE: revisor sem o reel no contexto responde 'o que a tela 2 mostra?' no quadro final sem o texto do story. Critério original: 'o osso novo endurece/consolida, numa fase longa, ainda com o aparelho' — sem o cartão, 'fase longa' não está mais no desenho (só no texto do story: 'E isso não se apressa.').",
+   "contrapeso": "Não se aplica: o tempo de consolidação não é parâmetro que o paciente controla; 'E isso não se apressa.' já desestimula pressa."
+  }
+ },
+ {
+  "id": "stn_pe_pra_dentro",
+  "tema": "pe_virado",
+  "reel_ref": "cf_pe_virado",
+  "reel_sha256": "sha256:ccf3ad4dfa9e449d48c8e8056c0c9067920b969bf221546dece7f1c9275c812f",
+  "resposta_no_reel_em": 4.53,
+  "angulo": "Andar de pombinho (pé virado para dentro na criança), para a mãe que vê o filho andar em casa: o giro é uma leve torção do crescimento que costuma se ajustar, e os sinais que pedem avaliação. Refaz a sequência parada s_pnc_pe_pra_dentro.",
+  "variante": "B",
+  "cta": "Manda pra quem vive com essa dúvida.",
+  "telas": [
+   {
+    "papel": "espanto",
+    "titulo": ["A CRIANÇA ANDA COM", "O PÉ PRA DENTRO?"],
+    "texto": "",
+    "trecho": [1.5, 2.7],
+    "crop": [390, 360, 610, 690],
+    "zoom": [[0.0, 1.0], [2.1, 1.0], [4.5, 1.04]],
+    "ancora": [600, 780],
+    "foco_x": 600,
+    "esmaecer": [0, 20, 40, 16],
+    "dur": 4.5,
+    "t_toca": 2.6,
+    "rotulos_reel": ["PRA DENTRO"],
+    "nota_render": "v2 (leitor frio de 24/10): o pombo fica fora do recorte (x < 365 no reel); o rótulo PRA DENTRO do reel entra INTEIRO, com a linha até a pegada (o 'risquinho dourado solto' era o toco dessa linha, cortado pelo recorte antigo); pegadas 1,3× maiores; o trecho começa logo antes de os pés virarem e as setas entrarem."
+   },
+   {
+    "papel": "mecanismo",
+    "titulo": ["LEVES GIROS", "DO CRESCIMENTO"],
+    "texto": "Variações comuns",
+    "trecho": [4.55, 9.15],
+    "crop": [290, 365, 695, 710],
+    "zoom": [[0.0, 1.0], [6.0, 1.05]],
+    "ancora": [653, 700],
+    "foco_x": 600,
+    "esmaecer": [0, 0, 30, 0],
+    "dur": 6.0,
+    "t_titulo": 0.4,
+    "t_texto": 1.2,
+    "t_toca": 3.6,
+    "rotulos_reel": ["PÉ", "CANELA", "COXA"],
+    "nota_render": "v2: recorte 1,3× maior (sem o vazio embaixo); o trecho segue até o pulso da rotação, em que pé, canela e coxa acendem um de cada vez com a setinha de giro (antes só a coxa tinha seta); o selo ROTAÇÃO NATURAL fica acima do recorte."
+   },
+   {
+    "papel": "significado",
+    "titulo": ["A ROTAÇÃO COSTUMA", "SE AJUSTAR"],
+    "texto": "Assimetria, dor, quedas demais ou piora pedem avaliação.",
+    "trecho": [12.75, 14.25],
+    "crop": [320, 210, 440, 565],
+    "zoom": [[0.0, 1.05], [0.6, 1.0]],
+    "ancora": [540, 500],
+    "esmaecer": [12, 0, 20, 0],
+    "dur": 9.5,
+    "t_titulo": 0.4,
+    "t_texto": 1.0,
+    "t_cartao": 6.0,
+    "t_perfil": 6.6,
+    "t_nome": 7.2,
+    "rotulos_reel": [],
+    "nota_render": "v2: só as pernas, com os pés alinhando; o carimbo SOZINHO (concorda com 'o pé' do reel e, ao lado de 'A ROTAÇÃO', lia como erro de concordância), NA MAIORIA DAS VEZES, o pombo, as pegadas deitadas e o calendário ficam fora do recorte; o trecho acaba antes do carimbo. O aviso fica 5 s na tela (8 palavras: 1 s + 0,35 s por palavra = 3,8 s)."
+   }
+  ],
+  "fontes": [
+   {"campo": "titulo_t1", "id_fonte": null, "trecho_literal": "", "nota": "pergunta nova, não afirma fato; vai à aprovação como texto. Referência no acervo (não citação): pnc_pe_pra_dentro, sc 'Anda com o pé' / 'virado pra dentro?' e vo 'Criança que anda com o pé virado pra dentro'"},
+   {"campo": "rotulos_desenho_t1", "id_fonte": "cf_pe_virado", "trecho_literal": "PRA DENTRO"},
+   {"campo": "resposta_t2", "id_fonte": "pnc_pe_pra_dentro", "trecho_literal": "Leves torções do crescimento; a rotação se ajusta com o tempo."},
+   {"campo": "resposta_t2", "id_fonte": "cf_pe_virado", "trecho_literal": "Pode vir de uma leve torção (um giro) do pé, da canela ou do osso da coxa, todas variações comuns do crescimento", "nota": "v2 (leitor frio de 24/10): 'TORÇÕES' virou 'GIROS' — 'torção' foi lida como machucado de tornozelo; a própria fonte iguala torção a giro"},
+   {"campo": "resposta_t2", "id_fonte": "cf_pe_virado", "trecho_literal": "Pode ser um leve giro no pé, na canela ou até na coxa."},
+   {"campo": "texto_t2", "id_fonte": "pnc_pe_pra_dentro", "trecho_literal": "Pode vir de uma leve torção do pé, da canela ou da coxa — variações comuns; o crescimento costuma ajustar a rotação."},
+   {"campo": "rotulos_desenho_t2", "id_fonte": "cf_pe_virado", "trecho_literal": "PÉ"},
+   {"campo": "rotulos_desenho_t2", "id_fonte": "cf_pe_virado", "trecho_literal": "CANELA"},
+   {"campo": "rotulos_desenho_t2", "id_fonte": "cf_pe_virado", "trecho_literal": "COXA"},
+   {"campo": "titulo_t3", "id_fonte": "pnc_pe_pra_dentro", "trecho_literal": "A regra é o tempo: conforme a criança cresce, a rotação costuma se ajustar sozinha."},
+   {"campo": "texto_t3", "id_fonte": "pnc_pe_pra_dentro", "trecho_literal": "Assimetria, dor, quedas demais ou piora pedem avaliação."},
+   {"campo": "desenho_t3", "id_fonte": "cf_pe_virado", "trecho_literal": "Com o crescimento, na maioria das vezes, o pé alinha sozinho."},
+   {"campo": "cta", "id_fonte": "pnc_pe_pra_dentro", "trecho_literal": "\"sc\":[\"Manda pra quem vive\",\"com essa dúvida.\"]"}
+  ],
+  "revisao": {
+   "leitor_frio": "v1 (24/10, lab/leitor_frio_story/resultado_v1.json): entendeu o essencial, clareza 7/10; confundiram o pombo (nunca explicado), o risquinho dourado solto na 4ª pegada, as pegadas que parecem retas no começo e as setas pequenas; no story inteiro, 'SOZINHO' ao lado de 'A ROTAÇÃO' (lido como erro de concordância), 'leves torções' (lido como machucado) e o aviso que sai rápido demais. v2: tudo isso trocado por recorte/trecho/tempo, e 'TORÇÕES' -> 'GIROS'. PENDENTE: revisor sem o reel no contexto responde 'do que trata a tela 1?' sobre os quadros do MP4 v2.",
+   "sem_texto": "v1: passou (COXA, CANELA, PÉ); confundiram anéis = fita métrica, anéis da canela e do pé apagados e o desenho pequeno. v2: recorte 1,3× maior e trecho até o pulso da rotação (cada anel acende com a setinha de giro). PENDENTE: revisor sem o reel no contexto responde 'o que a tela 2 mostra?' no quadro final sem o texto do story. Passa se disser que o giro pode estar no pé, na canela ou na coxa.",
+   "contrapeso": "Não se aplica: o tema não é parâmetro que o paciente controla."
+  }
+ }
+]

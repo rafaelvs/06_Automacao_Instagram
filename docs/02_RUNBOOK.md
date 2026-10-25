@@ -116,6 +116,7 @@ O `IG_ACCESS_TOKEN` expira em ~60 dias. Quando expirar, as publicações falham 
 | Carrossel recusa `alt_text` nos filhos | Limite da API | Remover `alt_text` dos filhos (deixar só no container) |
 | Posta 2x | `id` repetido OU estado não commitado | Garantir `id` único. O `publish.yml` commita `state/published.json` com **retry** (5 tentativas, `pull --rebase`, backoff 10→50s) desde `09da55e` — se esgotar, o job **fica vermelho**; ver o log do step *"Salvar estado"* |
 | Nada publica há dias | Crons atrasando OU fila esgotada | Ver logs do Actions; conferir runway no `01_INVENTARIO §C` |
+| Job vermelho com `parte INCERTA`, `publicacao INCERTA`, `já expirou` ou `NAO conhece` | Erro da Meta sem confirmação do contêiner, story incompleta de outro dia ou story de hoje fora do estado | **§12** (conferir no app; editar o estado) |
 
 ---
 
@@ -222,3 +223,79 @@ Decisão do Rafael em 18/10/2026 ("pode seguir com tudo"), depois de ver os dois
 - **Portões no caminho da publicação** (publish.yml, antes de qualquer POST): `checar_aprovacoes.py` e
   `checar_entretenimento.py`. Episódio editado ou motor mexido depois do render = publish VERMELHO até re-renderizar
   (de propósito: vídeo velho não sai com legenda nova). Editou o episódio? Re-registre o hash no lote e re-renderize.
+
+## 12. Stories da geração nova: parte INCERTA (`story_nova_incerta`), story incompleta e conferência da conta (24/10/2026)
+
+Regra que vale para tudo abaixo: **HTTP 500 da Meta pode ENTREGAR** (a peça vai ao ar com resposta de erro) e
+**duplicar no ar é pior que faltar uma parte**. Por isso o robô pergunta ao contêiner depois de todo erro de
+`media_publish` e, quando não consegue saber, PARA e fica vermelho até alguém conferir.
+
+**Quando aparece** (o `publish.yml` fica vermelho com uma destas mensagens):
+
+| Mensagem no log | O que aconteceu | Faça |
+|---|---|---|
+| `story(ies) com parte INCERTA [...]` | o `media_publish` de uma parte respondeu erro e o contêiner não confirmou (ou a consulta falhou). A parte **pode** estar no ar. Nenhuma story sai até resolver. | conferir e editar o estado (abaixo) |
+| `story X com k/3 parte(s) no ar desde dd/mm ... já expirou` | story incompleta de OUTRO dia: completar publicaria o meio da story sem o começo | decidir: abandonar ou republicar inteira (abaixo) |
+| `a conta tem N story(ies) de hoje depois das 12:30 que o estado NAO conhece` | outro run publicou com o estado velho (o caso do P0-3), ou houve story postada à mão. Nada saiu neste run. | registrar a story no estado (abaixo) |
+| `nao deu para conferir a conta antes da story (GET .../stories ...)` | a leitura da conta falhou; nada saiu | nada, se for pontual: o próximo run tenta de novo |
+| `reel_incerto` / `post_incerto` / `seq_incerto` / `story_incerto` + `publicacao INCERTA` | o mesmo para reel, carrossel, sequência antiga ou destaque. O item NÃO volta à fila sozinho; todo run fica vermelho até resolver | conferir e editar o estado (abaixo) |
+| `media_publish do conteiner X respondeu erro e ele esta FINISHED ... Write-ahead mantido` (reel/post) | o `media_publish` deu erro e o contêiner ainda não saiu — mas 500 da Meta entrega DEPOIS. Nada a fazer: o próximo run pergunta de novo a ESTE contêiner (abaixo) | nada (o próximo run resolve) |
+| `reel/post ... write-ahead ... a consulta ao conteiner falhou` ou `... esta FINISHED, mas a peca saiu da biblioteca` | não dá para saber se o contêiner preparado saiu, ou a peça foi tirada da fila com o contêiner pendente: nada daquele tipo sai | pontual: nada; peça tirada da fila: esperar o contêiner expirar (24 h) |
+| `FORCE ...: o reel X tem conteiner preparado (write-ahead FINISHED ...)` | FORCE de OUTRA peça enquanto o contêiner de X espera: gravar o da nova apagaria o rastro de X | esperar o próximo run agendado publicar X, ou forçar o próprio X |
+| `aguardando aprovação ... aprovação visual não amarrada aos vídeos` / `lote 'aprovado' sem aprovado_por+evidencia` | o lote da story tem só o hash do texto, ou não tem autor/evidência: NÃO aprova (story fica de fora, job verde com aviso) | registrar a entrada de `--entrada` num lote válido (abaixo) |
+
+**Como conferir, sem tocar no token** (o repo é público; o token nunca vai para terminal, log ou arquivo):
+1. **No app:** perfil → toque na foto (stories ativos, últimas 24 h): conte as partes da story e veja a hora de
+   cada uma. Story que já expirou: menu → *Arquivo* → *Arquivo de stories*. Reel/carrossel: o grid do perfil.
+2. **Pela API, pelo próprio Actions:** `gh workflow run stories.yml --repo rafaelvs/06_Automacao_Instagram` e, no log
+   do passo *Pulso de stories*, o bloco `===STORIES_JSON_BEGIN===` lista cada story ativa com `id` e `quando` (UTC,
+   BRT = UTC−3). Compare com as entradas `stn_x#0`, `stn_x#1`, `stn_x#2` do `state/published.json` (campos
+   `media_id` e `at`; a entrada incerta traz também `container`, `erro` e `status`).
+
+**O que trocar no `state/published.json`** (commit no repo de produção, a partir de clone fresco — a pasta da
+oficina não publica nada):
+- **Parte INCERTA que ESTÁ no ar:** trocar `"kind": "story_nova_incerta"` por `"kind": "story_nova"` e preencher
+  `"media_id"` com o id visto na conferência (a conferência da conta reconhece a story pelo id). Não mexer em `at`.
+- **Parte INCERTA que NÃO está no ar:** apagar a entrada inteira. No MESMO dia, o próximo run publica as partes que
+  faltam (retomada). Em outro dia, cai no caso "incompleta de outro dia".
+- **Nunca apagar a entrada de uma parte que ESTÁ no ar:** o robô a republica.
+- **Story incompleta de outro dia** (`... já expirou`): (a) abandonar — tirar a story do `stories_cf.json` (as partes
+  ficam no estado como histórico); ou (b) republicar inteira num próximo dia de story — apagar TODAS as entradas
+  `stn_x#*` dela (as partes antigas já expiraram no Instagram). Sem uma das duas, todo dia de story fica vermelho.
+- **Story de hoje que o estado não conhece:** (a) se é parte de story do robô (run duplicado com estado velho),
+  acrescentar a entrada que falta copiando uma parte irmã: `{"id": "stn_x#i", "kind": "story_nova", "story": "stn_x",
+  "parte": i, "media_id": "<id>", "at": "<quando>", "temas": [...]}`; (b) se foi postada à mão, registrar
+  `{"id": "avulsa:<id>", "kind": "story_avulsa", "media_id": "<id>", "at": "<quando>"}` — o robô passa a conhecê-la.
+  A conferência só olha stories a partir das 12:30 de hoje: story manual de manhã não bloqueia nada.
+- **`reel_incerto` / `post_incerto` / `seq_incerto` / `story_incerto`:** saiu → trocar o `kind` para `reel` / `post` /
+  `seq` / `story` (com o `media_id`, se souber); não saiu → apagar a entrada (o item volta para a fila no próximo dia
+  dele). O `last_*_date` do dia da dúvida já foi marcado de propósito: nada mais daquele tipo sai nesse dia.
+
+**Write-ahead (`state.story_nova_publicando`) — não editar à mão.** Antes de cada `media_publish` de story o robô grava
+`{story, parte, container, at, sha256}` e salva. Se o job morrer DENTRO da chamada (timeout, cancelamento, runner
+perdido), o próximo run pergunta ao contêiner antes de criar outro: PUBLISHED = registra a parte (`confirmado_por`
+"write-ahead"); FINISHED no mesmo dia = publica o MESMO contêiner (contêiner só publica uma vez); EXPIRED = nunca
+saiu, descarta; qualquer outro status = parte INCERTA (casos acima). Se a própria consulta falhar, o run fica
+vermelho sem publicar nada e o seguinte pergunta de novo.
+
+**Write-ahead de REEL e POST (`state.reel_publicando` / `state.post_publicando`) — não editar à mão** (25/10/2026). A
+mesma rede, para o feed: antes do `media_publish` o robô grava `{id, container, at, commit, modo_reel, rotulo_ia,
+formato}` e salva. Se o `media_publish` responder erro e o contêiner disser FINISHED, o registro FICA (FINISHED um
+instante depois do 500 não prova que não saiu: a Meta entrega depois). O run seguinte pergunta a ESTE contêiner antes de
+qualquer decisão: PUBLISHED = a peça saiu (registra sem `media_id`, com `confirmado_por` "write-ahead", e marca o dia);
+FINISHED = o bloco do tipo publica o MESMO contêiner, antes da fila (contêiner só publica uma vez: a entrega tardia
+nunca vira duplicata); EXPIRED/ERROR = nunca saiu, descarta e a peça segue na fila; outro status = `reel_incerto` /
+`post_incerto` (casos acima); consulta falhando = nada daquele tipo sai no run. Antes, o reel nesse caso era recriado
+num contêiner novo e saía DUAS vezes no feed (permanente).
+
+**Aprovar uma story** (portão `checar_stories.py`, 25/10/2026): no clone com o render do CI em dia, rode
+`python checar_stories.py --entrada stn_x` e cole a entrada (hash do texto + sha256 dos 3 vídeos + hash do gerador do
+render que o Rafael VIU) em `episodios` de um lote com `"escopo": ["instagram-stories"]`, `"status": "aprovado"` e
+`aprovado_por` + `evidencia` não vazios (a mesma regra do portão clínico `checar_aprovacoes`, que roda antes do publish:
+lote sem autor/evidência ali derruba o publish INTEIRO). Entrada só com `hash_roteiro` NÃO aprova: um re-render depois
+da aprovação (outro recorte, trecho ou fonte) nunca sai com o aval de um vídeo que ele não viu. Re-render = vídeos novos
+= re-aprovar (`divergente`).
+
+**Outras duas redes contra duplicar** (não exigem ação): o `publish.yml` faz checkout de `ref: main`, então o run
+enfileirado atrás de um run de story lê o estado que o anterior commitou; e a raw URL das mídias vai com o SHA desse
+checkout, então a Meta baixa os bytes que os portões conferiram, não o que estiver no main na hora da busca.

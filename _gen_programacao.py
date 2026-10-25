@@ -40,9 +40,54 @@ def projeta(ids, weekdays, base, ja_hoje):
     return out
 
 
+def secao_stories(st, rp, hoje):
+    """Linhas da seção de stories: a agenda do robô (só APROVADAS, com o portão), o bloqueio (parte
+    incerta, story incompleta de outro dia, portão barrando a escolhida) e, à parte, as que aguardam
+    aprovação (fora da conta), com a data em que sairiam se aprovadas hoje."""
+    import checar_stories as CS
+    stn = carrega("stories_cf.json") if os.path.exists(os.path.join(ROOT, "stories_cf.json")) else []
+    aprov = carrega("aprovacoes.json")
+    reels = {r["id"]: r for r in carrega("reels.json")}
+    ja = st.get("last_story_nova_date") == hoje.isoformat()
+    det = PA.projeta_stories_detalhe(stn, st["published"], rp, hoje, ja, aprovacoes=aprov, reels_por_id=reels)
+    nd = PA.regra_reels.dias_entre_mesmo_tema()
+    feitas = CS.partes_publicadas(st["published"])
+    L = ["\n## Stories da geração nova (ter · qui · sáb 12:30)\n",
+         f"*3 vídeos curtos sem voz por story, roteiro próprio. **Regra de temas (Rafael, 24/10):** nada sai sobre um tema que "
+         f"apareceu ou vai aparecer em qualquer superfície há menos de {nd} dias; entre os liberados, sai o tema mais antigo. "
+         f"Só sai APROVADA pelo Rafael, com o reel de origem no grid há {CS.DIAS_DEPOIS_DO_REEL}+ dias e com o portão limpo "
+         "(render do CI coerente com o texto). Story que aguarda aprovação fica FORA da conta: não sai e não segura as outras. "
+         "Esta tabela usa a mesma régua do robô (checar_stories.py).*\n",
+         "| Data | Story | Reel de origem | Situação |", "|---|---|---|---|"]
+    for d, iid, motivo in det["agenda"]:
+        it = next(x for x in stn if x["id"] == iid)
+        situ = "aprovada" + (" — **retomada** (só as partes que faltam)" if str(motivo).startswith("retomada") else "")
+        L.append(f"| {DOW[d.weekday()]} {d:%d/%m} | `{iid}` | `{it.get('reel_ref')}` | {situ} |")
+    pend = [x for x in stn if len(feitas.get(x.get("id"), {})) != len(CS.PAPEIS) and CS.aprovacao_de(x, aprov)[0] != "aprovada"]
+    if det["bloqueio"]:
+        L.append(f"| — | **BLOQUEADO** — {det['bloqueio']} | | |")
+    elif not det["agenda"]:
+        L.append(f"| — | **nenhum story projetado** ({len(stn)} na fila; {len(pend)} aguardando aprovação) | | |")
+    if pend:
+        L.append("\n**Aguardando aprovação do Rafael** (fora da conta: não saem e não travam as aprovadas):\n")
+        for x in pend:
+            v = CS.veredito(x, aprov, reels)
+            render = [m for t, m in v["avisos"] if t == "render"]
+            hip = PA.projeta_stories_detalhe(stn, st["published"], rp, hoje, ja, aprovacoes=aprov, reels_por_id=reels,
+                                            aprovadas_extra=(x["id"],))
+            quando = next((f"{DOW[d.weekday()]} {d:%d/%m}" for d, i, _ in hip["agenda"] if i == x["id"]), None)
+            if quando is None:
+                quando = f"não sai no horizonte ({hip['bloqueio']})" if hip["bloqueio"] else "fora do horizonte de 120 dias"
+            L.append(f"- `{x['id']}` (reel `{x.get('reel_ref')}`): {v['situacao']} — {v['detalhe']}. "
+                     f"Render: {render[0] if render else 'em dia'}. Se aprovada hoje (com o render do CI): {quando}."
+                     + "".join(f" **ERRO no portão (CI vermelho):** {m}" for _, m in v["erros"]))
+    return L
+
+
 def main():
     if any(os.environ.get(v) for v in ("LAMINAS_POR_SEMANA", "DIAS_ENTRE_CONVERSAS", "CONVERSAS_ATIVAS",
-                                         "POSTS_ATIVOS", "SEQUENCIAS_ATIVAS")):
+                                         "POSTS_ATIVOS", "SEQUENCIAS_ATIVAS", "STORIES_NOVOS_ATIVOS",
+                                         "DIAS_ENTRE_MESMO_TEMA")):
         # a produção não lê variável (regra_reels.py é a fonte única); página gerada com outra cota mentiria
         raise SystemExit("ERRO: LAMINAS_POR_SEMANA está definida no ambiente local — a produção usa "
                          "regra_reels.LAMINAS_POR_SEMANA_PADRAO. Tire a variável e rode de novo.")
@@ -100,9 +145,12 @@ def main():
         n = len(next(x["images"] for x in posts if x["id"] == iid))
         rot = " (verbete)" if iid.startswith("v_") else ""
         L.append(f"| {DOW[d.weekday()]} {d:%d/%m} | `{iid}`{rot} | {n} |")
+    # stories da geração nova ("COMO FUNCIONA em 3 toques", roteiro próprio): a MESMA régua do robô
+    # (checar_stories: incertas -> retomada do mesmo dia -> só aprovadas -> distância de tema -> portão)
+    L += secao_stories(st, rp, hoje)
     if not seqs_on:
-        L += [f"\n*Sequências de stories antigas: SUSPENSAS — all-in no formato novo (24/10); {len(seqs)} parada(s) na fila. "
-              "O formato novo de stories está em estudo.*\n"]
+        L += [f"\n*Sequências de stories antigas: SUSPENSAS — all-in no formato novo (24/10); {len(seqs)} parada(s) na fila "
+              "(os temas voltam como stories da geração nova).*\n"]
     else:
       L += [f"\n*Sequências de stories: {len(seqs)} restantes, publicadas ter/qui/sáb às 12:30, nos dias do carrossel (cadência reduzida em 12/09; a troca de dias de 13/09 foi revertida em 19/09 — o eixo de dia da semana estava deslocado um dia, ver E7). Quem edita a fila, regenera esta página.*\n"]
     with open(os.path.join(ROOT, "PROGRAMACAO.md"), "w", encoding="utf-8", newline="\n") as f:

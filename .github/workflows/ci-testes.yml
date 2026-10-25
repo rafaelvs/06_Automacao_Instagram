@@ -68,3 +68,13 @@ jobs:
         run: |
           python checar_voz.py --auto-teste
           python checar_voz.py
+      - name: "Stories da geracao nova e regra de temas (24/10/2026): auto-testes + fila"
+        # Publicador em partes sem duplicar (controles: contêiner em ERROR, prazo, erro da Meta com
+        # contêiner PUBLISHED/FINISHED/incerto), portão da story (aprovação por hash, irmão, texto
+        # desenhado, CFM) e distância entre temas. A fila real roda por último (aprovação pendente
+        # é aviso; qualquer outro problema é vermelho).
+        run: |
+          python publicar_stories.py
+          python temas_conteudo.py
+          python checar_stories.py --autoteste
+          python checar_stories.py

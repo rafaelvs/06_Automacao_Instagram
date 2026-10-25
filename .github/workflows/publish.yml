@@ -43,9 +43,22 @@ jobs:
     # v1.5/M5: job travado (API pendurada, retry infinito) congelava a fila por ate 6h —
     # o cron */30 seguinte nem entrava por causa do concurrency group. 15 min cobre com
     # folga o pior caso legitimo (sequencia de 5 frames + retries).
-    timeout-minutes: 15
+    # 24/10/2026: 25 min. A story da geração nova espera os 3 contêineres de vídeo juntos (prazo de 8 min,
+    # falha ALTO se estourar) e publica parte a parte gravando o estado; 15 min não cobria o pior caso
+    # legítimo e um job morto no meio foi o que duplicou quadros em 16 de 59 dias.
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
+        with:
+          # ref: main (24/10/2026; o P0-3 da v1.6 enfim aplicado). Sem isto o checkout fixa o SHA de quando o
+          # run NASCEU: o concurrency serializa os jobs, mas o run enfileirado atras de um run de story lia o
+          # estado de ANTES do push dele e republicava (08/09: 5 frames 2x no ar; a story de video, com 3
+          # conteineres e espera de ate 8 min, alarga a janela). Com ref: main o run seguinte so' comeca
+          # depois do push do anterior e le o estado novo. Duas redes atras desta: o publish.py consulta a
+          # CONTA (GET /stories) antes de publicar story e falha ALTO se houver story de hoje que o estado
+          # nao conhece; e monta a raw URL das midias com o SHA DESTE checkout (git rev-parse HEAD), entao
+          # a Meta baixa os bytes que os portoes abaixo conferiram — nao o que estiver no main na hora.
+          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"

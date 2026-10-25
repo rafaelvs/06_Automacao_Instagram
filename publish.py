@@ -38,7 +38,7 @@ NOTA — por que NAO existe um limite de itens por execucao aqui:
     1 post, nao 10 — a recuperacao ja' e' gradual por construcao. Um limite global
     de 1/execucao seria ate' NOCIVO: no domingo saem legitimamente carrossel + reel.
 """
-import os, sys, json, time, datetime as dt
+import os, re, sys, json, time, subprocess, datetime as dt
 import requests
 
 POST_WEEKDAYS  = {1, 3, 5}
@@ -89,7 +89,35 @@ AVISO_EXPIRACAO_DIAS = 14   # a renovacao roda toda segunda: 14 dias = ~2 tentat
 IG_USER_ID = os.environ.get("IG_USER_ID", "").strip()
 TOKEN      = os.environ.get("IG_ACCESS_TOKEN", "").strip()
 REPO       = os.environ.get("GITHUB_REPOSITORY", "").strip()
-REF        = os.environ.get("GITHUB_REF_NAME", "main").strip() or "main"
+
+def _commit_do_checkout():
+    """SHA do commit do checkout (git rev-parse HEAD), ou None fora de um clone deste repo.
+
+    A raw URL das MIDIAS (story, reel, post) vai com este SHA, nao com o nome do branch (auditoria
+    24/10/2026, publicacao#6 / render_ci#0): os portoes do publish.yml conferem os bytes DESTE checkout
+    (sha256 do video da story contra o irmao, video do reel contra o aprovado). Com `main` na URL a Meta
+    baixava o que estivesse no main na HORA DA BUSCA — um re-render empurrado entre o checkout e o
+    POST /media saia sem ter passado por portao nenhum, e o cache de 5 min do raw.githubusercontent.com
+    podia servir o render anterior. URL por commit e' imutavel. So' vale se o repo do git for ESTE
+    diretorio (teste em pasta temporaria dentro de outro repo nao pode herdar um SHA alheio)."""
+    try:
+        top = subprocess.run(["git", "-C", ROOT, "rev-parse", "--show-toplevel"], capture_output=True, text=True, timeout=20)
+        sha = subprocess.run(["git", "-C", ROOT, "rev-parse", "HEAD"], capture_output=True, text=True, timeout=20)
+    except (OSError, subprocess.SubprocessError):
+        return None
+    if top.returncode != 0 or sha.returncode != 0:
+        return None
+    if os.path.normcase(os.path.realpath(top.stdout.strip())) != os.path.normcase(os.path.realpath(ROOT)):
+        return None
+    s_ = sha.stdout.strip()
+    return s_ if re.fullmatch(r"[0-9a-f]{40}", s_) else None
+
+COMMIT     = _commit_do_checkout()
+# reserva: o nome do branch (sem git no ambiente). No Actions isso e' sinal de defeito: avisa ALTO.
+REF        = COMMIT or (os.environ.get("GITHUB_REF_NAME", "main").strip() or "main")
+if COMMIT is None and os.environ.get("GITHUB_ACTIONS", "").lower() == "true":
+    print(f"::warning::git rev-parse HEAD falhou: a raw URL das midias vai pelo branch '{REF}' — a Meta pode "
+          "baixar bytes diferentes dos que os portoes conferiram (checkout sem .git?).")
 VER        = os.environ.get("GRAPH_VERSION", "v21.0").strip()
 FORCE_ID   = os.environ.get("FORCE_ID", "").strip()
 LOCATION_ID = os.environ.get("LOCATION_ID", "").strip()   # SEO local: place id (SP). Inerte se vazio.
@@ -133,6 +161,16 @@ CONVERSAS_ATIVAS = regra_reels.conversas_ativas()
 # suspensos por padrao ate existir a versao no formato novo (regra_reels.py). Religar = mudar o padrao.
 POSTS_ATIVOS = regra_reels.posts_ativos()
 SEQUENCIAS_ATIVAS = regra_reels.sequencias_ativas()
+# STORIES DA GERAÇÃO NOVA (Rafael, 24/10/2026: "story com roteiro próprio"; formato "COMO FUNCIONA EM
+# 3 TOQUES" escolhido pelo mesmo processo do reel). 3 vídeos curtos por story, ter/qui/sáb 12:30, só
+# APROVADO e só com o reel de origem no ar há 2+ dias (checar_stories.py). Publicação em partes sem
+# duplicar (publicar_stories.py: espera conjunta com prazo, estado gravado parte a parte, erro da
+# Meta conferido pelo status do contêiner).
+STORIES_NOVOS_ATIVOS = regra_reels.stories_novos_ativos()
+STORY_NOVO_WEEKDAYS = {1, 3, 5}           # ter/qui/sab — dias SEM reel
+STORY_NOVO_MIN = 12*60 + 30
+STORIES_NOVOS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "stories_cf.json")
+APROVACOES_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "aprovacoes.json")
 HOST       = f"https://graph.instagram.com/{VER}"
 
 if not IG_USER_ID or not TOKEN:
@@ -173,6 +211,16 @@ def _e_falha_de_auth(status, payload):
     # continua sendo tratado como token morto.
     if sub in CONTEUDO_CODES: return False
     if isinstance(sub, int) and sub >= 2207000: return False        # idem, pelo subcode
+    # 24/10/2026 (auditoria, publicacao#0): o HTTP 500 TRANSITORIO da Graph API chega como
+    # {"type": "OAuthException", "code": 2, "is_transient": true, "message": "An unexpected error has
+    # occurred. Please retry your request later."} (e o "unknown error" como code 1). Caia no catch-all
+    # abaixo e virava AuthError: a story pulava a consulta ao conteiner, a parte que a Meta tinha posto
+    # no ar ficava sem registro e o run seguinte a republicava ("AUTENTICACAO FALHOU" com o token vivo);
+    # no reel, o mesmo republicava o reel. Vem DEPOIS de AUTH_CODES/AUTH_SUBCODES de proposito: 190 com
+    # HTTP 500 (ou com is_transient) continua token morto.
+    if (isinstance(status, int) and status >= 500) or str(err.get("is_transient", "")).lower() == "true" \
+            or code in (1, 2):
+        return False
     if str(err.get("type", "")) == "OAuthException": return True
     return status in (401, 403)
 
@@ -182,8 +230,55 @@ def _erro_api(r, onde):
     try: payload = r.json()
     except Exception: payload = {}
     detalhe = f"{onde} -> {r.status_code}: {r.text[:300]}"
-    if _e_falha_de_auth(r.status_code, payload): raise AuthError(detalhe)
-    raise RuntimeError(detalhe)
+    exc = AuthError(detalhe) if _e_falha_de_auth(r.status_code, payload) else RuntimeError(detalhe)
+    exc.status, exc.payload = r.status_code, payload      # quem decide "saiu ou nao" le o codigo, nao o texto
+    raise exc
+
+class PublicacaoIncerta(RuntimeError):
+    """media_publish respondeu erro e o conteiner nao diz nem 'saiu' (PUBLISHED) nem 'nao saiu' (FINISHED),
+    ou a propria consulta falhou: a peca PODE estar no ar. O item e' registrado como `<kind>_incerto`
+    (nao volta a fila sozinho: republicar seria duplicar) e todo run fica VERMELHO ate a conferencia
+    humana (docs/02_RUNBOOK.md §12). `auth` = havia erro de token no caminho (o run para)."""
+    def __init__(self, msg, container=None, auth=False):
+        super().__init__(msg)
+        self.container = container
+        self.auth = auth
+
+KINDS_INCERTOS = ("post_incerto", "reel_incerto", "seq_incerto", "story_incerto")
+
+# WRITE-AHEAD de REEL e POST (auditoria de fechamento, 25/10/2026). So' a story tinha: o reel com HTTP 500 no
+# media_publish, conteiner FINISHED na consulta logo depois e a Meta ENTREGANDO depois (licao da casa: 500 da Meta
+# ENTREGA — e entrega tarde) ficava fora do estado; o run seguinte criava OUTRO conteiner e o reel saia 2x,
+# permanente no feed. Agora o conteiner vai ao estado e ao disco ANTES do media_publish (state['reel_publicando'] /
+# state['post_publicando']) e fica la' enquanto o conteiner disser FINISHED depois de erro (ou o job morrer dentro
+# da chamada). O run seguinte pergunta a ESTE conteiner antes de qualquer decisao (_resolver_write_ahead_feed):
+# PUBLISHED = saiu (registra); FINISHED = o bloco publica o MESMO conteiner (conteiner so' publica uma vez: a
+# entrega tardia nunca duplica); EXPIRED/ERROR = nunca saiu (descarta; a peca segue na fila); outro status = INCERTO.
+KINDS_WRITE_AHEAD = ("reel", "post")
+
+
+def _chave_wa(kind):
+    return f"{kind}_publicando"
+
+
+def _wa(state, kind, item, entrada=None):
+    """Contexto do write-ahead de uma peca: `entrada` = o write-ahead FINISHED de um run anterior (reaproveitar)."""
+    return {"state": state, "kind": kind, "id": item["id"], "entrada": entrada}
+
+
+def _wa_gravar(wa, cont, extras=None):
+    reg = {"id": wa["id"], "container": cont, "at": dt.datetime.now(dt.timezone.utc).isoformat(), "commit": REF}
+    reg.update({k: v for k, v in (extras or {}).items() if v is not None})
+    wa["state"][_chave_wa(wa["kind"])] = reg
+    save_state(wa["state"])                       # no disco ANTES do media_publish
+
+
+def _wa_tirar(state, kind, item_id):
+    ent = state.get(_chave_wa(kind))
+    if isinstance(ent, dict) and ent.get("id") == item_id:
+        state.pop(_chave_wa(kind), None)
+        return True
+    return False
 
 def _avisar_token_parado(auth_error):
     """Mensagem unica de encerramento quando o token morre. Sai com exit 1 para o
@@ -258,6 +353,76 @@ def api_get(path, params):
     r = requests.get(f"{HOST}/{path}", params=params, timeout=60)
     if r.status_code >= 400: _erro_api(r, f"GET {path}")
     return r.json()
+_CONFIRMACAO = None   # publicacao confirmada pelo conteiner depois de erro (vai para o registro, ver log())
+
+def _recusa_de_nao_pronto(e):
+    """A Meta recusou o media_publish porque o conteiner ainda nao estava pronto (code 9007 / subcode 2207027,
+    o caso real de 16/08-08/09): ela diz que NAO publicou — falha comum do item (o cron retenta), nunca incerto."""
+    p = getattr(e, "payload", None)
+    err = p.get("error") if isinstance(p, dict) else None
+    return isinstance(err, dict) and (err.get("code") == 9007 or err.get("error_subcode") == 2207027)
+
+def _publicar_conteiner(cont, wa=None, extras=None):
+    """media_publish que NAO confunde resposta de erro com 'nao saiu' (licao da casa: HTTP 500 da Meta
+    ENTREGA). Qualquer excecao — inclusive AuthError, que ja' foi classificacao errada de um 500
+    transitorio — so' sobe depois de perguntar ao conteiner: PUBLISHED = saiu (devolve None: sem
+    media_id, registro com `confirmado_por`); FINISHED = nao saiu AINDA (a excecao sobe, mas o write-ahead
+    FICA: o proximo run pergunta de novo a este conteiner e publica o MESMO — a Meta entrega depois do 500);
+    ERROR ou EXPIRED, ou a recusa 'conteiner nao pronto' (9007/2207027) = nao saiu (write-ahead descartado;
+    o cron retenta com conteiner novo); qualquer outro status (IN_PROGRESS depois de 500...), ou a consulta
+    falhando = PublicacaoIncerta. `wa` (reel/post): o conteiner vai ao estado e ao disco ANTES do
+    media_publish (job morto DENTRO da chamada deixa o rastro); o log() / _registrar_incerto o tiram."""
+    global _CONFIRMACAO
+    _CONFIRMACAO = None
+    if wa is not None:
+        _wa_gravar(wa, cont, extras)
+    try:
+        mid = (api_post(f"{IG_USER_ID}/media_publish", {"creation_id": cont}) or {}).get("id")
+        if mid:
+            return mid
+        erro = RuntimeError(f"media_publish do conteiner {cont} sem id na resposta")
+    except Exception as e:                           # noqa: BLE001 — decide pelo conteiner
+        erro = e
+    try:
+        st = (api_get(cont, {"fields": "status_code"}) or {}).get("status_code")
+    except Exception as e2:                          # noqa: BLE001
+        raise PublicacaoIncerta(f"media_publish falhou ({str(erro)[:200]}) e a consulta ao conteiner {cont} "
+                                f"tambem ({str(e2)[:120]}) — pode ter ido ao ar", cont,
+                                auth=isinstance(erro, AuthError) or isinstance(e2, AuthError)) from erro
+    if st == "PUBLISHED":
+        _CONFIRMACAO = {"container": cont, "confirmado_por": "status_code PUBLISHED depois de erro"}
+        print(f"::warning::media_publish respondeu erro ({str(erro)[:200]}), mas o conteiner {cont} esta "
+              "PUBLISHED: a peca SAIU (registrada sem media_id, nao sera republicada).", flush=True)
+        return None
+    if st == "FINISHED":
+        # pronto e nao publicado NESTE INSTANTE — o que nao prova que nao saiu: a Meta entrega depois do 500. Com
+        # write-ahead, ele fica: o proximo run pergunta de novo e, se ainda FINISHED, publica o MESMO conteiner.
+        if wa is not None:
+            print(f"::warning::media_publish do conteiner {cont} respondeu erro e ele esta FINISHED: isso NAO prova "
+                  "que nao saiu (a Meta entrega depois do 500). Write-ahead mantido: o proximo run pergunta de novo a "
+                  "ESTE conteiner e, se ainda FINISHED, publica o MESMO — nunca cria outro.", flush=True)
+        raise erro
+    if st in ("ERROR", "EXPIRED") or _recusa_de_nao_pronto(erro):
+        # nao saiu: ERROR/EXPIRED = conteiner que nunca vira midia; 'nao pronto' = a Meta recusou dizendo por
+        # que. Token morto segue AuthError; o resto e' falha do item.
+        if wa is not None and _wa_tirar(wa["state"], wa["kind"], wa["id"]):
+            save_state(wa["state"])
+        raise erro
+    raise PublicacaoIncerta(f"media_publish falhou ({str(erro)[:200]}) e o conteiner {cont} esta {st!r} — "
+                            "pode ter ido ao ar", cont, auth=isinstance(erro, AuthError)) from erro
+
+def _registrar_incerto(state, falhas, item_id, kind, erro, now):
+    """Peca que PODE estar no ar: registro `<kind>_incerto` (o id entra em `done`: nao republica sozinho),
+    estado salvo na hora e falha registrada. -> o erro, se havia token morto no caminho (para tudo)."""
+    state["published"].append({"id": item_id, "kind": f"{kind}_incerto", "media_id": None, "at": now.isoformat(),
+                               "container": getattr(erro, "container", None), "erro": str(erro)[:300]})
+    _wa_tirar(state, kind, item_id)              # o registro incerto guarda o conteiner
+    save_state(state)
+    print(f"::error::{kind} {item_id}: publicacao INCERTA — {erro}. Registrado como '{kind}_incerto' (nao volta a "
+          "fila sozinho). Confira no app e resolva no state/published.json (docs/02_RUNBOOK.md §12).")
+    falhas.append(f"{kind} {item_id} (publicacao INCERTA)")
+    return erro if getattr(erro, "auth", False) else None
+
 def wait_finished(cid, tries=10, delay=6):
     for _ in range(tries):
         st = api_get(cid, {"fields": "status_code"}).get("status_code")
@@ -362,8 +527,13 @@ def _cfm_guard(item):
         print(f"!!! {msg} (item={item.get('id', '?')}) — NAO publicado, revisar.", file=sys.stderr)
         raise RuntimeError(msg)
 
-def publish_post(item):
+def publish_post(item, wa=None):
     _cfm_guard(item)
+    reuso = (wa or {}).get("entrada")
+    if reuso:
+        print(f"  reaproveitando o conteiner {reuso['container']} do write-ahead de {reuso.get('at')} (FINISHED: "
+              "nao se cria outro)", flush=True)
+        return _publicar_conteiner(reuso["container"], wa)
     imgs = item["images"]; cap = item.get("caption", ""); alt = _alt(item)
     if len(imgs) == 1:
         cont = api_post(f"{IG_USER_ID}/media", _collab(_loc({"image_url": raw_url(imgs[0]), "caption": cap, "alt_text": alt}), item))["id"]
@@ -372,11 +542,11 @@ def publish_post(item):
         kids = [api_post(f"{IG_USER_ID}/media", {"image_url": raw_url(p), "is_carousel_item": "true", "alt_text": alt})["id"] for p in imgs]
         cont = api_post(f"{IG_USER_ID}/media", _collab(_loc({"media_type": "CAROUSEL", "children": ",".join(kids), "caption": cap}), item))["id"]
     wait_finished(cont)
-    return api_post(f"{IG_USER_ID}/media_publish", {"creation_id": cont})["id"]
+    return _publicar_conteiner(cont, wa)
 def publish_story_img(image_path):
     cont = api_post(f"{IG_USER_ID}/media", {"image_url": raw_url(image_path), "media_type": "STORIES"})["id"]
     wait_finished(cont)
-    return api_post(f"{IG_USER_ID}/media_publish", {"creation_id": cont})["id"]
+    return _publicar_conteiner(cont)
 def publish_story(item):
     _cfm_guard(item)
     return publish_story_img(item["image"])
@@ -426,11 +596,30 @@ def proximo_reel(reels, done, state, agora_brt):
     return regra_reels.proximo_reel(reels, done, state, agora_brt, cota=LAMINAS_POR_SEMANA,
                                     dias_conversa=DIAS_ENTRE_CONVERSAS, conversa_ativa=CONVERSAS_ATIVAS)
 
+def _erro_transitorio(e):
+    """A Meta NAO respondeu sobre o pedido (HTTP 5xx, is_transient, code 1/2, throttling): nao e' recusa de parametro."""
+    st, p = getattr(e, "status", None), getattr(e, "payload", None)
+    err = p.get("error") if isinstance(p, dict) else None
+    if not isinstance(err, dict):
+        err = {}
+    return (isinstance(st, int) and st >= 500) or str(err.get("is_transient", "")).lower() == "true" \
+        or err.get("code") in (1, 2) or err.get("code") in RATE_CODES
+
+
 _FORMATO_REEL = None
-def publish_reel(item):
-    global _MODO_REEL, _FORMATO_REEL
+def publish_reel(item, wa=None):
+    global _MODO_REEL, _FORMATO_REEL, _ROTULO_REEL
     _FORMATO_REEL = _formato(item)
     _cfm_guard(item)
+    reuso = (wa or {}).get("entrada")
+    if reuso:
+        # write-ahead de um run anterior com o conteiner FINISHED: publica o MESMO (o ramo/rotulo vem do registro)
+        _MODO_REEL = reuso.get("modo_reel") or "normal"
+        _ROTULO_REEL = reuso.get("rotulo_ia")
+        print(f"  reaproveitando o conteiner {reuso['container']} do write-ahead de {reuso.get('at')} (FINISHED: "
+              "nao se cria outro)", flush=True)
+        return _publicar_conteiner(reuso["container"], wa,
+                                   {"modo_reel": _MODO_REEL, "rotulo_ia": _ROTULO_REEL, "formato": _FORMATO_REEL})
     # alt_text NAO e' suportado em reels (so imagens); location_id e collaborators sao suportados.
     base = _rotulo_ia(_collab(_loc({"media_type": "REELS", "video_url": raw_url(item["video"]),
                                     "caption": item.get("caption", "")}), item), item)
@@ -450,6 +639,12 @@ def publish_reel(item):
             # engoliria a falha de auth e o robo tentaria de novo a' toa.
             raise
         except RuntimeError as e:
+            if _erro_transitorio(e):
+                # 25/10/2026 (auditoria de fechamento): desde que o 500 transitorio deixou de ser AuthError, ele caia
+                # aqui e virava 'trial_params recusado' — a peca do experimento (sorteio congelado) saia no GRID como
+                # reel normal. 500/is_transient/throttling NAO e' recusa do parametro: falha do item, o cron tenta o
+                # trial de novo.
+                raise
             # Fallback robusto: se a API recusar trial_params, publica reel normal (nao trava o robo).
             print(f"  ! trial_params recusado ({e}); publicando como reel normal.", file=sys.stderr)
             cont = None
@@ -458,9 +653,11 @@ def publish_reel(item):
         p = dict(base); p["share_to_feed"] = "true"
         cont = api_post(f"{IG_USER_ID}/media", p)["id"]
     wait_finished(cont, tries=30, delay=10)
-    return api_post(f"{IG_USER_ID}/media_publish", {"creation_id": cont})["id"]
+    return _publicar_conteiner(cont, wa, {"modo_reel": _MODO_REEL, "rotulo_ia": _ROTULO_REEL, "formato": _FORMATO_REEL})
 def log(state, item_id, kind, mid, now):
     reg = {"id": item_id, "kind": kind, "media_id": mid, "at": now.isoformat()}
+    if mid is None and _CONFIRMACAO:
+        reg.update(_CONFIRMACAO)            # saiu apesar do erro: o conteiner confirmou (sem media_id)
     if kind == "reel" and _MODO_REEL:
         # Prova por dado de qual ramo publicou (trial / fallback / normal). A auditoria v1
         # nao conseguiu confirmar isso em 18 reels de julho porque nada era gravado.
@@ -473,7 +670,336 @@ def log(state, item_id, kind, mid, now):
         # hoje (peca nova retirada da fila depois de publicada passava a contar como lamina)
         reg["formato"] = _FORMATO_REEL
     state["published"].append(reg)
+    _wa_tirar(state, kind, item_id)          # a peca esta no registro: o write-ahead dela acabou
 def next_item(items, done): return next((x for x in items if x["id"] not in done), None)
+
+
+def _resolver_write_ahead_feed(state, falhas):
+    """Write-ahead de reel/post que um run anterior deixou (erro no media_publish com o conteiner FINISHED, ou job
+    morto DENTRO da chamada): pergunta a ESTE conteiner antes de qualquer decisao.
+      PUBLISHED      -> a peca SAIU (entrega tardia ou job morto): registra sem media_id (`confirmado_por`) e marca o dia;
+      FINISHED       -> nao saiu ainda: o bloco do tipo publica o MESMO conteiner, antes da fila (nunca cria outro);
+      EXPIRED/ERROR  -> nunca saiu (a Meta so' expira conteiner NAO publicado): descarta, a peca segue na fila;
+      outro status   -> `<kind>_incerto` (fora da fila, run vermelho ate a conferencia — RUNBOOK §12);
+      consulta falha -> nada daquele tipo sai neste run (vermelho); o proximo pergunta de novo.
+    -> ({kind: write-ahead FINISHED}, {kind: (id, motivo do bloqueio)})."""
+    reuso, bloqueio = {}, {}
+    for kind in KINDS_WRITE_AHEAD:
+        ent = state.get(_chave_wa(kind))
+        if not ent:
+            continue
+        if not isinstance(ent, dict) or not ent.get("id") or not ent.get("container"):
+            bloqueio[kind] = (None, f"write-ahead de {kind} ilegivel ({str(ent)[:150]}): nada deste tipo sai ate a "
+                                    "conferencia no app (docs/02_RUNBOOK.md §12)")
+            continue
+        iid, c = ent["id"], ent["container"]
+        rot = f"{kind} {iid} (conteiner {c}, write-ahead de {ent.get('at')})"
+        if any(e.get("id") == iid and e.get("kind") in (kind, f"{kind}_incerto") for e in state["published"]):
+            print(f"{rot}: a peca ja esta no registro — write-ahead descartado.")
+            state.pop(_chave_wa(kind), None); save_state(state)
+            continue
+        try:
+            stc = (api_get(c, {"fields": "status_code"}) or {}).get("status_code")
+        except AuthError:
+            raise
+        except Exception as e:                       # noqa: BLE001 — sem resposta nao se decide (nem se publica)
+            bloqueio[kind] = (iid, f"{rot}: a consulta ao conteiner falhou ({str(e)[:200]}) — nada deste tipo sai "
+                                   "neste run; o proximo pergunta de novo")
+            continue
+        if stc == "PUBLISHED":
+            reg = {"id": iid, "kind": kind, "media_id": None, "at": ent.get("at"), "container": c,
+                   "confirmado_por": "status_code PUBLISHED (write-ahead de run anterior)"}
+            reg.update({k: ent[k] for k in ("modo_reel", "rotulo_ia", "formato") if ent.get(k) is not None})
+            state["published"].append(reg)
+            campo = "last_reel_date" if kind == "reel" else "last_post_date"
+            d = _data_brt(ent.get("at"))
+            if d is not None and (state.get(campo) or "") < d.isoformat():
+                state[campo] = d.isoformat()
+            state.pop(_chave_wa(kind), None); save_state(state)
+            print(f"::warning::{rot}: o conteiner esta PUBLISHED — a peca SAIU (a Meta entregou depois do erro, ou o "
+                  "job morreu no media_publish). Registrada sem media_id; NAO sera republicada.")
+        elif stc == "FINISHED":
+            reuso[kind] = ent
+            print(f"{rot}: FINISHED — nao saiu ainda; este run publica o MESMO conteiner (nunca outro).")
+        elif stc in ("EXPIRED", "ERROR"):
+            state.pop(_chave_wa(kind), None); save_state(state)
+            print(f"{rot}: conteiner {stc} — nunca saiu; write-ahead descartado (a peca segue na fila).")
+        else:
+            state["published"].append({"id": iid, "kind": f"{kind}_incerto", "media_id": None, "at": ent.get("at"),
+                                       "container": c, "status": stc, "erro": f"write-ahead: conteiner {stc!r}"})
+            state.pop(_chave_wa(kind), None); save_state(state)
+            _falhou(falhas, f"{kind} {iid}", RuntimeError(
+                f"publicacao INCERTA: o conteiner do write-ahead esta {stc!r} — pode ter ido ao ar. Registrado como "
+                f"'{kind}_incerto' (nao volta a fila sozinho); confira no app (docs/02_RUNBOOK.md §12)"))
+    return reuso, bloqueio
+
+
+def _escolher_com_write_ahead(kind, biblioteca, reuso, bloqueio, falhas, escolher):
+    """(item, write-ahead a reaproveitar). O conteiner FINISHED de um run anterior vem ANTES da fila: publicar
+    outra peca deixaria aquele conteiner solto (a Meta ainda pode entrega-lo). Bloqueio = falha, nada sai."""
+    if kind in bloqueio:
+        _falhou(falhas, f"{kind} (write-ahead)", RuntimeError(bloqueio[kind][1]))
+        return None, None
+    ent = reuso.get(kind)
+    if ent:
+        it = next((x for x in biblioteca if x.get("id") == ent.get("id")), None)
+        if it is None:
+            _falhou(falhas, f"{kind} {ent.get('id')} (write-ahead)", RuntimeError(
+                f"o conteiner {ent.get('container')} preparado para {ent.get('id')} esta FINISHED, mas a peca saiu da "
+                "biblioteca: nada deste tipo sai ate o conteiner expirar (24 h) ou a conferencia (docs/02_RUNBOOK.md §12)"))
+            return None, None
+        return it, ent
+    return escolher(), None
+
+
+def _temas_agendados(reels, pub, brt):
+    """{tema: [datas]} dos reels que a fila ainda vai publicar (mesma projeção do PROGRAMACAO.md)."""
+    import publish_agenda, temas_conteudo
+    out = {}
+    hoje = brt.date()
+    for d, i in publish_agenda.projeta_reels(reels, pub, hoje, any(
+            e.get("kind") == "reel" and e.get("at", "")[:10] and
+            dt.datetime.fromisoformat(e["at"]).astimezone(BRT).date() == hoje for e in pub), horizonte_dias=120):
+        t = temas_conteudo.tema_de(i)
+        if t:
+            out.setdefault(t, []).append(d)
+    return out
+
+
+STATE_PUBLICANDO = "story_nova_publicando"   # write-ahead da parte em media_publish (publicar_stories.py)
+
+
+def _data_brt(iso):
+    try:
+        return dt.datetime.fromisoformat(iso).astimezone(BRT).date()
+    except (TypeError, ValueError):
+        return None
+
+
+def _resolver_write_ahead(state, hoje):
+    """Write-ahead que um run anterior deixou (job morto DENTRO do media_publish, ou erro com o conteiner
+    FINISHED): pergunta ao conteiner ANTES de qualquer decisao (publicar_stories.resolver_publicando).
+    PUBLISHED = a parte saiu (registra); FINISHED do mesmo dia = reaproveita o MESMO conteiner; EXPIRED,
+    ou FINISHED de outro dia = nunca saiu (descarta); o resto = parte INCERTA.
+    -> ({story: {parte: conteiner}} para reaproveitar, story que esta conferencia completou ou None)."""
+    import checar_stories as CS, publicar_stories as PS
+    ent = state.get(STATE_PUBLICANDO)
+    if not ent:
+        return {}, None
+    sid, i, c = ent.get("story"), ent.get("parte"), ent.get("container")
+    rot = f"story {sid} parte {i + 1 if isinstance(i, int) else i} (conteiner {c}, write-ahead de {ent.get('at')})"
+    try:
+        decisao, st = PS.resolver_publicando(ent, api_get)
+    except AuthError:
+        raise
+    except Exception as e:                       # noqa: BLE001 — sem resposta nao se decide (nem se publica)
+        raise RuntimeError(f"{rot}: a consulta ao conteiner falhou ({e}) — nada publicado; o proximo run "
+                           "pergunta de novo") from e
+    if decisao == "reusar" and _data_brt(ent.get("at")) == hoje:
+        print(f"{rot}: FINISHED — nao saiu; o MESMO conteiner sera reaproveitado (nao se cria outro).")
+        return {sid: {i: c}}, None
+    base = {"id": f"{sid}#{i}", "story": sid, "parte": i, "media_id": None, "at": ent.get("at"), "container": c,
+            "temas": ent.get("temas") or [], "sha256": ent.get("sha256"), "commit": ent.get("commit")}
+    state.pop(STATE_PUBLICANDO, None)
+    if decisao == "publicada":
+        state["published"].append(dict(base, kind="story_nova",
+                                        confirmado_por="status_code PUBLISHED (write-ahead de run anterior)"))
+        print(f"::warning::{rot}: o conteiner esta PUBLISHED — a parte SAIU (o run anterior morreu ou errou "
+              "no media_publish). Registrada sem media_id; nao sera republicada.")
+        completa = len(CS.partes_publicadas(state["published"]).get(sid, {})) == len(CS.PAPEIS)
+        d = _data_brt(ent.get("at"))
+        if completa and d is not None and (state.get("last_story_nova_date") or "") < d.isoformat():
+            state["last_story_nova_date"] = d.isoformat()
+        save_state(state)
+        return {}, (sid if completa else None)
+    if decisao in ("reusar", "descartar"):
+        print(f"{rot}: conteiner {st} — nunca saiu; registro descartado.")
+        save_state(state)
+        return {}, None
+    state["published"].append(dict(base, kind="story_nova_incerta", status=st, erro=f"write-ahead: conteiner {st!r}"))
+    save_state(state)
+    print(f"::error::{rot}: conteiner {st!r} — a parte pode ter ido ao ar. Registrada como INCERTA.")
+    return {}, None
+
+
+def _conferir_conta_antes_da_story(state, brt):
+    """GET {IG_USER_ID}/stories ANTES de criar conteiner (auditoria 24/10, publicacao#1): story de HOJE, a
+    partir das 12:30, que o estado nao conhece = outro run publicou com o estado velho (checkout de SHA
+    antigo, push perdido) ou houve story postada a mao. Nada sai: falha ALTO. Leitura que falha tambem
+    nao libera (guarda cega nao e' guarda). Parte registrada sem media_id (confirmada pelo conteiner)
+    desconta uma story desconhecida."""
+    import publicar_stories as PS
+    desde = dt.datetime(brt.year, brt.month, brt.day, STORY_NOVO_MIN // 60, STORY_NOVO_MIN % 60, tzinfo=BRT)
+    conhecidos, sem_id = set(), 0
+    for e in state["published"]:
+        if e.get("media_id"):
+            conhecidos.add(e["media_id"])
+        conhecidos.update(m for m in (e.get("media_ids") or []) if m)
+        if e.get("kind") == "story_nova" and not e.get("media_id"):
+            t = PS.instante(e.get("at"))
+            if t is not None and t >= desde:
+                sem_id += 1
+    try:
+        novas = PS.stories_desconhecidas(api_get, IG_USER_ID, conhecidos, desde)
+    except AuthError:
+        raise
+    except Exception as e:                       # noqa: BLE001
+        raise RuntimeError(f"nao deu para conferir a conta antes da story (GET {IG_USER_ID}/stories: {e}) — "
+                           "nada publicado; o proximo run tenta de novo") from e
+    if len(novas) > sem_id:
+        ids = ", ".join(f"{x.get('id')} ({x.get('timestamp')})" for x in novas)
+        raise RuntimeError(f"a conta tem {len(novas)} story(ies) de hoje depois das 12:30 que o estado NAO conhece "
+                           f"[{ids}]" + (f" ({sem_id} parte(s) sem media_id descontada(s))" if sem_id else "") +
+                           ": outro run publicou com o estado velho, ou houve story manual. NADA publicado — confira "
+                           "no app e registre no state/published.json (docs/02_RUNBOOK.md §12).")
+
+
+def publicar_story_nova(state, reels, brt, now, forcar=None, falhas=None):
+    """Publica a story da geração nova do dia (ou a `forcar`). Devolve True se algo saiu (ou se a conferência
+    do write-ahead completou a story de hoje). A MESMA régua da página (checar_stories, topo do módulo):
+    write-ahead -> incertas -> retomada -> candidatas -> escolher -> veredito -> conta -> publicar.
+      - pendente de aprovação: ::warning:: e FORA da escolha (nunca trava a aprovada);
+      - pendente com formato/conteúdo quebrado: a escolhida sai e o job fica vermelho (`falhas`);
+      - incompleta de outro dia, parte incerta, aprovada barrada pelo portão, conta com story de hoje que
+        o estado não conhece: exceção (job vermelho, nada publicado);
+      - FORCE (decisão humana): story não aprovada, já completa ou barrada = exceção;
+      - last_story_nova_date só quando ESTE run completou a story."""
+    import checar_stories as CS, publicar_stories as PS, temas_conteudo
+    fila = load_json(STORIES_NOVOS_FILE, [])
+    aprov = load_json(APROVACOES_FILE, {"lotes": []})
+    reels_por_id = {r["id"]: r for r in reels}
+    hoje = brt.date()
+    erros_fila = []
+    reuso, concluida = _resolver_write_ahead(state, hoje)
+    pub = state["published"]
+    inc = CS.incertas(pub)
+    if inc:
+        raise RuntimeError(f"story(ies) com parte INCERTA {inc}: pode estar no ar. Confira no app e resolva no "
+                           "state/published.json antes de publicar outra (docs/02_RUNBOOK.md §12, story_nova_incerta).")
+    if concluida and forcar in (None, concluida) and state.get("last_story_nova_date") == hoje.isoformat():
+        print(f"Story {concluida} completada pela conferência do contêiner (write-ahead do run anterior).")
+        return True
+    st_ret, situ, det = CS.retomada(fila, pub, hoje)
+    if forcar:
+        st = next((x for x in fila if x.get("id") == forcar), None)
+        if st is None:
+            raise RuntimeError(f"story {forcar} não está em stories_cf.json")
+        feitas = CS.partes_publicadas(pub).get(forcar, {})
+        if len(feitas) >= len(CS.PAPEIS):
+            quando = sorted({str(e.get("at", ""))[:10] for e in pub if e.get("story") == forcar and e.get("kind") == "story_nova"})
+            raise RuntimeError(f"FORCE story:{forcar}: já publicada inteira ({', '.join(quando)}) — nada a publicar "
+                               "(pedido humano que não publica não fica verde; o dia NÃO foi marcado)")
+        if CS.data_do_reel(st.get("reel_ref"), pub) is None:
+            raise RuntimeError(f"story {forcar}: o reel {st.get('reel_ref')} ainda não saiu no grid — a tela 3 diria "
+                               "'Vídeo completo no perfil' sem o vídeo no perfil")
+        if st_ret is not None and st_ret.get("id") != forcar:
+            raise RuntimeError(f"FORCE story:{forcar}: a story {st_ret['id']} está incompleta ({det}) — resolva-a antes "
+                               "de forçar outra")
+        if situ == "incompleta_expirada":
+            raise RuntimeError(det)
+        outro = [x for x in reuso if x != forcar]
+        if outro:
+            raise RuntimeError(f"FORCE story:{forcar}: a story {outro[0]} tem contêiner preparado hoje (write-ahead) — "
+                               "complete-a antes de forçar outra")
+        motivo = "FORCE" + (" (as partes que faltam)" if feitas else "")
+    else:
+        if situ == "incompleta_expirada":
+            raise RuntimeError(det)
+        if situ == "retomada":
+            st, motivo = st_ret, "retomada (as partes que faltam)"
+            outro = [x for x in reuso if x != st.get("id")]
+            if outro:
+                raise RuntimeError(f"story {outro[0]} tem contêiner preparado (write-ahead) e {st.get('id')} está "
+                                   "incompleta no mesmo dia — confira no app (docs/02_RUNBOOK.md §12)")
+        elif reuso:
+            sid_r = next(iter(reuso))
+            st = next((x for x in fila if x.get("id") == sid_r), None)
+            if st is None:
+                raise RuntimeError(f"story {sid_r} tem contêiner preparado hoje (write-ahead), mas saiu do "
+                                   "stories_cf.json — confira no app (docs/02_RUNBOOK.md §12)")
+            motivo = "retomada (contêiner preparado pelo run anterior)"
+        else:
+            cands, fora = CS.candidatas(fila, pub, aprov, hoje, reels_por_id)
+            for sid_f, nivel, msg in fora:
+                if nivel == "aviso":
+                    print(f"::warning::{msg}")
+                else:
+                    erros_fila.append(msg)
+                    if falhas is not None:
+                        _falhou(falhas, f"story {sid_f} (fila, portão)", RuntimeError(msg))
+                    else:
+                        print(f"::error::{msg}")
+            st, motivo = CS.escolher(cands, pub, hoje, futuras=_temas_agendados(reels, pub, brt), fila=fila)
+            if st is None:
+                print(f"Stories novos: nenhuma story liberada hoje ({motivo}).")
+                if erros_fila and falhas is None:
+                    raise RuntimeError("stories da fila com erro de portão: " + "; ".join(erros_fila))
+                return False
+    sid = st["id"]
+    v = CS.veredito(st, aprov, reels_por_id)
+    k = len(CS.partes_publicadas(pub).get(sid, {}))
+    if not v["pode_sair"]:
+        if v["situacao"] != "aprovada":
+            if k:
+                raise RuntimeError(f"story {sid} com {k}/{len(CS.PAPEIS)} parte(s) no ar e SEM aprovação válida "
+                                   f"({v['situacao']}: {v['detalhe']}): nada sai — decida (docs/02_RUNBOOK.md §12)")
+            if forcar:
+                raise RuntimeError(f"FORCE story:{sid}: aguardando aprovação do Rafael ({v['situacao']}: {v['detalhe']}) "
+                                   "— story só sai APROVADA")
+            raise RuntimeError(f"story {sid} não pode sair ({v['situacao']}: {v['detalhe']})")
+        raise RuntimeError(f"story {sid} BLOQUEADA pelo portão: " + "; ".join(m for _, m in v["erros"]))
+    meta = CS.carregar(CS.irmao_de(st), {})
+    partes = [{"arquivo": p["arquivo"], "tipo": "video"} for p in meta["partes"]]
+    shas = [p.get("sha256") for p in meta["partes"]]
+    ja = CS.partes_publicadas(pub).get(sid, {})
+    prev = {}
+    ent = state.get(STATE_PUBLICANDO) or {}
+    for i, c in (reuso.get(sid) or {}).items():
+        if ent.get("sha256") and isinstance(i, int) and i < len(shas) and ent["sha256"] != shas[i]:
+            # FINISHED = nunca saiu: largar o contêiner velho é seguro; publicá-lo seria sair o render antigo
+            print(f"write-ahead da parte {i + 1}: o render mudou desde então — o contêiner velho NÃO é reaproveitado.")
+            state.pop(STATE_PUBLICANDO, None)
+            save_state(state)
+        else:
+            prev[i] = c
+    _conferir_conta_antes_da_story(state, brt)
+    temas = sorted(temas_conteudo.temas_do_item(st))
+    print(f"Story {sid} (reel {st['reel_ref']}) [{motivo}] — publicando partes "
+          f"{[i + 1 for i in range(len(partes)) if i not in ja]}...")
+
+    def antes(i, c):
+        # write-ahead: o contêiner vai ao estado e ao disco ANTES do media_publish (job morto no meio da
+        # chamada deixa o rastro; o próximo run pergunta ao contêiner antes de criar outro)
+        state[STATE_PUBLICANDO] = {"story": sid, "parte": i, "container": c, "at": now.isoformat(),
+                                   "sha256": shas[i] if i < len(shas) else None, "commit": REF, "temas": temas}
+        save_state(state)
+
+    def registrar(i, mid, info):
+        reg = {"id": f"{sid}#{i}", "kind": "story_nova_incerta" if info.get("incerto") else "story_nova",
+               "story": sid, "parte": i, "media_id": mid, "at": now.isoformat(),
+               "temas": temas,                         # regra de distância entre temas
+               "sha256": shas[i] if i < len(shas) else None,   # a retomada confere que o render não mudou
+               "commit": REF}
+        reg.update({k_: v_ for k_, v_ in info.items() if k_ != "incerto"})
+        state["published"].append(reg)
+        state.pop(STATE_PUBLICANDO, None)
+        save_state(state)                      # a parte que saiu não volta para a fila
+        print(f"  parte {i + 1}/{len(partes)} -> {mid or reg.get('confirmado_por') or 'INCERTA'}", flush=True)
+
+    saiu = PS.publicar_partes(sid, partes, ja, ig_user=IG_USER_ID, api_post=api_post, api_get=api_get,
+                              raw_url=raw_url, registrar=registrar, antes_de_publicar=antes, conteineres=prev,
+                              erros_fatais=(AuthError,))
+    completa = len(CS.partes_publicadas(state["published"]).get(sid, {})) == len(partes)
+    if saiu and completa:
+        state["last_story_nova_date"] = hoje.isoformat()
+        save_state(state)
+    prob = PS.conferir_no_ar(saiu, api_get, erros_fatais=(AuthError,))
+    if prob:
+        raise RuntimeError(f"story {sid} publicada, mas a conferência no ar falhou: " + "; ".join(prob))
+    print(f"Story {sid} OK -> {len(saiu)} parte(s) neste run" + ("" if completa else " (story INCOMPLETA)"))
+    if erros_fila and falhas is None:
+        raise RuntimeError("stories da fila com erro de portão: " + "; ".join(erros_fila))
+    return bool(saiu)
 
 def main():
     posts   = load_json(POSTS_FILE, [])
@@ -489,6 +1015,22 @@ def main():
     falhas = []         # falhas NAO-auth: o run termina VERMELHO (ver _falhou)
 
     _avisar_validade_do_token()
+
+    # Peca com publicacao INCERTA (media_publish errou e o conteiner nao confirmou): fica fora da fila
+    # (republicar seria duplicar) e TODO run fica vermelho ate a conferencia humana (RUNBOOK §12).
+    for e in state["published"]:
+        if e.get("kind") in KINDS_INCERTOS:
+            _falhou(falhas, f"{e['kind']} {e.get('id')}", RuntimeError(
+                f"publicacao INCERTA desde {e.get('at')} (conteiner {e.get('container')}) — confira no app e "
+                "resolva no state/published.json (docs/02_RUNBOOK.md §12)"))
+
+    # Write-ahead de reel/post que um run anterior deixou: pergunta ao conteiner ANTES de qualquer decisao
+    # (entrega tardia depois do 500, job morto no media_publish). Ver _resolver_write_ahead_feed.
+    try:
+        wa_reuso, wa_bloq = _resolver_write_ahead_feed(state, falhas)
+    except AuthError as e:                       # token morto ja' na consulta: nada decidido, nada publicado
+        _avisar_token_parado(e)
+    done = {e["id"] for e in state["published"]}
 
     # ALARME FAIL-LOUD (B6-iii): N ultimas pecas do feed com ZERO curtidas = publicar no vazio.
     # Avaliado antes de qualquer publicacao agendada (FORCE_ID e' decisao humana e passa direto).
@@ -517,10 +1059,22 @@ def main():
             try:
                 mid = publish_story(it); log(state, it["id"], "story", mid, now); changed = True
                 print(f"Destaque {it['id']} OK -> {mid}")
+            except PublicacaoIncerta as e:
+                changed = True
+                if _registrar_incerto(state, falhas, it["id"], "story", e, now): auth_error = e; break
             except AuthError as e: auth_error = e; break
             except Exception as e: _falhou(falhas, f"destaque {it['id']}", e)
         if changed: save_state(state)
         if auth_error: _avisar_token_parado(auth_error)
+        return falhas
+
+    if FORCE_ID.startswith("story:"):
+        # decisão humana: publica AGORA a story da geração nova (portão e aprovação continuam valendo)
+        try:
+            if not publicar_story_nova(state, reels, brt, now, forcar=FORCE_ID.split(":", 1)[1], falhas=falhas):
+                _falhou(falhas, f"FORCE {FORCE_ID}", RuntimeError("nada publicado neste run"))
+        except AuthError as e: _avisar_token_parado(e)
+        except Exception as e: _falhou(falhas, f"FORCE {FORCE_ID}", e)
         return falhas
 
     if FORCE_ID:
@@ -535,12 +1089,27 @@ def main():
             # FORCE_ID digitado errado tambem e' falha: antes saia verde sem publicar nada.
             _falhou(falhas, f"FORCE_ID={FORCE_ID}", ValueError("id nao encontrado em nenhuma biblioteca"))
             return falhas
+        wa_f = None
+        if kind in KINDS_WRITE_AHEAD:
+            ent_f = wa_reuso.get(kind)
+            if kind in wa_bloq:                  # sem saber se o conteiner preparado saiu, nada deste tipo sai (nem
+                _falhou(falhas, f"FORCE {FORCE_ID}", RuntimeError(wa_bloq[kind][1]))   # gravar outro write-ahead por cima)
+                return falhas
+            if ent_f and ent_f.get("id") != it["id"]:
+                # gravar o write-ahead desta peca apagaria o do conteiner FINISHED da outra (que a Meta ainda pode entregar)
+                _falhou(falhas, f"FORCE {FORCE_ID}", RuntimeError(
+                    f"o {kind} {ent_f.get('id')} tem conteiner preparado (write-ahead FINISHED, {ent_f.get('container')}): "
+                    "o proximo run agendado do tipo o publica primeiro — FORCE de outra peca espera (docs/02_RUNBOOK.md §12)"))
+                return falhas
+            wa_f = _wa(state, kind, it, ent_f)
         try:
-            if kind == "post": mid = publish_post(it)
+            if kind == "post": mid = publish_post(it, wa=wa_f)
             elif kind == "seq": mid = publish_sequence(it)[0]
             elif kind == "story": mid = publish_story(it)
-            else: mid = publish_reel(it)
+            else: mid = publish_reel(it, wa=wa_f)
             log(state, it["id"], kind, mid, now); save_state(state); print(f"FORCE {FORCE_ID} OK -> {mid}")
+        except PublicacaoIncerta as e:
+            if _registrar_incerto(state, falhas, it["id"], kind, e, now): _avisar_token_parado(e)
         except AuthError as e: _avisar_token_parado(e)
         except Exception as e: _falhou(falhas, f"FORCE {FORCE_ID}", e)
         return falhas
@@ -552,28 +1121,34 @@ def main():
 
     # POSTS (feed)
     if POSTS_ATIVOS and brt.weekday() in POST_WEEKDAYS and mod >= POST_MIN and state["last_post_date"] != today:
-        it = next_item(posts, done)
+        it, ent_wa = _escolher_com_write_ahead("post", posts, wa_reuso, wa_bloq, falhas, lambda: next_item(posts, done))
         if it:
             try:
-                mid = publish_post(it); log(state, it["id"], "post", mid, now)
-                done.add(it["id"]); state["last_post_date"] = today; changed = True
-                print(f"Post {it['id']} OK -> {mid}")
+                mid = publish_post(it, wa=_wa(state, "post", it, ent_wa)); log(state, it["id"], "post", mid, now)
+                done.add(it["id"]); state["last_post_date"] = today; changed = True; wa_reuso.pop("post", None)
+                print(f"Post {it['id']} OK -> {mid or 'confirmado pelo conteiner'}")
+            except PublicacaoIncerta as e:
+                done.add(it["id"]); state["last_post_date"] = today; changed = True; wa_reuso.pop("post", None)
+                auth_error = _registrar_incerto(state, falhas, it["id"], "post", e, now) or auth_error
             except AuthError as e: auth_error = e
             except Exception as e: _falhou(falhas, f"post {it['id']}", e)
-        else:
+        elif "post" not in wa_bloq and "post" not in wa_reuso:
             print("Biblioteca de POSTS esgotada — hora de reabastecer.")
 
     # CARROSSEL EXTRA (4o/sem) — dia-duplo com o Reel; horario escalonado (11h) p/ nao colidir
     if POSTS_ATIVOS and not auth_error and brt.weekday() in POST2_WEEKDAYS and mod >= POST2_MIN and state["last_post_date"] != today:
-        it = next_item(posts, done)
+        it, ent_wa = _escolher_com_write_ahead("post", posts, wa_reuso, wa_bloq, falhas, lambda: next_item(posts, done))
         if it:
             try:
-                mid = publish_post(it); log(state, it["id"], "post", mid, now)
-                done.add(it["id"]); state["last_post_date"] = today; changed = True
-                print(f"Post extra {it['id']} OK -> {mid}")
+                mid = publish_post(it, wa=_wa(state, "post", it, ent_wa)); log(state, it["id"], "post", mid, now)
+                done.add(it["id"]); state["last_post_date"] = today; changed = True; wa_reuso.pop("post", None)
+                print(f"Post extra {it['id']} OK -> {mid or 'confirmado pelo conteiner'}")
+            except PublicacaoIncerta as e:
+                done.add(it["id"]); state["last_post_date"] = today; changed = True; wa_reuso.pop("post", None)
+                auth_error = _registrar_incerto(state, falhas, it["id"], "post", e, now) or auth_error
             except AuthError as e: auth_error = e
             except Exception as e: _falhou(falhas, f"post extra {it['id']}", e)
-        else:
+        elif "post" not in wa_bloq and "post" not in wa_reuso:
             print("Biblioteca de POSTS esgotada (extra) — hora de reabastecer.")
 
     # SEQUENCIA DIARIA (story serializado, 5 frames)
@@ -583,23 +1158,42 @@ def main():
             try:
                 print(f"Sequencia {it['id']} ({it.get('theme','')}) — publicando {len(it['images'])} frames...")
                 ids = publish_sequence(it); log(state, it["id"], "seq", ids[0], now)
+                state["published"][-1]["media_ids"] = ids    # TODOS os frames: a conferencia da conta (stories) os reconhece
                 done.add(it["id"]); state["last_seq_date"] = today; changed = True
                 print(f"Sequencia {it['id']} OK -> {len(ids)} frames")
+            except PublicacaoIncerta as e:
+                done.add(it["id"]); state["last_seq_date"] = today; changed = True
+                auth_error = _registrar_incerto(state, falhas, it["id"], "seq", e, now) or auth_error
             except AuthError as e: auth_error = e
             except Exception as e: _falhou(falhas, f"sequencia {it['id']}", e)
         else:
             print("Biblioteca de SEQUENCIAS esgotada — hora de reabastecer.")
 
+    # STORIES DA GERAÇÃO NOVA (3 toques, roteiro próprio)
+    if STORIES_NOVOS_ATIVOS and not auth_error and brt.weekday() in STORY_NOVO_WEEKDAYS and mod >= STORY_NOVO_MIN \
+            and state.get("last_story_nova_date") != today:
+        try:
+            if publicar_story_nova(state, reels, brt, now, falhas=falhas):
+                changed = True
+        except AuthError as e: auth_error = e
+        except Exception as e: _falhou(falhas, "story da geração nova", e)
+
     # REELS
     if not auth_error and brt.weekday() in REEL_WEEKDAYS and mod >= REEL_MIN and state["last_reel_date"] != today:
-        it = proximo_reel(reels, done, state, brt)
+        it, ent_wa = _escolher_com_write_ahead("reel", reels, wa_reuso, wa_bloq, falhas,
+                                               lambda: proximo_reel(reels, done, state, brt))
         if it:
             try:
-                mid = publish_reel(it); log(state, it["id"], "reel", mid, now)
+                mid = publish_reel(it, wa=_wa(state, "reel", it, ent_wa)); log(state, it["id"], "reel", mid, now)
                 done.add(it["id"]); state["last_reel_date"] = today; changed = True
-                print(f"Reel {it['id']} ({_formato(it)}) OK -> {mid}")
+                print(f"Reel {it['id']} ({_formato(it)}) OK -> {mid or 'confirmado pelo conteiner'}")
+            except PublicacaoIncerta as e:
+                done.add(it["id"]); state["last_reel_date"] = today; changed = True
+                auth_error = _registrar_incerto(state, falhas, it["id"], "reel", e, now) or auth_error
             except AuthError as e: auth_error = e
             except Exception as e: _falhou(falhas, f"reel {it['id']}", e)
+        elif "reel" in wa_bloq or "reel" in wa_reuso:
+            pass                                 # write-ahead bloqueando: a falha ja' foi registrada
         elif any(x["id"] not in done for x in reels):
             # Nao e' falha nem biblioteca vazia: as cotas da semana (lamina, conversa) ja' sairam e
             # nao ha' COMO FUNCIONA pronto. Dia sem reel, por decisao (18 e 19/10/2026).

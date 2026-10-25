@@ -41,6 +41,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add state/stories_serie.json
+          if [ -f state/stories_pecas.json ]; then git add state/stories_pecas.json; fi
           git diff --cached --quiet || git commit -m "Pulso de stories: serie do dia"
           # retry com falha RUIDOSA — mesmo padrao ok-flag do render-verbetes.yml/publish.yml
           # (auditoria v1.5 M1: o loop antigo engolia falha de push — job verde, medicao do dia

@@ -13,8 +13,15 @@ um reel COMO FUNCIONA ou de uma peça antiga):
   2. ANTIGUIDADE: entre as peças liberadas, sai primeiro a do tema que apareceu há MAIS tempo.
 
 O tema é uma chave curta (ex.: "alongamento", "pe_virado"). Ordem de resolução: campo "tema" do
-item → mapa explícito por id → tema do reel de origem (reel_ref) → palavras do id → None (sem tema
-não bloqueia nada, mas aparece no relatório para ser classificado).
+item → mapa explícito por id → tema do reel de origem (reel_ref) → palavras do id → None.
+
+Sem tema a peça não bloqueia nada e passa À FRENTE das outras (ultima = date.min). Por isso a peça
+DERIVADA (story) sem tema classificável, ou com campo "tema" fora de NOMES (erro de digitação, que
+tema_de descartaria calado), é REPROVADA no portão (problemas_de_tema, chamado por checar_stories).
+As palavras do id casam por TOKEN separado por '_' (prefixo do token: 'manca' casa 'mancando'), nunca
+por substring solta: 'cola' dentro de 'escola' classificava 'trabalho_escola' como consolidação.
+`python temas_conteudo.py --relatorio` lista os ids da fila e do estado cujo tema veio por palavra
+(último recurso: alguém revisa) ou ficou sem tema.
 """
 import datetime as dt
 
@@ -133,6 +140,10 @@ POR_ID = {
     "s_on_tres_fases": "alongamento", "s_on_tres_razoes": "consolidacao", "s_on_cigarro": "consolidacao",
     "s_on_muletas_sem_erro": "tempo_tratamento", "s_on_dirigir_trabalho": "rotina_fixador",
     "s_pnc_primeira_consulta": "consulta", "s_on_osteotomia": "eixo", "s_on_perna_torta_adulto": "eixo",
+    # revisão 24/10 (a palavra do id classificava errado: 'cola' em 'escola', 'fixador' antes de 'rotina',
+    # 'joelho' em joelho valgo = perna em X)
+    "trabalho_escola": "rotina_fixador", "vida_cotidiana_fixador": "rotina_fixador",
+    "s_on_fixador_rotina": "rotina_fixador", "pnc_joelho_valgo": "pernas_crianca",
 }
 
 # Sequências diárias das temporadas (ids '<slug>-<dia>')
@@ -141,41 +152,82 @@ TEMPORADA = {"joelho": "joelho", "tornozelo": "esporte", "quadril": "mancando", 
              "crescimento": "dor_crescimento", "esporte": "esporte", "marcha": "andar", "cotovelo": "cotovelo_baba",
              "socorros": "socorros", "complexos": "outros"}
 
-# Palavras do id (último recurso, na ordem)
+# Palavras do id (último recurso, na ordem). Casam por TOKEN do id separado por '_' (ou '-'): cada
+# token da palavra tem de ser um token do id, na sequência, e o ÚLTIMO pode ser prefixo ('alonga' casa
+# 'alongamento'). Nunca substring solta ('cola' não casa 'escola').
 PALAVRAS = [("pino", "pinos"), ("retirada", "tempo_tratamento"), ("quanto_tempo", "tempo_tratamento"),
             ("pisar", "tempo_tratamento"), ("fisioterapia", "tempo_tratamento"), ("alonga", "alongamento"),
             ("milimetro", "alongamento"), ("osso_cresce", "alongamento"), ("discrepancia", "discrepancia"),
             ("perna_curta", "discrepancia"), ("medir", "discrepancia"), ("pseudartrose", "consolidacao"),
             ("cola", "consolidacao"), ("osteomielite", "osteomielite"), ("transporte", "trauma_transporte"),
-            ("gesso", "gesso_placa"), ("pernas", "pernas_crianca"), ("pe_torto", "pe_torto"),
+            ("gesso", "gesso_placa"), ("valgo", "pernas_crianca"), ("varo", "pernas_crianca"),
+            ("pernas", "pernas_crianca"), ("pe_torto", "pe_torto"),
             ("pe_pra_dentro", "pe_virado"), ("pe_virado", "pe_virado"), ("pe_chato", "pe_chato"),
             ("dor_crescimento", "dor_crescimento"), ("quadril_bebe", "quadril_bebe"), ("displasia", "quadril_bebe"),
             ("ponta", "ponta_pes"), ("manca", "mancando"), ("escoliose", "escoliose"), ("coluna", "escoliose"),
             ("andador", "andar"), ("andar", "andar"), ("esporte", "esporte"), ("joelho", "joelho"),
-            ("cotovelo", "cotovelo_baba"), ("fixador", "fixador_haste"), ("eixo", "eixo")]
+            ("cotovelo", "cotovelo_baba"), ("rotina", "rotina_fixador"), ("cotidian", "rotina_fixador"),
+            ("fixador", "fixador_haste"), ("eixo", "eixo")]
 
 
-def tema_de(item_ou_id, por_id_extra=None):
-    """Chave de tema de um item (dict) ou de um id. None = não classificado."""
+def _tokens(s):
+    return [t for t in str(s).lower().replace("-", "_").split("_") if t]
+
+
+def palavra_casa(palavra, id_):
+    """A palavra (um ou mais tokens) aparece no id por TOKEN: tokens iguais em sequência, o último
+    podendo ser prefixo do token do id."""
+    p, t = _tokens(palavra), _tokens(id_)
+    if not p:
+        return False
+    for i in range(len(t) - len(p) + 1):
+        if t[i:i + len(p) - 1] == p[:-1] and t[i + len(p) - 1].startswith(p[-1]):
+            return True
+    return False
+
+
+def origem_do_tema(item_ou_id, por_id_extra=None):
+    """(tema, origem) com origem em 'campo' | 'por_id' | 'reel_ref' | 'temporada' | 'palavra' | None."""
     item = item_ou_id if isinstance(item_ou_id, dict) else {"id": item_ou_id}
     if item.get("tema") in NOMES:
-        return item["tema"]
+        return item["tema"], "campo"
     i = str(item.get("id") or "")
     base = i.split("#", 1)[0]                     # partes de story ('stn_x#0') herdam o tema da story
     for mapa in (por_id_extra or {}, POR_ID):
         if base in mapa:
-            return mapa[base]
+            return mapa[base], "por_id"
     if item.get("reel_ref"):
         t = tema_de(item["reel_ref"], por_id_extra)
         if t:
-            return t
+            return t, "reel_ref"
     slug = base.split("-", 1)[0]
     if "-" in base and slug in TEMPORADA:
-        return TEMPORADA[slug]
+        return TEMPORADA[slug], "temporada"
     for palavra, tema in PALAVRAS:
-        if palavra in base:
-            return tema
-    return None
+        if palavra_casa(palavra, base):
+            return tema, "palavra"
+    return None, None
+
+
+def tema_de(item_ou_id, por_id_extra=None):
+    """Chave de tema de um item (dict) ou de um id. None = não classificado."""
+    return origem_do_tema(item_ou_id, por_id_extra)[0]
+
+
+def problemas_de_tema(item, por_id_extra=None):
+    """Por que a peça DERIVADA (story) não pode entrar na regra de temas: campo 'tema' presente e fora
+    de NOMES, reel de origem sem tema classificável, ou nenhum tema. Lista vazia = classificável."""
+    p = []
+    sid = item.get("id") or "?"
+    if "tema" in item and item.get("tema") not in NOMES:
+        p.append(f"{sid}: tema {item.get('tema')!r} não é um tema de temas_conteudo.NOMES (erro de digitação "
+                 "seria descartado calado e a peça herdaria só o tema do reel)")
+    if item.get("reel_ref") and tema_de(item["reel_ref"], por_id_extra) is None:
+        p.append(f"{sid}: o reel de origem {item['reel_ref']!r} não tem tema classificável (ponha em "
+                 "temas_conteudo.POR_ID): sem tema a peça fura a distância e passa à frente das outras")
+    if not temas_do_item(item, por_id_extra):
+        p.append(f"{sid}: sem tema classificável (campo 'tema' ou reel de origem com tema)")
+    return p
 
 
 def temas_do_item(item, por_id_extra=None):
@@ -269,10 +321,60 @@ def _autoteste():
     checa("o tema mais antigo sai primeiro", it is b and bl == [])
     it, bl = escolher([a, b], d(2026, 11, 8), pas, {}, 14)
     checa("CONTROLE: o recente fica bloqueado e o antigo sai", it is b and bl and bl[0][0] == "a")
+    # palavra do id por TOKEN (achado 24/10: 'cola' dentro de 'escola')
+    checa("palavra por token: 'x_osso_cola_rapido' -> consolidacao", tema_de("x_osso_cola_rapido") == "consolidacao")
+    checa("palavra prefixo do token: 'x_crianca_mancando' -> mancando", tema_de("x_crianca_mancando") == "mancando")
+    checa("palavra de 2 tokens: 'x_pe_torto_bebe' -> pe_torto", tema_de("x_pe_torto_bebe") == "pe_torto")
+    checa("CONTROLE: 'cola' dentro de 'escola' não casa", tema_de("x_volta_escola") is None)
+    checa("CONTROLE: 'x_tempe_torto' não casa 'pe_torto' (token inteiro)", not palavra_casa("pe_torto", "x_tempe_torto"))
+    checa("CONTROLE: 'rotina' vem antes de 'fixador'", tema_de("x_fixador_rotina") == "rotina_fixador")
+    checa("CONTROLE: joelho valgo é perna em X", tema_de("x_joelho_valgo") == "pernas_crianca")
+    checa("ids revisados em 24/10", [tema_de(i) for i in ("trabalho_escola", "s_on_fixador_rotina", "pnc_joelho_valgo",
+                                                        "vida_cotidiana_fixador")]
+          == ["rotina_fixador", "rotina_fixador", "pernas_crianca", "rotina_fixador"])
+    checa("origem do tema registrada", origem_do_tema("x_osso_cola_rapido") == ("consolidacao", "palavra")
+          and origem_do_tema({"id": "s", "tema": "pinos"}) == ("pinos", "campo"))
+    # peça derivada sem tema / com tema inválido (achado 24/10: falhava calado)
+    ok = {"id": "stn_y", "reel_ref": "cf_alongamento", "tema": "tempo_tratamento"}
+    checa("story com tema válido e reel classificado passa", problemas_de_tema(ok) == [])
+    checa("CONTROLE: tema com hífen ('tempo-tratamento') reprova", bool(problemas_de_tema(dict(ok, tema="tempo-tratamento"))))
+    checa("CONTROLE: reel de origem sem tema reprova", bool(problemas_de_tema({"id": "stn_z", "reel_ref": "cf_zz_novo", "tema": "pinos"})))
+    checa("CONTROLE: sem tema nenhum reprova", bool(problemas_de_tema({"id": "stn_z"})))
     print("\n" + ("AUTOTESTE OK" if not falhas else f"AUTOTESTE: {len(falhas)} FALHA(S)"))
     return 1 if falhas else 0
 
 
+def _relatorio():
+    """Ids da fila (reels/stories) e do estado cujo tema veio por PALAVRA do id (último recurso) ou
+    que ficaram sem tema: lista para alguém revisar e pôr em POR_ID. Só informa (exit 0)."""
+    import io
+    import json
+    import os
+    raiz = os.path.dirname(os.path.abspath(__file__))
+
+    def ler(nome, padrao):
+        try:
+            with io.open(os.path.join(raiz, nome), encoding="utf-8-sig") as f:
+                return json.load(f)
+        except FileNotFoundError:
+            return padrao
+    itens = [("reels.json", x) for x in ler("reels.json", [])] + [("stories_cf.json", x) for x in ler("stories_cf.json", [])]
+    itens += [("published.json", {"id": e.get("story") or e.get("id")}) for e in ler(os.path.join("state", "published.json"),
+                                                                                     {}).get("published", [])]
+    vistos = set()
+    for origem, it in itens:
+        if it.get("id") in vistos:
+            continue
+        vistos.add(it.get("id"))
+        tema, como = origem_do_tema(it)
+        if como in ("palavra", None):
+            print(f"{origem:16s} {it.get('id')!s:34s} {tema or '— sem tema —':18s} ({como or 'não classificado'})")
+    return 0
+
+
 if __name__ == "__main__":
+    import argparse
     import sys
-    sys.exit(_autoteste())
+    ap = argparse.ArgumentParser(description="Regra de temas: autoteste (padrão) ou relatório de classificação.")
+    ap.add_argument("--relatorio", action="store_true", help="lista ids com tema por palavra-chave ou sem tema")
+    sys.exit(_relatorio() if ap.parse_args().relatorio else _autoteste())

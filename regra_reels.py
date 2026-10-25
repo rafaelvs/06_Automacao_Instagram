@@ -40,6 +40,12 @@ DIAS_ENTRE_CONVERSAS_PADRAO = 10          # Rafael, 19/10: "pode deixar a cada 1
 CONVERSAS_ATIVAS_PADRAO = False           # 24/10: all-in COMO FUNCIONA — conversa suspensa
 POSTS_ATIVOS_PADRAO = False               # 24/10: carrossel estático antigo suspenso (all-in em tudo)
 SEQUENCIAS_ATIVAS_PADRAO = False          # 24/10: sequência de stories antiga suspensa (all-in em tudo)
+STORIES_NOVOS_ATIVOS_PADRAO = True        # 24/10: story da geração nova (só sai APROVADO, ver checar_stories.py)
+# Rafael, 24/10: "não colocar coisas que foram postadas muito recentemente sobrepondo [...] usar temas
+# mais anteriores nas próximas postagens, para não ficar repetitivo demais". Peça derivada (story,
+# carrossel da geração nova) não sai se o MESMO TEMA apareceu ou vai aparecer em menos de N dias em
+# qualquer superfície; entre as liberadas, sai a do tema mais antigo (temas_conteudo.py).
+DIAS_ENTRE_MESMO_TEMA_PADRAO = 14
 _SEM_COTA = ("off", "nao", "não", "no", "false", "sem", "-1")
 
 
@@ -68,6 +74,11 @@ def dias_entre_conversas(valor=None):
     return _cota("DIAS_ENTRE_CONVERSAS", DIAS_ENTRE_CONVERSAS_PADRAO, valor)
 
 
+def dias_entre_mesmo_tema(valor=None):
+    """Distância mínima (dias) entre duas aparições do mesmo tema; -1/'off' = sem distância."""
+    return _cota("DIAS_ENTRE_MESMO_TEMA", DIAS_ENTRE_MESMO_TEMA_PADRAO, valor)
+
+
 def _chave(var, padrao, valor=None):
     v = os.environ.get(var) if valor is None else valor
     if v is None or str(v).strip() == "":
@@ -83,6 +94,12 @@ def conversas_ativas(valor=None):
 def posts_ativos(valor=None):
     """Os carrosséis do posts.json saem? Padrão False desde 24/10 (all-in em todo o conteúdo)."""
     return _chave("POSTS_ATIVOS", POSTS_ATIVOS_PADRAO, valor)
+
+
+def stories_novos_ativos(valor=None):
+    """Os stories da geração nova (stories_cf.json) saem? Padrão True: o portão só deixa sair story
+    aprovado pelo Rafael, com o reel de origem no ar há 2+ dias."""
+    return _chave("STORIES_NOVOS_ATIVOS", STORIES_NOVOS_ATIVOS_PADRAO, valor)
 
 
 def sequencias_ativas(valor=None):

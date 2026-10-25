@@ -1,6 +1,6 @@
 # PROGRAMAÇÃO — o que vai ao ar e quando
 
-Regenerado em 24/10/2026 por `_gen_programacao.py`. **Datas são projeção da fila FIFO** a partir do último publicado — job vermelho, alarme de curtidas ou mudança na fila desloca tudo; a fonte de verdade é a fila.
+Regenerado em 25/10/2026 por `_gen_programacao.py`. **Datas são projeção da fila FIFO** a partir do último publicado — job vermelho, alarme de curtidas ou mudança na fila desloca tudo; a fonte de verdade é a fila.
 
 **Como revisar/suspender (regra de 30/08):** os itens ficam dias na fila antes de publicar — confira por aqui; para suspender ou editar, avise o chat da auditoria (ou remova a entrada do JSON, com lock `motor-instagram`). Piloto ativo só para formato/estratégia NOVA ou mudança de voz.
 
@@ -13,7 +13,6 @@ Regenerado em 24/10/2026 por `_gen_programacao.py`. **Datas são projeção da f
 
 | Data | Peça | Série | Vídeo |
 |---|---|---|---|
-| dom 25/10 | `cf_transporte_osseo` **[COMO FUNCIONA]** | Como funciona | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cf_transporte_osseo.mp4) |
 | seg 26/10 | `cf_osteomielite` **[COMO FUNCIONA]** | Como funciona | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cf_osteomielite.mp4) |
 | qua 28/10 | `cf_pe_virado` **[COMO FUNCIONA]** | Como funciona | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cf_pe_virado.mp4) |
 | sex 30/10 | `cf_gesso_placa` **[COMO FUNCIONA]** | Como funciona | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cf_gesso_placa.mp4) |
@@ -49,4 +48,17 @@ Regenerado em 24/10/2026 por `_gen_programacao.py`. **Datas são projeção da f
 |---|---|---|
 | — | **SUSPENSOS** — all-in no formato novo (24/10); 29 carrossel(éis) estático(s) parado(s) na fila | |
 
-*Sequências de stories antigas: SUSPENSAS — all-in no formato novo (24/10); 35 parada(s) na fila. O formato novo de stories está em estudo.*
+## Stories da geração nova (ter · qui · sáb 12:30)
+
+*3 vídeos curtos sem voz por story, roteiro próprio. **Regra de temas (Rafael, 24/10):** nada sai sobre um tema que apareceu ou vai aparecer em qualquer superfície há menos de 14 dias; entre os liberados, sai o tema mais antigo. Só sai APROVADA pelo Rafael, com o reel de origem no grid há 2+ dias e com o portão limpo (render do CI coerente com o texto). Story que aguarda aprovação fica FORA da conta: não sai e não segura as outras. Esta tabela usa a mesma régua do robô (checar_stories.py).*
+
+| Data | Story | Reel de origem | Situação |
+|---|---|---|---|
+| — | **nenhum story projetado** (2 na fila; 2 aguardando aprovação) | | |
+
+**Aguardando aprovação do Rafael** (fora da conta: não saem e não travam as aprovadas):
+
+- `stn_quanto_tempo` (reel `cf_alongamento`): pendente — sem lote de aprovação. Render: stn_quanto_tempo: vídeos feitos por OUTRA versão do story_cf.py (re-renderize). Se aprovada hoje (com o render do CI): qui 24/12.
+- `stn_pe_pra_dentro` (reel `cf_pe_virado`): pendente — sem lote de aprovação. Render: stn_pe_pra_dentro: vídeos feitos por OUTRA versão do story_cf.py (re-renderize). Se aprovada hoje (com o render do CI): qui 12/11.
+
+*Sequências de stories antigas: SUSPENSAS — all-in no formato novo (24/10); 35 parada(s) na fila (os temas voltam como stories da geração nova).*

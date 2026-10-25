@@ -1,0 +1,122 @@
+name: render-stories
+# STORIES DA GERAÇÃO NOVA (Rafael, 24/10/2026: "story com roteiro próprio"; formato "COMO FUNCIONA EM
+# 3 TOQUES"). Renderiza stories de stories_cf.json com story_cf.py — 3 vídeos curtos sem voz, com
+# trechos do mp4 APROVADO do reel de origem — e commita stories_cf/<id>_1..3.mp4 + o irmão
+# stories_cf/<id>.json (hash do texto, do gerador, dos parâmetros de render, fontes e sha256 de cada
+# vídeo; o portão checar_stories.py confere).
+# O molde se aprova pelo render DAQUI (Roboto), não pelo do PC (Segoe): STORY_FONTES_EXIGIDAS faz o
+# story_cf.py recusar o render se o runner não tiver Roboto, e o portão recusa story APROVADA com
+# render de outra fonte.
+#   gh workflow run render-stories.yml -f story="stn_a stn_b" --repo rafaelvs/06_Automacao_Instagram
+# Várias stories = UMA execução com a lista (espaço ou vírgula). Execuções disparadas em sequência
+# com a MESMA entrada se substituem (a pendente do meio é cancelada pelo Actions); com entradas
+# diferentes, cada uma tem o seu grupo e nenhuma é cancelada. 'todas' = só as que PRECISAM de render
+# (pula publicadas inteiras e render em dia; re-render troca os bytes e derruba a aprovação amarrada
+# aos vídeos).
+on:
+  workflow_dispatch:
+    inputs:
+      story:
+        description: "ID(s) em stories_cf.json (ex.: stn_quanto_tempo ou 'stn_a stn_b') ou 'todas'"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  # por entrada: disparar A, B e C seguidas não cancela B (um grupo único mantém só 1 pendente)
+  group: render-stories-${{ github.event.inputs.story }}
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      ST: ${{ github.event.inputs.story }}
+    steps:
+      - name: Validar a entrada
+        run: |
+          re='^(todas|stn_[a-z0-9_]{2,60}([ ,]+stn_[a-z0-9_]{2,60})*)$'   # em variável: o espaço do [ ,] quebraria o [[ ]]
+          if ! [[ "$ST" =~ $re ]]; then echo "::error::entrada invalida: '$ST'"; exit 1; fi
+      - uses: actions/checkout@v4
+      - name: Fontes (Roboto) + ffmpeg (>= 5.1, -fps_mode) + libEGL (skia no Linux)
+        run: sudo apt-get update && sudo apt-get install -y fonts-roboto fonts-liberation fonts-dejavu-core ffmpeg libegl1 libgl1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Dependencias
+        run: pip install skia-python numpy pillow edge-tts imageio-ffmpeg
+      - name: Renderizar (uma recusa nao aborta as outras; a lista das que passaram vai para os passos seguintes)
+        id: render
+        env:
+          STORY_FONTES_EXIGIDAS: "Roboto-"
+        run: |
+          set -uo pipefail
+          rc=0
+          rm -f .render_ok.txt
+          if [ "$ST" = "todas" ]; then
+            python story_cf.py --todos --lista-ok .render_ok.txt || rc=$?
+          else
+            # entrada validada acima: só ids stn_*, espaço e vírgula
+            python story_cf.py $(echo "$ST" | tr ',' ' ') --lista-ok .render_ok.txt || rc=$?
+          fi
+          IDS=$(tr '\n' ' ' < .render_ok.txt 2>/dev/null | xargs || true)
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          echo "ids=$IDS" >> "$GITHUB_OUTPUT"
+          echo "renderizadas: '${IDS}' | saída do story_cf.py: $rc"
+      - name: Portao dos stories renderizados (o render TEM de passar; aprovacao pendente e' so aviso)
+        if: steps.render.outputs.ids != ''
+        env:
+          IDS: ${{ steps.render.outputs.ids }}
+        run: python checar_stories.py --ids $IDS --exigir-render
+      - name: Commit dos videos + irmao (so os que passaram no portao)
+        if: steps.render.outputs.ids != ''
+        env:
+          IDS: ${{ steps.render.outputs.ids }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add stories_cf/
+          git commit -m "Render stories ${IDS} (geracao nova)" || echo "nada a commitar"
+          ok=0
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase -X theirs origin main; then
+              # o texto pode ter mudado no main durante o render: o portão roda de novo na árvore que
+              # vai subir (render de outro texto não sobe por cima do novo)
+              if ! python checar_stories.py --ids $IDS --exigir-render; then
+                echo "::error::depois do rebase o render nao confere com o stories_cf.json do main — NAO subiu."
+                exit 1
+              fi
+              if git push; then ok=1; break; fi
+            fi
+            git rebase --abort 2>/dev/null || true
+            echo "Push tentativa $attempt falhou — aguardando ${attempt}0s..."
+            sleep $((attempt * 10))
+          done
+          if [ "$ok" != "1" ]; then
+            echo "::error::stories renderizadas mas NAO commitadas apos 5 tentativas."
+            exit 1
+          fi
+      - name: Previa (quadros de conferencia)
+        if: steps.render.outputs.ids != ''
+        continue-on-error: true
+        env:
+          IDS: ${{ steps.render.outputs.ids }}
+        run: python story_cf.py $IDS --previa --pasta .previa_story
+      - name: Recusadas = job vermelho (depois de commitar as que passaram)
+        if: always()
+        run: |
+          if [ "${{ steps.render.outputs.rc }}" != "0" ]; then
+            echo "::error::story_cf.py recusou ou falhou em pelo menos uma story (ver o passo Renderizar); as que passaram foram commitadas."
+            exit 1
+          fi
+      - name: Artefato
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stories-${{ github.run_id }}
+          path: |
+            stories_cf/
+            .previa_story/
+          if-no-files-found: warn

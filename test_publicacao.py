@@ -16,7 +16,7 @@ meio da execucao" com dois itens de tipos diferentes.
 
 Uso, dentro do repo:  python test_publicacao.py      (exit 0 = tudo passou)
 """
-import json, os, sys, subprocess, tempfile, shutil
+import json, os, re, sys, subprocess, tempfile, shutil
 from pathlib import Path
 
 ROOT = Path(__file__).parent
@@ -61,7 +61,46 @@ ERR_AUTH = {"error": {"message": "Error validating access token: Session has exp
 # Rate limit: TAMBEM OAuthException, porem transitorio -> nao pode virar AuthError.
 ERR_RATE = {"error": {"message": "(#4) Application request limit reached",
                       "type": "OAuthException", "code": 4}}
-ERR_500 = {"error": {"message": "An unknown error occurred", "type": "Exception", "code": 1}}
+# Corpo REAL do HTTP 500 transitorio da Graph API (auditoria 24/10/2026): OAuthException, code 2,
+# is_transient. Ate 24/10 esta fixture era {"type": "Exception", "code": 1} — corpo que a Meta nao manda
+# — e nenhum teste via o 500 virar AuthError (parte da story e reel republicados no run seguinte).
+ERR_500 = {"error": {"message": "An unexpected error has occurred. Please retry your request later.",
+                     "type": "OAuthException", "is_transient": True, "code": 2}}
+ERR_500_OAUTH = ERR_500          # nome usado pelos arneses de reproducao da revisao (lab/revisao_infra)
+
+# A CONTA da Meta, persistida entre runs (cada run e' um processo novo): conteineres com status e as
+# midias no ar. E' o que prova "nao publicou duas vezes" contando o que FOI AO AR, nao o que o estado diz.
+_ARQ_CONTA = "_conta_meta.json"
+def _conta():
+    try:
+        with open(_ARQ_CONTA, encoding="utf-8") as f: return json.load(f)
+    except FileNotFoundError:
+        return {"n_cont": 0, "n_mid": 0, "conteineres": {}, "midias": []}
+def _gravar(c):
+    with open(_ARQ_CONTA, "w", encoding="utf-8") as f: json.dump(c, f)
+def _ts(t): return t.astimezone(_dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S+0000")
+def _de_ts(s): return _dt.datetime.strptime(s, "%Y-%m-%dT%H:%M:%S%z")
+def _ao_ar(c, cid):
+    """A Meta poe a peca no ar: conteiner PUBLISHED e midia nova na conta."""
+    c["n_mid"] += 1; mid = "MID%03d" % c["n_mid"]
+    k = c["conteineres"][cid]; k["status"] = "PUBLISHED"; k["media"] = mid
+    c["midias"].append({"id": mid, "timestamp": _ts(FIXO), "media_type": k["media_type"], "container": cid})
+    _gravar(c)
+    return mid
+# story_500_tarde: a Meta respondeu 500 com o conteiner FINISHED e entregou DEPOIS — no run seguinte ja' saiu
+_c0 = _conta()
+for _cid, _k in list(_c0["conteineres"].items()):
+    if _k.pop("tarde", False):
+        print("NO_AR_TARDE", _cid, _ao_ar(_c0, _cid))
+_gravar(_c0)
+
+# a 2a media_publish do run falha; o efeito diz o que a Meta fez de fato
+FALHA_NA_2A = {"story_500_saiu": "saiu", "story_500_oauth": "saiu", "story_500_nao": "nao",
+               "story_500_tarde": "tarde", "morre_no_publish": "morre_saiu", "morre_antes_do_publish": "morre",
+               "auth_no_publish_saiu": "auth_saiu"}
+# o 1o media_publish do run (o do reel/post) falha; o efeito diz o que a Meta fez de fato (write-ahead de reel/post)
+FALHA_NA_1A = {"reel_500_tarde": "tarde", "reel_500_nao": "nao", "reel_morre_no_publish": "morre_saiu",
+               "post_500_tarde": "tarde"}
 
 def _falha():
     if CENARIO == "auth": return R(400, ERR_AUTH)
@@ -74,19 +113,66 @@ import requests
 def fake_post(url, data=None, timeout=None, **kw):
     r = _falha()
     if r is not None: return r
-    if url.endswith("/media_publish"):
-        _n["publicados"] += 1
-        return R(200, {"id": "MID%03d" % _n["publicados"]})
     data = data or {}
+    c = _conta()
+    if url.endswith("/media_publish"):
+        cid = data.get("creation_id"); k = c["conteineres"].get(cid)
+        if k is None:
+            return R(400, {"error": {"message": "Media ID is not available", "type": "OAuthException",
+                                     "code": 9007, "error_subcode": 2207006}})
+        if k["status"] == "PUBLISHED":                  # conteiner so' publica uma vez
+            print("REPUBLICAR_RECUSADO", cid)
+            return R(400, {"error": {"message": "The media has already been published", "type": "OAuthException",
+                                     "code": 100}})
+        efeito = None
+        if not _n.get("ja_falhou"):
+            if CENARIO == "reel_500_oauth":             # o 1o media_publish (o do reel) leva 500 e SAI
+                efeito = "saiu"
+            elif CENARIO == "publish_500_incerto":      # o 1o media_publish leva 500 e a CONSULTA ao conteiner falha
+                efeito = "saiu"; _n["consulta_falha"] = True
+            elif CENARIO == "reel_nao_pronto":          # o 1o media_publish: "nao pronto" (9007/2207027), conteiner IN_PROGRESS
+                efeito = "nao_pronto"
+            elif CENARIO in FALHA_NA_1A:
+                efeito = FALHA_NA_1A[CENARIO]
+            elif _n["publicados"] == 1:
+                efeito = FALHA_NA_2A.get(CENARIO)
+        if efeito:
+            _n["ja_falhou"] = True
+            if efeito in ("saiu", "morre_saiu", "auth_saiu"):
+                print("NO_AR_COM_500" if efeito == "saiu" else "NO_AR", cid, _ao_ar(c, cid), flush=True)
+            if efeito == "tarde":
+                k["tarde"] = True; _gravar(c)
+            if efeito in ("morre_saiu", "morre"):       # job morto DENTRO da chamada (timeout/cancelamento)
+                print("JOB_MORTO_NO_MEDIA_PUBLISH", cid, flush=True)
+                _os._exit(137)
+            if efeito == "auth_saiu":
+                return R(400, ERR_AUTH)
+            if efeito == "nao_pronto":
+                k["status"] = "IN_PROGRESS"; _gravar(c)
+                return R(400, {"error": {"message": "Media ID is not available", "type": "OAuthException",
+                                         "code": 9007, "error_subcode": 2207027}})
+            return R(500, ERR_500)
+        _n["publicados"] += 1
+        mid = _ao_ar(c, cid)
+        print("NO_AR", cid, mid)
+        return R(200, {"id": mid})
     # denuncia os parametros de audiencia emprestada / trial (cenarios G/H) e o CONTROLE:
     # story NUNCA pode levar collaborators (a API nao aceita).
     if "collaborators" in data:
         print("COLLAB_ENVIADO", data["collaborators"], "media_type=", data.get("media_type", "IMAGE"))
     if "trial_params" in data:
         print("TRIAL_PARAMS", data["trial_params"])
+        if CENARIO == "trial_500":                     # 500 transitorio REAL no conteiner trial: nao e' recusa do parametro
+            return R(500, ERR_500)
+        if CENARIO == "trial_recusado":                # a Meta recusa o PARAMETRO (400, code 100): fallback normal
+            return R(400, {"error": {"message": "Invalid parameter", "type": "OAuthException", "code": 100}})
     if "is_ai_generated" in data:
         print("ROTULO_IA", data["is_ai_generated"], "media_type=", data.get("media_type", "IMAGE"))
-    return R(200, {"id": "CONT001"})
+    print("MIDIA_URL", data.get("video_url") or data.get("image_url") or "-")
+    c["n_cont"] += 1; cid = "CONT%03d" % c["n_cont"]
+    c["conteineres"][cid] = {"status": "FINISHED", "media_type": data.get("media_type", "IMAGE"), "criado": _ts(FIXO)}
+    _gravar(c)
+    return R(200, {"id": cid})
 def fake_get(url, params=None, timeout=None, **kw):
     r = _falha()
     if r is not None: return r
@@ -96,7 +182,27 @@ def fake_get(url, params=None, timeout=None, **kw):
         likes = 0 if CENARIO == "alarme_zero" else 1
         return R(200, {"data": [{"id": "M%d" % i, "like_count": likes, "media_product_type": "FEED"}
                                 for i in range(6)]})
-    return R(200, {"status_code": "FINISHED"})
+    c = _conta()
+    if url.endswith("/stories"):                       # so' stories ATIVOS (24 h), como a edge real
+        if CENARIO == "stories_falha":
+            return R(500, ERR_500)
+        vivos = [m for m in c["midias"] if m["media_type"] == "STORIES"
+                 and FIXO - _de_ts(m["timestamp"]) < _dt.timedelta(hours=24)]
+        return R(200, {"data": [{"id": m["id"], "timestamp": m["timestamp"]} for m in vivos]})
+    ult = url.rstrip("/").rsplit("/", 1)[-1]
+    if ult.startswith("MID"):                       # conferência de story publicada (GET do media_id)
+        m = next((x for x in c["midias"] if x["id"] == ult), None)
+        return R(200, {"id": ult, "timestamp": m["timestamp"] if m else _ts(FIXO)})
+    if _n.get("consulta_falha") or CENARIO == "consulta_falha":   # consulta ao CONTEINER falhando
+        return R(500, ERR_500)
+    k = c["conteineres"].get(ult)
+    if k is None:
+        return R(400, {"error": {"message": "Unsupported get request", "type": "OAuthException", "code": 100,
+                                 "error_subcode": 33}})
+    st = k["status"]
+    if st == "FINISHED" and FIXO - _de_ts(k["criado"]) > _dt.timedelta(hours=24):
+        st = "EXPIRED"                              # a Meta expira conteiner NAO publicado em 24 h
+    return R(200, {"status_code": st})
 requests.post = fake_post
 requests.get = fake_get
 
@@ -115,7 +221,8 @@ sys.exit(1 if _falhas else 0)
 
 def preparar(reels=None, publicados=None, last_reel=""):
     tmp = Path(tempfile.mkdtemp(prefix="igtest_"))
-    for f in ["publish.py", "cfm_guardrails.py", "regra_reels.py"]:
+    for f in ["publish.py", "cfm_guardrails.py", "regra_reels.py", "checar_stories.py", "publicar_stories.py",
+              "temas_conteudo.py", "publish_agenda.py", "legenda.py"]:
         shutil.copy(ROOT / f, tmp / f)
     (tmp / "posts.json").write_text(json.dumps(POSTS, ensure_ascii=False), encoding="utf-8")
     (tmp / "sequences.json").write_text(json.dumps(SEQS, ensure_ascii=False), encoding="utf-8")
@@ -155,8 +262,9 @@ def rodar(cenario, tmp, force_id="", agora="", extra=None):
                 "ALARME_CURTIDAS": "on", "ALARME_N_PECAS": "6",
                 "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8"})
     env.update({k: v for k, v in (extra or {}).items() if v is not None})
+    # o filho escreve UTF-8 (PYTHONIOENCODING): decodificar pelo locale (cp1252 no Windows) estragava os acentos
     p = subprocess.run([sys.executable, str(tmp / "_stub.py"), cenario],
-                       cwd=str(tmp), capture_output=True, text=True, env=env)
+                       cwd=str(tmp), capture_output=True, text=True, env=env, encoding="utf-8", errors="replace")
     st = json.loads((tmp / "state" / "published.json").read_text(encoding="utf-8"))
     return p.returncode, (p.stdout or "") + (p.stderr or ""), st
 
@@ -346,6 +454,643 @@ tmp = preparar(); rc, out, st = rodar("ok", tmp, extra={"POSTS_ATIVOS": "on", "S
 checa("controle: POSTS_ATIVOS=on religa o carrossel (sequencia segue suspensa)", "t-post-1" in ids(st) and len(ids(st)) == 1, f"publicados={ids(st)}")
 shutil.rmtree(tmp, ignore_errors=True)
 
+# ---------------------------------------------------------------- stories da geração nova
+import hashlib, importlib.util
+_spec = importlib.util.spec_from_file_location("checar_stories_t", ROOT / "checar_stories.py")
+CS = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(CS)
+TER_17 = "2026-11-17T16:00:00+00:00"                # terca 13:00 BRT (dia de story, sem reel)
+SEG_16 = "2026-11-16T16:00:00+00:00"                # segunda (dia de reel, sem story)
+ST = {"id": "stn_t", "reel_ref": "cf_pe_virado", "tema": "pe_virado", "angulo": "a", "variante": "B",
+      "cta": "Manda pra quem tem filho pequeno.",
+      "telas": [{"papel": "espanto", "titulo": ["A CRIANÇA ANDA", "COM O PÉ PRA DENTRO?"], "texto": "", "trecho": [0.6, 2.7], "crop": [0, 310, 645, 950]},
+                {"papel": "mecanismo", "titulo": ["LEVES TORÇÕES", "DO CRESCIMENTO"], "texto": "Variações comuns.", "trecho": [4.6, 7.4], "crop": [290, 360, 790, 900]},
+                {"papel": "significado", "titulo": ["A ROTAÇÃO COSTUMA", "SE AJUSTAR"], "texto": "Piora pede avaliação.", "trecho": [12.4, 14.6], "crop": [0, 210, 1080, 1055]}]}
+STORY_OFF = {"POSTS_ATIVOS": "off", "SEQUENCIAS_ATIVAS": "off"}
+
+
+def _sha(b):
+    return "sha256:" + hashlib.sha256(b).hexdigest()
+
+
+def preparar_story(aprovado=True, reel_em="2026-11-01T18:00:00+00:00", publicados_extra=None):
+    tmp = preparar(reels=[{"id": "cf_pe_virado", "video": "reels/pv.mp4", "caption": CAP, "formato": "como_funciona",
+                           "voz_ia": True}],
+                   publicados=[{"id": "cf_pe_virado", "kind": "reel", "at": reel_em}] + (publicados_extra or []))
+    (tmp / "story_cf.py").write_text("# gerador de teste\n", encoding="utf-8")
+    (tmp / "reels").mkdir(exist_ok=True); (tmp / "reels" / "pv.mp4").write_bytes(b"reel")
+    (tmp / "stories_cf").mkdir(exist_ok=True)
+    partes = []
+    for i, t in enumerate(ST["telas"]):
+        arq = f"stories_cf/stn_t_{i + 1}.mp4"; (tmp / arq).write_bytes(b"parte%d" % i)
+        des = list(t["titulo"]) + ([t["texto"]] if t["texto"] else []) + [CS.SIG, CS.DISC_ST, CS.SELO, CS.TOCA]
+        if i == 2:
+            des += [CS.PERFIL, CS.NOME, ST["cta"].upper()]
+        partes.append({"arquivo": arq, "sha256": _sha(b"parte%d" % i), "dur": 6.0, "textos_tela": des,
+                       "trecho": t["trecho"], "crop": t["crop"], "camera": CS.camera_de(t)})
+    # o que o story_cf.py grava no irmão e o portão confere: hash_render (trecho/crop/câmera/tempos) e as
+    # fontes do render do CI (Roboto)
+    meta = {"id": "stn_t", "hash_story": CS.hash_story(ST), "hash_gerador": _sha(b"# gerador de teste\n"),
+            "hash_render": CS.hash_render(ST), "reel_video": "reels/pv.mp4", "reel_sha256": _sha(b"reel"),
+            "partes": partes, "fontes": {"black": "Roboto-Black.ttf", "bold": "Roboto-Bold.ttf",
+                                         "semi": "Roboto-Medium.ttf", "reg": "Roboto-Regular.ttf"}}
+    (tmp / "stories_cf" / "stn_t.json").write_text(json.dumps(meta, ensure_ascii=False), encoding="utf-8")
+    (tmp / "stories_cf.json").write_text(json.dumps([ST], ensure_ascii=False), encoding="utf-8")
+    lotes = [lote_story([entrada(tmp, "stn_t")])] if aprovado else []
+    (tmp / "aprovacoes.json").write_text(json.dumps({"lotes": lotes}), encoding="utf-8")
+    return tmp
+
+
+def entrada(tmp, sid):
+    """A entrada do lote exatamente como o Rafael a registra: `checar_stories.py --entrada <id>` (hash do texto +
+    sha256 dos 3 vídeos + hash do gerador do render que ele viu). Entrada só de texto NÃO aprova (auditoria de
+    fechamento, 25/10/2026): o fixture antigo gravava só o hash_roteiro e codificava a régua fraca."""
+    velho = CS.usar_raiz(str(tmp))
+    # o portão importa legenda/temas_conteudo/cfm_guardrails na hora: arneses que reaproveitam este fixture de OUTRA
+    # pasta (lab/revisao_infra) não têm o repo no sys.path — sem isto o portão falha fechado e o fixture não nasce
+    sys.path.insert(0, str(tmp))
+    try:
+        ent, erros = CS.entrada_de_aprovacao(sid)
+    finally:
+        sys.path.remove(str(tmp))
+        CS.usar_raiz(velho)
+    assert ent is not None, f"fixture: entrada_de_aprovacao({sid}) recusou o render de teste: {erros}"
+    return ent
+
+
+def lote_story(eps):
+    """Lote VÁLIDO (o do portão clínico checar_aprovacoes e do checar_carrossel): status 'aprovado' com autor e evidência."""
+    return {"lote": "T", "escopo": ["instagram-stories"], "status": "aprovado", "aprovado_por": "Rafael (fixture do teste)",
+            "evidencia": "fixture do test_publicacao — aprovação simulada, nunca publicar", "episodios": eps}
+
+
+def ids_story(st):
+    return [e["id"] for e in st["published"] if e.get("kind", "").startswith("story_nova")]
+
+
+def conta(tmp):
+    """A conta da Meta do STUB (persistida entre runs): o que FOI AO AR, não o que o estado diz."""
+    p = tmp / "_conta_meta.json"
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {"n_cont": 0, "conteineres": {}, "midias": []}
+
+
+def no_ar(tmp, tipo="STORIES"):
+    return [m for m in conta(tmp)["midias"] if m["media_type"] == tipo]
+
+
+def reg_de(st, rid):
+    return next((e for e in st["published"] if e.get("id") == rid), {})
+
+
+TER_1330 = "2026-11-17T16:30:00+00:00"              # terca 13:30 BRT (cron seguinte)
+TRES = ["stn_t#0", "stn_t#1", "stn_t#2"]
+
+
+print("\nS1) STORY DA GERAÇÃO NOVA aprovada, tema longe: sai inteira (3 partes) e grava a data")
+tmp = preparar_story(); rc, out, st = rodar("ok", tmp, agora=TER_17, extra=STORY_OFF)
+checa("3 partes publicadas na ordem", ids_story(st) == ["stn_t#0", "stn_t#1", "stn_t#2"], f"{ids_story(st)} | {out[-300:]}")
+checa("gravou last_story_nova_date", st.get("last_story_nova_date") == "2026-11-17", f"={st.get('last_story_nova_date')!r}")
+checa("exit == 0", rc == 0, f"exit={rc}")
+checa("na CONTA: 3 stories", len(no_ar(tmp)) == 3, f"{no_ar(tmp)}")
+checa("cada parte registra o sha256 do vídeo (a retomada confere o render)", [reg_de(st, i).get("sha256") for i in TRES]
+      == [p["sha256"] for p in json.loads((tmp / "stories_cf" / "stn_t.json").read_text(encoding="utf-8"))["partes"]], "sha256")
+checa("CONTROLE da URL: pasta sem git = raw URL pelo nome do branch",
+      "MIDIA_URL https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/stories_cf/stn_t_1.mp4" in out, out[-400:])
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS2) story SEM aprovação do Rafael: não sai, sem erro (aviso)")
+tmp = preparar_story(aprovado=False); rc, out, st = rodar("ok", tmp, agora=TER_17, extra=STORY_OFF)
+checa("nada publicado", ids_story(st) == [], f"{ids_story(st)}")
+checa("exit == 0 e aviso de aprovação", rc == 0 and "aguardando aprova" in out, f"exit={rc}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS3) DISTÂNCIA DE TEMA (Rafael, 24/10): reel do mesmo tema saiu há 2 dias -> story não sai")
+tmp = preparar_story(reel_em="2026-11-15T18:00:00+00:00"); rc, out, st = rodar("ok", tmp, agora=TER_17, extra=STORY_OFF)
+checa("nada publicado", ids_story(st) == [], f"{ids_story(st)}")
+checa("log explica o bloqueio pelo tema", "bloqueios" in out and "pe_virado" in out, out[-300:])
+checa("exit == 0", rc == 0, f"exit={rc}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS4) 500 REAL da Meta (OAuthException code 2, is_transient) na 2a parte e contêiner NÃO publicado: 1a parte "
+      "gravada, job vermelho, retomada sem duplicar e pelo MESMO contêiner")
+tmp = preparar_story(); rc, out, st = rodar("story_500_nao", tmp, agora=TER_17, extra=STORY_OFF)
+checa("só a 1a parte gravada", ids_story(st) == ["stn_t#0"], f"{ids_story(st)}")
+checa("exit == 1", rc == 1, f"exit={rc}")
+checa("o 500 transitório NÃO virou 'token morto'", "AUTENTICACAO FALHOU" not in out, out[-300:])
+wa = st.get("story_nova_publicando") or {}
+checa("write-ahead da parte 2 fica no estado (contêiner FINISHED: o próximo run pergunta de novo)",
+      wa.get("parte") == 1 and wa.get("container"), f"{wa}")
+rc, out, st = rodar("ok", tmp, agora=TER_1330, extra=STORY_OFF)
+checa("retomada publica só as partes 2 e 3", ids_story(st) == TRES, f"{ids_story(st)}")
+checa("retomada exit == 0", rc == 0, f"exit={rc} {out[-300:]}")
+checa("a parte 2 saiu pelo MESMO contêiner do write-ahead (não se criou outro)",
+      reg_de(st, "stn_t#1").get("container") == wa.get("container"), f"{reg_de(st, 'stn_t#1')}")
+checa("na CONTA: 3 stories, nenhuma parte 2x", len(no_ar(tmp)) == 3, f"{no_ar(tmp)}")
+checa("write-ahead resolvido (sai do estado)", "story_nova_publicando" not in st, f"{st.get('story_nova_publicando')}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS5) 500 REAL na 2a parte mas o contêiner ficou PUBLISHED (a Meta entregou): conta como saiu")
+tmp = preparar_story(); rc, out, st = rodar("story_500_saiu", tmp, agora=TER_17, extra=STORY_OFF)
+checa("3 partes gravadas", ids_story(st) == ["stn_t#0", "stn_t#1", "stn_t#2"], f"{ids_story(st)} | {out[-300:]}")
+checa("a 2a marcada como confirmada pelo contêiner", any(e.get("confirmado_por") for e in st["published"] if e["id"] == "stn_t#1"), "confirmado_por")
+checa("exit == 0", rc == 0, f"exit={rc}")
+checa("na CONTA: 3 stories", len(no_ar(tmp)) == 3, f"{no_ar(tmp)}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS6) vídeo trocado depois do render: portão barra, nada sai, job vermelho")
+tmp = preparar_story(); (tmp / "stories_cf" / "stn_t_2.mp4").write_bytes(b"outro")
+rc, out, st = rodar("ok", tmp, agora=TER_17, extra=STORY_OFF)
+checa("nada publicado", ids_story(st) == [], f"{ids_story(st)}")
+checa("exit == 1 com BLOQUEADA", rc == 1 and "BLOQUEADA" in out, f"exit={rc}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS7) parte INCERTA no estado: nenhuma story sai até conferência humana")
+tmp = preparar_story(publicados_extra=[{"id": "stn_z#1", "kind": "story_nova_incerta", "story": "stn_z", "parte": 1,
+                                        "media_id": None, "at": "2026-11-14T16:00:00+00:00"}])
+rc, out, st = rodar("ok", tmp, agora=TER_17, extra=STORY_OFF)
+checa("nada publicado", ids_story(st) == ["stn_z#1"], f"{ids_story(st)}")
+checa("exit == 1 com INCERTA", rc == 1 and "INCERTA" in out, f"exit={rc}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS8) FORCE_ID=story:stn_t numa segunda (decisão humana): publica, portão continua valendo")
+tmp = preparar_story(reel_em="2026-11-14T18:00:00+00:00"); rc, out, st = rodar("ok", tmp, force_id="story:stn_t", agora=SEG_16, extra=STORY_OFF)
+checa("3 partes publicadas", ids_story(st) == ["stn_t#0", "stn_t#1", "stn_t#2"], f"{ids_story(st)} | {out[-300:]}")
+checa("exit == 0", rc == 0, f"exit={rc}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+# ---------------------------------------------------------------- publicador (auditoria adversarial de 24/10/2026)
+print("\nS9) story_500_oauth: HTTP 500 transitório REAL no media_publish da 2a parte e a Meta PUBLICOU — UMA publicação da parte 2")
+tmp = preparar_story(); rc, out, st = rodar("story_500_oauth", tmp, agora=TER_17, extra=STORY_OFF)
+c2 = reg_de(st, "stn_t#1").get("container")
+checa("sem alarme falso de token", "AUTENTICACAO FALHOU" not in out, out[-300:])
+checa("a parte 2 registrada como saiu (confirmada pelo contêiner) e a story completa", rc == 0 and ids_story(st) == TRES
+      and reg_de(st, "stn_t#1").get("confirmado_por"), f"exit={rc} {ids_story(st)} {out[-300:]}")
+rc, out, st = rodar("ok", tmp, agora=TER_1330, extra=STORY_OFF)
+parte2 = [m for m in no_ar(tmp) if m["container"] == c2]
+checa("UMA publicação da parte 2 na conta (e 3 stories no total, mesmo com o cron seguinte)",
+      c2 and len(parte2) == 1 and len(no_ar(tmp)) == 3 and rc == 0, f"parte2={parte2} conta={no_ar(tmp)}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS10) REEL com o 500 transitório REAL no media_publish e a Meta PUBLICOU (pré-existente): publicado UMA vez")
+tmp = preparar(reels=[R_CF]); rc, out, st = rodar("reel_500_oauth", tmp, agora=QUARTA_16H, extra=STORY_OFF)
+checa("sem alarme falso de token", "AUTENTICACAO FALHOU" not in out, out[-300:])
+checa("reel registrado como publicado (confirmado pelo contêiner) e o dia marcado",
+      reg_de(st, "t-cf-1").get("confirmado_por") and st["last_reel_date"] == "2026-07-29" and rc == 0, f"exit={rc} {st['published']}")
+rc, out, st = rodar("ok", tmp, agora="2026-07-29T19:30:00+00:00", extra=STORY_OFF)
+checa("o cron seguinte NÃO republica: 1 reel na conta", len(no_ar(tmp, "REELS")) == 1, f"{no_ar(tmp, 'REELS')}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS11) erro FATAL (token) no media_publish da 2a parte com o contêiner PUBLISHED: a parte é registrada ANTES de subir o erro")
+tmp = preparar_story(); rc, out, st = rodar("auth_no_publish_saiu", tmp, agora=TER_17, extra=STORY_OFF)
+checa("job vermelho com o alarme de token", rc == 1 and "AUTENTICACAO FALHOU" in out, f"exit={rc}")
+checa("partes 1 e 2 registradas (a 2 confirmada pelo contêiner)", ids_story(st) == ["stn_t#0", "stn_t#1"]
+      and reg_de(st, "stn_t#1").get("confirmado_por"), f"{ids_story(st)}")
+rc, out, st = rodar("ok", tmp, agora=TER_1330, extra=STORY_OFF)
+checa("token renovado: retomada publica só a parte 3 (3 stories na conta)", ids_story(st) == TRES and len(no_ar(tmp)) == 3
+      and rc == 0, f"exit={rc} {ids_story(st)} {no_ar(tmp)}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS12) token morre no media_publish da 2a parte e a consulta ao contêiner também falha: INCERTA registrada antes de subir")
+tmp = preparar_story(); rc, out, st = rodar("auth_mid", tmp, agora=TER_17, extra=STORY_OFF)
+checa("job vermelho com o alarme de token", rc == 1 and "AUTENTICACAO FALHOU" in out, f"exit={rc}")
+checa("parte 2 registrada como INCERTA (não como 'não saiu')", [e["kind"] for e in st["published"] if e.get("story") == "stn_t"]
+      == ["story_nova", "story_nova_incerta"], f"{st['published']}")
+rc, out, st = rodar("ok", tmp, agora=TER_1330, extra=STORY_OFF)
+checa("token renovado: nada sai até a conferência humana (1 story na conta)", rc == 1 and "INCERTA" in out
+      and len(no_ar(tmp)) == 1, f"exit={rc} {no_ar(tmp)}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS13) WRITE-AHEAD: job morto DENTRO do media_publish da 2a parte, com a parte no ar: o run seguinte pergunta ao contêiner")
+tmp = preparar_story(); rc, out, st = rodar("morre_no_publish", tmp, agora=TER_17, extra=STORY_OFF)
+wa = st.get("story_nova_publicando") or {}
+checa("job morto com o write-ahead da parte 2 já em disco", rc != 0 and ids_story(st) == ["stn_t#0"] and wa.get("parte") == 1
+      and wa.get("container"), f"exit={rc} {ids_story(st)} {wa}")
+rc, out, st = rodar("ok", tmp, agora=TER_1330, extra=STORY_OFF)
+checa("o run seguinte registra a parte 2 pelo contêiner (PUBLISHED) e publica só a 3", ids_story(st) == TRES
+      and "write-ahead" in str(reg_de(st, "stn_t#1").get("confirmado_por")), f"{ids_story(st)} {out[-300:]}")
+checa("na CONTA: 3 stories, a parte 2 UMA vez", len(no_ar(tmp)) == 3
+      and len([m for m in no_ar(tmp) if m["container"] == wa.get("container")]) == 1, f"{no_ar(tmp)}")
+checa("exit == 0 e o dia marcado", rc == 0 and st.get("last_story_nova_date") == "2026-11-17", f"exit={rc}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar_story(); rc, out, st = rodar("morre_antes_do_publish", tmp, agora=TER_17, extra=STORY_OFF)
+wa = st.get("story_nova_publicando") or {}; n1 = conta(tmp)["n_cont"]
+rc, out, st = rodar("ok", tmp, agora=TER_1330, extra=STORY_OFF)
+checa("job morto sem a parte no ar: o contêiner FINISHED do write-ahead é REAPROVEITADO (1 contêiner novo, o da parte 3)",
+      rc == 0 and ids_story(st) == TRES and reg_de(st, "stn_t#1").get("container") == wa.get("container")
+      and conta(tmp)["n_cont"] - n1 == 1 and len(no_ar(tmp)) == 3, f"exit={rc} {ids_story(st)} n_cont {n1}->{conta(tmp)['n_cont']}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS14) 500 na 2a parte com o contêiner FINISHED na hora e a Meta ENTREGANDO depois: o cron seguinte não republica")
+tmp = preparar_story(); rc, out, st = rodar("story_500_tarde", tmp, agora=TER_17, extra=STORY_OFF)
+checa("1a parte gravada e job vermelho", ids_story(st) == ["stn_t#0"] and rc == 1, f"exit={rc} {ids_story(st)}")
+rc, out, st = rodar("ok", tmp, agora=TER_1330, extra=STORY_OFF)
+checa("o run seguinte vê PUBLISHED pelo write-ahead e publica só a parte 3 (3 stories na conta)",
+      "NO_AR_TARDE" in out and ids_story(st) == TRES and len(no_ar(tmp)) == 3 and rc == 0, f"exit={rc} {no_ar(tmp)}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS15) dois runs a partir da MESMA cópia do estado (checkout de SHA velho, P0-3 da v1.6): o 2º confere a conta e NÃO publica")
+tmp = preparar_story()
+velho = (tmp / "state" / "published.json").read_text(encoding="utf-8")
+rc, out, st = rodar("ok", tmp, agora="2026-11-17T15:30:07+00:00", extra=STORY_OFF)
+checa("run A (12:30:07) publica as 3 partes", ids_story(st) == TRES and rc == 0, f"exit={rc} {ids_story(st)}")
+(tmp / "state" / "published.json").write_text(velho, encoding="utf-8")
+rc, out, st = rodar("ok", tmp, agora="2026-11-17T15:41:00+00:00", extra=STORY_OFF)
+checa("run B (12:41, estado de antes do push de A): exit 1 e NADA publicado (3 stories na conta)",
+      rc == 1 and ids_story(st) == [] and len(no_ar(tmp)) == 3, f"exit={rc} {no_ar(tmp)}")
+checa("  ...e diz por quê (story de hoje que o estado não conhece)", "NAO conhece" in out, out[-400:])
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar_story()
+(tmp / "_conta_meta.json").write_text(json.dumps({"n_cont": 0, "n_mid": 900, "conteineres": {}, "midias": [
+    {"id": "MANUAL1", "timestamp": "2026-11-17T13:00:00+0000", "media_type": "STORIES", "container": None}]}), encoding="utf-8")
+rc, out, st = rodar("ok", tmp, agora=TER_17, extra=STORY_OFF)
+checa("CONTROLE: story manual das 10:00 não bloqueia (a conferência olha a partir das 12:30)", ids_story(st) == TRES and rc == 0,
+      f"exit={rc} {out[-300:]}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar_story(); rc, out, st = rodar("stories_falha", tmp, agora=TER_17, extra=STORY_OFF)
+checa("GET /stories falhando: nada publicado e job vermelho (guarda cega não libera)", ids_story(st) == [] and rc == 1
+      and len(no_ar(tmp)) == 0 and conta(tmp)["n_cont"] == 0, f"exit={rc} {out[-300:]}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+
+def segunda_story(tmp, aprovar_b=True, aprovar_t=False):
+    """stn_b (tema alongamento, reel em 02/11) ao lado da stn_t (pe_virado, reel em 01/11: tema MAIS ANTIGO)."""
+    B = json.loads(json.dumps(ST)); B["id"] = "stn_b"; B["reel_ref"] = "cf_alongamento"; B["tema"] = "alongamento"
+    (tmp / "reels" / "al.mp4").write_bytes(b"reel2")
+    rs = json.loads((tmp / "reels.json").read_text(encoding="utf-8"))
+    rs.append({"id": "cf_alongamento", "video": "reels/al.mp4", "caption": CAP, "formato": "como_funciona", "voz_ia": True})
+    (tmp / "reels.json").write_text(json.dumps(rs, ensure_ascii=False), encoding="utf-8")
+    est = json.loads((tmp / "state" / "published.json").read_text(encoding="utf-8"))
+    est["published"].append({"id": "cf_alongamento", "kind": "reel", "at": "2026-11-02T18:00:00+00:00"})
+    (tmp / "state" / "published.json").write_text(json.dumps(est), encoding="utf-8")
+    meta = json.loads((tmp / "stories_cf" / "stn_t.json").read_text(encoding="utf-8"))
+    ps = []
+    for i, p in enumerate(meta["partes"]):
+        arq = f"stories_cf/stn_b_{i + 1}.mp4"; (tmp / arq).write_bytes(b"b%d" % i)
+        ps.append(dict(p, arquivo=arq, sha256=_sha(b"b%d" % i)))
+    meta.update(id="stn_b", hash_story=CS.hash_story(B), reel_video="reels/al.mp4", reel_sha256=_sha(b"reel2"), partes=ps)
+    (tmp / "stories_cf" / "stn_b.json").write_text(json.dumps(meta, ensure_ascii=False), encoding="utf-8")
+    (tmp / "stories_cf.json").write_text(json.dumps([ST, B], ensure_ascii=False), encoding="utf-8")
+    eps = ([entrada(tmp, "stn_b")] if aprovar_b else []) + ([entrada(tmp, "stn_t")] if aprovar_t else [])
+    (tmp / "aprovacoes.json").write_text(json.dumps({"lotes": [lote_story(eps)]}), encoding="utf-8")
+
+
+PROJ = r'''
+import json, sys, datetime as dt, publish_agenda as PA
+st = json.load(open("state/published.json", encoding="utf-8"))
+fila = json.load(open("stories_cf.json", encoding="utf-8"))
+base = dt.date.fromisoformat(sys.argv[1])
+r = PA.projeta_stories(fila, st["published"], [], base, st.get("last_story_nova_date") == base.isoformat(),
+                       aprovacoes=json.load(open("aprovacoes.json", encoding="utf-8")),
+                       reels_por_id={x["id"]: x for x in json.load(open("reels.json", encoding="utf-8"))})
+print(json.dumps([[d.isoformat(), i] for d, i in r][:3]))
+'''
+
+
+def pagina(tmp, base):
+    env = {k: v for k, v in os.environ.items() if k not in ("DIAS_ENTRE_MESMO_TEMA", "STORIES_NOVOS_ATIVOS")}
+    env.update({"PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8"})
+    p = subprocess.run([sys.executable, "-c", PROJ, base], cwd=str(tmp), capture_output=True, text=True, env=env,
+                       encoding="utf-8", errors="replace")
+    try:
+        return json.loads(p.stdout.strip().splitlines()[-1])
+    except (ValueError, IndexError):
+        return f"ERRO {p.returncode}: {p.stderr[-300:]}"
+
+
+print("\nS16) FILA: story PENDENTE com o tema mais antigo NÃO trava a APROVADA (e a página diz o mesmo que o robô)")
+tmp = preparar_story(aprovado=False); segunda_story(tmp)
+proj = pagina(tmp, "2026-11-17")
+rc, out, st = rodar("ok", tmp, agora=TER_17, extra=STORY_OFF)
+checa("a aprovada (stn_b) sai inteira; a pendente (stn_t) não", ids_story(st) == ["stn_b#0", "stn_b#1", "stn_b#2"] and rc == 0,
+      f"exit={rc} {ids_story(st)} {out[-300:]}")
+checa("  ...com aviso nomeando a pendente", "::warning::stn_t: aguardando aprovação" in out, out[-500:])
+checa("a página (publish_agenda.projeta_stories) projeta o MESMO dia e a MESMA story", isinstance(proj, list) and proj[:1]
+      == [["2026-11-17", "stn_b"]], f"{proj}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar_story(aprovado=False); segunda_story(tmp, aprovar_b=True, aprovar_t=True)
+rc, out, st = rodar("ok", tmp, agora=TER_17, extra=STORY_OFF)
+checa("CONTROLE: as duas aprovadas -> sai a do tema mais antigo (stn_t)", ids_story(st) == TRES, f"{ids_story(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+tmp = preparar_story(aprovado=False); segunda_story(tmp)
+_fila = json.loads((tmp / "stories_cf.json").read_text(encoding="utf-8"))
+_fila[0]["cta"] = "Manda pra quem quer agendar consulta."          # chamada de agendamento: erro de CONTEÚDO (CFM)
+(tmp / "stories_cf.json").write_text(json.dumps(_fila, ensure_ascii=False), encoding="utf-8")
+rc, out, st = rodar("ok", tmp, agora=TER_17, extra=STORY_OFF)
+checa("pendente com erro de CONTEÚDO na fila: a aprovada sai mesmo assim e o job fica VERMELHO nomeando a pendente",
+      ids_story(st) == ["stn_b#0", "stn_b#1", "stn_b#2"] and rc == 1 and "FALHA story stn_t (fila, portão)" in out,
+      f"exit={rc} {ids_story(st)} {out[-400:]}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS17) RETOMADA de outro dia: parte 1 na terça, nada na quinta (a parte 1 já expirou no Instagram) — job vermelho")
+tmp = preparar_story(); rc, out, st = rodar("story_500_nao", tmp, agora=TER_17, extra=STORY_OFF)
+rc, out, st = rodar("ok", tmp, agora="2026-11-19T16:00:00+00:00", extra=STORY_OFF)
+checa("partes 2 e 3 NÃO saem 2 dias depois da 1", ids_story(st) == ["stn_t#0"] and rc == 1 and len(no_ar(tmp)) == 1,
+      f"exit={rc} {ids_story(st)} {no_ar(tmp)}")
+checa("  ...e o log pede decisão (a parte 1 expirou)", "expirou" in out, out[-400:])
+checa("  ...e a vaga de quinta NÃO é gasta", st.get("last_story_nova_date") in (None, ""), f"{st.get('last_story_nova_date')}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS18) FORCE_ID=story:<id> de story JÁ publicada inteira: job vermelho, nada sai, o dia NÃO é marcado")
+tmp = preparar_story(); rc, out, st = rodar("ok", tmp, agora=TER_17, extra=STORY_OFF)
+rc, out, st = rodar("ok", tmp, force_id="story:stn_t", agora="2026-11-19T14:00:00+00:00", extra=STORY_OFF)
+checa("exit 1 com 'já publicada', nada novo na conta", rc == 1 and "já publicada" in out and len(no_ar(tmp)) == 3,
+      f"exit={rc} {out[-300:]}")
+checa("last_story_nova_date continua o da terça (a story agendada da quinta segue possível)",
+      st.get("last_story_nova_date") == "2026-11-17", f"{st.get('last_story_nova_date')}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS19) FORCE_ID=story:<id> de story NÃO aprovada: job vermelho, nada sai")
+tmp = preparar_story(aprovado=False, reel_em="2026-11-14T18:00:00+00:00")
+rc, out, st = rodar("ok", tmp, force_id="story:stn_t", agora=SEG_16, extra=STORY_OFF)
+checa("exit 1, nada publicado, motivo: aprovação", rc == 1 and ids_story(st) == [] and len(no_ar(tmp)) == 0
+      and "story só sai APROVADA" in out, f"exit={rc} {out[-300:]}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS20) reel de origem ONTEM com a distância de tema desligada: a regra dos 2 dias segura a story")
+tmp = preparar_story(reel_em="2026-11-16T18:00:00+00:00")
+rc, out, st = rodar("ok", tmp, agora=TER_17, extra=dict(STORY_OFF, DIAS_ENTRE_MESMO_TEMA="off"))
+checa("nada publicado 1 dia depois do reel", ids_story(st) == [] and rc == 0, f"exit={rc} {ids_story(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar_story(reel_em="2026-11-15T18:00:00+00:00")
+rc, out, st = rodar("ok", tmp, agora=TER_17, extra=dict(STORY_OFF, DIAS_ENTRE_MESMO_TEMA="off"))
+checa("CONTROLE: reel há 2 dias -> sai", ids_story(st) == TRES and rc == 0, f"exit={rc} {ids_story(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS21) RAW URL das mídias (story, post, reel) com o SHA do commit do checkout, não com o nome do branch")
+tmp = preparar_story()
+def _git(*a):
+    return subprocess.run(["git", "-C", str(tmp)] + list(a), capture_output=True, text=True)
+_git("init", "-q"); _git("add", "-A"); _git("-c", "user.name=teste", "-c", "user.email=teste@teste", "commit", "-q", "-m", "x")
+sha = _git("rev-parse", "HEAD").stdout.strip()
+URL = f"https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/{sha}/"
+rc, out, st = rodar("ok", tmp, agora=TER_17, extra=STORY_OFF)
+urls = [l.split(" ", 1)[1] for l in out.splitlines() if l.startswith("MIDIA_URL ")]
+checa("story: as 3 partes pela URL do commit", len(sha) == 40 and urls == [URL + f"stories_cf/stn_t_{i}.mp4" for i in (1, 2, 3)],
+      f"sha={sha!r} {urls}")
+rc, out, st = rodar("ok", tmp, force_id="t-post-1", agora=TER_17, extra=STORY_OFF)
+checa("post: imagem pela URL do commit", "MIDIA_URL " + URL + "media/a.png" in out, out[-300:])
+rc, out, st = rodar("ok", tmp, force_id="cf_pe_virado", agora=TER_17, extra=STORY_OFF)
+checa("reel: vídeo pela URL do commit", "MIDIA_URL " + URL + "reels/pv.mp4" in out, out[-300:])
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS24) REEL e POST com o media_publish em erro e a CONSULTA ao contêiner também falhando: INCERTO, não republica, "
+      "vermelho até conferir")
+tmp = preparar(reels=[R_CF]); rc, out, st = rodar("publish_500_incerto", tmp, agora=QUARTA_16H, extra=STORY_OFF)
+checa("reel registrado como 'reel_incerto' e job vermelho", [e["kind"] for e in st["published"]] == ["reel_incerto"] and rc == 1
+      and st["last_reel_date"] == "2026-07-29", f"exit={rc} {st['published']}")
+checa("  ...o registro incerto guarda o contêiner e o write-ahead sai do estado", st["published"][0].get("container")
+      and "reel_publicando" not in st, f"{st}")
+rc, out, st = rodar("ok", tmp, agora="2026-07-31T19:00:00+00:00", extra=STORY_OFF)
+checa("próximo dia de reel (sex): o reel incerto NÃO é republicado (1 reel na conta) e o job segue vermelho até a conferência",
+      len(no_ar(tmp, "REELS")) == 1 and rc == 1 and "publicacao INCERTA" in out, f"exit={rc} {no_ar(tmp, 'REELS')}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(reels=[R_CF]); rc, out, st = rodar("reel_nao_pronto", tmp, agora=QUARTA_16H, extra=STORY_OFF)
+checa("CONTROLE: recusa 'não pronto' (9007/2207027) com o contêiner IN_PROGRESS = falha comum, NÃO incerto",
+      st["published"] == [] and rc == 1 and "publicacao INCERTA" not in out and st["last_reel_date"] == "", f"exit={rc} {st['published']}")
+rc, out, st = rodar("ok", tmp, agora="2026-07-31T19:00:00+00:00", extra=STORY_OFF)
+checa("  ...e o próximo dia de reel publica a peça (ela continuou na fila)", ids(st) == ["t-cf-1"] and rc == 0
+      and len(no_ar(tmp, "REELS")) == 1, f"exit={rc} {ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(); rc, out, st = rodar("publish_500_incerto", tmp, extra={"POSTS_ATIVOS": "on", "SEQUENCIAS_ATIVAS": "off"})
+checa("post: registrado como 'post_incerto' (fora da fila) e job vermelho", any(e["kind"] == "post_incerto" for e in st["published"])
+      and rc == 1, f"exit={rc} {st['published']}")
+rc, out, st = rodar("ok", tmp, agora="2026-07-30T21:00:00+00:00", extra={"POSTS_ATIVOS": "on", "SEQUENCIAS_ATIVAS": "off"})
+checa("  ...e não é republicado (1 imagem na conta)", len(no_ar(tmp, "IMAGE")) == 1 and rc == 1, f"exit={rc} {no_ar(tmp, 'IMAGE')}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS25) SEQUÊNCIA antiga e story nova no mesmo dia: os 5 frames vão ao estado e a conferência da conta os reconhece")
+tmp = preparar_story(); rc, out, st = rodar("ok", tmp, agora=TER_17, extra={"POSTS_ATIVOS": "off", "SEQUENCIAS_ATIVAS": "on"})
+checa("sequência (5 frames) e as 3 partes da story saem; job verde", "t-seq-1" in ids(st) and ids_story(st) == TRES and rc == 0
+      and len(no_ar(tmp)) == 8, f"exit={rc} {ids(st)} {out[-300:]}")
+checa("o registro da sequência guarda os 5 media_ids", len(reg_de(st, "t-seq-1").get("media_ids") or []) == 5, f"{reg_de(st, 't-seq-1')}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+# ---------------------------------------------------------------- fechamento da auditoria (25/10/2026)
+QUARTA_1630 = "2026-07-29T19:30:00+00:00"            # cron seguinte (qua 16:30 BRT)
+QUARTA_17H = "2026-07-29T20:00:00+00:00"
+SEXTA_16H = "2026-07-31T19:00:00+00:00"              # próximo dia de reel (contêiner de quarta já EXPIRED: 24 h)
+
+print("\nS26) REEL: 500 no media_publish com o contêiner FINISHED e a Meta ENTREGANDO depois — o cron seguinte NÃO cria outro")
+tmp = preparar(reels=[R_CF]); rc, out, st = rodar("reel_500_tarde", tmp, agora=QUARTA_16H, extra=STORY_OFF)
+wa = st.get("reel_publicando") or {}
+checa("run 1: job vermelho, reel fora do registro e o write-ahead (contêiner) no estado", rc == 1 and ids(st) == []
+      and wa.get("id") == "t-cf-1" and wa.get("container"), f"exit={rc} {ids(st)} {wa}")
+rc, out, st = rodar("ok", tmp, agora=QUARTA_1630, extra=STORY_OFF)
+checa("run 2: a Meta entregou depois — o write-ahead registra o reel pelo contêiner e NÃO cria outro (1 reel, 1 contêiner)",
+      "NO_AR_TARDE" in out and len(no_ar(tmp, "REELS")) == 1 and conta(tmp)["n_cont"] == 1 and rc == 0
+      and "write-ahead" in str(reg_de(st, "t-cf-1").get("confirmado_por")), f"exit={rc} {no_ar(tmp, 'REELS')} {out[-300:]}")
+checa("  ...com o dia marcado, formato/modo/rótulo no registro e o write-ahead resolvido", st["last_reel_date"] == "2026-07-29"
+      and reg_de(st, "t-cf-1").get("formato") == "como_funciona" and reg_de(st, "t-cf-1").get("modo_reel") == "normal"
+      and reg_de(st, "t-cf-1").get("rotulo_ia") is True and "reel_publicando" not in st, f"{st}")
+rc, out, st = rodar("ok", tmp, agora=SEXTA_16H, extra=STORY_OFF)
+checa("  ...e o próximo dia de reel não o republica (1 reel na conta)", len(no_ar(tmp, "REELS")) == 1 and rc == 0, f"exit={rc}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+tmp = preparar(reels=[R_CF]); rc, out, st = rodar("reel_500_nao", tmp, agora=QUARTA_16H, extra=STORY_OFF)
+c1 = (st.get("reel_publicando") or {}).get("container")
+rc, out, st = rodar("ok", tmp, agora=QUARTA_1630, extra=STORY_OFF)
+checa("contêiner FINISHED que a Meta NÃO entregou: o cron seguinte publica o MESMO contêiner (1 contêiner, 1 reel)",
+      rc == 0 and c1 and len(no_ar(tmp, "REELS")) == 1 and conta(tmp)["n_cont"] == 1 and no_ar(tmp, "REELS")[0]["container"] == c1
+      and reg_de(st, "t-cf-1").get("media_id") and "reel_publicando" not in st, f"exit={rc} {no_ar(tmp, 'REELS')} {out[-300:]}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+tmp = preparar(reels=[R_CF]); rc, out, st = rodar("reel_500_nao", tmp, agora=QUARTA_16H, extra=STORY_OFF)
+rc, out, st = rodar("ok", tmp, agora=SEXTA_16H, extra=STORY_OFF)
+checa("CONTROLE: write-ahead com o contêiner EXPIRED (nunca saiu): descartado e o reel sai com contêiner novo (1 reel)",
+      rc == 0 and len(no_ar(tmp, "REELS")) == 1 and conta(tmp)["n_cont"] == 2 and "reel_publicando" not in st,
+      f"exit={rc} n_cont={conta(tmp)['n_cont']} {no_ar(tmp, 'REELS')}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+tmp = preparar(reels=[R_CF]); rc, out, st = rodar("reel_morre_no_publish", tmp, agora=QUARTA_16H, extra=STORY_OFF)
+checa("job morto DENTRO do media_publish do reel (a Meta publicou): o write-ahead já está em disco",
+      rc != 0 and (st.get("reel_publicando") or {}).get("container") and ids(st) == [], f"exit={rc} {st}")
+rc, out, st = rodar("ok", tmp, agora=QUARTA_1630, extra=STORY_OFF)
+checa("  ...o run seguinte registra o reel pelo contêiner (PUBLISHED) e não republica (1 reel)", rc == 0
+      and len(no_ar(tmp, "REELS")) == 1 and reg_de(st, "t-cf-1").get("confirmado_por"), f"exit={rc} {no_ar(tmp, 'REELS')}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+tmp = preparar(reels=[R_CF]); rodar("reel_500_nao", tmp, agora=QUARTA_16H, extra=STORY_OFF)
+rc, out, st = rodar("consulta_falha", tmp, agora=QUARTA_1630, extra=STORY_OFF)
+checa("consulta ao contêiner do write-ahead falhando: nada de reel sai, job vermelho, write-ahead mantido", rc == 1
+      and len(no_ar(tmp, "REELS")) == 0 and conta(tmp)["n_cont"] == 1 and (st.get("reel_publicando") or {}).get("container"),
+      f"exit={rc} n_cont={conta(tmp)['n_cont']} {out[-300:]}")
+rc, out, st = rodar("ok", tmp, agora=QUARTA_17H, extra=STORY_OFF)
+checa("  ...e o run seguinte publica o MESMO contêiner", rc == 0 and len(no_ar(tmp, "REELS")) == 1 and conta(tmp)["n_cont"] == 1,
+      f"exit={rc} n_cont={conta(tmp)['n_cont']}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+tmp = preparar(reels=[R_CF]); rodar("ok", tmp, agora=QUARTA_16H, extra=STORY_OFF)
+_est = json.loads((tmp / "state" / "published.json").read_text(encoding="utf-8"))
+_est["reel_publicando"] = {"id": "t-cf-1", "container": "CONT001", "at": "2026-07-29T19:00:00+00:00"}   # sobra (estado editado)
+(tmp / "state" / "published.json").write_text(json.dumps(_est), encoding="utf-8")
+rc, out, st = rodar("ok", tmp, agora=QUARTA_1630, extra=STORY_OFF)
+checa("write-ahead que sobrou de peça JÁ registrada: descartado, sem 2º registro nem 2º reel", rc == 0
+      and [e["id"] for e in st["published"]].count("t-cf-1") == 1 and "reel_publicando" not in st
+      and len(no_ar(tmp, "REELS")) == 1, f"exit={rc} {st['published']}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+R_CF2 = {"id": "t-cf-2", "video": "media/f2.mp4", "caption": CAP_IA, "formato": "como_funciona"}
+tmp = preparar(reels=[R_CF, R_CF2]); rodar("reel_500_nao", tmp, agora=QUARTA_16H, extra=STORY_OFF)
+rc, out, st = rodar("consulta_falha", tmp, force_id="t-cf-2", agora=QUARTA_1630, extra=STORY_OFF)
+checa("FORCE de outro reel com a consulta ao contêiner preparado FALHANDO: vermelho, nada sai, write-ahead intacto", rc == 1
+      and len(no_ar(tmp, "REELS")) == 0 and (st.get("reel_publicando") or {}).get("id") == "t-cf-1", f"exit={rc} {out[-300:]}")
+rc, out, st = rodar("ok", tmp, force_id="t-cf-2", agora=QUARTA_1630, extra=STORY_OFF)
+checa("FORCE de OUTRO reel com contêiner preparado (write-ahead): vermelho, nada sai, o write-ahead do 1º fica", rc == 1
+      and len(no_ar(tmp, "REELS")) == 0 and (st.get("reel_publicando") or {}).get("id") == "t-cf-1", f"exit={rc} {out[-300:]}")
+rc, out, st = rodar("ok", tmp, force_id="t-cf-1", agora=QUARTA_17H, extra=STORY_OFF)
+checa("CONTROLE: FORCE do MESMO reel publica o contêiner preparado (1 contêiner, 1 reel)", rc == 0
+      and len(no_ar(tmp, "REELS")) == 1 and conta(tmp)["n_cont"] == 1, f"exit={rc} n_cont={conta(tmp)['n_cont']}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+POST_ON = {"POSTS_ATIVOS": "on", "SEQUENCIAS_ATIVAS": "off"}
+tmp = preparar(); rc, out, st = rodar("post_500_tarde", tmp, extra=POST_ON)
+checa("POST: 500 com o contêiner FINISHED — vermelho e o write-ahead do post no estado", rc == 1 and ids(st) == []
+      and (st.get("post_publicando") or {}).get("id") == "t-post-1", f"exit={rc} {st}")
+rc, out, st = rodar("ok", tmp, agora="2026-07-28T21:30:00+00:00", extra=POST_ON)
+checa("  ...a Meta entregou depois: registrado pelo write-ahead, 1 imagem na conta, dia marcado", "NO_AR_TARDE" in out
+      and len(no_ar(tmp, "IMAGE")) == 1 and reg_de(st, "t-post-1").get("confirmado_por") and st["last_post_date"] == "2026-07-28"
+      and rc == 0, f"exit={rc} {no_ar(tmp, 'IMAGE')} {out[-300:]}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS27) REEL TRIAL: 500 transitório no contêiner trial NÃO é 'trial_params recusado' (a peça do experimento não sai no grid)")
+tmp = preparar(); rc, out, st = rodar("trial_500", tmp, force_id="t-reel-1")
+checa("trial com 500: job vermelho, nada publicado, sem fallback normal", rc == 1 and ids(st) == [] and len(no_ar(tmp, "REELS")) == 0
+      and "trial_params recusado" not in out and "AUTENTICACAO FALHOU" not in out, f"exit={rc} {ids(st)} {out[-300:]}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(); rc, out, st = rodar("trial_recusado", tmp, force_id="t-reel-1")
+checa("CONTROLE: trial_params RECUSADO pela Meta (400, code 100) cai no fallback normal", rc == 0
+      and any(e.get("modo_reel") == "fallback_normal" for e in st["published"]), f"exit={rc} {st['published']}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS28) guardas do caminho da story que a verificação achou sem controle negativo")
+tmp = preparar_story(); rc, out, st = rodar("morre_antes_do_publish", tmp, agora=TER_17, extra=STORY_OFF)
+wa = st.get("story_nova_publicando") or {}; n1 = conta(tmp)["n_cont"]
+_meta = json.loads((tmp / "stories_cf" / "stn_t.json").read_text(encoding="utf-8"))
+(tmp / "stories_cf" / "stn_t_2.mp4").write_bytes(b"parte1 RE-RENDER")          # re-render do vídeo 2 (irmão coerente)
+_meta["partes"][1]["sha256"] = _sha(b"parte1 RE-RENDER")
+(tmp / "stories_cf" / "stn_t.json").write_text(json.dumps(_meta, ensure_ascii=False), encoding="utf-8")
+(tmp / "aprovacoes.json").write_text(json.dumps({"lotes": [lote_story([entrada(tmp, "stn_t")])]}), encoding="utf-8")
+rc, out, st = rodar("ok", tmp, agora=TER_1330, extra=STORY_OFF)
+checa("write-ahead FINISHED de um render ANTIGO: o contêiner velho NÃO é publicado (2 contêineres novos, partes 2 e 3)",
+      rc == 0 and ids_story(st) == TRES and wa.get("container") and reg_de(st, "stn_t#1").get("container") != wa.get("container")
+      and conta(tmp)["n_cont"] - n1 == 2 and "o render mudou" in out
+      and not any(m["container"] == wa.get("container") for m in no_ar(tmp)), f"exit={rc} n_cont {n1}->{conta(tmp)['n_cont']} {out[-300:]}")
+shutil.rmtree(tmp, ignore_errors=True)
+_ontem = [{"id": f"stn_y#{i}", "kind": "story_nova", "story": "stn_y", "parte": i, "media_id": None,
+           "at": "2026-11-16T16:00:00+00:00", "confirmado_por": "status_code PUBLISHED depois de erro"} for i in range(3)]
+tmp = preparar_story(publicados_extra=_ontem)
+velho = (tmp / "state" / "published.json").read_text(encoding="utf-8")
+rc, out, st = rodar("ok", tmp, agora="2026-11-17T15:30:07+00:00", extra=STORY_OFF)
+(tmp / "state" / "published.json").write_text(velho, encoding="utf-8")
+rc, out, st = rodar("ok", tmp, agora="2026-11-17T15:41:00+00:00", extra=STORY_OFF)
+checa("parte sem media_id de ONTEM não desconta story desconhecida de HOJE: o run com estado velho dá exit 1 'NAO conhece'",
+      rc == 1 and len(no_ar(tmp)) == 3 and "NAO conhece" in out, f"exit={rc} {no_ar(tmp)} {out[-300:]}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar_story(reel_em="2026-11-14T18:00:00+00:00")
+_est = json.loads((tmp / "state" / "published.json").read_text(encoding="utf-8"))
+_est["published"] = [e for e in _est["published"] if e.get("id") != "cf_pe_virado"]
+(tmp / "state" / "published.json").write_text(json.dumps(_est), encoding="utf-8")
+rc, out, st = rodar("ok", tmp, force_id="story:stn_t", agora=SEG_16, extra=STORY_OFF)
+checa("FORCE story:<id> com o reel de origem FORA do grid: exit 1 e nada publicado (a tela 3 diria 'no perfil')",
+      rc == 1 and ids_story(st) == [] and len(no_ar(tmp)) == 0 and "ainda não saiu no grid" in out, f"exit={rc} {out[-300:]}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS29) APROVAÇÃO só do TEXTO (fixture antigo) + re-render COERENTE: nada sai (o Rafael não viu o vídeo novo)")
+tmp = preparar_story()
+_fila = json.loads((tmp / "stories_cf.json").read_text(encoding="utf-8"))
+_fila[0]["telas"][1]["crop"] = [0, 0, 1080, 1920]; _fila[0]["telas"][1]["trecho"] = [20.0, 27.5]   # correção visual
+(tmp / "stories_cf.json").write_text(json.dumps(_fila, ensure_ascii=False), encoding="utf-8")
+_meta = json.loads((tmp / "stories_cf" / "stn_t.json").read_text(encoding="utf-8"))
+(tmp / "stories_cf" / "stn_t_2.mp4").write_bytes(b"VIDEO 2 QUE O RAFAEL NUNCA VIU")
+_meta["partes"][1].update(sha256=_sha(b"VIDEO 2 QUE O RAFAEL NUNCA VIU"), crop=[0, 0, 1080, 1920], trecho=[20.0, 27.5],
+                          camera=CS.camera_de(_fila[0]["telas"][1]))
+_meta["hash_render"] = CS.hash_render(_fila[0])
+(tmp / "stories_cf" / "stn_t.json").write_text(json.dumps(_meta, ensure_ascii=False), encoding="utf-8")
+(tmp / "aprovacoes.json").write_text(json.dumps({"lotes": [lote_story([{"id": "stn_t", "hash_roteiro": CS.hash_story(ST)}])]}),
+                                     encoding="utf-8")
+rc, out, st = rodar("ok", tmp, agora=TER_17, extra=STORY_OFF)
+checa("lote só de texto (com autor e evidência): nada publicado e o aviso diz 'não amarrada'", ids_story(st) == [] and rc == 0
+      and len(no_ar(tmp)) == 0 and "não amarrada" in out, f"exit={rc} {ids_story(st)} {out[-400:]}")
+(tmp / "aprovacoes.json").write_text(json.dumps({"lotes": [lote_story([entrada(tmp, "stn_t")])]}), encoding="utf-8")
+rc, out, st = rodar("ok", tmp, agora=TER_17, extra=STORY_OFF)
+checa("CONTROLE: o Rafael aprova o render NOVO (entrada de --entrada) -> sai inteira", ids_story(st) == TRES and rc == 0,
+      f"exit={rc} {ids_story(st)} {out[-300:]}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar_story()
+(tmp / "aprovacoes.json").write_text(json.dumps({"lotes": [dict(lote_story([entrada(tmp, "stn_t")]), evidencia="")]}),
+                                     encoding="utf-8")
+rc, out, st = rodar("ok", tmp, agora=TER_17, extra=STORY_OFF)
+checa("lote 'aprovado' sem evidência (o portão clínico do publish.yml o recusa): a story não conta como aprovada",
+      ids_story(st) == [] and rc == 0 and "evidencia" in out, f"exit={rc} {ids_story(st)} {out[-300:]}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nS22) publish.yml: checkout com ref: main (o run enfileirado lê o estado que o anterior commitou)")
+_yml = (ROOT / ".github" / "workflows" / "publish.yml").read_text(encoding="utf-8")
+_m = re.search(r"- uses: actions/checkout@v4[ \t]*\r?\n[ \t]+with:[ \t]*\r?\n(?:[ \t]*#[^\n]*\n|[ \t]+[a-z-]+:[^\n]*\n)*?"
+               r"[ \t]+ref:[ \t]*main[ \t]*\r?\n", _yml)
+checa("o checkout do job de publicação tem ref: main", _m is not None and _yml.count("actions/checkout@") == 1, "publish.yml")
+
+print("\nS23) stories_pulse: a SÉRIE do dia vai ao disco ANTES dos extras, e os extras têm orçamento de tempo")
+PULSE = r'''
+import sys, json, io, os, time, urllib.parse, urllib.request, runpy
+MODO = sys.argv[1]
+rel = {"t": 1000.0}
+time.monotonic = lambda: rel["t"]
+class Resp(io.BytesIO):
+    def __enter__(self): return self
+    def __exit__(self, *a): return False
+def urlopen(url, timeout=None):
+    u = urllib.parse.urlsplit(url); q = urllib.parse.parse_qs(u.query); metrica = (q.get("metric") or [""])[0]
+    if u.path.endswith("/stories"):
+        return Resp(json.dumps({"data": [{"id": "S%d" % i, "media_type": "VIDEO",
+                                          "timestamp": "2026-11-17T15:31:00+0000"} for i in (1, 2, 3)]}).encode())
+    if not metrica.startswith("views"):                       # extra
+        if MODO == "morre_nos_extras":
+            print("JOB_MORTO_NOS_EXTRAS", flush=True); os._exit(137)
+        if MODO == "extras_pendurados":
+            rel["t"] += timeout                               # pendura até o timeout da chamada
+            raise TimeoutError("timed out")
+    if "breakdown" in q:
+        dados = {"data": [{"total_value": {"breakdowns": [{"results": [{"dimension_values": ["TAP_FORWARD"], "value": 3}]}]}}]}
+    else:
+        dados = {"data": [{"name": m, "values": [{"value": 7}]} for m in metrica.split(",")]}
+    return Resp(json.dumps(dados).encode())
+urllib.request.urlopen = urlopen
+try:
+    runpy.run_path("stories_pulse.py", run_name="__main__")
+finally:
+    json.dump({"gasto_s": rel["t"] - 1000.0}, open("_relogio.json", "w"))
+'''
+
+
+def pulso(modo, extra=None):
+    d = Path(tempfile.mkdtemp(prefix="igpulse_")); (d / "state").mkdir()
+    shutil.copy(ROOT / "stories_pulse.py", d / "stories_pulse.py"); (d / "_pulse.py").write_text(PULSE, encoding="utf-8")
+    env = dict(os.environ, IG_USER_ID="1784", IG_ACCESS_TOKEN="fake", PYTHONUTF8="1", PYTHONIOENCODING="utf-8")
+    env.update(extra or {})
+    p = subprocess.run([sys.executable, str(d / "_pulse.py"), modo], cwd=str(d), capture_output=True, text=True, env=env,
+                       encoding="utf-8", errors="replace")
+    ler = lambda n: json.loads((d / n).read_text(encoding="utf-8")) if (d / n).exists() else None
+    r = (p.returncode, (p.stdout or "") + (p.stderr or ""), ler("state/stories_serie.json"), ler("state/stories_pecas.json"),
+         ler("_relogio.json"))
+    shutil.rmtree(d, ignore_errors=True)
+    return r
+
+
+rc, out, serie, pecas, relg = pulso("morre_nos_extras")
+checa("job morto nos extras: a série do dia JÁ está gravada (3 ativos, views 21)", rc != 0 and serie and serie["dias"][-1].get("views") == 21
+      and serie["dias"][-1].get("stories_ativos") == 3, f"exit={rc} serie={serie} {out[-300:]}")
+checa("  ...e as peças da chamada principal também", pecas and sorted(pecas["pecas"]) == ["S1", "S2", "S3"], f"{pecas}")
+rc, out, serie, pecas, relg = pulso("extras_pendurados", {"STORIES_ORCAMENTO_EXTRAS_S": "50"})
+cortados = [e for p in (pecas or {}).get("pecas", {}).values() for e in p.get("erros_extra", []) if "orçamento" in e]
+checa("extras pendurados: o orçamento corta (tempo gasto <= orçamento) e o job termina com a série gravada",
+      rc == 0 and relg and relg["gasto_s"] <= 51 and serie and serie["dias"][-1].get("views") == 21 and cortados,
+      f"exit={rc} gasto={relg} cortados={len(cortados)} {out[-300:]}")
+rc, out, serie, pecas, relg = pulso("ok")
+s1 = (pecas or {}).get("pecas", {}).get("S1", {})
+checa("CONTROLE: extras respondendo -> follows, profile_visits e navegação por tipo medidos",
+      rc == 0 and s1.get("follows") == 7 and s1.get("profile_visits") == 7 and s1.get("navegacao") == {"tap_forward": 3}, f"{s1}")
+
 print("\nO) LAMINAS_POR_SEMANA ilegivel/'off' NAO derruba o motor (posts e stories seguem)")
 tmp = preparar(reels=[R_LAMINA, R_CONVERSA], publicados=[LAMINA_SEG]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H, extra={"LAMINAS_POR_SEMANA": "off"})
 checa("'off' = sem cota (a lamina sai)", "t-lamina-1" in ids(st), f"publicados={ids(st)}")
@@ -389,7 +1134,22 @@ TABELA = [
     # --- CONTROLE: token morto continua vermelho MESMO com subcode de midia junto ---
     ("token morto + sub de midia (190 / 2207006)", 400,
      {"error": {"type": "OAuthException", "code": 190, "error_subcode": 2207006}}, True),
-    ("erro generico (500)", 500, {"error": {"type": "Exception", "code": 1}}, False),
+    # --- 500 TRANSITORIO no corpo REAL da Graph API (auditoria 24/10/2026): era AuthError pelo catch-all
+    #     de OAuthException — a story pulava a consulta ao conteiner e o reel era republicado.
+    ("500 transitorio REAL (OAuthException code 2, is_transient)", 500,
+     {"error": {"message": "An unexpected error has occurred. Please retry your request later.",
+                "type": "OAuthException", "is_transient": True, "code": 2}}, False),
+    ("500 'unknown error' (OAuthException code 1)", 500,
+     {"error": {"message": "An unknown error occurred", "type": "OAuthException", "code": 1}}, False),
+    ("is_transient=true mesmo com HTTP 400", 400, {"error": {"type": "OAuthException", "code": 9999, "is_transient": True}}, False),
+    ("code 2 (servico indisponivel) com HTTP 400", 400, {"error": {"type": "OAuthException", "code": 2}}, False),
+    ("CONTROLE: token morto com HTTP 500 continua vermelho (190)", 500,
+     {"error": {"type": "OAuthException", "code": 190, "error_subcode": 463}}, True),
+    ("CONTROLE: 190 com is_transient continua vermelho", 400,
+     {"error": {"type": "OAuthException", "code": 190, "is_transient": True}}, True),
+    ("CONTROLE: OAuthException de codigo desconhecido (HTTP 400) segue o catch-all = auth", 400,
+     {"error": {"type": "OAuthException", "code": 99}}, True),
+    ("erro generico (500, type Exception)", 500, {"error": {"type": "Exception", "code": 1}}, False),
     ("corpo vazio", 500, {}, False),
     ("corpo HTML/lista (gateway)", 502, ["gateway"], False),
     ("error como string", 400, {"error": "boom"}, False),
