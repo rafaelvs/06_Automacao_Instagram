@@ -1,0 +1,189 @@
+{
+ "id": "stn_quanto_tempo",
+ "hash_story": "sha256:22ecd5eee49bf6588ae894f23aa78f58281621c27ec9a3cece370d56b0127a4a",
+ "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101",
+ "hash_render": "sha256:e7bea45139fcb4fc72b4276fefdf1215b9a7e9f2f3deeebd306e16acc8feb9d2",
+ "reel_video": "reels/_preview_cf_alongamento.mp4",
+ "reel_sha256": "sha256:a731953b7a0ad2fc8bef46faabd5a673b9344a3a0b14ae86da1cd7470b3c5ab2",
+ "partes": [
+  {
+   "arquivo": "stories_cf/stn_quanto_tempo_1.mp4",
+   "sha256": "sha256:fec49478674c5076fae39040ff7882736771199992f02ff078d347c0d6f3cdb9",
+   "dur": 4.5,
+   "textos_tela": [
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "O FIXADOR FICA?",
+    "SE JÁ TEM OSSO NOVO,",
+    "toca →"
+   ],
+   "rotulos_reel": [],
+   "trecho": [
+    15.8,
+    17.2
+   ],
+   "crop": [
+    270,
+    470,
+    540,
+    812
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      2.6,
+      1.0
+     ],
+     [
+      4.5,
+      1.05
+     ]
+    ],
+    "ancora": [
+     540,
+     800
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     40,
+     16,
+     30,
+     16
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    -1.5,
+    -1.0
+   ]
+  },
+  {
+   "arquivo": "stories_cf/stn_quanto_tempo_2.mp4",
+   "sha256": "sha256:686fb787a3bcf3021e05404170bf00d12c1bc0cdfa41110cd716eaf4956432c5",
+   "dur": 6.0,
+   "textos_tela": [
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "E isso não se apressa.",
+    "O OSSO AINDA",
+    "PRECISA ENDURECER",
+    "toca →"
+   ],
+   "rotulos_reel": [],
+   "trecho": [
+    24.63,
+    24.75
+   ],
+   "crop": [
+    270,
+    415,
+    540,
+    863
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      6.0,
+      1.12
+     ]
+    ],
+    "ancora": [
+     540,
+     800
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     40,
+     16,
+     30,
+     16
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    -1.5,
+    -1.0
+   ]
+  },
+  {
+   "arquivo": "stories_cf/stn_quanto_tempo_3.mp4",
+   "sha256": "sha256:1beb740a78d56f0c37e28099d7ba521fcf0a3d0f7a4dc9ba73a6ea97717c12ca",
+   "dur": 8.8,
+   "textos_tela": [
+    "CADA OSSO TEM",
+    "COM FIXADOR AGORA.",
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "Entender as fases tira a ansiedade.",
+    "MANDA PRA QUEM ESTÁ",
+    "SEU RITMO",
+    "Vídeo completo no perfil",
+    "toque no nome lá em cima ↖"
+   ],
+   "rotulos_reel": [],
+   "trecho": [
+    24.75,
+    25.75
+   ],
+   "crop": [
+    270,
+    415,
+    540,
+    863
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.12
+     ],
+     [
+      0.6,
+      1.0
+     ]
+    ],
+    "ancora": [
+     540,
+     800
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     40,
+     16,
+     30,
+     16
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    -1.5,
+    -1.0
+   ]
+  }
+ ],
+ "fontes": {
+  "black": "Roboto-Black.ttf",
+  "bold": "Roboto-Bold.ttf",
+  "semi": "Roboto-Medium.ttf",
+  "reg": "Roboto-Regular.ttf"
+ },
+ "motor": {
+  "base": "sha256:641f2a1a6f4eb54f6bd12d5eb87c86a8508d32bd04e60f84fc79c32e3b4df8a8",
+  "cf_alongamento": "sha256:c78e6ef388f780e6a930cb961f3a8bd5d49de29798cff26595ae3f8dc4579217",
+  "fontes": "sha256:aacf0eef888f81b440525ac1236c5367ff0bd633d0e938b07aa6cea00082cdd9",
+  "som": "sha256:bb14c29b0357e7ed165ab8dd28fefa928a1d8b2c75757326ee8ca4d65988cb0c",
+  "voz": "sha256:c5cd4ed56961e846df8ab719b19986bab6b0e939a8861b905e9d199806af9d5c"
+ },
+ "renderizado_em": "2026-10-25T18:17:43+00:00"
+}

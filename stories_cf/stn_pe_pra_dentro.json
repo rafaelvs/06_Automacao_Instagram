@@ -1,0 +1,196 @@
+{
+ "id": "stn_pe_pra_dentro",
+ "hash_story": "sha256:8d55ed12eb75e437d30027e01473f2b97c5c87db0b602098eebd9da2134d7755",
+ "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101",
+ "hash_render": "sha256:6ee1d2add80b00f969740d106f4fa08a584696f70b9a653dcdeb6404197fb70a",
+ "reel_video": "reels/_preview_cf_pe_virado.mp4",
+ "reel_sha256": "sha256:ccf3ad4dfa9e449d48c8e8056c0c9067920b969bf221546dece7f1c9275c812f",
+ "partes": [
+  {
+   "arquivo": "stories_cf/stn_pe_pra_dentro_1.mp4",
+   "sha256": "sha256:d4ccb35d23b5f444d94227ac77fc0b18ded4ae2937221578e5dc5f415c131e87",
+   "dur": 4.5,
+   "textos_tela": [
+    "A CRIANÇA ANDA COM",
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "O PÉ PRA DENTRO?",
+    "toca →"
+   ],
+   "rotulos_reel": [
+    "PRA DENTRO"
+   ],
+   "trecho": [
+    1.5,
+    2.7
+   ],
+   "crop": [
+    390,
+    360,
+    610,
+    690
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      2.1,
+      1.0
+     ],
+     [
+      4.5,
+      1.04
+     ]
+    ],
+    "ancora": [
+     600,
+     780
+    ],
+    "foco_x": 600,
+    "esmaecer": [
+     0,
+     20,
+     40,
+     16
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    -1.5,
+    -0.5
+   ]
+  },
+  {
+   "arquivo": "stories_cf/stn_pe_pra_dentro_2.mp4",
+   "sha256": "sha256:1fc286ea839e5b877b605bae365b94e448702a080c8f877f6fa97b845ddda77b",
+   "dur": 6.0,
+   "textos_tela": [
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "DO CRESCIMENTO",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "LEVES GIROS",
+    "Variações comuns",
+    "toca →"
+   ],
+   "rotulos_reel": [
+    "PÉ",
+    "CANELA",
+    "COXA"
+   ],
+   "trecho": [
+    4.55,
+    9.15
+   ],
+   "crop": [
+    290,
+    365,
+    695,
+    710
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      6.0,
+      1.05
+     ]
+    ],
+    "ancora": [
+     653,
+     700
+    ],
+    "foco_x": 600,
+    "esmaecer": [
+     0,
+     0,
+     30,
+     0
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    -1.5,
+    -1.0
+   ]
+  },
+  {
+   "arquivo": "stories_cf/stn_pe_pra_dentro_3.mp4",
+   "sha256": "sha256:bca11bbd55687d1d10e08888aa9b1cf1165f9a8bec01bd34c30ff3b7f0306336",
+   "dur": 9.5,
+   "textos_tela": [
+    "A ROTAÇÃO COSTUMA",
+    "Assimetria, dor, quedas demais",
+    "COM ESSA DÚVIDA.",
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "MANDA PRA QUEM VIVE",
+    "SE AJUSTAR",
+    "Vídeo completo no perfil",
+    "ou piora pedem avaliação.",
+    "toque no nome lá em cima ↖"
+   ],
+   "rotulos_reel": [],
+   "trecho": [
+    12.75,
+    14.25
+   ],
+   "crop": [
+    320,
+    210,
+    440,
+    565
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.05
+     ],
+     [
+      0.6,
+      1.0
+     ]
+    ],
+    "ancora": [
+     540,
+     500
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     12,
+     0,
+     20,
+     0
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    -1.5,
+    -0.5
+   ]
+  }
+ ],
+ "fontes": {
+  "black": "Roboto-Black.ttf",
+  "bold": "Roboto-Bold.ttf",
+  "semi": "Roboto-Medium.ttf",
+  "reg": "Roboto-Regular.ttf"
+ },
+ "motor": {
+  "base": "sha256:641f2a1a6f4eb54f6bd12d5eb87c86a8508d32bd04e60f84fc79c32e3b4df8a8",
+  "cf_alongamento": "sha256:c78e6ef388f780e6a930cb961f3a8bd5d49de29798cff26595ae3f8dc4579217",
+  "fontes": "sha256:aacf0eef888f81b440525ac1236c5367ff0bd633d0e938b07aa6cea00082cdd9",
+  "som": "sha256:bb14c29b0357e7ed165ab8dd28fefa928a1d8b2c75757326ee8ca4d65988cb0c",
+  "voz": "sha256:c5cd4ed56961e846df8ab719b19986bab6b0e939a8861b905e9d199806af9d5c"
+ },
+ "renderizado_em": "2026-10-25T18:18:16+00:00"
+}
