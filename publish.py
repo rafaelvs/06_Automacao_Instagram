@@ -115,7 +115,10 @@ def _commit_do_checkout():
 COMMIT     = _commit_do_checkout()
 # reserva: o nome do branch (sem git no ambiente). No Actions isso e' sinal de defeito: avisa ALTO.
 REF        = COMMIT or (os.environ.get("GITHUB_REF_NAME", "main").strip() or "main")
-if COMMIT is None and os.environ.get("GITHUB_ACTIONS", "").lower() == "true":
+# Só avisa quando ESTE diretório é um checkout (tem .git) e mesmo assim o git falhou. Os testes copiam o
+# publish.py para uma pasta temporária sem .git, também dentro do Actions (GITHUB_ACTIONS=true herdado):
+# ali o branch é a reserva certa, e o aviso quebrava o teste de "silêncio" do teste_publish_exit (CI 25/10).
+if COMMIT is None and os.environ.get("GITHUB_ACTIONS", "").lower() == "true" and os.path.exists(os.path.join(ROOT, ".git")):
     print(f"::warning::git rev-parse HEAD falhou: a raw URL das midias vai pelo branch '{REF}' — a Meta pode "
           "baixar bytes diferentes dos que os portoes conferiram (checkout sem .git?).")
 VER        = os.environ.get("GRAPH_VERSION", "v21.0").strip()
