@@ -1756,10 +1756,19 @@
       "kind": "post",
       "media_id": "17962759374247893",
       "at": "2026-10-24T18:20:58.747267+00:00"
+    },
+    {
+      "id": "cf_transporte_osseo",
+      "kind": "reel",
+      "media_id": "18413010058089570",
+      "at": "2026-10-25T18:13:01.923731+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "como_funciona"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-10-23",
+  "last_reel_date": "2026-10-25",
   "last_seq_date": "2026-10-24"
 }
