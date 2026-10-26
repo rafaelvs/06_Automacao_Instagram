@@ -868,6 +868,68 @@
      "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101"
     }
    ]
+  },
+  {
+   "lote": "FORMATOS-NOVOS-2026-10-26",
+   "nome": "Formatos novos de vídeo nas vagas de ter/qui/sáb: Qual dos dois, Mito na prova, Câmera lenta, Chama o VAR (4 pilotos + 8 episódios)",
+   "escopo": [
+    "instagram"
+   ],
+   "status": "aprovado",
+   "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
+   "data": "2026-10-26",
+   "evidencia": "Chat auditoria-instagram-v1: 24/10 o Rafael pediu um formato 'parecido como o como funciona [...] que prende a atenção' para as vagas do carrossel e aprovou os 4 conceitos ('colocar eles, os quatro formatos [...] um cada dia [...] intercalar um formato novo com como funciona'); 26/10, depois de ver os 4 pilotos na pasta pilotos_formato_novo, respondeu 'conferido, segue'. Pilotos com 2 rodadas de leitor às cegas; os 8 episódios com roteirista + verificador adversarial, revisor de cena, leitor às cegas e correção; 253 trechos de fonte conferidos mecanicamente (0 sem lastro).",
+   "observacoes": "Revisão passiva na fila (regra de 30/08): entram ter/qui/sáb a partir de 03/11, em rodízio de formato (regra_reels); cópias para conferência em _GRANDE_REVISAO_2026-08/videos_geracao_nova_2026-10. Pilotos: cf_chamaovar_rotina_fixador, cf_cameralenta_ponta_pes, cf_qualdosdois_pe_chato, cf_mitonaprova_pinos.",
+   "episodios": [
+    {
+     "id": "cf_chamaovar_rotina_fixador",
+     "hash_roteiro": "sha256:794c3b294825471a5f380ca23a9b9a6e58aacdc4872bb5b7d7d4e3939ad747b7"
+    },
+    {
+     "id": "cf_cameralenta_ponta_pes",
+     "hash_roteiro": "sha256:f6c23cfb0b4171f84607cfc3fa80eb22419d7a994f5e52b4cf0d1d0e8b29d625"
+    },
+    {
+     "id": "cf_qualdosdois_pe_chato",
+     "hash_roteiro": "sha256:209466971197c0112153bd9badca7bb614739de9a462fc0cf452c6be808adf84"
+    },
+    {
+     "id": "cf_mitonaprova_pinos",
+     "hash_roteiro": "sha256:db1a729d4defcc35d746feba6349dc183c82440107bbb21ab8ce81ab129fbd6c"
+    },
+    {
+     "id": "cf_var_primeiros_socorros",
+     "hash_roteiro": "sha256:6d87a6abde9a8710bcb24565b7bb992f7a1999510f33c49188e665c3df626dfc"
+    },
+    {
+     "id": "cf_cameralenta_joelho_estala",
+     "hash_roteiro": "sha256:55b3012197cab11cad1ddaa104db8e925fdfac7484dc56da56b7bead1b4bff53"
+    },
+    {
+     "id": "cf_qualdosdois_dor_crescimento",
+     "hash_roteiro": "sha256:923463880b4f070b776ce03ea58ae2f1aa2b5c863a53506b412a9bcdb9a5b890"
+    },
+    {
+     "id": "cf_mito_mochila_coluna",
+     "hash_roteiro": "sha256:f60b703565f00f5bb67a013450dd99eae067a7e082045a52a7df27f498cdc1a3"
+    },
+    {
+     "id": "cf_var_gesso",
+     "hash_roteiro": "sha256:45fcbf647939297ede9ad456ec7b20433ba37aa40a63934abdf98f618fc654ac"
+    },
+    {
+     "id": "cf_qualdosdois_pino",
+     "hash_roteiro": "sha256:b52c1921db4800fb6a9078923241b4689d9e931fc40c9918f3de430eacd2e56d"
+    },
+    {
+     "id": "cf_cameralenta_osso_crianca",
+     "hash_roteiro": "sha256:49464e65258a5be0319fbe88006d16e8c2da9a7b332c9c0a26bf556f5b2d2e4a"
+    },
+    {
+     "id": "cf_mito_estalar_joelho",
+     "hash_roteiro": "sha256:f89858b29041b53a9b6ca10d465a458620755aaf5abc14f5b6f83d15795370f8"
+    }
+   ]
   }
  ]
 }

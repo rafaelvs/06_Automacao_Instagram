@@ -5,7 +5,8 @@
 2. PORTÃO ANTES DE DESENHAR: o episódio passa por `checar_entretenimento.checar_episodio` (forma,
    CTA de envio, rótulos de tela) e todo texto dele por `cfm_guardrails.auditar`. Problema = aborta
    (exit 1), não renderiza 1 quadro.
-3. Despacha para o formato (conversa) ou para a cena (como_funciona -> animado/<cena>.py), com o
+3. Despacha para o formato (conversa) ou para a cena (como_funciona e os 4 formatos novos de
+   regra_reels.FORMATOS_NOVOS -> animado/<cena>.py), com o
    canvas anotando todo texto desenhado em todos os quadros.
 4. Grava `reels/_preview_<id>.mp4` (mesma convenção dos reels de voz), confere a duração real e
    RECUSA o vídeo se algum texto desenhado não estiver no episódio (rótulo só no código = fora do
@@ -73,9 +74,11 @@ def main():
     tmp = a.tmp or os.path.join(ROOT, ".animado_tmp", ep["id"])
     os.makedirs(tmp, exist_ok=True)
     mp4 = a.saida or os.path.join(ROOT, "reels", f"_preview_{ep['id']}.mp4")
+    import regra_reels
     if ep["formato"] == "conversa":
         from animado import conversa as mod
-    elif ep["formato"] == "como_funciona":
+    elif ep["formato"] == "como_funciona" or ep["formato"] in regra_reels.FORMATOS_NOVOS:
+        # os 4 formatos novos (26/10/2026) têm cena própria, como o COMO FUNCIONA: animado/<cena>.py
         mod = importlib.import_module(f"animado.{ep['cena']}")
     else:
         raise SystemExit(f"ERRO: formato desconhecido {ep['formato']!r}")

@@ -11,8 +11,11 @@ Modelo BIBLIOTECA CURADA, sem repetir:
 
 Agenda (horario de Brasilia, BRT = UTC-3):
 - POSTS (feed):  Ter/Qui/Sab, a partir das 15:00.  (pico de audiencia 12h-15h; ver auditoria jun/2026)
+                 SUSPENSOS desde 24/10/2026 (all-in no formato novo, regra_reels.py).
 - STORIES (seq): TODOS OS DIAS, a partir das 12:30  -> 1 sequencia (5 frames) por dia.
-- REELS:         Seg/Qua/Sex/Dom, a partir das 15:00.  (pico de audiencia; antes era 19:00, na descida)
+- REELS:         TODOS OS DIAS, a partir das 15:00 (desde 26/10/2026; antes Seg/Qua/Sex/Dom). O DIA decide o grupo
+                 (regra_reels.proximo_reel): Seg/Qua/Sex/Dom = COMO FUNCIONA; Ter/Qui/Sab = os 4 FORMATOS NOVOS em
+                 rodizio, a partir de 03/11/2026 (antes disso, Ter/Qui/Sab sem reel). 1 reel por dia.
 
 Env: IG_USER_ID, IG_ACCESS_TOKEN, GITHUB_REPOSITORY, GRAPH_VERSION (opc),
      FORCE_ID (opc: publica esse id imediatamente - post, story, reel ou sequencia).
@@ -72,7 +75,11 @@ SEQ_WEEKDAYS   = {1, 3, 5}               # sequencia ter/qui/sab — dias do CAR
 # Entao volta o criterio que nao dependia dessa medicao e que foi decidido em 12/09: casar a
 # sequencia com o dia do carrossel. E7 (PLANO_EXPERIMENTOS) decide em 15/10, com amostra.
 SEQ_MIN        = 12*60 + 30              # 12:30
-REEL_WEEKDAYS  = {0, 2, 4, 6}
+# REELS EM TODOS OS DIAS (Rafael, 24-26/10/2026): os 4 formatos novos de video entram nas vagas do antigo carrossel
+# (ter/qui/sab 15h — os crons de POSTS do publish.yml ja' cobrem esses dias), intercalados com o COMO FUNCIONA de
+# seg/qua/sex/dom. QUAL reel sai em cada dia (e se sai) e' da regra unica (regra_reels.proximo_reel: grupo do dia,
+# rodizio dos formatos novos, INICIO_FORMATOS_NOVOS = 03/11/2026); aqui so' a janela. Era {0, 2, 4, 6}.
+REEL_WEEKDAYS  = {0, 1, 2, 3, 4, 5, 6}
 REEL_MIN       = 15*60                   # 15:00 BRT (pico de audiencia; era 19:00)
 BRT = dt.timezone(dt.timedelta(hours=-3))
 
@@ -148,7 +155,8 @@ ROTULO_IA = os.environ.get("ROTULO_IA", "on").strip().lower() not in ("off", "0"
 MARCAS_VOZ_IA = ("voz digital (ia)",)          # declaracao da legenda (CFM 2.454); o portao exige voz_ia explicito
 # COTA DE LAMINAS (decisao do Rafael, 18/10/2026: "desacelerar as laminas antigas"). O reel em
 # lamina de texto lida em voz alta virou "mural informativo": 36 pecas em 30 dias, ZERO envios.
-# Os formatos novos (item["formato"] = "conversa" | "como_funciona") entram sem cota; lamina
+# A geracao nova (item["formato"] = "conversa" | "como_funciona" | um de regra_reels.FORMATOS_NOVOS) entra sem
+# cota (a conversa tem intervalo; os formatos novos, rodizio nos dias deles); lamina
 # (item sem "formato") sai no maximo LAMINAS_POR_SEMANA vezes por semana (segunda a domingo,
 # horario de Brasilia). Dia de reel sem peca permitida = sem reel nesse dia (o motor NAO para:
 # regra de 27/09 — nunca desligar, sempre reativar). -1 = sem cota. A REGRA mora em regra_reels.py
@@ -170,7 +178,7 @@ SEQUENCIAS_ATIVAS = regra_reels.sequencias_ativas()
 # duplicar (publicar_stories.py: espera conjunta com prazo, estado gravado parte a parte, erro da
 # Meta conferido pelo status do contêiner).
 STORIES_NOVOS_ATIVOS = regra_reels.stories_novos_ativos()
-STORY_NOVO_WEEKDAYS = {1, 3, 5}           # ter/qui/sab — dias SEM reel
+STORY_NOVO_WEEKDAYS = {1, 3, 5}           # ter/qui/sab 12:30 — o reel desses dias (formato novo) sai as 15h
 STORY_NOVO_MIN = 12*60 + 30
 STORIES_NOVOS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "stories_cf.json")
 APROVACOES_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "aprovacoes.json")
@@ -417,8 +425,13 @@ def _publicar_conteiner(cont, wa=None, extras=None):
 def _registrar_incerto(state, falhas, item_id, kind, erro, now):
     """Peca que PODE estar no ar: registro `<kind>_incerto` (o id entra em `done`: nao republica sozinho),
     estado salvo na hora e falha registrada. -> o erro, se havia token morto no caminho (para tudo)."""
-    state["published"].append({"id": item_id, "kind": f"{kind}_incerto", "media_id": None, "at": now.isoformat(),
-                               "container": getattr(erro, "container", None), "erro": str(erro)[:300]})
+    reg = {"id": item_id, "kind": f"{kind}_incerto", "media_id": None, "at": now.isoformat(),
+           "container": getattr(erro, "container", None), "erro": str(erro)[:300]}
+    if kind == "reel" and _FORMATO_REEL:
+        # o formato vai no registro incerto tambem: o rodizio dos formatos novos conta o incerto (pode estar no ar) e,
+        # sem o campo, peca incerta retirada da fila passava a contar como 'lamina' (verificacao de 26/10/2026)
+        reg["formato"] = _FORMATO_REEL
+    state["published"].append(reg)
     _wa_tirar(state, kind, item_id)              # o registro incerto guarda o conteiner
     save_state(state)
     print(f"::error::{kind} {item_id}: publicacao INCERTA — {erro}. Registrado como '{kind}_incerto' (nao volta a "
@@ -599,6 +612,51 @@ def proximo_reel(reels, done, state, agora_brt):
     return regra_reels.proximo_reel(reels, done, state, agora_brt, cota=LAMINAS_POR_SEMANA,
                                     dias_conversa=DIAS_ENTRE_CONVERSAS, conversa_ativa=CONVERSAS_ATIVAS)
 
+
+def _sem_reel_hoje(brt):
+    """Dia de reel sem peca permitida: NAO e' falha nem biblioteca vazia (exit 0). O motivo depende do grupo do dia
+    (regra_reels.grupo_do_dia)."""
+    grupo = regra_reels.grupo_do_dia(brt)
+    if grupo is None:
+        print(f"Reels: ter/qui/sab sem reel ate {regra_reels.INICIO_FORMATOS_NOVOS:%d/%m/%Y} — os formatos novos "
+              f"({', '.join(regra_reels.NOMES_FORMATOS[f] for f in regra_reels.FORMATOS_NOVOS)}) comecam nessa data "
+              "(regra_reels.py).")
+    elif grupo == regra_reels.GRUPO_NOVOS:
+        # Vaga de ter/qui/sab sem nenhum formato novo pronto: dia sem reel, por decisao (26/10/2026). Aviso (amarelo),
+        # nao erro: o job fica verde e a vaga do proximo ter/qui/sab tenta de novo.
+        print("::warning::Reels: vaga dos FORMATOS NOVOS (ter/qui/sab) sem peca pronta na fila — sem reel hoje (nao e' "
+              f"falha). Produza {' / '.join(regra_reels.NOMES_FORMATOS[f] for f in regra_reels.FORMATOS_NOVOS)} para o "
+              "rodizio nao parar; o COMO FUNCIONA nao ocupa esta vaga.")
+    else:
+        # Nao e' falha nem biblioteca vazia: as cotas da semana (lamina, conversa) ja' sairam e
+        # nao ha' COMO FUNCIONA pronto. Dia sem reel, por decisao (18 e 19/10/2026).
+        print(f"Reels: nenhum COMO FUNCIONA pronto na fila — sem reel hoje (lamina: cota {LAMINAS_POR_SEMANA}/semana; "
+              f"conversa: {'so a cada ' + str(DIAS_ENTRE_CONVERSAS) + ' dias' if CONVERSAS_ATIVAS else 'suspensa'}). "
+              "Produza COMO FUNCIONA para a fila nao parar (formato novo nao ocupa seg/qua/sex/dom).")
+
+def _write_ahead_de_outro_grupo(ent, reels, brt):
+    """O conteiner FINISHED de reel que um run anterior deixou (write-ahead) e' de um formato cujo grupo de dias NAO e'
+    o de hoje? (verificacao de 26/10/2026: com o reel abrindo todo dia, o COMO FUNCIONA de segunda 23:30 com 500 saia
+    na terca — antes de 03/11, ou na vaga de um formato novo — e o formato novo de terca saia na quarta, no lugar do
+    COMO FUNCIONA.) True = hoje NAO sai reel nenhum: nem este conteiner (dia errado) nem outra peca (a Meta ainda pode
+    entregar este — seriam 2 reels). O write-ahead fica; o proximo run pergunta de novo: PUBLISHED registra; EXPIRED
+    (24 h) descarta e a peca volta a fila, saindo no dia do grupo dela. Aviso (amarelo), nao falha."""
+    if not ent:
+        return False
+    fmt = ent.get("formato") or next((_formato(x) for x in reels if x.get("id") == ent.get("id")), "lamina")
+    grupo_wa, grupo_hoje = regra_reels.grupo_do_formato(fmt), regra_reels.grupo_do_dia(brt)
+    if grupo_hoje == grupo_wa:
+        return False
+    nomes = {regra_reels.GRUPO_NOVOS: "dos FORMATOS NOVOS (ter/qui/sab)",
+             regra_reels.GRUPO_COMO_FUNCIONA: "do COMO FUNCIONA (seg/qua/sex/dom)"}
+    hoje = nomes.get(grupo_hoje, f"sem reel (ter/qui/sab antes de {regra_reels.INICIO_FORMATOS_NOVOS:%d/%m/%Y})")
+    print(f"::warning::Reels: o conteiner {ent.get('container')} de {ent.get('id')} ({regra_reels.NOMES_FORMATOS.get(fmt, fmt)}, "
+          f"write-ahead de {ent.get('at')}) esta FINISHED, mas hoje e' dia {hoje} e ele e' {nomes[grupo_wa]}: sem reel "
+          "hoje — nem ele (dia errado) nem outro (a Meta ainda pode entrega-lo). O write-ahead fica: PUBLISHED registra; "
+          "EXPIRED (24 h) descarta e a peca volta a fila no dia do grupo dela.", flush=True)
+    return True
+
+
 def _erro_transitorio(e):
     """A Meta NAO respondeu sobre o pedido (HTTP 5xx, is_transient, code 1/2, throttling): nao e' recusa de parametro."""
     st, p = getattr(e, "status", None), getattr(e, "payload", None)
@@ -677,13 +735,24 @@ def log(state, item_id, kind, mid, now):
 def next_item(items, done): return next((x for x in items if x["id"] not in done), None)
 
 
+def _marcar_dia_do_write_ahead(state, kind, ent):
+    """A peca do write-ahead saiu (ou pode ter saido) no dia em que o conteiner foi preparado: marca esse dia no
+    last_<kind>_date (1 por dia), sem recuar uma data mais nova."""
+    campo = "last_reel_date" if kind == "reel" else "last_post_date"
+    d = _data_brt(ent.get("at"))
+    if d is not None and (state.get(campo) or "") < d.isoformat():
+        state[campo] = d.isoformat()
+
+
 def _resolver_write_ahead_feed(state, falhas):
     """Write-ahead de reel/post que um run anterior deixou (erro no media_publish com o conteiner FINISHED, ou job
     morto DENTRO da chamada): pergunta a ESTE conteiner antes de qualquer decisao.
       PUBLISHED      -> a peca SAIU (entrega tardia ou job morto): registra sem media_id (`confirmado_por`) e marca o dia;
-      FINISHED       -> nao saiu ainda: o bloco do tipo publica o MESMO conteiner, antes da fila (nunca cria outro);
+      FINISHED       -> nao saiu ainda: o bloco do tipo publica o MESMO conteiner, antes da fila (nunca cria outro) —
+                        o de reel, so' no dia do grupo do formato dele; em outro dia, nenhum reel sai
+                        (_write_ahead_de_outro_grupo);
       EXPIRED/ERROR  -> nunca saiu (a Meta so' expira conteiner NAO publicado): descarta, a peca segue na fila;
-      outro status   -> `<kind>_incerto` (fora da fila, run vermelho ate a conferencia — RUNBOOK §12);
+      outro status   -> `<kind>_incerto` (fora da fila, o dia do write-ahead marcado, run vermelho ate a conferencia — RUNBOOK §12);
       consulta falha -> nada daquele tipo sai neste run (vermelho); o proximo pergunta de novo.
     -> ({kind: write-ahead FINISHED}, {kind: (id, motivo do bloqueio)})."""
     reuso, bloqueio = {}, {}
@@ -714,10 +783,7 @@ def _resolver_write_ahead_feed(state, falhas):
                    "confirmado_por": "status_code PUBLISHED (write-ahead de run anterior)"}
             reg.update({k: ent[k] for k in ("modo_reel", "rotulo_ia", "formato") if ent.get(k) is not None})
             state["published"].append(reg)
-            campo = "last_reel_date" if kind == "reel" else "last_post_date"
-            d = _data_brt(ent.get("at"))
-            if d is not None and (state.get(campo) or "") < d.isoformat():
-                state[campo] = d.isoformat()
+            _marcar_dia_do_write_ahead(state, kind, ent)
             state.pop(_chave_wa(kind), None); save_state(state)
             print(f"::warning::{rot}: o conteiner esta PUBLISHED — a peca SAIU (a Meta entregou depois do erro, ou o "
                   "job morreu no media_publish). Registrada sem media_id; NAO sera republicada.")
@@ -728,8 +794,14 @@ def _resolver_write_ahead_feed(state, falhas):
             state.pop(_chave_wa(kind), None); save_state(state)
             print(f"{rot}: conteiner {stc} — nunca saiu; write-ahead descartado (a peca segue na fila).")
         else:
-            state["published"].append({"id": iid, "kind": f"{kind}_incerto", "media_id": None, "at": ent.get("at"),
-                                       "container": c, "status": stc, "erro": f"write-ahead: conteiner {stc!r}"})
+            reg = {"id": iid, "kind": f"{kind}_incerto", "media_id": None, "at": ent.get("at"),
+                   "container": c, "status": stc, "erro": f"write-ahead: conteiner {stc!r}"}
+            if ent.get("formato") is not None:
+                reg["formato"] = ent["formato"]          # o rodizio conta o incerto pelo formato que FOI preparado
+            state["published"].append(reg)
+            # pode estar no ar desde o dia do write-ahead: o dia fica marcado, como no incerto do bloco do tipo (senao,
+            # write-ahead de HOJE virando incerto deixava sair um 2o reel no mesmo dia)
+            _marcar_dia_do_write_ahead(state, kind, ent)
             state.pop(_chave_wa(kind), None); save_state(state)
             _falhou(falhas, f"{kind} {iid}", RuntimeError(
                 f"publicacao INCERTA: o conteiner do write-ahead esta {stc!r} — pode ter ido ao ar. Registrado como "
@@ -1183,8 +1255,10 @@ def main():
 
     # REELS
     if not auth_error and brt.weekday() in REEL_WEEKDAYS and mod >= REEL_MIN and state["last_reel_date"] != today:
-        it, ent_wa = _escolher_com_write_ahead("reel", reels, wa_reuso, wa_bloq, falhas,
-                                               lambda: proximo_reel(reels, done, state, brt))
+        # conteiner FINISHED de outro grupo de dias (write-ahead): hoje nao sai reel nenhum (ver a funcao)
+        espera_wa = _write_ahead_de_outro_grupo(wa_reuso.get("reel"), reels, brt)
+        it, ent_wa = (None, None) if espera_wa else _escolher_com_write_ahead(
+            "reel", reels, wa_reuso, wa_bloq, falhas, lambda: proximo_reel(reels, done, state, brt))
         if it:
             try:
                 mid = publish_reel(it, wa=_wa(state, "reel", it, ent_wa)); log(state, it["id"], "reel", mid, now)
@@ -1196,15 +1270,11 @@ def main():
             except AuthError as e: auth_error = e
             except Exception as e: _falhou(falhas, f"reel {it['id']}", e)
         elif "reel" in wa_bloq or "reel" in wa_reuso:
-            pass                                 # write-ahead bloqueando: a falha ja' foi registrada
-        elif any(x["id"] not in done for x in reels):
-            # Nao e' falha nem biblioteca vazia: as cotas da semana (lamina, conversa) ja' sairam e
-            # nao ha' COMO FUNCIONA pronto. Dia sem reel, por decisao (18 e 19/10/2026).
-            print(f"Reels: nenhum COMO FUNCIONA pronto na fila — sem reel hoje (lamina: cota {LAMINAS_POR_SEMANA}/semana; "
-                  f"conversa: {'so a cada ' + str(DIAS_ENTRE_CONVERSAS) + ' dias' if CONVERSAS_ATIVAS else 'suspensa'}). "
-                  "Produza COMO FUNCIONA para a fila nao parar.")
-        else:
+            pass                                 # write-ahead bloqueando (falha registrada) ou esperando o dia do grupo (aviso dado)
+        elif not any(x["id"] not in done for x in reels):
             print("Biblioteca de REELS esgotada — hora de reabastecer.")
+        else:
+            _sem_reel_hoje(brt)
 
     # Grava o estado ANTES de sair com erro, para nao reperder o que ja' foi publicado
     # quando o token morre no meio da execucao.

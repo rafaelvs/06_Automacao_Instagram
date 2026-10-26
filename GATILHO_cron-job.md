@@ -13,7 +13,7 @@ Resultado: as publicações saem no horário-alvo, pontuais, de graça.
 | **POSTS** (carrossel de feed) | Ter / Qui / Sáb | 15:00 |
 | **CARROSSEL EXTRA** (4º da semana) | Dom | 11:00 |
 | **SEQUÊNCIAS** (story serializado, 5 frames em bloco) | **todos os dias** | 12:30 |
-| **REELS** | Seg / Qua / Sex / **Dom** | 15:00 |
+| **REELS** | **todos os dias** — Seg/Qua/Sex/Dom = COMO FUNCIONA; Ter/Qui/Sáb = os 4 formatos novos em rodízio, a partir de 03/11/2026 (`regra_reels.py`) | 15:00 |
 
 > ⚠️ Agenda **atualizada em 25/07/2026**. A anterior (posts 19:00, stories 12:30 em Seg/Qua/Sex)
 > está obsoleta — os horários migraram para o pico de audiência de 12h-15h (auditoria jun/2026).

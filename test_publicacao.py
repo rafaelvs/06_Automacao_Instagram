@@ -1091,6 +1091,220 @@ s1 = (pecas or {}).get("pecas", {}).get("S1", {})
 checa("CONTROLE: extras respondendo -> follows, profile_visits e navegação por tipo medidos",
       rc == 0 and s1.get("follows") == 7 and s1.get("profile_visits") == 7 and s1.get("navegacao") == {"tap_forward": 3}, f"{s1}")
 
+# ---------------------------------------------------------------- formatos novos (Rafael, 24-26/10/2026)
+# "colocar eles, os quatro formatos [...] um cada dia [...] intercalar um formato novo com como funciona": ter/qui/sáb
+# (as vagas do carrossel antigo) = um dos 4 formatos novos em rodízio a partir de 03/11/2026; seg/qua/sex/dom = COMO
+# FUNCIONA. Padrão de PRODUÇÃO (FN): nenhuma variável de cota/suspensão; stories da geração nova ligados (fila vazia).
+FN = {"LAMINAS_POR_SEMANA": None, "CONVERSAS_ATIVAS": None, "POSTS_ATIVOS": None, "SEQUENCIAS_ATIVAS": None}
+R_QUAL = {"id": "t-qual-1", "video": "media/q1.mp4", "caption": CAP_IA, "formato": "qual_dos_dois", "voz_ia": True}
+R_QUAL2 = dict(R_QUAL, id="t-qual-2", video="media/q2.mp4")
+R_MITO = dict(R_QUAL, id="t-mito-1", video="media/m1.mp4", formato="mito_na_prova")
+R_CAM = dict(R_QUAL, id="t-cam-1", video="media/k1.mp4", formato="camera_lenta")
+R_VAR = dict(R_QUAL, id="t-var-1", video="media/v1.mp4", formato="chama_o_var")
+R_CF_N = dict(R_QUAL, id="t-cf-n", video="media/fn.mp4", formato="como_funciona")
+TER_NOV_16H = "2026-11-17T19:00:00+00:00"           # terça 17/11 16:00 BRT: vaga de formato novo
+TER_NOV_1630 = "2026-11-17T19:30:00+00:00"          # o cron seguinte do mesmo dia
+TER_OUT_16H = "2026-10-27T19:00:00+00:00"           # terça 27/10 16:00 BRT: ANTES de 03/11
+SEG_NOV_16H = "2026-11-16T19:00:00+00:00"           # segunda 16/11 16:00 BRT: COMO FUNCIONA
+
+
+def fmt_reg(st, rid):
+    return reg_de(st, rid).get("formato")
+
+
+print("\nFN1) TERÇA depois de 03/11: publica o FORMATO NOVO (não o COMO FUNCIONA da frente), com rótulo de IA e formato no registro")
+tmp = preparar(reels=[R_CF_N, R_QUAL, R_QUAL2]); rc, out, st = rodar("ok", tmp, agora=TER_NOV_16H, extra=FN)
+checa("saiu o 1º formato novo da fila, não o COMO FUNCIONA", ids(st) == ["t-qual-1"], f"exit={rc} publicados={ids(st)} {out[-300:]}")
+checa("registro: formato, rótulo de IA e modo normal", fmt_reg(st, "t-qual-1") == "qual_dos_dois"
+      and reg_de(st, "t-qual-1").get("rotulo_ia") is True and reg_de(st, "t-qual-1").get("modo_reel") == "normal"
+      and "ROTULO_IA true media_type= REELS" in out, f"{reg_de(st, 't-qual-1')}")
+checa("last_reel_date marcado e exit 0 sem ::error::", st["last_reel_date"] == "2026-11-17" and rc == 0 and "::error::" not in out,
+      f"exit={rc} last={st['last_reel_date']!r}")
+rc, out, st = rodar("ok", tmp, agora=TER_NOV_1630, extra=FN)
+checa("cron seguinte do mesmo dia: 1 reel por dia (t-qual-2 não sai)", ids(st) == ["t-qual-1"] and len(no_ar(tmp, "REELS")) == 1
+      and rc == 0, f"exit={rc} publicados={ids(st)} conta={no_ar(tmp, 'REELS')}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nFN2) TERÇA ANTES de 03/11: nada sai (nem formato novo nem COMO FUNCIONA), exit 0")
+tmp = preparar(reels=[R_QUAL, R_CF_N]); rc, out, st = rodar("ok", tmp, agora=TER_OUT_16H, extra=FN)
+checa("nada publicado e last_reel_date intacto", ids(st) == [] and st["last_reel_date"] == "", f"publicados={ids(st)}")
+checa("exit 0 sem ::error::", rc == 0 and "::error::" not in out, f"exit={rc} {out[-300:]}")
+checa("log diz quando começa", "ter/qui/sab sem reel ate 03/11/2026" in out, out[-300:])
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(reels=[R_QUAL, R_CF_N]); rc, out, st = rodar("ok", tmp, agora="2026-11-03T19:00:00+00:00", extra=FN)
+checa("CONTROLE: terça 03/11 (o início) já publica o formato novo", ids(st) == ["t-qual-1"] and rc == 0, f"exit={rc} {ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nFN3) SEGUNDA: publica COMO FUNCIONA e NUNCA formato novo")
+tmp = preparar(reels=[R_QUAL, R_MITO, R_CF_N]); rc, out, st = rodar("ok", tmp, agora=SEG_NOV_16H, extra=FN)
+checa("saiu o COMO FUNCIONA, mesmo atrás de 2 formatos novos na fila", ids(st) == ["t-cf-n"]
+      and fmt_reg(st, "t-cf-n") == "como_funciona" and rc == 0, f"exit={rc} publicados={ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(reels=[R_QUAL, R_MITO, R_CAM, R_VAR]); rc, out, st = rodar("ok", tmp, agora=SEG_NOV_16H, extra=FN)
+checa("segunda só com formatos novos na fila: nenhum sai, exit 0, sem ::error::", ids(st) == [] and rc == 0
+      and "::error::" not in out and st["last_reel_date"] == "", f"exit={rc} publicados={ids(st)}")
+checa("  ...e o log pede COMO FUNCIONA (não 'esgotada')", "nenhum COMO FUNCIONA pronto" in out and "esgotada" not in out, out[-300:])
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(reels=[R_CF_N, R_QUAL]); rc, out, st = rodar("ok", tmp, force_id="t-qual-1", agora=SEG_NOV_16H, extra=FN)
+checa("CONTROLE: FORCE_ID de formato novo numa segunda (decisão humana) sai e grava o formato (o rodízio lê o registro)",
+      ids(st) == ["t-qual-1"] and fmt_reg(st, "t-qual-1") == "qual_dos_dois" and rc == 0, f"exit={rc} {st['published']}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nFN4) RODÍZIO: sai o formato publicado há MAIS tempo; nunca publicado primeiro; empate = ordem da fila")
+PUB_ROD = [{"id": "t-qual-0", "kind": "reel", "media_id": "MQ", "at": "2026-11-03T18:05:00+00:00", "formato": "qual_dos_dois"},
+           {"id": "t-mito-0", "kind": "reel", "media_id": "MM", "at": "2026-11-05T18:05:00+00:00", "formato": "mito_na_prova"},
+           {"id": "t-cam-0", "kind": "reel", "media_id": "MC", "at": "2026-11-07T18:05:00+00:00", "formato": "camera_lenta"},
+           {"id": "t-var-0", "kind": "reel", "media_id": "MV", "at": "2026-11-10T18:05:00+00:00", "formato": "chama_o_var"}]
+tmp = preparar(reels=[R_VAR, R_CAM, R_MITO, R_QUAL2, R_QUAL], publicados=PUB_ROD)
+rc, out, st = rodar("ok", tmp, agora=TER_NOV_16H, extra=FN)
+checa("os 4 já saíram: sai o QUAL DOS DOIS (03/11, o mais antigo), mesmo no fim da fila — e o 1º da fila DELE (t-qual-2)",
+      ids(st)[len(PUB_ROD):] == ["t-qual-2"] and rc == 0, f"exit={rc} {ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(reels=[R_QUAL, R_MITO, R_CAM, R_VAR], publicados=PUB_ROD[:3])
+rc, out, st = rodar("ok", tmp, agora=TER_NOV_16H, extra=FN)
+checa("CHAMA O VAR nunca publicado: sai primeiro, mesmo no fim da fila", ids(st)[3:] == ["t-var-1"] and rc == 0, f"{ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(reels=[R_MITO, R_QUAL]); rc, out, st = rodar("ok", tmp, agora=TER_NOV_16H, extra=FN)
+checa("empate (nenhum publicado): o da frente da fila (MITO)", ids(st) == ["t-mito-1"], f"{ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(reels=[R_QUAL, R_MITO]); rc, out, st = rodar("ok", tmp, agora=TER_NOV_16H, extra=FN)
+checa("CONTROLE do empate: fila invertida -> QUAL", ids(st) == ["t-qual-1"], f"{ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+# registro antigo SEM 'formato' (t-cam-1 em 07/11): o formato vem do reels.json — sem isso a câmera lenta pareceria
+# nunca publicada e passaria à frente
+PUB_ANTIGO = dict({k: v for k, v in PUB_ROD[2].items() if k != "formato"}, id="t-cam-1")
+tmp = preparar(reels=[R_CAM, dict(R_CAM, id="t-cam-2"), R_QUAL], publicados=[PUB_ANTIGO, PUB_ROD[0]])
+rc, out, st = rodar("ok", tmp, agora=TER_NOV_16H, extra=FN)
+checa("registro sem 'formato' (antigo) conta pelo reels.json: câmera 07/11 é mais nova que qual 03/11 -> QUAL",
+      ids(st)[2:] == ["t-qual-1"], f"{ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nFN5) VAGA de ter/qui/sáb SEM formato novo pronto: sem reel, com aviso, exit 0 (o COMO FUNCIONA não ocupa a vaga)")
+tmp = preparar(reels=[R_CF_N]); rc, out, st = rodar("ok", tmp, agora=TER_NOV_16H, extra=FN)
+checa("nada publicado e last_reel_date intacto", ids(st) == [] and st["last_reel_date"] == "", f"publicados={ids(st)}")
+checa("exit 0 e sem ::error::", rc == 0 and "::error::" not in out, f"exit={rc} {out[-300:]}")
+checa("aviso (::warning::) da vaga sem peça, sem 'esgotada'", "::warning::Reels: vaga dos FORMATOS NOVOS" in out
+      and "esgotada" not in out, out[-400:])
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(reels=[R_QUAL], publicados=[{"id": "t-qual-1", "kind": "reel", "media_id": "MQ", "at": "2026-11-03T18:05:00+00:00",
+                                            "formato": "qual_dos_dois"}])
+rc, out, st = rodar("ok", tmp, agora=TER_NOV_16H, extra=FN)
+checa("CONTROLE: biblioteca inteira publicada -> 'esgotada' (não o aviso de vaga)", "esgotada" in out
+      and "vaga dos FORMATOS NOVOS" not in out and rc == 0, out[-300:])
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nFN6) WRITE-AHEAD do formato novo: 500 no media_publish e a Meta entrega depois -> 1 reel, formato no registro")
+tmp = preparar(reels=[R_QUAL, R_QUAL2]); rc, out, st = rodar("reel_500_tarde", tmp, agora=TER_NOV_16H, extra=FN)
+wa = st.get("reel_publicando") or {}
+checa("run 1: vermelho, o contêiner no write-ahead com o formato", rc == 1 and ids(st) == [] and wa.get("id") == "t-qual-1"
+      and wa.get("formato") == "qual_dos_dois", f"exit={rc} {wa}")
+rc, out, st = rodar("ok", tmp, agora=TER_NOV_1630, extra=FN)
+checa("run 2: registrado pelo contêiner, 1 reel na conta, formato no registro, o dia marcado (t-qual-2 não sai)",
+      rc == 0 and len(no_ar(tmp, "REELS")) == 1 and ids(st) == ["t-qual-1"] and fmt_reg(st, "t-qual-1") == "qual_dos_dois"
+      and st["last_reel_date"] == "2026-11-17" and "reel_publicando" not in st, f"exit={rc} {st['published']} {out[-300:]}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nFN7) WRITE-AHEAD de OUTRO grupo de dias: o contêiner FINISHED que sobrou NÃO sai no dia errado, e nenhum outro reel"
+      " sai enquanto ele pode ser entregue (verificação de 26/10/2026)")
+R_CF_A = dict(R_CF_N, id="t-cf-a", video="media/fa.mp4")
+R_CF_B = dict(R_CF_N, id="t-cf-b", video="media/fb.mp4")
+SEG_OUT_2330 = "2026-10-27T02:30:00+00:00"          # segunda 26/10 23:30 BRT (COMO FUNCIONA)
+QUA_OUT_16H = "2026-10-28T19:00:00+00:00"           # quarta 28/10 16:00 BRT (o contêiner de segunda já EXPIRED: 24 h)
+TER_NOV_2330 = "2026-11-18T02:30:00+00:00"          # terça 17/11 23:30 BRT (formato novo)
+QUA_NOV_16H = "2026-11-18T19:00:00+00:00"           # quarta 18/11 16:00 BRT (COMO FUNCIONA)
+QUI_NOV_16H = "2026-11-19T19:00:00+00:00"           # quinta 19/11 16:00 BRT (formato novo; o de terça já EXPIRED)
+DOM_NOV_2330 = "2026-11-16T02:30:00+00:00"          # domingo 15/11 23:30 BRT (COMO FUNCIONA)
+AVISO_WA = "esta FINISHED, mas hoje e' dia"
+# (a) COMO FUNCIONA de segunda 23:30 com 500 -> terça 27/10 (antes de 03/11: dia SEM reel)
+tmp = preparar(reels=[R_CF_A, R_CF_B]); rc, out, st = rodar("reel_500_nao", tmp, agora=SEG_OUT_2330, extra=FN)
+c1 = (st.get("reel_publicando") or {}).get("container")
+checa("segunda 23:30: 500 com o contêiner FINISHED — write-ahead do COMO FUNCIONA no estado", rc == 1 and c1
+      and (st.get("reel_publicando") or {}).get("formato") == "como_funciona", f"exit={rc} {st.get('reel_publicando')}")
+rc, out, st = rodar("ok", tmp, agora=TER_OUT_16H, extra=FN)
+checa("terça 27/10 (antes de 03/11): o contêiner do COMO FUNCIONA NÃO sai e nenhum outro reel sai", ids(st) == []
+      and len(no_ar(tmp, "REELS")) == 0 and conta(tmp)["n_cont"] == 1 and st["last_reel_date"] == "",
+      f"exit={rc} {ids(st)} {no_ar(tmp, 'REELS')} {out[-300:]}")
+checa("  ...write-ahead mantido, aviso (::warning::) e job verde", (st.get("reel_publicando") or {}).get("container") == c1
+      and AVISO_WA in out and "::warning::" in out and rc == 0 and "::error::" not in out, f"exit={rc} {out[-400:]}")
+rc, out, st = rodar("ok", tmp, agora=QUA_OUT_16H, extra=FN)
+checa("quarta 28/10: o contêiner expirou (nunca saiu) -> descartado e o COMO FUNCIONA sai no dia DELE (1 reel, sem adiantar a fila)",
+      ids(st) == ["t-cf-a"] and st["last_reel_date"] == "2026-10-28" and len(no_ar(tmp, "REELS")) == 1
+      and conta(tmp)["n_cont"] == 2 and "reel_publicando" not in st and rc == 0, f"exit={rc} {ids(st)} {out[-300:]}")
+shutil.rmtree(tmp, ignore_errors=True)
+# (b) o inverso: formato novo de terça 23:30 com 500 -> quarta (dia de COMO FUNCIONA)
+tmp = preparar(reels=[R_QUAL, R_CF_N]); rc, out, st = rodar("reel_500_nao", tmp, agora=TER_NOV_2330, extra=FN)
+c1 = (st.get("reel_publicando") or {}).get("container")
+checa("terça 17/11 23:30: 500 com o contêiner FINISHED — write-ahead do formato novo no estado", rc == 1 and c1
+      and (st.get("reel_publicando") or {}).get("formato") == "qual_dos_dois", f"exit={rc} {st.get('reel_publicando')}")
+rc, out, st = rodar("ok", tmp, agora=QUA_NOV_16H, extra=FN)
+checa("quarta 18/11: o formato novo NÃO sai no dia do COMO FUNCIONA, e o COMO FUNCIONA espera o contêiner (nenhum reel)",
+      ids(st) == [] and len(no_ar(tmp, "REELS")) == 0 and conta(tmp)["n_cont"] == 1 and rc == 0 and AVISO_WA in out
+      and (st.get("reel_publicando") or {}).get("container") == c1, f"exit={rc} {ids(st)} {out[-400:]}")
+rc, out, st = rodar("ok", tmp, agora=QUI_NOV_16H, extra=FN)
+checa("quinta 19/11: contêiner expirado -> descartado e o formato novo sai na vaga DELE (contêiner novo, formato no registro)",
+      ids(st) == ["t-qual-1"] and fmt_reg(st, "t-qual-1") == "qual_dos_dois" and len(no_ar(tmp, "REELS")) == 1
+      and conta(tmp)["n_cont"] == 2 and "reel_publicando" not in st and rc == 0, f"exit={rc} {ids(st)} {out[-300:]}")
+rc, out, st = rodar("ok", tmp, agora="2026-11-20T19:00:00+00:00", extra=FN)
+checa("  ...e sexta 20/11 o COMO FUNCIONA (a fila dele não perdeu a peça)", ids(st) == ["t-qual-1", "t-cf-n"] and rc == 0,
+      f"exit={rc} {ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+# (c) CONTROLE: mesmo grupo (domingo 23:30 -> segunda, os dois de COMO FUNCIONA) publica o MESMO contêiner, como antes
+tmp = preparar(reels=[R_CF_N, R_QUAL]); rc, out, st = rodar("reel_500_nao", tmp, agora=DOM_NOV_2330, extra=FN)
+c1 = (st.get("reel_publicando") or {}).get("container")
+rc, out, st = rodar("ok", tmp, agora=SEG_NOV_16H, extra=FN)
+checa("CONTROLE: domingo 23:30 -> segunda (mesmo grupo): publica o MESMO contêiner (1 contêiner, 1 reel), sem o aviso",
+      rc == 0 and c1 and ids(st) == ["t-cf-n"] and len(no_ar(tmp, "REELS")) == 1 and conta(tmp)["n_cont"] == 1
+      and no_ar(tmp, "REELS")[0]["container"] == c1 and AVISO_WA not in out and st["last_reel_date"] == "2026-11-16",
+      f"exit={rc} {ids(st)} {no_ar(tmp, 'REELS')} {out[-300:]}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nFN8) REEL INCERTO de formato novo: o registro incerto guarda o FORMATO (o rodízio conta o incerto; sem o campo, peça "
+      "incerta retirada da fila contava como lâmina)")
+tmp = preparar(reels=[R_CAM, R_QUAL]); rc, out, st = rodar("publish_500_incerto", tmp, agora=TER_NOV_16H, extra=FN)
+checa("media_publish com erro e consulta falhando: 'reel_incerto' com formato camera_lenta", rc == 1
+      and [e["kind"] for e in st["published"]] == ["reel_incerto"] and fmt_reg(st, "t-cam-1") == "camera_lenta",
+      f"exit={rc} {st['published']}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(reels=[R_CAM, R_QUAL]); rodar("reel_500_nao", tmp, agora=TER_NOV_16H, extra=FN)
+_c = conta(tmp)
+for _k in _c["conteineres"].values():
+    _k["status"] = "IN_PROGRESS"                    # o contêiner do write-ahead num status que não decide
+(tmp / "_conta_meta.json").write_text(json.dumps(_c), encoding="utf-8")
+rc, out, st = rodar("ok", tmp, agora=TER_NOV_1630, extra=FN)
+checa("write-ahead com o contêiner num status que não decide: 'reel_incerto' com o formato do write-ahead", rc == 1
+      and reg_de(st, "t-cam-1").get("kind") == "reel_incerto" and fmt_reg(st, "t-cam-1") == "camera_lenta",
+      f"exit={rc} {st['published']}")
+checa("  ...e o dia do write-ahead fica marcado: nenhum 2º reel no MESMO dia (o incerto pode estar no ar)",
+      [e["kind"] for e in st["published"]] == ["reel_incerto"] and st["last_reel_date"] == "2026-11-17"
+      and len(no_ar(tmp, "REELS")) == 0, f"exit={rc} {st['published']} last={st['last_reel_date']!r}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(reels=[R_CAM, R_QUAL]); rodar("reel_500_nao", tmp, agora=TER_NOV_16H, extra=FN)
+_c = conta(tmp)
+for _k in _c["conteineres"].values():
+    _k["status"] = "IN_PROGRESS"
+(tmp / "_conta_meta.json").write_text(json.dumps(_c), encoding="utf-8")
+rc, out, st = rodar("ok", tmp, agora=QUI_NOV_16H, extra=FN)
+checa("CONTROLE: o mesmo incerto achado só na QUINTA marca a terça (dia do write-ahead) e a vaga de quinta sai normalmente",
+      reg_de(st, "t-cam-1").get("kind") == "reel_incerto"
+      and ids(st)[1:] == ["t-qual-1"] and st["last_reel_date"] == "2026-11-19" and rc == 1, f"exit={rc} {st['published']}")
+shutil.rmtree(tmp, ignore_errors=True)
+# a consequência no rodízio: a câmera lenta incerta de 17/11 SAIU da fila (a conferência a abandonou) e o qual dos dois
+# saiu em 10/11 — na quinta 19/11 sai o QUAL (o mais antigo), não a câmera lenta de novo. Sem o formato no registro, o
+# incerto contava como lâmina, a câmera lenta parecia nunca publicada e passava à frente.
+_inc = [{"id": "t-qual-0", "kind": "reel", "media_id": "MQ", "at": "2026-11-10T18:05:00+00:00", "formato": "qual_dos_dois"},
+        {"id": "t-cam-1", "kind": "reel_incerto", "media_id": None, "at": "2026-11-17T19:05:00+00:00", "formato": "camera_lenta"}]
+tmp = preparar(reels=[dict(R_CAM, id="t-cam-2"), R_QUAL], publicados=_inc)
+rc, out, st = rodar("ok", tmp, agora=QUI_NOV_16H, extra=FN)
+checa("  ...e o rodízio conta o incerto pelo formato gravado: quinta sai QUAL DOS DOIS (não a câmera lenta de novo)",
+      ids(st)[2:] == ["t-qual-1"], f"exit={rc} {ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+_inc_sem = [_inc[0], {k: v for k, v in _inc[1].items() if k != "formato"}]
+tmp = preparar(reels=[dict(R_CAM, id="t-cam-2"), R_QUAL], publicados=_inc_sem)
+rc, out, st = rodar("ok", tmp, agora=QUI_NOV_16H, extra=FN)
+checa("  CONTROLE: o mesmo incerto SEM o formato (como era gravado) deixa a câmera lenta repetir — o campo é o que decide",
+      ids(st)[2:] == ["t-cam-2"], f"exit={rc} {ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+
 print("\nO) LAMINAS_POR_SEMANA ilegivel/'off' NAO derruba o motor (posts e stories seguem)")
 tmp = preparar(reels=[R_LAMINA, R_CONVERSA], publicados=[LAMINA_SEG]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H, extra={"LAMINAS_POR_SEMANA": "off"})
 checa("'off' = sem cota (a lamina sai)", "t-lamina-1" in ids(st), f"publicados={ids(st)}")

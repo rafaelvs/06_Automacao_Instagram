@@ -18,6 +18,9 @@ O que reprova (exit 1):
      falta, foi gerado de OUTRO texto (hash do episódio) ou de outro motor (hash dos módulos de
      animado/ usados), ou registra texto desenhado na tela que não está no episódio.
   5. id repetido na fila; universo vazio (nenhum episódio) — vazio não é aprovação.
+Os 4 FORMATOS NOVOS de vídeo (regra_reels.FORMATOS_NOVOS: qual_dos_dois, mito_na_prova, camera_lenta, chama_o_var —
+Rafael, 24-26/10/2026) têm as MESMAS exigências do COMO FUNCIONA: cena com módulo, roteiro de 50-95 palavras
+terminando na CTA de envio, `tela`, vídeo + irmão amarrados ao texto, legenda gerada do episódio, voz de IA declarada.
 
 Uso:
   python checar_entretenimento.py              # confere
@@ -39,7 +42,11 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, ROOT)
 ANIMADO = os.path.join(ROOT, "animado")
 
-FORMATOS = {"conversa", "como_funciona"}
+import regra_reels  # noqa: E402  (fonte única dos nomes dos formatos; não importa nada pesado)
+
+# conversa + COMO FUNCIONA + os 4 formatos novos (Rafael, 24-26/10/2026). Os formatos novos são "COMO FUNCIONA com
+# outra mecânica": passam pelo MESMO ramo de checagem (cena, roteiro, tela) — só a conversa tem ramo próprio.
+FORMATOS = {"conversa", "como_funciona", *regra_reels.FORMATOS_NOVOS}
 SIG = "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901"
 DISC = "Conteúdo educativo · não substitui avaliação médica · voz digital (IA)"
 TAIL_IA = "Narração com voz digital (IA)."
@@ -338,16 +345,54 @@ def _sidecar_valido(ep):
             "textos_tela": tela + palavras}
 
 
+def _render_despacha(ep):
+    """Para onde o animado/render.py despacha o episódio — sem desenhar nada nem importar skia: o import da cena é
+    interceptado e o portão CFM (testado à parte) fica de fora. -> 'cena:animado.<cena>' | 'recusou:<mensagem>'."""
+    import shutil
+    import tempfile
+    import types
+    from animado import render as R
+
+    class _Despachou(Exception):
+        pass
+
+    def _importar(nome):
+        raise _Despachou(nome)
+
+    salvo = (sys.argv, R.episodio, R.portao_cfm, R.importlib)
+    tmp = tempfile.mkdtemp(prefix="render_despacho_")
+    try:
+        sys.argv = ["render", ep["id"], "--previa", "--tmp", tmp]
+        R.episodio, R.portao_cfm = (lambda _id: ep), (lambda _ep: None)
+        R.importlib = types.SimpleNamespace(import_module=_importar)
+        try:
+            R.main()
+        except _Despachou as e:
+            return f"cena:{e.args[0]}"
+        except SystemExit as e:
+            return f"recusou:{e.code}"
+        return "nada"
+    finally:
+        sys.argv, R.episodio, R.portao_cfm, R.importlib = salvo
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
 def auto_teste():
-    from episodios_entretenimento import EPISODIOS_ENTRETENIMENTO as base
+    from episodios_entretenimento import EPISODIOS_ENTRETENIMENTO as reais
     reels = json.load(open(os.path.join(ROOT, "reels.json"), encoding="utf-8-sig"))
     # lâminas sintéticas (a fila real pode estar em edição): uma narrada e declarada, uma muda
     antigas = [{"id": "t_lam_ia", "caption": "x\n\nNarração com voz digital (IA).", "voz_ia": True},
                {"id": "t_lam_muda", "caption": "x", "voz_ia": False}]
-    conv = next(e for e in base if e["formato"] == "conversa")
-    cf = next(e for e in base if e["formato"] == "como_funciona")
-    validas = [_entrada_valida(conv), _entrada_valida(cf)]
-    sidecars = {sidecar_de(e): _sidecar_valido(e) for e in (conv, cf)}
+    conv = next(e for e in reais if e["formato"] == "conversa")
+    cf = next(e for e in reais if e["formato"] == "como_funciona")
+    # um episódio sintético de CADA formato novo (cópia de um COMO FUNCIONA real com o formato trocado): o portão tem
+    # de aceitá-los com as mesmas exigências — e recusar o mesmo que recusa no COMO FUNCIONA (controles abaixo)
+    novos = [dict(copy.deepcopy(cf), id=f"t_{f}", formato=f) for f in regra_reels.FORMATOS_NOVOS]
+    base = list(reais) + novos
+    nv = novos[0]
+    validas = [_entrada_valida(conv), _entrada_valida(cf)] + [_entrada_valida(e) for e in novos]
+    sidecars = {sidecar_de(e): _sidecar_valido(e) for e in [conv, cf] + novos}
+    k_nv = 2                                       # posição da entrada de `nv` em `validas`
 
     def rodar(eps=base, fila=None, side=None, existe=lambda rel: True, lam=None, publicados=frozenset()):
         side = sidecars if side is None else side
@@ -356,8 +401,29 @@ def auto_teste():
 
     ok = True
     pr = rodar()
-    print(f"[{'ok' if not pr else 'FALHOU'}] negativo: entradas VÁLIDAS (montadas como o anexar) passam ({pr[:2]})")
+    print(f"[{'ok' if not pr else 'FALHOU'}] negativo: entradas VÁLIDAS (montadas como o anexar) passam — conversa, "
+          f"COMO FUNCIONA e os {len(novos)} formatos novos ({pr[:2]})")
     ok &= not pr
+    falta = [f for f in regra_reels.FORMATOS_NOVOS if f not in FORMATOS]
+    print(f"[{'ok' if not falta else 'FALHOU'}] os formatos novos da regra única estão em FORMATOS ({falta or 'todos'})")
+    ok &= not falta
+    # o RENDER (animado/render.py, rodado pelo render-animado.yml) despacha os formatos novos para a cena, como o COMO
+    # FUNCIONA — sem isso nenhuma peça de formato novo ganhava vídeo + irmão e as vagas de ter/qui/sáb ficavam vazias
+    # (verificação de 26/10/2026). Controle positivo: formato digitado errado é RECUSADO pelo render.
+    desp = {f: _render_despacha(dict(cf, formato=f)) for f in ("como_funciona",) + tuple(regra_reels.FORMATOS_NOVOS)}
+    errado = {f: d for f, d in desp.items() if d != f"cena:animado.{cf['cena']}"}
+    print(f"[{'ok' if not errado else 'FALHOU'}] o render despacha COMO FUNCIONA e os {len(regra_reels.FORMATOS_NOVOS)} "
+          f"formatos novos para animado/<cena>.py ({errado or 'todos'})")
+    ok &= not errado
+    d = _render_despacha(dict(cf, formato="qual_dos_2"))
+    acertou = d.startswith("recusou:") and "formato desconhecido" in d
+    print(f"[{'ok' if acertou else 'FALHOU'}] positivo: o render RECUSA formato desconhecido ('qual_dos_2') -> {d[:70]}")
+    ok &= acertou
+    # render.py fora do hash do motor: mexer nele não invalida vídeo aprovado (o irmão guarda só os módulos da cena)
+    no_motor = [e["id"] for e in reais if "render" in modulos_do_motor(e)]
+    print(f"[{'ok' if not no_motor else 'FALHOU'}] render.py fora do hash do motor de todos os {len(reais)} episódios "
+          f"({no_motor[:3] or 'nenhum o inclui'})")
+    ok &= not no_motor
     pr = rodar(lam=antigas + [{"id": "t_lam_velha", "caption": "x"}], publicados={"t_lam_velha"})
     print(f"[{'ok' if not pr else 'FALHOU'}] negativo: reel JÁ publicado sem voz_ia não reprova ({pr[:2]})")
     ok &= not pr
@@ -370,6 +436,9 @@ def auto_teste():
 
     def side_mut(fn, ep=cf):
         s = copy.deepcopy(sidecars); fn(s[sidecar_de(ep)]); return s
+
+    def ep_nv(fn):
+        return ep_mut(lambda e: fn(next(x for x in e if x["id"] == nv["id"])))
 
     casos = [
         ("termo vetado na legenda", 'CFM', dict(eps=ep_mut(lambda e: e[0].__setitem__("legenda", e[0]["legenda"] + " Corrige a dismetria.")))),
@@ -398,6 +467,22 @@ def auto_teste():
         ("lâmina voz_ia false COM a linha na legenda", 'incoerente', dict(lam=[{"id": "t_l", "caption": "voz digital (IA).", "voz_ia": False}])),
         ("gancho fora das scenes (backstop CFM cego)", '`scenes`', dict(fila=fila_mut(lambda it: it.__setitem__("scenes", [x for x in it["scenes"] if "tela" not in x])))),
         ("render sem registro de texto", 'não registrou', dict(side=side_mut(lambda s: s.__setitem__("textos_tela", [])))),
+        # formatos novos (26/10/2026): as MESMAS exigências do COMO FUNCIONA
+        ("formato novo: CTA sem pedido de envio", 'pedir ENVIO', dict(eps=ep_nv(lambda x: x.__setitem__("cta", "Curta e compartilhe.")))),
+        ("formato novo: roteiro sem terminar na CTA", 'última frase', dict(eps=ep_nv(lambda x: x["roteiro"].append("Mais uma frase.")))),
+        ("formato novo: cena sem módulo", 'sem módulo', dict(eps=ep_nv(lambda x: x.__setitem__("cena", "cf_nao_existe")))),
+        ("formato novo: termo vetado no rótulo de tela", 'CFM', dict(eps=ep_nv(lambda x: x["tela"].append("CORRIGE A DISMETRIA")))),
+        ("formato novo digitado errado no episódio ('qual_dos_2')", 'formato inválido', dict(eps=ep_nv(lambda x: x.__setitem__("formato", "qual_dos_2")))),
+        ("formato novo digitado errado na fila ('qual_dos_2')", 'desconhecido', dict(fila=fila_mut(lambda it: it.__setitem__("formato", "qual_dos_2"), k=k_nv))),
+        ("formato novo na fila como 'como_funciona' (diverge do episódio)", 'formato da fila', dict(fila=fila_mut(lambda it: it.__setitem__("formato", "como_funciona"), k=k_nv))),
+        ("formato novo na fila SEM formato", 'formato da fila', dict(fila=fila_mut(lambda it: it.pop("formato"), k=k_nv))),
+        ("formato novo sem voz_ia (rótulo de IA da Meta desligado)", 'incompleta', dict(fila=fila_mut(lambda it: it.__setitem__("voz_ia", False), k=k_nv))),
+        ("formato novo sem a linha de IA na legenda", 'incompleta', dict(fila=fila_mut(lambda it: it.__setitem__("caption", it["caption"].replace(TAIL_IA, "")), k=k_nv))),
+        ("formato novo com legenda trocada (uma frase a mais)", 'legenda da fila diverge', dict(fila=fila_mut(lambda it: it.__setitem__("caption", it["caption"].replace("\n", " Sempre.\n", 1)), k=k_nv))),
+        ("formato novo: vídeo de outro episódio", 'não é o do episódio', dict(fila=fila_mut(lambda it: it.__setitem__("video", "reels/_preview_cv_muleta.mp4"), k=k_nv))),
+        ("formato novo: irmão do vídeo ausente", 'falta reels/', dict(side={k: v for k, v in sidecars.items() if k != sidecar_de(nv)})),
+        ("formato novo: vídeo renderizado de outro texto", 'OUTRO texto', dict(side=side_mut(lambda s: s.__setitem__("hash_episodio", "sha256:0"), ep=nv))),
+        ("formato novo: texto de tela fora do episódio", 'fora do episódio', dict(side=side_mut(lambda s: s["textos_tela"].append("DIA 40"), ep=nv))),
     ]
     for nome, chave, kw in casos:
         # cada controle tem de disparar A SUA checagem (mensagem com `chave`), não "algum problema":

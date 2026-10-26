@@ -30,11 +30,35 @@ estivesse praticamente começando do zero agora, fazendo esse formato novo". Por
 estáticos (posts.json) e as sequências de stories antigas (sequences.json) também ficam suspensos
 (POSTS_ATIVOS_PADRAO / SEQUENCIAS_ATIVAS_PADRAO = False) até existir a versão no formato novo.
 Mesma lógica: nada é apagado; religar é mudar o padrão.
+
+FORMATOS NOVOS (Rafael, 24-26/10/2026): 4 formatos novos de VÍDEO nas vagas do antigo carrossel (ter/qui/sáb
+15h), revezando, intercalados com o COMO FUNCIONA (seg/qua/sex/dom): "colocar eles, os quatro formatos [...] um
+cada dia [...] intercalar um formato novo com como funciona, e aí depois a gente vai ter uma resposta se algum
+desses formatos foram melhor". Viu os 4 pilotos e disse "conferido, segue". Vira esta regra (DIA -> GRUPO):
+  * seg/qua/sex/dom (DIAS_COMO_FUNCIONA): COMO FUNCIONA (e lâmina/conversa, se religadas, com as cotas acima).
+    Formato novo NUNCA sai nesses dias.
+  * ter/qui/sáb (DIAS_FORMATOS_NOVOS), a partir de INICIO_FORMATOS_NOVOS (03/11/2026): um dos FORMATOS_NOVOS,
+    em RODÍZIO — sai o formato publicado há MAIS tempo (nunca publicado = primeiro; empate = ordem da fila, pela
+    posição do 1º pendente de cada formato) e, dentro do formato, o 1º da fila. Formato sem peça pronta sai do
+    rodízio até ganhar peça. Antes do início, ter/qui/sáb ficam sem reel.
+  * Vaga sem peça pronta = dia sem reel (o publish avisa; não é falha). 1 reel por dia continua (last_reel_date).
+A medição do teste entre formatos lê o `formato` gravado no registro de cada reel publicado (publish.log).
 """
 import datetime as dt
 import os
 
 BRT = dt.timezone(dt.timedelta(hours=-3))
+# Formatos novos de vídeo (Rafael, 24-26/10/2026) — o `formato` do item da fila E do episódio. A ordem aqui não
+# decide nada (o rodízio decide pela última publicação e pela fila); só fixa os nomes válidos.
+FORMATOS_NOVOS = ("qual_dos_dois", "mito_na_prova", "camera_lenta", "chama_o_var")
+NOMES_FORMATOS = {"como_funciona": "COMO FUNCIONA", "conversa": "CONVERSA", "lamina": "LÂMINA",
+                  "qual_dos_dois": "QUAL DOS DOIS?", "mito_na_prova": "MITO NA PROVA",
+                  "camera_lenta": "CÂMERA LENTA", "chama_o_var": "CHAMA O VAR"}
+DIAS_COMO_FUNCIONA = frozenset({0, 2, 4, 6})       # seg/qua/sex/dom
+DIAS_FORMATOS_NOVOS = frozenset({1, 3, 5})        # ter/qui/sáb — as vagas do carrossel antigo (crons das 15h)
+INICIO_FORMATOS_NOVOS = dt.date(2026, 11, 3)       # 1ª terça dos formatos novos; antes, ter/qui/sáb sem reel
+GRUPO_COMO_FUNCIONA = "como_funciona"
+GRUPO_NOVOS = "formatos_novos"
 LAMINAS_POR_SEMANA_PADRAO = 0            # 24/10: all-in COMO FUNCIONA (era 1 por semana desde 18/10)
 DIAS_ENTRE_CONVERSAS_PADRAO = 10          # Rafael, 19/10: "pode deixar a cada 10 dias" (vale se religar)
 CONVERSAS_ATIVAS_PADRAO = False           # 24/10: all-in COMO FUNCIONA — conversa suspensa
@@ -152,20 +176,90 @@ def laminas_na_semana(state, reels, agora_brt):
     return publicados_na_semana(state, reels, agora_brt, "lamina")
 
 
-def proximo_reel(reels, done, state, agora_brt, cota=None, dias_conversa=None, conversa_ativa=None):
-    """Primeiro reel da fila que pode sair hoje: como_funciona sempre; lâmina só dentro da cota
-    semanal; conversa só se a série estiver ligada E a última saiu há pelo menos `dias_conversa`
-    dias. `cota` = cota de lâminas (nome histórico)."""
+def _data(dia):
+    return dia.date() if isinstance(dia, dt.datetime) else dia
+
+
+def grupo_do_dia(dia, inicio_novos=None):
+    """Que reel o dia comporta: GRUPO_COMO_FUNCIONA (seg/qua/sex/dom), GRUPO_NOVOS (ter/qui/sáb a partir de
+    INICIO_FORMATOS_NOVOS) ou None (ter/qui/sáb antes do início: sem reel). `dia` = date ou datetime BRT."""
+    d = _data(dia)
+    inicio = INICIO_FORMATOS_NOVOS if inicio_novos is None else inicio_novos
+    if d.weekday() in DIAS_COMO_FUNCIONA:
+        return GRUPO_COMO_FUNCIONA
+    if d.weekday() in DIAS_FORMATOS_NOVOS and d >= inicio:
+        return GRUPO_NOVOS
+    return None
+
+
+def grupo_do_formato(fmt):
+    """O grupo de dias em que um formato pode sair: GRUPO_NOVOS (os 4 formatos novos, ter/qui/sáb) ou
+    GRUPO_COMO_FUNCIONA (COMO FUNCIONA, lâmina, conversa: seg/qua/sex/dom). Formato desconhecido cai em
+    GRUPO_COMO_FUNCIONA (onde o proximo_reel também não o solta)."""
+    return GRUPO_NOVOS if (fmt or "lamina").strip().lower() in FORMATOS_NOVOS else GRUPO_COMO_FUNCIONA
+
+
+def ultimas_por_formato(state, reels):
+    """{formato: data BRT do último reel dele no registro}. O `formato` gravado pelo publish manda; registro antigo
+    (sem o campo) cai no reels.json. Conta também o `reel_incerto` (pode estar no ar: o rodízio não repete o
+    formato por causa de uma dúvida que a conferência humana ainda vai resolver)."""
+    fmt = {r["id"]: formato(r) for r in reels}
+    out = {}
+    for e in state.get("published", []):
+        if e.get("kind") not in ("reel", "reel_incerto") or not e.get("at"):
+            continue
+        try:
+            d = dt.datetime.fromisoformat(e["at"]).astimezone(BRT).date()
+        except (TypeError, ValueError):
+            continue
+        f = (e.get("formato") or fmt.get(e.get("id"), "lamina")).strip().lower()
+        if out.get(f) is None or d > out[f]:
+            out[f] = d
+    return out
+
+
+def rodizio(reels, done, state):
+    """O RODÍZIO dos formatos novos, na ordem em que saem: [(formato, última publicação | None, posição do 1º
+    pendente na fila)], só dos formatos com peça pronta. O 1º da lista é o da próxima vaga: o publicado há MAIS
+    tempo; nunca publicado vem antes de todos; empate = quem tem o 1º pendente mais à frente na fila."""
+    ult = ultimas_por_formato(state, reels)
+    primeiro = {}
+    for k, x in enumerate(reels):
+        f = formato(x)
+        if f in FORMATOS_NOVOS and x["id"] not in done and f not in primeiro:
+            primeiro[f] = k
+    ordem = sorted(primeiro, key=lambda f: (ult.get(f) or dt.date.min, primeiro[f]))
+    return [(f, ult.get(f), primeiro[f]) for f in ordem]
+
+
+def proximo_reel(reels, done, state, agora_brt, cota=None, dias_conversa=None, conversa_ativa=None,
+                 inicio_novos=None):
+    """O reel que sai hoje (ou None = dia sem reel). O DIA decide o grupo (grupo_do_dia):
+      * seg/qua/sex/dom: o 1º da fila entre COMO FUNCIONA (sempre), lâmina (só dentro da cota semanal) e conversa
+        (só se a série estiver ligada E a última saiu há pelo menos `dias_conversa` dias). Formato novo nunca;
+        formato desconhecido também não (o portão checar_entretenimento já o recusa na fila).
+      * ter/qui/sáb a partir de INICIO_FORMATOS_NOVOS: o 1º da fila do formato novo da vez no rodízio().
+      * ter/qui/sáb antes do início: None.
+    `cota` = cota de lâminas (nome histórico)."""
+    grupo = grupo_do_dia(agora_brt, inicio_novos)
+    if grupo is None:
+        return None
+    if grupo == GRUPO_NOVOS:
+        r = rodizio(reels, done, state)
+        if not r:
+            return None
+        return next(x for x in reels if x["id"] not in done and formato(x) == r[0][0])
     cota = cota_laminas() if cota is None else cota
     dias = dias_entre_conversas() if dias_conversa is None else dias_conversa
     ativa = conversas_ativas() if conversa_ativa is None else conversa_ativa
     ult = ultima_publicacao(state, reels, "conversa")
-    livre = {"lamina": cota < 0 or publicados_na_semana(state, reels, agora_brt, "lamina") < cota,
-             "conversa": ativa and (dias < 0 or ult is None or (agora_brt.date() - ult).days >= dias)}
+    livre = {"como_funciona": True,
+             "lamina": cota < 0 or publicados_na_semana(state, reels, agora_brt, "lamina") < cota,
+             "conversa": ativa and (dias < 0 or ult is None or (_data(agora_brt) - ult).days >= dias)}
     for x in reels:
         if x["id"] in done:
             continue
-        if not livre.get(formato(x), True):
+        if not livre.get(formato(x), False):
             continue
         return x
     return None
