@@ -1,6 +1,6 @@
 # PROGRAMAÇÃO — o que vai ao ar e quando
 
-Regenerado em 25/10/2026 por `_gen_programacao.py`. **Datas são projeção da fila FIFO** a partir do último publicado — job vermelho, alarme de curtidas ou mudança na fila desloca tudo; a fonte de verdade é a fila.
+Regenerado em 26/10/2026 por `_gen_programacao.py`. **Datas são projeção da fila FIFO** a partir do último publicado — job vermelho, alarme de curtidas ou mudança na fila desloca tudo; a fonte de verdade é a fila.
 
 **Como revisar/suspender (regra de 30/08):** os itens ficam dias na fila antes de publicar — confira por aqui; para suspender ou editar, avise o chat da auditoria (ou remova a entrada do JSON, com lock `motor-instagram`). Piloto ativo só para formato/estratégia NOVA ou mudança de voz.
 
@@ -54,11 +54,7 @@ Regenerado em 25/10/2026 por `_gen_programacao.py`. **Datas são projeção da f
 
 | Data | Story | Reel de origem | Situação |
 |---|---|---|---|
-| — | **nenhum story projetado** (2 na fila; 2 aguardando aprovação) | | |
-
-**Aguardando aprovação do Rafael** (fora da conta: não saem e não travam as aprovadas):
-
-- `stn_quanto_tempo` (reel `cf_alongamento`): pendente — sem lote de aprovação. Render: stn_quanto_tempo: vídeos feitos por OUTRA versão do story_cf.py (re-renderize). Se aprovada hoje (com o render do CI): qui 24/12.
-- `stn_pe_pra_dentro` (reel `cf_pe_virado`): pendente — sem lote de aprovação. Render: stn_pe_pra_dentro: vídeos feitos por OUTRA versão do story_cf.py (re-renderize). Se aprovada hoje (com o render do CI): qui 12/11.
+| qui 12/11 | `stn_pe_pra_dentro` | `cf_pe_virado` | aprovada |
+| qui 24/12 | `stn_quanto_tempo` | `cf_alongamento` | aprovada |
 
 *Sequências de stories antigas: SUSPENSAS — all-in no formato novo (24/10); 35 parada(s) na fila (os temas voltam como stories da geração nova).*
