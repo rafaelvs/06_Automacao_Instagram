@@ -2073,6 +2073,77 @@
     ]
   },
   {
+    "id": "cf_placa_crescimento",
+    "video": "reels/_preview_cf_placa_crescimento.mp4",
+    "caption": "O osso da criança cresce pela placa de crescimento (fise), uma área de cartilagem por onde o osso aumenta, mais frágil que o osso já formado. Por isso, fraturas infantis têm avaliação própria na ortopedia pediátrica: quando a fratura envolve a placa, o acompanhamento é mais cuidadoso para o osso crescer alinhado. Depois de um acidente grave, a lesão da cartilagem de crescimento em quem ainda cresce pode levar a uma discrepância de membro (perna mais curta), e por isso fraturas importantes pedem acompanhamento até o fim do crescimento. Do lado bom, o osso da criança costuma consolidar mais rápido que no adulto.\n\nNa criança, o que parece “só torção” às vezes é uma fratura que não aparece fácil; dor exatamente sobre o osso, não apoiar o pé ou inchaço importante: avalie, pode precisar de imagem. Deformidade visível, osso exposto, dormência ou pé/mão muito pálido: emergência, vá ao pronto-socorro.\n\nManda pra quem tem criança ativa.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "como_funciona",
+    "serie": "Como funciona",
+    "dur": 29.9,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Onde o osso da criança cresce? Numa área de cartilagem, a placa de crescimento."
+      },
+      {
+        "vo": "É por ali que o osso aumenta."
+      },
+      {
+        "vo": "Só que ela é mais frágil que o osso já formado."
+      },
+      {
+        "vo": "Fratura ali pede acompanhamento mais cuidadoso, pro osso crescer alinhado."
+      },
+      {
+        "vo": "Num acidente grave, lesão nessa cartilagem pode deixar a perna mais curta."
+      },
+      {
+        "vo": "Por isso: acompanhar até o fim do crescimento."
+      },
+      {
+        "vo": "Do lado bom: osso de criança costuma colar mais rápido."
+      },
+      {
+        "vo": "Manda pra quem tem criança ativa."
+      },
+      {
+        "tela": "ONDE O OSSO"
+      },
+      {
+        "tela": "DA CRIANÇA CRESCE?"
+      },
+      {
+        "tela": "?"
+      },
+      {
+        "tela": "ÁREA DE CARTILAGEM"
+      },
+      {
+        "tela": "PLACA DE CRESCIMENTO"
+      },
+      {
+        "tela": "fise"
+      },
+      {
+        "tela": "MAIS FRÁGIL"
+      },
+      {
+        "tela": "OSSO JÁ FORMADO"
+      },
+      {
+        "tela": "FRATURA"
+      },
+      {
+        "tela": "ACIDENTE GRAVE"
+      },
+      {
+        "tela": "FIM DO CRESCIMENTO"
+      },
+      {
+        "tela": "DO LADO BOM"
+      }
+    ]
+  },
+  {
     "id": "cf_pseudartrose",
     "video": "reels/_preview_cf_pseudartrose.mp4",
     "caption": "Cigarro atrasa o osso a colar, sim: o tabagismo está entre os fatores que retardam a consolidação óssea. Para colar, o osso precisa de um tripé: estabilidade, sangue chegando e nenhuma infecção. A nicotina aperta os vasos e reduz o oxigênio e o sangue que chegam ao osso. Quando a consolidação falha, vira pseudartrose, a fratura que não cola: o osso fica com mobilidade onde deveria estar firme, uma 'falsa junta', e quem fuma tem risco maior. Tem caminho, sempre caso a caso: estabilizar melhor, estimular o osso e, às vezes, refazer o trecho; parar de fumar durante a recuperação também faz diferença, e vale conversar com a sua equipe. Dor que persiste no local da fratura meses depois, ou a sensação de que a perna não sustenta: leve para avaliação com quem trata reconstrução óssea.\n\nManda pra quem fuma e tá esperando o osso colar.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
@@ -2173,77 +2244,6 @@
       },
       {
         "tela": "FAZ DIFERENÇA"
-      }
-    ]
-  },
-  {
-    "id": "cf_placa_crescimento",
-    "video": "reels/_preview_cf_placa_crescimento.mp4",
-    "caption": "O osso da criança cresce pela placa de crescimento (fise), uma área de cartilagem por onde o osso aumenta, mais frágil que o osso já formado. Por isso, fraturas infantis têm avaliação própria na ortopedia pediátrica: quando a fratura envolve a placa, o acompanhamento é mais cuidadoso para o osso crescer alinhado. Depois de um acidente grave, a lesão da cartilagem de crescimento em quem ainda cresce pode levar a uma discrepância de membro (perna mais curta), e por isso fraturas importantes pedem acompanhamento até o fim do crescimento. Do lado bom, o osso da criança costuma consolidar mais rápido que no adulto.\n\nNa criança, o que parece “só torção” às vezes é uma fratura que não aparece fácil; dor exatamente sobre o osso, não apoiar o pé ou inchaço importante: avalie, pode precisar de imagem. Deformidade visível, osso exposto, dormência ou pé/mão muito pálido: emergência, vá ao pronto-socorro.\n\nManda pra quem tem criança ativa.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
-    "formato": "como_funciona",
-    "serie": "Como funciona",
-    "dur": 29.9,
-    "voz_ia": true,
-    "scenes": [
-      {
-        "vo": "Onde o osso da criança cresce? Numa área de cartilagem, a placa de crescimento."
-      },
-      {
-        "vo": "É por ali que o osso aumenta."
-      },
-      {
-        "vo": "Só que ela é mais frágil que o osso já formado."
-      },
-      {
-        "vo": "Fratura ali pede acompanhamento mais cuidadoso, pro osso crescer alinhado."
-      },
-      {
-        "vo": "Num acidente grave, lesão nessa cartilagem pode deixar a perna mais curta."
-      },
-      {
-        "vo": "Por isso: acompanhar até o fim do crescimento."
-      },
-      {
-        "vo": "Do lado bom: osso de criança costuma colar mais rápido."
-      },
-      {
-        "vo": "Manda pra quem tem criança ativa."
-      },
-      {
-        "tela": "ONDE O OSSO"
-      },
-      {
-        "tela": "DA CRIANÇA CRESCE?"
-      },
-      {
-        "tela": "?"
-      },
-      {
-        "tela": "ÁREA DE CARTILAGEM"
-      },
-      {
-        "tela": "PLACA DE CRESCIMENTO"
-      },
-      {
-        "tela": "fise"
-      },
-      {
-        "tela": "MAIS FRÁGIL"
-      },
-      {
-        "tela": "OSSO JÁ FORMADO"
-      },
-      {
-        "tela": "FRATURA"
-      },
-      {
-        "tela": "ACIDENTE GRAVE"
-      },
-      {
-        "tela": "FIM DO CRESCIMENTO"
-      },
-      {
-        "tela": "DO LADO BOM"
       }
     ]
   },
@@ -3833,6 +3833,834 @@
       },
       {
         "tela": "NÃO SE AGUENTA"
+      }
+    ]
+  },
+  {
+    "id": "cf_chamaovar_rotina_fixador",
+    "video": "reels/_preview_cf_chamaovar_rotina_fixador.mp4",
+    "caption": "Chama o VAR: com fixador externo, pode ou não pode? Segurar no fixador para levantar: não pode. O fixador não é alça: use-o para apoiar a perna só do jeito que a sua equipe mostrou. Apoie as mãos nos braços da cadeira e suba pela perna que está livre. Cadeira baixa ou macia demais: não pode. Ela obriga a forçar o joelho e o aparelho; a cadeira certa é firme, com braços e não muito baixa. Capa de tecido sobre o aparelho: pode. Ela não enrosca no lençol e protege quem dorme ao lado. Cada fase do tratamento pode ter uma orientação diferente: no seu caso, quem decide é a sua equipe. Dor forte e nova ao acordar: avise a equipe.\n\nManda pra quem ia errar o lance da cadeira.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "chama_o_var",
+    "serie": "Chama o VAR",
+    "dur": 33.5,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Chama o VAR! Segurar no fixador pra levantar: pode?"
+      },
+      {
+        "vo": "Anulado: o fixador não é alça. Mão na cadeira, e sobe pela perna livre."
+      },
+      {
+        "vo": "Cadeira baixa e fofinha: pode?"
+      },
+      {
+        "vo": "Anulado: baixa e macia demais, força o joelho e o fixador."
+      },
+      {
+        "vo": "Cobrir o fixador com capa: pode?"
+      },
+      {
+        "vo": "Validado: não enrosca no lençol, e protege quem dorme ao lado."
+      },
+      {
+        "vo": "No seu caso, quem apita é a sua equipe."
+      },
+      {
+        "vo": "Manda pra quem ia errar o lance da cadeira."
+      },
+      {
+        "tela": "O FIXADOR PARECE"
+      },
+      {
+        "tela": "UMA ALÇA. PODE?"
+      },
+      {
+        "tela": "VAR"
+      },
+      {
+        "tela": "FIXADOR"
+      },
+      {
+        "tela": "LANCE 1"
+      },
+      {
+        "tela": "LANCE 2"
+      },
+      {
+        "tela": "LANCE 3"
+      },
+      {
+        "tela": "CHECANDO"
+      },
+      {
+        "tela": "ANULADO"
+      },
+      {
+        "tela": "VALIDADO"
+      },
+      {
+        "tela": "JEITO CERTO"
+      },
+      {
+        "tela": "CHAMA O VAR"
+      }
+    ]
+  },
+  {
+    "id": "cf_cameralenta_ponta_pes",
+    "video": "reels/_preview_cf_cameralenta_ponta_pes.mp4",
+    "caption": "Andar na ponta dos pés: normal até quando? Na câmera lenta aparece o detalhe: o pé pousa pela ponta, e o calcanhar não desce. Nos primeiros anos, é comum e costuma passar sozinho: muita criança experimenta a ponta do pé e larga sem ninguém pedir. A regra prática é a dos 3 anos: se depois dessa idade a criança ainda anda na ponta o tempo todo, vale uma avaliação.\n\nFique de olho também se é só de um lado, se a panturrilha fica durinha ou se veio junto com uma demora para começar a andar: esses sinais pedem atenção. As causas vão de um hábito da infância, que desaparece sozinho, a um encurtamento real na panturrilha, ou outras que merecem investigação: a avaliação ortopédica define a causa. A câmera lenta, o avanço rápido e a luz sob o calcanhar só ilustram a regra, e o elástico é só uma comparação com a panturrilha durinha: não é exame, nem teste para fazer em casa, nem aparelho.\n\nManda pra quem vê o filho na pontinha o dia inteiro.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "camera_lenta",
+    "serie": "Câmera lenta",
+    "dur": 29.5,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Filho na pontinha: normal até quando? Volta. Câmera lenta."
+      },
+      {
+        "vo": "Pousa pela ponta, e o calcanhar não desce."
+      },
+      {
+        "vo": "Nos primeiros anos, é comum e costuma passar sozinho."
+      },
+      {
+        "vo": "Mas a idade importa."
+      },
+      {
+        "vo": "Depois dos três anos, ainda na ponta o tempo todo? Vale uma avaliação."
+      },
+      {
+        "vo": "Fica de olho também: é só de um lado? A panturrilha fica durinha? Demorou pra andar?"
+      },
+      {
+        "vo": "Esses sinais pedem atenção."
+      },
+      {
+        "vo": "Manda pra quem vê o filho na pontinha o dia inteiro."
+      },
+      {
+        "tela": "FILHO NA PONTINHA:"
+      },
+      {
+        "tela": "NORMAL ATÉ QUANDO?"
+      },
+      {
+        "tela": "CÂMERA LENTA"
+      },
+      {
+        "tela": "1×"
+      },
+      {
+        "tela": "0,25×"
+      },
+      {
+        "tela": "3 ANOS"
+      }
+    ]
+  },
+  {
+    "id": "cf_qualdosdois_pe_chato",
+    "video": "reels/_preview_cf_qualdosdois_pe_chato.mp4",
+    "caption": "Qual dos dois? Todo bebê nasce com o pé chato (pé plano), e o arco se forma sozinho ao longo da infância, conforme a criança anda e corre. O pé plano flexível é comum na infância, e a palmilha não molda esse arco. O que merece avaliação na ortopedia pediátrica é o pé que dói ou cansa, o pé rígido e o pé que ficou chato só de um lado: um pé diferente do outro. No vídeo, a tinta azul marca só a parte da sola que encosta no chão: é um desenho para ilustrar a diferença, não é exame nem teste para fazer em casa.\n\nManda pra quem fica preocupado com pé chato!\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "qual_dos_dois",
+    "serie": "Qual dos dois",
+    "dur": 30.0,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Pé de bebê: chato ou com arco? Chuta: A? Ou B?"
+      },
+      {
+        "vo": "A, o pé chato! Todo bebê tem. E o arco? Se forma sozinho, ao longo da infância."
+      },
+      {
+        "vo": "Agora, mais difícil: qual dos dois merece avaliação? A? Ou B?"
+      },
+      {
+        "vo": "B! Um pé é diferente do outro: isso merece avaliação."
+      },
+      {
+        "vo": "Bônus: o pé que dói também merece."
+      },
+      {
+        "vo": "Manda pra quem fica preocupado com pé chato!"
+      },
+      {
+        "tela": "PÉ DE BEBÊ:"
+      },
+      {
+        "tela": "CHATO OU COM ARCO?"
+      },
+      {
+        "tela": "QUAL DOS DOIS?"
+      },
+      {
+        "tela": "2 RODADAS"
+      },
+      {
+        "tela": "RODADA 1"
+      },
+      {
+        "tela": "RODADA 2"
+      },
+      {
+        "tela": "BÔNUS"
+      },
+      {
+        "tela": "A"
+      },
+      {
+        "tela": "B"
+      },
+      {
+        "tela": "2"
+      },
+      {
+        "tela": "1"
+      }
+    ]
+  },
+  {
+    "id": "cf_mitonaprova_pinos",
+    "video": "reels/_preview_cf_mitonaprova_pinos.mp4",
+    "caption": "Mito na prova: gaze limpa pode sujar? No pino do fixador externo, é verdade, se ela já passou por outro pino. A higiene diária dos trajetos dos pinos é parte do tratamento, e a rotina é a que a sua equipe ensinou. Uma regra vale para todo mundo: mãos lavadas e um material para cada pino, nunca a mesma gaze de um pino para o outro — é assim que uma infecção pula de um ponto para o outro. A tinta invisível e a luz negra do vídeo são só uma demonstração da regra, não um teste para fazer em casa: no pino, use apenas o que a equipe orientou, sem pomada ou produto por conta própria. Reação leve na pele ao redor do pino é comum. Sinais de infecção — secreção com pus ou mau cheiro, vermelhidão que aumenta ou dor nova — pedem contato precoce com a equipe; com febre, pronto-socorro.\n\nManda pra quem cuida de um fixador.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "mito_na_prova",
+    "serie": "Mito na prova",
+    "dur": 33.2,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Gaze limpa, fixador na perna, três pinos. Vamos pôr à prova."
+      },
+      {
+        "vo": "No pino um, tinta invisível, a sujeira de mentira."
+      },
+      {
+        "vo": "De um lado, uma gaze para os três."
+      },
+      {
+        "vo": "Do outro, uma gaze por pino."
+      },
+      {
+        "vo": "Parece limpo? Luz negra."
+      },
+      {
+        "vo": "Veredito: verdade. A sujeira pegou carona na gaze."
+      },
+      {
+        "vo": "Um material para cada pino."
+      },
+      {
+        "vo": "Sinais de infecção: pus, mau cheiro, vermelhidão que cresce, dor nova. Avise a equipe. Com febre, pronto-socorro."
+      },
+      {
+        "vo": "Manda pra quem cuida de um fixador."
+      },
+      {
+        "tela": "GAZE LIMPA"
+      },
+      {
+        "tela": "PODE SUJAR?"
+      },
+      {
+        "tela": "FIXADOR"
+      },
+      {
+        "tela": "MITO OU VERDADE?"
+      },
+      {
+        "tela": "TESTE"
+      },
+      {
+        "tela": "UMA GAZE SÓ"
+      },
+      {
+        "tela": "UMA GAZE POR PINO"
+      },
+      {
+        "tela": "1"
+      },
+      {
+        "tela": "2"
+      },
+      {
+        "tela": "3"
+      },
+      {
+        "tela": "MITO"
+      },
+      {
+        "tela": "VERDADE"
+      },
+      {
+        "tela": "PEGOU CARONA"
+      },
+      {
+        "tela": "SINAIS DE INFECÇÃO"
+      },
+      {
+        "tela": "PUS"
+      },
+      {
+        "tela": "MAU CHEIRO"
+      },
+      {
+        "tela": "VERMELHIDÃO"
+      },
+      {
+        "tela": "QUE CRESCE"
+      },
+      {
+        "tela": "DOR NOVA"
+      },
+      {
+        "tela": "AVISE A EQUIPE"
+      },
+      {
+        "tela": "FEBRE: PRONTO-SOCORRO"
+      }
+    ]
+  },
+  {
+    "id": "cf_var_primeiros_socorros",
+    "video": "reels/_preview_cf_var_primeiros_socorros.mp4",
+    "caption": "Chama o VAR: primeiros socorros no jogo, pode ou não pode? Torceu o pé e “corre que passa”: não pode. Dor que faz parar não se “corre para passar”: tire do jogo, tire o tênis com cuidado, eleve o pé e não force o apoio para “testar”. Massagem forte logo depois da torção: não pode, porque aumenta o inchaço. Nas primeiras 48 horas, é gelo com pano por 15 minutos, com o pé elevado. Calor é para tensão muscular crônica, não para a lesão recente. Caiu e o braço ficou torto: imobilizar como está, pode. Nunca puxe nem endireite o membro: apoie com algo rígido e macio, sem apertar, junto ao corpo numa tipoia improvisada, mantenha a criança calma e vá ao pronto-socorro. Deformidade visível, dormência, mão ou pé muito pálido ou frio: emergência. Não conseguir pisar ou usar o braço, com dor importante, pede avaliação no mesmo dia. Os lances do vídeo só ilustram os primeiros minutos: na dúvida, avalie.\n\nManda pra quem ia errar o lance da massagem.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "chama_o_var",
+    "serie": "Chama o VAR",
+    "dur": 35.8,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Chama o VAR! Torceu o pé: corre que passa?"
+      },
+      {
+        "vo": "Anulado: dor que faz parar tira do jogo. Não pisa pra testar."
+      },
+      {
+        "vo": "Massagem forte pra desinchar: pode?"
+      },
+      {
+        "vo": "Anulado: logo depois da torção, massagem forte aumenta o inchaço. Gelo com pano e pé pra cima."
+      },
+      {
+        "vo": "Caiu e o braço ficou torto. Imobilizar como está: pode?"
+      },
+      {
+        "vo": "Validado: não puxa nem endireita, e vai pro pronto-socorro."
+      },
+      {
+        "vo": "Na dúvida, quem apita é o médico."
+      },
+      {
+        "vo": "Manda pra quem ia errar o lance da massagem."
+      },
+      {
+        "tela": "TORCEU O PÉ:"
+      },
+      {
+        "tela": "CORRE QUE PASSA?"
+      },
+      {
+        "tela": "VAR"
+      },
+      {
+        "tela": "LANCE 1"
+      },
+      {
+        "tela": "LANCE 2"
+      },
+      {
+        "tela": "LANCE 3"
+      },
+      {
+        "tela": "CHECANDO"
+      },
+      {
+        "tela": "ANULADO"
+      },
+      {
+        "tela": "VALIDADO"
+      },
+      {
+        "tela": "JEITO CERTO"
+      },
+      {
+        "tela": "CHAMA O VAR"
+      }
+    ]
+  },
+  {
+    "id": "cf_cameralenta_joelho_estala",
+    "video": "reels/_preview_cf_cameralenta_joelho_estala.mp4",
+    "caption": "Joelho que faz crec: só som ou alerta? Estalo no joelho da criança, sem dor, é quase sempre inofensivo, mesmo assustando os pais. O barulho costuma ser tendão deslizando sobre o osso ou bolhas de gás dentro da articulação: fenômenos normais do corpo. O que tranquiliza é o conjunto: se a criança corre, pula e brinca sem reclamar e sem inchaço, é só som.\n\nAcenda o alerta quando o estalo vem acompanhado de dor, inchaço, travamento (o joelho que “trava” e não estende direito) ou sensação de falseio. Joelho que incha, trava ou falseia pede avaliação sem demora na ortopedia pediátrica. O sintoma guia, não o barulho. A câmera lenta do vídeo só ilustra o que olhar junto com o estalo: não é exame nem teste para fazer em casa.\n\nManda pra quem se assusta com o joelho que estala.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "camera_lenta",
+    "serie": "Câmera lenta",
+    "dur": 30.7,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Joelho do filho fez crec? Volta. Câmera lenta."
+      },
+      {
+        "vo": "Só som ou alerta? Repara no que vem junto."
+      },
+      {
+        "vo": "Estalou, esticou inteirinho e seguiu pulando."
+      },
+      {
+        "vo": "Sem dor e sem inchaço, é só som."
+      },
+      {
+        "vo": "Costuma ser tendão deslizando, ou bolha de gás na articulação. Coisa normal do corpo."
+      },
+      {
+        "vo": "Agora, atenção: o estalo vem com dor? O joelho incha? Trava e não estica?"
+      },
+      {
+        "vo": "Aí sim, procure avaliação."
+      },
+      {
+        "vo": "Manda pra quem se assusta com o joelho que estala."
+      },
+      {
+        "tela": "JOELHO FEZ “CREC”?"
+      },
+      {
+        "tela": "SÓ SOM OU ALERTA?"
+      },
+      {
+        "tela": "CÂMERA LENTA"
+      },
+      {
+        "tela": "1×"
+      },
+      {
+        "tela": "0,25×"
+      },
+      {
+        "tela": "SÓ SOM"
+      }
+    ]
+  },
+  {
+    "id": "cf_qualdosdois_dor_crescimento",
+    "video": "reels/_preview_cf_qualdosdois_dor_crescimento.mp4",
+    "caption": "Qual dos dois? Dor de crescimento existe, é comum na infância e não é frescura. O padrão que tranquiliza: dói nas duas pernas, no fim do dia ou à noite, sem inchaço e sem febre, e some pela manhã, com a criança brincando normal no dia seguinte. Não há exame que “prove”. O médico reconhece pelo padrão típico e descarta o que precisa de atenção. Fogem desse padrão e merecem avaliação na ortopedia pediátrica: dor sempre no mesmo ponto, de um lado só; inchaço, calor ou febre junto; e dor que invade o dia, fazendo mancar, limitar o brincar ou acordar sempre. Criança mancando, na ortopedia pediátrica, sempre se avalia; com febre e manqueira juntas, procure atendimento no mesmo dia. No vídeo, as ondinhas vermelhas em volta da perna só mostram onde dói: é um desenho, não é vermelhidão na pele.\n\nManda pra quem fica na dúvida toda noite!\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "qual_dos_dois",
+    "serie": "Qual dos dois",
+    "dur": 33.4,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Qual dessas dores é de crescimento? Chuta: A? Ou B?"
+      },
+      {
+        "vo": "A! Dói nas duas pernas, à noite. E de manhã? Já sumiu: brinca normal."
+      },
+      {
+        "vo": "Agora, ao contrário: qual dos dois merece avaliação? A? Ou B?"
+      },
+      {
+        "vo": "B! Dói sempre ali: no mesmo lugar, de um lado só. Merece avaliação."
+      },
+      {
+        "vo": "Bônus: mancou? Avalie. Com febre? Atendimento no mesmo dia."
+      },
+      {
+        "vo": "Manda pra quem fica na dúvida toda noite!"
+      },
+      {
+        "tela": "QUAL DESSAS DORES"
+      },
+      {
+        "tela": "É DE CRESCIMENTO?"
+      },
+      {
+        "tela": "QUAL DOS DOIS?"
+      },
+      {
+        "tela": "2 RODADAS"
+      },
+      {
+        "tela": "RODADA 1"
+      },
+      {
+        "tela": "RODADA 2"
+      },
+      {
+        "tela": "BÔNUS"
+      },
+      {
+        "tela": "A"
+      },
+      {
+        "tela": "B"
+      },
+      {
+        "tela": "2"
+      },
+      {
+        "tela": "1"
+      }
+    ]
+  },
+  {
+    "id": "cf_mito_mochila_coluna",
+    "video": "reels/_preview_cf_mito_mochila_coluna.mp4",
+    "caption": "Mito na prova: mochila pesada entorta a coluna? Pode doer, sim: o peso excessivo causa dor nas costas e ombros e má postura na hora de carregar, um desconforto real. Mas não há prova de que mochila cause escoliose ou deformidade permanente. A regra prática: a mochila cheia não deveria passar de 10 a 15% do peso da criança; use as duas alças, ajustada ao corpo, e leve só o essencial. Já a escoliose costuma não doer no começo, por isso o sinal é visual: um ombro mais alto que o outro, a cintura assimétrica, uma escápula mais saliente. Viu? Leve para avaliação na ortopedia pediátrica. E dor nas costas persistente na criança merece atenção: dor que acorda à noite, febre, perda de peso ou dor que piora e limita as atividades pedem avaliação. O teste do vídeo é só uma ilustração da regra.\n\nManda pra quem arruma a mochila do filho.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "mito_na_prova",
+    "serie": "Mito na prova",
+    "dur": 34.0,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Todo dia, uma mochila assim. Vamos pôr à prova."
+      },
+      {
+        "vo": "Do outro lado, mochila leve."
+      },
+      {
+        "vo": "Peso exagerado: dor nas costas e ombros, e postura ruim enquanto carrega."
+      },
+      {
+        "vo": "Agora, tira a mochila: a postura volta."
+      },
+      {
+        "vo": "Veredito: mito. Pode doer, mas causar escoliose? Não há prova."
+      },
+      {
+        "vo": "Mochila cheia: até dez a quinze por cento, do peso da criança."
+      },
+      {
+        "vo": "E a escoliose? Costuma não doer no começo."
+      },
+      {
+        "vo": "Ombro mais alto, cintura assimétrica? Leve para avaliação."
+      },
+      {
+        "vo": "Manda pra quem arruma a mochila do filho."
+      },
+      {
+        "tela": "MOCHILA PESADA"
+      },
+      {
+        "tela": "ENTORTA A COLUNA?"
+      },
+      {
+        "tela": "MITO OU VERDADE?"
+      },
+      {
+        "tela": "TESTE"
+      },
+      {
+        "tela": "MOCHILA LEVE"
+      },
+      {
+        "tela": "MITO"
+      },
+      {
+        "tela": "VERDADE"
+      },
+      {
+        "tela": "ATÉ 10 A 15%"
+      },
+      {
+        "tela": "DO PESO DA CRIANÇA"
+      },
+      {
+        "tela": "ESCOLIOSE"
+      },
+      {
+        "tela": "COSTUMA NÃO DOER"
+      },
+      {
+        "tela": "NO COMEÇO"
+      },
+      {
+        "tela": "OMBRO MAIS ALTO"
+      },
+      {
+        "tela": "CINTURA ASSIMÉTRICA"
+      },
+      {
+        "tela": "LEVE PARA AVALIAÇÃO"
+      }
+    ]
+  },
+  {
+    "id": "cf_var_gesso",
+    "video": "reels/_preview_cf_var_gesso.mp4",
+    "caption": "Chama o VAR: com gesso, pode ou não pode? Secador para a coceira: pode. Ar frio de secador (nunca quente) alivia a coceira. Régua ou qualquer objeto para coçar: não pode. Não introduza objetos dentro do gesso: arranhões escondidos podem infeccionar. Gesso no chuveiro: não pode. O gesso comum não é feito para molhar: molhado, ele perde a função e machuca a pele. No banho, capa impermeável, sem mergulhar o gesso; a equipe orienta como proteger. E manter o membro elevado nos primeiros dias reduz o inchaço. No seu caso, siga a orientação da equipe. Dedos roxos, pálidos ou frios, formigamento, inchaço forte, dor que cresce apesar do remédio, ou a criança muito agitada e chorando sem parar: isso não espera. Pronto-socorro na hora, avisando a equipe no caminho.\n\nManda pra quem tem criança engessada em casa.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "chama_o_var",
+    "serie": "Chama o VAR",
+    "dur": 30.8,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Chama o VAR! Coceira no gesso? Secador: pode?"
+      },
+      {
+        "vo": "Validado: ar frio alivia a coceira. Quente, nunca."
+      },
+      {
+        "vo": "E a régua pra coçar: pode?"
+      },
+      {
+        "vo": "Anulado: arranhão lá dentro pode infeccionar."
+      },
+      {
+        "vo": "Gesso no chuveiro: pode?"
+      },
+      {
+        "vo": "Anulado: molhado, ele perde a função e machuca a pele. Capa impermeável."
+      },
+      {
+        "vo": "No seu caso, quem apita é a sua equipe."
+      },
+      {
+        "vo": "Manda pra quem tem criança engessada em casa."
+      },
+      {
+        "tela": "COCEIRA NO GESSO?"
+      },
+      {
+        "tela": "SECADOR PODE?"
+      },
+      {
+        "tela": "VAR"
+      },
+      {
+        "tela": "LANCE 1"
+      },
+      {
+        "tela": "LANCE 2"
+      },
+      {
+        "tela": "LANCE 3"
+      },
+      {
+        "tela": "CHECANDO"
+      },
+      {
+        "tela": "VALIDADO"
+      },
+      {
+        "tela": "SÓ AR FRIO"
+      },
+      {
+        "tela": "ANULADO"
+      },
+      {
+        "tela": "JEITO CERTO"
+      },
+      {
+        "tela": "CHAMA O VAR"
+      }
+    ]
+  },
+  {
+    "id": "cf_qualdosdois_pino",
+    "video": "reels/_preview_cf_qualdosdois_pino.mp4",
+    "caption": "Qual dos dois? No pino do fixador externo, uma reação leve na pele ao redor do pino, com pouca vermelhidão ou secreção clara, é comum e nem sempre indica problema. O que muda a leitura é a evolução: o que piora, cresce ou passa a doer pede avaliação. Três sinais no pino não esperam a próxima consulta: vermelhidão que aumenta, dor nova e secreção com pus ou mau cheiro. Nesses casos, avise cedo a equipe; com febre, pronto-socorro. Nada de antibiótico ou pomada por conta própria: quem decide é a equipe que acompanha o caso. Vale para todo mundo que está com o aparelho, na reconstrução de um osso ou no tratamento de uma discrepância de membro. Os pinos do vídeo são desenhos para ilustrar a diferença, não são fotos de paciente.\n\nManda pra quem cuida dos pinos todo dia!\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "qual_dos_dois",
+    "serie": "Qual dos dois",
+    "dur": 33.7,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Vermelho no pino: qual é o comum? Chuta: A? Ou B?"
+      },
+      {
+        "vo": "A! Reação leve na pele é comum."
+      },
+      {
+        "vo": "Vermelhidão que cresce, como na B: avise a equipe."
+      },
+      {
+        "vo": "Agora, mais difícil: qual pede avisar sua equipe? A? Ou B?"
+      },
+      {
+        "vo": "B! Dor nova no pino: avise cedo. Pouca secreção clara é comum."
+      },
+      {
+        "vo": "Bônus: pus ou mau cheiro? Avise também. Com febre, pronto-socorro."
+      },
+      {
+        "vo": "Manda pra quem cuida dos pinos todo dia!"
+      },
+      {
+        "tela": "VERMELHO NO PINO:"
+      },
+      {
+        "tela": "QUAL É O COMUM?"
+      },
+      {
+        "tela": "QUAL DOS DOIS?"
+      },
+      {
+        "tela": "2 RODADAS"
+      },
+      {
+        "tela": "RODADA 1"
+      },
+      {
+        "tela": "RODADA 2"
+      },
+      {
+        "tela": "BÔNUS"
+      },
+      {
+        "tela": "A"
+      },
+      {
+        "tela": "B"
+      },
+      {
+        "tela": "2"
+      },
+      {
+        "tela": "1"
+      }
+    ]
+  },
+  {
+    "id": "cf_cameralenta_osso_crianca",
+    "video": "reels/_preview_cf_cameralenta_osso_crianca.mp4",
+    "caption": "Caiu e levantou: então não quebrou? A maioria das quedas da própria altura assusta mais que machuca, e observar costuma bastar. Mas como caiu importa: queda com a mão espalmada é causa comum de fratura no cotovelo e no punho. E a criança tem fraturas próprias, como a “em galho verde”, que podem não ser óbvias e precisam de avaliação. Nem toda fratura incha ou fica roxa na hora: a dor que não passa é o que mais importa.\n\nFique de olho se a criança protege o braço, não pega as coisas como antes ou sente dor num ponto do osso (não no músculo). Não tente esticar nem “testar” o braço: apoie junto ao corpo, numa tipoia improvisada, ponha gelo com pano por cima, sem apertar, e procure avaliação. Deformidade, muito inchaço, dormência ou mão pálida ou fria: pronto-socorro sem demora. A câmera lenta, a lupa e o galhinho do vídeo são ilustrações esquemáticas do que olhar: não são exame nem teste para fazer em casa.\n\nManda pra quem acha que, se levantou, não quebrou.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "camera_lenta",
+    "serie": "Câmera lenta",
+    "dur": 31.2,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Caiu e levantou? Volta. Câmera lenta."
+      },
+      {
+        "vo": "Então não quebrou? Repara: a mão chegou primeiro."
+      },
+      {
+        "vo": "Queda com a mão espalmada é causa comum de fratura no cotovelo e no punho."
+      },
+      {
+        "vo": "Criança tem fraturas próprias, como em galho verde."
+      },
+      {
+        "vo": "Nem toda fratura incha ou fica roxa na hora."
+      },
+      {
+        "vo": "Protege o braço? Não pega as coisas? Dói num ponto do osso?"
+      },
+      {
+        "vo": "Viu um desses? Apoie o braço junto ao corpo. Leve pra avaliar."
+      },
+      {
+        "vo": "Manda pra quem acha que, se levantou, não quebrou."
+      },
+      {
+        "tela": "CAIU E LEVANTOU:"
+      },
+      {
+        "tela": "ENTÃO NÃO QUEBROU?"
+      },
+      {
+        "tela": "CÂMERA LENTA"
+      },
+      {
+        "tela": "1×"
+      },
+      {
+        "tela": "0,25×"
+      },
+      {
+        "tela": "GALHO VERDE"
+      }
+    ]
+  },
+  {
+    "id": "cf_mito_estalar_joelho",
+    "video": "reels/_preview_cf_mito_estalar_joelho.mp4",
+    "caption": "Mito na prova: o joelho do filho estalando faz mal? A ideia de que todo estalo (a tal crepitação) é sinal de desgaste é mito: estalo no joelho da criança, sem dor, é quase sempre inofensivo, mesmo assustando os pais. O barulho costuma ser tendão deslizando sobre o osso ou bolhas de gás dentro da articulação, fenômenos normais. Articulações que estalam sem dor, inchaço ou travamento costumam ser benignas, e estalo sem dor não é motivo para parar de se mexer: movimento é aliado. O estalo acompanhado de dor, inchaço, travamento ou falseio é que merece avaliação — na criança, na ortopedia pediátrica. Joelho que incha, que trava e não estende direito, ou que falseia (dá a sensação de sair do lugar) pede avaliação sem demora. O sintoma guia, não o barulho. O teste do vídeo é só uma ilustração: não é exame nem teste para fazer em casa.\n\nManda pra quem se assusta com o estalo do filho.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "mito_na_prova",
+    "serie": "Mito na prova",
+    "dur": 28.2,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Agachou, e o joelho fez crec. Vamos pôr à prova."
+      },
+      {
+        "vo": "Do outro lado, um joelho que não estala."
+      },
+      {
+        "vo": "Agacha de novo: crec, crec, crec."
+      },
+      {
+        "vo": "Agora, os dois correm e pulam."
+      },
+      {
+        "vo": "Veredito: mito. Estalo no joelho, sem dor, é quase sempre inofensivo."
+      },
+      {
+        "vo": "O sintoma guia, não o barulho."
+      },
+      {
+        "vo": "Mas se o joelho dói, incha, trava ou falseia: merece avaliação."
+      },
+      {
+        "vo": "Manda pra quem se assusta com o estalo do filho."
+      },
+      {
+        "tela": "JOELHO DO FILHO"
+      },
+      {
+        "tela": "ESTALANDO FAZ MAL?"
+      },
+      {
+        "tela": "TESTE"
+      },
+      {
+        "tela": "MITO OU VERDADE?"
+      },
+      {
+        "tela": "ESTALA"
+      },
+      {
+        "tela": "NÃO ESTALA"
+      },
+      {
+        "tela": "MITO"
+      },
+      {
+        "tela": "VERDADE"
+      },
+      {
+        "tela": "SEM DOR"
+      },
+      {
+        "tela": "O SINTOMA GUIA"
+      },
+      {
+        "tela": "NÃO O BARULHO"
+      },
+      {
+        "tela": "O QUE LIGA O ALERTA"
+      },
+      {
+        "tela": "DÓI"
+      },
+      {
+        "tela": "INCHA"
+      },
+      {
+        "tela": "TRAVA"
+      },
+      {
+        "tela": "FALSEIA"
+      },
+      {
+        "tela": "MERECE AVALIAÇÃO"
       }
     ]
   },
