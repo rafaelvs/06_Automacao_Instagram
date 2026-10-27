@@ -56,7 +56,8 @@ NOMES_FORMATOS = {"como_funciona": "COMO FUNCIONA", "conversa": "CONVERSA", "lam
                   "camera_lenta": "CÂMERA LENTA", "chama_o_var": "CHAMA O VAR"}
 DIAS_COMO_FUNCIONA = frozenset({0, 2, 4, 6})       # seg/qua/sex/dom
 DIAS_FORMATOS_NOVOS = frozenset({1, 3, 5})        # ter/qui/sáb — as vagas do carrossel antigo (crons das 15h)
-INICIO_FORMATOS_NOVOS = dt.date(2026, 11, 3)       # 1ª terça dos formatos novos; antes, ter/qui/sáb sem reel
+INICIO_FORMATOS_NOVOS = dt.date(2026, 10, 27)      # 1ª terça dos formatos novos (era 03/11; Rafael, 27/10: "eu não queria
+                                                   # diminuir o volume [...] a gente adianta as publicações"); antes, sem reel
 GRUPO_COMO_FUNCIONA = "como_funciona"
 GRUPO_NOVOS = "formatos_novos"
 LAMINAS_POR_SEMANA_PADRAO = 0            # 24/10: all-in COMO FUNCIONA (era 1 por semana desde 18/10)
@@ -69,7 +70,7 @@ STORIES_NOVOS_ATIVOS_PADRAO = True        # 24/10: story da geração nova (só 
 # mais anteriores nas próximas postagens, para não ficar repetitivo demais". Peça derivada (story,
 # carrossel da geração nova) não sai se o MESMO TEMA apareceu ou vai aparecer em menos de N dias em
 # qualquer superfície; entre as liberadas, sai a do tema mais antigo (temas_conteudo.py).
-DIAS_ENTRE_MESMO_TEMA_PADRAO = 14
+DIAS_ENTRE_MESMO_TEMA_PADRAO = 7    # era 14 (24/10); 27/10: com 14 os stories quase não saíam e o Rafael pediu volume
 _SEM_COTA = ("off", "nao", "não", "no", "false", "sem", "-1")
 
 

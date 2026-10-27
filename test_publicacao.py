@@ -1104,7 +1104,7 @@ R_VAR = dict(R_QUAL, id="t-var-1", video="media/v1.mp4", formato="chama_o_var")
 R_CF_N = dict(R_QUAL, id="t-cf-n", video="media/fn.mp4", formato="como_funciona")
 TER_NOV_16H = "2026-11-17T19:00:00+00:00"           # terça 17/11 16:00 BRT: vaga de formato novo
 TER_NOV_1630 = "2026-11-17T19:30:00+00:00"          # o cron seguinte do mesmo dia
-TER_OUT_16H = "2026-10-27T19:00:00+00:00"           # terça 27/10 16:00 BRT: ANTES de 03/11
+TER_OUT_16H = "2026-10-20T19:00:00+00:00"           # terça 20/10 16:00 BRT: ANTES do início (27/10)
 SEG_NOV_16H = "2026-11-16T19:00:00+00:00"           # segunda 16/11 16:00 BRT: COMO FUNCIONA
 
 
@@ -1125,14 +1125,14 @@ checa("cron seguinte do mesmo dia: 1 reel por dia (t-qual-2 não sai)", ids(st) 
       and rc == 0, f"exit={rc} publicados={ids(st)} conta={no_ar(tmp, 'REELS')}")
 shutil.rmtree(tmp, ignore_errors=True)
 
-print("\nFN2) TERÇA ANTES de 03/11: nada sai (nem formato novo nem COMO FUNCIONA), exit 0")
+print("\nFN2) TERÇA ANTES do início (27/10): nada sai (nem formato novo nem COMO FUNCIONA), exit 0")
 tmp = preparar(reels=[R_QUAL, R_CF_N]); rc, out, st = rodar("ok", tmp, agora=TER_OUT_16H, extra=FN)
 checa("nada publicado e last_reel_date intacto", ids(st) == [] and st["last_reel_date"] == "", f"publicados={ids(st)}")
 checa("exit 0 sem ::error::", rc == 0 and "::error::" not in out, f"exit={rc} {out[-300:]}")
-checa("log diz quando começa", "ter/qui/sab sem reel ate 03/11/2026" in out, out[-300:])
+checa("log diz quando começa", "ter/qui/sab sem reel ate 27/10/2026" in out, out[-300:])
 shutil.rmtree(tmp, ignore_errors=True)
-tmp = preparar(reels=[R_QUAL, R_CF_N]); rc, out, st = rodar("ok", tmp, agora="2026-11-03T19:00:00+00:00", extra=FN)
-checa("CONTROLE: terça 03/11 (o início) já publica o formato novo", ids(st) == ["t-qual-1"] and rc == 0, f"exit={rc} {ids(st)}")
+tmp = preparar(reels=[R_QUAL, R_CF_N]); rc, out, st = rodar("ok", tmp, agora="2026-10-27T19:00:00+00:00", extra=FN)
+checa("CONTROLE: terça 27/10 (o início) já publica o formato novo", ids(st) == ["t-qual-1"] and rc == 0, f"exit={rc} {ids(st)}")
 shutil.rmtree(tmp, ignore_errors=True)
 
 print("\nFN3) SEGUNDA: publica COMO FUNCIONA e NUNCA formato novo")
@@ -1208,27 +1208,27 @@ print("\nFN7) WRITE-AHEAD de OUTRO grupo de dias: o contêiner FINISHED que sobr
       " sai enquanto ele pode ser entregue (verificação de 26/10/2026)")
 R_CF_A = dict(R_CF_N, id="t-cf-a", video="media/fa.mp4")
 R_CF_B = dict(R_CF_N, id="t-cf-b", video="media/fb.mp4")
-SEG_OUT_2330 = "2026-10-27T02:30:00+00:00"          # segunda 26/10 23:30 BRT (COMO FUNCIONA)
-QUA_OUT_16H = "2026-10-28T19:00:00+00:00"           # quarta 28/10 16:00 BRT (o contêiner de segunda já EXPIRED: 24 h)
+SEG_OUT_2330 = "2026-10-20T02:30:00+00:00"          # segunda 19/10 23:30 BRT (COMO FUNCIONA)
+QUA_OUT_16H = "2026-10-21T19:00:00+00:00"           # quarta 21/10 16:00 BRT (o contêiner de segunda já EXPIRED: 24 h)
 TER_NOV_2330 = "2026-11-18T02:30:00+00:00"          # terça 17/11 23:30 BRT (formato novo)
 QUA_NOV_16H = "2026-11-18T19:00:00+00:00"           # quarta 18/11 16:00 BRT (COMO FUNCIONA)
 QUI_NOV_16H = "2026-11-19T19:00:00+00:00"           # quinta 19/11 16:00 BRT (formato novo; o de terça já EXPIRED)
 DOM_NOV_2330 = "2026-11-16T02:30:00+00:00"          # domingo 15/11 23:30 BRT (COMO FUNCIONA)
 AVISO_WA = "esta FINISHED, mas hoje e' dia"
-# (a) COMO FUNCIONA de segunda 23:30 com 500 -> terça 27/10 (antes de 03/11: dia SEM reel)
+# (a) COMO FUNCIONA de segunda 23:30 com 500 -> terça 20/10 (antes do início: dia SEM reel)
 tmp = preparar(reels=[R_CF_A, R_CF_B]); rc, out, st = rodar("reel_500_nao", tmp, agora=SEG_OUT_2330, extra=FN)
 c1 = (st.get("reel_publicando") or {}).get("container")
 checa("segunda 23:30: 500 com o contêiner FINISHED — write-ahead do COMO FUNCIONA no estado", rc == 1 and c1
       and (st.get("reel_publicando") or {}).get("formato") == "como_funciona", f"exit={rc} {st.get('reel_publicando')}")
 rc, out, st = rodar("ok", tmp, agora=TER_OUT_16H, extra=FN)
-checa("terça 27/10 (antes de 03/11): o contêiner do COMO FUNCIONA NÃO sai e nenhum outro reel sai", ids(st) == []
+checa("terça 20/10 (antes do início): o contêiner do COMO FUNCIONA NÃO sai e nenhum outro reel sai", ids(st) == []
       and len(no_ar(tmp, "REELS")) == 0 and conta(tmp)["n_cont"] == 1 and st["last_reel_date"] == "",
       f"exit={rc} {ids(st)} {no_ar(tmp, 'REELS')} {out[-300:]}")
 checa("  ...write-ahead mantido, aviso (::warning::) e job verde", (st.get("reel_publicando") or {}).get("container") == c1
       and AVISO_WA in out and "::warning::" in out and rc == 0 and "::error::" not in out, f"exit={rc} {out[-400:]}")
 rc, out, st = rodar("ok", tmp, agora=QUA_OUT_16H, extra=FN)
-checa("quarta 28/10: o contêiner expirou (nunca saiu) -> descartado e o COMO FUNCIONA sai no dia DELE (1 reel, sem adiantar a fila)",
-      ids(st) == ["t-cf-a"] and st["last_reel_date"] == "2026-10-28" and len(no_ar(tmp, "REELS")) == 1
+checa("quarta 21/10: o contêiner expirou (nunca saiu) -> descartado e o COMO FUNCIONA sai no dia DELE (1 reel, sem adiantar a fila)",
+      ids(st) == ["t-cf-a"] and st["last_reel_date"] == "2026-10-21" and len(no_ar(tmp, "REELS")) == 1
       and conta(tmp)["n_cont"] == 2 and "reel_publicando" not in st and rc == 0, f"exit={rc} {ids(st)} {out[-300:]}")
 shutil.rmtree(tmp, ignore_errors=True)
 # (b) o inverso: formato novo de terça 23:30 com 500 -> quarta (dia de COMO FUNCIONA)

@@ -227,16 +227,16 @@ def teste_formatos_novos(src=None, yml=None):
         if h == "18":
             dias_18 |= set(range(7)) if dow == "*" else {int(x) % 7 for x in dow.split(",")}
     assert dias_18 >= set(range(7)), f"publish.yml sem cron às 15h BRT em algum dia de reel: {sorted(dias_18)}"
-    ter27, seg02, ter03 = dt.date(2026, 10, 27), dt.date(2026, 11, 2), dt.date(2026, 11, 3)
-    assert regra_reels.INICIO_FORMATOS_NOVOS == ter03 and ter03.weekday() == 1
+    ter20, ter27, seg02, ter03 = dt.date(2026, 10, 20), dt.date(2026, 10, 27), dt.date(2026, 11, 2), dt.date(2026, 11, 3)
+    assert regra_reels.INICIO_FORMATOS_NOVOS == ter27 and ter27.weekday() == 1
     novo = lambda i, f: {"id": i, "formato": f}                     # noqa: E731
     q1, q2 = novo("q1", "qual_dos_dois"), novo("q2", "qual_dos_dois")
     m1, m2 = novo("m1", "mito_na_prova"), novo("m2", "mito_na_prova")
     k1, v1 = novo("k1", "camera_lenta"), novo("v1", "chama_o_var")
     f1, f2, f3 = ({"id": f"cf{k}", "formato": "como_funciona"} for k in (1, 2, 3))
-    # antes de 03/11 ter/qui/sáb ficam sem reel; o 1º formato novo sai na terça 03/11
-    r = projeta_reels([q1], [], ter27, False, horizonte_dias=30)
-    assert r == [(ter03, "q1")], ("antes de 03/11 nada de formato novo", r)
+    # antes do início ter/qui/sáb ficam sem reel; o 1º formato novo sai na terça 27/10 (era 03/11)
+    r = projeta_reels([q1], [], ter20, False, horizonte_dias=30)
+    assert r == [(ter27, "q1")], ("antes do início nada de formato novo", r)
     # rodízio sem nada publicado: nunca publicado primeiro, empate pela ordem da fila; depois, o mais antigo
     r = projeta_reels([m1, q1, k1, q2, v1, m2], [], ter03, False, horizonte_dias=30)
     assert [i for _, i in r] == ["m1", "q1", "k1", "v1", "m2", "q2"] \
@@ -310,10 +310,11 @@ def teste_reordenador_fixos(regra):
             n_("cam_b", "camera_lenta", "joelho"), n_("mito_a", "mito_na_prova", "pinos"),
             n_("mito_b", "mito_na_prova", "escoliose"), n_("mito_c", "mito_na_prova", "fratura"),
             n_("qual_a", "qual_dos_dois", "pe_chato"), n_("cf_b", "como_funciona", "pe_virado")]
-    antes = projeta_reels(fila, [], seg26, False, **regra)
+    seg02 = dt.date(2026, 11, 2)       # base na segunda 02/11: o início dos formatos novos (27/10) já passou
+    antes = projeta_reels(fila, [], seg02, False, **regra)
     fix = [(d, i) for d, i in antes if d <= qui05]
     assert (ter03, "cam_a") in fix and (qui05, "mito_a") in fix and (sab07, "qual_a") in antes, antes
-    res = O.reordenar(fila, [], seg26, False, qui05, 14, **regra)
+    res = O.reordenar(fila, [], seg02, False, qui05, 14, **regra)
     assert res["confere"], ("a fila nova tem de projetar os fixos + a proposta", res["depois"], fix + res["nova"])
     assert [x for x in res["depois"] if x[0] <= qui05] == fix, ("fixos mudaram de data", res["depois"], fix)
     assert res["nova"][0] == (sab07, "qual_a"), res["nova"]
