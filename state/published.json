@@ -1774,10 +1774,19 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "como_funciona"
+    },
+    {
+      "id": "cf_chamaovar_rotina_fixador",
+      "kind": "reel",
+      "media_id": "18112408598077785",
+      "at": "2026-10-27T23:49:40.634025+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "chama_o_var"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-10-26",
+  "last_reel_date": "2026-10-27",
   "last_seq_date": "2026-10-24"
 }
