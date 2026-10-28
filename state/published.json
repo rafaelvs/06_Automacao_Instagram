@@ -1783,10 +1783,19 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "chama_o_var"
+    },
+    {
+      "id": "cf_pe_virado",
+      "kind": "reel",
+      "media_id": "18113977319611872",
+      "at": "2026-10-28T20:37:48.933206+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "como_funciona"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-10-27",
+  "last_reel_date": "2026-10-28",
   "last_seq_date": "2026-10-24"
 }
