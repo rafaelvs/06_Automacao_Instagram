@@ -1801,10 +1801,19 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "camera_lenta"
+    },
+    {
+      "id": "cf_gesso_placa",
+      "kind": "reel",
+      "media_id": "18478995847116904",
+      "at": "2026-10-30T18:45:20.209704+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "como_funciona"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-10-29",
+  "last_reel_date": "2026-10-30",
   "last_seq_date": "2026-10-24"
 }
