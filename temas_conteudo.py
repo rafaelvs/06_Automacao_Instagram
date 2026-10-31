@@ -88,6 +88,15 @@ POR_ID = {
     "cf_qualdosdois_pino": "pinos",
     "cf_cameralenta_osso_crianca": "fratura_crianca",
     "cf_mito_estalar_joelho": "joelho",
+    # rodada do motor (31/10/2026)
+    "cf_cameralenta_pe_pra_dentro": "pe_virado",
+    "cf_var_pe_chato": "pe_chato",
+    "cf_cameralenta_quadril_bebe": "quadril_bebe",
+    "cf_cameralenta_cotovelo_baba": "cotovelo_baba",
+    "cf_var_dor_crescimento": "dor_crescimento",
+    "cf_cameralenta_perna_curta": "discrepancia",
+    "cf_cameralenta_escoliose": "escoliose",
+    "cf_var_andar": "andar",
     # peças antigas (ranking de 19/10)
     "post37": "pinos", "on_cuidado_pinos": "pinos", "qa_banho_fixador": "pinos", "c_on_cuidado_pinos": "pinos",
     "v_reconstrucao_sex": "pinos", "fx_kit_casa": "pinos", "fx_pino_inflamado": "pinos", "qa_pino_frouxo": "pinos",

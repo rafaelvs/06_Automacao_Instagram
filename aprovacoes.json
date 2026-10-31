@@ -933,6 +933,52 @@
      "hash_roteiro": "sha256:f89858b29041b53a9b6ca10d465a458620755aaf5abc14f5b6f83d15795370f8"
     }
    ]
+  },
+  {
+   "lote": "MOTOR-FORMATOS-2026-10-31",
+   "nome": "Rodada do motor de 31/10: 5 Câmera lenta + 3 Chama o VAR (séries já aprovadas em 26/10) para as vagas de ter/qui/sáb",
+   "escopo": [
+    "instagram"
+   ],
+   "status": "aprovado",
+   "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
+   "data": "2026-10-31",
+   "evidencia": "Chat auditoria-instagram-v1, 31/10/2026: vendo os números (câmera lenta cf_cameralenta_ponta_pes 25.612 de alcance em 1,8 dia e 27 envios; Chama o VAR 3.461 e 22,8 s assistidos), o Rafael escreveu 'a gente vai investir nesses formatos novos', aprovou o rodízio com peso ('pode implementar') e pediu 'pode rodar o motor agora'. Séries aprovadas em 26/10 (lote FORMATOS-NOVOS-2026-10-26, 'conferido, segue'). Pauta pela regra de temas; roteirista + verificador adversarial; cena + revisor adversarial + leitor às cegas + correção; 2ª leitura às cegas no mp4 FINAL com folha uniforme, calibrada em 5 peças publicadas (as 8 no nível delas: clareza 7, diversão 4-6); todo fato com trecho LITERAL de peça publicada ou de lote aprovado (conferência mecânica: 0 trechos sem lastro; controle positivo com 2 fontes falsas reprovou as 2); portão CFM limpo.",
+   "observacoes": "Revisão passiva na fila (regra de 30/08): entram nas vagas de ter/qui/sáb pelo rodízio com peso (regra_reels); cópias para conferência em _GRANDE_REVISAO_2026-08/videos_geracao_nova_2026-10. Os 6 COMO FUNCIONA da mesma rodada NÃO entraram: diversão 3-4 no leitor às cegas, contra 5-6 das publicadas na mesma régua — voltam para retrabalho.",
+   "episodios": [
+    {
+     "id": "cf_cameralenta_pe_pra_dentro",
+     "hash_roteiro": "sha256:4b58debd8e6c17f52425c76ddc71cab601920853bd20d5c556fc8b1a9b87cfdf"
+    },
+    {
+     "id": "cf_var_pe_chato",
+     "hash_roteiro": "sha256:9e8c25c1f88ccf929f72f1800bf560ee0e57d039a23f4f460626e67c0f2e71c9"
+    },
+    {
+     "id": "cf_cameralenta_quadril_bebe",
+     "hash_roteiro": "sha256:2498a80bddcbee35fbd98ddfb3e331daae5c9edcea66cd059c4426c8ea12ed63"
+    },
+    {
+     "id": "cf_cameralenta_cotovelo_baba",
+     "hash_roteiro": "sha256:933ecb0f57094d0e998ba6abd9545460fa437c7c84e0e89800a812ddc8f91d6b"
+    },
+    {
+     "id": "cf_var_dor_crescimento",
+     "hash_roteiro": "sha256:e052043726650f0ab2725b4b867485fc90732f589833b6668d2d06dda84af128"
+    },
+    {
+     "id": "cf_cameralenta_perna_curta",
+     "hash_roteiro": "sha256:7423d36134e7889797bc047ee01fed2ddbc699b3d9fb332867a0b211dc2de3c4"
+    },
+    {
+     "id": "cf_cameralenta_escoliose",
+     "hash_roteiro": "sha256:46d683e9faa7b497925ffc01d3af08a79fb30b4310fdfebab6bcf611c91c360e"
+    },
+    {
+     "id": "cf_var_andar",
+     "hash_roteiro": "sha256:e3e4af24b61e3f1de4a3433c0ab23d392d17c21bc3713e58a7497152f7f998bb"
+    }
+   ]
   }
  ]
 }
