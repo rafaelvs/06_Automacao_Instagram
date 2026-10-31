@@ -1,36 +1,33 @@
 {
  "id": "stn_quadril_ultrassom",
- "hash_story": "sha256:ae6cbdf406375a847981dfaa344ab183cab4ad28ae7c84f31bbfe627f5d6a7d3",
+ "hash_story": "sha256:f10a70a3bd9d01f30b87cf6d9441b6ca4c93b270e1e36d733fca3032c0dacfe2",
  "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101",
- "hash_render": "sha256:6b7e9ab136d289affbb9d9ab6db8a21c0bd708ed543ef5246b2712a096b38468",
+ "hash_render": "sha256:0266aa08adb4f07355b92df7ed38f6133d50c8b0805c7c954568bb09fc7e9553",
  "reel_video": "reels/_preview_cf_quadril_bebe.mp4",
  "reel_sha256": "sha256:625fd84aa942400b13aee01426dc9a0c908311eb2243e60c279465c217700140",
  "partes": [
   {
    "arquivo": "stories_cf/stn_quadril_ultrassom_1.mp4",
-   "sha256": "sha256:0cda31551c9c5580decc24c67109c343f077dc7a0d733ad7a0c7e9d93aab8497",
+   "sha256": "sha256:dcef27ee30cd7e9d8168613413f3779dfed2a1c22a2c557cd5740e321f9e4baa",
    "dur": 4.5,
    "textos_tela": [
     "COMO FUNCIONA",
     "Conteúdo educativo · não substitui avaliação médica",
+    "DO BEBÊ ASSUSTOU?",
     "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
     "ULTRASSOM DO QUADRIL",
-    "VEIO 'TIPO 2A'?",
     "toca →"
    ],
-   "rotulos_reel": [
-    "EXAME DO BEBÊ",
-    "ÀS VEZES, COM ULTRASSOM"
-   ],
+   "rotulos_reel": [],
    "trecho": [
-    10.1,
-    11.25
+    11.85,
+    13.0
    ],
    "crop": [
-    66,
-    300,
-    940,
-    760
+    130,
+    336,
+    820,
+    624
    ],
    "camera": {
     "zoom": [
@@ -39,55 +36,54 @@
       1.0
      ],
      [
-      2.6,
-      1.0
-     ],
-     [
       4.5,
-      1.03
+      1.08
      ]
     ],
     "ancora": [
-     536,
-     900
+     540,
+     470
     ],
     "foco_x": null,
     "esmaecer": [
      16,
      16,
-     30,
+     24,
      16
     ]
    },
    "desloc_fundo": [
     -1.0,
     -1.5,
-    -1.0
+    -0.5
    ]
   },
   {
    "arquivo": "stories_cf/stn_quadril_ultrassom_2.mp4",
-   "sha256": "sha256:8a535e66ae5d623db546654f2c96ece66a582da28d1d6cf224bcee9837ba9918",
+   "sha256": "sha256:483de140b81a56f5fc7f48bef35409e257eec76fe3de833371ddf0b58c7633ce",
    "dur": 6.0,
    "textos_tela": [
+    "'TIPO 2A' COSTUMA",
     "COMO FUNCIONA",
-    "COSTUMA SER",
     "Conteúdo educativo · não substitui avaliação médica",
+    "Do encaixe do quadril, em bebê",
     "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
-    "IMATURIDADE",
-    "O ultrassom é a triagem da displasia do quadril.",
+    "SER IMATURIDADE",
+    "novinho, e não doença já instalada.",
     "toca →"
    ],
-   "rotulos_reel": [],
+   "rotulos_reel": [
+    "ENCAIXE"
+   ],
    "trecho": [
-    27.3,
-    28.15
+    1.0,
+    1.95
    ],
    "crop": [
-    110,
-    380,
-    520,
-    590
+    230,
+    530,
+    700,
+    690
    ],
    "camera": {
     "zoom": [
@@ -97,85 +93,84 @@
      ],
      [
       6.0,
-      1.1
+      1.08
      ]
     ],
     "ancora": [
-     370,
-     650
+     560,
+     720
     ],
     "foco_x": null,
     "esmaecer": [
-     30,
      20,
-     30,
-     16
+     20,
+     40,
+     20
     ]
    },
    "desloc_fundo": [
     -1.0,
     -1.5,
-    -0.5
+    -1.0
    ]
   },
   {
    "arquivo": "stories_cf/stn_quadril_ultrassom_3.mp4",
-   "sha256": "sha256:d1924b77c23f3808b6559a042deda29c52fea4363047914fd24cb2fecb1e5e66",
-   "dur": 9.7,
+   "sha256": "sha256:ba5bf9086624953598b0820b59c9fd6550bc0a77a7932b9dbbefe4400e13cdad",
+   "dur": 8.8,
    "textos_tela": [
-    "ACOMPANHAMENTO",
+    "ACOMPANHAR",
     "COMO FUNCIONA",
+    "Com o ortopedista pediátrico, exames",
     "Conteúdo educativo · não substitui avaliação médica",
     "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
     "MANDA PRA QUEM",
-    "Quem interpreta a escala do",
+    "O CAMINHO É",
     "RECEBEU ESSE LAUDO.",
-    "SERIADO",
     "Vídeo completo no perfil",
-    "laudo é o ortopedista pediátrico.",
+    "repetidos mostram a evolução.",
     "toque no nome lá em cima ↖"
    ],
    "rotulos_reel": [
-    "AO LONGO DE SEMANAS",
-    "com acompanhamento de perto"
+    "ORTOPEDISTA PEDIÁTRICO"
    ],
    "trecho": [
-    27.3,
-    28.15
+    19.3,
+    20.4
    ],
    "crop": [
-    44,
-    210,
-    640,
-    760
+    110,
+    788,
+    860,
+    166
    ],
    "camera": {
     "zoom": [
      [
       0.0,
-      1.25
+      1.0
      ],
      [
-      1.4,
-      1.0
+      5.2,
+      1.06
      ]
     ],
     "ancora": [
-     370,
-     890
+     540,
+     860
     ],
     "foco_x": null,
     "esmaecer": [
+     8,
      16,
-     20,
-     30,
+     16,
      16
     ]
    },
    "desloc_fundo": [
-    -1.0,
     -1.5,
-    -0.5
+    -2.5,
+    -1.5
    ]
   }
  ],
@@ -192,5 +187,5 @@
   "som": "sha256:bb14c29b0357e7ed165ab8dd28fefa928a1d8b2c75757326ee8ca4d65988cb0c",
   "voz": "sha256:c5cd4ed56961e846df8ab719b19986bab6b0e939a8861b905e9d199806af9d5c"
  },
- "renderizado_em": "2026-10-31T21:35:23+00:00"
+ "renderizado_em": "2026-10-31T22:20:25+00:00"
 }

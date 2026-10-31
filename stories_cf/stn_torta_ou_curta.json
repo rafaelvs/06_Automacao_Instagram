@@ -1,33 +1,33 @@
 {
  "id": "stn_torta_ou_curta",
- "hash_story": "sha256:b0e394e2c2a4455c9c96cd4b093b635cf911c0bae6ade4547d95951b4e5943a4",
+ "hash_story": "sha256:2c3931434954ac84952bac41fbf004abfa3a5963b850285c3ab2515aaca54299",
  "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101",
- "hash_render": "sha256:f829d7db1b04c1b93d2e6a4bc12df1301ffb6d9a3bc91712e3ecdacac13996b3",
+ "hash_render": "sha256:38f7ac448d119090c507b47f6bccee5bf5f9d1d2231b5401a68b2e697650d7d0",
  "reel_video": "reels/_preview_cf_eixo_perna.mp4",
  "reel_sha256": "sha256:ab572b93f96b56b91620a6c6097b0d48e5d2eca2b47d8470f614948ba6e76c6e",
  "partes": [
   {
    "arquivo": "stories_cf/stn_torta_ou_curta_1.mp4",
-   "sha256": "sha256:cfc385d6f44e7139be16bb49d45c7597eb22d6846208a5dc20aad22202405e3b",
+   "sha256": "sha256:7dfb0822d1d23ae3baa4789322357e90fa64a4820b358c35f395c7aec8e0a3fa",
    "dur": 4.5,
    "textos_tela": [
+    "A LINHA DA PERNA DIZ",
     "COMO FUNCIONA",
     "Conteúdo educativo · não substitui avaliação médica",
     "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
-    "OU PERNA CURTA?",
-    "PERNA TORTA",
+    "TORTA OU CURTA?",
     "toca →"
    ],
    "rotulos_reel": [],
    "trecho": [
-    0.1,
-    1.1
+    1.6,
+    2.13
    ],
    "crop": [
-    300,
-    440,
-    480,
-    790
+    157,
+    525,
+    500,
+    705
    ],
    "camera": {
     "zoom": [
@@ -45,12 +45,12 @@
      ]
     ],
     "ancora": [
-     540,
-     770
+     407,
+     880
     ],
     "foco_x": null,
     "esmaecer": [
-     40,
+     60,
      16,
      30,
      16
@@ -64,16 +64,16 @@
   },
   {
    "arquivo": "stories_cf/stn_torta_ou_curta_2.mp4",
-   "sha256": "sha256:863786c3f6aa2ebda599872453d968f6e3c434275a2b4fec75c21f483531143f",
-   "dur": 6.5,
+   "sha256": "sha256:d050c5fe17a7c7494e586a92da1494097977c830510a64feab6f8ee21334dc5a",
+   "dur": 7.0,
    "textos_tela": [
+    "A LINHA ENTORTA",
     "COMO FUNCIONA",
     "Conteúdo educativo · não substitui avaliação médica",
     "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
-    "ESTÁ DESVIADO",
-    "No encurtamento, o osso é mais",
-    "O EIXO DO OSSO",
-    "curto, mas o eixo está reto.",
+    "Fotos de frente, pés juntos,",
+    "PERNA TORTA:",
+    "ajudam a ver se alinha ou piora.",
     "toca →"
    ],
    "rotulos_reel": [],
@@ -118,32 +118,31 @@
   },
   {
    "arquivo": "stories_cf/stn_torta_ou_curta_3.mp4",
-   "sha256": "sha256:15cd634ceecbc6e810a1af9f60d6869135ae812b2ab35661c567a5c79e6dcd57",
-   "dur": 10.7,
+   "sha256": "sha256:2322d8bc489ada5e5e74054712908b358471e9629c38eb5c2f81172a64974a66",
+   "dur": 9.4,
    "textos_tela": [
+    "A LINHA FICA RETA",
     "COMO FUNCIONA",
     "Conteúdo educativo · não substitui avaliação médica",
-    "DIFERENTES",
     "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
-    "ESSA MESMA DÚVIDA —",
+    "ESSA MESMA DÚVIDA.",
+    "Em casa, repare: mancar ou",
     "MANDA PRA QUEM TEM",
-    "Muitas vezes os dois aparecem",
-    "OU VIVE ISSO AGORA.",
-    "SÃO PROBLEMAS",
+    "PERNA CURTA:",
     "Vídeo completo no perfil",
-    "juntos no mesmo paciente.",
+    "desnível no quadril pedem avaliação.",
     "toque no nome lá em cima ↖"
    ],
    "rotulos_reel": [],
    "trecho": [
-    20.2,
-    21.03
+    2.3,
+    3.3
    ],
    "crop": [
     240,
-    650,
-    380,
-    560
+    770,
+    400,
+    490
    ],
    "camera": {
     "zoom": [
@@ -158,11 +157,11 @@
     ],
     "ancora": [
      410,
-     800
+     900
     ],
     "foco_x": null,
     "esmaecer": [
-     40,
+     14,
      16,
      30,
      16
@@ -170,7 +169,7 @@
    },
    "desloc_fundo": [
     -1.0,
-    -1.5,
+    -2.0,
     -1.0
    ]
   }
@@ -188,5 +187,5 @@
   "som": "sha256:bb14c29b0357e7ed165ab8dd28fefa928a1d8b2c75757326ee8ca4d65988cb0c",
   "voz": "sha256:c5cd4ed56961e846df8ab719b19986bab6b0e939a8861b905e9d199806af9d5c"
  },
- "renderizado_em": "2026-10-31T21:35:54+00:00"
+ "renderizado_em": "2026-10-31T22:20:43+00:00"
 }

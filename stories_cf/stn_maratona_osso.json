@@ -1,33 +1,33 @@
 {
  "id": "stn_maratona_osso",
- "hash_story": "sha256:6190f0c311fa7a3afb386633beb0ea80d6dde2d600dada98e1430f8cf39052da",
+ "hash_story": "sha256:d1b185cf57a29f9cbbea9782f8e59ca26da1fb74e1ab55820f03127fc3d53141",
  "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101",
- "hash_render": "sha256:a4d17259c7e3f31c302d41d3072a514d78cb484b831ad569308e81500e4f11cb",
+ "hash_render": "sha256:b2665c7f850be41bf8a5e8a4bf84d2c013f396f4c39e317315b7dc64ec3e9d3c",
  "reel_video": "reels/_preview_cf_transporte_osseo.mp4",
  "reel_sha256": "sha256:728c5b59e98e1625b6a8072b0b389ca3d707886c29cc34ea1364ee37709a078b",
  "partes": [
   {
    "arquivo": "stories_cf/stn_maratona_osso_1.mp4",
-   "sha256": "sha256:458ce5c73bc1b6e4c56bb16d11790dacc11726b361277c473a99f0b3cae7a838",
+   "sha256": "sha256:718f868b7cb200e8e75e36ce542c6d15c7522afeb1f113f7f759579ee0b88916",
    "dur": 4.5,
    "textos_tela": [
     "COMO FUNCIONA",
     "Conteúdo educativo · não substitui avaliação médica",
     "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
-    "QUANTO TEMPO LEVA",
-    "REFAZER UM OSSO?",
+    "QUANTO TEMPO PRA",
+    "REPOR O QUE FALTA?",
     "toca →"
    ],
    "rotulos_reel": [],
    "trecho": [
-    15.6,
-    15.83
+    0.0,
+    1.0
    ],
    "crop": [
-    230,
+    390,
     310,
-    340,
-    918
+    290,
+    968
    ],
    "camera": {
     "zoom": [
@@ -37,75 +37,19 @@
      ],
      [
       4.5,
-      1.0
+      1.1
      ]
     ],
     "ancora": [
-     400,
-     769
+     537,
+     822
     ],
     "foco_x": null,
     "esmaecer": [
      6,
-     6,
-     6,
-     6
-    ]
-   },
-   "desloc_fundo": [
-    -1.0,
-    -2.0,
-    -1.0
-   ]
-  },
-  {
-   "arquivo": "stories_cf/stn_maratona_osso_2.mp4",
-   "sha256": "sha256:45bb69a3e9e3a758d668c8d7f888f293c8716015d6e6c8660498c1eb1eb75249",
-   "dur": 6.0,
-   "textos_tela": [
-    "ALTOS E BAIXOS",
-    "COMO FUNCIONA",
-    "Conteúdo educativo · não substitui avaliação médica",
-    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
-    "SÃO MESES, COM",
-    "toca →",
-    "É um processo longo, mas possível."
-   ],
-   "rotulos_reel": [
-    "osso novo",
-    "atrás do segmento"
-   ],
-   "trecho": [
-    19.17,
-    19.63
-   ],
-   "crop": [
-    205,
-    310,
-    705,
-    636
-   ],
-   "camera": {
-    "zoom": [
-     [
-      0.0,
-      1.0
-     ],
-     [
-      6.0,
-      1.03
-     ]
-    ],
-    "ancora": [
-     560,
-     628
-    ],
-    "foco_x": null,
-    "esmaecer": [
      10,
-     16,
-     12,
-     16
+     6,
+     10
     ]
    },
    "desloc_fundo": [
@@ -115,59 +59,113 @@
    ]
   },
   {
-   "arquivo": "stories_cf/stn_maratona_osso_3.mp4",
-   "sha256": "sha256:92097e55da6ffff9cfc90fa9dd5c838e6741525ec38d2e604d0d7a34e94eaf35",
-   "dur": 9.6,
+   "arquivo": "stories_cf/stn_maratona_osso_2.mp4",
+   "sha256": "sha256:e77e0f96d520d20e69dd522f75c3be37ff7f166d718f2388cac09be7f27de05b",
+   "dur": 6.8,
    "textos_tela": [
-    "BASEADA EM TÉCNICA.",
+    "ANDA 1 MM POR DIA",
     "COMO FUNCIONA",
     "Conteúdo educativo · não substitui avaliação médica",
     "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
-    "MANDA PRA QUEM",
-    "NÃO UMA CORRIDA",
-    "PRECISA DE ESPERANÇA",
-    "Saber disso desde o começo ajuda a atravessar.",
-    "UMA MARATONA,",
-    "Vídeo completo no perfil",
-    "toque no nome lá em cima ↖"
+    "MESES: UM PEDAÇO",
+    "Os anéis são um aparelho na perna:",
+    "puxam um pedaço do próprio osso.",
+    "toca →"
    ],
    "rotulos_reel": [],
    "trecho": [
-    21.9,
-    22.75
+    15.6,
+    15.83
    ],
    "crop": [
     230,
-    310,
+    212,
     340,
-    918
+    1046
    ],
    "camera": {
     "zoom": [
      [
       0.0,
-      1.15
+      1.0
      ],
      [
-      2.4,
-      1.0
+      6.8,
+      1.12
      ]
     ],
     "ancora": [
      400,
-     320
+     1050
     ],
     "foco_x": null,
     "esmaecer": [
      6,
      10,
-     24,
+     8,
      10
     ]
    },
    "desloc_fundo": [
     -1.0,
     -2.0,
+    -1.0
+   ]
+  },
+  {
+   "arquivo": "stories_cf/stn_maratona_osso_3.mp4",
+   "sha256": "sha256:60e601efba8fbf5aa79ed142dbbb265c8fb27d9bdedec12f506f9251d715b7dc",
+   "dur": 9.0,
+   "textos_tela": [
+    "(o dourado) não se forma.",
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "DEVAGAR DE",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "MANDA PRA QUEM ESTÁ",
+    "Mais rápido, o osso novo",
+    "PROPÓSITO",
+    "RECONSTRUINDO UM OSSO.",
+    "Vídeo completo no perfil",
+    "toque no nome lá em cima ↖"
+   ],
+   "rotulos_reel": [],
+   "trecho": [
+    21.9,
+    23.1
+   ],
+   "crop": [
+    230,
+    308,
+    340,
+    964
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.12
+     ],
+     [
+      5.4,
+      1.0
+     ]
+    ],
+    "ancora": [
+     400,
+     312
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     6,
+     10,
+     20,
+     10
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    -1.5,
     -1.0
    ]
   }
@@ -185,5 +183,5 @@
   "som": "sha256:bb14c29b0357e7ed165ab8dd28fefa928a1d8b2c75757326ee8ca4d65988cb0c",
   "voz": "sha256:c5cd4ed56961e846df8ab719b19986bab6b0e939a8861b905e9d199806af9d5c"
  },
- "renderizado_em": "2026-10-31T21:31:02+00:00"
+ "renderizado_em": "2026-10-31T22:21:03+00:00"
 }
