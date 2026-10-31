@@ -1,0 +1,200 @@
+{
+ "id": "stn_haste_ou_fixador",
+ "hash_story": "sha256:274a589a2f1be2b7d3fea5ce1e1656152109c8f72654c339f64986559932cd1a",
+ "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101",
+ "hash_render": "sha256:ce4ecf560cec52673618d253135b4c36543e781a5c0ce7f0cdb9a6514d95230c",
+ "reel_video": "reels/_preview_cf_gesso_placa.mp4",
+ "reel_sha256": "sha256:92083bc0380839ac4e5eec1f6de353e099e4b7d11eb4b246a9f4605d3d29c3ae",
+ "partes": [
+  {
+   "arquivo": "stories_cf/stn_haste_ou_fixador_1.mp4",
+   "sha256": "sha256:88b5b0291f303f0af32b3370f1ffa6b5e514350de061cbcd8ec6620df6a00d96",
+   "dur": 4.5,
+   "textos_tela": [
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "HASTE POR DENTRO",
+    "OU FIXADOR POR FORA?",
+    "toca →"
+   ],
+   "rotulos_reel": [
+    "HASTE"
+   ],
+   "trecho": [
+    11.94,
+    12.33
+   ],
+   "crop": [
+    150,
+    330,
+    850,
+    920
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      2.6,
+      1.0
+     ],
+     [
+      4.5,
+      1.05
+     ]
+    ],
+    "ancora": [
+     470,
+     800
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     30,
+     16,
+     30,
+     16
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    -1.5,
+    -0.5
+   ]
+  },
+  {
+   "arquivo": "stories_cf/stn_haste_ou_fixador_2.mp4",
+   "sha256": "sha256:6e94e650566ad0cf54c7dbab5f98ec17b4843a8e674c21d1fd0e6c88afe24050",
+   "dur": 6.0,
+   "textos_tela": [
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "MAIS CONFORTÁVEL.",
+    "Mas depende do osso comportar o implante.",
+    "NADA PARA FORA.",
+    "toca →"
+   ],
+   "rotulos_reel": [
+    "HASTE",
+    "POR DENTRO DO OSSO"
+   ],
+   "trecho": [
+    12.43,
+    13.5
+   ],
+   "crop": [
+    150,
+    330,
+    850,
+    920
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      6.0,
+      1.05
+     ]
+    ],
+    "ancora": [
+     560,
+     800
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     30,
+     16,
+     30,
+     16
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    -1.5,
+    -0.5
+   ]
+  },
+  {
+   "arquivo": "stories_cf/stn_haste_ou_fixador_3.mp4",
+   "sha256": "sha256:39f0b153a6699f1e3858300993acc7f8326206d2285abf240c441706e982d32e",
+   "dur": 11.0,
+   "textos_tela": [
+    "COM GESSO, PLACA,",
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "HASTE OU FIXADOR.",
+    "MANDA PRA QUEM TÁ",
+    "O fixador corrige o ângulo, mas",
+    "OS DOIS SÃO BONS",
+    "QUANDO BEM INDICADOS",
+    "Vídeo completo no perfil",
+    "exige cuidado diário com os pinos.",
+    "toque no nome lá em cima ↖"
+   ],
+   "rotulos_reel": [
+    "FIXADOR",
+    "PINOS ATÉ O OSSO",
+    "POR FORA"
+   ],
+   "trecho": [
+    14.2,
+    18.15
+   ],
+   "crop": [
+    70,
+    300,
+    900,
+    950
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      6.0,
+      1.04
+     ]
+    ],
+    "ancora": [
+     320,
+     800
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     40,
+     16,
+     30,
+     16
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    -1.5,
+    -0.5
+   ]
+  }
+ ],
+ "fontes": {
+  "black": "Roboto-Black.ttf",
+  "bold": "Roboto-Bold.ttf",
+  "semi": "Roboto-Medium.ttf",
+  "reg": "Roboto-Regular.ttf"
+ },
+ "motor": {
+  "base": "sha256:641f2a1a6f4eb54f6bd12d5eb87c86a8508d32bd04e60f84fc79c32e3b4df8a8",
+  "cf_alongamento": "sha256:c78e6ef388f780e6a930cb961f3a8bd5d49de29798cff26595ae3f8dc4579217",
+  "fontes": "sha256:aacf0eef888f81b440525ac1236c5367ff0bd633d0e938b07aa6cea00082cdd9",
+  "som": "sha256:bb14c29b0357e7ed165ab8dd28fefa928a1d8b2c75757326ee8ca4d65988cb0c",
+  "voz": "sha256:c5cd4ed56961e846df8ab719b19986bab6b0e939a8861b905e9d199806af9d5c"
+ },
+ "renderizado_em": "2026-10-31T21:33:39+00:00"
+}

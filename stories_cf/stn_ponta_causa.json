@@ -1,0 +1,191 @@
+{
+ "id": "stn_ponta_causa",
+ "hash_story": "sha256:7d89aa5aad091ff6730406aed0769343572791e8eb6d8d5aabc7ccf5f58e3587",
+ "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101",
+ "hash_render": "sha256:59995f76410635fb64fd0032abe0b6d825bd777a351d7a1989558edb50f4e848",
+ "reel_video": "reels/_preview_cf_cameralenta_ponta_pes.mp4",
+ "reel_sha256": "sha256:969342ba5c9268085989591f3e03511a8b4fdd85b15ae5b4096294394f699901",
+ "partes": [
+  {
+   "arquivo": "stories_cf/stn_ponta_causa_1.mp4",
+   "sha256": "sha256:f4c6ad12540b26f23b6dc770dfdf70ae44c93ef754ba65e9cfbb124a6b975f1d",
+   "dur": 4.5,
+   "textos_tela": [
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "NA PONTA DOS PÉS:",
+    "TEM TRATAMENTO?",
+    "toca →"
+   ],
+   "rotulos_reel": [],
+   "trecho": [
+    4.6,
+    5.6
+   ],
+   "crop": [
+    130,
+    375,
+    602,
+    795
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      2.6,
+      1.0
+     ],
+     [
+      4.5,
+      1.05
+     ]
+    ],
+    "ancora": [
+     480,
+     1060
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     60,
+     60,
+     50,
+     60
+    ]
+   },
+   "desloc_fundo": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "arquivo": "stories_cf/stn_ponta_causa_2.mp4",
+   "sha256": "sha256:81816a7d16070fc61a5a59cefb1ea43c4b528b5ba4bce8b1bd7876cacd3da677",
+   "dur": 6.0,
+   "textos_tela": [
+    "COMO FUNCIONA",
+    "Causas vão de hábito a encurtamento",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "DA CAUSA",
+    "DEPENDE",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "na panturrilha, como um elástico.",
+    "toca →"
+   ],
+   "rotulos_reel": [],
+   "trecho": [
+    19.45,
+    20.4
+   ],
+   "crop": [
+    170,
+    400,
+    750,
+    630
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      6.0,
+      1.08
+     ]
+    ],
+    "ancora": [
+     640,
+     800
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     30,
+     16,
+     30,
+     16
+    ]
+   },
+   "desloc_fundo": [
+    3.5,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "arquivo": "stories_cf/stn_ponta_causa_3.mp4",
+   "sha256": "sha256:10a2fbf10642ae5976d5a456f64486f64b41b96f2e8d6d58e1a0494d50f87d03",
+   "dur": 9.9,
+   "textos_tela": [
+    "AVALIAÇÃO ORTOPÉDICA",
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "DEFINE A CAUSA",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "MANDA PRA QUEM VÊ",
+    "Muitas vezes é um hábito da",
+    "O FILHO NA PONTINHA.",
+    "Vídeo completo no perfil",
+    "infância que desaparece sozinho.",
+    "toque no nome lá em cima ↖"
+   ],
+   "rotulos_reel": [],
+   "trecho": [
+    22.7,
+    23.4
+   ],
+   "crop": [
+    30,
+    440,
+    1020,
+    580
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.05
+     ],
+     [
+      0.6,
+      1.0
+     ]
+    ],
+    "ancora": [
+     550,
+     600
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     60,
+     24,
+     60,
+     24
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    -2.0,
+    -1.0
+   ]
+  }
+ ],
+ "fontes": {
+  "black": "Roboto-Black.ttf",
+  "bold": "Roboto-Bold.ttf",
+  "semi": "Roboto-Medium.ttf",
+  "reg": "Roboto-Regular.ttf"
+ },
+ "motor": {
+  "base": "sha256:641f2a1a6f4eb54f6bd12d5eb87c86a8508d32bd04e60f84fc79c32e3b4df8a8",
+  "cf_alongamento": "sha256:c78e6ef388f780e6a930cb961f3a8bd5d49de29798cff26595ae3f8dc4579217",
+  "fontes": "sha256:aacf0eef888f81b440525ac1236c5367ff0bd633d0e938b07aa6cea00082cdd9",
+  "som": "sha256:bb14c29b0357e7ed165ab8dd28fefa928a1d8b2c75757326ee8ca4d65988cb0c",
+  "voz": "sha256:c5cd4ed56961e846df8ab719b19986bab6b0e939a8861b905e9d199806af9d5c"
+ },
+ "renderizado_em": "2026-10-31T21:32:42+00:00"
+}

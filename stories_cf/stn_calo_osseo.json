@@ -1,0 +1,194 @@
+{
+ "id": "stn_calo_osseo",
+ "hash_story": "sha256:ce5bf8f3abe41fcf7a7d7e3efb127fcb392a8d38589dafea4ebed00c9889a395",
+ "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101",
+ "hash_render": "sha256:13114efdb2a4d471539a05ffe63bca88e46bfb9586930ef29b0647a18f83394b",
+ "reel_video": "reels/_preview_cf_fratura_cola.mp4",
+ "reel_sha256": "sha256:c6fbd1fd244739b6fafe6bf3a12c22a47066fcd7f25c24160cbb8c7e2b8d264b",
+ "partes": [
+  {
+   "arquivo": "stories_cf/stn_calo_osseo_1.mp4",
+   "sha256": "sha256:47043263ecf733b6ff10513eff903c8371613f4622893f383b124fab94d7d54e",
+   "dur": 4.5,
+   "textos_tela": [
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "LEU 'CALO ÓSSEO'",
+    "NO LAUDO?",
+    "toca →"
+   ],
+   "rotulos_reel": [],
+   "trecho": [
+    2.0,
+    3.6
+   ],
+   "crop": [
+    250,
+    400,
+    580,
+    790
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      2.6,
+      1.0
+     ],
+     [
+      4.5,
+      1.05
+     ]
+    ],
+    "ancora": [
+     540,
+     795
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     40,
+     16,
+     30,
+     16
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    -2.0,
+    -1.0
+   ]
+  },
+  {
+   "arquivo": "stories_cf/stn_calo_osseo_2.mp4",
+   "sha256": "sha256:58e0b1f3a13b4da1214dba2b64a82d7212451d2320e4763760339e8c8742a604",
+   "dur": 6.0,
+   "textos_tela": [
+    "CICATRIZANDO",
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "Tecido novo no lugar da fratura.",
+    "toca →",
+    "É O OSSO"
+   ],
+   "rotulos_reel": [
+    "CALO ÓSSEO",
+    "EM OBRAS"
+   ],
+   "trecho": [
+    11.7,
+    13.7
+   ],
+   "crop": [
+    0,
+    415,
+    1080,
+    800
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      6.0,
+      1.03
+     ]
+    ],
+    "ancora": [
+     540,
+     790
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     40,
+     16,
+     30,
+     16
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    -2.0,
+    -0.5
+   ]
+  },
+  {
+   "arquivo": "stories_cf/stn_calo_osseo_3.mp4",
+   "sha256": "sha256:f490ac59291da27bae0bd0b80e9069931417e41c444648bc72a544b7f5123d0a",
+   "dur": 8.8,
+   "textos_tela": [
+    "COMO FUNCIONA",
+    "CONSOLIDAÇÃO",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "EM ANDAMENTO",
+    "LEU ISSO NO LAUDO.",
+    "MANDA PRA QUEM",
+    "Não pule as consultas de raio-X de controle.",
+    "Vídeo completo no perfil",
+    "toque no nome lá em cima ↖"
+   ],
+   "rotulos_reel": [
+    "EM OBRAS"
+   ],
+   "trecho": [
+    19.25,
+    20.65
+   ],
+   "crop": [
+    10,
+    400,
+    910,
+    840
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.04
+     ],
+     [
+      0.6,
+      1.0
+     ]
+    ],
+    "ancora": [
+     544,
+     790
+    ],
+    "foco_x": 544,
+    "esmaecer": [
+     40,
+     16,
+     30,
+     16
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    -2.0,
+    -0.5
+   ]
+  }
+ ],
+ "fontes": {
+  "black": "Roboto-Black.ttf",
+  "bold": "Roboto-Bold.ttf",
+  "semi": "Roboto-Medium.ttf",
+  "reg": "Roboto-Regular.ttf"
+ },
+ "motor": {
+  "base": "sha256:641f2a1a6f4eb54f6bd12d5eb87c86a8508d32bd04e60f84fc79c32e3b4df8a8",
+  "cf_alongamento": "sha256:c78e6ef388f780e6a930cb961f3a8bd5d49de29798cff26595ae3f8dc4579217",
+  "fontes": "sha256:aacf0eef888f81b440525ac1236c5367ff0bd633d0e938b07aa6cea00082cdd9",
+  "som": "sha256:bb14c29b0357e7ed165ab8dd28fefa928a1d8b2c75757326ee8ca4d65988cb0c",
+  "voz": "sha256:c5cd4ed56961e846df8ab719b19986bab6b0e939a8861b905e9d199806af9d5c"
+ },
+ "renderizado_em": "2026-10-31T21:30:33+00:00"
+}

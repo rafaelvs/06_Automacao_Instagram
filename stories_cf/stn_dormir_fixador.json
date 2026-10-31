@@ -1,0 +1,188 @@
+{
+ "id": "stn_dormir_fixador",
+ "hash_story": "sha256:fe480a0417bdade6f8e23d1ebde6e94aa432a2b6e983a659f808dc31383fe7e0",
+ "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101",
+ "hash_render": "sha256:ba621e932bfde2b3122cce49065c3b8641ce35b91a209d12d2578de07fa2b902",
+ "reel_video": "reels/_preview_cf_chamaovar_rotina_fixador.mp4",
+ "reel_sha256": "sha256:98dd189310aba5ac1cb7e68596738c2b86929b05fb1baabd797c1d5b3cc28e6b",
+ "partes": [
+  {
+   "arquivo": "stories_cf/stn_dormir_fixador_1.mp4",
+   "sha256": "sha256:773b0cbd66ca5b34b0ba2c9ea0a92bacd4c16ed8d3b2533810a24fb51b53b44b",
+   "dur": 4.5,
+   "textos_tela": [
+    "COMO DORMIR COM",
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "O FIXADOR EXTERNO?",
+    "toca →"
+   ],
+   "rotulos_reel": [
+    "FIXADOR"
+   ],
+   "trecho": [
+    17.9667,
+    18.0
+   ],
+   "crop": [
+    62,
+    395,
+    953,
+    685
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      4.5,
+      1.1
+     ]
+    ],
+    "ancora": [
+     735,
+     760
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     60,
+     24,
+     30,
+     24
+    ]
+   },
+   "desloc_fundo": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "arquivo": "stories_cf/stn_dormir_fixador_2.mp4",
+   "sha256": "sha256:719f2879ab391189fec197f60eae8e718ec22f871cfb4e39f020df88582086ed",
+   "dur": 6.0,
+   "textos_tela": [
+    "A perna descansa apoiada, não pendurada.",
+    "BEM, COM AJUSTES",
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "DÁ PARA DORMIR",
+    "toca →"
+   ],
+   "rotulos_reel": [],
+   "trecho": [
+    17.4,
+    17.6333
+   ],
+   "crop": [
+    62,
+    455,
+    953,
+    585
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.15
+     ],
+     [
+      3.0,
+      1.0
+     ]
+    ],
+    "ancora": [
+     760,
+     790
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     40,
+     24,
+     30,
+     30
+    ]
+   },
+   "desloc_fundo": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "arquivo": "stories_cf/stn_dormir_fixador_3.mp4",
+   "sha256": "sha256:73e6df1f6ee98f5675a7d5ccc64b80e97c1572c550ba79aae757fcee281f1307",
+   "dur": 9.5,
+   "textos_tela": [
+    "COMO FUNCIONA",
+    "Cada fase do tratamento pode",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "EQUIPE LIBEROU",
+    "MANDA PRA QUEM",
+    "POSIÇÃO: A QUE A",
+    "VAI USAR FIXADOR.",
+    "Vídeo completo no perfil",
+    "ter uma orientação diferente.",
+    "toque no nome lá em cima ↖"
+   ],
+   "rotulos_reel": [],
+   "trecho": [
+    26.4667,
+    26.9
+   ],
+   "crop": [
+    120,
+    480,
+    840,
+    700
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      6.0,
+      1.06
+     ]
+    ],
+    "ancora": [
+     540,
+     846
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     150,
+     150,
+     150,
+     150
+    ]
+   },
+   "desloc_fundo": [
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ ],
+ "fontes": {
+  "black": "Roboto-Black.ttf",
+  "bold": "Roboto-Bold.ttf",
+  "semi": "Roboto-Medium.ttf",
+  "reg": "Roboto-Regular.ttf"
+ },
+ "motor": {
+  "base": "sha256:641f2a1a6f4eb54f6bd12d5eb87c86a8508d32bd04e60f84fc79c32e3b4df8a8",
+  "cf_alongamento": "sha256:c78e6ef388f780e6a930cb961f3a8bd5d49de29798cff26595ae3f8dc4579217",
+  "fontes": "sha256:aacf0eef888f81b440525ac1236c5367ff0bd633d0e938b07aa6cea00082cdd9",
+  "som": "sha256:bb14c29b0357e7ed165ab8dd28fefa928a1d8b2c75757326ee8ca4d65988cb0c",
+  "voz": "sha256:c5cd4ed56961e846df8ab719b19986bab6b0e939a8861b905e9d199806af9d5c"
+ },
+ "renderizado_em": "2026-10-31T21:32:08+00:00"
+}

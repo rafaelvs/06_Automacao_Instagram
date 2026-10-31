@@ -1,0 +1,189 @@
+{
+ "id": "stn_maratona_osso",
+ "hash_story": "sha256:6190f0c311fa7a3afb386633beb0ea80d6dde2d600dada98e1430f8cf39052da",
+ "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101",
+ "hash_render": "sha256:a4d17259c7e3f31c302d41d3072a514d78cb484b831ad569308e81500e4f11cb",
+ "reel_video": "reels/_preview_cf_transporte_osseo.mp4",
+ "reel_sha256": "sha256:728c5b59e98e1625b6a8072b0b389ca3d707886c29cc34ea1364ee37709a078b",
+ "partes": [
+  {
+   "arquivo": "stories_cf/stn_maratona_osso_1.mp4",
+   "sha256": "sha256:458ce5c73bc1b6e4c56bb16d11790dacc11726b361277c473a99f0b3cae7a838",
+   "dur": 4.5,
+   "textos_tela": [
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "QUANTO TEMPO LEVA",
+    "REFAZER UM OSSO?",
+    "toca →"
+   ],
+   "rotulos_reel": [],
+   "trecho": [
+    15.6,
+    15.83
+   ],
+   "crop": [
+    230,
+    310,
+    340,
+    918
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      4.5,
+      1.0
+     ]
+    ],
+    "ancora": [
+     400,
+     769
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     6,
+     6,
+     6,
+     6
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    -2.0,
+    -1.0
+   ]
+  },
+  {
+   "arquivo": "stories_cf/stn_maratona_osso_2.mp4",
+   "sha256": "sha256:45bb69a3e9e3a758d668c8d7f888f293c8716015d6e6c8660498c1eb1eb75249",
+   "dur": 6.0,
+   "textos_tela": [
+    "ALTOS E BAIXOS",
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "SÃO MESES, COM",
+    "toca →",
+    "É um processo longo, mas possível."
+   ],
+   "rotulos_reel": [
+    "osso novo",
+    "atrás do segmento"
+   ],
+   "trecho": [
+    19.17,
+    19.63
+   ],
+   "crop": [
+    205,
+    310,
+    705,
+    636
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      6.0,
+      1.03
+     ]
+    ],
+    "ancora": [
+     560,
+     628
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     10,
+     16,
+     12,
+     16
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    -1.5,
+    -1.0
+   ]
+  },
+  {
+   "arquivo": "stories_cf/stn_maratona_osso_3.mp4",
+   "sha256": "sha256:92097e55da6ffff9cfc90fa9dd5c838e6741525ec38d2e604d0d7a34e94eaf35",
+   "dur": 9.6,
+   "textos_tela": [
+    "BASEADA EM TÉCNICA.",
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "MANDA PRA QUEM",
+    "NÃO UMA CORRIDA",
+    "PRECISA DE ESPERANÇA",
+    "Saber disso desde o começo ajuda a atravessar.",
+    "UMA MARATONA,",
+    "Vídeo completo no perfil",
+    "toque no nome lá em cima ↖"
+   ],
+   "rotulos_reel": [],
+   "trecho": [
+    21.9,
+    22.75
+   ],
+   "crop": [
+    230,
+    310,
+    340,
+    918
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.15
+     ],
+     [
+      2.4,
+      1.0
+     ]
+    ],
+    "ancora": [
+     400,
+     320
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     6,
+     10,
+     24,
+     10
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    -2.0,
+    -1.0
+   ]
+  }
+ ],
+ "fontes": {
+  "black": "Roboto-Black.ttf",
+  "bold": "Roboto-Bold.ttf",
+  "semi": "Roboto-Medium.ttf",
+  "reg": "Roboto-Regular.ttf"
+ },
+ "motor": {
+  "base": "sha256:641f2a1a6f4eb54f6bd12d5eb87c86a8508d32bd04e60f84fc79c32e3b4df8a8",
+  "cf_alongamento": "sha256:c78e6ef388f780e6a930cb961f3a8bd5d49de29798cff26595ae3f8dc4579217",
+  "fontes": "sha256:aacf0eef888f81b440525ac1236c5367ff0bd633d0e938b07aa6cea00082cdd9",
+  "som": "sha256:bb14c29b0357e7ed165ab8dd28fefa928a1d8b2c75757326ee8ca4d65988cb0c",
+  "voz": "sha256:c5cd4ed56961e846df8ab719b19986bab6b0e939a8861b905e9d199806af9d5c"
+ },
+ "renderizado_em": "2026-10-31T21:31:02+00:00"
+}

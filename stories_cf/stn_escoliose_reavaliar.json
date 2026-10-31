@@ -1,0 +1,202 @@
+{
+ "id": "stn_escoliose_reavaliar",
+ "hash_story": "sha256:3abc3933e6a839e41b98af3f1fba1d27e0aeccb7914f2bf3b7cbe9c993848220",
+ "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101",
+ "hash_render": "sha256:49ba60b7930845463dfb5f4a807394d89094e3a9be421566ee2f0dd2cb7d346c",
+ "reel_video": "reels/_preview_cf_escoliose.mp4",
+ "reel_sha256": "sha256:84cfd9940bb30f871b3eaedc0e6bdd9e07b40bf9c783408ce0b00b0949452d10",
+ "partes": [
+  {
+   "arquivo": "stories_cf/stn_escoliose_reavaliar_1.mp4",
+   "sha256": "sha256:a68d57340c94671ef1a4fa1c28a853c7b9164bb94f0df273fe862bf97aec4934",
+   "dur": 4.5,
+   "textos_tela": [
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "ESCOLIOSE SEM DOR:",
+    "POR QUE REAVALIAR?",
+    "toca →"
+   ],
+   "rotulos_reel": [
+    "ESCOLIOSE",
+    "COLUNA",
+    "CURVA PRO LADO",
+    "E GIRA JUNTO"
+   ],
+   "trecho": [
+    5.2,
+    7.05
+   ],
+   "crop": [
+    10,
+    215,
+    1060,
+    1060
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      2.6,
+      1.0
+     ],
+     [
+      4.5,
+      1.04
+     ]
+    ],
+    "ancora": [
+     530,
+     745
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     16,
+     16,
+     16,
+     8
+    ]
+   },
+   "desloc_fundo": [
+    -1.5,
+    -1.5,
+    -0.5
+   ]
+  },
+  {
+   "arquivo": "stories_cf/stn_escoliose_reavaliar_2.mp4",
+   "sha256": "sha256:de4432505066124900ba4d64b7da28433b0a483ef1f83e2e1457bab570edf385",
+   "dur": 6.0,
+   "textos_tela": [
+    "COLUNA CRESCENDO",
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "Enquanto o esqueleto amadurece,",
+    "a curva pode progredir.",
+    "toca →",
+    "É COLUNA MUDANDO"
+   ],
+   "rotulos_reel": [
+    "NO ESTIRÃO",
+    "PODE MUDAR MAIS RÁPIDO"
+   ],
+   "trecho": [
+    24.3,
+    27.4
+   ],
+   "crop": [
+    20,
+    208,
+    1050,
+    887
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      6.0,
+      1.04
+     ]
+    ],
+    "ancora": [
+     600,
+     620
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     8,
+     16,
+     12,
+     10
+    ]
+   },
+   "desloc_fundo": [
+    -1.5,
+    -1.5,
+    -0.5
+   ]
+  },
+  {
+   "arquivo": "stories_cf/stn_escoliose_reavaliar_3.mp4",
+   "sha256": "sha256:305b56933b02bef301df859629d33a40833986947c3f24075c10d0ac400fa5cb",
+   "dur": 9.6,
+   "textos_tela": [
+    "AS REAVALIAÇÕES",
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "ESSA MESMA DÚVIDA.",
+    "MANDA PRA QUEM TEM",
+    "O INTERVALO ENTRE",
+    "Quem define esse intervalo",
+    "Vídeo completo no perfil",
+    "toque no nome lá em cima ↖",
+    "é o ortopedista, caso a caso."
+   ],
+   "rotulos_reel": [
+    "NO ESTIRÃO",
+    "PODE MUDAR MAIS RÁPIDO"
+   ],
+   "trecho": [
+    27.4,
+    27.6
+   ],
+   "crop": [
+    20,
+    208,
+    1050,
+    887
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.04
+     ],
+     [
+      0.6,
+      1.0
+     ]
+    ],
+    "ancora": [
+     600,
+     620
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     8,
+     16,
+     12,
+     10
+    ]
+   },
+   "desloc_fundo": [
+    -1.5,
+    -1.5,
+    -0.5
+   ]
+  }
+ ],
+ "fontes": {
+  "black": "Roboto-Black.ttf",
+  "bold": "Roboto-Bold.ttf",
+  "semi": "Roboto-Medium.ttf",
+  "reg": "Roboto-Regular.ttf"
+ },
+ "motor": {
+  "base": "sha256:641f2a1a6f4eb54f6bd12d5eb87c86a8508d32bd04e60f84fc79c32e3b4df8a8",
+  "cf_alongamento": "sha256:c78e6ef388f780e6a930cb961f3a8bd5d49de29798cff26595ae3f8dc4579217",
+  "fontes": "sha256:aacf0eef888f81b440525ac1236c5367ff0bd633d0e938b07aa6cea00082cdd9",
+  "som": "sha256:bb14c29b0357e7ed165ab8dd28fefa928a1d8b2c75757326ee8ca4d65988cb0c",
+  "voz": "sha256:c5cd4ed56961e846df8ab719b19986bab6b0e939a8861b905e9d199806af9d5c"
+ },
+ "renderizado_em": "2026-10-31T21:34:14+00:00"
+}

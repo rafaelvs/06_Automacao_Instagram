@@ -1,0 +1,200 @@
+{
+ "id": "stn_infeccao_trava",
+ "hash_story": "sha256:05b7288ff31155d459873248cadb93ea0c95e15f2b41ed8798ce7c85298abfe3",
+ "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101",
+ "hash_render": "sha256:7574f6259addab22c7bc3c3d32931bef803545c4759327d4c10e6723036cb12b",
+ "reel_video": "reels/_preview_cf_osteomielite.mp4",
+ "reel_sha256": "sha256:1d2619cafe3fd8b8308abab7cde62dabaa373b3c1e62f45571406d7ef7311248",
+ "partes": [
+  {
+   "arquivo": "stories_cf/stn_infeccao_trava_1.mp4",
+   "sha256": "sha256:45fb409e2b4ef6b4e69ca4254a9f2894a868d41c7feda9a09ee963eaedcbb9bd",
+   "dur": 4.5,
+   "textos_tela": [
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "POR QUE A INFECÇÃO",
+    "TRAVA O OSSO?",
+    "toca →"
+   ],
+   "rotulos_reel": [
+    "OSTEOMIELITE",
+    "infecção no osso"
+   ],
+   "trecho": [
+    3.85,
+    3.98
+   ],
+   "crop": [
+    0,
+    305,
+    1080,
+    985
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      2.6,
+      1.0
+     ],
+     [
+      4.5,
+      1.05
+     ]
+    ],
+    "ancora": [
+     540,
+     815
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     30,
+     16,
+     20,
+     16
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    -2.0,
+    -0.5
+   ]
+  },
+  {
+   "arquivo": "stories_cf/stn_infeccao_trava_2.mp4",
+   "sha256": "sha256:1d1dcfff37ebfda5ba8464497509166193fb2b9cddd3069617d236e983e1ee46",
+   "dur": 6.0,
+   "textos_tela": [
+    "ATRAPALHA TUDO",
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "INFECÇÃO",
+    "Um osso ocupado se defendendo",
+    "não se concentra em colar.",
+    "toca →"
+   ],
+   "rotulos_reel": [
+    "POR DENTRO"
+   ],
+   "trecho": [
+    9.3,
+    10.27
+   ],
+   "crop": [
+    120,
+    225,
+    840,
+    1047
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      6.0,
+      1.025
+     ]
+    ],
+    "ancora": [
+     600,
+     870
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     20,
+     16,
+     12,
+     16
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    -1.5,
+    -0.5
+   ]
+  },
+  {
+   "arquivo": "stories_cf/stn_infeccao_trava_3.mp4",
+   "sha256": "sha256:f430e6c3dc89e6d063d3965719ed77dd0536ffbddb77f46890f6e34f46b76ffd",
+   "dur": 9.0,
+   "textos_tela": [
+    "COM A RECONSTRUÇÃO",
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "MANDA PRA QUEM ESTÁ",
+    "RECONSTRUINDO UM OSSO.",
+    "RESOLVER JUNTO",
+    "Vídeo completo no perfil",
+    "toque no nome lá em cima ↖",
+    "É um tratamento mais longo, feito em etapas."
+   ],
+   "rotulos_reel": [
+    "1 COMBATER A INFECÇÃO",
+    "2 REMOVER O OSSO DOENTE",
+    "3 RECONSTRUIR, SE SOBRAR VÃO",
+    "VÃO"
+   ],
+   "trecho": [
+    21.5,
+    22.65
+   ],
+   "crop": [
+    30,
+    235,
+    960,
+    775
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.06
+     ],
+     [
+      0.6,
+      1.0
+     ]
+    ],
+    "ancora": [
+     290,
+     580
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     16,
+     16,
+     60,
+     12
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    -1.5,
+    -0.5
+   ]
+  }
+ ],
+ "fontes": {
+  "black": "Roboto-Black.ttf",
+  "bold": "Roboto-Bold.ttf",
+  "semi": "Roboto-Medium.ttf",
+  "reg": "Roboto-Regular.ttf"
+ },
+ "motor": {
+  "base": "sha256:641f2a1a6f4eb54f6bd12d5eb87c86a8508d32bd04e60f84fc79c32e3b4df8a8",
+  "cf_alongamento": "sha256:c78e6ef388f780e6a930cb961f3a8bd5d49de29798cff26595ae3f8dc4579217",
+  "fontes": "sha256:aacf0eef888f81b440525ac1236c5367ff0bd633d0e938b07aa6cea00082cdd9",
+  "som": "sha256:bb14c29b0357e7ed165ab8dd28fefa928a1d8b2c75757326ee8ca4d65988cb0c",
+  "voz": "sha256:c5cd4ed56961e846df8ab719b19986bab6b0e939a8861b905e9d199806af9d5c"
+ },
+ "renderizado_em": "2026-10-31T21:31:34+00:00"
+}

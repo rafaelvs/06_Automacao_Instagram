@@ -1,0 +1,193 @@
+{
+ "id": "stn_pe_torto_gravidez",
+ "hash_story": "sha256:6963a56bd1796efef09a5eb3fded79b113a758ea44d808bbd155652b3bb7dbbf",
+ "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101",
+ "hash_render": "sha256:6b852d558a4a036f322b0637932f16e582ab534bd722e80a7242d6e34a25df11",
+ "reel_video": "reels/_preview_cf_pe_torto.mp4",
+ "reel_sha256": "sha256:5498e5c4d4a3a3138763a7d56d7c780bd423958b8e8cf3fb490a606cd20514dd",
+ "partes": [
+  {
+   "arquivo": "stories_cf/stn_pe_torto_gravidez_1.mp4",
+   "sha256": "sha256:37198b951480b8ddda2a085e1b73ebef2ff1f0fecb7e3fdba851cadd7ee60448",
+   "dur": 4.5,
+   "textos_tela": [
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "DESCOBRIU PÉ TORTO",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "NA GRAVIDEZ?",
+    "toca →"
+   ],
+   "rotulos_reel": [
+    "PRA BAIXO",
+    "PRA DENTRO"
+   ],
+   "trecho": [
+    1.7,
+    3.0
+   ],
+   "crop": [
+    40,
+    340,
+    960,
+    860
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      2.6,
+      1.0
+     ],
+     [
+      4.5,
+      1.04
+     ]
+    ],
+    "ancora": [
+     640,
+     980
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     40,
+     16,
+     30,
+     16
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    -2.0,
+    -1.0
+   ]
+  },
+  {
+   "arquivo": "stories_cf/stn_pe_torto_gravidez_2.mp4",
+   "sha256": "sha256:8be583189874fd97f8d87dec6c176d1b33af2e0439f36f9dbe65a4e6ac2d15a1",
+   "dur": 7.2,
+   "textos_tela": [
+    "COMEÇA NAS PRIMEIRAS",
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "Na gestação não há tratamento.",
+    "SEMANAS DE VIDA",
+    "toca →"
+   ],
+   "rotulos_reel": [],
+   "trecho": [
+    6.97,
+    13.1
+   ],
+   "crop": [
+    150,
+    395,
+    760,
+    725
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      7.2,
+      1.05
+     ]
+    ],
+    "ancora": [
+     640,
+     900
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     30,
+     16,
+     30,
+     40
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    -2.0,
+    -0.5
+   ]
+  },
+  {
+   "arquivo": "stories_cf/stn_pe_torto_gravidez_3.mp4",
+   "sha256": "sha256:823a9c09b3a9bd177f8965936c54697e84b07b40f2cf5810bdaef51d90b3d9fc",
+   "dur": 8.8,
+   "textos_tela": [
+    "Boa correção descrita quando",
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "ESSE DIAGNÓSTICO.",
+    "MANDA PRA QUEM RECEBEU",
+    "O DIAGNÓSTICO SERVE",
+    "PRA PLANEJAR",
+    "Vídeo completo no perfil",
+    "o tratamento começa cedo.",
+    "toque no nome lá em cima ↖"
+   ],
+   "rotulos_reel": [],
+   "trecho": [
+    22.6,
+    25.3
+   ],
+   "crop": [
+    100,
+    380,
+    880,
+    790
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.05
+     ],
+     [
+      0.6,
+      1.0
+     ]
+    ],
+    "ancora": [
+     560,
+     760
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     100,
+     110,
+     90,
+     110
+    ]
+   },
+   "desloc_fundo": [
+    -2.0,
+    -2.5,
+    -2.0
+   ]
+  }
+ ],
+ "fontes": {
+  "black": "Roboto-Black.ttf",
+  "bold": "Roboto-Bold.ttf",
+  "semi": "Roboto-Medium.ttf",
+  "reg": "Roboto-Regular.ttf"
+ },
+ "motor": {
+  "base": "sha256:641f2a1a6f4eb54f6bd12d5eb87c86a8508d32bd04e60f84fc79c32e3b4df8a8",
+  "cf_alongamento": "sha256:c78e6ef388f780e6a930cb961f3a8bd5d49de29798cff26595ae3f8dc4579217",
+  "fontes": "sha256:aacf0eef888f81b440525ac1236c5367ff0bd633d0e938b07aa6cea00082cdd9",
+  "som": "sha256:bb14c29b0357e7ed165ab8dd28fefa928a1d8b2c75757326ee8ca4d65988cb0c",
+  "voz": "sha256:c5cd4ed56961e846df8ab719b19986bab6b0e939a8861b905e9d199806af9d5c"
+ },
+ "renderizado_em": "2026-10-31T21:34:50+00:00"
+}
