@@ -77,20 +77,20 @@ Regenerado em 31/10/2026 por `_gen_programacao.py`. **Datas são projeção da f
 
 | Data | Story | Reel de origem | Situação |
 |---|---|---|---|
-| qui 05/11 | `stn_pe_pra_dentro` | `cf_pe_virado` | aprovada |
+| ter 03/11 | `stn_calo_osseo` | `cf_fratura_cola` | aprovada |
+| qui 05/11 | `stn_infeccao_trava` | `cf_osteomielite` | aprovada |
+| sáb 07/11 | `stn_dormir_fixador` | `cf_chamaovar_rotina_fixador` | aprovada |
+| ter 10/11 | `stn_ponta_causa` | `cf_cameralenta_ponta_pes` | aprovada |
+| qui 12/11 | `stn_tenis_caro` | `cf_qualdosdois_pe_chato` | aprovada |
+| sáb 14/11 | `stn_escoliose_reavaliar` | `cf_escoliose` | aprovada |
+| ter 17/11 | `stn_pe_torto_gravidez` | `cf_pe_torto` | aprovada |
+| qui 19/11 | `stn_haste_ou_fixador` | `cf_gesso_placa` | aprovada |
+| sáb 21/11 | `stn_pe_pra_dentro` | `cf_pe_virado` | aprovada |
+| ter 24/11 | `stn_quadril_ultrassom` | `cf_quadril_bebe` | aprovada |
+| qui 17/12 | `stn_maratona_osso` | `cf_transporte_osseo` | aprovada |
 
 **Aguardando aprovação do Rafael** (fora da conta: não saem e não travam as aprovadas):
 
-- `stn_calo_osseo` (reel `cf_fratura_cola`): pendente — sem lote de aprovação. Render: em dia. Se aprovada hoje (com o render do CI): ter 03/11.
-- `stn_maratona_osso` (reel `cf_transporte_osseo`): pendente — sem lote de aprovação. Render: em dia. Se aprovada hoje (com o render do CI): sáb 07/11.
-- `stn_infeccao_trava` (reel `cf_osteomielite`): pendente — sem lote de aprovação. Render: em dia. Se aprovada hoje (com o render do CI): ter 03/11.
-- `stn_dormir_fixador` (reel `cf_chamaovar_rotina_fixador`): pendente — sem lote de aprovação. Render: em dia. Se aprovada hoje (com o render do CI): ter 03/11.
-- `stn_ponta_causa` (reel `cf_cameralenta_ponta_pes`): pendente — sem lote de aprovação. Render: em dia. Se aprovada hoje (com o render do CI): sáb 07/11.
-- `stn_tenis_caro` (reel `cf_qualdosdois_pe_chato`): pendente — sem lote de aprovação. Render: stn_tenis_caro: sem arquivo-irmão stories_cf/stn_tenis_caro.json (render não feito). Se aprovada hoje (com o render do CI): sáb 07/11.
-- `stn_haste_ou_fixador` (reel `cf_gesso_placa`): pendente — sem lote de aprovação. Render: em dia. Se aprovada hoje (com o render do CI): qui 19/11.
-- `stn_escoliose_reavaliar` (reel `cf_escoliose`): pendente — sem lote de aprovação. Render: em dia. Se aprovada hoje (com o render do CI): ter 10/11.
-- `stn_pe_torto_gravidez` (reel `cf_pe_torto`): pendente — sem lote de aprovação. Render: em dia. Se aprovada hoje (com o render do CI): ter 10/11.
-- `stn_quadril_ultrassom` (reel `cf_quadril_bebe`): pendente — sem lote de aprovação. Render: em dia. Se aprovada hoje (com o render do CI): ter 24/11.
-- `stn_torta_ou_curta` (reel `cf_eixo_perna`): pendente — sem lote de aprovação. Render: em dia. Se aprovada hoje (com o render do CI): qui 12/11.
+- `stn_torta_ou_curta` (reel `cf_eixo_perna`): pendente — sem lote de aprovação. Render: em dia. Se aprovada hoje (com o render do CI): qui 19/11.
 
 *Sequências de stories antigas: SUSPENSAS — all-in no formato novo (24/10); 35 parada(s) na fila (os temas voltam como stories da geração nova).*

@@ -979,6 +979,120 @@
      "hash_roteiro": "sha256:e3e4af24b61e3f1de4a3433c0ab23d392d17c21bc3713e58a7497152f7f998bb"
     }
    ]
+  },
+  {
+   "lote": "STORIES-2026-10-31-MOTOR",
+   "nome": "Stories 'COMO FUNCIONA em 3 toques' da rodada do motor de 31/10 (10)",
+   "escopo": [
+    "instagram-stories"
+   ],
+   "status": "aprovado",
+   "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
+   "data": "2026-11-01",
+   "evidencia": "Chat auditoria-instagram-v1: depois de ver os stories na pasta de conferência (_GRANDE_REVISAO_2026-08/videos_geracao_nova_2026-10/stories_para_aprovar_31-10, render OFICIAL da nuvem com Roboto), o Rafael respondeu: 'aprovo os 10'. Antes: 'pode rodar o motor agora' e 'não estamos com pouco stories?' (31/10). Roteirista + verificador adversarial; fontes literais conferidas mecanicamente (0 sem lastro); leitor às cegas no render final, calibrado nos 2 stories aprovados; 3 refeitos (v2) pelo leitor.",
+   "observacoes": "Aprovação amarrada ao texto E aos 3 vídeos de cada story (checar_stories.py --entrada). Re-render muda os bytes e exige nova aprovação. Saem ter/qui/sáb 12:30 pela regra de 7 dias entre temas.",
+   "episodios": [
+    {
+     "id": "stn_tenis_caro",
+     "hash_roteiro": "sha256:6e438d76486bee93013d323662f926eba458887922e5dfa8cfcd170556da200c",
+     "videos": [
+      "sha256:e693a4fab309a9af66eeaf46f38a51349f9d9b8628db6803337e675a86a4f4cf",
+      "sha256:b6a3a4b00e2cf5182600d673582230a48639aeb3eb934d9290c8f7eb49fc5a8b",
+      "sha256:be86470f9d54a8853b9b03f4fe161e750c333c931dc1759c115c12b65a61fde0"
+     ],
+     "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101"
+    },
+    {
+     "id": "stn_calo_osseo",
+     "hash_roteiro": "sha256:ce5bf8f3abe41fcf7a7d7e3efb127fcb392a8d38589dafea4ebed00c9889a395",
+     "videos": [
+      "sha256:47043263ecf733b6ff10513eff903c8371613f4622893f383b124fab94d7d54e",
+      "sha256:58e0b1f3a13b4da1214dba2b64a82d7212451d2320e4763760339e8c8742a604",
+      "sha256:f490ac59291da27bae0bd0b80e9069931417e41c444648bc72a544b7f5123d0a"
+     ],
+     "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101"
+    },
+    {
+     "id": "stn_ponta_causa",
+     "hash_roteiro": "sha256:7d89aa5aad091ff6730406aed0769343572791e8eb6d8d5aabc7ccf5f58e3587",
+     "videos": [
+      "sha256:f4c6ad12540b26f23b6dc770dfdf70ae44c93ef754ba65e9cfbb124a6b975f1d",
+      "sha256:81816a7d16070fc61a5a59cefb1ea43c4b528b5ba4bce8b1bd7876cacd3da677",
+      "sha256:10a2fbf10642ae5976d5a456f64486f64b41b96f2e8d6d58e1a0494d50f87d03"
+     ],
+     "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101"
+    },
+    {
+     "id": "stn_escoliose_reavaliar",
+     "hash_roteiro": "sha256:3abc3933e6a839e41b98af3f1fba1d27e0aeccb7914f2bf3b7cbe9c993848220",
+     "videos": [
+      "sha256:a68d57340c94671ef1a4fa1c28a853c7b9164bb94f0df273fe862bf97aec4934",
+      "sha256:de4432505066124900ba4d64b7da28433b0a483ef1f83e2e1457bab570edf385",
+      "sha256:305b56933b02bef301df859629d33a40833986947c3f24075c10d0ac400fa5cb"
+     ],
+     "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101"
+    },
+    {
+     "id": "stn_dormir_fixador",
+     "hash_roteiro": "sha256:fe480a0417bdade6f8e23d1ebde6e94aa432a2b6e983a659f808dc31383fe7e0",
+     "videos": [
+      "sha256:773b0cbd66ca5b34b0ba2c9ea0a92bacd4c16ed8d3b2533810a24fb51b53b44b",
+      "sha256:719f2879ab391189fec197f60eae8e718ec22f871cfb4e39f020df88582086ed",
+      "sha256:73e6df1f6ee98f5675a7d5ccc64b80e97c1572c550ba79aae757fcee281f1307"
+     ],
+     "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101"
+    },
+    {
+     "id": "stn_infeccao_trava",
+     "hash_roteiro": "sha256:05b7288ff31155d459873248cadb93ea0c95e15f2b41ed8798ce7c85298abfe3",
+     "videos": [
+      "sha256:45fb409e2b4ef6b4e69ca4254a9f2894a868d41c7feda9a09ee963eaedcbb9bd",
+      "sha256:1d1dcfff37ebfda5ba8464497509166193fb2b9cddd3069617d236e983e1ee46",
+      "sha256:f430e6c3dc89e6d063d3965719ed77dd0536ffbddb77f46890f6e34f46b76ffd"
+     ],
+     "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101"
+    },
+    {
+     "id": "stn_haste_ou_fixador",
+     "hash_roteiro": "sha256:274a589a2f1be2b7d3fea5ce1e1656152109c8f72654c339f64986559932cd1a",
+     "videos": [
+      "sha256:88b5b0291f303f0af32b3370f1ffa6b5e514350de061cbcd8ec6620df6a00d96",
+      "sha256:6e94e650566ad0cf54c7dbab5f98ec17b4843a8e674c21d1fd0e6c88afe24050",
+      "sha256:39f0b153a6699f1e3858300993acc7f8326206d2285abf240c441706e982d32e"
+     ],
+     "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101"
+    },
+    {
+     "id": "stn_pe_torto_gravidez",
+     "hash_roteiro": "sha256:6963a56bd1796efef09a5eb3fded79b113a758ea44d808bbd155652b3bb7dbbf",
+     "videos": [
+      "sha256:37198b951480b8ddda2a085e1b73ebef2ff1f0fecb7e3fdba851cadd7ee60448",
+      "sha256:8be583189874fd97f8d87dec6c176d1b33af2e0439f36f9dbe65a4e6ac2d15a1",
+      "sha256:823a9c09b3a9bd177f8965936c54697e84b07b40f2cf5810bdaef51d90b3d9fc"
+     ],
+     "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101"
+    },
+    {
+     "id": "stn_maratona_osso",
+     "hash_roteiro": "sha256:d1b185cf57a29f9cbbea9782f8e59ca26da1fb74e1ab55820f03127fc3d53141",
+     "videos": [
+      "sha256:718f868b7cb200e8e75e36ce542c6d15c7522afeb1f113f7f759579ee0b88916",
+      "sha256:e77e0f96d520d20e69dd522f75c3be37ff7f166d718f2388cac09be7f27de05b",
+      "sha256:60e601efba8fbf5aa79ed142dbbb265c8fb27d9bdedec12f506f9251d715b7dc"
+     ],
+     "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101"
+    },
+    {
+     "id": "stn_quadril_ultrassom",
+     "hash_roteiro": "sha256:f10a70a3bd9d01f30b87cf6d9441b6ca4c93b270e1e36d733fca3032c0dacfe2",
+     "videos": [
+      "sha256:dcef27ee30cd7e9d8168613413f3779dfed2a1c22a2c557cd5740e321f9e4baa",
+      "sha256:483de140b81a56f5fc7f48bef35409e257eec76fe3de833371ddf0b58c7633ce",
+      "sha256:ba5bf9086624953598b0820b59c9fd6550bc0a77a7932b9dbbefe4400e13cdad"
+     ],
+     "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101"
+    }
+   ]
   }
  ]
 }
