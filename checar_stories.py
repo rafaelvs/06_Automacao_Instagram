@@ -274,7 +274,29 @@ def _formato(st):
             f(m)
     except ImportError:
         f(f"{sid}: tema sem conferência (temas_conteudo.py ausente — story NÃO sai)")
+    for k, t in enumerate(telas, 1):
+        d = t.get("dur")
+        if isinstance(d, (int, float)) and trilha_quebra(float(d)):
+            f(f"{sid}: tela {k} com dur {d}s quebra a trilha do animado.som (sobram 1 a 5 amostras no último "
+              f"chimbal e o render cai com 'non-broadcastable'); use {d + 0.1:.2f}s")
     return p
+
+
+def trilha_quebra(dur, bpm=100, sr=48000):
+    """A MESMA conta de índices do animado.som.trilha (Python puro, sem numpy): True quando o último chimbal
+    fica com 1 a 5 amostras — o np.convolve(h, np.ones(6)/6, "same") devolve 6 e a soma no fatiamento
+    quebra. stn_tenis_caro (31/10) caiu assim no render da nuvem com dur 10,5 s; 5,7 / 7,5 / 11,1 s idem.
+    O som.py é arquivo APROVADO de animado/ (entra no hash dos vídeos): o portão evita a duração, não mexe nele."""
+    n = int(dur * sr)
+    beat = 60 / bpm
+    for k in range(int(dur / beat) + 1):
+        p = int(k * beat * sr)
+        if p >= n:
+            break
+        ph = p + int(beat / 2 * sr)
+        if ph < n and min(int(0.05 * sr), n - ph) < 6:
+            return True
+    return False
 
 
 def _campos_de_texto(st):
@@ -850,9 +872,25 @@ def _autoteste():
         ("DM no texto da tela 3", lambda s: s["telas"][2].update(texto="Dúvidas sobre o seu caso? Me chama no direct."), "conteudo", "DM"),
         ("WhatsApp no título", lambda s: s["telas"][1].update(titulo=["CHAMA NO", "WHATSAPP"]), "conteudo", "DM"),
         ("promessa (CFM)", lambda s: s["telas"][1].update(texto="Resultado garantido: cura em 30 dias."), "conteudo", "CFM"),
+        ("duração que quebra a trilha (10,5 s, o stn_tenis_caro de 31/10)", lambda s: s["telas"][2].update(dur=10.5), "formato", "trilha"),
     ]:
         s = j(base); mexe(s); ps = problemas_do_texto(s)
         checa(f"CONTROLE: {nome} reprova ({tipo})", any(t == tipo and trecho in m for t, m in ps))
+    s = j(base); s["telas"][2]["dur"] = 10.6
+    checa("CONTROLE NEGATIVO: 10,6 s (a correção do stn_tenis_caro) passa", problemas_do_texto(s) == [])
+    try:                                   # a réplica tem de bater com o som.trilha de verdade (onde há numpy)
+        from animado import som as _som
+        divergem = []
+        for c in range(400, 1300, 5):
+            try:
+                _som.trilha(c / 100); real = False
+            except ValueError:
+                real = True
+            if real != trilha_quebra(c / 100):
+                divergem.append(c / 100)
+        checa(f"trilha_quebra = animado.som.trilha em 4,00–13,00 s (divergem: {divergem})", not divergem)
+    except ImportError:
+        print("(pulado) réplica × som.trilha: sem numpy neste ambiente — a réplica é Python puro e vale igual")
     for cta in ("Manda pra quem precisa e me chama no direct.", "Manda pra quem precisa. WhatsApp na bio.",
                 "Manda um direct pra agendar sua avaliação.", "Manda mensagem que eu te respondo."):
         s = j(base); s["cta"] = cta
