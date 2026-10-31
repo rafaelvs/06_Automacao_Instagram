@@ -1,163 +1,3242 @@
 [
- {
-  "id": "stn_quanto_tempo",
-  "tema": "tempo_tratamento",
-  "reel_ref": "cf_alongamento",
-  "reel_sha256": "sha256:a731953b7a0ad2fc8bef46faabd5a673b9344a3a0b14ae86da1cd7470b3c5ab2",
-  "resposta_no_reel_em": 22.0,
-  "angulo": "Quanto tempo com o fixador no alongamento: o vão já encheu de osso e o fixador continua, porque o osso novo ainda precisa endurecer (encher não é endurecer). Refaz a sequência parada s_on_quanto_tempo.",
-  "variante": "A",
-  "cta": "Manda pra quem está com fixador agora.",
-  "telas": [
-   {
-    "papel": "espanto",
-    "titulo": ["SE JÁ TEM OSSO NOVO,", "O FIXADOR FICA?"],
-    "texto": "",
-    "trecho": [15.8, 17.2],
-    "crop": [270, 470, 540, 812],
-    "zoom": [[0.0, 1.0], [2.6, 1.0], [4.5, 1.05]],
-    "ancora": [540, 800],
-    "esmaecer": [40, 16, 30, 16],
-    "dur": 4.5,
-    "t_toca": 2.6,
-    "rotulos_reel": [],
-    "nota_render": "v2 (leitor frio de 24/10): recorte abaixo do cartão FASE 2 / 1 MM / por dia e à esquerda da barra de progresso (os dois saem do quadro); trecho antes de pele/nervo/vaso, com o osso novo acendendo entre as duas partes do osso."
-   },
-   {
-    "papel": "mecanismo",
-    "titulo": ["O OSSO AINDA", "PRECISA ENDURECER"],
-    "texto": "E isso não se apressa.",
-    "trecho": [24.63, 24.75],
-    "crop": [270, 415, 540, 863],
-    "zoom": [[0.0, 1.0], [6.0, 1.12]],
-    "ancora": [540, 800],
-    "esmaecer": [40, 16, 30, 16],
-    "dur": 6.0,
-    "t_titulo": 0.4,
-    "t_texto": 1.2,
-    "t_toca": 3.6,
-    "rotulos_reel": [],
-    "nota_render": "v2: só a janela 24,63–24,75 s do reel: o osso novo já cor de osso, o fixador ainda parado; antes disso nervo, vaso e o contorno da perna estão no quadro (a virada de dourado para osso, 23,4–24,6 s, acontece junto com eles), então ela aparece no toque entre a tela 1 (dourado) e a 2. O cartão FASE 3 / CONSOLIDAÇÃO (fase 3 sem 1 e 2, em cima do anel de cima) e a barra ficam fora do recorte; o movimento é a câmera."
-   },
-   {
-    "papel": "significado",
-    "titulo": ["CADA OSSO TEM", "SEU RITMO"],
-    "texto": "Entender as fases tira a ansiedade.",
-    "trecho": [24.75, 25.75],
-    "crop": [270, 415, 540, 863],
-    "zoom": [[0.0, 1.12], [0.6, 1.0]],
-    "ancora": [540, 800],
-    "esmaecer": [40, 16, 30, 16],
-    "dur": 8.8,
-    "t_titulo": 0.4,
-    "t_texto": 1.0,
-    "t_cartao": 5.3,
-    "t_perfil": 5.9,
-    "t_nome": 6.5,
-    "rotulos_reel": [],
-    "nota_render": "v2: mesmo recorte da tela 2 (sem a barra, que antes continuava na tela sem o fixador); os anéis saem pelos lados."
-   }
-  ],
-  "fontes": [
-   {"campo": "titulo_t1", "id_fonte": null, "trecho_literal": "", "nota": "pergunta nova e condicional: não afirma fato; vai à aprovação como texto. v2 (leitor frio de 24/10): 'SE O VÃO JÁ ENCHEU,' virou 'SE JÁ TEM OSSO NOVO,' — 'vão' só se entendia pelo desenho, e o trecho que a tela 1 pode usar (antes da resposta do reel) mostra o osso novo ainda crescendo, não o vão cheio"},
-   {"campo": "apoio_premissa_t1", "id_fonte": "cf_alongamento", "trecho_literal": "E o corpo preenche o espaço com osso novo."},
-   {"campo": "apoio_premissa_t1", "id_fonte": "on_tres_fases", "trecho_literal": "É aqui que o osso novo vai sendo formado dentro do vão."},
-   {"campo": "apoio_premissa_t1", "id_fonte": "on_osso_cresce", "trecho_literal": "As duas pontas afastam pouquíssimo por dia — e o vão não fica vazio."},
-   {"campo": "desenho_t1", "id_fonte": "cf_alongamento", "trecho_literal": "E o corpo preenche o espaço com osso novo."},
-   {"campo": "resposta_t2", "id_fonte": "on_quanto_tempo", "trecho_literal": "Depois de afastar, o osso ainda precisa endurecer — e isso não se apressa."},
-   {"campo": "texto_t2", "id_fonte": "on_quanto_tempo", "trecho_literal": "Depois de afastar, o osso ainda precisa endurecer — e isso não se apressa."},
-   {"campo": "desenho_t2", "id_fonte": "cf_alongamento", "trecho_literal": "Depois, o osso novo endurece. E o aparelho sai."},
-   {"campo": "titulo_t3", "id_fonte": "on_quanto_tempo", "trecho_literal": "\"sc\":[\"Cada osso tem\",\"seu ritmo.\"]"},
-   {"campo": "texto_t3", "id_fonte": "on_tres_fases", "trecho_literal": "Entender as fases tira a ansiedade de quem está no meio."},
-   {"campo": "desenho_t3", "id_fonte": "cf_alongamento", "trecho_literal": "Depois, o osso novo endurece. E o aparelho sai."},
-   {"campo": "cta", "id_fonte": "on_cuidado_pinos", "trecho_literal": "Manda pra quem está com fixador agora."}
-  ],
-  "revisao": {
-   "leitor_frio": "v1 (24/10, lab/leitor_frio_story/resultado_v1.json): entendeu o essencial, clareza 6/10 (tela 1) e 7/10 (story); confundiram 'FASE 2' sem fase 1, '1 MM por dia' sem dizer o quê, a barra vertical sem legenda, a palavra 'vão' e o título 'já encheu' sobre um vão que ainda enchia. v2: cartão de fase e barra fora do recorte; 1ª linha 'SE JÁ TEM OSSO NOVO,' (fallback já registrado aqui). PENDENTE: revisor sem o reel no contexto responde 'do que trata a tela 1?' sobre os quadros do MP4 v2.",
-   "sem_texto": "v1: passou só pelo cartão do reel ('Fase 3 – Consolidação – a fase mais longa'); confundiram as linhas vermelha/amarela, o contorno da perna e o cartão em cima do anel de cima. v2: o cartão FASE 3 saiu do recorte (fase 3 sem 1 e 2 repete o problema da tela 1) e a tela 2 usa só a janela do reel em que nervo, vaso e o contorno da perna já sumiram (nenhum quadro da tela 2 tem as linhas). PENDENTE: revisor sem o reel no contexto responde 'o que a tela 2 mostra?' no quadro final sem o texto do story. Critério original: 'o osso novo endurece/consolida, numa fase longa, ainda com o aparelho' — sem o cartão, 'fase longa' não está mais no desenho (só no texto do story: 'E isso não se apressa.').",
-   "contrapeso": "Não se aplica: o tempo de consolidação não é parâmetro que o paciente controla; 'E isso não se apressa.' já desestimula pressa."
+  {
+    "id": "stn_quanto_tempo",
+    "tema": "tempo_tratamento",
+    "reel_ref": "cf_alongamento",
+    "reel_sha256": "sha256:a731953b7a0ad2fc8bef46faabd5a673b9344a3a0b14ae86da1cd7470b3c5ab2",
+    "resposta_no_reel_em": 22.0,
+    "angulo": "Quanto tempo com o fixador no alongamento: o vão já encheu de osso e o fixador continua, porque o osso novo ainda precisa endurecer (encher não é endurecer). Refaz a sequência parada s_on_quanto_tempo.",
+    "variante": "A",
+    "cta": "Manda pra quem está com fixador agora.",
+    "telas": [
+      {
+        "papel": "espanto",
+        "titulo": [
+          "SE JÁ TEM OSSO NOVO,",
+          "O FIXADOR FICA?"
+        ],
+        "texto": "",
+        "trecho": [
+          15.8,
+          17.2
+        ],
+        "crop": [
+          270,
+          470,
+          540,
+          812
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            2.6,
+            1.0
+          ],
+          [
+            4.5,
+            1.05
+          ]
+        ],
+        "ancora": [
+          540,
+          800
+        ],
+        "esmaecer": [
+          40,
+          16,
+          30,
+          16
+        ],
+        "dur": 4.5,
+        "t_toca": 2.6,
+        "rotulos_reel": [],
+        "nota_render": "v2 (leitor frio de 24/10): recorte abaixo do cartão FASE 2 / 1 MM / por dia e à esquerda da barra de progresso (os dois saem do quadro); trecho antes de pele/nervo/vaso, com o osso novo acendendo entre as duas partes do osso."
+      },
+      {
+        "papel": "mecanismo",
+        "titulo": [
+          "O OSSO AINDA",
+          "PRECISA ENDURECER"
+        ],
+        "texto": "E isso não se apressa.",
+        "trecho": [
+          24.63,
+          24.75
+        ],
+        "crop": [
+          270,
+          415,
+          540,
+          863
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            6.0,
+            1.12
+          ]
+        ],
+        "ancora": [
+          540,
+          800
+        ],
+        "esmaecer": [
+          40,
+          16,
+          30,
+          16
+        ],
+        "dur": 6.0,
+        "t_titulo": 0.4,
+        "t_texto": 1.2,
+        "t_toca": 3.6,
+        "rotulos_reel": [],
+        "nota_render": "v2: só a janela 24,63–24,75 s do reel: o osso novo já cor de osso, o fixador ainda parado; antes disso nervo, vaso e o contorno da perna estão no quadro (a virada de dourado para osso, 23,4–24,6 s, acontece junto com eles), então ela aparece no toque entre a tela 1 (dourado) e a 2. O cartão FASE 3 / CONSOLIDAÇÃO (fase 3 sem 1 e 2, em cima do anel de cima) e a barra ficam fora do recorte; o movimento é a câmera."
+      },
+      {
+        "papel": "significado",
+        "titulo": [
+          "CADA OSSO TEM",
+          "SEU RITMO"
+        ],
+        "texto": "Entender as fases tira a ansiedade.",
+        "trecho": [
+          24.75,
+          25.75
+        ],
+        "crop": [
+          270,
+          415,
+          540,
+          863
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.12
+          ],
+          [
+            0.6,
+            1.0
+          ]
+        ],
+        "ancora": [
+          540,
+          800
+        ],
+        "esmaecer": [
+          40,
+          16,
+          30,
+          16
+        ],
+        "dur": 8.8,
+        "t_titulo": 0.4,
+        "t_texto": 1.0,
+        "t_cartao": 5.3,
+        "t_perfil": 5.9,
+        "t_nome": 6.5,
+        "rotulos_reel": [],
+        "nota_render": "v2: mesmo recorte da tela 2 (sem a barra, que antes continuava na tela sem o fixador); os anéis saem pelos lados."
+      }
+    ],
+    "fontes": [
+      {
+        "campo": "titulo_t1",
+        "id_fonte": null,
+        "trecho_literal": "",
+        "nota": "pergunta nova e condicional: não afirma fato; vai à aprovação como texto. v2 (leitor frio de 24/10): 'SE O VÃO JÁ ENCHEU,' virou 'SE JÁ TEM OSSO NOVO,' — 'vão' só se entendia pelo desenho, e o trecho que a tela 1 pode usar (antes da resposta do reel) mostra o osso novo ainda crescendo, não o vão cheio"
+      },
+      {
+        "campo": "apoio_premissa_t1",
+        "id_fonte": "cf_alongamento",
+        "trecho_literal": "E o corpo preenche o espaço com osso novo."
+      },
+      {
+        "campo": "apoio_premissa_t1",
+        "id_fonte": "on_tres_fases",
+        "trecho_literal": "É aqui que o osso novo vai sendo formado dentro do vão."
+      },
+      {
+        "campo": "apoio_premissa_t1",
+        "id_fonte": "on_osso_cresce",
+        "trecho_literal": "As duas pontas afastam pouquíssimo por dia — e o vão não fica vazio."
+      },
+      {
+        "campo": "desenho_t1",
+        "id_fonte": "cf_alongamento",
+        "trecho_literal": "E o corpo preenche o espaço com osso novo."
+      },
+      {
+        "campo": "resposta_t2",
+        "id_fonte": "on_quanto_tempo",
+        "trecho_literal": "Depois de afastar, o osso ainda precisa endurecer — e isso não se apressa."
+      },
+      {
+        "campo": "texto_t2",
+        "id_fonte": "on_quanto_tempo",
+        "trecho_literal": "Depois de afastar, o osso ainda precisa endurecer — e isso não se apressa."
+      },
+      {
+        "campo": "desenho_t2",
+        "id_fonte": "cf_alongamento",
+        "trecho_literal": "Depois, o osso novo endurece. E o aparelho sai."
+      },
+      {
+        "campo": "titulo_t3",
+        "id_fonte": "on_quanto_tempo",
+        "trecho_literal": "\"sc\":[\"Cada osso tem\",\"seu ritmo.\"]"
+      },
+      {
+        "campo": "texto_t3",
+        "id_fonte": "on_tres_fases",
+        "trecho_literal": "Entender as fases tira a ansiedade de quem está no meio."
+      },
+      {
+        "campo": "desenho_t3",
+        "id_fonte": "cf_alongamento",
+        "trecho_literal": "Depois, o osso novo endurece. E o aparelho sai."
+      },
+      {
+        "campo": "cta",
+        "id_fonte": "on_cuidado_pinos",
+        "trecho_literal": "Manda pra quem está com fixador agora."
+      }
+    ],
+    "revisao": {
+      "leitor_frio": "v1 (24/10, lab/leitor_frio_story/resultado_v1.json): entendeu o essencial, clareza 6/10 (tela 1) e 7/10 (story); confundiram 'FASE 2' sem fase 1, '1 MM por dia' sem dizer o quê, a barra vertical sem legenda, a palavra 'vão' e o título 'já encheu' sobre um vão que ainda enchia. v2: cartão de fase e barra fora do recorte; 1ª linha 'SE JÁ TEM OSSO NOVO,' (fallback já registrado aqui). PENDENTE: revisor sem o reel no contexto responde 'do que trata a tela 1?' sobre os quadros do MP4 v2.",
+      "sem_texto": "v1: passou só pelo cartão do reel ('Fase 3 – Consolidação – a fase mais longa'); confundiram as linhas vermelha/amarela, o contorno da perna e o cartão em cima do anel de cima. v2: o cartão FASE 3 saiu do recorte (fase 3 sem 1 e 2 repete o problema da tela 1) e a tela 2 usa só a janela do reel em que nervo, vaso e o contorno da perna já sumiram (nenhum quadro da tela 2 tem as linhas). PENDENTE: revisor sem o reel no contexto responde 'o que a tela 2 mostra?' no quadro final sem o texto do story. Critério original: 'o osso novo endurece/consolida, numa fase longa, ainda com o aparelho' — sem o cartão, 'fase longa' não está mais no desenho (só no texto do story: 'E isso não se apressa.').",
+      "contrapeso": "Não se aplica: o tempo de consolidação não é parâmetro que o paciente controla; 'E isso não se apressa.' já desestimula pressa."
+    }
+  },
+  {
+    "id": "stn_pe_pra_dentro",
+    "tema": "pe_virado",
+    "reel_ref": "cf_pe_virado",
+    "reel_sha256": "sha256:ccf3ad4dfa9e449d48c8e8056c0c9067920b969bf221546dece7f1c9275c812f",
+    "resposta_no_reel_em": 4.53,
+    "angulo": "Andar de pombinho (pé virado para dentro na criança), para a mãe que vê o filho andar em casa: o giro é uma leve torção do crescimento que costuma se ajustar, e os sinais que pedem avaliação. Refaz a sequência parada s_pnc_pe_pra_dentro.",
+    "variante": "B",
+    "cta": "Manda pra quem vive com essa dúvida.",
+    "telas": [
+      {
+        "papel": "espanto",
+        "titulo": [
+          "A CRIANÇA ANDA COM",
+          "O PÉ PRA DENTRO?"
+        ],
+        "texto": "",
+        "trecho": [
+          1.5,
+          2.7
+        ],
+        "crop": [
+          390,
+          360,
+          610,
+          690
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            2.1,
+            1.0
+          ],
+          [
+            4.5,
+            1.04
+          ]
+        ],
+        "ancora": [
+          600,
+          780
+        ],
+        "foco_x": 600,
+        "esmaecer": [
+          0,
+          20,
+          40,
+          16
+        ],
+        "dur": 4.5,
+        "t_toca": 2.6,
+        "rotulos_reel": [
+          "PRA DENTRO"
+        ],
+        "nota_render": "v2 (leitor frio de 24/10): o pombo fica fora do recorte (x < 365 no reel); o rótulo PRA DENTRO do reel entra INTEIRO, com a linha até a pegada (o 'risquinho dourado solto' era o toco dessa linha, cortado pelo recorte antigo); pegadas 1,3× maiores; o trecho começa logo antes de os pés virarem e as setas entrarem."
+      },
+      {
+        "papel": "mecanismo",
+        "titulo": [
+          "LEVES GIROS",
+          "DO CRESCIMENTO"
+        ],
+        "texto": "Variações comuns",
+        "trecho": [
+          4.55,
+          9.15
+        ],
+        "crop": [
+          290,
+          365,
+          695,
+          710
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            6.0,
+            1.05
+          ]
+        ],
+        "ancora": [
+          653,
+          700
+        ],
+        "foco_x": 600,
+        "esmaecer": [
+          0,
+          0,
+          30,
+          0
+        ],
+        "dur": 6.0,
+        "t_titulo": 0.4,
+        "t_texto": 1.2,
+        "t_toca": 3.6,
+        "rotulos_reel": [
+          "PÉ",
+          "CANELA",
+          "COXA"
+        ],
+        "nota_render": "v2: recorte 1,3× maior (sem o vazio embaixo); o trecho segue até o pulso da rotação, em que pé, canela e coxa acendem um de cada vez com a setinha de giro (antes só a coxa tinha seta); o selo ROTAÇÃO NATURAL fica acima do recorte."
+      },
+      {
+        "papel": "significado",
+        "titulo": [
+          "A ROTAÇÃO COSTUMA",
+          "SE AJUSTAR"
+        ],
+        "texto": "Assimetria, dor, quedas demais ou piora pedem avaliação.",
+        "trecho": [
+          12.75,
+          14.25
+        ],
+        "crop": [
+          320,
+          210,
+          440,
+          565
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.05
+          ],
+          [
+            0.6,
+            1.0
+          ]
+        ],
+        "ancora": [
+          540,
+          500
+        ],
+        "esmaecer": [
+          12,
+          0,
+          20,
+          0
+        ],
+        "dur": 9.5,
+        "t_titulo": 0.4,
+        "t_texto": 1.0,
+        "t_cartao": 6.0,
+        "t_perfil": 6.6,
+        "t_nome": 7.2,
+        "rotulos_reel": [],
+        "nota_render": "v2: só as pernas, com os pés alinhando; o carimbo SOZINHO (concorda com 'o pé' do reel e, ao lado de 'A ROTAÇÃO', lia como erro de concordância), NA MAIORIA DAS VEZES, o pombo, as pegadas deitadas e o calendário ficam fora do recorte; o trecho acaba antes do carimbo. O aviso fica 5 s na tela (8 palavras: 1 s + 0,35 s por palavra = 3,8 s)."
+      }
+    ],
+    "fontes": [
+      {
+        "campo": "titulo_t1",
+        "id_fonte": null,
+        "trecho_literal": "",
+        "nota": "pergunta nova, não afirma fato; vai à aprovação como texto. Referência no acervo (não citação): pnc_pe_pra_dentro, sc 'Anda com o pé' / 'virado pra dentro?' e vo 'Criança que anda com o pé virado pra dentro'"
+      },
+      {
+        "campo": "rotulos_desenho_t1",
+        "id_fonte": "cf_pe_virado",
+        "trecho_literal": "PRA DENTRO"
+      },
+      {
+        "campo": "resposta_t2",
+        "id_fonte": "pnc_pe_pra_dentro",
+        "trecho_literal": "Leves torções do crescimento; a rotação se ajusta com o tempo."
+      },
+      {
+        "campo": "resposta_t2",
+        "id_fonte": "cf_pe_virado",
+        "trecho_literal": "Pode vir de uma leve torção (um giro) do pé, da canela ou do osso da coxa, todas variações comuns do crescimento",
+        "nota": "v2 (leitor frio de 24/10): 'TORÇÕES' virou 'GIROS' — 'torção' foi lida como machucado de tornozelo; a própria fonte iguala torção a giro"
+      },
+      {
+        "campo": "resposta_t2",
+        "id_fonte": "cf_pe_virado",
+        "trecho_literal": "Pode ser um leve giro no pé, na canela ou até na coxa."
+      },
+      {
+        "campo": "texto_t2",
+        "id_fonte": "pnc_pe_pra_dentro",
+        "trecho_literal": "Pode vir de uma leve torção do pé, da canela ou da coxa — variações comuns; o crescimento costuma ajustar a rotação."
+      },
+      {
+        "campo": "rotulos_desenho_t2",
+        "id_fonte": "cf_pe_virado",
+        "trecho_literal": "PÉ"
+      },
+      {
+        "campo": "rotulos_desenho_t2",
+        "id_fonte": "cf_pe_virado",
+        "trecho_literal": "CANELA"
+      },
+      {
+        "campo": "rotulos_desenho_t2",
+        "id_fonte": "cf_pe_virado",
+        "trecho_literal": "COXA"
+      },
+      {
+        "campo": "titulo_t3",
+        "id_fonte": "pnc_pe_pra_dentro",
+        "trecho_literal": "A regra é o tempo: conforme a criança cresce, a rotação costuma se ajustar sozinha."
+      },
+      {
+        "campo": "texto_t3",
+        "id_fonte": "pnc_pe_pra_dentro",
+        "trecho_literal": "Assimetria, dor, quedas demais ou piora pedem avaliação."
+      },
+      {
+        "campo": "desenho_t3",
+        "id_fonte": "cf_pe_virado",
+        "trecho_literal": "Com o crescimento, na maioria das vezes, o pé alinha sozinho."
+      },
+      {
+        "campo": "cta",
+        "id_fonte": "pnc_pe_pra_dentro",
+        "trecho_literal": "\"sc\":[\"Manda pra quem vive\",\"com essa dúvida.\"]"
+      }
+    ],
+    "revisao": {
+      "leitor_frio": "v1 (24/10, lab/leitor_frio_story/resultado_v1.json): entendeu o essencial, clareza 7/10; confundiram o pombo (nunca explicado), o risquinho dourado solto na 4ª pegada, as pegadas que parecem retas no começo e as setas pequenas; no story inteiro, 'SOZINHO' ao lado de 'A ROTAÇÃO' (lido como erro de concordância), 'leves torções' (lido como machucado) e o aviso que sai rápido demais. v2: tudo isso trocado por recorte/trecho/tempo, e 'TORÇÕES' -> 'GIROS'. PENDENTE: revisor sem o reel no contexto responde 'do que trata a tela 1?' sobre os quadros do MP4 v2.",
+      "sem_texto": "v1: passou (COXA, CANELA, PÉ); confundiram anéis = fita métrica, anéis da canela e do pé apagados e o desenho pequeno. v2: recorte 1,3× maior e trecho até o pulso da rotação (cada anel acende com a setinha de giro). PENDENTE: revisor sem o reel no contexto responde 'o que a tela 2 mostra?' no quadro final sem o texto do story. Passa se disser que o giro pode estar no pé, na canela ou na coxa.",
+      "contrapeso": "Não se aplica: o tema não é parâmetro que o paciente controla."
+    }
+  },
+  {
+    "id": "stn_calo_osseo",
+    "tema": "consolidacao",
+    "reel_ref": "cf_fratura_cola",
+    "reel_sha256": "sha256:c6fbd1fd244739b6fafe6bf3a12c22a47066fcd7f25c24160cbb8c7e2b8d264b",
+    "resposta_no_reel_em": 10.1,
+    "angulo": "Variante B (sinal reconhecível), dúvida de quem está em tratamento de fratura: a palavra 'calo ósseo' no laudo. O reel explica a obra inteira (coágulo, calo, osso maduro e o tripé); o story pega só a palavra que o paciente lê no laudo e diz o que ela significa: o osso cicatrizando, com a consolidação em andamento, que se acompanha nas consultas de raio-X de controle.",
+    "variante": "B",
+    "cta": "Manda pra quem leu isso no laudo.",
+    "telas": [
+      {
+        "papel": "espanto",
+        "titulo": [
+          "LEU 'CALO ÓSSEO'",
+          "NO LAUDO?"
+        ],
+        "texto": "",
+        "trecho": [
+          2.0,
+          3.6
+        ],
+        "crop": [
+          250,
+          400,
+          580,
+          790
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            2.6,
+            1.0
+          ],
+          [
+            4.5,
+            1.05
+          ]
+        ],
+        "ancora": [
+          540,
+          795
+        ],
+        "esmaecer": [
+          40,
+          16,
+          30,
+          16
+        ],
+        "dur": 4.5,
+        "t_toca": 2.6,
+        "rotulos_reel": [],
+        "nota_render": "v1: o recorte fica abaixo do checklist 1 COÁGULO/2 CALO/3 OSSO MADURO (no reel, y ≤ 378 a partir de 2,8 s) e acima do karaokê (y ≥ 1283); o gancho do reel (y 130–290, até 2,6 s) também fica acima. No trecho de 2,0 a 3,6 s, a câmera do reel chega na fratura com as duas pontas separadas (vão escuro em y ~760–830, centro do recorte); o alargamento do osso no alto do recorte, até 2,4 s, ajuda a ler 'osso'. O trecho acaba antes do coágulo vermelho e do rótulo COÁGULO (entram em 3,75 s): sem obra e sem sangue na tela 1."
+      },
+      {
+        "papel": "mecanismo",
+        "titulo": [
+          "É O OSSO",
+          "CICATRIZANDO"
+        ],
+        "texto": "Tecido novo no lugar da fratura.",
+        "trecho": [
+          11.7,
+          13.7
+        ],
+        "crop": [
+          0,
+          415,
+          1080,
+          800
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            6.0,
+            1.03
+          ]
+        ],
+        "ancora": [
+          540,
+          790
+        ],
+        "esmaecer": [
+          40,
+          16,
+          30,
+          16
+        ],
+        "dur": 6.0,
+        "t_titulo": 0.4,
+        "t_texto": 1.2,
+        "t_toca": 3.6,
+        "rotulos_reel": [
+          "CALO ÓSSEO",
+          "EM OBRAS"
+        ],
+        "nota_render": "v1: o recorte pega a largura inteira (x 0–1080) para que a placa EM OBRAS (x ~36–340) e o rótulo CALO ÓSSEO (x 658–1039) entrem INTEIROS, com a linha do rótulo até o calo e o pontilhado da placa até o calo. O zoom vai só até 1,03: acima disso, a câmera corta a placa ou o rótulo. No trecho de 11,7 a 13,7 s, o calo dourado já preenche o vão. O coágulo vermelho termina antes de 10,9 s. v2 (verificador adversarial, 31/10): o início passou de 11,3 para 11,7 s, porque em 11,3 o brilho laranja-avermelhado da INFLAMAÇÃO ainda envolvia o calo no quadro 0 (visível na prévia v1; só fica imperceptível por volta de 11,7–11,8 s) e, fora do contexto do reel, um halo avermelhado sob 'É O OSSO CICATRIZANDO' pode ser lido como inflamação ou infecção. Em 11,7 s o rótulo CALO ÓSSEO (entra entre 11,4 e 11,5 s) já está inteiro desde o quadro 0; depois vêm o pontilhado e o brilho dourado (13,0 s). O trecho acaba antes de o rótulo apagar (começa a apagar em ~14,0 s) e antes das caixas do tripé (surgem em ~14,2 s); o quadro de 13,7 s, que fica parado até o fim da tela, só tem a placa, o pontilhado, o calo e o rótulo. O checklist (y ≤ 378) e o karaokê (y ≥ 1283) ficam fora."
+      },
+      {
+        "papel": "significado",
+        "titulo": [
+          "CONSOLIDAÇÃO",
+          "EM ANDAMENTO"
+        ],
+        "texto": "Não pule as consultas de raio-X de controle.",
+        "trecho": [
+          19.25,
+          20.65
+        ],
+        "crop": [
+          10,
+          400,
+          910,
+          840
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.04
+          ],
+          [
+            0.6,
+            1.0
+          ]
+        ],
+        "ancora": [
+          544,
+          790
+        ],
+        "foco_x": 544,
+        "esmaecer": [
+          40,
+          16,
+          30,
+          16
+        ],
+        "dur": 8.8,
+        "t_titulo": 0.4,
+        "t_texto": 1.0,
+        "t_cartao": 5.3,
+        "t_perfil": 5.9,
+        "t_nome": 6.5,
+        "rotulos_reel": [
+          "EM OBRAS"
+        ],
+        "nota_render": "v1: no trecho de 19,25 a 20,65 s, o calo dourado ganha cor de osso, a emenda ainda aparece e a placa EM OBRAS continua de pé, enquanto a câmera do reel se afasta (o osso afina na tela). O trecho começa depois do tripé OSSO ESTÁVEL/SANGUE CHEGANDO/SEM INFECÇÃO e da linha vermelha do sangue, que somem até 19,2 s. Acaba antes do rótulo OSSO MADURO (entra em 20,8 s), porque 'maduro' contradiria 'em andamento'. Ficam fora do recorte: a barra RESISTÊNCIA (x ≥ 945), porque o rótulo dela fica em y ~300, junto do checklist, e entrar só a barra seria barra sem legenda; o checklist (y ≤ 378); o selo COMO FUNCIONA do reel (y 150–200); o karaokê (y ≥ 1283); e todo o RAIO-X, o visor e o RAIO-X CONFIRMA (24,5 s em diante). foco_x e âncora deixam o osso perto do lugar da tela 2 (x ~559 contra ~544 na story)."
+      }
+    ],
+    "fontes": [
+      {
+        "campo": "titulo_t1",
+        "id_fonte": null,
+        "trecho_literal": "",
+        "nota": "Pergunta nova, que não afirma fato; vai à aprovação como texto. 'Calo ósseo' vem do qa_calo_osseo (pergunta 'do meu raio-X?') e 'laudo' vem da chamada dele ('leu isso no laudo')."
+      },
+      {
+        "campo": "apoio_premissa_t1",
+        "id_fonte": "qa_calo_osseo",
+        "trecho_literal": "\"sc\":[\"O que é o 'calo ósseo'\",\"do meu raio-X?\"]"
+      },
+      {
+        "campo": "apoio_premissa_t1",
+        "id_fonte": "qa_calo_osseo",
+        "trecho_literal": "\"sc\":[\"Manda pra quem leu\",\"isso no laudo.\"]"
+      },
+      {
+        "campo": "desenho_t1",
+        "id_fonte": "cf_fratura_cola",
+        "trecho_literal": "Quem cola um osso quebrado? O próprio corpo.",
+        "nota": "O trecho 2,0–3,6 s fica no fim desta fala (karaokê 'O PRÓPRIO CORPO.') e no começo de 'Primeiro, coágulo e inflamação.', mas acaba antes de o coágulo ser desenhado (3,75 s). O desenho mostra só o osso quebrado com as pontas separadas."
+      },
+      {
+        "campo": "titulo_t2",
+        "id_fonte": "qa_calo_osseo",
+        "trecho_literal": "Calo ósseo: o osso cicatrizando."
+      },
+      {
+        "campo": "titulo_t2",
+        "id_fonte": "qa_calo_osseo",
+        "trecho_literal": "É o osso cicatrizando."
+      },
+      {
+        "campo": "texto_t2",
+        "id_fonte": "qa_calo_osseo",
+        "trecho_literal": "\"sc\":[\"Tecido novo no\",\"lugar da fratura.\"]"
+      },
+      {
+        "campo": "texto_t2",
+        "id_fonte": "qa_calo_osseo",
+        "trecho_literal": "Na cicatrização óssea, o corpo forma tecido novo no lugar da fratura."
+      },
+      {
+        "campo": "desenho_t2",
+        "id_fonte": "cf_fratura_cola",
+        "trecho_literal": "Depois, começa a obra: o corpo forma tecido novo, o calo ósseo, uma ponte entre as pontas."
+      },
+      {
+        "campo": "rotulos_desenho_t2",
+        "id_fonte": "cf_fratura_cola",
+        "trecho_literal": "CALO ÓSSEO"
+      },
+      {
+        "campo": "rotulos_desenho_t2",
+        "id_fonte": "cf_fratura_cola",
+        "trecho_literal": "EM OBRAS"
+      },
+      {
+        "campo": "titulo_t3",
+        "id_fonte": "qa_calo_osseo",
+        "trecho_literal": "Esse calo vai ganhando resistência com o tempo — é sinal de consolidação em andamento."
+      },
+      {
+        "campo": "titulo_t3",
+        "id_fonte": "qa_calo_osseo",
+        "trecho_literal": "O calo vai ganhando resistência com o tempo — consolidação em andamento."
+      },
+      {
+        "campo": "texto_t3",
+        "id_fonte": "cf_fratura_cola",
+        "trecho_literal": "não pule as consultas de raio-X de controle.",
+        "nota": "v2 (verificador adversarial, 31/10): substitui 'Radiografias seriadas mostram a evolução.' (qa_calo_osseo), porque 'seriadas' é palavra técnica sem explicação (lição dos leitores às cegas de 24–25/10, risco já anotado no leitor_frio da v1). O trecho é contínuo e literal da legenda publicada do cf_fratura_cola (23/10); só a inicial vira maiúscula."
+      },
+      {
+        "campo": "texto_t3",
+        "id_fonte": "cv_osso",
+        "trecho_literal": "por isso não pule os raio-X de controle.",
+        "nota": "Apoio de outra peça aprovada, mesma orientação."
+      },
+      {
+        "campo": "texto_t3",
+        "id_fonte": "qa_calo_osseo",
+        "trecho_literal": "Radiografias seriadas mostram a evolução e guiam a liberação de carga.",
+        "nota": "Apoio do sentido: o raio-X de controle é o que acompanha a evolução do calo. A liberação de carga fica de fora porque é decisão da equipe, caso a caso."
+      },
+      {
+        "campo": "desenho_t3",
+        "id_fonte": "cf_fratura_cola",
+        "trecho_literal": "Com o tempo, o calo ganha resistência e vira osso maduro.",
+        "nota": "O trecho acaba antes do rótulo OSSO MADURO (20,8 s). O desenho mostra o calo ganhando cor de osso, com a placa EM OBRAS ainda de pé, sem 'osso maduro'."
+      },
+      {
+        "campo": "rotulos_desenho_t3",
+        "id_fonte": "cf_fratura_cola",
+        "trecho_literal": "EM OBRAS"
+      },
+      {
+        "campo": "cta",
+        "id_fonte": "qa_calo_osseo",
+        "trecho_literal": "\"sc\":[\"Manda pra quem leu\",\"isso no laudo.\"]"
+      }
+    ],
+    "revisao": {
+      "leitor_frio": "PENDENTE (v1 sem leitura): um revisor sem o reel no contexto responde 'do que trata a tela 1?' olhando os quadros do MP4. Riscos conhecidos, que o leitor frio deve testar: (1) 'CONSOLIDAÇÃO', na tela 3, só se explica pela tela 2 ('é o osso cicatrizando') e pela placa EM OBRAS do desenho; se o leitor tropeçar, a fonte para explicar é a legenda do cf_fratura_cola ('A consolidação (o osso colar)'). (2) v2 (verificador adversarial, 31/10): 'seriadas' saiu da tela 3; a linha agora é 'Não pule as consultas de raio-X de controle.', literal da legenda publicada do cf_fratura_cola.",
+      "sem_texto": "PENDENTE: um revisor sem o reel no contexto responde 'o que a tela 2 mostra?' no quadro final, sem o texto do story. Passa se disser que um tecido novo (o calo) preencheu o vão e uniu as pontas do osso quebrado, isto é, o osso em obra ou cicatrizando. No desenho, isso se apoia no rótulo CALO ÓSSEO com a linha até a ponte dourada e na placa EM OBRAS ligada ao calo pelo pontilhado.",
+      "contrapeso": "Não se aplica como alerta, porque o tempo da consolidação não é algo que o paciente controla. A tela 3 não promete prazo nem resultado: 'em andamento' e 'Não pule as consultas de raio-X de controle.' deixam a leitura do exame com a equipe, sem dizer que o caso está bem. Os sinais de alarme (dor intensa nova, febre, inchaço súbito) ficam na legenda do reel.",
+      "limitacao": "A tela 2 encosta na etapa do calo que o reel já mostra: é o mesmo desenho e a mesma ideia de 'tecido novo'. O que o story traz de novo é a leitura do laudo, a palavra 'calo ósseo' traduzida para 'é o osso cicatrizando'. Verificador adversarial (31/10): 'Tecido novo no lugar da fratura.' (tela 2) e 'Não pule as consultas de raio-X de controle.' (tela 3) também estão na LEGENDA do cf_fratura_cola; na narração, o reel diz 'o corpo forma tecido novo, o calo ósseo' e 'Quem confirma o fim da obra é o raio-X.'. O story repete uma etapa do reel (o calo) e a orientação final da legenda, mas não o mecanismo central (a sequência coágulo, calo e osso maduro e o tripé, que ficam fora), como os 2 aprovados de stories_cf.json, que também usam o desenho e frases do próprio reel.",
+      "regra_de_temas": "consolidacao: cf_fratura_cola foi publicado em 23/10 e cf_pseudartrose está agendado para 11/11. Pela regra dos 7 dias, a story só cabe entre 30/10 e 04/11; a única vaga de story nessa janela é ter 03/11. Sáb 07/11 ficaria a 4 dias do cf_pseudartrose.",
+      "fora_por_decisao": "Ficam fora o visor RAIO-X e o rótulo RAIO-X CONFIRMA (seria exame simulado) e o tripé OSSO ESTÁVEL/SANGUE CHEGANDO/SEM INFECÇÃO, que é o mecanismo central do reel e tema do cf_pseudartrose de 11/11. Também não entram cigarro (reel de 11/11) nem 'quando pisar' (reel de 16/11)."
+    }
+  },
+  {
+    "id": "stn_maratona_osso",
+    "tema": "tempo_tratamento",
+    "reel_ref": "cf_transporte_osseo",
+    "reel_sha256": "sha256:728c5b59e98e1625b6a8072b0b389ca3d707886c29cc34ea1364ee37709a078b",
+    "resposta_no_reel_em": 18.27,
+    "angulo": "A pergunta nº 1 de quem vai reconstruir osso que se perdeu: quanto tempo leva. O reel mostra o MECANISMO do transporte ósseo (o pedaço que desliza e o osso novo no rastro); o story fala da TRAVESSIA: são meses, com altos e baixos, uma maratona e não uma corrida. Sem os números do caso (17 cm, 4 MESES, 1,5 cm) e sem desfecho na tela. Refaz a sequência parada s_on_pos_trauma.",
+    "variante": "B",
+    "cta": "Manda pra quem precisa de esperança baseada em técnica.",
+    "telas": [
+      {
+        "papel": "espanto",
+        "titulo": [
+          "QUANTO TEMPO LEVA",
+          "REFAZER UM OSSO?"
+        ],
+        "texto": "",
+        "trecho": [
+          15.6,
+          15.83
+        ],
+        "crop": [
+          230,
+          310,
+          340,
+          918
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            4.5,
+            1.0
+          ]
+        ],
+        "ancora": [
+          400,
+          769
+        ],
+        "esmaecer": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "dur": 4.5,
+        "t_toca": 2.6,
+        "rotulos_reel": [],
+        "nota_render": "v1: recorte estreito x 230–570 / y 310–1228 (osso inteiro + fixador). Ficam fora, à direita, o cartão 'corte no osso saudável' e o colchete '17 cm' (número do caso; o tique começa em x 573). Só os quadros 468–474 do reel (15,60–15,80 s): é a única janela sem conector de rótulo cruzando o osso (o do 'corte no osso saudável' termina de apagar no 467; o do 'osso novo' entra no 475) e sem carimbo (DE PROPÓSITO 9,5–11 s, UM PEDAÇO VIAJA 12–13,6 s). Mostra a parte de cima do osso, o corte já aberto com o osso novo começando (dourado-escuro), o pedaço no meio do caminho com a seta e o vão tracejado: o deslizamento começou e a resposta ainda não apareceu (4 MESES entra no 18,33 s; a legenda 'QUATRO MESES' no 18,27 s). Câmera parada: o recorte encosta no osso em cima (10 px) e embaixo (8 px), e qualquer zoom cortaria a cabeça ou o pé do osso."
+      },
+      {
+        "papel": "mecanismo",
+        "titulo": [
+          "SÃO MESES, COM",
+          "ALTOS E BAIXOS"
+        ],
+        "texto": "É um processo longo, mas possível.",
+        "trecho": [
+          19.17,
+          19.63
+        ],
+        "crop": [
+          205,
+          310,
+          705,
+          636
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            6.0,
+            1.03
+          ]
+        ],
+        "ancora": [
+          560,
+          628
+        ],
+        "esmaecer": [
+          10,
+          16,
+          12,
+          16
+        ],
+        "dur": 6.0,
+        "t_titulo": 0.4,
+        "t_texto": 1.2,
+        "t_toca": 3.6,
+        "rotulos_reel": [
+          "osso novo",
+          "atrás do segmento"
+        ],
+        "nota_render": "v1: recorte x 205–910 / y 310–946 com o rótulo 'osso novo / atrás do segmento' inteiro (caixa x 580–882, conector até o osso dourado). Só os quadros 575–588 (19,17–19,60 s): o '17 cm' e o colchete terminam de apagar no 574 e o rótulo começa a apagar no 591. Ficam fora: '4 MESES / aos poucos' (o calendário começa em y 991), o osso de baixo (y 952; na prévia v0 o toco aparecia como barra branca solta) e a legenda do reel. 'aos poucos' NÃO entra: fica colado embaixo do '4 MESES' (y 1000–1114), então um retângulo com o segmento e o 'aos poucos' leva junto o '4 MESES'. Pela regra do refazer, isso exigiria a linha 'Caso real da literatura · tratado por outra equipe' (y 1515–1550), com o karaokê do reel no meio. O segmento avança ~10 px no trecho (devagarinho); o zoom 1,03 com âncora (560, 628) não corta o rótulo nem a cabeça do osso."
+      },
+      {
+        "papel": "significado",
+        "titulo": [
+          "UMA MARATONA,",
+          "NÃO UMA CORRIDA"
+        ],
+        "texto": "Saber disso desde o começo ajuda a atravessar.",
+        "trecho": [
+          21.9,
+          22.75
+        ],
+        "crop": [
+          230,
+          310,
+          340,
+          918
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.15
+          ],
+          [
+            2.4,
+            1.0
+          ]
+        ],
+        "ancora": [
+          400,
+          320
+        ],
+        "esmaecer": [
+          6,
+          10,
+          24,
+          10
+        ],
+        "dur": 9.6,
+        "t_titulo": 0.4,
+        "t_texto": 1.0,
+        "t_cartao": 5.3,
+        "t_perfil": 5.9,
+        "t_nome": 6.5,
+        "rotulos_reel": [],
+        "nota_render": "v1: mesmo recorte estreito da tela 1, quadros 657–682 (21,90–22,73 s). O carimbo TRANSPORTE ÓSSEO some no 656, o selo 'mesmo princípio do alongamento ósseo' (borda em y ≤ 306) fica acima do recorte e o '4 MESES' (x ≥ 580) à direita. Acaba antes do encaixe com brilho (23,4 s) e da troca de cor da consolidação (~23,7 s): o pedaço ainda chegando, o fixador inteiro no lugar e nenhum desfecho. A câmera se afasta (zoom 1,15 → 1,0 em 2,4 s) ancorada no topo, para a cabeça do osso não ser cortada; o corte de baixo esmaece em 24 px. O reel não tem perna, só a tíbia esquemática no fixador: aqui, 'a perna inteira' = o osso inteiro com o fixador."
+      }
+    ],
+    "fontes": [
+      {
+        "campo": "titulo_t1",
+        "id_fonte": null,
+        "trecho_literal": "",
+        "nota": "pergunta nova (a nº 1 de quem vai reconstruir): não afirma fato; vai à aprovação como texto. A premissa 'refazer um osso' vem das fontes abaixo"
+      },
+      {
+        "campo": "apoio_premissa_t1",
+        "id_fonte": "on_transporte_osseo",
+        "trecho_literal": "\"sc\":[\"Dá pra refazer osso\",\"que se perdeu.\"]"
+      },
+      {
+        "campo": "apoio_premissa_t1",
+        "id_fonte": "on_transporte_osseo",
+        "trecho_literal": "Faltou um pedaço grande? Há um caminho — longo, mas possível."
+      },
+      {
+        "campo": "desenho_t1",
+        "id_fonte": "cf_transporte_osseo",
+        "trecho_literal": "Com o fixador de Ilizarov segurando a perna, os médicos cortaram o osso saudável."
+      },
+      {
+        "campo": "desenho_t1",
+        "id_fonte": "cf_transporte_osseo",
+        "trecho_literal": "O pedaço cortado foi deslizando, devagarinho, pra dentro da falha."
+      },
+      {
+        "campo": "titulo_t2",
+        "id_fonte": "on_pos_trauma",
+        "trecho_literal": "São meses, com altos e baixos — e equipe junto o caminho todo.",
+        "nota": "cortado em 'São meses, com altos e baixos'"
+      },
+      {
+        "campo": "titulo_t2",
+        "id_fonte": "on_pos_trauma",
+        "trecho_literal": "É uma maratona de meses, com altos e baixos"
+      },
+      {
+        "campo": "apoio_titulo_t2",
+        "id_fonte": "cf_transporte_osseo",
+        "trecho_literal": "segmento aos poucos, por 4 meses, para dentro da falha",
+        "nota": "legenda do reel de origem (reels.json, caption de cf_transporte_osseo; o trecho é contíguo também em episodios_entretenimento.py): liga 'meses' ao próprio transporte ósseo, já que on_pos_trauma fala da reconstrução da perna inteira depois de trauma grave. No caso do reel, só a fase de transporte levou 4 meses; o número NÃO vai à tela"
+      },
+      {
+        "campo": "texto_t2",
+        "id_fonte": "on_transporte_osseo",
+        "trecho_literal": "É um processo longo, mas possível."
+      },
+      {
+        "campo": "apoio_texto_t2",
+        "id_fonte": "cf_transporte_osseo",
+        "trecho_literal": "num tratamento longo, em etapas",
+        "nota": "legenda do reel de origem"
+      },
+      {
+        "campo": "desenho_t2",
+        "id_fonte": "cf_transporte_osseo",
+        "trecho_literal": "Atrás dele, no rastro, o corpo fabricava osso novo."
+      },
+      {
+        "campo": "desenho_t2",
+        "id_fonte": "on_transporte_osseo",
+        "trecho_literal": "Atrás do segmento que avança, o corpo forma osso novo."
+      },
+      {
+        "campo": "rotulos_desenho_t2",
+        "id_fonte": "cf_transporte_osseo",
+        "trecho_literal": "osso novo"
+      },
+      {
+        "campo": "rotulos_desenho_t2",
+        "id_fonte": "cf_transporte_osseo",
+        "trecho_literal": "atrás do segmento"
+      },
+      {
+        "campo": "titulo_t3",
+        "id_fonte": "on_pos_trauma",
+        "trecho_literal": "\"sc\":[\"É uma maratona,\",\"não uma corrida.\"]",
+        "nota": "sem o 'É' inicial"
+      },
+      {
+        "campo": "texto_t3",
+        "id_fonte": "on_pos_trauma",
+        "trecho_literal": "Saber disso desde o começo ajuda a atravessar."
+      },
+      {
+        "campo": "desenho_t3",
+        "id_fonte": "cf_transporte_osseo",
+        "trecho_literal": "Com o fixador de Ilizarov segurando a perna"
+      },
+      {
+        "campo": "cta",
+        "id_fonte": "on_pos_trauma",
+        "trecho_literal": "Manda pra quem precisa de esperança baseada em técnica."
+      }
+    ],
+    "revisao": {
+      "leitor_frio": "PENDENTE (v1, sem leitor ainda): um revisor sem o reel no contexto responde 'do que trata a tela 1?' sobre os quadros do MP4. Passa se disser que é um osso com um pedaço faltando, sendo refeito ou preenchido dentro de um aparelho. Riscos a observar: o bloco dourado-escuro da tela 1 sem rótulo (é o osso novo começando; o rótulo só aparece na tela 2), 'segmento' no rótulo do reel (o desenho mostra que é o pedaço que desce) e a imagem estreita das telas 1 e 3 (o osso inteiro só cabe a 0,89×).",
+      "sem_texto": "PENDENTE: um revisor sem o reel responde 'o que a tela 2 mostra?' no quadro final sem o texto do story. Passa se disser que se forma osso novo atrás do pedaço que vai descendo devagar. Sem o 'aos poucos' (que não dá para recortar sem o '4 MESES'), o 'longo' não está no desenho: vem do título e da linha.",
+      "contrapeso": "Não se aplica: o tempo do tratamento não é parâmetro que o paciente controla. 'Altos e baixos' e 'maratona' desestimulam a expectativa de pressa, e nenhum número ou desfecho do caso aparece.",
+      "tema": "Verificador 31/10: tema trocado de trauma_transporte para tempo_tratamento. O story é sobre 'quanto tempo leva' (NOMES['tempo_tratamento'] = 'quanto tempo dura, dói?, quando volto a pisar, retirada'), como o stn_quanto_tempo (tempo_tratamento, publicado 31/10, reel cf_alongamento). trauma_transporte continua contando pelo reel_ref (temas_do_item soma o tema do reel), então a regra só fica mais estrita. Com a agenda de 31/10: tempo_tratamento livre só de 07/11 a 09/11 (stn_quanto_tempo 31/10; cf_quando_pisar 16/11) e trauma_transporte livre desde 01/11 (cf_transporte_osseo 25/10): a vaga de story que serve é sáb 07/11; a próxima janela de tempo_tratamento é seg 23/11 (sem vaga ter/qui/sáb) e depois só a partir de 16/12."
+    }
+  },
+  {
+    "id": "stn_infeccao_trava",
+    "tema": "osteomielite",
+    "reel_ref": "cf_osteomielite",
+    "reel_sha256": "sha256:1d2619cafe3fd8b8308abab7cde62dabaa373b3c1e62f45571406d7ef7311248",
+    "resposta_no_reel_em": 8.0,
+    "angulo": "Por que um osso com infecção não cola (variante A, o paradoxo do mecanismo): um osso ocupado se defendendo não se concentra em colar; por isso a infecção é resolvida junto com a reconstrução, num tratamento mais longo, feito em etapas. O reel cf_osteomielite cobre o que é a osteomielite, por onde ela entra, os sinais e os 3 passos do tratamento; a story pega só o porquê de a infecção vir primeiro. A lista de sinais e o bloco do pós-operatório ficam fora do recorte e do texto.",
+    "variante": "A",
+    "cta": "Manda pra quem está reconstruindo um osso.",
+    "telas": [
+      {
+        "papel": "espanto",
+        "titulo": [
+          "POR QUE A INFECÇÃO",
+          "TRAVA O OSSO?"
+        ],
+        "texto": "",
+        "trecho": [
+          3.85,
+          3.98
+        ],
+        "crop": [
+          0,
+          305,
+          1080,
+          985
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            2.6,
+            1.0
+          ],
+          [
+            4.5,
+            1.05
+          ]
+        ],
+        "ancora": [
+          540,
+          815
+        ],
+        "esmaecer": [
+          30,
+          16,
+          20,
+          16
+        ],
+        "dur": 4.5,
+        "t_toca": 2.6,
+        "rotulos_reel": [
+          "OSTEOMIELITE",
+          "infecção no osso"
+        ],
+        "nota_render": "v1 (31/10): o osso inteiro com o rótulo OSTEOMIELITE / infecção no osso e o círculo tracejado no meio do osso, ainda forte (3,87–3,97 s; some a partir de 4,05 s). O gancho do reel OSSO TAMBÉM / PEGA INFECÇÃO? já saiu (some até 3,85 s; antes disso ocupa y 230–400, em cima da cabeça do osso, e não dá para cortar sem cortar o osso); o selo COMO FUNCIONA (y 168–190) fica acima do recorte e o karaokê OSTEOMIELITE. (y ≥ 1338) abaixo. Nenhuma porta de entrada, sinal ou alerta no quadro. O recorte vai de borda a borda (x 0–1080, osso no centro): com x a partir de 30, o zoom de 1,05× cortava o 'i' de 'infecção no osso' e a borda da caixa OSTEOMIELITE (prévia v1); agora a janela final começa em x 26 e o rótulo em x 55. resposta_no_reel_em = 8,0 s, quando o reel começa 'Instalada, pode ir destruindo' (o desenho da destruição vem em 9,6 s): valor conservador, o trecho termina 4 s antes."
+      },
+      {
+        "papel": "mecanismo",
+        "titulo": [
+          "INFECÇÃO",
+          "ATRAPALHA TUDO"
+        ],
+        "texto": "Um osso ocupado se defendendo não se concentra em colar.",
+        "trecho": [
+          9.3,
+          10.27
+        ],
+        "crop": [
+          120,
+          225,
+          840,
+          1047
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            6.0,
+            1.025
+          ]
+        ],
+        "ancora": [
+          600,
+          870
+        ],
+        "esmaecer": [
+          20,
+          16,
+          12,
+          16
+        ],
+        "dur": 6.0,
+        "t_titulo": 0.4,
+        "t_texto": 1.2,
+        "t_toca": 3.6,
+        "rotulos_reel": [
+          "POR DENTRO"
+        ],
+        "nota_render": "v1: o osso inteiro, centrado, com a infecção já dentro dele (os pontinhos vermelhos que no reel chegam pelas portas de entrada); o trecho mostra o osso escurecendo e se desfazendo em volta deles (9,6–10,0 s) e termina com o rótulo POR DENTRO aceso (10,2 s), antes de o osso ir para a esquerda (10,4 s) e de o raio e a lista de sinais entrarem (10,8 s). As portas FRATURA EXPOSTA / CIRURGIA / SANGUE já saíram (até 9,2 s) e ficam fora do recorte; o karaokê INSTALADA, PODE IR / DESTRUINDO começa em y 1290, abaixo do recorte (y ≤ 1272). Desenho esquemático: pontinhos vermelhos e mancha cinza-marrom, sem ferida, pus ou sangue escorrendo (conferido em resolução cheia). Câmera (v2, verificador 31/10): aproxima só até 1,025× em torno de (600, 870). A v1 ia a 1,12× em torno de (600, 720) e, a partir de 2,6 s da tela (1,05×), a janela cortava as duas pontas do osso em linha reta (no quadro final a cabeça do osso virava um toco chato e a ponta de baixo também; medido: osso em y 263–1248 no reel, janela final y 278–1213), justo enquanto a linha de texto é lida. O osso ocupa 94% da altura do recorte, e o recorte não cresce: o selo COMO FUNCIONA (com a pílula) vai até y 202 e o karaokê começa em y ~1280 em 9,3 s; com 1,025× (janela final x 132–951, y 241–1262) as pontas ficam a 18 px (topo) e 11 px (base) da borda da janela na story, dentro do esmaecer só nos últimos pixels da ponta. O rótulo (x ≤ 913 no reel) fica a 30 px da borda direita da janela."
+      },
+      {
+        "papel": "significado",
+        "titulo": [
+          "RESOLVER JUNTO",
+          "COM A RECONSTRUÇÃO"
+        ],
+        "texto": "É um tratamento mais longo, feito em etapas.",
+        "trecho": [
+          21.5,
+          22.65
+        ],
+        "crop": [
+          30,
+          235,
+          960,
+          775
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.06
+          ],
+          [
+            0.6,
+            1.0
+          ]
+        ],
+        "ancora": [
+          290,
+          580
+        ],
+        "esmaecer": [
+          16,
+          16,
+          60,
+          12
+        ],
+        "dur": 9.0,
+        "t_titulo": 0.4,
+        "t_texto": 1.0,
+        "t_cartao": 5.3,
+        "t_perfil": 5.9,
+        "t_nome": 6.5,
+        "rotulos_reel": [
+          "1 COMBATER A INFECÇÃO",
+          "2 REMOVER O OSSO DOENTE",
+          "3 RECONSTRUIR, SE SOBRAR VÃO",
+          "VÃO"
+        ],
+        "nota_render": "v1: a câmera se afasta (1,06× → 1,0× em 0,6 s, âncora no canto de cima à esquerda, para a lista não sair da janela) e mostra o osso com o VÃO e as 3 etapas do reel, as 3 inteiras (1 e 2 já marcadas): em 21,77 s a etapa 3 RECONSTRUIR, SE SOBRAR VÃO acende e o osso novo dourado começa a subir no fundo do vão. O carimbo SEMPRE INDIVIDUALIZADO entra junto (21,77 s), em y ≥ 1026, por cima da parte de baixo do osso: o recorte para em y 1010 (conferido nos 34 quadros do trecho: zero pixel dourado do carimbo dentro do recorte; controle positivo com a janela até y 1175 acha o carimbo a partir de y 1034) e o osso de baixo sai esmaecido pela borda (60 px). O osso inteiro não caberia de qualquer jeito: o karaokê começa em y 1267, colado na ponta do osso (1264). O trecho termina antes do escurecimento para DEPOIS DA CIRURGIA (22,8 s); OSSO DOENTE já saiu (até 21,2 s). Nenhum sinal, alerta ou pós-operatório no quadro. A chamada fica 3,7 s no cartão (7 palavras: 1 s + 0,35 s por palavra = 3,45 s); a linha fica 4,3 s (8 palavras: 3,8 s)."
+      }
+    ],
+    "fontes": [
+      {
+        "campo": "titulo_t1",
+        "id_fonte": null,
+        "trecho_literal": "",
+        "nota": "pergunta nova, não afirma fato; vai à aprovação como texto. A premissa (a infecção trava a cola do osso) está nas fontes apoio_premissa_t1; 'TRAVA' vem de '3 coisas travam / a cola do osso.' do on_tres_razoes, e a tela 2 diz o que trava: colar."
+      },
+      {
+        "campo": "apoio_premissa_t1",
+        "id_fonte": "on_tres_razoes",
+        "trecho_literal": "\"sc\":[\"3 coisas travam\",\"a cola do osso.\"]"
+      },
+      {
+        "campo": "apoio_premissa_t1",
+        "id_fonte": "on_tres_razoes",
+        "trecho_literal": "Pra um osso colar, ele precisa de um tripé: firmeza, sangue chegando e nenhuma infecção no caminho. Quando um desses falha, a cicatrização emperra."
+      },
+      {
+        "campo": "apoio_premissa_t1",
+        "id_fonte": "cf_osteomielite",
+        "trecho_literal": "Sem resolver a infecção, nenhuma reconstrução se sustenta.",
+        "nota": "legenda publicada do reel de origem (reels.json; em episodios_entretenimento.py a frase está partida em duas linhas de string)"
+      },
+      {
+        "campo": "desenho_t1",
+        "id_fonte": "cf_osteomielite",
+        "trecho_literal": "Osso também pega infecção? Pega. Tem nome: osteomielite."
+      },
+      {
+        "campo": "rotulos_desenho_t1",
+        "id_fonte": "cf_osteomielite",
+        "trecho_literal": "OSTEOMIELITE"
+      },
+      {
+        "campo": "rotulos_desenho_t1",
+        "id_fonte": "cf_osteomielite",
+        "trecho_literal": "infecção no osso"
+      },
+      {
+        "campo": "titulo_t2",
+        "id_fonte": "on_tres_razoes",
+        "trecho_literal": "\"sc\":[\"Infecção\",\"atrapalha tudo.\"]"
+      },
+      {
+        "campo": "texto_t2",
+        "id_fonte": "on_tres_razoes",
+        "trecho_literal": "Um osso ocupado se defendendo não se concentra em colar."
+      },
+      {
+        "campo": "texto_t2",
+        "id_fonte": "on_tres_razoes",
+        "trecho_literal": "Um osso ocupado se defendendo de bactéria não consegue se concentrar em colar."
+      },
+      {
+        "campo": "desenho_t2",
+        "id_fonte": "cf_osteomielite",
+        "trecho_literal": "Instalada, pode ir destruindo o osso por dentro."
+      },
+      {
+        "campo": "rotulos_desenho_t2",
+        "id_fonte": "cf_osteomielite",
+        "trecho_literal": "POR DENTRO"
+      },
+      {
+        "campo": "titulo_t3",
+        "id_fonte": "sequela_fratura",
+        "trecho_literal": "\"sc\":[\"Resolver junto\",\"com a reconstrução.\"]"
+      },
+      {
+        "campo": "titulo_t3",
+        "id_fonte": "sequela_fratura",
+        "trecho_literal": "Se houve infecção no osso, ela precisa ser resolvida junto com a reconstrução."
+      },
+      {
+        "campo": "texto_t3",
+        "id_fonte": "sequela_fratura",
+        "trecho_literal": "\"sub\":\"É um tratamento mais longo, feito em etapas.\""
+      },
+      {
+        "campo": "texto_t3",
+        "id_fonte": "cf_osteomielite",
+        "trecho_literal": "Após infecções com perda óssea, a reconstrução é por etapas: controlar a infecção e depois recompor o osso, às vezes com transporte ósseo.",
+        "nota": "legenda publicada do reel de origem (reels.json); concilia o 'junto' do título com as etapas numeradas do desenho"
+      },
+      {
+        "campo": "desenho_t3",
+        "id_fonte": "cf_osteomielite",
+        "trecho_literal": "Tem tratamento: combater a infecção, remover o osso doente e, se sobrar um vão, reconstruir."
+      },
+      {
+        "campo": "rotulos_desenho_t3",
+        "id_fonte": "cf_osteomielite",
+        "trecho_literal": "1 COMBATER A INFECÇÃO"
+      },
+      {
+        "campo": "rotulos_desenho_t3",
+        "id_fonte": "cf_osteomielite",
+        "trecho_literal": "2 REMOVER O OSSO DOENTE"
+      },
+      {
+        "campo": "rotulos_desenho_t3",
+        "id_fonte": "cf_osteomielite",
+        "trecho_literal": "3 RECONSTRUIR, SE SOBRAR VÃO"
+      },
+      {
+        "campo": "rotulos_desenho_t3",
+        "id_fonte": "cf_osteomielite",
+        "trecho_literal": "VÃO"
+      },
+      {
+        "campo": "cta",
+        "id_fonte": "on_osteomielite",
+        "trecho_literal": "Manda pra quem está reconstruindo um osso — ou ama alguém que está.",
+        "nota": "cortada em '...reconstruindo um osso.' (a chamada da série vai até 60 caracteres); a frase inteira é a linha de envio da legenda publicada do on_osteomielite (reels.json)"
+      }
+    ],
+    "revisao": {
+      "leitor_frio": "PENDENTE (story nova de 31/10): revisor sem o reel no contexto responde 'do que trata a tela 1?' e 'o que a story diz?' sobre os quadros do MP4. Pontos a medir: (1) 'TRAVA O OSSO' lido como 'endurece/trava a articulação' em vez de 'impede de colar' (a tela 2 resolve com 'colar'; fallback sugerido, NÃO testado e que pede nova aprovação de texto: 'POR QUE O OSSO COM' / 'INFECÇÃO NÃO COLA?', 18/18 caracteres; 'TRAVA A COLA DO OSSO?' teria 21 > 20); (2) 'JUNTO' do título da tela 3 × as etapas 1, 2, 3 em sequência no desenho (a linha 'feito em etapas' concilia); (3) a lista de 3 etapas em letra pequena (~26 px na story) e o osso de baixo saindo esmaecido pela borda do recorte (o carimbo SEMPRE INDIVIDUALIZADO ficou de fora).",
+      "sem_texto": "PENDENTE: revisor sem o reel no contexto responde 'o que a tela 2 mostra?' no quadro final sem o texto da story. Passa se disser que algo (a infecção) está estragando/corroendo o osso por dentro. Risco a medir: os pontinhos vermelhos lidos como sangue (no reel são a infecção que entrou pelas portas; o desenho é esquemático, sem ferida nem sangue escorrendo). Tela 3 sem texto: passa se disser que falta um pedaço do osso (o vão) e que ele começa a ser refeito, em etapas.",
+      "contrapeso": "Não se aplica: a story explica o mecanismo e não ensina conduta nem lista sinais. A lista de sinais (DOR QUE NÃO PASSA, INCHAÇO, CALOR, VERMELHIDÃO, FEBRE) e o bloco DEPOIS DA CIRURGIA / PRONTO-SOCORRO ficam no reel ('Vídeo completo no perfil'), fora do recorte e do texto: lista de complicação colada no mecanismo convidaria dúvida clínica nas respostas."
+    }
+  },
+  {
+    "id": "stn_dormir_fixador",
+    "tema": "rotina_fixador",
+    "reel_ref": "cf_chamaovar_rotina_fixador",
+    "reel_sha256": "sha256:98dd189310aba5ac1cb7e68596738c2b86929b05fb1baabd797c1d5b3cc28e6b",
+    "resposta_no_reel_em": 18.2,
+    "angulo": "Como dormir com o fixador externo, a pergunta nº 1 da primeira noite com o aparelho: dá para dormir bem, com a perna descansando apoiada (não pendurada) e na posição que a equipe liberou para cada fase. Tira a pergunta da cena da cama do lance 3 do CHAMA O VAR sem repetir nenhum veredito do reel (alça, cadeira baixa, capa).",
+    "variante": "B",
+    "cta": "Manda pra quem vai usar fixador.",
+    "telas": [
+      {
+        "papel": "espanto",
+        "titulo": [
+          "COMO DORMIR COM",
+          "O FIXADOR EXTERNO?"
+        ],
+        "texto": "",
+        "trecho": [
+          17.9667,
+          18.0
+        ],
+        "crop": [
+          62,
+          395,
+          953,
+          685
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            4.5,
+            1.1
+          ]
+        ],
+        "ancora": [
+          735,
+          760
+        ],
+        "esmaecer": [
+          60,
+          24,
+          30,
+          24
+        ],
+        "dur": 4.5,
+        "t_toca": 2.6,
+        "rotulos_reel": [
+          "FIXADOR"
+        ],
+        "nota_render": "v2: um quadro do lance 3 (17,97 s, quadro 539), com a câmera do reel já chegando no aparelho: a perna do fixador fora do cobertor, deitada no colchão, e a etiqueta FIXADOR (rótulo aceito, em textos_tela do reel) no tamanho cheio; o movimento é a câmera da story fechando no aparelho (âncora no anel do meio). Termina 0,2 s antes de a capa aparecer (18,2 s = resposta_no_reel_em; quadro 546 é o 1º com a capa). Fora do recorte: o chip LANCE 3 (nesse quadro já acima da caixa, junto do selo VAR), os cantos ciano e as faixas de varredura do monitor do VAR (x < 62 e x > 1015), a legenda karaokê 'COBRIR O FIXADOR' (y > 1280) e a lua (y < 395; a borda de cima esmaece 60 px para a janela não sair cortada seco)."
+      },
+      {
+        "papel": "mecanismo",
+        "titulo": [
+          "DÁ PARA DORMIR",
+          "BEM, COM AJUSTES"
+        ],
+        "texto": "A perna descansa apoiada, não pendurada.",
+        "trecho": [
+          17.4,
+          17.6333
+        ],
+        "crop": [
+          62,
+          455,
+          953,
+          585
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.15
+          ],
+          [
+            3.0,
+            1.0
+          ]
+        ],
+        "ancora": [
+          760,
+          790
+        ],
+        "esmaecer": [
+          40,
+          24,
+          30,
+          30
+        ],
+        "dur": 6.0,
+        "t_titulo": 0.4,
+        "t_texto": 1.2,
+        "t_toca": 3.6,
+        "rotulos_reel": [],
+        "nota_render": "v3 (verificador, 31/10): recorte começa em x=62 como o da tela 1 — com x=50 entravam 12 px da faixa de varredura do monitor do VAR e o toco da cabeceira na borda esquerda. v2: o plano aberto da cama no começo do lance 3 (quadros 522–528, 17,40–17,60 s: depois da fusão com a cena da cadeira, que acaba em 17,37 s, e antes do ponto do telestrador, que nasce apagado em 17,67 s sobre o anel do meio): a pessoa dormindo, cabeça no travesseiro, coberta, e a perna do fixador fora do cobertor descansando no colchão; ao lado, a cabeça de quem dorme junto. A câmera da story abre de 1,15× (perto do aparelho, continuando o quadro da tela 1) para o plano inteiro. O chip LANCE 3 (y 340–438 no reel) e a lua ficam acima do recorte; embaixo, corta na base da cama (sem o piso). NÃO é o fim da cena da cama do briefing: de 22 s a 25,6 s o aparelho está escondido pela capa, com o contorno verde do VALIDADO e a perna de quem dorme ao lado por cima (é o veredito do reel, e o teste sem texto falharia: não se vê fixador). Este é o único trecho do reel com alguém dormindo e o fixador à mostra."
+      },
+      {
+        "papel": "significado",
+        "titulo": [
+          "POSIÇÃO: A QUE A",
+          "EQUIPE LIBEROU"
+        ],
+        "texto": "Cada fase do tratamento pode ter uma orientação diferente.",
+        "trecho": [
+          26.4667,
+          26.9
+        ],
+        "crop": [
+          120,
+          480,
+          840,
+          700
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            6.0,
+            1.06
+          ]
+        ],
+        "ancora": [
+          540,
+          846
+        ],
+        "esmaecer": [
+          150,
+          150,
+          150,
+          150
+        ],
+        "dur": 9.5,
+        "t_titulo": 0.4,
+        "t_texto": 1.0,
+        "t_cartao": 6.0,
+        "t_perfil": 6.6,
+        "t_nome": 7.2,
+        "rotulos_reel": [],
+        "nota_render": "v3 (verificador, 31/10): só a equipe acesa (26,47–26,90 s, durante 'NO SEU CASO,' do reel), ANTES de o apito entrar (1º quadro com apito: 27,0 s), segurada no último quadro; o movimento é a câmera (1,0→1,06). O apito e o pulso em volta da equipe (28,1 s) são a metáfora de árbitro do VAR: no story não há 'quem apita', e o leitor frio veria um apito sem explicação (mesma lição do pombo e da barra sem legenda). Recorte descido 80 px para centrar a equipe (y 725–967 no reel), sem o espaço vazio onde o apito ficava; âncora no centro da equipe. Fora do recorte: o selo CHAMA O VAR (y 147–210) e a legenda karaokê (y > 1280). Esmaecer de 150 px nos 4 lados mantido (o fundo do reel nessa cena é mais escuro que o gradiente da story: com 40 px o retângulo aparecia). A linha fica 5 s na tela (9 palavras: 1 s + 0,35 s por palavra = 4,15 s); a chamada, 3,5 s no cartão (6 palavras: 3,1 s)."
+      }
+    ],
+    "fontes": [
+      {
+        "campo": "titulo_t1",
+        "id_fonte": "fx_dormir",
+        "trecho_literal": "\"sc\":[\"Como dormir com\",\"o fixador externo?\"]"
+      },
+      {
+        "campo": "titulo_t1",
+        "id_fonte": "fx_dormir",
+        "trecho_literal": "Como dormir com o fixador externo?"
+      },
+      {
+        "campo": "desenho_t1",
+        "id_fonte": "cf_chamaovar_rotina_fixador",
+        "trecho_literal": "Cobrir o fixador com capa: pode?",
+        "nota": "só o começo do lance 3 ('Cobrir' / 'fixador'): o trecho termina em 18,0 s, antes de 'com capa' (a capa aparece em 18,2 s)"
+      },
+      {
+        "campo": "rotulos_desenho_t1",
+        "id_fonte": "cf_chamaovar_rotina_fixador",
+        "trecho_literal": "FIXADOR",
+        "nota": "rótulo queimado aceito (textos_tela de reels/_preview_cf_chamaovar_rotina_fixador.json)"
+      },
+      {
+        "campo": "titulo_t2",
+        "id_fonte": "fx_dormir",
+        "trecho_literal": "Dá para dormir bem, com três ajustes.",
+        "nota": "cortado em 'Dá para dormir bem, com [três] ajustes' — sem o 'três' porque a story mostra só dois dos três ajustes: o apoio (tela 2) e a posição liberada pela equipe (tela 3); o terceiro, a capa, é o veredito do reel e fica de fora. A condição 'com ajustes' fica (v3, verificador): 'DÁ PARA DORMIR BEM' sozinho afirmava mais que a fonte"
+      },
+      {
+        "campo": "texto_t2",
+        "id_fonte": "fx_dormir",
+        "trecho_literal": "\"sc\":[\"A perna descansa\",\"apoiada, não pendurada.\"]"
+      },
+      {
+        "campo": "apoio_texto_t2",
+        "id_fonte": "fx_dormir",
+        "trecho_literal": "Travesseiro ou apoio sob a perna: o peso do aparelho não deve puxar nem girar a perna."
+      },
+      {
+        "campo": "desenho_t2",
+        "id_fonte": "cf_chamaovar_rotina_fixador",
+        "trecho_literal": "Cobrir o fixador com capa: pode?",
+        "nota": "o plano aberto da cama que abre o lance 3 (17,40–17,60 s), antes de a câmera chegar no aparelho; o reel não tem outro trecho com alguém dormindo e o fixador à mostra (de 22 s a 25,6 s, depois de 'protege quem dorme ao lado', o aparelho está sob a capa)"
+      },
+      {
+        "campo": "titulo_t3",
+        "id_fonte": "fx_dormir",
+        "trecho_literal": "Posição: a que a equipe liberou; cada fase tem a sua.",
+        "nota": "cortado em 'Posição: a que a equipe liberou'"
+      },
+      {
+        "campo": "apoio_titulo_t3",
+        "id_fonte": "fx_dormir",
+        "trecho_literal": "Apoio, proteção e a posição que a equipe liberou."
+      },
+      {
+        "campo": "texto_t3",
+        "id_fonte": "fx_dormir",
+        "trecho_literal": "Cada fase do tratamento pode ter uma orientação diferente."
+      },
+      {
+        "campo": "apoio_texto_t3",
+        "id_fonte": "cf_chamaovar_rotina_fixador",
+        "trecho_literal": "Cada fase do tratamento pode ter uma orientação diferente: no seu caso, quem decide é a sua equipe."
+      },
+      {
+        "campo": "desenho_t3",
+        "id_fonte": "cf_chamaovar_rotina_fixador",
+        "trecho_literal": "No seu caso, quem apita é a sua equipe.",
+        "nota": "só a equipe da cena (26,47–26,90 s, durante 'No seu caso,'), antes de o apito entrar (27,0 s): sem o 'quem apita' no story, o apito seria rótulo do reel fora de contexto"
+      },
+      {
+        "campo": "cta",
+        "id_fonte": "qa_gaiola_perna",
+        "trecho_literal": "\"sc\":[\"Manda pra quem\",\"vai usar fixador.\"]"
+      }
+    ],
+    "revisao": {
+      "leitor_frio": "PENDENTE: revisor sem o reel no contexto responde 'do que trata a tela 1?' sobre o quadro 0 e o fim da tela 1 da prévia. Passa se disser que é sobre dormir com o fixador (aparelho) na perna. Risco a observar: a etiqueta FIXADOR com o fio do telestrador do VAR (rótulo aceito, mas o fio é grafismo do VAR) e as duas cabeças no travesseiro (o paciente e quem dorme ao lado).",
+      "sem_texto": "PENDENTE: revisor sem o reel no contexto responde 'o que a tela 2 mostra?' no quadro final sem o texto do story. Passa se disser 'alguém dormindo com o fixador / a perna com o aparelho apoiada na cama'. Critério do briefing mantido; o trecho mudou (o fim da cena da cama esconde o aparelho sob a capa e não passaria).",
+      "contrapeso": "Aplica-se: a posição de dormir é parâmetro que o paciente controla. A tela 3 inteira é o contrapeso literal da equipe: título 'POSIÇÃO: A QUE A EQUIPE LIBEROU' (fx_dormir) + 'Cada fase do tratamento pode ter uma orientação diferente.' (fx_dormir; o reel diz o mesmo na legenda) sobre a equipe da cena 'No seu caso, quem apita é a sua equipe' (sem o apito, v3). A story não ensina posição nenhuma; só manda seguir a da equipe.",
+      "verificador": "31/10 (adversarial): fontes 14/14 literais conferidas nas peças publicadas (fx_dormir 21/09, qa_gaiola_perna 02/08, cf_chamaovar_rotina_fixador 27/10). Corrigido: título da tela 2 recuperou a condição da fonte ('BEM, COM AJUSTES'); tela 3 sem o apito do VAR; recorte da tela 2 sem a faixa de varredura. Leitor frio e teste sem texto continuam PENDENTES e devem rodar sobre a prévia v3."
+    }
+  },
+  {
+    "id": "stn_ponta_causa",
+    "tema": "ponta_pes",
+    "reel_ref": "cf_cameralenta_ponta_pes",
+    "reel_sha256": "sha256:969342ba5c9268085989591f3e03511a8b4fdd85b15ae5b4096294394f699901",
+    "resposta_no_reel_em": 7.3,
+    "angulo": "Andar na ponta dos pés, a pergunta seguinte do pai ou da mãe: tem tratamento? O reel CÂMERA LENTA responde 'normal até quando?' (a regra dos 3 anos e os sinais); o story responde que depende da causa, que vai de um hábito que desaparece sozinho a um encurtamento real na panturrilha, e que quem define a causa é a avaliação ortopédica.",
+    "variante": "B",
+    "cta": "Manda pra quem vê o filho na pontinha.",
+    "telas": [
+      {
+        "papel": "espanto",
+        "titulo": [
+          "NA PONTA DOS PÉS:",
+          "TEM TRATAMENTO?"
+        ],
+        "texto": "",
+        "trecho": [
+          4.6,
+          5.6
+        ],
+        "crop": [
+          130,
+          375,
+          602,
+          795
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            2.6,
+            1.0
+          ],
+          [
+            4.5,
+            1.05
+          ]
+        ],
+        "ancora": [
+          480,
+          1060
+        ],
+        "esmaecer": [
+          60,
+          60,
+          50,
+          60
+        ],
+        "dur": 4.5,
+        "t_toca": 2.6,
+        "rotulos_reel": [],
+        "nota_render": "v1: a câmera lenta do reel em que o pé da frente desce e pousa pela ponta (4,6 s) e a luz dourada acende no vão entre o calcanhar e o chão (5,25–5,6 s); segura em 5,6 s com a luz acesa sob o calcanhar. Recorte dentro da moldura âmbar: o selo CÂMERA LENTA (y 145–208) fica acima e o painel cronômetro/0,25× (x ≥ 744, y 1120–1206) fica à direita (o recorte acaba em x 732); o chip grande 0,25× que voa para o painel (3,5–4,2 s) fica antes do trecho; a legenda do reel (y ≥ 1300) fica abaixo. Entram só as pernas, o chão, a trilha pontilhada e a bolinha do calcanhar (sem texto). O trecho acaba antes do congelamento com o círculo (5,85 s), do avanço rápido do 'costuma passar sozinho' (7,3 s) e do bolo com 3 velas / '3 ANOS' (12–14 s)."
+      },
+      {
+        "papel": "mecanismo",
+        "titulo": [
+          "DEPENDE",
+          "DA CAUSA"
+        ],
+        "texto": "Causas vão de hábito a encurtamento na panturrilha, como um elástico.",
+        "trecho": [
+          19.45,
+          20.4
+        ],
+        "crop": [
+          170,
+          400,
+          750,
+          630
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            6.0,
+            1.08
+          ]
+        ],
+        "ancora": [
+          640,
+          800
+        ],
+        "esmaecer": [
+          30,
+          16,
+          30,
+          16
+        ],
+        "dur": 6.0,
+        "t_titulo": 0.4,
+        "t_texto": 1.1,
+        "t_toca": 3.6,
+        "rotulos_reel": [],
+        "nota_render": "v1: a fita 3 (tapete de EVA) no elástico da panturrilha durinha, já com a câmera do reel parada (19,45 s): o calcanhar tenta descer, a faixa verde do joelho ao calcanhar estica, afina e treme; segura em 20,4 s com o elástico no máximo, antes do estalo (20,5 s) e do recuo da câmera. Recorte só com as duas pernas, o elástico e a primeira fileira do tapete: o painel cronômetro/1× (y 1130–1200) fica abaixo, os cantos da moldura (y 330–390 e 1170–1230) ficam fora, a legenda 'A PANTURRILHA FICA DURINHA?' (y ≥ 1300) fica abaixo. Teste sem texto: o elástico esticado segurando o calcanhar mostra a causa 'encurtamento'. O elástico é comparação, não teste de casa, como diz a legenda do reel. v2 (verificador, 31/10): a story não tem legenda, e o 'nem aparelho' do reel não chega até ela; logo depois de 'TEM TRATAMENTO?', a faixa verde presa no joelho e no tornozelo podia ser lida como o tratamento (fita, tala ou aparelho). Por isso a linha ganhou 'como um elástico', que diz que é comparação. Com 11 palavras, precisa de 4,85 s; t_texto 1,2 → 1,1 deixa 4,9 s até o fim (6,0 s)."
+      },
+      {
+        "papel": "significado",
+        "titulo": [
+          "AVALIAÇÃO ORTOPÉDICA",
+          "DEFINE A CAUSA"
+        ],
+        "texto": "Muitas vezes é um hábito da infância que desaparece sozinho.",
+        "trecho": [
+          22.7,
+          23.4
+        ],
+        "crop": [
+          30,
+          440,
+          1020,
+          580
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.05
+          ],
+          [
+            0.6,
+            1.0
+          ]
+        ],
+        "ancora": [
+          550,
+          600
+        ],
+        "esmaecer": [
+          60,
+          24,
+          60,
+          24
+        ],
+        "dur": 9.9,
+        "t_titulo": 0.4,
+        "t_texto": 1.0,
+        "t_cartao": 6.0,
+        "t_perfil": 6.6,
+        "t_nome": 7.2,
+        "rotulos_reel": [],
+        "nota_render": "v1: os melhores momentos do reel: a 3ª miniatura entra (22,7 s) e o estetoscópio do 'atenção' acende acima das 3 (23,0 s); segura em 23,4 s com a composição parada. Recorte com o estetoscópio e as 3 miniaturas (sem texto): o painel cronômetro/1× (y 1130–1200), os cantos da moldura e a legenda 'ESSES SINAIS PEDEM ATENÇÃO.' (y ≥ 1300) ficam fora; o trecho acaba antes do cartão final do reel (24,75 s). A linha (10 palavras) fica 5,0 s na tela antes do cartão (precisa de 4,5 s); a chamada (8 palavras) fica 3,9 s no cartão (precisa de 3,8 s)."
+      }
+    ],
+    "fontes": [
+      {
+        "campo": "titulo_t1",
+        "id_fonte": "qa_ponta_dos_pes",
+        "trecho_literal": "\"sc\":[\"Meu filho anda na\",\"ponta dos pés. Tem tratamento?\"]",
+        "nota": "premissa e pergunta do título da tela 1 ('NA PONTA DOS PÉS: / TEM TRATAMENTO?'); pergunta, não afirma fato"
+      },
+      {
+        "campo": "titulo_t1",
+        "id_fonte": "qa_ponta_dos_pes",
+        "trecho_literal": "Meu filho sempre anda na ponta dos pés, tem tratamento?"
+      },
+      {
+        "campo": "desenho_t1",
+        "id_fonte": "cf_cameralenta_ponta_pes",
+        "trecho_literal": "Pousa pela ponta, e o calcanhar não desce."
+      },
+      {
+        "campo": "desenho_t1",
+        "id_fonte": "cf_cameralenta_ponta_pes",
+        "trecho_literal": "o pé pousa pela ponta, e o calcanhar não desce"
+      },
+      {
+        "campo": "titulo_t2",
+        "id_fonte": "qa_ponta_dos_pes",
+        "trecho_literal": "Depende da causa."
+      },
+      {
+        "campo": "texto_t2",
+        "id_fonte": "qa_ponta_dos_pes",
+        "trecho_literal": "Andar na ponta dos pés: causas vão de hábito a encurtamento na panturrilha.",
+        "nota": "cortado em 'causas vão de hábito a encurtamento na panturrilha' (inicial maiúscula na tela); v2: + ', como um elástico.' (a comparação do reel, fonte abaixo)"
+      },
+      {
+        "campo": "texto_t2",
+        "id_fonte": "cf_cameralenta_ponta_pes",
+        "trecho_literal": "As causas vão de um hábito da infância, que desaparece sozinho, a um encurtamento real na panturrilha, ou outras que merecem investigação: a avaliação ortopédica define a causa.",
+        "nota": "legenda publicada do reel (reels.json, caption)"
+      },
+      {
+        "campo": "texto_t2",
+        "id_fonte": "cf_cameralenta_ponta_pes",
+        "trecho_literal": "o elástico é só uma comparação com a panturrilha durinha",
+        "nota": "v2: 'como um elástico' da linha da tela 2 é esta comparação do reel (o desenho é comparação, não exame, teste de casa nem aparelho); não é fato clínico novo"
+      },
+      {
+        "campo": "desenho_t2",
+        "id_fonte": "qa_ponta_dos_pes",
+        "trecho_literal": "\"sc\":[\"Encurtamento real\",\"na panturrilha.\"]"
+      },
+      {
+        "campo": "desenho_t2",
+        "id_fonte": "cf_cameralenta_ponta_pes",
+        "trecho_literal": "A panturrilha fica durinha?"
+      },
+      {
+        "campo": "desenho_t2",
+        "id_fonte": "cf_cameralenta_ponta_pes",
+        "trecho_literal": "o elástico é só uma comparação com a panturrilha durinha: não é exame, nem teste para fazer em casa, nem aparelho.",
+        "nota": "legenda publicada do reel: o elástico do recorte é comparação, não teste de casa"
+      },
+      {
+        "campo": "titulo_t3",
+        "id_fonte": "cf_cameralenta_ponta_pes",
+        "trecho_literal": "a avaliação ortopédica define a causa.",
+        "nota": "legenda publicada do reel, sem condição (a do qa_ponta_dos_pes vem condicionada a 'persistente, limitante ou só de um lado')"
+      },
+      {
+        "campo": "titulo_t3",
+        "id_fonte": "qa_ponta_dos_pes",
+        "trecho_literal": "Se é persistente, limitante ou só de um lado, a avaliação ortopédica define a causa."
+      },
+      {
+        "campo": "texto_t3",
+        "id_fonte": "qa_ponta_dos_pes",
+        "trecho_literal": "Muitas vezes é um hábito da infância que desaparece sozinho."
+      },
+      {
+        "campo": "desenho_t3",
+        "id_fonte": "cf_cameralenta_ponta_pes",
+        "trecho_literal": "Esses sinais pedem atenção."
+      },
+      {
+        "campo": "cta",
+        "id_fonte": "qa_ponta_dos_pes",
+        "trecho_literal": "\"sc\":[\"Manda pra quem\",\"vê o filho na pontinha.\"]"
+      },
+      {
+        "campo": "cta",
+        "id_fonte": "cf_cameralenta_ponta_pes",
+        "trecho_literal": "Manda pra quem vê o filho na pontinha o dia inteiro."
+      }
+    ],
+    "revisao": {
+      "leitor_frio": "PENDENTE (v1, 31/10): revisor sem o reel no contexto responde 'do que trata a tela 1?' sobre os quadros do MP4 v1. Riscos a conferir, das lições de 24-25/10: a trilha pontilhada e a bolinha no calcanhar (marcações da câmera lenta, sem legenda) e a moldura âmbar esmaecida nas bordas da tela 1; as miniaturas sem texto da tela 3 (a 3ª tem um calendário, o 'demorou pra andar' do reel).",
+      "sem_texto": "PENDENTE (v1): revisor sem o reel no contexto responde 'o que a tela 2 mostra?' no quadro final sem o texto do story. Passa se disser que algo curto ou duro na panturrilha (o elástico esticado) segura o calcanhar para cima, isto é, a causa 'encurtamento'. REPROVA se disser que é fita, tala, faixa ou aparelho de tratamento, porque a tela 1 pergunta 'TEM TRATAMENTO?'. v2 (verificador, 31/10): a linha diz 'como um elástico' por esse risco. Perguntar também ao leitor com o texto se ele acha que a story recomenda prender um elástico na perna.",
+      "contrapeso": "A tela 3 diz que muitas vezes é um hábito que desaparece sozinho; o contrapeso é o próprio título ('AVALIAÇÃO ORTOPÉDICA / DEFINE A CAUSA') e o reel completo no perfil (regra dos 3 anos e os sinais que pedem atenção). Sem promessa: 'muitas vezes', não 'sempre'."
+    }
+  },
+  {
+    "id": "stn_tenis_caro",
+    "tema": "pe_chato",
+    "reel_ref": "cf_qualdosdois_pe_chato",
+    "reel_sha256": "sha256:02f2eebea87e25ee0152cf9a50a9b237710b61bfed38dbbc5de19c43856430ac",
+    "resposta_no_reel_em": 10.15,
+    "angulo": "Mito com paradoxo, para o pai e a mãe que estão para comprar tênis: tênis caro corrige o pé? O reel QUAL DOS DOIS separa o pé chato comum, que todo bebê tem, do que merece avaliação; o story ataca o gasto: o pé se forma andando, correndo e sentindo o chão, o sapato só protege, e tempo descalço em casa estimula o pé; o que pede avaliação é o pé com dor ou rigidez (o contrapeso). Refaz a peça pnc_tenis_caro no formato COMO FUNCIONA EM 3 TOQUES, com o desenho do reel.",
+    "variante": "A",
+    "cta": "Manda pra quem vai gastar caro achando que corrige.",
+    "telas": [
+      {
+        "papel": "espanto",
+        "titulo": [
+          "TÊNIS CARO",
+          "CORRIGE O PÉ?"
+        ],
+        "texto": "",
+        "trecho": [
+          1.1,
+          2.2
+        ],
+        "crop": [
+          46,
+          520,
+          474,
+          620
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            2.6,
+            1.0
+          ],
+          [
+            4.5,
+            1.05
+          ]
+        ],
+        "ancora": [
+          282,
+          830
+        ],
+        "esmaecer": [
+          30,
+          16,
+          30,
+          16
+        ],
+        "dur": 4.5,
+        "t_toca": 2.6,
+        "rotulos_reel": [],
+        "nota_render": "Só o interior do cartão A da rodada 1, antes da contagem: o par de solas com a tinta azul na sola inteira (o pé chato). No começo do trecho (1,1 s, o 'chato' da narração) a tinta ainda brilha e o par está um pouco maior; ele assenta e fica azul-escuro até 2,2 s, quadro que segura. FORA do recorte: o selo da letra A (centro 98,454, raio 44: termina em y ~513; o recorte começa em 520), o gancho do reel, a pílula 2 RODADAS, o cartão B com o arco (começa em x 552; o recorte acaba em 520), a borda do cartão (x 36 e 528), o reflexo que cruza o cartão até ~1,05 s, o balanço do 'chuta' (2,4 s) e o anel da contagem 2-1 (a partir de ~4,1 s). Tela 1 acaba 7,95 s antes de resposta_no_reel_em."
+      },
+      {
+        "papel": "mecanismo",
+        "titulo": [
+          "ANDANDO, CORRENDO,",
+          "SENTINDO O CHÃO"
+        ],
+        "texto": "O pé se desenvolve com movimento; o sapato só protege.",
+        "trecho": [
+          9.8,
+          11.55
+        ],
+        "crop": [
+          50,
+          590,
+          720,
+          632
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            6.0,
+            1.05
+          ]
+        ],
+        "ancora": [
+          300,
+          1000
+        ],
+        "esmaecer": [
+          30,
+          24,
+          14,
+          14
+        ],
+        "dur": 6.0,
+        "t_titulo": 0.4,
+        "t_texto": 1.2,
+        "t_toca": 3.6,
+        "rotulos_reel": [],
+        "nota_render": "A escadinha da rodada 1, sem sapato nenhum: o par de bebê (todo azul, pé chato) já no 1º degrau, embaixo à esquerda; em ~10,15 s (tau ~0,35, logo antes do título carimbar) entra o 2º par, maior e com uma pequena área de pele sem tinta (o arco); em ~10,45 s o 3º par, maior ainda e com o arco maior (a área de pele acende e apaga até ~11,5 s). O trecho acaba em 11,55 s, antes de o 4º par entrar (11,63 s): o 4º par sobe até y ~445, colado na faixa do selo A (y 410-513 em x 54-142), e um retângulo que o pegasse inteiro pegaria o selo ou cortaria o par de bebê; por isso a tela 2 fica com os 3 primeiros degraus e o 4º entra na tela 3. Quadro que segura: 3 pares parados, arcos cor de pele. Âncora perto do par de bebê. v2 (verificador, 31/10): o recorte antigo acabava em x 730 e, com o zoom de 1,05 em torno da âncora (300, 1000), a janela final acaba em x ~710; o dedinho do 3º par (pé até x ~707) saía cortado e esmaecido na borda direita do quadro que segura (prévia, quadro 5,97 s). Agora o recorte vai até x 770 (largura 720; a escala não muda, a caixa continua limitada pela altura): a janela final acaba em x ~748 e não há nada entre x 706 e 1020 de 9,8 a 11,55 s (medido quadro a quadro: o 4º par só entra em 11,63 s). FORA do recorte: selo A, pílulas QUAL DOS DOIS? e RODADA 1, legenda karaokê (y ~1360), borda do cartão."
+      },
+      {
+        "papel": "significado",
+        "titulo": [
+          "PÉ NO CHÃO,",
+          "QUANDO DER"
+        ],
+        "texto": "Em casa, em piso seguro. Dor ou rigidez no pé pedem avaliação.",
+        "trecho": [
+          11.45,
+          12.45
+        ],
+        "crop": [
+          228,
+          415,
+          800,
+          720
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.05
+          ],
+          [
+            0.6,
+            1.0
+          ]
+        ],
+        "ancora": [
+          628,
+          775
+        ],
+        "esmaecer": [
+          30,
+          16,
+          30,
+          16
+        ],
+        "dur": 10.5,
+        "t_titulo": 0.4,
+        "t_texto": 1.0,
+        "t_cartao": 6.3,
+        "t_perfil": 6.9,
+        "t_nome": 7.5,
+        "rotulos_reel": [],
+        "nota_render": "Os degraus 2, 3 e 4 da escadinha sobre o piso de ladrilho do cartão (pés descalços no chão): em ~11,63 s entra o 4º par, o maior e com o maior arco; de ~11,9 s em diante a onda branca acende o contorno de um par de cada vez, de baixo para cima, e o reflexo atravessa o piso. O trecho acaba em 12,45 s, com a onda no par maior; o cartão inteiro começa a sair pela esquerda em ~12,48 s (início da rodada 2), então não há quadro com a onda já apagada. FORA do recorte: o par de bebê (x 75-215; o recorte começa em 228), o selo A (x <= 142), a borda do cartão (y 392, x 1044), as pílulas e a legenda. No quadro que segura (12,45 s) fica, no piso à direita, abaixo do par maior, uma faixa clara do reflexo (não é rótulo; sem quadro limpo antes de o cartão sair). Texto v2 de 12 palavras: 5,3 s na tela (precisa de 5,2 s); chamada de 9 palavras: 4,2 s no cartão (precisa de 4,15 s)."
+      }
+    ],
+    "fontes": [
+      {
+        "campo": "titulo_t1",
+        "id_fonte": "pnc_tenis_caro",
+        "trecho_literal": "\"sc\":[\"Tênis caro NÃO\",\"corrige o pé.\"]",
+        "nota": "a premissa do mito, virada em pergunta: a pergunta não afirma fato; a resposta (não) vem nas telas 2 e 3"
+      },
+      {
+        "campo": "apoio_premissa_t1",
+        "id_fonte": "pnc_tenis_caro",
+        "trecho_literal": "Tênis caro não corrige nem molda o pé da criança."
+      },
+      {
+        "campo": "apoio_premissa_t1",
+        "id_fonte": "cv_pe_chato",
+        "trecho_literal": "Paguei caro pra você corrigir o pé chato."
+      },
+      {
+        "campo": "desenho_t1",
+        "id_fonte": "cf_qualdosdois_pe_chato",
+        "trecho_literal": "Todo bebê nasce com o pé chato (pé plano)"
+      },
+      {
+        "campo": "desenho_t1",
+        "id_fonte": "cf_qualdosdois_pe_chato",
+        "trecho_literal": "a tinta azul marca só a parte da sola que encosta no chão: é um desenho para ilustrar a diferença, não é exame nem teste para fazer em casa."
+      },
+      {
+        "campo": "titulo_t2",
+        "id_fonte": "pnc_tenis_caro",
+        "trecho_literal": "\"sc\":[\"Andando, correndo,\",\"sentindo o chão.\"]"
+      },
+      {
+        "campo": "texto_t2",
+        "id_fonte": "pnc_tenis_caro",
+        "trecho_literal": "O pé se desenvolve com movimento; o sapato só protege."
+      },
+      {
+        "campo": "apoio_t2",
+        "id_fonte": "pnc_tenis_caro",
+        "trecho_literal": "O papel do calçado é proteger: flexível, leve e no tamanho certo já basta"
+      },
+      {
+        "campo": "apoio_t2",
+        "id_fonte": "qa_pe_chato_palmilha",
+        "trecho_literal": "Palmilha e botinha não 'moldam' o pé",
+        "nota": "apoio do ângulo; não entra na tela"
+      },
+      {
+        "campo": "apoio_t2",
+        "id_fonte": "cv_pe_chato",
+        "trecho_literal": "Pé chato flexível e sem dor costuma melhorar crescendo.",
+        "nota": "apoio do ângulo; não entra na tela"
+      },
+      {
+        "campo": "desenho_t2",
+        "id_fonte": "cf_qualdosdois_pe_chato",
+        "trecho_literal": "E o arco? Se forma sozinho, ao longo da infância."
+      },
+      {
+        "campo": "desenho_t2",
+        "id_fonte": "cf_qualdosdois_pe_chato",
+        "trecho_literal": "e o arco se forma sozinho ao longo da infância, conforme a criança anda e corre."
+      },
+      {
+        "campo": "titulo_t3",
+        "id_fonte": "pnc_tenis_caro",
+        "trecho_literal": "\"sc\":[\"Pé no chão,\",\"quando der.\"]"
+      },
+      {
+        "campo": "texto_t3",
+        "id_fonte": "pnc_tenis_caro",
+        "trecho_literal": "Tempo descalço em casa, em piso seguro, estimula o pé de verdade.",
+        "nota": "1ª frase do texto v2 ('Em casa, em piso seguro.'): o lugar e a segurança do conselho do título; o 'estimula' fica implícito no título e na tela 2"
+      },
+      {
+        "campo": "apoio_t3",
+        "id_fonte": "cv_pe_chato",
+        "trecho_literal": "tempo descalço, num chão seguro, estimula o pé de verdade."
+      },
+      {
+        "campo": "texto_t3",
+        "id_fonte": "qa_pe_chato_palmilha",
+        "trecho_literal": "Dor, rigidez ou limitação é que pedem avaliação.",
+        "nota": "2ª frase do texto v2 ('Dor ou rigidez no pé pedem avaliação.'): o contrapeso, cortado em 'limitação' para caber em 70"
+      },
+      {
+        "campo": "apoio_t3",
+        "id_fonte": "cv_pe_chato",
+        "trecho_literal": "Se o pé dói, é durinho e travado, ou só um lado é chato: aí vale passar com o ortopedista."
+      },
+      {
+        "campo": "apoio_t3",
+        "id_fonte": "cf_qualdosdois_pe_chato",
+        "trecho_literal": "Bônus: o pé que dói também merece.",
+        "nota": "o reel de origem traz o mesmo alerta (dor); repetir o alerta do reel na tela 3 tem precedente aprovado (stn_pe_pra_dentro repete o alerta do cf_pe_virado)"
+      },
+      {
+        "campo": "desenho_t3",
+        "id_fonte": "cf_qualdosdois_pe_chato",
+        "trecho_literal": "E o arco? Se forma sozinho, ao longo da infância."
+      },
+      {
+        "campo": "cta",
+        "id_fonte": "pnc_tenis_caro",
+        "trecho_literal": "Manda pra quem vai gastar caro achando que corrige. E salva.",
+        "nota": "cortado antes de 'E salva.' ('salvar' é proibido em texto desenhado no story); a chamada do reel de origem ('Manda pra quem fica preocupado com pé chato!') não serve: tem '!', proibido no story"
+      }
+    ],
+    "revisao": {
+      "leitor_frio": "PENDENTE: revisor sem o reel no contexto responde 'do que trata a tela 1?' sobre os quadros do MP4. Risco conhecido (lição de 24-25/10, 'a imagem tem de bater com a pergunta'): a pergunta diz 'o pé' e o desenho mostra o pé chato só pela tinta azul na sola inteira, sem palavra que diga 'pé chato'. Passa se disser que é sobre tênis caro e o pé da criança (ou pé chato). Fallback já com fonte, se não passar: 2ª linha 'CORRIGE PÉ CHATO?' (17 caracteres), premissa literal em cv_pe_chato ('Paguei caro pra você corrigir o pé chato.').",
+      "sem_texto": "PENDENTE: revisor sem o reel no contexto responde 'o que a tela 2 mostra?' no quadro final sem o texto do story. Passa se disser que o pé vai crescendo e o arco (a parte de pele sem tinta) aparece e aumenta, sem calçado nenhum.",
+      "contrapeso": "v2 (verificador, 31/10): aplica-se. Pelo critério das irmãs deste lote (stn_dormir_fixador: 'aplica-se quando é parâmetro que a família controla'), o calçado e o tempo descalço são escolhas da família, e a v1 dava o conselho (descalço) sem o sinal de alerta. A tela 3 segue o molde da aprovada stn_pe_pra_dentro (título que tranquiliza sobre o desenho + texto com o alerta): 'Em casa, em piso seguro. Dor ou rigidez no pé pedem avaliação.' (pnc_tenis_caro + qa_pe_chato_palmilha, ambos publicados). O texto não promete nada ('o sapato só protege'; nenhum 'corrige'), não culpa os pais e não manda dúvida para o direct. Texto v1 da tela 3, se o orquestrador preferir sem alerta (a peça-fonte pnc_tenis_caro saiu assim): 'Tempo descalço em casa, em piso seguro, estimula o pé de verdade.' (12 palavras, 5,3 s na tela, precisa de 5,2 s)."
+    }
+  },
+  {
+    "id": "stn_haste_ou_fixador",
+    "tema": "fixador_haste",
+    "reel_ref": "cf_gesso_placa",
+    "reel_sha256": "sha256:92083bc0380839ac4e5eec1f6de353e099e4b7d11eb4b246a9f4605d3d29c3ae",
+    "resposta_no_reel_em": 12.56,
+    "angulo": "Haste por dentro ou fixador por fora? O reel lista quem segura o osso (gesso, placa, haste, fixador) e fecha com 'quem decide é o caso'; o story mostra o que cada um dá e o que cobra: a haste não deixa nada para fora e costuma ser mais confortável, mas depende de o osso comportar o implante; o fixador corrige o ângulo, mas exige cuidado diário com os pinos (um ganho e um custo para cada lado, como na legenda publicada de fixador_ou_haste). Os dois são bons quando bem indicados.",
+    "variante": "A",
+    "cta": "Manda pra quem tá com gesso, placa, haste ou fixador.",
+    "telas": [
+      {
+        "papel": "espanto",
+        "titulo": [
+          "HASTE POR DENTRO",
+          "OU FIXADOR POR FORA?"
+        ],
+        "texto": "",
+        "trecho": [
+          11.94,
+          12.33
+        ],
+        "crop": [
+          150,
+          330,
+          850,
+          920
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            2.6,
+            1.0
+          ],
+          [
+            4.5,
+            1.05
+          ]
+        ],
+        "ancora": [
+          470,
+          800
+        ],
+        "esmaecer": [
+          30,
+          16,
+          30,
+          16
+        ],
+        "dur": 4.5,
+        "t_toca": 2.6,
+        "rotulos_reel": [
+          "HASTE"
+        ],
+        "nota_render": "v1: a haste aparece AO LADO do osso, antes de entrar; o trecho começa no 1º quadro sem a placa (11,93 s: até 11,90 s a placa e parafusos ainda sai pela direita, dentro do recorte) e acaba em 12,30 s, antes do contorno tracejado surgir dentro do osso (12,567 s = resposta_no_reel_em). O rótulo HASTE do reel acende no trecho, com a linha até a haste. Recorte acima do karaokê (que começa em y ~1335) e o MESMO da tela 2, para o toque não mexer no desenho: só a haste muda de lugar."
+      },
+      {
+        "papel": "mecanismo",
+        "titulo": [
+          "NADA PARA FORA.",
+          "MAIS CONFORTÁVEL."
+        ],
+        "texto": "Mas depende do osso comportar o implante.",
+        "trecho": [
+          12.43,
+          13.5
+        ],
+        "crop": [
+          150,
+          330,
+          850,
+          920
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            6.0,
+            1.05
+          ]
+        ],
+        "ancora": [
+          560,
+          800
+        ],
+        "esmaecer": [
+          30,
+          16,
+          30,
+          16
+        ],
+        "dur": 6.0,
+        "t_titulo": 0.4,
+        "t_texto": 1.2,
+        "t_toca": 3.6,
+        "rotulos_reel": [
+          "HASTE",
+          "POR DENTRO DO OSSO"
+        ],
+        "nota_render": "v1: começa com a haste ainda ao lado (continua o último quadro da tela 1), ela some de fora e vira contorno tracejado no eixo do osso (12,57–12,80 s); o rótulo POR DENTRO DO OSSO entra com a seta até a haste e o trecho para em 13,47 s, com os dois rótulos inteiros (somem a partir de 13,6 s, junto com 'OU O FIXADOR:' no karaokê, fora do recorte). Âncora em x 560: com zoom 1,05 a janela vai de x ~170 a ~979 e o rótulo POR DENTRO DO OSSO (x 560–950) fica inteiro. Nenhum objeto sai do osso no quadro final (teste sem texto)."
+      },
+      {
+        "papel": "significado",
+        "titulo": [
+          "OS DOIS SÃO BONS",
+          "QUANDO BEM INDICADOS"
+        ],
+        "texto": "O fixador corrige o ângulo, mas exige cuidado diário com os pinos.",
+        "trecho": [
+          14.2,
+          18.15
+        ],
+        "crop": [
+          70,
+          300,
+          900,
+          950
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            6.0,
+            1.04
+          ]
+        ],
+        "ancora": [
+          320,
+          800
+        ],
+        "esmaecer": [
+          40,
+          16,
+          30,
+          16
+        ],
+        "dur": 11.0,
+        "t_titulo": 0.4,
+        "t_texto": 1.0,
+        "t_cartao": 6.4,
+        "t_perfil": 7.0,
+        "t_nome": 7.6,
+        "rotulos_reel": [
+          "FIXADOR",
+          "PINOS ATÉ O OSSO",
+          "POR FORA"
+        ],
+        "nota_render": "v1: câmera no fixador: os anéis terminam de chegar por fora da perna (contorno translúcido da pele) a partir de 14,20 s (o contorno tracejado da haste já sumiu em 13,93 s; em 14,07 s ainda havia anel solto cortado na borda direita do recorte), acendem FIXADOR (14,3 s) e PINOS ATÉ O OSSO (15,2 s), as barras ligam os anéis e POR FORA entra com a seta (17,7 s); o trecho para em 18,10 s, com os três rótulos inteiros, antes de tudo encolher para o quadro QUAL DELES? (18,2 s), que fica fora, como os cartões QUEM DECIDE É O CASO e NEM SEMPRE. A linha 'O fixador corrige...' cai sobre o fixador desenhado, com o sujeito escrito (verificação adversarial de 31/10: a versão sem sujeito, 'Fica visível...', vinha logo depois de 'OS DOIS SÃO BONS' e só dava custo ao fixador); 'pinos' = PINOS ATÉ O OSSO. Âncora no centro do fixador: com zoom 1,04 a janela vai de x ~80 a ~945 (anéis x 103–533, PINOS ATÉ O OSSO até x ~928). A linha (12 palavras) fica 5,4 s antes do cartão (precisa 5,2 s; t_cartao 6,0 -> 6,4, perfil/nome e dur +0,4); a chamada (10 palavras) fica 4,6 s no cartão (precisa 4,5 s)."
+      }
+    ],
+    "fontes": [
+      {
+        "campo": "titulo_t1",
+        "id_fonte": "fixador_ou_haste",
+        "trecho_literal": "POR FORA OU POR DENTRO?",
+        "nota": "premissa da pergunta (k da cena 1); a ordem invertida para a haste vir primeiro, como no desenho"
+      },
+      {
+        "campo": "titulo_t1",
+        "id_fonte": "fixador_ou_haste",
+        "trecho_literal": "Fixador por fora ou haste por dentro?"
+      },
+      {
+        "campo": "desenho_t1",
+        "id_fonte": "cf_gesso_placa",
+        "trecho_literal": "Ou uma haste"
+      },
+      {
+        "campo": "rotulos_desenho_t1",
+        "id_fonte": "cf_gesso_placa",
+        "trecho_literal": "HASTE"
+      },
+      {
+        "campo": "titulo_t2",
+        "id_fonte": "fixador_ou_haste",
+        "trecho_literal": "\"sc\":[\"Nada para fora.\",\"Mais confortável.\"]"
+      },
+      {
+        "campo": "titulo_t2",
+        "id_fonte": "fixador_ou_haste",
+        "trecho_literal": "A haste interna não deixa nada para fora e costuma ser mais confortável."
+      },
+      {
+        "campo": "texto_t2",
+        "id_fonte": "fixador_ou_haste",
+        "trecho_literal": "Mas depende do osso comportar o implante."
+      },
+      {
+        "campo": "desenho_t2",
+        "id_fonte": "cf_gesso_placa",
+        "trecho_literal": "por dentro do osso"
+      },
+      {
+        "campo": "rotulos_desenho_t2",
+        "id_fonte": "cf_gesso_placa",
+        "trecho_literal": "HASTE"
+      },
+      {
+        "campo": "rotulos_desenho_t2",
+        "id_fonte": "cf_gesso_placa",
+        "trecho_literal": "POR DENTRO DO OSSO"
+      },
+      {
+        "campo": "titulo_t3",
+        "id_fonte": "fixador_ou_haste",
+        "trecho_literal": "Os dois são bons quando bem indicados."
+      },
+      {
+        "campo": "texto_t3",
+        "id_fonte": "fixador_ou_haste",
+        "trecho_literal": "O fixador corrige o ângulo junto e permite ajuste, mas exige cuidado diário com os pinos.",
+        "nota": "legenda publicada; cortado no próprio trecho: sem 'junto e permite ajuste' ('junto' = com o alongamento, contexto que o story não traz; 'permite ajuste' leria como convite a mexer no aparelho)"
+      },
+      {
+        "campo": "texto_t3",
+        "id_fonte": "fixador_ou_haste",
+        "trecho_literal": "O fixador externo corrige o ângulo do osso junto com o alongamento"
+      },
+      {
+        "campo": "desenho_t3",
+        "id_fonte": "cf_gesso_placa",
+        "trecho_literal": "Ou o fixador: pinos atravessam até o osso, presos numa estrutura por fora"
+      },
+      {
+        "campo": "rotulos_desenho_t3",
+        "id_fonte": "cf_gesso_placa",
+        "trecho_literal": "FIXADOR"
+      },
+      {
+        "campo": "rotulos_desenho_t3",
+        "id_fonte": "cf_gesso_placa",
+        "trecho_literal": "PINOS ATÉ O OSSO"
+      },
+      {
+        "campo": "rotulos_desenho_t3",
+        "id_fonte": "cf_gesso_placa",
+        "trecho_literal": "POR FORA"
+      },
+      {
+        "campo": "cta",
+        "id_fonte": "cf_gesso_placa",
+        "trecho_literal": "Manda pra quem tá com gesso, placa, haste ou fixador."
+      }
+    ],
+    "revisao": {
+      "leitor_frio": "PENDENTE: revisor sem o reel no contexto responde 'do que trata a tela 1?' sobre os quadros do MP4 v1. Risco conhecido: a tela 1 só desenha a haste (o fixador entra na tela 3); a pergunta tem as duas metades e o desenho, uma. Lições de 24/10 aplicadas: nenhum rótulo do reel fora de contexto (HASTE, POR DENTRO DO OSSO, FIXADOR, PINOS ATÉ O OSSO e POR FORA repetem o texto do story), placa, karaokê, QUAL DELES?, QUEM DECIDE É O CASO e NEM SEMPRE fora do recorte; linhas com tempo de leitura (1 s + 0,35 s por palavra).",
+      "sem_texto": "PENDENTE: revisor sem o reel no contexto responde 'o que a tela 2 mostra?' no quadro final sem o texto do story. Passa se disser que a haste fica dentro do osso, sem nada para fora (o quadro final tem o contorno tracejado no eixo do osso e o rótulo POR DENTRO DO OSSO).",
+      "contrapeso": "O story não ensina o cuidado com os pinos nem com o gesso (o cuidado com gesso é o VAR de 12/11) e não induz a mexer no aparelho; não diz qual é melhor (os dois bons quando bem indicados, a escolha não é do paciente). Equilíbrio (verificação de 31/10): cada lado tem um ganho e um custo — haste: nada para fora / depende do osso; fixador: corrige o ângulo / cuidado diário com os pinos —, para quem já está com fixador (a chamada manda para essa pessoa) não ler só o lado ruim do aparelho dela.",
+      "verificacao_31_10": "Verificador adversarial: os 17 trechos literais originais (18 depois da correção) conferidos nas peças (fixador_ou_haste publicado 06/09, cf_gesso_placa 30/10, ambos em fontes.json 'validos'); reel_sha256 confere com o mp4; folha e prévia (lab/motor_0111/previas/verif_haste_v1 e v2) sem placa, karaokê, QUAL DELES?, QUEM DECIDE É O CASO ou NEM SEMPRE no recorte; HASTE some de fora antes do título da tela 2 (12,57–12,80 s = tau 0,14–0,37; título em 0,4). Corrigido: texto da tela 3 sem sujeito e só com custo do fixador -> 'O fixador corrige o ângulo, mas exige cuidado diário com os pinos.' (legenda publicada, cortada), tempos da tela 3 +0,4 s. Não repete frase do reel; a conclusão 'os dois são bons quando bem indicados' é vizinha de 'quem decide é o caso' (sentido, não frase). AGENDA: tema fixador_haste tem cv_fixador 19/10 e cf_fixador_circular agendado dom 08/11 -> com a regra de 7 dias o story só cabe dom 01/11 (exatamente 7 dias antes de 08/11; reel de origem já com 2 dias) ou a partir de dom 15/11 (1ª vaga ter/qui/sáb = ter 17/11); nas vagas ter 03, qui 05, sáb 07, ter 10, qui 12 e sáb 14/11 ele é BARRADO."
+    }
+  },
+  {
+    "id": "stn_escoliose_reavaliar",
+    "tema": "escoliose",
+    "reel_ref": "cf_escoliose",
+    "reel_sha256": "sha256:84cfd9940bb30f871b3eaedc0e6bdd9e07b40bf9c783408ce0b00b0949452d10",
+    "resposta_no_reel_em": 23.7,
+    "angulo": "Paradoxo do acompanhamento da escoliose: se ela costuma não doer, por que voltar para reavaliar? O reel ensina o sinal e o teste das costas; o story fala do que vem DEPOIS do diagnóstico: coluna crescendo é coluna mudando (no estirão a curva pode progredir), e o que isso muda é o intervalo entre as reavaliações, que o ortopedista define caso a caso. Fora do recorte: o teste das costas (centro do reel), a mochila / NÃO HÁ PROVA (reel de 17/11) e ombro/cintura (cf_mito_mochila_coluna).",
+    "variante": "A",
+    "cta": "Manda pra quem tem essa mesma dúvida.",
+    "telas": [
+      {
+        "papel": "espanto",
+        "titulo": [
+          "ESCOLIOSE SEM DOR:",
+          "POR QUE REAVALIAR?"
+        ],
+        "texto": "",
+        "trecho": [
+          5.2,
+          7.05
+        ],
+        "crop": [
+          10,
+          215,
+          1060,
+          1060
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            2.6,
+            1.0
+          ],
+          [
+            4.5,
+            1.04
+          ]
+        ],
+        "ancora": [
+          530,
+          745
+        ],
+        "esmaecer": [
+          16,
+          16,
+          16,
+          8
+        ],
+        "dur": 4.5,
+        "t_toca": 2.6,
+        "rotulos_reel": [
+          "ESCOLIOSE",
+          "COLUNA",
+          "CURVA PRO LADO",
+          "E GIRA JUNTO"
+        ],
+        "nota_render": "v1: a pilha de blocos (rotulada COLUNA e ESCOLIOSE pelo próprio reel) começa reta em 5,2 s, faz a curva pro lado e gira junto; o trecho acaba em 7,05 s, no anel dourado da rotação em volta da vértebra do meio, com COLUNA ainda aceso (apaga a partir de 7,1 s). Fora do quadro: o olho e O SINAL ESTÁ NAS COSTAS (somem até 5,2 s), a mochila (entra em 7,5 s, fora do trecho), o selo COMO FUNCIONA do reel (termina em y 203; recorte começa em 215) e o karaokê (y ≥ 1325; recorte acaba em 1275). Câmera: 1,04× no máximo, em volta de (530, 745); na janela de 1,04× sobram 15 px do reel até COLUNA (esmaecer da esquerda 8) e ~30 px até ESCOLIOSE e E GIRA JUNTO (esmaecer 16)."
+      },
+      {
+        "papel": "mecanismo",
+        "titulo": [
+          "COLUNA CRESCENDO",
+          "É COLUNA MUDANDO"
+        ],
+        "texto": "Enquanto o esqueleto amadurece, a curva pode progredir.",
+        "trecho": [
+          24.3,
+          27.4
+        ],
+        "crop": [
+          20,
+          208,
+          1050,
+          887
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            6.0,
+            1.04
+          ]
+        ],
+        "ancora": [
+          600,
+          620
+        ],
+        "esmaecer": [
+          8,
+          16,
+          12,
+          10
+        ],
+        "dur": 6.0,
+        "t_titulo": 0.4,
+        "t_texto": 1.2,
+        "t_toca": 3.6,
+        "rotulos_reel": [
+          "NO ESTIRÃO",
+          "PODE MUDAR MAIS RÁPIDO"
+        ],
+        "nota_render": "v1: o estirão do reel. Em 24,3 s a lupa do teste já sumiu e estão no quadro o calendário (sem número), NO ESTIRÃO, a criança de pé vista por trás e o medalhão com a coluna; em ~25,9 s entram as setinhas » e PODE MUDAR MAIS RÁPIDO; em 26,3–26,9 s a curva do medalhão acende e fica mais curvada; o trecho segura em 27,4 s (o reel só esmaece depois de 27,7 s). Fora do quadro: o selo COMO FUNCIONA (y ≤ 201) e o karaokê (y ≥ 1280). Câmera até 1,04× em volta de (600, 620): a janela final vai de x 42 a 1052 e de y 224 a 1077 (calendário e PODE MUDAR MAIS RÁPIDO começam em x 62; anel do medalhão em y 238; pés em y 1065), então nenhum rótulo é cortado."
+      },
+      {
+        "papel": "significado",
+        "titulo": [
+          "O INTERVALO ENTRE",
+          "AS REAVALIAÇÕES"
+        ],
+        "texto": "Quem define esse intervalo é o ortopedista, caso a caso.",
+        "trecho": [
+          27.4,
+          27.6
+        ],
+        "crop": [
+          20,
+          208,
+          1050,
+          887
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.04
+          ],
+          [
+            0.6,
+            1.0
+          ]
+        ],
+        "ancora": [
+          600,
+          620
+        ],
+        "esmaecer": [
+          8,
+          16,
+          12,
+          10
+        ],
+        "dur": 9.6,
+        "t_titulo": 0.4,
+        "t_texto": 1.0,
+        "t_cartao": 5.8,
+        "t_perfil": 6.4,
+        "t_nome": 7.0,
+        "rotulos_reel": [
+          "NO ESTIRÃO",
+          "PODE MUDAR MAIS RÁPIDO"
+        ],
+        "nota_render": "v1: o recuo. Mesmo recorte da tela 2, continuação do trecho (27,4–27,6 s, quadro parado antes do esmaecer do reel); a câmera começa onde a tela 2 parou (1,04×) e recua para o quadro inteiro (a criança inteira, a coluna no medalhão e o calendário). A linha (10 palavras) fica 4,8 s antes do cartão (precisa de 1 s + 0,35 s × 10 = 4,5 s); a chamada (7 palavras) fica 3,8 s no cartão (precisa de 3,45 s)."
+      }
+    ],
+    "fontes": [
+      {
+        "campo": "titulo_t1",
+        "id_fonte": null,
+        "trecho_literal": "",
+        "nota": "pergunta nova (paradoxo da variante A): não afirma fato; vai à aprovação como texto. 'SEM DOR' é condição ('a escoliose que não dói'), não promessa de que nunca dói; a premissa vem das fontes abaixo ('costuma não doer')."
+      },
+      {
+        "campo": "apoio_premissa_t1",
+        "id_fonte": "esc_nao_doi",
+        "trecho_literal": "\"sc\":[\"Escoliose costuma\",\"não doer.\"]"
+      },
+      {
+        "campo": "apoio_premissa_t1",
+        "id_fonte": "cf_escoliose",
+        "trecho_literal": "A escoliose costuma não doer no começo. O sinal está nas costas."
+      },
+      {
+        "campo": "apoio_premissa_t1",
+        "id_fonte": "esc_estirao",
+        "trecho_literal": "O que muda é o intervalo entre as reavaliações, definido caso a caso pelo ortopedista."
+      },
+      {
+        "campo": "desenho_t1",
+        "id_fonte": "cf_escoliose",
+        "trecho_literal": "A coluna faz uma curva pro lado. E gira junto."
+      },
+      {
+        "campo": "rotulos_desenho_t1",
+        "id_fonte": "cf_escoliose",
+        "trecho_literal": "ESCOLIOSE"
+      },
+      {
+        "campo": "rotulos_desenho_t1",
+        "id_fonte": "cf_escoliose",
+        "trecho_literal": "COLUNA"
+      },
+      {
+        "campo": "rotulos_desenho_t1",
+        "id_fonte": "cf_escoliose",
+        "trecho_literal": "CURVA PRO LADO"
+      },
+      {
+        "campo": "rotulos_desenho_t1",
+        "id_fonte": "cf_escoliose",
+        "trecho_literal": "E GIRA JUNTO"
+      },
+      {
+        "campo": "titulo_t2",
+        "id_fonte": "esc_estirao",
+        "trecho_literal": "\"sc\":[\"Coluna crescendo\",\"é coluna mudando.\"]"
+      },
+      {
+        "campo": "texto_t2",
+        "id_fonte": "esc_estirao",
+        "trecho_literal": "Enquanto o esqueleto amadurece, a curva pode progredir."
+      },
+      {
+        "campo": "desenho_t2",
+        "id_fonte": "cf_escoliose",
+        "trecho_literal": "No estirão, a curva pode mudar mais rápido."
+      },
+      {
+        "campo": "rotulos_desenho_t2",
+        "id_fonte": "cf_escoliose",
+        "trecho_literal": "NO ESTIRÃO"
+      },
+      {
+        "campo": "rotulos_desenho_t2",
+        "id_fonte": "cf_escoliose",
+        "trecho_literal": "PODE MUDAR MAIS RÁPIDO"
+      },
+      {
+        "campo": "titulo_t3",
+        "id_fonte": "esc_estirao",
+        "trecho_literal": "\"sc\":[\"O intervalo entre\",\"as reavaliações.\"]"
+      },
+      {
+        "campo": "texto_t3",
+        "id_fonte": "esc_estirao",
+        "trecho_literal": "Quem define esse intervalo é o ortopedista, caso a caso."
+      },
+      {
+        "campo": "desenho_t3",
+        "id_fonte": "cf_escoliose",
+        "trecho_literal": "No estirão, a curva pode mudar mais rápido.",
+        "nota": "o mesmo quadro do estirão, parado, com a câmera recuando para a criança inteira; os rótulos do reel são os mesmos da tela 2"
+      },
+      {
+        "campo": "cta",
+        "id_fonte": "qa_pe_chato_palmilha",
+        "trecho_literal": "Manda pra quem tem essa mesma dúvida",
+        "nota": "verificador 31/10: a chamada anterior ('Manda pra quem tem filho no estirão.', cf_escoliose) era IGUAL à do reel (vo final e cartão de 28-31 s): o story terminaria no mesmo cartão do reel, e nenhum dos 2 aprovados repete a chamada do reel de origem. A nova amarra a dúvida da tela 1 (variante A), é pedido de envio e não se repete nas outras stories do lote; 7 palavras, mesmo tempo de cartão (3,8 s ≥ 3,45 s)."
+      },
+      {
+        "campo": "plano_b_titulo_t2",
+        "id_fonte": "coluna-ter",
+        "trecho_literal": "Nem toda curva é igual",
+        "nota": "NÃO usado no texto atual. Plano B da tela 2 se o revisor achar que 'COLUNA CRESCENDO / É COLUNA MUDANDO' repete o reel: título 'NEM TODA CURVA' / 'É IGUAL' (14/7). Usar só o título: o resto da fonte fala de colete/tratamento, fora da decisão D5 (escoliose = só rastreio)."
+      },
+      {
+        "campo": "plano_b_cta",
+        "id_fonte": "cf_pe_torto",
+        "trecho_literal": "Manda pra quem recebeu esse diagnóstico.",
+        "nota": "NÃO usado. Alternativa se o Rafael preferir destinatário concreto; já é a chamada de stn_pe_torto_gravidez (evitar as duas em stories vizinhas)."
+      }
+    ],
+    "revisao": {
+      "limitacao": "A tela 2 encosta na última frase do reel ('No estirão, a curva pode mudar mais rápido.'), e os rótulos queimados NO ESTIRÃO / PODE MUDAR MAIS RÁPIDO são do reel; o que é novo no story é a reavaliação (telas 1 e 3) e o porquê ('coluna crescendo é coluna mudando'). Se o revisor achar repetição, plano B da tela 2: 'NEM TODA CURVA' / 'É IGUAL' (coluna-ter).",
+      "leitor_frio": "PENDENTE: revisor sem o reel no contexto responde 'do que trata a tela 1?' sobre os quadros do MP4. Passa se disser que é a coluna (escoliose) que faz uma curva e gira, e que a pergunta é por que voltar ao médico se não dói. Pontos de atenção: os blocos como coluna dependem dos rótulos COLUNA e ESCOLIOSE do reel (os dois ficam inteiros no recorte); 'ESCOLIOSE' aparece no título e no rótulo logo abaixo.",
+      "sem_texto": "PENDENTE: revisor sem o reel no contexto responde 'o que a tela 2 mostra?' no quadro final sem o texto do story. Passa se disser que, no estirão (crescimento), a curva da coluna pode mudar mais rápido (calendário + NO ESTIRÃO + PODE MUDAR MAIS RÁPIDO + a curva do medalhão mais curvada).",
+      "contrapeso": "Não se aplica: o intervalo entre reavaliações não é parâmetro que a família controla; a tela 3 manda a decisão ao ortopedista ('caso a caso'), sem número de meses e sem chamada a contato.",
+      "agenda_tema": "Regra de temas (n = 7, bloqueia só < 7 dias): escoliose tem o reel cf_escoliose em 01/11 e cf_mito_mochila_coluna em 17/11. Nas vagas ter/qui/sáb, o único dia livre é ter 10/11 (9 dias depois de 01/11 e exatamente 7 antes de 17/11). Sáb 07/11 (6 dias depois) e qui 12/11 (5 dias antes) ficam bloqueados.",
+      "verificador": "31/10 (verificador adversarial): 14 fontes conferidas (ids em fontes.json 'validos'; trechos literais achados na peça do id — esc_nao_doi/esc_estirao em episodios_escoliose_rastreio.py, cf_escoliose em episodios_entretenimento.py e reels.json, coluna-ter em temporadas_data.py, qa_pe_chato_palmilha em reels.json). Quadros conferidos no mp4 (5,2-7,05 s; 24,3-27,6 s): sem mochila, sem olho, sem lupa, sem selo nem karaokê; rótulos do reel no contexto. Corrigido: a chamada repetia a do reel. Títulos e textos não repetem frase do reel; a sobreposição com a última frase do reel fica só nos rótulos queimados da tela 2 (ver limitacao)."
+    }
+  },
+  {
+    "id": "stn_pe_torto_gravidez",
+    "tema": "pe_torto",
+    "reel_ref": "cf_pe_torto",
+    "reel_sha256": "sha256:5498e5c4d4a3a3138763a7d56d7c780bd423958b8e8cf3fb490a606cd20514dd",
+    "resposta_no_reel_em": 6.97,
+    "angulo": "Pé torto descoberto na gravidez, para a família que recebeu o diagnóstico antes do nascimento: na gestação não há tratamento; ele começa nas primeiras semanas de vida, com gessos no bebê, e o diagnóstico na gravidez serve para planejar. Sem culpar os pais (o 'não é culpa' fica no reel) e sem número de gessos ou semanas na tela.",
+    "variante": "B",
+    "cta": "Manda pra quem recebeu esse diagnóstico.",
+    "telas": [
+      {
+        "papel": "espanto",
+        "titulo": [
+          "DESCOBRIU PÉ TORTO",
+          "NA GRAVIDEZ?"
+        ],
+        "texto": "",
+        "trecho": [
+          1.7,
+          3.0
+        ],
+        "crop": [
+          40,
+          340,
+          960,
+          860
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            2.6,
+            1.0
+          ],
+          [
+            4.5,
+            1.04
+          ]
+        ],
+        "ancora": [
+          640,
+          980
+        ],
+        "esmaecer": [
+          40,
+          16,
+          30,
+          16
+        ],
+        "dur": 4.5,
+        "t_toca": 2.6,
+        "rotulos_reel": [
+          "PRA BAIXO",
+          "PRA DENTRO"
+        ],
+        "nota_render": "v1: a perninha de desenho com o pé já virado; no trecho entram a seta e o rótulo PRA BAIXO (1,7–2,0 s) e depois a seta de giro com PRA DENTRO (2,4–2,8 s); o último quadro (2,97 s) segura os dois rótulos inteiros. Recorte desce até y 1200 para o desenho subir na caixa: na prévia com y até 1130 o 'toca →' cobria o rótulo PRA DENTRO. Fora do recorte: o gancho do reel 'PÉ TORTO SE / CORRIGE COM GESSO?' (y < 312), a legenda karaokê (y > 1270) e o carimbo É COMUM (entra em 3,1 s, depois do trecho). Fica dentro a linha-alvo tracejada fina (y 797, x 187–537), que o reel não legenda: ponto para o leitor frio."
+      },
+      {
+        "papel": "mecanismo",
+        "titulo": [
+          "COMEÇA NAS PRIMEIRAS",
+          "SEMANAS DE VIDA"
+        ],
+        "texto": "Na gestação não há tratamento.",
+        "trecho": [
+          6.97,
+          13.1
+        ],
+        "crop": [
+          150,
+          395,
+          760,
+          725
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            7.2,
+            1.05
+          ]
+        ],
+        "ancora": [
+          640,
+          900
+        ],
+        "esmaecer": [
+          30,
+          16,
+          30,
+          40
+        ],
+        "dur": 7.2,
+        "t_titulo": 0.4,
+        "t_texto": 1.2,
+        "t_toca": 5.6,
+        "rotulos_reel": [],
+        "nota_render": "v1: o rolo de atadura entra rolando pela esquerda (6,97–7,8 s), solta a faixa ao lado do pé, o calendário sem número acende (9,3–10,8 s), a manipulação passa em volta do tornozelo (11–12 s) e o rolo sobe pela perna e vira o primeiro gesso (12,4–13,07 s); o trecho acaba com o gesso inteiro, antes de ele se abrir (13,15 s). O quadro final (gesso no pé do bebê) é o teste sem texto. Fora do recorte: o cartão GESSOS / aos poucos (y < 386), os selos MANIPULAÇÃO SUAVE e TROCA O GESSO (y > 1147) e a legenda karaokê."
+      },
+      {
+        "papel": "significado",
+        "titulo": [
+          "O DIAGNÓSTICO SERVE",
+          "PRA PLANEJAR"
+        ],
+        "texto": "Boa correção descrita quando o tratamento começa cedo.",
+        "trecho": [
+          22.6,
+          25.3
+        ],
+        "crop": [
+          100,
+          380,
+          880,
+          790
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.05
+          ],
+          [
+            0.6,
+            1.0
+          ]
+        ],
+        "ancora": [
+          560,
+          760
+        ],
+        "esmaecer": [
+          100,
+          110,
+          90,
+          110
+        ],
+        "dur": 8.8,
+        "t_titulo": 0.4,
+        "t_texto": 1.0,
+        "t_cartao": 5.3,
+        "t_perfil": 5.9,
+        "t_nome": 6.5,
+        "rotulos_reel": [],
+        "nota_render": "v1: o acompanhamento — o pé recua inteiro, sem mudar, e a linha do tempo sem data nem número aparece embaixo; os 5 marcadores acendem em ouro um a um (23,8–25,0 s) e o último quadro segura os 5 acesos. Nessa cena o reel escurece o fundo em volta do pé (−4/−8/−9 em R/G/B na borda do recorte, além do ±4 que o desloc_do_fundo corrige): com esmaecer pequeno a borda do recorte aparecia como retângulo; com 100/110/90/110 px ela vira vinheta suave (as pontas da linha do tempo esmaecem um pouco). Fora do recorte: os cartões ÓRTESE / pra manter e ACOMPANHAMENTO / no crescimento (y < 356) e a legenda karaokê (y > 1185). Fica dentro o contorno tracejado dourado em volta do pé (a órtese do reel), sem rótulo: ponto para o leitor frio."
+      }
+    ],
+    "fontes": [
+      {
+        "campo": "titulo_t1",
+        "id_fonte": "qa_pe_torto_bebe",
+        "trecho_literal": "Descobri na gravidez que meu bebê tem pé torto, e agora?",
+        "nota": "pergunta reescrita na 2ª pessoa a partir da premissa da pergunta do reel publicado (sc 'Descobri na gravidez:' / 'meu bebê tem pé torto.'); não afirma fato"
+      },
+      {
+        "campo": "desenho_t1",
+        "id_fonte": "cf_pe_torto",
+        "trecho_literal": "O pé torto já nasce virado: pra baixo e pra dentro."
+      },
+      {
+        "campo": "rotulos_desenho_t1",
+        "id_fonte": "cf_pe_torto",
+        "trecho_literal": "PRA BAIXO"
+      },
+      {
+        "campo": "rotulos_desenho_t1",
+        "id_fonte": "cf_pe_torto",
+        "trecho_literal": "PRA DENTRO"
+      },
+      {
+        "campo": "titulo_t2",
+        "id_fonte": "qa_pe_torto_bebe",
+        "trecho_literal": "Ele começa nas primeiras semanas de vida, logo após o nascimento.",
+        "nota": "cortado em 'começa nas primeiras semanas de vida'; o sujeito ('o tratamento') vem da linha da tela"
+      },
+      {
+        "campo": "titulo_t2",
+        "id_fonte": "cf_pe_torto",
+        "trecho_literal": "O tratamento começa nas primeiras semanas de vida"
+      },
+      {
+        "campo": "texto_t2",
+        "id_fonte": "qa_pe_torto_bebe",
+        "trecho_literal": "Na gestação não há tratamento."
+      },
+      {
+        "campo": "desenho_t2",
+        "id_fonte": "cf_pe_torto",
+        "trecho_literal": "Quem corrige? Gessos, aos poucos, começando nas primeiras semanas de vida."
+      },
+      {
+        "campo": "desenho_t2",
+        "id_fonte": "cf_pe_torto",
+        "trecho_literal": "Uma manipulação suave, e o gesso."
+      },
+      {
+        "campo": "titulo_t3",
+        "id_fonte": "qa_pe_torto_bebe",
+        "trecho_literal": "O diagnóstico na gravidez serve pra planejar.",
+        "nota": "MARCADO PARA A APROVAÇÃO: corte no meio ('O diagnóstico [na gravidez] serve pra planejar'); 'na gravidez' fica subentendido pela pergunta da tela 1"
+      },
+      {
+        "campo": "texto_t3",
+        "id_fonte": "qa_pe_torto_bebe",
+        "trecho_literal": "É o padrão de tratamento, com boa correção descrita quando conduzido cedo.",
+        "nota": "MARCADO PARA A APROVAÇÃO: único texto de resultado da fila; passou no cfm_guardrails. Verificação adversarial (31/10): o texto v1 'Boa correção descrita quando cedo.' (tela do reel publicado) sai sem a narração que completava 'quando [conduzido] cedo'; sozinho e logo abaixo de 'O DIAGNÓSTICO SERVE PRA PLANEJAR' ele lia como 'diagnóstico cedo = boa correção'. O sujeito ('o tratamento') vem desta mesma frase; 'começa cedo' = 'conduzido cedo' (o tratamento começa nas primeiras semanas de vida, linha da tela 2)"
+      },
+      {
+        "campo": "texto_t3",
+        "id_fonte": "qa_pe_torto_bebe",
+        "trecho_literal": "\"sc\":[\"Boa correção descrita\",\"quando cedo.\"]",
+        "nota": "a mesma afirmação já desenhada na tela do reel publicado (base da v1)"
+      },
+      {
+        "campo": "texto_t3",
+        "id_fonte": "cf_pe_torto",
+        "trecho_literal": "Começar cedo aproveita a flexibilidade do bebê.",
+        "nota": "sustenta 'o tratamento começa cedo' como o momento que importa; a 'flexibilidade do bebê' (mecanismo do reel) NÃO vai para a tela"
+      },
+      {
+        "campo": "desenho_t3",
+        "id_fonte": "cf_pe_torto",
+        "trecho_literal": "Depois, uma órtese pra manter. E o acompanhamento segue no crescimento."
+      },
+      {
+        "campo": "cta",
+        "id_fonte": "cf_pe_torto",
+        "trecho_literal": "Manda pra quem recebeu esse diagnóstico."
+      },
+      {
+        "campo": "cta",
+        "id_fonte": "qa_pe_torto_bebe",
+        "trecho_literal": "\"sc\":[\"Manda pra quem\",\"recebeu esse diagnóstico.\"]"
+      }
+    ],
+    "revisao": {
+      "leitor_frio": "PENDENTE (v1): revisor sem o reel no contexto responde 'do que trata a tela 1?' sobre os quadros do MP4. Passa se disser que é o pé do bebê virado (pra baixo e pra dentro) e que a pergunta é para quem soube do pé torto na gravidez. Pontos a observar: a linha-alvo tracejada sem legenda (tela 1 e 2) e o contorno tracejado da órtese sem rótulo (tela 3).",
+      "sem_texto": "PENDENTE (v1): revisor sem o reel no contexto responde 'o que a tela 2 mostra?' no quadro final sem o texto do story. Passa se disser que o pé/perna do bebê recebe gesso (atadura enrolada), ou seja, que o tratamento acontece no bebê, com gesso.",
+      "contrapeso": "'Boa correção descrita quando o tratamento começa cedo.' é texto de resultado: condicional ('quando o tratamento começa cedo'), atribuído ao que está descrito ('descrita'), sem número nem promessa, e o desenho da tela 3 é acompanhamento (linha do tempo), não resultado. Se o Rafael preferir a fila sem texto de resultado: plano B 'Assusta, mas há caminho.' (qa_pe_torto_bebe, legenda: 'Descobrir na gravidez que o bebê tem pé torto assusta, mas há caminho'). O plano B da v1 ('Manipulação suave e gessos em etapas.') foi DESCARTADO na verificação de 31/10: repete o mecanismo central do reel cf_pe_torto ('Uma manipulação suave, e o gesso.' / 'Gessos, aos poucos') e não é 'significado'. Sem culpa dos pais na tela; os sinais de alarme do gesso ficam na legenda do reel.",
+      "verificacao_adversarial": "31/10 (v1 -> v1.1): as 15 fontes da v1 são literais e de ids válidos (cf_pe_torto = lote aprovado, ainda NÃO publicado; qa_pe_torto_bebe publicado em 19/08), mais 1 acrescentada para o texto novo da tela 3; recortes conferidos quadro a quadro no mp4 (sha256 confere): tela 1 só perna + linha tracejada + PRA BAIXO/PRA DENTRO (o gancho do reel fica acima do recorte e o carimbo É COMUM não aparece até 3,1 s), tela 2 sem o cartão GESSOS e sem os selos, tela 3 sem os cartões ÓRTESE/ACOMPANHAMENTO e sem a karaokê (vinheta: diferença de 2–4 níveis de cinza, imperceptível). Única troca: o texto da tela 3 (ver fontes). A PRÉVIA de tmp_pe_torto/previa é da v1 (texto antigo): re-renderizar antes da aprovação. AGENDA: o reel cf_pe_torto está projetado para 02/11; pela regra de temas (7 dias, mesmo tema pe_torto) e pelo portão ('Vídeo completo no perfil' exige o reel no grid há 2 dias), esta story só pode sair a partir de 09/11."
+    }
+  },
+  {
+    "id": "stn_quadril_ultrassom",
+    "tema": "quadril_bebe",
+    "reel_ref": "cf_quadril_bebe",
+    "reel_sha256": "sha256:625fd84aa942400b13aee01426dc9a0c908311eb2243e60c279465c217700140",
+    "resposta_no_reel_em": 25.8,
+    "angulo": "Ultrassom do quadril do bebê com laudo 'tipo 2a', a pergunta nº 1 de quem recebe o laudo: em bebê novinho costuma ser imaturidade, e o caminho é o acompanhamento seriado, com o ortopedista pediátrico interpretando a escala. Responde ao laudo a partir do reel cf_quadril_bebe (encaixe, exame do bebê às vezes com ultrassom).",
+    "variante": "B",
+    "cta": "Manda pra quem recebeu esse laudo.",
+    "telas": [
+      {
+        "papel": "espanto",
+        "titulo": [
+          "ULTRASSOM DO QUADRIL",
+          "VEIO 'TIPO 2A'?"
+        ],
+        "texto": "",
+        "trecho": [
+          10.1,
+          11.25
+        ],
+        "crop": [
+          66,
+          300,
+          940,
+          760
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            2.6,
+            1.0
+          ],
+          [
+            4.5,
+            1.03
+          ]
+        ],
+        "ancora": [
+          536,
+          900
+        ],
+        "esmaecer": [
+          16,
+          16,
+          30,
+          16
+        ],
+        "dur": 4.5,
+        "t_toca": 2.6,
+        "rotulos_reel": [
+          "EXAME DO BEBÊ",
+          "ÀS VEZES, COM ULTRASSOM"
+        ],
+        "nota_render": "v1: o encaixe do quadril (canto de cima, ainda com o arco vermelho de 'não encaixa bem') e o cartão do exame do bebê; o ícone do transdutor entra pela direita em 10,45 s do reel (0,35 s na tela) e fica parado ao lado do cartão. Medido no mp4: o transdutor aparece entre 10,4 e 10,6 s e o encaixe escurece a partir de 11,3 s (o trecho acaba antes). No reel o transdutor NÃO vai até o encaixe: fica ao lado do cartão; não há tela de exame nem imagem de ultrassom. O selo COMO FUNCIONA do reel (y 168-190) fica acima do recorte e o karaokê 'ÀS VEZES COM ULTRASSOM.' (y ≥ 1270) fica abaixo. Recorte com folga embaixo do cartão e âncora na base dele: o cartão termina em y ~1263 da story, acima da pílula 'toca →' (y 1300-1355), também no zoom final; recorte centrado no conteúdo (x 102-971 do reel) e zoom final 1,03 (com 1,05 a borda direita do cartão e a ponta do transdutor saíam da janela). Rótulo a mais em relação ao briefing: 'EXAME DO BEBÊ' (no mesmo cartão, logo acima de 'ÀS VEZES, COM ULTRASSOM'; não dá para tirar sem tirar o encaixe)."
+      },
+      {
+        "papel": "mecanismo",
+        "titulo": [
+          "COSTUMA SER",
+          "IMATURIDADE"
+        ],
+        "texto": "O ultrassom é a triagem da displasia do quadril.",
+        "trecho": [
+          27.3,
+          28.15
+        ],
+        "crop": [
+          110,
+          380,
+          520,
+          590
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            6.0,
+            1.1
+          ]
+        ],
+        "ancora": [
+          370,
+          650
+        ],
+        "esmaecer": [
+          30,
+          20,
+          30,
+          16
+        ],
+        "dur": 6.0,
+        "t_titulo": 0.4,
+        "t_texto": 1.2,
+        "t_toca": 3.6,
+        "rotulos_reel": [],
+        "nota_render": "v2 (verificador adversarial, 31/10): só o encaixe, de perto, PARADO — a bola já no centro da concha, sem arco vermelho; o movimento é a câmera (zoom 1,0 -> 1,1), como na tela 2 aprovada de stn_quanto_tempo. A v1 usava 24,5-27,3 s: a bola com o arco vermelho de 'NÃO ENCAIXA BEM' (o desenho da displasia no reel) subindo para o centro — no reel é o SUSPENSÓRIO reposicionando o quadril. Sob 'COSTUMA SER IMATURIDADE' isso dizia 'o quadril que não encaixa se encaixa sozinho com o tempo': mecanismo sem fonte (nenhuma peça publicada diz isso; o 'muitos evoluem bem' da fonte foi deixado fora da tela justamente por soar como promessa), contrário ao reel de origem (quem move a bola é o suspensório) e anatomicamente fora do 'tipo 2a' (no 2a a cabeça do fêmur está centrada; o que é imaturo é a concha). Medido no mp4 (medir.py, 10 q/s): vermelho no quadril = 0 a partir de 26,6 s e a bola PARADA (contagem de pixels do quadril constante) de 27,3 a 28,1 s; o reel escurece para o cartão em 28,2 s. Recorte inalterado: calendário (y 232-338) fora pelo topo (y 380), suspensório (x ≥ 705) fora pela borda direita (x 630), rótulos do suspensório (y ≥ 996) fora por baixo (970)."
+      },
+      {
+        "papel": "significado",
+        "titulo": [
+          "ACOMPANHAMENTO",
+          "SERIADO"
+        ],
+        "texto": "Quem interpreta a escala do laudo é o ortopedista pediátrico.",
+        "trecho": [
+          27.3,
+          28.15
+        ],
+        "crop": [
+          44,
+          210,
+          640,
+          760
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.25
+          ],
+          [
+            1.4,
+            1.0
+          ]
+        ],
+        "ancora": [
+          370,
+          890
+        ],
+        "esmaecer": [
+          16,
+          20,
+          30,
+          16
+        ],
+        "dur": 9.7,
+        "t_titulo": 0.4,
+        "t_texto": 1.0,
+        "t_cartao": 6.2,
+        "t_perfil": 6.8,
+        "t_nome": 7.4,
+        "rotulos_reel": [
+          "AO LONGO DE SEMANAS",
+          "com acompanhamento de perto"
+        ],
+        "nota_render": "v1: a câmera se afasta (zoom 1,25 -> 1,0 em 1,4 s, âncora embaixo do encaixe) e o calendário do reel entra por cima: no início só o encaixe, com a bola já no centro da concha; no fim, o encaixe inteiro com o calendário 'AO LONGO DE SEMANAS / com acompanhamento de perto'. Com zoom 1,25 e âncora em y 890 o topo da janela fica em y 345 (calendário fora); com zoom 1,0 o recorte vai de y 210 (selo COMO FUNCIONA do reel em y 168-190, fora) a y 970 (rótulos do suspensório em y ≥ 996, fora); borda direita em x 684 (suspensório em x ≥ 705, fora). O trecho acaba em 28,15 s, antes de o reel escurecer para o cartão (28,2 s). O aviso fica 5,2 s na tela (10 palavras: 1 s + 0,35 s por palavra = 4,5 s); a chamada fica 3,5 s no cartão (6 palavras: 3,1 s)."
+      }
+    ],
+    "fontes": [
+      {
+        "campo": "titulo_t1",
+        "id_fonte": "qa_ultrassom_quadril",
+        "trecho_literal": "\"sc\":[\"Ultrassom do quadril\",\"veio 'tipo 2a'. É grave?\"]",
+        "nota": "premissa do título da tela 1; a tela corta 'É grave?' e fica só a pergunta do laudo"
+      },
+      {
+        "campo": "apoio_premissa_t1",
+        "id_fonte": "qa_ultrassom_quadril",
+        "trecho_literal": "O ultrassom do quadril do meu bebê veio 'tipo 2a', é grave? É a triagem da displasia do quadril."
+      },
+      {
+        "campo": "desenho_t1",
+        "id_fonte": "cf_quadril_bebe",
+        "trecho_literal": "A avaliação é no exame do bebê, às vezes com ultrassom."
+      },
+      {
+        "campo": "rotulos_desenho_t1",
+        "id_fonte": "cf_quadril_bebe",
+        "trecho_literal": "EXAME DO BEBÊ"
+      },
+      {
+        "campo": "rotulos_desenho_t1",
+        "id_fonte": "cf_quadril_bebe",
+        "trecho_literal": "ÀS VEZES, COM ULTRASSOM"
+      },
+      {
+        "campo": "desenho_t1",
+        "id_fonte": "cf_quadril_bebe",
+        "trecho_literal": "O quadril é um encaixe."
+      },
+      {
+        "campo": "titulo_t2",
+        "id_fonte": "qa_ultrassom_quadril",
+        "trecho_literal": "\"sc\":[\"Costuma ser\",\"imaturidade.\"]"
+      },
+      {
+        "campo": "resposta_t2",
+        "id_fonte": "qa_ultrassom_quadril",
+        "trecho_literal": "Em bebê novinho, 'tipo 2a' costuma indicar imaturidade, não doença estabelecida.",
+        "nota": "atenuante completo da fonte: o título 'COSTUMA SER IMATURIDADE' é o sc publicado; 'em bebê novinho' e 'não doença estabelecida' ficam na fonte"
+      },
+      {
+        "campo": "texto_t2",
+        "id_fonte": "qa_ultrassom_quadril",
+        "trecho_literal": "O ultrassom é a triagem da displasia do quadril."
+      },
+      {
+        "campo": "desenho_t2",
+        "id_fonte": "cf_quadril_bebe",
+        "trecho_literal": "O quadril é um encaixe.",
+        "nota": "v2: a tela 2 mostra só o encaixe parado (bola já no centro da concha), sem movimento da bola. A v1 citava aqui 'Achado cedo, costuma ser tratado com um suspensório que reposiciona o quadril ao longo de semanas.' para justificar a bola voltando ao centro como 'encaixe que amadurece' — a fonte diz o contrário (é o suspensório que reposiciona), por isso o trecho saiu"
+      },
+      {
+        "campo": "titulo_t3",
+        "id_fonte": "qa_ultrassom_quadril",
+        "trecho_literal": "\"sc\":[\"Acompanhamento\",\"seriado.\"]"
+      },
+      {
+        "campo": "apoio_titulo_t3",
+        "id_fonte": "qa_ultrassom_quadril",
+        "trecho_literal": "Muitos evoluem bem com acompanhamento seriado — e é ele que confirma a evolução.",
+        "nota": "só apoio: 'muitos evoluem bem' NÃO vai para a tela (soaria como promessa)"
+      },
+      {
+        "campo": "texto_t3",
+        "id_fonte": "qa_ultrassom_quadril",
+        "trecho_literal": "Quem interpreta a escala do laudo é o ortopedista pediátrico."
+      },
+      {
+        "campo": "rotulos_desenho_t3",
+        "id_fonte": "cf_quadril_bebe",
+        "trecho_literal": "AO LONGO DE SEMANAS",
+        "nota": "verificador 31/10: no reel este rótulo é a DURAÇÃO DO SUSPENSÓRIO ('reposiciona o quadril ao longo de semanas, com acompanhamento de perto'); na story ele fica sob 'ACOMPANHAMENTO SERIADO' e se lê como o prazo do acompanhamento do 'tipo 2a'. A fonte do laudo (qa_ultrassom_quadril) não dá prazo. Não é falso nem alarmante, mas é rótulo do reel com sentido trocado — ponto para o leitor frio; se pesar, a saída é recortar o calendário (topo do recorte em y ≥ 345) e deixar só o encaixe"
+      },
+      {
+        "campo": "rotulos_desenho_t3",
+        "id_fonte": "cf_quadril_bebe",
+        "trecho_literal": "com acompanhamento de perto"
+      },
+      {
+        "campo": "cta",
+        "id_fonte": "qa_ultrassom_quadril",
+        "trecho_literal": "\"sc\":[\"Manda pra quem\",\"recebeu esse laudo.\"]"
+      },
+      {
+        "campo": "plano_b_angulo",
+        "id_fonte": "pnc_displasia_quadril",
+        "trecho_literal": "Displasia do desenvolvimento do quadril: achar cedo muda o desfecho.",
+        "nota": "não vai para a tela; ângulo de troca se o teste sem texto da tela 2 falhar"
+      }
+    ],
+    "revisao": {
+      "leitor_frio": "PENDENTE (v1, sem leitor frio ainda): revisor sem o reel no contexto responde 'do que trata a tela 1?' sobre os quadros do MP4 v1. Pontos a observar: o encaixe é pequeno no canto de cima do recorte; 'EXAME DO BEBÊ' entra junto de 'ÀS VEZES, COM ULTRASSOM'; 'displasia' (tela 2) e 'escala do laudo' (tela 3) são palavras técnicas — quem recebeu o laudo conhece as duas, o leitor geral talvez não.",
+      "sem_texto": "PENDENTE (critério refeito na v2): revisor sem o reel no contexto responde 'o que a tela 2 mostra?' no quadro final sem o texto do story. Passa se disser 'um quadril/encaixe: a bola dentro da concha' (articulação no lugar). NÃO deve dizer que o quadril 'se conserta/se encaixa sozinho' — o critério da v1 ('a bola se encaixa melhor com o tempo') pedia justamente uma afirmação sem fonte e contrária ao reel (no reel quem reposiciona a bola é o suspensório), e a v2 deixou de usar essa animação. Se o leitor achar a tela 2 fraca sem texto, troca-se o ângulo para 'achar cedo muda o desfecho' (pnc_displasia_quadril).",
+      "contrapeso": "Não se aplica: o resultado do laudo não é parâmetro que a família controla; a story manda ao acompanhamento seriado com o ortopedista pediátrico e não promete evolução ('muitos evoluem bem' fica fora da tela).",
+      "verificador_adversarial": "31/10 (v1 -> v2). (1) Fontes: os 17 trechos literais existem na peça do id (qa_ultrassom_quadril em episodios_qa_respondendo.py; cf_quadril_bebe em reels.json/episodios_entretenimento.py; pnc_displasia_quadril em reels.json) e os 3 ids estão em fontes.json 'validos'. Único trecho que NÃO sustentava o que a tela mostrava: desenho_t2 (o suspensório citado para justificar a bola 'amadurecendo') — trocado. (2) Repetição do reel: nenhum texto repete frase do cf_quadril_bebe; a v1 repetia o MECANISMO central do reel na tela 2 (a animação do suspensório reposicionando a bola, sem o suspensório) — saiu. A tela 3 ainda carrega o rótulo final do reel 'AO LONGO DE SEMANAS / com acompanhamento de perto' (ver nota da fonte). (3) CFM/segurança/português: sem promessa no texto, sem DM, sem altura/estética, sem culpa dos pais, acentuação ok; o risco era a PROMESSA POR IMAGEM da tela 2 (quadril que se conserta sozinho), corrigido. Pontos para o leitor frio: 'displasia' (tela 2) e 'escala do laudo' (tela 3) sem explicação; corte da tela 1 (encaixe com arco vermelho, pequeno) para a tela 2 (encaixe limpo) — conferir que não se lê como antes-e-depois. (4) Recorte: tela 1 sem rótulo fora de contexto além de 'EXAME DO BEBÊ' (coerente com a pergunta); tela 2 v2 sem rótulo; tela 3 calendário (acima). (5) problemas_de_formato = [] e problemas_do_texto = []. AGENDA: o reel cf_quadril_bebe ainda NÃO saiu (agendado sex 06/11): pelo portão a story só pode sair ≥ 2 dias depois do reel no grid, e pela regra de temas (mesmo tema quadril_bebe) ≥ 7 dias — primeira vaga de story (ter/qui/sáb) = sáb 14/11. A prévia da v2 precisa ser refeita (ferramentas/previa_story.py) e o render, idem."
+    }
+  },
+  {
+    "id": "stn_torta_ou_curta",
+    "tema": "eixo",
+    "reel_ref": "cf_eixo_perna",
+    "reel_sha256": "sha256:ab572b93f96b56b91620a6c6097b0d48e5d2eca2b47d8470f614948ba6e76c6e",
+    "resposta_no_reel_em": 5.13,
+    "angulo": "Paradoxo, para quem convive com uma perna diferente: perna torta ou perna curta? O reel TODA PERNA TEM UMA LINHA (cf_eixo_perna) explica o eixo, a carga e a osteotomia; o story separa os dois problemas do nicho: na perna torta o eixo do osso está desviado (título + desenho da tela 2), no encurtamento o osso é mais curto, mas o eixo está reto (texto da tela 2); são problemas diferentes e muitas vezes aparecem juntos no mesmo paciente (tela 3). Refaz o ângulo do episódio deformidade_angular no formato COMO FUNCIONA EM 3 TOQUES, com o desenho do reel.",
+    "variante": "A",
+    "cta": "Manda pra quem tem essa mesma dúvida — ou vive isso agora.",
+    "telas": [
+      {
+        "papel": "espanto",
+        "titulo": [
+          "PERNA TORTA",
+          "OU PERNA CURTA?"
+        ],
+        "texto": "",
+        "trecho": [
+          0.1,
+          1.1
+        ],
+        "crop": [
+          300,
+          440,
+          480,
+          790
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            2.6,
+            1.0
+          ],
+          [
+            4.5,
+            1.05
+          ]
+        ],
+        "ancora": [
+          540,
+          770
+        ],
+        "esmaecer": [
+          40,
+          16,
+          30,
+          16
+        ],
+        "dur": 4.5,
+        "t_toca": 2.6,
+        "rotulos_reel": [],
+        "nota_render": "Os dois ossos do joelho (coxa e canela) retos, com a linha do eixo ainda fraca (tracejado cinza-claro, antes de acender em dourado), sem rótulo nenhum. O trecho acaba em 1,1 s porque em ~1,17 s a câmera do reel desliza os ossos para a esquerda e entra o rótulo LINHA INVISÍVEL (linha que se vê, lida fora de contexto); depois vêm O EIXO, PESO, REPARTE O PESO e as setas de carga, e a perna só entorta em 5,13 s — não há trecho limpo 'até a perna entortar', então a capa fica com a perna reta e a pergunta. FORA do recorte: o gancho do reel TODA PERNA TEM / UMA LINHA (acaba em y ~300; o recorte começa em 440), a legenda karaokê (começa em y ~1285; o recorte acaba em 1230) e o brilho do topo do fêmur (esmaecido). Quadro que segura: ossos retos, linha fraca. Tela 1 acaba 4,03 s antes de resposta_no_reel_em."
+      },
+      {
+        "papel": "mecanismo",
+        "titulo": [
+          "O EIXO DO OSSO",
+          "ESTÁ DESVIADO"
+        ],
+        "texto": "No encurtamento, o osso é mais curto, mas o eixo está reto.",
+        "trecho": [
+          5.2,
+          6.1
+        ],
+        "crop": [
+          240,
+          770,
+          400,
+          490
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.0
+          ],
+          [
+            6.0,
+            1.05
+          ]
+        ],
+        "ancora": [
+          420,
+          900
+        ],
+        "esmaecer": [
+          14,
+          16,
+          30,
+          16
+        ],
+        "dur": 6.5,
+        "t_titulo": 0.4,
+        "t_texto": 1.2,
+        "t_toca": 3.6,
+        "rotulos_reel": [],
+        "nota_render": "Só o osso de baixo (a canela), do platô até a ponta: começa reto e, de 5,13 a 6,07 s, entorta para um lado com a linha dourada do eixo dobrando junto (passa no teste sem texto: um osso e o seu eixo desviando). O recorte começa em y 770, logo abaixo da ponta das setas de carga (amarelo até y 755, contorno até ~762), que ficam no osso de cima: por isso o fêmur fica fora. Começa em 5,2 s (em ~5,12 s um traço cinza atravessa a canela por 1 quadro) e acaba em 6,1 s (último quadro 6,067 s), antes da seta grande, do rótulo CARGA DEMAIS e da linha-guia que entram em 6,2 s; a seta vermelha, o brilho vermelho e o medidor ANTES DA HORA vêm depois (6,9 s em diante). O rótulo REPARTE O PESO some em ~5,3 s e fica acima/à direita do recorte (linha-guia acima de y 765). FORA: legenda karaokê (y ≥ ~1280; o recorte acaba em 1260). Escala do encaixe ~1,66×. Texto de 12 palavras: 5,3 s na tela (precisa de 5,2 s; dur 6,0 -> 6,5 na verificação de 31/10, a câmera segura o último quadro, osso torto, nos 0,5 s a mais)."
+      },
+      {
+        "papel": "significado",
+        "titulo": [
+          "SÃO PROBLEMAS",
+          "DIFERENTES"
+        ],
+        "texto": "Muitas vezes os dois aparecem juntos no mesmo paciente.",
+        "trecho": [
+          20.2,
+          21.03
+        ],
+        "crop": [
+          240,
+          650,
+          380,
+          560
+        ],
+        "zoom": [
+          [
+            0.0,
+            1.05
+          ],
+          [
+            0.6,
+            1.0
+          ]
+        ],
+        "ancora": [
+          410,
+          800
+        ],
+        "esmaecer": [
+          40,
+          16,
+          30,
+          16
+        ],
+        "dur": 10.7,
+        "t_titulo": 0.4,
+        "t_texto": 1.0,
+        "t_cartao": 5.4,
+        "t_perfil": 6.0,
+        "t_nome": 6.6,
+        "rotulos_reel": [],
+        "nota_render": "A canela já cortada (traço escuro no meio do osso): de 20,2 a ~21,03 s a parte de baixo gira até a linha dourada ficar reta sobre a linha-fantasma branca (o eixo certo); quadro que segura: osso reto, linha reta. Começa depois do zoom da câmera do reel (que vai até ~20,1 s) e acaba em 21,03 s (último quadro 21,0 s), antes do estouro de brilhos e da linha-guia do rótulo EIXO CERTO (21,067 s) e do anel do fixador (21,4 s): rótulo e brilhos ficam fora do trecho. O recorte começa em y 650, abaixo da articulação: o anel e o brilho vermelho da carga no joelho (y 530–640) ficam fora; o topo esmaece. FORA também: MEDE O EIXO/ONDE/QUANTO (acabam em 19,4 s), FIXA, JÁ ALINHADO, REORGANIZAR A CARGA e FUNÇÃO, NUNCA ESTÉTICA (21,8 s em diante) e a legenda karaokê (y ≥ ~1285). Texto de 9 palavras: 4,4 s até o cartão (precisa de 4,15 s); chamada de 12 palavras pela régua do gerador (o travessão conta): 5,3 s no cartão (precisa de 5,2 s; dur 9,4 -> 10,7 na verificação de 31/10)."
+      }
+    ],
+    "fontes": [
+      {
+        "campo": "titulo_t1",
+        "id_fonte": "deformidade_angular",
+        "trecho_literal": "PERNA TORTA OU CURTA?",
+        "nota": "pergunta, não afirma fato; 'OU PERNA CURTA?' repete 'perna' para a linha ler sozinha (11/15 caracteres)"
+      },
+      {
+        "campo": "apoio_premissa_t1",
+        "id_fonte": "deformidade_angular",
+        "trecho_literal": "Perna torta e perna curta são problemas diferentes — e o tratamento também."
+      },
+      {
+        "campo": "desenho_t1",
+        "id_fonte": "cf_eixo_perna",
+        "trecho_literal": "Toda perna tem uma linha invisível: o eixo."
+      },
+      {
+        "campo": "titulo_t2",
+        "id_fonte": "deformidade_angular",
+        "trecho_literal": "\"sc\":[\"O eixo do osso\",\"está desviado.\"]"
+      },
+      {
+        "campo": "apoio_t2",
+        "id_fonte": "cf_eixo_perna",
+        "trecho_literal": "Na deformidade angular, o eixo do osso está desviado"
+      },
+      {
+        "campo": "texto_t2",
+        "id_fonte": "deformidade_angular",
+        "trecho_literal": "No encurtamento, o osso é mais curto, mas o eixo está reto.",
+        "nota": "verificação de 31/10: o texto antigo ('Deformidade angular e encurtamento pedem correções distintas.') deixava a metade 'perna curta' da pergunta sem explicação e punha 'deformidade angular' na tela sem dizer o que é; esta frase é a vo da cena 3 da fonte"
+      },
+      {
+        "campo": "apoio_t3",
+        "id_fonte": "deformidade_angular",
+        "trecho_literal": "Deformidade angular e encurtamento pedem correções distintas.",
+        "nota": "ex-texto_t2 (fora da tela desde a verificação de 31/10); apoio de 'SÃO PROBLEMAS DIFERENTES'"
+      },
+      {
+        "campo": "apoio_t2",
+        "id_fonte": "deformidade_angular",
+        "trecho_literal": "Na deformidade angular o eixo do osso está desviado; no encurtamento, o osso é mais curto com o eixo reto.",
+        "nota": "o que cada termo quer dizer; a 2ª metade agora está na tela 2 (pela vo da cena 3, mesma fonte)"
+      },
+      {
+        "campo": "desenho_t2",
+        "id_fonte": "cf_eixo_perna",
+        "trecho_literal": "Torta, joga carga demais num lado.",
+        "nota": "só o instante em que o osso de baixo entorta; as setas de carga (o 'joga carga'), a seta vermelha e o medidor ficam fora do recorte/trecho"
+      },
+      {
+        "campo": "titulo_t3",
+        "id_fonte": "deformidade_angular",
+        "trecho_literal": "\"sc\":[\"São problemas\",\"diferentes.\"]"
+      },
+      {
+        "campo": "texto_t3",
+        "id_fonte": "deformidade_angular",
+        "trecho_literal": "Muitas vezes os dois aparecem juntos no mesmo paciente."
+      },
+      {
+        "campo": "apoio_t3",
+        "id_fonte": "cf_eixo_perna",
+        "trecho_literal": "depois, o osso é cortado, reposicionado no eixo certo e fixado para cicatrizar alinhado",
+        "nota": "o que o desenho da tela 3 mostra; não entra na tela"
+      },
+      {
+        "campo": "desenho_t3",
+        "id_fonte": "cf_eixo_perna",
+        "trecho_literal": "Corta, reposiciona no eixo certo e fixa, pra cicatrizar já alinhado."
+      },
+      {
+        "campo": "cta",
+        "id_fonte": "qa_perna_encurtou_acidente",
+        "trecho_literal": "Manda pra quem tem essa mesma dúvida — ou vive isso agora.",
+        "nota": "verificação de 31/10: a chamada antiga ('Manda pra quem convive com uma perna torta.', cf_eixo_perna) era a frase final do reel de origem, falada e escrita em letra grande por 5 s, e só falava da perna torta; esta responde à pergunta da tela 1 (variante A). A mesma frase fecha outros 7 Q&As válidos (qa_gaiola_perna, qa_osso_nao_cola...); o resto da legenda da fonte ('chama no direct') NÃO foi usado"
+      }
+    ],
+    "revisao": {
+      "leitor_frio": "PENDENTE: revisor sem o reel no contexto responde 'do que trata a tela 1?' sobre os quadros do MP4. Risco conhecido (lição de 24-25/10, 'a imagem tem de bater com a pergunta'): a pergunta fala de perna torta ou curta e o desenho mostra os ossos do joelho RETOS, com uma linha fraca no meio, sem palavra que diga o que é a linha. Passa se disser que é sobre perna torta x perna curta (os ossos da perna). Na tela 2 (verificação de 31/10), 'deformidade angular' saiu da tela; 'encurtamento' vem explicado na própria linha ('o osso é mais curto, mas o eixo está reto'). Risco novo: o leitor ler 'eixo está reto' contra o osso que entorta no desenho; passa se entender que o título/desenho são a perna torta e a linha é a perna curta.",
+      "sem_texto": "PENDENTE: revisor sem o reel no contexto responde 'o que a tela 2 mostra?' no quadro final sem o texto do story. Passa se disser que o osso entortou e a linha do meio (o eixo) entortou junto. Tela 3 (não exigido): o desenho mostra a CORREÇÃO do eixo (osso cortado, parte de baixo volta a ficar reta), não 'dois problemas diferentes'; o traço do corte não tem legenda e pode ser lido como fratura — o reel não tem desenho de encurtamento para pôr ao lado.",
+      "contrapeso": "Não se aplica: o tema não é parâmetro que o paciente controla. O story não promete correção nem resultado (não fala de tratamento na tela; o desenho da tela 3 mostra a correção do eixo sem texto que prometa nada), não culpa ninguém e não manda dúvida para o direct; o sinal de alerta da fonte ('Perna que muda de forma ... procure avaliação') fica no reel e na legenda dele. 'o alongamento resolve sozinho' (mesma fonte) não foi usado; 'dismetria' não aparece.",
+      "verificacao_31_10": "Verificador adversarial: 14 fontes conferidas (ids válidos, trechos literais nas peças). Corrigido: (1) chamada = frase final do reel cf_eixo_perna (repetição literal; os 2 stories aprovados não repetem a do reel) -> chamada de qa_perna_encurtou_acidente; (2) tela 2 só explicava a perna torta e punha 'deformidade angular' sem explicação -> texto com o encurtamento (vo da fonte); tempos refeitos (tela 2 dur 6,5; tela 3 dur 10,7). Recortes/trechos conferidos quadro a quadro (quadros 3–32, 156–182, 606–630 do mp4 sha ab572b93…): nenhum rótulo do reel, gancho ou karaokê entra. Fica: o desenho da tela 3 é a osteotomia (mecanismo central do reel) e não 'dois problemas'; o corte sem legenda pode ser lido como fratura. Tema: o story é 'eixo' pela classificação da fonte, mas metade fala de perna curta — na agenda, cf_discrepancia_causas (discrepancia) sai em 13/11, dentro da janela do story (11/11–20/11)."
+    }
   }
- },
- {
-  "id": "stn_pe_pra_dentro",
-  "tema": "pe_virado",
-  "reel_ref": "cf_pe_virado",
-  "reel_sha256": "sha256:ccf3ad4dfa9e449d48c8e8056c0c9067920b969bf221546dece7f1c9275c812f",
-  "resposta_no_reel_em": 4.53,
-  "angulo": "Andar de pombinho (pé virado para dentro na criança), para a mãe que vê o filho andar em casa: o giro é uma leve torção do crescimento que costuma se ajustar, e os sinais que pedem avaliação. Refaz a sequência parada s_pnc_pe_pra_dentro.",
-  "variante": "B",
-  "cta": "Manda pra quem vive com essa dúvida.",
-  "telas": [
-   {
-    "papel": "espanto",
-    "titulo": ["A CRIANÇA ANDA COM", "O PÉ PRA DENTRO?"],
-    "texto": "",
-    "trecho": [1.5, 2.7],
-    "crop": [390, 360, 610, 690],
-    "zoom": [[0.0, 1.0], [2.1, 1.0], [4.5, 1.04]],
-    "ancora": [600, 780],
-    "foco_x": 600,
-    "esmaecer": [0, 20, 40, 16],
-    "dur": 4.5,
-    "t_toca": 2.6,
-    "rotulos_reel": ["PRA DENTRO"],
-    "nota_render": "v2 (leitor frio de 24/10): o pombo fica fora do recorte (x < 365 no reel); o rótulo PRA DENTRO do reel entra INTEIRO, com a linha até a pegada (o 'risquinho dourado solto' era o toco dessa linha, cortado pelo recorte antigo); pegadas 1,3× maiores; o trecho começa logo antes de os pés virarem e as setas entrarem."
-   },
-   {
-    "papel": "mecanismo",
-    "titulo": ["LEVES GIROS", "DO CRESCIMENTO"],
-    "texto": "Variações comuns",
-    "trecho": [4.55, 9.15],
-    "crop": [290, 365, 695, 710],
-    "zoom": [[0.0, 1.0], [6.0, 1.05]],
-    "ancora": [653, 700],
-    "foco_x": 600,
-    "esmaecer": [0, 0, 30, 0],
-    "dur": 6.0,
-    "t_titulo": 0.4,
-    "t_texto": 1.2,
-    "t_toca": 3.6,
-    "rotulos_reel": ["PÉ", "CANELA", "COXA"],
-    "nota_render": "v2: recorte 1,3× maior (sem o vazio embaixo); o trecho segue até o pulso da rotação, em que pé, canela e coxa acendem um de cada vez com a setinha de giro (antes só a coxa tinha seta); o selo ROTAÇÃO NATURAL fica acima do recorte."
-   },
-   {
-    "papel": "significado",
-    "titulo": ["A ROTAÇÃO COSTUMA", "SE AJUSTAR"],
-    "texto": "Assimetria, dor, quedas demais ou piora pedem avaliação.",
-    "trecho": [12.75, 14.25],
-    "crop": [320, 210, 440, 565],
-    "zoom": [[0.0, 1.05], [0.6, 1.0]],
-    "ancora": [540, 500],
-    "esmaecer": [12, 0, 20, 0],
-    "dur": 9.5,
-    "t_titulo": 0.4,
-    "t_texto": 1.0,
-    "t_cartao": 6.0,
-    "t_perfil": 6.6,
-    "t_nome": 7.2,
-    "rotulos_reel": [],
-    "nota_render": "v2: só as pernas, com os pés alinhando; o carimbo SOZINHO (concorda com 'o pé' do reel e, ao lado de 'A ROTAÇÃO', lia como erro de concordância), NA MAIORIA DAS VEZES, o pombo, as pegadas deitadas e o calendário ficam fora do recorte; o trecho acaba antes do carimbo. O aviso fica 5 s na tela (8 palavras: 1 s + 0,35 s por palavra = 3,8 s)."
-   }
-  ],
-  "fontes": [
-   {"campo": "titulo_t1", "id_fonte": null, "trecho_literal": "", "nota": "pergunta nova, não afirma fato; vai à aprovação como texto. Referência no acervo (não citação): pnc_pe_pra_dentro, sc 'Anda com o pé' / 'virado pra dentro?' e vo 'Criança que anda com o pé virado pra dentro'"},
-   {"campo": "rotulos_desenho_t1", "id_fonte": "cf_pe_virado", "trecho_literal": "PRA DENTRO"},
-   {"campo": "resposta_t2", "id_fonte": "pnc_pe_pra_dentro", "trecho_literal": "Leves torções do crescimento; a rotação se ajusta com o tempo."},
-   {"campo": "resposta_t2", "id_fonte": "cf_pe_virado", "trecho_literal": "Pode vir de uma leve torção (um giro) do pé, da canela ou do osso da coxa, todas variações comuns do crescimento", "nota": "v2 (leitor frio de 24/10): 'TORÇÕES' virou 'GIROS' — 'torção' foi lida como machucado de tornozelo; a própria fonte iguala torção a giro"},
-   {"campo": "resposta_t2", "id_fonte": "cf_pe_virado", "trecho_literal": "Pode ser um leve giro no pé, na canela ou até na coxa."},
-   {"campo": "texto_t2", "id_fonte": "pnc_pe_pra_dentro", "trecho_literal": "Pode vir de uma leve torção do pé, da canela ou da coxa — variações comuns; o crescimento costuma ajustar a rotação."},
-   {"campo": "rotulos_desenho_t2", "id_fonte": "cf_pe_virado", "trecho_literal": "PÉ"},
-   {"campo": "rotulos_desenho_t2", "id_fonte": "cf_pe_virado", "trecho_literal": "CANELA"},
-   {"campo": "rotulos_desenho_t2", "id_fonte": "cf_pe_virado", "trecho_literal": "COXA"},
-   {"campo": "titulo_t3", "id_fonte": "pnc_pe_pra_dentro", "trecho_literal": "A regra é o tempo: conforme a criança cresce, a rotação costuma se ajustar sozinha."},
-   {"campo": "texto_t3", "id_fonte": "pnc_pe_pra_dentro", "trecho_literal": "Assimetria, dor, quedas demais ou piora pedem avaliação."},
-   {"campo": "desenho_t3", "id_fonte": "cf_pe_virado", "trecho_literal": "Com o crescimento, na maioria das vezes, o pé alinha sozinho."},
-   {"campo": "cta", "id_fonte": "pnc_pe_pra_dentro", "trecho_literal": "\"sc\":[\"Manda pra quem vive\",\"com essa dúvida.\"]"}
-  ],
-  "revisao": {
-   "leitor_frio": "v1 (24/10, lab/leitor_frio_story/resultado_v1.json): entendeu o essencial, clareza 7/10; confundiram o pombo (nunca explicado), o risquinho dourado solto na 4ª pegada, as pegadas que parecem retas no começo e as setas pequenas; no story inteiro, 'SOZINHO' ao lado de 'A ROTAÇÃO' (lido como erro de concordância), 'leves torções' (lido como machucado) e o aviso que sai rápido demais. v2: tudo isso trocado por recorte/trecho/tempo, e 'TORÇÕES' -> 'GIROS'. PENDENTE: revisor sem o reel no contexto responde 'do que trata a tela 1?' sobre os quadros do MP4 v2.",
-   "sem_texto": "v1: passou (COXA, CANELA, PÉ); confundiram anéis = fita métrica, anéis da canela e do pé apagados e o desenho pequeno. v2: recorte 1,3× maior e trecho até o pulso da rotação (cada anel acende com a setinha de giro). PENDENTE: revisor sem o reel no contexto responde 'o que a tela 2 mostra?' no quadro final sem o texto do story. Passa se disser que o giro pode estar no pé, na canela ou na coxa.",
-   "contrapeso": "Não se aplica: o tema não é parâmetro que o paciente controla."
-  }
- }
 ]
