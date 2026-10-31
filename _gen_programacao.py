@@ -95,8 +95,10 @@ def secao_rodizio(fila, published, rp, hoje, ja_hoje=False):
     ini = R.INICIO_FORMATOS_NOVOS
     L = [f"*Regra (Rafael, 24-26/10/2026, regra_reels.py — a mesma do robô): **seg · qua · sex · dom = COMO FUNCIONA**; "
          f"**ter · qui · sáb = os 4 FORMATOS NOVOS em rodízio**, a partir de {ini:%d/%m/%Y} (antes disso, ter/qui/sáb sem reel). "
-         "Em cada vaga de ter/qui/sáb sai o formato novo publicado há MAIS tempo (nunca publicado sai primeiro; empate = o "
-         "que está mais à frente na fila) e, dentro dele, o 1º da fila. Formato sem peça pronta sai do rodízio até ganhar "
+         "**Rodízio COM PESO (Rafael, 31/10, depois dos números: câmera lenta 25.612 de alcance em 1,8 dia):** "
+         f"pesos {', '.join(f'{f} {w}' for f, w in R.pesos_formatos_novos().items())} — câmera lenta em 2 de cada 3 vagas, "
+         "Chama o VAR na outra; Qual dos dois e Mito na prova são RESERVA (saem só quando os de peso > 0 estão sem peça). "
+         "Todo formato faz a estreia antes de valer o peso; dentro do formato sai o 1º da fila. Formato sem peça pronta sai do rodízio até ganhar "
          "peça; vaga sem nenhuma peça pronta = sem reel nesse dia (o robô avisa, não é erro). Formato novo nunca ocupa "
          "seg/qua/sex/dom, e COMO FUNCIONA nunca ocupa ter/qui/sáb. 1 reel por dia.*\n",
          "| Formato novo | Na fila (pendentes) | Último publicado | Próximas vagas projetadas |", "|---|---|---|---|"]

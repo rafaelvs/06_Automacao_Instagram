@@ -1095,7 +1095,10 @@ checa("CONTROLE: extras respondendo -> follows, profile_visits e navegação por
 # "colocar eles, os quatro formatos [...] um cada dia [...] intercalar um formato novo com como funciona": ter/qui/sáb
 # (as vagas do carrossel antigo) = um dos 4 formatos novos em rodízio a partir de 03/11/2026; seg/qua/sex/dom = COMO
 # FUNCIONA. Padrão de PRODUÇÃO (FN): nenhuma variável de cota/suspensão; stories da geração nova ligados (fila vazia).
-FN = {"LAMINAS_POR_SEMANA": None, "CONVERSAS_ATIVAS": None, "POSTS_ATIVOS": None, "SEQUENCIAS_ATIVAS": None}
+# FN1-FN8 testam a MECÂNICA do rodízio simples (pesos iguais); o FN9 testa o padrão de produção com peso (31/10)
+FN = {"LAMINAS_POR_SEMANA": None, "CONVERSAS_ATIVAS": None, "POSTS_ATIVOS": None, "SEQUENCIAS_ATIVAS": None,
+      "PESOS_FORMATOS_NOVOS": "iguais"}
+FN_PROD = dict(FN, PESOS_FORMATOS_NOVOS=None)          # padrão de regra_reels.py (câmera 2 : VAR 1 : reserva 0)
 R_QUAL = {"id": "t-qual-1", "video": "media/q1.mp4", "caption": CAP_IA, "formato": "qual_dos_dois", "voz_ia": True}
 R_QUAL2 = dict(R_QUAL, id="t-qual-2", video="media/q2.mp4")
 R_MITO = dict(R_QUAL, id="t-mito-1", video="media/m1.mp4", formato="mito_na_prova")
@@ -1303,6 +1306,43 @@ tmp = preparar(reels=[dict(R_CAM, id="t-cam-2"), R_QUAL], publicados=_inc_sem)
 rc, out, st = rodar("ok", tmp, agora=QUI_NOV_16H, extra=FN)
 checa("  CONTROLE: o mesmo incerto SEM o formato (como era gravado) deixa a câmera lenta repetir — o campo é o que decide",
       ids(st)[2:] == ["t-cam-2"], f"exit={rc} {ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nFN9) RODÍZIO COM PESO (Rafael, 31/10): câmera lenta 2 : Chama o VAR 1; Qual dos dois e Mito = reserva")
+P4 = [{"id": "p-var", "kind": "reel", "media_id": "PV", "at": "2026-10-27T23:49:00+00:00", "formato": "chama_o_var"},
+      {"id": "p-cam", "kind": "reel", "media_id": "PC", "at": "2026-10-29T20:06:00+00:00", "formato": "camera_lenta"},
+      {"id": "p-qual", "kind": "reel", "media_id": "PQ", "at": "2026-10-31T18:05:00+00:00", "formato": "qual_dos_dois"},
+      {"id": "p-mito", "kind": "reel", "media_id": "PM", "at": "2026-11-03T18:05:00+00:00", "formato": "mito_na_prova"}]
+FX = [dict(R_QUAL, id="w-qual", video="media/wq.mp4"), dict(R_MITO, id="w-mito", video="media/wm.mp4"),
+      dict(R_CAM, id="w-cam-a", video="media/wca.mp4"), dict(R_VAR, id="w-var-a", video="media/wva.mp4"),
+      dict(R_CAM, id="w-cam-b", video="media/wcb.mp4")]
+tmp = preparar(reels=FX, publicados=list(P4))
+seq = []
+for quando in ("2026-11-05T19:00:00+00:00", "2026-11-07T19:00:00+00:00", "2026-11-10T19:00:00+00:00",
+               "2026-11-12T19:00:00+00:00", "2026-11-14T19:00:00+00:00"):
+    rc, out, st = rodar("ok", tmp, agora=quando, extra=FN_PROD)
+    seq.append(ids(st)[-1] if ids(st) else None)
+checa("qui VAR (empate 0/2 x 0/1, o mais antigo), sáb e ter CÂMERA (2 para cada VAR), depois a RESERVA mais antiga",
+      seq == ["w-var-a", "w-cam-a", "w-cam-b", "w-qual", "w-mito"], f"{seq}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(reels=[dict(R_CAM, id="e-cam"), dict(R_MITO, id="e-mito")], publicados=P4[:3])
+rc, out, st = rodar("ok", tmp, agora="2026-11-03T19:00:00+00:00", extra=FN_PROD)
+checa("ESTREIA antes do peso: o Mito (nunca publicado, peso 0) sai antes da câmera lenta", ids(st)[-1:] == ["e-mito"] and rc == 0,
+      f"exit={rc} {ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(reels=[dict(R_QUAL, id="v-qual")], publicados=list(P4))
+rc, out, st = rodar("ok", tmp, agora="2026-11-05T19:00:00+00:00", extra=FN_PROD)
+checa("vaga NUNCA vazia por causa do peso: sem câmera nem VAR, sai a reserva", ids(st)[-1:] == ["v-qual"] and rc == 0,
+      f"exit={rc} {ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(reels=FX, publicados=list(P4))
+rc, out, st = rodar("ok", tmp, agora="2026-11-05T19:00:00+00:00", extra=dict(FN, PESOS_FORMATOS_NOVOS="iguais"))
+checa("CONTROLE: com pesos iguais a vaga de 05/11 é do formato mais antigo (o VAR também), e na de 07/11 a câmera",
+      ids(st)[-1:] == ["w-var-a"], f"{ids(st)}")
+rc, out, st = rodar("ok", tmp, agora="2026-11-07T19:00:00+00:00", extra=dict(FN, PESOS_FORMATOS_NOVOS="iguais"))
+rc, out, st = rodar("ok", tmp, agora="2026-11-10T19:00:00+00:00", extra=dict(FN, PESOS_FORMATOS_NOVOS="iguais"))
+checa("CONTROLE: com pesos iguais a 3ª vaga NÃO é câmera de novo (é a reserva mais antiga): o peso é que muda isso",
+      ids(st)[-1:] == ["w-qual"], f"{ids(st)}")
 shutil.rmtree(tmp, ignore_errors=True)
 
 print("\nO) LAMINAS_POR_SEMANA ilegivel/'off' NAO derruba o motor (posts e stories seguem)")

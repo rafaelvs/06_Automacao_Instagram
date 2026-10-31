@@ -2073,73 +2073,109 @@
     ]
   },
   {
-    "id": "cf_placa_crescimento",
-    "video": "reels/_preview_cf_placa_crescimento.mp4",
-    "caption": "O osso da criança cresce pela placa de crescimento (fise), uma área de cartilagem por onde o osso aumenta, mais frágil que o osso já formado. Por isso, fraturas infantis têm avaliação própria na ortopedia pediátrica: quando a fratura envolve a placa, o acompanhamento é mais cuidadoso para o osso crescer alinhado. Depois de um acidente grave, a lesão da cartilagem de crescimento em quem ainda cresce pode levar a uma discrepância de membro (perna mais curta), e por isso fraturas importantes pedem acompanhamento até o fim do crescimento. Do lado bom, o osso da criança costuma consolidar mais rápido que no adulto.\n\nNa criança, o que parece “só torção” às vezes é uma fratura que não aparece fácil; dor exatamente sobre o osso, não apoiar o pé ou inchaço importante: avalie, pode precisar de imagem. Deformidade visível, osso exposto, dormência ou pé/mão muito pálido: emergência, vá ao pronto-socorro.\n\nManda pra quem tem criança ativa.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "id": "cf_crianca_mancando",
+    "video": "reels/_preview_cf_crianca_mancando.mp4",
+    "caption": "Criança mancando (claudicação), na ortopedia pediátrica, sempre se avalia: manqueira não é manha, é o corpo protegendo algo, fugindo de uma dor ou compensando uma fraqueza. As causas mudam com a idade, de um sapato apertado a questões no quadril ou joelho que pedem mais pressa; observar há quanto tempo manca, se há dor, se veio febre e se é sempre do mesmo lado ajuda o médico. Mancar que não melhora, dor que acorda a criança à noite, febre, inchaço ou perda de movimento apressam a consulta. Mancar com febre é a combinação que pede pressa: uma das causas é uma infecção dentro da articulação, e articulação infectada é das poucas urgências da ortopedia pediátrica que não esperam. Reforçam a urgência: a criança não quer dobrar nem apoiar a perna, chora ao mexerem na articulação e fica protegendo o membro. Com febre e manqueira juntas, procure atendimento no mesmo dia.\n\nManda pra quem viu o filho mancar.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
     "formato": "como_funciona",
     "serie": "Como funciona",
-    "dur": 29.9,
+    "dur": 31.7,
     "voz_ia": true,
     "scenes": [
       {
-        "vo": "Onde o osso da criança cresce? Numa área de cartilagem, a placa de crescimento."
+        "vo": "Mancar não é manha: é o corpo protegendo algo."
       },
       {
-        "vo": "É por ali que o osso aumenta."
+        "vo": "Foge de uma dor ou compensa uma fraqueza. Criança mancando sempre se avalia."
       },
       {
-        "vo": "Só que ela é mais frágil que o osso já formado."
+        "vo": "Repare: desde quando, se dói, se veio febre."
       },
       {
-        "vo": "Fratura ali pede acompanhamento mais cuidadoso, pro osso crescer alinhado."
+        "vo": "Mancar que não melhora, dor que acorda à noite ou inchaço apressam a consulta."
       },
       {
-        "vo": "Num acidente grave, lesão nessa cartilagem pode deixar a perna mais curta."
+        "vo": "Mancar com febre pede pressa: pode ser infecção na articulação."
       },
       {
-        "vo": "Por isso: acompanhar até o fim do crescimento."
+        "vo": "Não apoia a perna, chora ao mexer? A pressa aumenta."
       },
       {
-        "vo": "Do lado bom: osso de criança costuma colar mais rápido."
+        "vo": "Febre e manqueira juntas: procure atendimento no mesmo dia."
       },
       {
-        "vo": "Manda pra quem tem criança ativa."
+        "vo": "Manda pra quem viu o filho mancar."
       },
       {
-        "tela": "ONDE O OSSO"
+        "tela": "CRIANÇA MANCANDO?"
       },
       {
-        "tela": "DA CRIANÇA CRESCE?"
+        "tela": "NÃO É MANHA."
       },
       {
-        "tela": "?"
+        "tela": "CLAUDICAÇÃO"
       },
       {
-        "tela": "ÁREA DE CARTILAGEM"
+        "tela": "NÃO É MANHA"
       },
       {
-        "tela": "PLACA DE CRESCIMENTO"
+        "tela": "O CORPO PROTEGENDO ALGO"
       },
       {
-        "tela": "fise"
+        "tela": "FOGE DE UMA DOR"
       },
       {
-        "tela": "MAIS FRÁGIL"
+        "tela": "COMPENSA UMA FRAQUEZA"
       },
       {
-        "tela": "OSSO JÁ FORMADO"
+        "tela": "SEMPRE SE AVALIA"
       },
       {
-        "tela": "FRATURA"
+        "tela": "DESDE QUANDO?"
       },
       {
-        "tela": "ACIDENTE GRAVE"
+        "tela": "DÓI?"
       },
       {
-        "tela": "FIM DO CRESCIMENTO"
+        "tela": "FEBRE?"
       },
       {
-        "tela": "DO LADO BOM"
+        "tela": "NÃO MELHORA"
+      },
+      {
+        "tela": "DOR QUE ACORDA À NOITE"
+      },
+      {
+        "tela": "INCHAÇO"
+      },
+      {
+        "tela": "APRESSAM A CONSULTA"
+      },
+      {
+        "tela": "MANCAR"
+      },
+      {
+        "tela": "FEBRE"
+      },
+      {
+        "tela": "PEDE PRESSA"
+      },
+      {
+        "tela": "PODE SER INFECÇÃO NA ARTICULAÇÃO"
+      },
+      {
+        "tela": "NÃO APOIA A PERNA"
+      },
+      {
+        "tela": "CHORA AO MEXER"
+      },
+      {
+        "tela": "A PRESSA AUMENTA"
+      },
+      {
+        "tela": "FEBRE E MANQUEIRA JUNTAS"
+      },
+      {
+        "tela": "NO MESMO DIA"
       }
     ]
   },
@@ -2524,109 +2560,73 @@
     ]
   },
   {
-    "id": "cf_crianca_mancando",
-    "video": "reels/_preview_cf_crianca_mancando.mp4",
-    "caption": "Criança mancando (claudicação), na ortopedia pediátrica, sempre se avalia: manqueira não é manha, é o corpo protegendo algo, fugindo de uma dor ou compensando uma fraqueza. As causas mudam com a idade, de um sapato apertado a questões no quadril ou joelho que pedem mais pressa; observar há quanto tempo manca, se há dor, se veio febre e se é sempre do mesmo lado ajuda o médico. Mancar que não melhora, dor que acorda a criança à noite, febre, inchaço ou perda de movimento apressam a consulta. Mancar com febre é a combinação que pede pressa: uma das causas é uma infecção dentro da articulação, e articulação infectada é das poucas urgências da ortopedia pediátrica que não esperam. Reforçam a urgência: a criança não quer dobrar nem apoiar a perna, chora ao mexerem na articulação e fica protegendo o membro. Com febre e manqueira juntas, procure atendimento no mesmo dia.\n\nManda pra quem viu o filho mancar.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "id": "cf_placa_crescimento",
+    "video": "reels/_preview_cf_placa_crescimento.mp4",
+    "caption": "O osso da criança cresce pela placa de crescimento (fise), uma área de cartilagem por onde o osso aumenta, mais frágil que o osso já formado. Por isso, fraturas infantis têm avaliação própria na ortopedia pediátrica: quando a fratura envolve a placa, o acompanhamento é mais cuidadoso para o osso crescer alinhado. Depois de um acidente grave, a lesão da cartilagem de crescimento em quem ainda cresce pode levar a uma discrepância de membro (perna mais curta), e por isso fraturas importantes pedem acompanhamento até o fim do crescimento. Do lado bom, o osso da criança costuma consolidar mais rápido que no adulto.\n\nNa criança, o que parece “só torção” às vezes é uma fratura que não aparece fácil; dor exatamente sobre o osso, não apoiar o pé ou inchaço importante: avalie, pode precisar de imagem. Deformidade visível, osso exposto, dormência ou pé/mão muito pálido: emergência, vá ao pronto-socorro.\n\nManda pra quem tem criança ativa.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
     "formato": "como_funciona",
     "serie": "Como funciona",
-    "dur": 31.7,
+    "dur": 29.9,
     "voz_ia": true,
     "scenes": [
       {
-        "vo": "Mancar não é manha: é o corpo protegendo algo."
+        "vo": "Onde o osso da criança cresce? Numa área de cartilagem, a placa de crescimento."
       },
       {
-        "vo": "Foge de uma dor ou compensa uma fraqueza. Criança mancando sempre se avalia."
+        "vo": "É por ali que o osso aumenta."
       },
       {
-        "vo": "Repare: desde quando, se dói, se veio febre."
+        "vo": "Só que ela é mais frágil que o osso já formado."
       },
       {
-        "vo": "Mancar que não melhora, dor que acorda à noite ou inchaço apressam a consulta."
+        "vo": "Fratura ali pede acompanhamento mais cuidadoso, pro osso crescer alinhado."
       },
       {
-        "vo": "Mancar com febre pede pressa: pode ser infecção na articulação."
+        "vo": "Num acidente grave, lesão nessa cartilagem pode deixar a perna mais curta."
       },
       {
-        "vo": "Não apoia a perna, chora ao mexer? A pressa aumenta."
+        "vo": "Por isso: acompanhar até o fim do crescimento."
       },
       {
-        "vo": "Febre e manqueira juntas: procure atendimento no mesmo dia."
+        "vo": "Do lado bom: osso de criança costuma colar mais rápido."
       },
       {
-        "vo": "Manda pra quem viu o filho mancar."
+        "vo": "Manda pra quem tem criança ativa."
       },
       {
-        "tela": "CRIANÇA MANCANDO?"
+        "tela": "ONDE O OSSO"
       },
       {
-        "tela": "NÃO É MANHA."
+        "tela": "DA CRIANÇA CRESCE?"
       },
       {
-        "tela": "CLAUDICAÇÃO"
+        "tela": "?"
       },
       {
-        "tela": "NÃO É MANHA"
+        "tela": "ÁREA DE CARTILAGEM"
       },
       {
-        "tela": "O CORPO PROTEGENDO ALGO"
+        "tela": "PLACA DE CRESCIMENTO"
       },
       {
-        "tela": "FOGE DE UMA DOR"
+        "tela": "fise"
       },
       {
-        "tela": "COMPENSA UMA FRAQUEZA"
+        "tela": "MAIS FRÁGIL"
       },
       {
-        "tela": "SEMPRE SE AVALIA"
+        "tela": "OSSO JÁ FORMADO"
       },
       {
-        "tela": "DESDE QUANDO?"
+        "tela": "FRATURA"
       },
       {
-        "tela": "DÓI?"
+        "tela": "ACIDENTE GRAVE"
       },
       {
-        "tela": "FEBRE?"
+        "tela": "FIM DO CRESCIMENTO"
       },
       {
-        "tela": "NÃO MELHORA"
-      },
-      {
-        "tela": "DOR QUE ACORDA À NOITE"
-      },
-      {
-        "tela": "INCHAÇO"
-      },
-      {
-        "tela": "APRESSAM A CONSULTA"
-      },
-      {
-        "tela": "MANCAR"
-      },
-      {
-        "tela": "FEBRE"
-      },
-      {
-        "tela": "PEDE PRESSA"
-      },
-      {
-        "tela": "PODE SER INFECÇÃO NA ARTICULAÇÃO"
-      },
-      {
-        "tela": "NÃO APOIA A PERNA"
-      },
-      {
-        "tela": "CHORA AO MEXER"
-      },
-      {
-        "tela": "A PRESSA AUMENTA"
-      },
-      {
-        "tela": "FEBRE E MANQUEIRA JUNTAS"
-      },
-      {
-        "tela": "NO MESMO DIA"
+        "tela": "DO LADO BOM"
       }
     ]
   },

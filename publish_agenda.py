@@ -176,7 +176,7 @@ def teste_agenda():
         "publish.py deixou de usar a regra única (regra_reels)"
     yml = open(os.path.join(raiz, ".github", "workflows", "publish.yml"), encoding="utf-8").read()
     for var in ("LAMINAS_POR_SEMANA", "DIAS_ENTRE_CONVERSAS", "CONVERSAS_ATIVAS", "POSTS_ATIVOS", "SEQUENCIAS_ATIVAS",
-                "STORIES_NOVOS_ATIVOS", "DIAS_ENTRE_MESMO_TEMA"):
+                "STORIES_NOVOS_ATIVOS", "DIAS_ENTRE_MESMO_TEMA", "PESOS_FORMATOS_NOVOS"):
         assert not re.search(r"^\s*" + var + r"\s*:", yml, re.M), \
             f"publish.yml voltou a definir {var} — a página leria outra cota que o robô"
     seg = dt.date(2026, 10, 19)
@@ -237,6 +237,9 @@ def teste_formatos_novos(src=None, yml=None):
     # antes do início ter/qui/sáb ficam sem reel; o 1º formato novo sai na terça 27/10 (era 03/11)
     r = projeta_reels([q1], [], ter20, False, horizonte_dias=30)
     assert r == [(ter27, "q1")], ("antes do início nada de formato novo", r)
+    import os as _os
+    _antes = _os.environ.get("PESOS_FORMATOS_NOVOS")
+    _os.environ["PESOS_FORMATOS_NOVOS"] = "iguais"     # mecânica do rodízio simples; o peso é testado mais abaixo
     # rodízio sem nada publicado: nunca publicado primeiro, empate pela ordem da fila; depois, o mais antigo
     r = projeta_reels([m1, q1, k1, q2, v1, m2], [], ter03, False, horizonte_dias=30)
     assert [i for _, i in r] == ["m1", "q1", "k1", "v1", "m2", "q2"] \
@@ -258,6 +261,19 @@ def teste_formatos_novos(src=None, yml=None):
     pub_inc = [{"id": "q0", "kind": "reel_incerto", "at": "2026-11-02T18:05:00+00:00"}]
     r = projeta_reels([novo("q0", "qual_dos_dois"), q1, m1], pub_inc, ter03, False, horizonte_dias=1)
     assert r == [(ter03, "m1")], ("reel_incerto conta no rodízio", r)
+    # RODÍZIO COM PESO (padrão de produção, 31/10): câmera 2 : VAR 1; reserva (qual, mito) só sem peça; estreia antes
+    _os.environ.pop("PESOS_FORMATOS_NOVOS", None)
+    p4 = [{"id": "pv", "kind": "reel", "at": "2026-10-27T23:49:00+00:00", "formato": "chama_o_var"},
+          {"id": "pc", "kind": "reel", "at": "2026-10-29T20:06:00+00:00", "formato": "camera_lenta"},
+          {"id": "pq", "kind": "reel", "at": "2026-10-31T18:05:00+00:00", "formato": "qual_dos_dois"},
+          {"id": "pm", "kind": "reel", "at": "2026-11-03T18:05:00+00:00", "formato": "mito_na_prova"}]
+    ca, cb = novo("ca", "camera_lenta"), novo("cb", "camera_lenta")
+    r = projeta_reels([q1, m1, ca, v1, cb], p4, dt.date(2026, 11, 4), False, horizonte_dias=12)
+    assert [(d.day, i) for d, i in r] == [(5, "v1"), (7, "ca"), (10, "cb"), (12, "q1"), (14, "m1")], ("peso", r)
+    if _antes is not None:
+        _os.environ["PESOS_FORMATOS_NOVOS"] = _antes
+    else:
+        _os.environ["PESOS_FORMATOS_NOVOS"] = "iguais"
     # reordenador: só dentro do grupo de dias, e a distância de tema vale entre TODOS os reels e stories
     import ordenar_fila_temas as O
     fa = {"id": "cf_alongamento", "formato": "como_funciona"}                       # tema alongamento
@@ -287,6 +303,8 @@ def teste_formatos_novos(src=None, yml=None):
     assert depois == res["nova"], ("a fila reordenada projeta exatamente a proposta", depois, res["nova"])
     assert res["confere"] and res["depois"] == depois, res
     teste_reordenador_fixos(regra)
+    if _antes is None:
+        _os.environ.pop("PESOS_FORMATOS_NOVOS", None)
     return True
 
 

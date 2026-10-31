@@ -219,17 +219,80 @@ def ultimas_por_formato(state, reels):
     return out
 
 
-def rodizio(reels, done, state):
+# RODÍZIO COM PESO (Rafael, 31/10/2026, vendo os números: câmera lenta 25.612 de alcance em 1,8 dia, 27 envios e
+# 22% de pulo nos 3 s; Chama o VAR 3.461 e 22,8 s assistidos — o melhor tempo — contra 1.076 a 2.650 dos COMO
+# FUNCIONA; "a gente vai investir nesses formatos novos"; "pode implementar"). Nas vagas de ter/qui/sáb: câmera
+# lenta em 2 de cada 3, Chama o VAR na outra; Qual dos dois e Mito na prova viram RESERVA (peso 0): saem só quando
+# os de peso > 0 estão sem peça pronta — vaga nunca fica vazia por causa do peso (Rafael, 27/10: volume). Todo
+# formato faz a ESTREIA antes de valer o peso (o Mito estreia em 03/11 e mostra os números dele). A contagem do
+# peso começa em INICIO_PESOS. Mudar o peso = mudar aqui (fonte única: o PROGRAMACAO.md projeta com a mesma regra).
+PESOS_FORMATOS_NOVOS_PADRAO = {"camera_lenta": 2, "chama_o_var": 1, "qual_dos_dois": 0, "mito_na_prova": 0}
+INICIO_PESOS = dt.date(2026, 11, 1)
+
+
+def pesos_formatos_novos(valor=None):
+    """{formato: peso}. Variável PESOS_FORMATOS_NOVOS só para os testes ('iguais' = rodízio simples de antes, ou
+    'camera_lenta:2,chama_o_var:1,...'); a produção não a define (publish_agenda confere o publish.yml)."""
+    v = os.environ.get("PESOS_FORMATOS_NOVOS") if valor is None else valor
+    if v is None or str(v).strip() == "":
+        return dict(PESOS_FORMATOS_NOVOS_PADRAO)
+    v = str(v).strip().lower()
+    if v in ("iguais", "off", "-1"):
+        return {f: 1 for f in FORMATOS_NOVOS}
+    out = {f: 0 for f in FORMATOS_NOVOS}
+    try:
+        for par in v.split(","):
+            f, w = par.split(":")
+            if f.strip() in out:
+                out[f.strip()] = max(0, int(w))
+        return out
+    except ValueError:
+        print(f"::warning::PESOS_FORMATOS_NOVOS ilegível ({v!r}) — usando o padrão de regra_reels.py.")
+        return dict(PESOS_FORMATOS_NOVOS_PADRAO)
+
+
+def publicados_por_formato_desde(state, reels, desde):
+    """{formato: quantos reels dele saíram de `desde` em diante} (mesma leitura de ultimas_por_formato)."""
+    fmt = {r["id"]: formato(r) for r in reels}
+    out = {}
+    for e in state.get("published", []):
+        if e.get("kind") not in ("reel", "reel_incerto") or not e.get("at"):
+            continue
+        try:
+            d = dt.datetime.fromisoformat(e["at"]).astimezone(BRT).date()
+        except (TypeError, ValueError):
+            continue
+        if d < desde:
+            continue
+        f = (e.get("formato") or fmt.get(e.get("id"), "lamina")).strip().lower()
+        out[f] = out.get(f, 0) + 1
+    return out
+
+
+def rodizio(reels, done, state, pesos=None):
     """O RODÍZIO dos formatos novos, na ordem em que saem: [(formato, última publicação | None, posição do 1º
-    pendente na fila)], só dos formatos com peça pronta. O 1º da lista é o da próxima vaga: o publicado há MAIS
-    tempo; nunca publicado vem antes de todos; empate = quem tem o 1º pendente mais à frente na fila."""
+    pendente na fila)], só dos formatos com peça pronta. O 1º da lista é o da próxima vaga:
+      1. formato NUNCA publicado (estreia), na ordem da fila;
+      2. formatos com peso > 0, pela menor razão publicados-desde-INICIO_PESOS / peso (2:1 = câmera lenta duas
+         vezes para cada VAR); empate = o publicado há MAIS tempo, depois a fila;
+      3. RESERVA (peso 0), o publicado há mais tempo — só quando nenhum de peso > 0 tem peça pronta."""
+    pesos = pesos_formatos_novos() if pesos is None else pesos
     ult = ultimas_por_formato(state, reels)
+    cont = publicados_por_formato_desde(state, reels, INICIO_PESOS)
     primeiro = {}
     for k, x in enumerate(reels):
         f = formato(x)
         if f in FORMATOS_NOVOS and x["id"] not in done and f not in primeiro:
             primeiro[f] = k
-    ordem = sorted(primeiro, key=lambda f: (ult.get(f) or dt.date.min, primeiro[f]))
+
+    def chave(f):
+        if ult.get(f) is None:
+            return (0, 0.0, dt.date.min, primeiro[f])
+        w = pesos.get(f, 0)
+        if w > 0:
+            return (1, cont.get(f, 0) / w, ult[f], primeiro[f])
+        return (2, 0.0, ult[f], primeiro[f])
+    ordem = sorted(primeiro, key=chave)
     return [(f, ult.get(f), primeiro[f]) for f in ordem]
 
 
