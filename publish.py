@@ -525,19 +525,26 @@ def _cfm_guard(item):
     (fail-open RUIDOSO — nao quebra o robo). Se o modulo existir mas tiver bug (SyntaxError/re.error):
     a excecao propaga -> o try/except do chamador trata como FALHA (fail-CLOSED: nao publica, nao marca
     done). Se houver VIOLACAO de CFM: loga marcador distinto 'BLOQUEADO CFM' e levanta RuntimeError
-    (o chamador pula o item e NAO avanca, forcando revisao humana). Conteudo limpo passa direto."""
+    (o chamador pula o item e NAO avanca, forcando revisao humana). Conteudo limpo passa direto.
+    O @ fora da lista branca (31/10/2026) e' checado ANTES e independe do cfm_guardrails."""
+    # @ de perfil inexistente (31/10/2026: "@sbortopediapediatrica" saiu em 12 pecas). Lista branca de
+    # legenda.py; sem import silencioso: legenda.py ausente/quebrado propaga -> fail-CLOSED.
+    from legenda import mencoes_nao_verificadas
+    fora = mencoes_nao_verificadas(_texto_auditavel(item))
+    viol = [("VIOLACAO", "MENCAO_NAO_VERIFICADA", ", ".join(fora) + " fora de legenda.MENCOES_VERIFICADAS")] if fora else []
     try:
         from cfm_guardrails import auditar
     except (ImportError, ModuleNotFoundError):
         print("!!! ALERTA: cfm_guardrails ausente — guardrail CFM DESLIGADO neste run.", file=sys.stderr)
-        return
+        auditar = None
     # Assinatura em texto so' e' exigivel onde a legenda e' o que o usuario le (post/reel
     # tem "caption"). Sequencia/story so' tem rotulo estrutural curto (theme/label) e a
     # identificacao CFM vive no RODAPE DO RENDER, nunca no JSON -- exigir texto ali travaria
     # a fila inteira (0 das 150 sequencias reais tem CRM em campo de texto).
-    tem_legenda_visivel = bool(item.get("caption"))
-    viol = [p for p in auditar(_texto_auditavel(item), "publico",
-                               exigir_assinatura_texto=tem_legenda_visivel) if p[0] == "VIOLACAO"]
+    if auditar is not None:
+        tem_legenda_visivel = bool(item.get("caption"))
+        viol += [p for p in auditar(_texto_auditavel(item), "publico",
+                                    exigir_assinatura_texto=tem_legenda_visivel) if p[0] == "VIOLACAO"]
     if viol:
         msg = "BLOQUEADO CFM: " + "; ".join(f"{r}:{d}" for _, r, d in viol)
         print(f"!!! {msg} (item={item.get('id', '?')}) — NAO publicado, revisar.", file=sys.stderr)

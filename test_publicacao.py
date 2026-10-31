@@ -1345,6 +1345,19 @@ checa("CONTROLE: com pesos iguais a 3ª vaga NÃO é câmera de novo (é a reser
       ids(st)[-1:] == ["w-qual"], f"{ids(st)}")
 shutil.rmtree(tmp, ignore_errors=True)
 
+print("\nMEN) @ de perfil INEXISTENTE na legenda (31/10/2026: @sbortopediapediatrica saiu em 12 peças) -> NÃO publica")
+tmp = preparar(reels=[dict(R_CAM, id="m-ruim", caption=CAP_IA + "\nSociedade da área: @sbortopediapediatrica")])
+rc, out, st = rodar("ok", tmp, agora=TER_NOV_16H, extra=FN_PROD)
+checa("@ fora da lista branca: nada publicado, exit != 0, motivo no log",
+      ids(st) == [] and rc != 0 and "MENCAO_NAO_VERIFICADA" in out and "@sbortopediapediatrica" in out,
+      f"exit={rc} {ids(st)} {out[-240:]!r}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(reels=[dict(R_CAM, id="m-ok", caption=CAP_IA + "\nSociedade da área: @sbopbr")])
+rc, out, st = rodar("ok", tmp, agora=TER_NOV_16H, extra=FN_PROD)
+checa("CONTROLE: a mesma peça com o @ verificado (@sbopbr) publica", ids(st) == ["m-ok"] and rc == 0,
+      f"exit={rc} {ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+
 print("\nO) LAMINAS_POR_SEMANA ilegivel/'off' NAO derruba o motor (posts e stories seguem)")
 tmp = preparar(reels=[R_LAMINA, R_CONVERSA], publicados=[LAMINA_SEG]); rc, out, st = rodar("ok", tmp, agora=QUARTA_16H, extra={"LAMINAS_POR_SEMANA": "off"})
 checa("'off' = sem cota (a lamina sai)", "t-lamina-1" in ids(st), f"publicados={ids(st)}")

@@ -609,13 +609,16 @@
     },
     {
      "id": "esc_nao_doi",
-     "hash_roteiro": "sha256:86f69bbd46c5ba48a8235ee4bfe3ede6bca1cad038f16d1a0b9533730fff77d4"
+     "hash_roteiro": "sha256:f3d506f8cb130f009ac8d0bea2a9f1f044fec864de73aeb426d00a1ea504ac9c",
+     "hash_roteiro_antes_correcao_mencao": "sha256:86f69bbd46c5ba48a8235ee4bfe3ede6bca1cad038f16d1a0b9533730fff77d4"
     },
     {
      "id": "esc_estirao",
-     "hash_roteiro": "sha256:7240188c6591fbd44974c3641dc579f0f5e518f92303bd5b82d4919f39b2e0bc"
+     "hash_roteiro": "sha256:608560212663480238268875d2e0a0af74f60401b48295ed1213426300e7275a",
+     "hash_roteiro_antes_correcao_mencao": "sha256:7240188c6591fbd44974c3641dc579f0f5e518f92303bd5b82d4919f39b2e0bc"
     }
-   ]
+   ],
+   "correcao_2026_10_31": "Única mudança: a menção '@sbortopediapediatrica' (perfil inexistente) virou '@sbopbr' (perfil oficial da SBOP, linkado em sbop.org.br). Pedido do Rafael no chat auditoria-instagram-v1, 31/10/2026: 'voce errou o link da sociedade brasileira de ortopedia pediatrica' / 'nao pode colocar um @ numa pagina inexistente... muito ruim isso para postagem' / 'tem que ter guardrail'. Conferido mecanicamente: o episódio com o @ antigo reproduz o hash aprovado em 12/09; o hash anterior fica em hash_roteiro_antes_correcao_mencao."
   },
   {
    "lote": "ENTRETENIMENTO-2026-10-18",

@@ -168,7 +168,7 @@ QA_EPISODES_LOTE2 = [
    {"k":"Passa adiante","sc":["Manda pra quem ouve","'é do crescimento'."],"e":None,"sub":"Salva pra observar com calma.","cta":True,
     "vo":"Manda pra quem sempre ouve que 'é do crescimento', e salva pra observar com calma."},
   ],
-  "caption":"Dor do crescimento existe — é um quadro benigno e comum da infância, que vai e vem sem outros sinais. O que não é 'do crescimento': dor persistente, que acorda a criança à noite, com mancar, febre ou inchaço — esses sinais pedem avaliação com ortopedista pediátrico, para separar o que é fisiológico do que precisa de tratamento.\n\nEnvia para quem tem criança em casa.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
+  "caption":"Dor do crescimento existe — é um quadro benigno e comum da infância, que vai e vem sem outros sinais. O que não é 'do crescimento': dor persistente, que acorda a criança à noite, com mancar, febre ou inchaço — esses sinais pedem avaliação com ortopedista pediátrico, para separar o que é fisiológico do que precisa de tratamento.\n\nEnvia para quem tem criança em casa.\n\nSociedade da área: @sbopbr\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
 
  # ───────────── ep17 · pediátrica · claudicação (pauta #7 · pediatria, n=6) ─────────────
  {"id":"qa_crianca_mancando","ep":17,"serie":"Respondendo","temporada":"Você Perguntou","motif_family":"feet",
@@ -185,7 +185,7 @@ QA_EPISODES_LOTE2 = [
    {"k":"Passa adiante","sc":["Manda pra quem viu","o filho mancar."],"e":None,"sub":"Salva pra agir cedo.","cta":True,
     "vo":"Manda pra quem já viu o filho mancar do nada, e salva pra agir cedo."},
   ],
-  "caption":"Criança mancando sem trauma não é 'manha': claudicação persistente merece avaliação com ortopedista pediátrico, para separar o que é passageiro do que precisa de tratamento. Apressam a consulta: mancar que não melhora, dor que acorda a criança à noite, febre, inchaço ou perda de movimento.\n\nEnvia para quem tem criança em casa.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
+  "caption":"Criança mancando sem trauma não é 'manha': claudicação persistente merece avaliação com ortopedista pediátrico, para separar o que é passageiro do que precisa de tratamento. Apressam a consulta: mancar que não melhora, dor que acorda a criança à noite, febre, inchaço ou perda de movimento.\n\nEnvia para quem tem criança em casa.\n\nSociedade da área: @sbopbr\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
 
  # ───────────── ep18 · pediátrica · lesão óssea benigna (pauta #8 · tumor_osseo, n=3) ─────────────
  {"id":"qa_caroco_no_osso","ep":18,"serie":"Respondendo","temporada":"Você Perguntou","motif_family":"feet",
@@ -202,7 +202,7 @@ QA_EPISODES_LOTE2 = [
    {"k":"Passa adiante","sc":["Manda pra quem notou","um caroço assim."],"e":None,"sub":"Salva pra levar na consulta.","cta":True,
     "vo":"Manda pra quem notou um caroço assim no filho, e salva pra levar na consulta."},
   ],
-  "caption":"Um caroço duro no osso do seu filho? O osteocondroma (exostose) é uma das lesões benignas e comuns que aparecem assim na criança. A maioria das lesões ósseas na infância é benigna — mas somente a avaliação especializada, com exame clínico e exames de imagem, define a natureza da lesão e a conduta. Apressam a consulta: aumento rápido da lesão, dor que acorda à noite ou febre.\n\nEnvia para um pai ou uma mãe que precisa ver isso.\n\nSociedade da área: @sbortopediapediatrica\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
+  "caption":"Um caroço duro no osso do seu filho? O osteocondroma (exostose) é uma das lesões benignas e comuns que aparecem assim na criança. A maioria das lesões ósseas na infância é benigna — mas somente a avaliação especializada, com exame clínico e exames de imagem, define a natureza da lesão e a conduta. Apressam a consulta: aumento rápido da lesão, dor que acorda à noite ou febre.\n\nEnvia para um pai ou uma mãe que precisa ver isso.\n\nSociedade da área: @sbopbr\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
 
  # ───────────── ep19 · reconstrução/NICHO · discrepância: conduta (pauta #9 · discrepância, >=4 reais) ─────────────
  {"id":"qa_perna_curta_operar","ep":19,"serie":"Respondendo","temporada":"Você Perguntou","motif_family":"bone",

@@ -22,7 +22,7 @@ import ganchos_layout as _gl
 SIG = "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica."
 DISC = "Conteúdo educativo; não substitui avaliação individual."
 IA = "Narração com voz digital (IA)."
-MENCAO = "Sociedade da área: @sbortopediapediatrica"
+MENCAO = "Sociedade da área: @sbopbr"
 
 
 def _cap(corpo, cta="Envia para um pai ou uma mãe de pré-adolescente."):

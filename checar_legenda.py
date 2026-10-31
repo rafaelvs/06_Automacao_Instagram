@@ -67,6 +67,9 @@ def auto_teste():
         ("controle POSITIVO: duas CTAs", [("posts.json", "post", "t_2cta", ok_cap)], 1),   # reel-CTA num post
         ("controle POSITIVO: sem menção", [("reels.json", "reel", "t_menc", ok_cap.replace("Sociedade da área: @asami.brasil\n\n", ""))], 1),
         ("controle POSITIVO: universo vazio", [], 1),
+        ("controle POSITIVO: @ de perfil inexistente (o que saiu em 12 peças até 31/10)",
+         [("reels.json", "reel", "t_sbop", ok_cap.replace("@asami.brasil", "@sbortopediapediatrica"))], 1),
+        ("controle NEGATIVO: @ verificado da SBOP", [("reels.json", "reel", "t_sbopbr", ok_cap.replace("@asami.brasil", "@sbopbr"))], 0),
         ("controle NEGATIVO: 'Manda pra quem' é envio", [("reels.json", "reel", "t_manda", ok_cap.replace("Envia para quem precisa disso.", "Manda pra quem tá esperando o osso colar."))], 0),
     ]
     for cta in ("Manda um direct pra agendar sua avaliação.", "Manda mensagem que eu te respondo.",

@@ -33,14 +33,58 @@ TAIL_IA = "Narração com voz digital (IA)."
 _RE_TAG = re.compile(r"(?<!\S)#[\wÀ-ɏ]+")
 _RE_CTA_CORPO = re.compile(r"^(Envia |Manda |Conhece uma família|Salva |Salve |Compartilhe )", re.I)
 
-# Menções pertinentes — handles verificados por leitura direta em 11/09/2026 (estag_distribuicao.md):
-# ASAMI Brasil 2.212 seg. (sociedade da subespecialidade), SBOP 2.465, Associação Primeiro Passo 7.271.
+# Menções pertinentes. Em 11/09/2026 a pesquisa (estag_distribuicao.md) deu "@sbortopediapediatrica,
+# 2.465 seguidores" — perfil que NÃO EXISTE (31/10: responde igual a um @ inventado de controle; o
+# site oficial sbop.org.br linka @sbopbr). Saiu em 12 peças. Daí a LISTA BRANCA abaixo.
 MENCOES = {
     "reconstrucao": "Sociedade da área: @asami.brasil",
-    "pediatria":    "Sociedade da área: @sbortopediapediatrica",
+    "pediatria":    "Sociedade da área: @sbopbr",
     "pe_torto":     "Associação de famílias: @associacaoptc",
 }
 HANDLE_PROPRIO = "@rafaelvargasmd"
+
+# LISTA BRANCA de menções (Rafael, 31/10/2026: "não pode colocar um @ numa página inexistente" /
+# "tem que ter guardrail"). Todo @ de legenda/texto publicado tem de estar AQUI, com a PROVA de que o
+# perfil existe e é de quem dizemos. Entrar na lista exige as duas coisas:
+#   1. a fonte oficial (site da entidade) apontando para o perfil — ou, sem site que linke, o nome no
+#      próprio perfil batendo com a entidade;
+#   2. `python checar_mencoes.py --vivo @handle` com os controles passando (o perfil do Dr. resolve, um @
+#      inventado não resolve) e o handle resolvendo.
+# Nunca entra @ só porque uma pesquisa (humana ou de IA) disse que existe — foi assim que o erro nasceu.
+MENCOES_VERIFICADAS = {
+    "@rafaelvargasmd": {"nome": "Dr. Rafael Vargas (o próprio perfil)", "conferido_em": "2026-10-31",
+                        "prova": "perfil próprio; título 'Dr. Rafael Vargas · Ortopedia (@rafaelvargasmd)'"},
+    "@asami.brasil": {"nome": "ASAMI Brasil", "conferido_em": "2026-10-31",
+                      "prova": "link do Instagram no site oficial asami-brasil.com.br; título do perfil "
+                               "'ASAMI Brasil (@asami.brasil)'"},
+    "@sbopbr": {"nome": "SBOP — Sociedade Brasileira de Ortopedia Pediátrica", "conferido_em": "2026-10-31",
+                "prova": "link do Instagram no site oficial sbop.org.br; título do perfil 'Sociedade Brasileira "
+                         "de Ortopedia Pediátrica (@sbopbr)'"},
+    "@associacaoptc": {"nome": "Associação Primeiro Passo (pais de crianças com pé torto congênito)",
+                       "conferido_em": "2026-10-31",
+                       "prova": "título do perfil 'Associação Primeiro Passo (@associacaoptc)'; o site "
+                                "primeiropasso.org não linka Instagram (só e-mail e grupo do Facebook)"},
+}
+# Handle do Instagram: letras, números, '.' e '_'; não termina em '.'. O lookbehind tira e-mail
+# (contato@site.org) e "@@"; o '.' final de fim de frase sai no rstrip.
+_RE_MENCAO = re.compile(r"(?<![\w.@])@([A-Za-z0-9_.]{1,30})")
+
+
+def mencoes_em(texto):
+    """Todos os @handles do texto, em minúsculas, na ordem em que aparecem."""
+    return ["@" + m.rstrip(".").lower() for m in _RE_MENCAO.findall(texto or "") if m.rstrip(".")]
+
+
+def mencoes_nao_verificadas(texto):
+    """@handles do texto que NÃO estão em MENCOES_VERIFICADAS (vazio = ok)."""
+    return [m for m in mencoes_em(texto) if m not in MENCOES_VERIFICADAS]
+
+
+# A regra de saída não pode produzir @ fora da lista: falha no import, antes de qualquer legenda.
+for _fam, _linha in MENCOES.items():
+    _fora = mencoes_nao_verificadas(_linha)
+    if _fora:
+        raise ImportError(f"legenda.MENCOES[{_fam!r}] usa {_fora} fora de MENCOES_VERIFICADAS")
 
 # "Núcleo primeiro" (13/09/2026): o destinatário da CTA é quem CUIDA do paciente — a rede real por
 # onde o perfil cresce aos poucos. Nunca "marque", nunca "conte sua experiência" (CFM Art. 8º §4º).
@@ -262,9 +306,12 @@ def validar(caption, formato):
         p.append("CTA de reel tem de pedir ENVIO a alguém (Envia/Manda pra quem…), sem contato")
     elif formato == "post" and not ctas[0].strip().lower().startswith("salva"):
         p.append("CTA de carrossel tem de ser SALVAR")
-    mencoes = [m for m in re.findall(r"@[a-z0-9_.]+", caption.lower()) if m != HANDLE_PROPRIO]
+    mencoes = [m for m in mencoes_em(caption) if m != HANDLE_PROPRIO]
     if len(mencoes) < 1 or len(mencoes) > 2:
         p.append(f"{len(mencoes)} menção(ões) — exigidas 1 a 2")
+    fora = mencoes_nao_verificadas(caption)
+    if fora:
+        p.append(f"menção a perfil NÃO verificado: {', '.join(fora)} (fora de MENCOES_VERIFICADAS)")
     if not ("crm" in n and "rqe" in n and "medico" in n):
         p.append("assinatura sem Médico+CRM+RQE")
     if "whatsapp" in n or "link da bio" in n:

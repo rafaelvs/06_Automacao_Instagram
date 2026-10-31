@@ -36,6 +36,14 @@ jobs:
         run: |
           python checar_legenda.py --auto-teste
           python checar_legenda.py
+      - name: "Mencoes: nenhum @ de perfil inexistente (31/10/2026 - @sbortopediapediatrica saiu em 12 pecas)"
+        # Estatico: todo @ da fila, das fontes e de legenda.MENCOES na lista branca com prova. Vivo: cada @
+        # da lista abre no Instagram, com controles (o perfil do Dr. resolve, um @ inventado nao); se o
+        # runner estiver barrado o vivo fica CEGO e vira aviso - nunca "existe" - e o estatico segue valendo.
+        run: |
+          python checar_mencoes.py --auto-teste
+          python checar_mencoes.py
+          python checar_mencoes.py --vivo --cego-nao-reprova
       - name: "Auto-teste dos checadores novos (auditoria v2, 19/09/2026)"
         # Checador que nunca reprova nao e' checador: cada um destes tem controle POSITIVO
         # (semeia o defeito e exige acusacao) e NEGATIVO (valor correto tem de passar).

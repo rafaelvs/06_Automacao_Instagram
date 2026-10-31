@@ -34,7 +34,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra um pai","preocupado com isso."],"e":None,"sub":"Salva pra lembrar quando bater a dúvida.","cta":True,
     "vo":"Manda pra um pai preocupado com o joelho do filho e salva pra quando a dúvida voltar."},
   ],
-  "caption":"Joelho em X (geno valgo) na criança quase sempre é fase: entre 3 e 6 anos é o desenho normal do crescimento, e o alinhamento costuma chegar perto dos 7. Sapato e palmilha NÃO endireitam o joelho de uma criança saudável. Merece avaliação na ortopedia pediátrica o X que aparece só num lado, que piora, que dói ou que vem com baixa estatura.\n\nEnvia para quem tem criança em casa.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
+  "caption":"Joelho em X (geno valgo) na criança quase sempre é fase: entre 3 e 6 anos é o desenho normal do crescimento, e o alinhamento costuma chegar perto dos 7. Sapato e palmilha NÃO endireitam o joelho de uma criança saudável. Merece avaliação na ortopedia pediátrica o X que aparece só num lado, que piora, que dói ou que vem com baixa estatura.\n\nEnvia para quem tem criança em casa.\n\nSociedade da área: @sbopbr\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
 
  # ───────────── Osso Novo #1 ─────────────
  {"id":"on_consolidacao_viciosa","ep":22,"serie":"Osso Novo","temporada":"refazer-e-realinhar","motif_family":"bone",
@@ -66,7 +66,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pro grupo","dos pais do time."],"e":None,"sub":"Salva pra próxima reclamação de joelho.","cta":True,
     "vo":"Manda pro grupo dos pais do time e salva pra próxima reclamação de joelho."},
   ],
-  "caption":"Caroço dolorido logo abaixo do joelho no adolescente que corre e salta costuma ser Osgood-Schlatter: na fase de estirão, o tendão traciona um ponto de osso ainda em formação. Boa notícia — costuma ser temporário e passar quando o osso amadurece, raramente exigindo cirurgia. Ajuda dosar o esforço (sem largar o esporte), gelo e alongamento orientado. Avalie na ortopedia pediátrica se mancar, inchar muito ou travar.\n\nEnvia para quem tem criança em casa.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
+  "caption":"Caroço dolorido logo abaixo do joelho no adolescente que corre e salta costuma ser Osgood-Schlatter: na fase de estirão, o tendão traciona um ponto de osso ainda em formação. Boa notícia — costuma ser temporário e passar quando o osso amadurece, raramente exigindo cirurgia. Ajuda dosar o esforço (sem largar o esporte), gelo e alongamento orientado. Avalie na ortopedia pediátrica se mancar, inchar muito ou travar.\n\nEnvia para quem tem criança em casa.\n\nSociedade da área: @sbopbr\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
 
  # ───────────── Osso Novo #2 ─────────────
  {"id":"on_salvamento_membro","ep":24,"serie":"Osso Novo","temporada":"reconstrucao","motif_family":"bone",
@@ -98,7 +98,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra outro","pai de atleta."],"e":None,"sub":"Salva pra próxima dor de calcanhar.","cta":True,
     "vo":"Manda pra outro pai de criança no esporte e salva pra próxima dor de calcanhar."},
   ],
-  "caption":"Dor no calcanhar na criança/pré-adolescente que pratica esporte costuma ser doença de Sever: o impacto repetido irrita a placa de crescimento do calcâneo. Tranquiliza — é autolimitada, melhora com o tempo e não deixa sequela. Ajuda gelo, calçado com amortecimento, calcanheira de silicone, alongar a panturrilha e dosar o treino. Avalie na ortopedia pediátrica se mancar o dia todo, inchar ou doer em repouso.\n\nEnvia para um pai ou uma mãe que precisa ver isso.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
+  "caption":"Dor no calcanhar na criança/pré-adolescente que pratica esporte costuma ser doença de Sever: o impacto repetido irrita a placa de crescimento do calcâneo. Tranquiliza — é autolimitada, melhora com o tempo e não deixa sequela. Ajuda gelo, calçado com amortecimento, calcanheira de silicone, alongar a panturrilha e dosar o treino. Avalie na ortopedia pediátrica se mancar o dia todo, inchar ou doer em repouso.\n\nEnvia para um pai ou uma mãe que precisa ver isso.\n\nSociedade da área: @sbopbr\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
 
  # ───────────── Osso Novo #3 ─────────────
  {"id":"on_vitamina_d","ep":26,"serie":"Osso Novo","temporada":"viver-o-tratamento","motif_family":"bone",
@@ -130,7 +130,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra um pai","ou mãe de recém."],"e":None,"sub":"Quanto antes virem, melhor. Salva pra lembrar.","cta":True,
     "vo":"Manda pra um pai ou mãe de recém-nascido: ver cedo faz diferença. Salva pra lembrar."},
   ],
-  "caption":"Bebê que vive com a cabeça virada sempre pro mesmo lado pode ter torcicolo congênito: um músculo do pescoço fica encurtado de um lado. Agir cedo é tudo na ortopedia pediátrica — nos primeiros meses costuma resolver só com posição e fisioterapia. Em casa, estimular (com orientação) o lado que ele evita ajuda. Fique de olho no achatamento do crânio, que pode vir junto.\n\nEnvia para um pai ou uma mãe que precisa ver isso.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
+  "caption":"Bebê que vive com a cabeça virada sempre pro mesmo lado pode ter torcicolo congênito: um músculo do pescoço fica encurtado de um lado. Agir cedo é tudo na ortopedia pediátrica — nos primeiros meses costuma resolver só com posição e fisioterapia. Em casa, estimular (com orientação) o lado que ele evita ajuda. Fique de olho no achatamento do crânio, que pode vir junto.\n\nEnvia para um pai ou uma mãe que precisa ver isso.\n\nSociedade da área: @sbopbr\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
 
  # ───────────── Osso Novo #4 ─────────────
  {"id":"on_diabetes_osso","ep":28,"serie":"Osso Novo","temporada":"quando-o-osso-falha","motif_family":"bone",
@@ -162,7 +162,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra uma","mãe ansiosa."],"e":None,"sub":"Salva pra lembrar nos próximos marcos.","cta":True,
     "vo":"Manda pra aquela mãe ansiosa com os marcos do bebê e salva pra lembrar."},
   ],
-  "caption":"Pular o engatinhar pode ser normal — nem todo bebê engatinha, e muitos vão direto para o ficar de pé. O que importa não é a etapa exata, é o progresso: sentar, rolar, se arrastar, buscar objetos, ficar de pé. Engatinhar de bumbum ou de urso também conta. Acenda o alerta se usar sempre só um lado do corpo, rigidez/moleza importante, ou perda de habilidades — aí avalie na ortopedia pediátrica.\n\nEnvia para um pai ou uma mãe que precisa ver isso.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
+  "caption":"Pular o engatinhar pode ser normal — nem todo bebê engatinha, e muitos vão direto para o ficar de pé. O que importa não é a etapa exata, é o progresso: sentar, rolar, se arrastar, buscar objetos, ficar de pé. Engatinhar de bumbum ou de urso também conta. Acenda o alerta se usar sempre só um lado do corpo, rigidez/moleza importante, ou perda de habilidades — aí avalie na ortopedia pediátrica.\n\nEnvia para um pai ou uma mãe que precisa ver isso.\n\nSociedade da área: @sbopbr\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
 
  # ───────────── Osso Novo #5 ─────────────
  {"id":"on_haste_magnetica","ep":30,"serie":"Osso Novo","temporada":"reconstrucao","motif_family":"bone",
@@ -194,7 +194,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra quem","vai montar enxoval."],"e":None,"sub":"Salva antes da próxima compra.","cta":True,
     "vo":"Manda pra aquela amiga grávida montando o enxoval e salva antes da próxima compra de sapatinho."},
   ],
-  "caption":"Bebê precisa de sapato? Antes de andar, o melhor calçado é o pé descalço — sentir o chão fortalece o pé e treina o equilíbrio (meia antiderrapante resolve o frio). O sapato entra para proteger ao andar na rua, não para dar suporte. Escolha flexível, leve, sola fina, firme no calcanhar e com espaço para os dedos. Evite sapato duro e pesado: no pé saudável, atrapalha — é a orientação atual em ortopedia pediátrica.\n\nEnvia para um pai ou uma mãe que precisa ver isso.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
+  "caption":"Bebê precisa de sapato? Antes de andar, o melhor calçado é o pé descalço — sentir o chão fortalece o pé e treina o equilíbrio (meia antiderrapante resolve o frio). O sapato entra para proteger ao andar na rua, não para dar suporte. Escolha flexível, leve, sola fina, firme no calcanhar e com espaço para os dedos. Evite sapato duro e pesado: no pé saudável, atrapalha — é a orientação atual em ortopedia pediátrica.\n\nEnvia para um pai ou uma mãe que precisa ver isso.\n\nSociedade da área: @sbopbr\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
 
  # ───────────── Osso Novo #6 ─────────────
  {"id":"on_dor_cronica_fratura","ep":32,"serie":"Osso Novo","temporada":"viver-o-tratamento",
@@ -226,7 +226,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra um pai","de criança elástica."],"e":None,"sub":"Salva pra lembrar do que observar.","cta":True,
     "vo":"Manda pra um pai de criança elástica e salva pra lembrar do que observar."},
   ],
-  "caption":"Criança que dobra os dedos e as juntas demais costuma ter hipermobilidade — folga articular maior que a média, e na maioria das vezes é benigna (muitos atletas e bailarinos são assim). Tranquilo quando é só flexibilidade, sem dor e sem a junta sair do lugar. Observe se há dor após brincar, cansaço ao andar, quedas frequentes ou mão cansada ao escrever. O que ajuda é fortalecer, não frear o movimento — com orientação da ortopedia pediátrica.\n\nEnvia para quem tem criança em casa.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
+  "caption":"Criança que dobra os dedos e as juntas demais costuma ter hipermobilidade — folga articular maior que a média, e na maioria das vezes é benigna (muitos atletas e bailarinos são assim). Tranquilo quando é só flexibilidade, sem dor e sem a junta sair do lugar. Observe se há dor após brincar, cansaço ao andar, quedas frequentes ou mão cansada ao escrever. O que ajuda é fortalecer, não frear o movimento — com orientação da ortopedia pediátrica.\n\nEnvia para quem tem criança em casa.\n\nSociedade da área: @sbopbr\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
 
  # ───────────── Osso Novo #7 ─────────────
  {"id":"on_artrose_osteotomia","ep":34,"serie":"Osso Novo","temporada":"refazer-e-realinhar","motif_family":"bone",
@@ -258,7 +258,7 @@ LOTE_JULHO = [
    {"k":"Passa adiante","sc":["Manda pra uma mãe","na dúvida do colo."],"e":None,"sub":"Salva pra observar com calma.","cta":True,
     "vo":"Manda pra aquela mãe em dúvida se é manha ou cansaço, salva pra observar."},
   ],
-  "caption":"Criança que vive pedindo colo e cansa de andar mais que as outras costuma ser só idade — perna curta dá passo curto, e distância grande cansa mesmo. Observe o padrão: manca ao cansar? protege sempre a mesma perna? piorou de repente? Bandeiras que pedem avaliação sem demora: dor noturna persistente, febre, perda de peso ou articulação inchada. Avaliar na ortopedia pediátrica costuma ser simples e tranquilizador.\n\nEnvia para um pai ou uma mãe que precisa ver isso.\n\nSociedade da área: @sbortopediapediatrica\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
+  "caption":"Criança que vive pedindo colo e cansa de andar mais que as outras costuma ser só idade — perna curta dá passo curto, e distância grande cansa mesmo. Observe o padrão: manca ao cansar? protege sempre a mesma perna? piorou de repente? Bandeiras que pedem avaliação sem demora: dor noturna persistente, febre, perda de peso ou articulação inchada. Avaliar na ortopedia pediátrica costuma ser simples e tranquilizador.\n\nEnvia para um pai ou uma mãe que precisa ver isso.\n\nSociedade da área: @sbopbr\n\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual."},
 
  # ───────────── Osso Novo #8 ─────────────
  {"id":"on_falha_ossea","ep":36,"serie":"Osso Novo","temporada":"quando-o-osso-falha","motif_family":"bone",
