@@ -1855,11 +1855,20 @@
       "sha256": "sha256:1beb740a78d56f0c37e28099d7ba521fcf0a3d0f7a4dc9ba73a6ea97717c12ca",
       "commit": "a0b0d3c2e9e61cf0df6977de763ed6f25d29e2fb",
       "container": "18491280448128523"
+    },
+    {
+      "id": "cf_qualdosdois_pe_chato",
+      "kind": "reel",
+      "media_id": "18180979612451221",
+      "at": "2026-10-31T19:08:51.597567+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "qual_dos_dois"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-10-30",
+  "last_reel_date": "2026-10-31",
   "last_seq_date": "2026-10-24",
   "last_story_nova_date": "2026-10-31"
 }
