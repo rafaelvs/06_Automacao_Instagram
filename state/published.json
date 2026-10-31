@@ -1810,10 +1810,56 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "como_funciona"
+    },
+    {
+      "id": "stn_quanto_tempo#0",
+      "kind": "story_nova",
+      "story": "stn_quanto_tempo",
+      "parte": 0,
+      "media_id": "18024762347712124",
+      "at": "2026-10-31T15:31:10.153800+00:00",
+      "temas": [
+        "alongamento",
+        "tempo_tratamento"
+      ],
+      "sha256": "sha256:fec49478674c5076fae39040ff7882736771199992f02ff078d347c0d6f3cdb9",
+      "commit": "a0b0d3c2e9e61cf0df6977de763ed6f25d29e2fb",
+      "container": "18491280439128523"
+    },
+    {
+      "id": "stn_quanto_tempo#1",
+      "kind": "story_nova",
+      "story": "stn_quanto_tempo",
+      "parte": 1,
+      "media_id": "18117727952093457",
+      "at": "2026-10-31T15:31:10.153800+00:00",
+      "temas": [
+        "alongamento",
+        "tempo_tratamento"
+      ],
+      "sha256": "sha256:686fb787a3bcf3021e05404170bf00d12c1bc0cdfa41110cd716eaf4956432c5",
+      "commit": "a0b0d3c2e9e61cf0df6977de763ed6f25d29e2fb",
+      "container": "18491280445128523"
+    },
+    {
+      "id": "stn_quanto_tempo#2",
+      "kind": "story_nova",
+      "story": "stn_quanto_tempo",
+      "parte": 2,
+      "media_id": "17897357097678557",
+      "at": "2026-10-31T15:31:10.153800+00:00",
+      "temas": [
+        "alongamento",
+        "tempo_tratamento"
+      ],
+      "sha256": "sha256:1beb740a78d56f0c37e28099d7ba521fcf0a3d0f7a4dc9ba73a6ea97717c12ca",
+      "commit": "a0b0d3c2e9e61cf0df6977de763ed6f25d29e2fb",
+      "container": "18491280448128523"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-10-30",
-  "last_seq_date": "2026-10-24"
+  "last_seq_date": "2026-10-24",
+  "last_story_nova_date": "2026-10-31"
 }
