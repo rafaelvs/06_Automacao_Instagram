@@ -1,0 +1,192 @@
+{
+ "id": "stn_tenis_caro",
+ "hash_story": "sha256:6e438d76486bee93013d323662f926eba458887922e5dfa8cfcd170556da200c",
+ "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101",
+ "hash_render": "sha256:791a8ddf1f6b582d33fbb02def52982ad351d72a82b3652391bff7d9b1c60823",
+ "reel_video": "reels/_preview_cf_qualdosdois_pe_chato.mp4",
+ "reel_sha256": "sha256:02f2eebea87e25ee0152cf9a50a9b237710b61bfed38dbbc5de19c43856430ac",
+ "partes": [
+  {
+   "arquivo": "stories_cf/stn_tenis_caro_1.mp4",
+   "sha256": "sha256:e693a4fab309a9af66eeaf46f38a51349f9d9b8628db6803337e675a86a4f4cf",
+   "dur": 4.5,
+   "textos_tela": [
+    "COMO FUNCIONA",
+    "CORRIGE O PÉ?",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "TÊNIS CARO",
+    "toca →"
+   ],
+   "rotulos_reel": [],
+   "trecho": [
+    1.1,
+    2.2
+   ],
+   "crop": [
+    46,
+    520,
+    474,
+    620
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      2.6,
+      1.0
+     ],
+     [
+      4.5,
+      1.05
+     ]
+    ],
+    "ancora": [
+     282,
+     830
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     30,
+     16,
+     30,
+     16
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    1.0,
+    -1.0
+   ]
+  },
+  {
+   "arquivo": "stories_cf/stn_tenis_caro_2.mp4",
+   "sha256": "sha256:b6a3a4b00e2cf5182600d673582230a48639aeb3eb934d9290c8f7eb49fc5a8b",
+   "dur": 6.0,
+   "textos_tela": [
+    "ANDANDO, CORRENDO,",
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "O pé se desenvolve com",
+    "SENTINDO O CHÃO",
+    "movimento; o sapato só protege.",
+    "toca →"
+   ],
+   "rotulos_reel": [],
+   "trecho": [
+    9.8,
+    11.55
+   ],
+   "crop": [
+    50,
+    590,
+    720,
+    632
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.0
+     ],
+     [
+      6.0,
+      1.05
+     ]
+    ],
+    "ancora": [
+     300,
+     1000
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     30,
+     24,
+     14,
+     14
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    4.0,
+    4.0
+   ]
+  },
+  {
+   "arquivo": "stories_cf/stn_tenis_caro_3.mp4",
+   "sha256": "sha256:be86470f9d54a8853b9b03f4fe161e750c333c931dc1759c115c12b65a61fde0",
+   "dur": 10.6,
+   "textos_tela": [
+    "ACHANDO QUE CORRIGE.",
+    "COMO FUNCIONA",
+    "Conteúdo educativo · não substitui avaliação médica",
+    "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901",
+    "Em casa, em piso seguro. Dor ou",
+    "MANDA PRA QUEM",
+    "PÉ NO CHÃO,",
+    "QUANDO DER",
+    "VAI GASTAR CARO",
+    "Vídeo completo no perfil",
+    "rigidez no pé pedem avaliação.",
+    "toque no nome lá em cima ↖"
+   ],
+   "rotulos_reel": [],
+   "trecho": [
+    11.45,
+    12.45
+   ],
+   "crop": [
+    228,
+    415,
+    800,
+    720
+   ],
+   "camera": {
+    "zoom": [
+     [
+      0.0,
+      1.05
+     ],
+     [
+      0.6,
+      1.0
+     ]
+    ],
+    "ancora": [
+     628,
+     775
+    ],
+    "foco_x": null,
+    "esmaecer": [
+     30,
+     16,
+     30,
+     16
+    ]
+   },
+   "desloc_fundo": [
+    -1.0,
+    4.0,
+    4.0
+   ]
+  }
+ ],
+ "fontes": {
+  "black": "Roboto-Black.ttf",
+  "bold": "Roboto-Bold.ttf",
+  "semi": "Roboto-Medium.ttf",
+  "reg": "Roboto-Regular.ttf"
+ },
+ "motor": {
+  "base": "sha256:641f2a1a6f4eb54f6bd12d5eb87c86a8508d32bd04e60f84fc79c32e3b4df8a8",
+  "cf_alongamento": "sha256:c78e6ef388f780e6a930cb961f3a8bd5d49de29798cff26595ae3f8dc4579217",
+  "fontes": "sha256:aacf0eef888f81b440525ac1236c5367ff0bd633d0e938b07aa6cea00082cdd9",
+  "som": "sha256:bb14c29b0357e7ed165ab8dd28fefa928a1d8b2c75757326ee8ca4d65988cb0c",
+  "voz": "sha256:c5cd4ed56961e846df8ab719b19986bab6b0e939a8861b905e9d199806af9d5c"
+ },
+ "renderizado_em": "2026-10-31T21:47:02+00:00"
+}
