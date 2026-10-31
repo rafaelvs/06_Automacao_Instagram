@@ -4665,6 +4665,535 @@
     ]
   },
   {
+    "id": "cf_cameralenta_pe_pra_dentro",
+    "video": "reels/_preview_cf_cameralenta_pe_pra_dentro.mp4",
+    "caption": "Tropeça no próprio pé? Na câmera lenta aparece o detalhe: a ponta do pé vira para dentro e, nesse passo, esbarra no outro. É o andar de pombinho, o pé virado para dentro ao andar. Pode vir de uma leve torção (um giro) do pé, da canela ou do osso da coxa, todas variações comuns do crescimento, bem conhecidas da ortopedia pediátrica. A regra é o tempo: conforme a criança cresce, a rotação costuma se ajustar sozinha. Calçados especiais e órteses, na maioria dos casos, não mudam a evolução.\n\nNos primeiros anos, uma boa quantidade de quedas, sem mais nada, costuma ser normal. O alerta é quando ocorre só de um lado, dói, causa quedas demais, ou piora em vez de melhorar. Aí vale o ortopedista olhar. Para a consulta, vídeos curtos do andar, de frente e de costas, ajudam: o celular mostra o que a criança nem sempre repete no consultório. Mas o vídeo não dá diagnóstico: a câmera lenta não mostra se o giro vem do pé, da canela ou da coxa, e é o exame físico cuidadoso que orienta o diagnóstico. A câmera lenta, os anéis dourados e as pegadas do vídeo são ilustrações esquemáticas do que olhar: não são exame.\n\nManda pra quem vê o filho tropeçar no próprio pé.\n\nSociedade da área: @sbopbr\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "camera_lenta",
+    "serie": "Câmera lenta",
+    "dur": 31.5,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Tropeça no próprio pé? Volta. Câmera lenta."
+      },
+      {
+        "vo": "Repara: a ponta do pé virou pra dentro e esbarrou no outro."
+      },
+      {
+        "vo": "Andar de pombinho."
+      },
+      {
+        "vo": "Pode ser um leve giro no pé, na canela ou até na coxa."
+      },
+      {
+        "vo": "A regra é o tempo: a rotação costuma se ajustar sozinha."
+      },
+      {
+        "vo": "O alerta: só de um lado? Dor? Quedas demais? Piora?"
+      },
+      {
+        "vo": "Aí vale o ortopedista olhar. Filmar ajuda na consulta, mas não dá diagnóstico."
+      },
+      {
+        "vo": "Manda pra quem vê o filho tropeçar no próprio pé."
+      },
+      {
+        "tela": "TROPEÇA NO"
+      },
+      {
+        "tela": "PRÓPRIO PÉ?"
+      },
+      {
+        "tela": "CÂMERA LENTA"
+      },
+      {
+        "tela": "1×"
+      },
+      {
+        "tela": "0,25×"
+      },
+      {
+        "tela": "PÉ"
+      },
+      {
+        "tela": "CANELA"
+      },
+      {
+        "tela": "COXA"
+      },
+      {
+        "tela": "SÓ DE UM LADO"
+      },
+      {
+        "tela": "DOR"
+      },
+      {
+        "tela": "QUEDAS DEMAIS"
+      },
+      {
+        "tela": "PIORA"
+      }
+    ]
+  },
+  {
+    "id": "cf_var_pe_chato",
+    "video": "reels/_preview_cf_var_pe_chato.mp4",
+    "caption": "Chama o VAR: pé chato na criança, pode ou não pode? Tênis caro para corrigir o pé chato: não pode. Tênis caro não molda nem corrige o pé da criança. O arco e a musculatura se desenvolvem com o movimento — andando, correndo, sentindo o chão — não com um solado especial. O papel do calçado é proteger: flexível, leve e no tamanho certo já basta. Palmilha para formar o arco: não pode. Todo bebê nasce com o pé plano e o arco se forma sozinho ao longo da infância — e a palmilha não molda esse arco. Em pé flexível e sem dor, ela costuma ser gasto desnecessário. Isso não quer dizer que a palmilha nunca tenha indicação: a indicação depende do exame, não só da aparência do pé. Descalço em casa, em piso seguro: pode. A dica que de fato ajuda não custa nada: tempo descalço em casa, em piso seguro, estimula o pé de verdade. O que merece avaliação é o pé que dói, que é rígido ou que ficou chato só de um lado: aí vale passar com o ortopedista.\n\nManda pra quem ia gastar achando que corrige.\n\nSociedade da área: @sbopbr\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "chama_o_var",
+    "serie": "Chama o VAR",
+    "dur": 35.0,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Chama o VAR! Tênis caro pra corrigir pé chato: pode?"
+      },
+      {
+        "vo": "Anulado: tênis não molda o pé. Só protege."
+      },
+      {
+        "vo": "Palmilha pra formar o arco: pode?"
+      },
+      {
+        "vo": "Anulado: a palmilha não molda o arco. Na criança, flexível e sem dor, costuma melhorar sozinho."
+      },
+      {
+        "vo": "Descalço em casa, em piso seguro: pode?"
+      },
+      {
+        "vo": "Validado: não custa nada e fortalece o pé."
+      },
+      {
+        "vo": "Pé que dói, durinho ou chato só de um lado? Aí quem apita é o ortopedista."
+      },
+      {
+        "vo": "Manda pra quem ia gastar achando que corrige."
+      },
+      {
+        "tela": "TÊNIS CARO CORRIGE"
+      },
+      {
+        "tela": "PÉ CHATO DO FILHO?"
+      },
+      {
+        "tela": "VAR"
+      },
+      {
+        "tela": "LANCE 1"
+      },
+      {
+        "tela": "LANCE 2"
+      },
+      {
+        "tela": "LANCE 3"
+      },
+      {
+        "tela": "CHECANDO"
+      },
+      {
+        "tela": "ANULADO"
+      },
+      {
+        "tela": "NÃO MOLDA O ARCO"
+      },
+      {
+        "tela": "VALIDADO"
+      },
+      {
+        "tela": "JEITO CERTO"
+      },
+      {
+        "tela": "CHAMA O VAR"
+      }
+    ]
+  },
+  {
+    "id": "cf_cameralenta_quadril_bebe",
+    "video": "reels/_preview_cf_cameralenta_quadril_bebe.mp4",
+    "caption": "Um lado abre menos na hora da fralda? Na câmera lenta aparece o detalhe: as duas perninhas abrem juntas, e uma para no meio do caminho. Com pressa, isso passa batido, mas é um sinal que pede um olhar com calma. Pode ser sinal de displasia do desenvolvimento do quadril, o quadril que não encaixa bem desde cedo. Quem avalia é o exame clínico do bebê, às vezes com ultrassom: a displasia não aparece no teste do pezinho.\n\nDobrinhas da coxa diferentes e uma perna parecendo mais curta também entram na lista do que observar. Identificado nos primeiros meses, o tratamento costuma ser mais simples. Na dúvida, leve ao ortopedista pediátrico. A câmera lenta, os leques dourados e a bolinha na conchinha só ilustram o que observar durante a troca: não é manobra, nem exame, nem teste para fazer em casa.\n\nManda pra quem vive trocando fralda.\n\nSociedade da área: @sbopbr\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "camera_lenta",
+    "serie": "Câmera lenta",
+    "dur": 31.2,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Um lado abre menos? Volta. Câmera lenta."
+      },
+      {
+        "vo": "Repara: essa perninha para no meio do caminho."
+      },
+      {
+        "vo": "Na troca de fralda, com pressa, passa batido."
+      },
+      {
+        "vo": "Pode ser sinal de displasia do quadril: o quadril que não encaixa."
+      },
+      {
+        "vo": "O teste do pezinho não detecta."
+      },
+      {
+        "vo": "A avaliação é clínica e, às vezes, com ultrassom."
+      },
+      {
+        "vo": "Identificado nos primeiros meses, o tratamento costuma ser mais simples."
+      },
+      {
+        "vo": "Na dúvida, leve ao ortopedista pediátrico."
+      },
+      {
+        "vo": "Manda pra quem vive trocando fralda."
+      },
+      {
+        "tela": "UM LADO ABRE MENOS"
+      },
+      {
+        "tela": "NA HORA DA FRALDA?"
+      },
+      {
+        "tela": "CÂMERA LENTA"
+      },
+      {
+        "tela": "1×"
+      },
+      {
+        "tela": "0,25×"
+      },
+      {
+        "tela": "UM LADO ABRE MENOS"
+      }
+    ]
+  },
+  {
+    "id": "cf_cameralenta_perna_curta",
+    "video": "reels/_preview_cf_cameralenta_perna_curta.mp4",
+    "caption": "Perna mais curta que a outra: normal até onde? O nome disso é discrepância de membro, ou anisomelia. Na câmera lenta aparece o detalhe: ela manca, e o quadril fica desnivelado. Calma: uma diferença bem pequena quase toda criança tem, e não dá sintoma. Vale avaliar quando ela manca, quando há desnível no quadril ou a diferença é nítida.\n\nA diferença se mede com exame, a escanometria, não no olho nem na fita métrica. Diferenças pequenas costumam ser conduzidas com palmilha de compensação e observação. E o trunfo da infância é o crescimento: como a criança ainda cresce, dá para prever a diferença no final e planejar com tempo, se preciso. Corrigir, aqui, é sempre sobre função e marcha — nunca estética ou altura.\n\nMancar que apareceu ou piorou, dor no quadril ou na coluna, ou diferença que aumenta rápido na criança: procure avaliação. A câmera lenta, as marcas douradas, o olho e o calendário do vídeo só ilustram os sinais: não são exame, nem medida, nem teste para fazer em casa.\n\nManda pra quem notou uma perna mais curta no filho.\n\nSociedade da área: @sbopbr\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "camera_lenta",
+    "serie": "Câmera lenta",
+    "dur": 33.7,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Perna mais curta: normal até onde? Volta a fita. Câmera lenta."
+      },
+      {
+        "vo": "Repara: ela manca. E o quadril fica desnivelado."
+      },
+      {
+        "vo": "Diferença bem pequena? Quase toda criança tem, e não dá sintoma."
+      },
+      {
+        "vo": "Mancar, desnível no quadril ou diferença nítida pede avaliação."
+      },
+      {
+        "vo": "A diferença se mede com exame, não no olho."
+      },
+      {
+        "vo": "Ela ainda vai crescer: dá pra prever a diferença final. E planejar com calma, se precisar."
+      },
+      {
+        "vo": "Diferença que aumenta rápido? Procure avaliação."
+      },
+      {
+        "vo": "Manda pra quem notou uma perna mais curta no filho."
+      },
+      {
+        "tela": "PERNA MAIS CURTA:"
+      },
+      {
+        "tela": "NORMAL ATÉ ONDE?"
+      },
+      {
+        "tela": "CÂMERA LENTA"
+      },
+      {
+        "tela": "1×"
+      },
+      {
+        "tela": "0,25×"
+      },
+      {
+        "tela": "MANCA"
+      },
+      {
+        "tela": "DESNÍVEL NO QUADRIL"
+      },
+      {
+        "tela": "ELA AINDA CRESCE"
+      }
+    ]
+  },
+  {
+    "id": "cf_var_dor_crescimento",
+    "video": "reels/_preview_cf_var_dor_crescimento.mp4",
+    "caption": "Chama o VAR: crise de dor na perna à noite, pode ou não pode? Compressa morna e massagem na perna: pode. Costumam aliviar bem na hora. E ficar perto, conversar e tranquilizar ajuda — a criança sente a sua calma. Isso vale para a dor de crescimento, sem pancada. Se houve queda, batida ou torção, a conduta é outra: nas primeiras 48h de um trauma, é gelo; calor não é para a lesão recente. Chamar de frescura: não pode. É fácil duvidar, porque no dia seguinte a criança brinca normal, mas dor de crescimento é real — não é frescura: dói nas duas pernas, à noite ou no fim do dia, sem inchaço e sem febre, e some pela manhã. Chamar qualquer dor de “crescimento”: também não pode. O nome errado pode atrasar o diagnóstico do que é diferente. Se a dor é só de um lado, com inchaço, febre ou faz mancar de manhã, não trate como “crescimento”: avalie. O mesmo vale para a dor que invade o dia, fazendo mancar, limitar o brincar ou acordar sempre. Não há exame que “prove”. O médico reconhece pelo padrão típico e descarta o que precisa de atenção. Com febre e manqueira juntas, procure atendimento no mesmo dia. No vídeo, os risquinhos em volta das pernas só mostram onde dói, e os ícones só ilustram os sinais: é desenho, não é exame nem teste para fazer em casa.\n\nManda pra quem faz massagem na perninha à noite.\n\nSociedade da área: @sbopbr\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "chama_o_var",
+    "serie": "Chama o VAR",
+    "dur": 36.3,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Chama o VAR! Dor nas pernas à noite: massagem, pode?"
+      },
+      {
+        "vo": "Validado: massagem e compressa morna costumam aliviar. Fica perto: a criança sente a sua calma."
+      },
+      {
+        "vo": "E chamar de frescura: pode?"
+      },
+      {
+        "vo": "Anulado: dor de crescimento é real, e some pela manhã."
+      },
+      {
+        "vo": "Dor de um lado só, inchaço, febre ou manqueira. Chamar de crescimento: pode?"
+      },
+      {
+        "vo": "Anulado: não trate como crescimento. Leve para avaliar."
+      },
+      {
+        "vo": "Febre e manqueira juntas: atendimento no mesmo dia."
+      },
+      {
+        "vo": "Manda pra quem faz massagem na perninha à noite."
+      },
+      {
+        "tela": "DOR DE CRESCIMENTO"
+      },
+      {
+        "tela": "MASSAGEM PODE?"
+      },
+      {
+        "tela": "VAR"
+      },
+      {
+        "tela": "LANCE 1"
+      },
+      {
+        "tela": "LANCE 2"
+      },
+      {
+        "tela": "LANCE 3"
+      },
+      {
+        "tela": "CHECANDO"
+      },
+      {
+        "tela": "VALIDADO"
+      },
+      {
+        "tela": "SE DÓI NAS DUAS PERNAS"
+      },
+      {
+        "tela": "ANULADO"
+      },
+      {
+        "tela": "JEITO CERTO"
+      },
+      {
+        "tela": "CHAMA O VAR"
+      }
+    ]
+  },
+  {
+    "id": "cf_cameralenta_cotovelo_baba",
+    "video": "reels/_preview_cf_cameralenta_cotovelo_baba.mp4",
+    "caption": "Upa pela mão, e o braço parou? Na câmera lenta aparece o detalhe: o puxão é na mão, mas é no cotovelo que um ligamento “escorrega”. É a pronação dolorosa, o “cotovelo de babá”, comum em crianças pequenas, e o apelido não aponta culpado: acontece quando se puxa a criança pequena pela mão ou pelo braço, num gesto do dia a dia, como o upa para vencer um degrau ou uma poça. A criança chora, deixa o braço esticado ao lado do corpo e não quer mexer, sem inchaço aparente.\n\nNão puxe nem force: não tente resolver puxando. A redução deve ser feita por quem sabe, após avaliar: a correção é com o ortopedista, e costuma ser rápida. Na hora do upa, prefira as axilas: levantar a criança pelas axilas, e não pelas mãos ou pulsos, ajuda a prevenir. Se a criança caiu sobre a mão ou o braço e há deformidade, muito inchaço, dormência ou mão pálida/fria: pronto-socorro sem demora. A câmera lenta e a lupa do vídeo são ilustrações esquemáticas: não são exame nem mostram como corrigir.\n\nManda pra quem vive dizendo upa.\n\nSociedade da área: @sbopbr\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "camera_lenta",
+    "serie": "Câmera lenta",
+    "dur": 32.0,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Upa pela mão! Volta. Câmera lenta."
+      },
+      {
+        "vo": "E o braço parou? Repara: o puxão é na mão, mas é no cotovelo que um ligamento escorrega."
+      },
+      {
+        "vo": "Pousou: a criança deixa o braço esticado ao lado do corpo, e não quer mexer."
+      },
+      {
+        "vo": "É a pronação dolorosa, comum em crianças pequenas."
+      },
+      {
+        "vo": "Não puxe nem force."
+      },
+      {
+        "vo": "Leve pra avaliar: a correção pelo ortopedista costuma ser rápida."
+      },
+      {
+        "vo": "Pra ajudar a prevenir, upa pelas axilas. Não pelas mãos ou pulsos."
+      },
+      {
+        "vo": "Manda pra quem vive dizendo upa."
+      },
+      {
+        "tela": "UPA PELA MÃO"
+      },
+      {
+        "tela": "E O BRAÇO PAROU?"
+      },
+      {
+        "tela": "CÂMERA LENTA"
+      },
+      {
+        "tela": "1×"
+      },
+      {
+        "tela": "0,25×"
+      },
+      {
+        "tela": "NA MÃO"
+      },
+      {
+        "tela": "NO COTOVELO"
+      },
+      {
+        "tela": "NÃO PUXE NEM FORCE"
+      },
+      {
+        "tela": "PELAS AXILAS"
+      }
+    ]
+  },
+  {
+    "id": "cf_cameralenta_escoliose",
+    "video": "reels/_preview_cf_cameralenta_escoliose.mp4",
+    "caption": "Escoliose não dói? No começo, a escoliose costuma não doer, por isso o sinal é visual, e quem vê é quem olha as costas: os pais, a escola, o pediatra. O teste das costas que você faz em casa: de pé, com os pés juntos, a criança inclina o tronco para a frente com os braços soltos e os joelhos esticados; você olha as costas por trás. Um lado mais alto que o outro é a rotação da coluna aparecendo: a coluna faz uma curva e gira junto.\n\nFique de olho também em um ombro mais alto que o outro, na cintura assimétrica ou numa escápula mais saliente. Viu? É sinal, não diagnóstico: quem confirma, decide se pede exame e define a conduta é o ortopedista. A escoliose aparece mais no estirão da pré-adolescência, e no estirão a curva pode mudar mais rápido; em casa, olhe as costas de tempos em tempos. E dor nas costas persistente na criança merece atenção: dor que acorda à noite, febre, perda de peso ou dor que piora e limita as atividades pedem avaliação na ortopedia pediátrica. A câmera lenta e as marcações do vídeo só ilustram o que olhar: não são exame nem diagnóstico.\n\nManda pra quem tem pré-adolescente em casa.\n\nSociedade da área: @sbopbr\n\nNarração com voz digital (IA).\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "camera_lenta",
+    "serie": "Câmera lenta",
+    "dur": 31.1,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Tronco à frente: olha as costas, por trás. De novo, em câmera lenta."
+      },
+      {
+        "vo": "Repara: um lado fica mais alto."
+      },
+      {
+        "vo": "É a coluna girando: o sinal da escoliose."
+      },
+      {
+        "vo": "Costuma não doer no começo: por isso o sinal é visual."
+      },
+      {
+        "vo": "Olha também: ombro mais alto? Cintura torta? Escápula saliente?"
+      },
+      {
+        "vo": "É sinal, não diagnóstico: leve para avaliação com o ortopedista."
+      },
+      {
+        "vo": "No estirão da pré-adolescência, a curva pode mudar mais rápido."
+      },
+      {
+        "vo": "Manda pra quem tem pré-adolescente em casa."
+      },
+      {
+        "tela": "TRONCO À FRENTE:"
+      },
+      {
+        "tela": "OLHA AS COSTAS."
+      },
+      {
+        "tela": "CÂMERA LENTA"
+      },
+      {
+        "tela": "1×"
+      },
+      {
+        "tela": "0,25×"
+      },
+      {
+        "tela": "UM LADO MAIS ALTO"
+      },
+      {
+        "tela": "COSTUMA NÃO DOER"
+      },
+      {
+        "tela": "SINAL"
+      },
+      {
+        "tela": "NÃO DIAGNÓSTICO"
+      },
+      {
+        "tela": "NO ESTIRÃO"
+      }
+    ]
+  },
+  {
+    "id": "cf_var_andar",
+    "video": "reels/_preview_cf_var_andar.mp4",
+    "caption": "Chama o VAR: nos primeiros anos, pode ou não pode? Sentar em W: pode, de vez em quando. As crianças escolhem essa posição porque é uma base larga e estável, que deixa as mãos livres para brincar, e numa criança que se desenvolve bem, sentar em W de vez em quando não vira deformidade. O bom senso é estimular variar a posição — e, se ela SÓ senta em W ou já tem outros sinais, comentar na consulta de ortopedia pediátrica.\n\nComparar com o filho do vizinho que andou antes: não pode. A maioria das crianças dá os primeiros passos entre 9 e 18 meses — janela ampla, então um pouco antes ou depois costuma ser normal. Comparar com outras crianças só gera ansiedade: o ritmo é individual.\n\nDeixar treinar e cair, em espaço seguro: pode. Nos primeiros anos, cair é como o corpo calibra o equilíbrio — cada tombo ensina, e uma boa quantidade de quedas, sem mais nada, costuma ser normal. Em casa, ajuda espaço seguro para praticar.\n\nA linha de alerta: não andar até por volta dos 18 meses, ou perder uma habilidade já conquistada, merece avaliação na ortopedia pediátrica. Nas quedas, o que muda o jogo é a tendência: cair cada vez mais (em vez de melhorar) ou tropeçar sempre do mesmo lado também são sinais que valem avaliação.\n\nManda pra quem tem criança aprendendo a andar.\n\nSociedade da área: @sbopbr\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "chama_o_var",
+    "serie": "Chama o VAR",
+    "dur": 35.7,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Chama o VAR! Sentar em W: pode?"
+      },
+      {
+        "vo": "Validado: de vez em quando, não vira deformidade. Só senta assim? Comenta na consulta."
+      },
+      {
+        "vo": "Comparar com o filho do vizinho que andou antes: pode?"
+      },
+      {
+        "vo": "Anulado: o ritmo é individual."
+      },
+      {
+        "vo": "Treinar e cair, em espaço seguro: pode?"
+      },
+      {
+        "vo": "Validado: cada queda calibra o equilíbrio."
+      },
+      {
+        "vo": "Não andar até uns dezoito meses, perder o que já fazia, cair cada vez mais ou tropeçar sempre do mesmo lado pede avaliação."
+      },
+      {
+        "vo": "Manda pra quem tem criança aprendendo a andar."
+      },
+      {
+        "tela": "SENTAR EM W:"
+      },
+      {
+        "tela": "PODE OU NÃO PODE?"
+      },
+      {
+        "tela": "VAR"
+      },
+      {
+        "tela": "LANCE 1"
+      },
+      {
+        "tela": "LANCE 2"
+      },
+      {
+        "tela": "LANCE 3"
+      },
+      {
+        "tela": "CHECANDO"
+      },
+      {
+        "tela": "VALIDADO"
+      },
+      {
+        "tela": "DE VEZ EM QUANDO"
+      },
+      {
+        "tela": "ANULADO"
+      },
+      {
+        "tela": "JEITO CERTO"
+      },
+      {
+        "tela": "ESPAÇO SEGURO"
+      },
+      {
+        "tela": "CHAMA O VAR"
+      }
+    ]
+  },
+  {
     "id": "fx_retirada",
     "video": "reels/_preview_fx_retirada.mp4",
     "caption": "O dia de tirar o fixador externo: a retirada é um procedimento feito pela equipe, em ambiente adequado e conforme o caso. Depois, os trajetos dos pinos cicatrizam ao longo das semanas seguintes, com curativo simples, do jeito que a equipe orientar. E o osso novo, ainda mais frágil que o osso maduro, segue ganhando resistência por meses: carga e atividade voltam aos poucos, e a fisioterapia continua.\n\nEnvia para quem está com o fixador — ou cuida de quem está.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901 — Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica.\nConteúdo educativo; não substitui avaliação individual.",
