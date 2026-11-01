@@ -71,7 +71,7 @@ import numpy as np
 import skia
 
 from . import som, voz as _voz
-from .base import FPS, codificar, previas as _previas
+from .base import FPS, CanvasRegistrador, codificar, previas as _previas
 from .cf_alongamento import (BG_OUT, CX, F_BLACK, H, OURO, PART, W, clamp, e_back, e_inout, e_out, lerp,
                              lerpc, paint, prog, texto)
 from .cf_comum import ancoras, capa, interface
@@ -2230,9 +2230,54 @@ def selo_lenta(cv, lk):
     cv.restore()
 
 
+# v6 (4ª rodada da verificação em resolução cheia, 01/11): na cartela final (entra por fusão em t_cta = manda - 0,15)
+# a cena só ganhava o véu BG_OUT de 175/255 do cf_comum.interface, e o menino do 2º lance ficava esmaecido porém
+# LEGÍVEL na metade direita até o fim, parado, com a cabeça bem atrás de "QUEM" e de "UPA." (lia como criança com
+# texto no lugar da cabeça). cf_comum entra no hash de vídeos publicados e não muda; aqui, como no
+# cf_cameralenta_escoliose (veu_cena/monitor_desfocado), a cena da cartela é DESFOCADA e ESCURECIDA por baixo do véu
+# do cf_comum. A rampa ACABA em t_cta (manda - 0,15), ANTES de o texto da cartela aparecer (bloco "Manda" - 0,12 s):
+# com a rampa começando junto do véu (t_cta), nos ~0,2 s da fusão a cabeça ainda aparecia nítida atrás de "QUEM" e
+# "UPA.". Ela começa a manda - 0,45, no silêncio do respiro da CTA (junto das cantoneiras e do painel, que somem de
+# manda - 0,4 a manda - 0,1): o menino vira vulto e só então a cartela entra. Tempos, fala e texto ficam iguais.
+CTA_ESCURO, CTA_DESF = 0.72, 18.0                                # escuro extra (0..1) e sigma do desfoque (px)
+_SUP_CTA = {}
+
+
+def veu_cta(t, T):
+    """0..1: a cena vira vulto de manda - 0,45 a t_cta = manda - 0,15 (o véu do cf_comum.interface entra em t_cta)."""
+    return e_inout(prog(t, T["manda"] - 0.45, T["manda"] - 0.15))
+
+
+def monitor_cta(cv, t, T, F, passos, k):
+    """O monitor desenhado à parte (superfície do tamanho do quadro: o rastro usa a matriz total do canvas como tela),
+    desfocado e escurecido por k, preso à CENA (sem halo na moldura). O texto desenhado lá dentro continua indo ao
+    registro do render (mesmo CanvasRegistrador), para o portão de "todo texto é do episódio" seguir valendo."""
+    if "sf" not in _SUP_CTA:
+        _SUP_CTA["sf"] = skia.Surface(int(W), int(H))
+    sf = _SUP_CTA["sf"]
+    c = sf.getCanvas(); c.clear(_c(BG_OUT))
+    reg = getattr(cv, "_registro", None)
+    cc = CanvasRegistrador(c, reg) if reg is not None else c
+    fundo_cl(cc, t)
+    monitor(cc, t, T, F, passos)
+    pf = skia.Paint()
+    sig = CTA_DESF * k
+    if sig > 0.3:
+        pf.setImageFilter(skia.ImageFilters.Blur(sig, sig, skia.TileMode.kClamp))
+    cv.save(); cv.clipRect(CENA, True)
+    cv.drawImage(sf.makeImageSnapshot(), 0, 0, skia.SamplingOptions(), pf)
+    img = _img("escurece", CENA.width(), CENA.height(), lambda c2: c2.clear(_c(BG_OUT, 255)))
+    _blit(cv, img, CENA.left(), CENA.top(), CTA_ESCURO * k)
+    cv.restore()
+
+
 def quadro(cv, t, T, blocos, ep, F, passos):
     fundo_cl(cv, t)
-    monitor(cv, t, T, F, passos)
+    k_cta = veu_cta(t, T)
+    if k_cta > 0:
+        monitor_cta(cv, t, T, F, passos, k_cta)                     # v6: cartela = cena desfocada e escura (vulto)
+    else:
+        monitor(cv, t, T, F, passos)
     etiqueta_nao_puxe(cv, t, T)                                    # v3: fora do monitor (não cobre a cabeça)
     fim = 1 - prog(t, T["manda"] - 0.4, T["manda"] - 0.1)
     cantoneiras(cv, fim)

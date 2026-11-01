@@ -672,8 +672,15 @@ def crianca(cv, pose, aneis=None, t=0.0, y_chao=Y_PISO, esc_traco=1.0):
 
 
 # ------------------------------------------------------------------ câmera (mundo -> tela)
-BASE = (1.28, 540.0, 1000.0, 540.0, 1075.0)                     # a criança do short para baixo
-BASE2 = (1.28, 540.0, 1000.0, 430.0, 1075.0)                     # fita 2: um pouco à esquerda (rótulos à direita)
+# Enquadramento de corpo inteiro (do cós aos dedos) com folga nas DUAS bordas da cena. Antes (rodada 4 da revisão):
+# (1.28, ..., sy=1075) punha a fileira de dedos em y ≈ 1248 na tela no ponto mais baixo de cada pisada (o pé que
+# pousa vem para a câmera: z = +ZS1), além da borda de baixo da cena (CENA.bottom = 1230) -> metade dos círculos
+# dos dedos cortada reta no 1× e no ▶▶ do quintal (e a fita 2 encostava: 1229). Agora, um pouco menor e mais
+# alto: dedos em y ≤ 1208 (fita 1) / ≤ 1191 (fita 2) e o cós em y ≥ 354, todos os quadros (tremores incluídos).
+# Fita 2 um pouco mais à esquerda (sx 430 -> 416): no tropeço para a direita do ▶▶ a quina do short não encosta
+# mais na caixa do rótulo QUEDAS DEMAIS (antes ela entrava ~13 px por baixo da caixa; agora sobra folga).
+BASE = (1.24, 540.0, 1000.0, 540.0, 1040.0)                     # a criança do short para baixo
+BASE2 = (1.24, 540.0, 1000.0, 416.0, 1040.0)                     # fita 2: um pouco à esquerda (rótulos à direita)
 LENTA1 = (2.0, 545.0, 1000.0, 540.0, 925.0)                      # 1ª câmera lenta: do joelho para baixo
 LENTA2 = (1.55, 590.0, 940.0, 455.0, 895.0)                      # fita 2: canela e pés
 DIAG = (1.15, 540.0, 1000.0, 540.0, 1010.0)                      # diagrama: anéis longe do painel
@@ -1797,7 +1804,8 @@ def momentos(T, F):
             (T["olhar"], T["ai"] - 0.03))
 
 
-RECORTES = ((610.0, 940.0, 660.0), (650.0, 820.0, 640.0), (560.0, 880.0, 860.0), (540.0, 800.0, 960.0))
+# (o 3º recorte acompanha a fita 2, que foi 14 px para a esquerda: 560 -> 546, mesmo enquadramento de antes)
+RECORTES = ((610.0, 940.0, 660.0), (650.0, 820.0, 640.0), (546.0, 880.0, 860.0), (540.0, 800.0, 960.0))
 MW, MH = 212.0, 191.0
 G_ESC = 1.72                                                      # miniaturas GRANDES em grade 2×2 (antes: fileira miúda)
 GRADE = ((335.0, 556.0), (745.0, 556.0), (335.0, 924.0), (745.0, 924.0))

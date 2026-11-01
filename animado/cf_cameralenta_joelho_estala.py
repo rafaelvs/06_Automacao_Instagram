@@ -24,6 +24,8 @@ de cima (na v2 o braço descia flutuando por um vão vazio acima da cintura, sem
 v4 (revisão em resolução cheia, 3ª rodada): o "0,25×" grande nascia no MEIO da caixa (540, 600), crescia até ~450 px
 e ficava sobre o joelho e a canela (fita 1) e sobre o short e a coxa (fita 2) antes de deslizar para o painel;
 agora nasce no canto de cima à direita da caixa, menor (1,8×), e desce pela lateral direita até o painel.
+v5 (revisão em resolução cheia, 4ª rodada): na câmera 2 (de frente) a base das duas canelas tinha uma farpa com
+entalhe em cada borda, logo acima da meia (o contorno voltava para cima no fim da panturrilha); agora afina suave.
 
 Regras da série e do storyboard, todas aqui:
   * Selo CÂMERA LENTA SÓ com a câmera lenta ligada (0,25× ou congelamento dentro dela): "câmera" -> "seguiu" e
@@ -1219,14 +1221,19 @@ def k_mao(t, T):
 def _perna_frente(cv, x, y_bainha, y_joe, y_tor, r_joe, cheio, lado):
     """Uma perna de frente, do short ao tênis, em coordenadas de tela. `cheio`: joelho mais cheio (MESMA cor)."""
     hw_top, hw_joe, hw_pant, hw_tor = 68.0, 52.0, 50.0, 33.0           # pernas curtas e cheinhas de criança
+    # v5: o fim da panturrilha ficava em y_joe + 150 (945) e o 1º controle do trecho seguinte em y_tor - 70 (925),
+    # ACIMA dele: o contorno subia de volta e deixava, em cada borda, uma farpa para baixo com um entalhe (fundo
+    # aparecendo) logo acima da meia. Agora a panturrilha acaba a 60% da canela e o trecho até o tornozelo sai na
+    # MESMA direção (tangente contínua) e só desce: a canela afina suave até a meia.
+    y_pant = y_joe + 0.6 * (y_tor - y_joe)                       # fim da panturrilha, acima da meia (y_tor - 40)
     p = skia.Path()
     p.moveTo(x - hw_top, y_bainha - 30)
     p.cubicTo(x - hw_top, y_joe - 120, x - hw_joe - 4, y_joe - 60, x - hw_joe, y_joe)
-    p.cubicTo(x - hw_joe, y_joe + 60, x - hw_pant - 2, y_joe + 110, x - hw_pant + 4, y_joe + 150)
-    p.cubicTo(x - hw_pant + 12, y_tor - 70, x - hw_tor, y_tor - 30, x - hw_tor, y_tor)
+    p.cubicTo(x - hw_joe, y_joe + 60, x - hw_pant - 2, y_pant - 40, x - hw_pant + 4, y_pant)
+    p.cubicTo(x - hw_pant + 7, y_pant + 20, x - hw_tor, y_tor - 45, x - hw_tor, y_tor)
     p.lineTo(x + hw_tor, y_tor)
-    p.cubicTo(x + hw_tor, y_tor - 30, x + hw_pant - 12, y_tor - 70, x + hw_pant - 4, y_joe + 150)
-    p.cubicTo(x + hw_pant + 2, y_joe + 110, x + hw_joe, y_joe + 60, x + hw_joe, y_joe)
+    p.cubicTo(x + hw_tor, y_tor - 45, x + hw_pant - 7, y_pant + 20, x + hw_pant - 4, y_pant)
+    p.cubicTo(x + hw_pant + 2, y_pant - 40, x + hw_joe, y_joe + 60, x + hw_joe, y_joe)
     p.cubicTo(x + hw_joe + 4, y_joe - 60, x + hw_top, y_joe - 120, x + hw_top, y_bainha - 30)
     p.close()
     j = skia.Path()
