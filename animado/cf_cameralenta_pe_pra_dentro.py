@@ -1360,8 +1360,21 @@ MANGA, MANGA_CL, MANGA_LINHA = "#8EC3EA", "#B8DCF6", "#4C7FA8"   # camiseta azul
 
 
 def _pega(pr):
-    """Ponto da canela que a mão segura (o anel da DOR e o fio do rótulo saem daqui)."""
+    """Ponto da canela que a mão segura (o braço e a mão se montam a partir daqui)."""
     return lerp(pr.joe[0], pr.tor[0], PEGA_FR), lerp(pr.joe[1], pr.tor[1], PEGA_FR)
+
+
+# Marca da DOR: o ponto do fio do rótulo e o círculo dourado ficam na canela VISÍVEL, abaixo da mão. Antes (rodada 3
+# da revisão): o ponto saía de _pega + (100, -10) = (678, 720) na tela, no punho/antebraço que desce, e o círculo
+# (108×92, centrado na mão) abraçava a mão e o braço junto com a canela. Agora: 57% do joelho ao tornozelo
+# (≈ (523, 848) na tela; a mão termina em y ≈ 765 e o pé começa em y ≈ 940), círculo só da largura da canela.
+DOR_FR = 0.57
+DOR_RX, DOR_RY = 52.0, 42.0                                      # raios do círculo da DOR (mundo; × zoom na tela)
+
+
+def _ponto_dor(pr):
+    """Ponto da canela visível, abaixo da mão: centro do círculo da DOR e ponta do fio do rótulo DOR."""
+    return lerp(pr.joe[0], pr.tor[0], DOR_FR), lerp(pr.joe[1], pr.tor[1], DOR_FR)
 
 
 def _cotovelo(sx, sy, wx, wy):
@@ -1706,7 +1719,7 @@ def marcas_corrida(cv, t, T, F, cam):
 
 
 def marcas_casa(cv, t, T, F, cam, pose, centro_mao):
-    """Fita 2: seta e arco SÓ no pé que vira (o outro não ganha marca nem cor); círculo na mão da dor."""
+    """Fita 2: seta e arco SÓ no pé que vira (o outro não ganha marca nem cor); círculo da dor na canela."""
     d = pose.pernas[1].pe
     a_m = prog(t, T["so"] + 0.08, T["so"] + 0.2) * (1 - prog(t, T["quedas"] - 0.25, T["quedas"] - 0.02))
     if a_m > 0:
@@ -1734,10 +1747,10 @@ def marcas_casa(cv, t, T, F, cam, pose, centro_mao):
             for q in pts[2:]:
                 arc.lineTo(*q)
             cv.drawPath(arc, paint(OURO, int(255 * a_m), "stroke", 7))
-    if centro_mao is not None and t >= F.t_dor:
+    if centro_mao is not None and t >= F.t_dor:                  # a mão está na canela: círculo na canela, NÃO na mão
         a = 1 - prog(t, T["quedas"] - 0.2, T["quedas"])
-        mx, my = na_tela(cam, *centro_mao)
-        circulo_mao(cv, mx, my, 108 * cam[0], 92 * cam[0], prog(t, F.t_dor + 0.04, F.t_dor + 0.4), a)
+        mx, my = na_tela(cam, *_ponto_dor(pose.pernas[1]))
+        circulo_mao(cv, mx, my, DOR_RX * cam[0], DOR_RY * cam[0], prog(t, F.t_dor + 0.04, F.t_dor + 0.4), a)
 
 
 def estado_aneis(t, T):
@@ -1769,8 +1782,7 @@ def rotulos(cv, t, T, F):
         a1 = prog(t, T["lado"] + 0.12, T["lado"] + 0.30) * (1 - prog(t, T["dor"] - 0.10, T["dor"] + 0.05))
         rotulo(cv, R_LADO, Y_SINAL, a1, ancora=na_tela(cam, *d.pe.P(PE_L * 0.5, -PE_W * 0.55 * d.pe.lado)), x_dir=1020, tam=38)
         a2 = prog(t, T["dor"] + 0.05, T["dor"] + 0.25) * (1 - prog(t, T["quedas"] - 0.12, T["quedas"]))
-        sx, sy = _pega(d)
-        rotulo(cv, R_DOR, Y_SINAL, a2, ancora=na_tela(cam, sx + 100, sy - 10), x_dir=1020, tam=38)
+        rotulo(cv, R_DOR, Y_SINAL, a2, ancora=na_tela(cam, *_ponto_dor(d)), x_dir=1020, tam=38)   # ponto na canela
         a3 = prog(t, T["quedas"] + 0.08, T["quedas"] + 0.28) * (1 - prog(t, T["piora"] - 0.1, T["piora"]))
         rotulo(cv, R_QUEDAS, Y_SINAL, a3, x_dir=1020, tam=38)
     if v == "tapete":

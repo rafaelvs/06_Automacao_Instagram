@@ -1727,7 +1727,14 @@ def interface_cl(cv, t, T, blocos, destaque):
     if t >= t_cta:
         a = prog(t, t_cta, t_cta + 0.35)
         cv.drawRect(skia.Rect(0, 0, W, H), paint(BG_OUT, int(175 * a)))
-        legenda_cl(cv, blocos, t, destaque, y_base=700, tam=92)
+        # a POSIÇÃO da legenda é do BLOCO, não do relógio: o cartão começa em "Manda" - 0,15 s, mas o bloco
+        # anterior ("PROCURE AVALIAÇÃO.") ainda vale até "Manda" - 0,12 s; nesse quadro ele seguia vivo e saltava
+        # para y 700 (em cima da cabeça dela). Agora ele fica embaixo, onde estava, até o bloco da CTA entrar.
+        ini_cta = next((b[0]["t"] - 0.12 for b in blocos if any(abs(p["t"] - T["manda"]) < 1e-6 for p in b)), t_cta)
+        if t < ini_cta:
+            legenda_cl(cv, blocos, t, destaque)
+        else:
+            legenda_cl(cv, blocos, t, destaque, y_base=700, tam=92)
         aviao(cv, t, T["manda"] + 0.2)
         rr = skia.RRect.MakeRectXY(skia.Rect(150, 1060, 930, 1214), 28, 28)
         cv.drawRRect(rr, paint("#0B1824", int(230 * a))); cv.drawRRect(rr, paint(OURO, int(255 * a), "stroke", 3))

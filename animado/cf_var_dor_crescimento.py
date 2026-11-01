@@ -23,6 +23,12 @@ quadril, com os pés no chão. (2) Nas cenas de cama a criança aparece INTEIRA:
 cabeceira, cabeça com cabelo (sem rosto), ombros de pijama, o corpo sob o cobertor até o peito e o bracinho por
 cima dele (antes um volume de bolinhas com dobra de travesseiro: as pernas saíam do nada).
 
+v5 (3ª revisão em resolução cheia; só DESENHO — texto, voz e tempos iguais; v3 e v4 ficam): o carimbo VALIDADO /
+SE DÓI NAS DUAS PERNAS do LANCE 1 sai do canto superior esquerdo da cena (420, 470) — onde, desde que a v4 pôs a
+cabeça da criança na cabeceira, ele cobria cabeça e rosto de 5,4 a 6,2 s — e pousa na faixa ACIMA do monitor, à
+direita do selo VAR, só encostando na borda de cima da janela (sobre o céu/janela da casa, longe da criança e com
+os braços adultos entrando livres); a saída encolhendo para o chip do selo fica curta e não cruza a cena.
+
 Série "Chama o VAR" (ter/qui/sáb), construído sobre o piloto cf_chamaovar_rotina_fixador e os episódios do gesso e
 dos primeiros socorros: os helpers da série (monitor, selo VAR + chip de estado, telestrador, carimbo com 2ª linha,
 rebobinar, TV desligando, apito, sons, legenda karaokê, render com CHECANDO) estão COPIADOS aqui, sem importar
@@ -1971,7 +1977,9 @@ def interface_var(cv, t, T, blocos, destaque):
 VEREDITOS = (("pode1", "validado", T_VALID, VERDE), ("pode2", "anulado1", T_ANUL, AMBAR),
              ("pode3", "anulado2", T_ANUL, AMBAR))
 DUR_CARIMBOS = (1.5, 1.2, 1.3)
-POS_CARIMBOS = ((420.0, 470.0), (DIV_X, 470.0), (JCX, 470.0))
+# v5: o VALIDADO (LANCE 1) pousa ACIMA do monitor, à direita do selo VAR (x 247-973, y ~100-340 girado a -5°);
+# em (420, 470) ele cobria a cabeça da criança recostada na cabeceira (5,4-6,2 s).
+POS_CARIMBOS = ((610.0, 222.0), (DIV_X, 470.0), (JCX, 470.0))
 SUB_CARIMBOS = (T_DUAS, None, None)
 
 

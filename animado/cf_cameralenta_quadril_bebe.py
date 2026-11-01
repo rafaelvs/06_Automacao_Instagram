@@ -68,6 +68,10 @@ a cada instante (`_k_igual`; antes o k corria em contrafase e uma perna ficava 1
 quadro por um assert no `Filme`); o borrão do 1×/◀◀/▶▶ virou pose nítida + rastro contínuo sem contorno
 (`pernas_borradas`; antes 6 poses inteiras empilhadas = vários pés no quadro pausado); o ponto dourado gruda no pé
 também com o joelho dobrado.
+v5 (3ª rodada de 01/11; texto, voz, sons e tempos de fala intactos): a saída da polaroide do "na dúvida" deixou de
+ser dissolução cruzada com a cena cheia (duas figuras desalinhadas somadas por ~10 quadros: quatro pernas, duas
+fraldas) e passa por FUNDO ESCURO, com a volta da câmera do recuo para BASE escondida no escuro total (`recap`,
+REC_*).
 A cena é PRESA ao roteiro pelas palavras-âncora (ANCORAS): roteiro sem elas = KeyError no render.
 """
 import math
@@ -542,7 +546,7 @@ def cameras(T, F):
         (F.t_fz, 0.13, (zf, (x0 + x1) / 2, (y0 + y1) / 2, 540.0, 1000.0)),     # zoom seco nos dois leques
         (T["pressa"], 0.5, BASE),
         (F.t_calma, 0.6, RECUO),                                                 # recua; lugar p/ o cartão
-        (F.t_rep - 0.4, 0.5, BASE),                                              # replay limpo
+        (F.t_rep + REC_CAM[0], REC_CAM[1], BASE),                                # replay limpo (v5: dentro do escuro)
     )
 
 
@@ -1229,20 +1233,40 @@ def miniatura(T, F, passos, tt):
 
 MW, MH = 640.0, 576.0                                             # polaroide (proporção da CENA)
 POL_C = (520.0, 745.0)
+# v5 (3ª rodada de 01/11): a saída da polaroide passa por FUNDO ESCURO (instantes relativos a F.t_rep, o replay limpo)
+REC_PRETO = (-0.45, -0.30)        # o escurecido vai de 0,7 a 1,0 (opaco): o bebê do fundo some ANTES da foto sair
+REC_SAI = (-0.30, -0.12)          # a polaroide e o estetoscópio somem SOBRE o escuro total (nada atrás deles)
+REC_CAM = (-0.28, 0.14)           # (início, duração) do recuo -> BASE da câmera: todo dentro do escuro total
+REC_CLAREIA = (-0.12, 0.14)       # o escuro sai e revela a cena cheia já parada em BASE (antes de as pernas abrirem)
+assert REC_PRETO[1] <= REC_SAI[0] and REC_SAI[1] <= REC_CLAREIA[0], "a foto só sai sobre o escuro total"
+assert REC_PRETO[1] <= REC_CAM[0] and REC_CAM[0] + REC_CAM[1] <= REC_CLAREIA[0], "a câmera só anda no escuro total"
+assert REC_CLAREIA[1] < OPEN0 - R1, "o escuro abre antes de as pernas começarem a abrir no replay"
 
 
 def recap(cv, t, T, F, passos):
     """Sem texto: a cena escurece, entra a POLAROIDE do congelamento (os dois leques: o que olhar) e o
-    estetoscópio acende com o anel dourado no "ortopedista" (consulta, não aprovação)."""
+    estetoscópio acende com o anel dourado no "ortopedista" (consulta, não aprovação).
+    v5 (correção de 01/11, 3ª rodada): antes a polaroide saía numa DISSOLUÇÃO cruzada com a cena cheia (a foto
+    apagava enquanto o escurecido também apagava e a câmera voltava do recuo): por ~10 quadros as duas figuras
+    desalinhadas se somavam (quatro pernas, quatro pés, duas fraldas). Agora a saída passa por FUNDO ESCURO: o
+    escurecido fecha até opaco com a foto ainda inteira, a foto some sobre o escuro, a câmera volta para BASE
+    dentro do escuro (`cameras`, REC_CAM) e só então o escuro abre sobre a cena cheia. Em nenhum quadro há dois
+    bebês sobrepostos."""
     t0 = T["duvida"] - 0.05
     if t < t0:
         return
-    fim = 1 - prog(t, F.t_rep - 0.45, F.t_rep - 0.1)
-    if fim <= 0:
+    tr = F.t_rep
+    preto = lerp(0.7, 1.0, prog(t, tr + REC_PRETO[0], tr + REC_PRETO[1]))
+    escuro = preto * prog(t, t0, t0 + 0.25) * (1 - prog(t, tr + REC_CLAREIA[0], tr + REC_CLAREIA[1]))
+    fim = 1 - prog(t, tr + REC_SAI[0], tr + REC_SAI[1])
+    if escuro <= 0 and fim <= 0:
         return
     cv.save(); cv.clipRect(CENA, True)
     img = _img("escurece", CENA.width(), CENA.height(), lambda c: c.clear(_c(BG_OUT, 255)))
-    _blit(cv, img, CENA.left(), CENA.top(), 0.7 * prog(t, t0, t0 + 0.25) * fim)
+    _blit(cv, img, CENA.left(), CENA.top(), escuro)
+    if fim <= 0:
+        cv.restore()
+        return
     k = prog(t, t0, t0 + 0.32)
     esc = max(0.01, e_back(k)); a = prog(t, t0, t0 + 0.06) * fim
     cx, cy = POL_C[0], POL_C[1] + (1 - e_out(k)) * 50

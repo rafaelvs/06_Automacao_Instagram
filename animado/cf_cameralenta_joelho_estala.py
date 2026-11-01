@@ -21,6 +21,9 @@ liso; escurecimento de 0,93; braço curto com cotovelo dobrado; "crec" a 1× no 
 "Fenômenos normais do corpo" -> "Coisa normal do corpo".
 v3 (revisão em resolução cheia): o close do "dor" corta o short logo abaixo da cintura e o braço entra pela borda
 de cima (na v2 o braço descia flutuando por um vão vazio acima da cintura, sem tronco nem ombro).
+v4 (revisão em resolução cheia, 3ª rodada): o "0,25×" grande nascia no MEIO da caixa (540, 600), crescia até ~450 px
+e ficava sobre o joelho e a canela (fita 1) e sobre o short e a coxa (fita 2) antes de deslizar para o painel;
+agora nasce no canto de cima à direita da caixa, menor (1,8×), e desce pela lateral direita até o painel.
 
 Regras da série e do storyboard, todas aqui:
   * Selo CÂMERA LENTA SÓ com a câmera lenta ligada (0,25× ou congelamento dentro dela): "câmera" -> "seguiu" e
@@ -971,7 +974,11 @@ def _setas(cv, x, y, a, esc, para_frente):
 
 
 HUD_X, HUD_Y = 786, 1166                                         # centro do relógio (na linha do chão, à direita)
-POP_C = (540, 600)                                               # onde o "0,25×" grande aparece
+# v4: o "0,25×" grande nasce no canto de cima à DIREITA da caixa (a perna fica na metade esquerda nos dois
+# zooms, x <= ~725 na tela) e desce pela lateral direita até o painel; 1,8× (+10% de repique) cabe entre a perna
+# e a borda da caixa. Na v3 nascia no meio (540, 600) a 2,5× e cobria joelho/canela (fita 1) e short/coxa (fita 2).
+POP_C = (CENA.right() - 195, CENA.top() + 110)                   # (845, 440): onde o "0,25×" grande aparece
+POP_ESC = 1.8
 
 
 def _chip_hud_c(s):
@@ -999,10 +1006,10 @@ def painel(cv, t, T, F, a):
     if tipo == "lenta" and k < 0.75 and t0 in (T["camera"], T["atencao"]):   # "0,25×" grande que voa para o painel
         cx, cy = POP_C
         if k < 0.32:
-            chip_c(cv, s, cx, cy, a, esc=2.5 * e_back(clamp(k / 0.16)))
+            chip_c(cv, s, cx, cy, a, esc=POP_ESC * e_back(clamp(k / 0.16)))
         else:
             v = e_inout(prog(k, 0.32, 0.75))
-            chip_c(cv, s, lerp(cx, hx, v), lerp(cy, hy, v), a, esc=lerp(2.5, 1.0, v))
+            chip_c(cv, s, lerp(cx, hx, v), lerp(cy, hy, v), a, esc=lerp(POP_ESC, 1.0, v))
         return
     pop = 1 + 0.6 * (1 - e_out(prog(t, t0, t0 + 0.3))) if t0 > 0 and tipo != "lenta" else 1.0
     chip_c(cv, s, hx, hy, a, esc=pop)

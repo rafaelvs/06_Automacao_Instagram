@@ -286,7 +286,6 @@ R_ARO, R_PUNHO, R_ARO2 = 78.0, 62.0, 58.0
 RX_ARO = 30.0                                    # a abertura vista de 3/4 (elipse)
 R_PELE = 49.0
 V_PELE = 13.0                                    # a pele entra mais baixa: sobra a meia-lua escura em cima
-U_POLEGAR = 500.0
 GAP = (U_ARO - 9.0, -R_ARO + 19.0)               # a abertura (a meia-lua escura entre a malha e a pele)
 
 ARM_SALA = dict(E=(215.0, 905.0), ang=-4.0, banho=False)
@@ -363,20 +362,78 @@ def dedos(cv, amp, ts, a=1.0):
         cv.drawOval(skia.Rect(p2[0] - 9, p2[1] - lg * 0.36, p2[0] + 3, p2[1] - lg * 0.06), paint(PELE_CL, int(210 * a)))
 
 
-POL_DU, POL_DV, POL_W0, POL_W1 = 36.0, -36.0, 36.0, 33.0     # polegar curto e gordinho (criança)
+# Revisão 3 (revisor, em resolução cheia): o polegar era uma cápsula solta APOIADA no dorso do gesso, antes
+# da borda, com um 2º lóbulo claro por cima (a "malha" do furo), sem ligação com a mão. Agora ele SAI DA
+# ABERTURA da ponta do gesso junto com os dedinhos, logo acima do indicador: a base fica DENTRO do gesso
+# (desenhado antes dele, como a dos dedos), o eixo sai quase reto e curva para cima/frente, com a unha e a
+# dobra da articulação. O contorno é UM tubo só, calculado ponto a ponto (sem união de PathOps: a união de
+# formas que dividem o mesmo círculo de articulação some com o segmento em algumas poses).
+POL_B, POL_C, POL_Q = (U_ARO2 - 30.0, -30.0), (U_ARO2 + 22.0, -37.0), (U_ARO2 + 56.0, -62.0)   # ~36° (relaxado)
+POL_W0, POL_W1 = 36.0, 29.0                      # curto e gordinho (criança)
 
 
-def polegar(cv, r_top, a=1.0):
-    """Polegar livre saindo por cima do gesso (com a malha dobrada em volta)."""
-    u = U_POLEGAR
-    b = (u, r_top + 10); q = (u + POL_DU, r_top + 10 + POL_DV)
-    pth = capsula(b, q, POL_W0, POL_W1)
-    pinta(cv, pth, b, q, POL_W0, TONS_PELE, a, linha=PELE_LINHA, larg_linha=2.2)
-    cv.drawOval(skia.Rect(q[0] - 8, q[1] - 12, q[0] + 8, q[1] - 2), paint(PELE_CL, int(210 * a)))
-    cv.drawOval(skia.Rect(u - 26, r_top - 7, u + 26, r_top + 11), paint(MALHA, int(255 * a)))
-    cv.drawOval(skia.Rect(u - 26, r_top - 7, u + 26, r_top + 11), paint(MALHA_ESC, int(220 * a), "stroke", 2.2))
-    pinta(cv, capsula((u - 2, r_top + 4), (u + 10, r_top - 10), 34, 33), (u - 2, r_top + 4), (u + 10, r_top - 10), 34,
-          TONS_PELE, a)
+def _bez2(p0, p1, p2, s):
+    a_, b_, c_ = (1 - s) ** 2, 2 * (1 - s) * s, s * s
+    return (a_ * p0[0] + b_ * p1[0] + c_ * p2[0], a_ * p0[1] + b_ * p1[1] + c_ * p2[1])
+
+
+def polegar_eixo(n=20):
+    """[(centro, largura)] ao longo do eixo do polegar, da base (dentro do gesso) até a ponta."""
+    return [(_bez2(POL_B, POL_C, POL_Q, i / n), lerp(POL_W0, POL_W1, (i / n) ** 1.3)) for i in range(n + 1)]
+
+
+def _normal(eixo, i):
+    a_ = eixo[max(0, i - 1)][0]; b_ = eixo[min(len(eixo) - 1, i + 1)][0]
+    dx, dy = b_[0] - a_[0], b_[1] - a_[1]; L = math.hypot(dx, dy) or 1.0
+    return (dx / L, dy / L), (-dy / L, dx / L)
+
+
+def tubo_path(eixo):
+    """Contorno fechado de um tubo de largura variável ao longo de `eixo`, ponta redonda e base reta (que
+    fica escondida dentro do gesso). Um contorno só, sem PathOps."""
+    esq, dir_ = [], []
+    for i, (p, w) in enumerate(eixo):
+        _, (nx, ny) = _normal(eixo, i)
+        esq.append((p[0] + nx * w / 2, p[1] + ny * w / 2)); dir_.append((p[0] - nx * w / 2, p[1] - ny * w / 2))
+    (q, wq) = eixo[-1]
+    (dx, dy), _ = _normal(eixo, len(eixo) - 1)
+    phi = math.degrees(math.atan2(dy, dx))
+    pth = skia.Path(); pth.moveTo(*esq[0])
+    for pt in esq[1:]:
+        pth.lineTo(*pt)
+    r = wq / 2
+    pth.arcTo(skia.Rect(q[0] - r, q[1] - r, q[0] + r, q[1] + r), phi + 90, -180, False)
+    for pt in reversed(dir_):
+        pth.lineTo(*pt)
+    pth.close()
+    return pth
+
+
+def polegar_path():
+    return tubo_path(polegar_eixo())
+
+
+def polegar(cv, a=1.0):
+    """O polegar saindo pela abertura da ponta do gesso, acima do indicador (referencial do braço). Vai
+    desenhado ANTES do gesso: a borda de malha da ponta cobre a base dele, como cobre a dos dedinhos."""
+    eixo = polegar_eixo()
+    pth = tubo_path(eixo)
+    cv.drawPath(pth, paint("#000000", int(45 * a), blur=5))
+    pinta(cv, pth, POL_B, POL_Q, POL_W0, TONS_PELE, a, linha=PELE_LINHA, larg_linha=2.2)
+    # dobra da articulação (do lado de baixo, o da palma)
+    i = int(len(eixo) * 0.62)
+    (c, w) = eixo[i]; _, (nx, ny) = _normal(eixo, i)
+    dobra = skia.Path()
+    dobra.moveTo(c[0] + nx * w * 0.5, c[1] + ny * w * 0.5)
+    dobra.quadTo(c[0] + nx * w * 0.28 + 3, c[1] + ny * w * 0.28, c[0] + nx * w * 0.12 + 1, c[1] + ny * w * 0.12 + 2)
+    cv.drawPath(dobra, paint(PELE_LINHA, int(190 * a), "stroke", 2.0))
+    # a unha (do lado de cima, na ponta)
+    (q, wq) = eixo[-1]; (dx, dy), (nx, ny) = _normal(eixo, len(eixo) - 1)
+    cx_, cy_ = q[0] - dx * 5 - nx * wq * 0.2, q[1] - dy * 5 - ny * wq * 0.2
+    cv.save(); cv.translate(cx_, cy_); cv.rotate(math.degrees(math.atan2(dy, dx)))
+    cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-8, -7, 8, 5), 6, 6), paint(PELE_CL, int(235 * a)))
+    cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-8, -7, 8, 5), 6, 6), paint(PELE_LINHA, int(150 * a), "stroke", 1.6))
+    cv.restore()
 
 
 RABISCO_ROXO, RABISCO_ROSA, RABISCO_AZUL = "#8E5CD9", "#E86AA6", "#4A7FD8"
@@ -434,8 +491,9 @@ def braco(cv, arm, e, t):
     # sombra no apoio
     if not banho:
         cv.drawOval(skia.Rect(-70, 30, U_ARO2 + 110, 104), paint("#000000", 55, blur=16))
-    # dedinhos (a base fica escondida pela ponta do gesso)
+    # dedinhos e o polegar (a base deles fica escondida pela ponta do gesso: saem da abertura, ligados à mão)
     dedos(cv, e.get("tamb", 0.0), e.get("ts", t))
+    polegar(cv)
     # o gesso
     gp = gesso_path(af)
     cv.drawPath(gp, paint("#000000", 50, blur=10))
@@ -505,8 +563,6 @@ def braco(cv, arm, e, t):
     cv.drawArc(skia.Rect(U_ARO - RX_ARO, -R_ARO, U_ARO + RX_ARO, R_ARO), 90, 180, False, paint(MALHA, 255, "stroke", 13))
     cv.drawArc(skia.Rect(U_ARO - RX_ARO + 5, -R_ARO + 5, U_ARO + RX_ARO - 5, R_ARO - 5), 100, 160, False,
                paint(MALHA_ESC, 220, "stroke", 2.2))
-    # polegar livre
-    polegar(cv, topo_v(U_POLEGAR, af))
     # risquinhos de coceira junto da borda do gesso
     for i, (u, v) in enumerate(((168, -112), (300, -100), (408, -94))):
         coceira_risco(cv, u, v, e.get("coc", (0, 0, 0))[i], 1.0 if e.get("coc", (0, 0, 0))[i] > 0 else 0)
@@ -882,8 +938,9 @@ def _r_capa(u):
 
 U_CAPA_FIM = U_ARO2 + 104
 # a capa ENVOLVE o polegar (revisor: a ponta do polegar furava o contorno da capa no "jeito certo").
-# O calombo cobre a ponta do polegar com folga (ponta em v ~ -104 em u ~ 536; capa sobe a ~ -114).
-U_CALOMBO, A_CALOMBO, S_CALOMBO = U_POLEGAR + 34.0, 46.0, 34.0
+# Revisão 3: o polegar agora sai pela ponta do gesso (u 530-601, alto em v ~ -76 em u ~ 585); o calombo
+# fica em cima dele, com folga >= 10 px (conferido ponto a ponto em testar_polegar_na_capa()).
+U_CALOMBO, A_CALOMBO, S_CALOMBO = 598.0, 26.0, 36.0
 
 
 def _r_capa_topo(u):
@@ -902,9 +959,13 @@ def capa_impermeavel(cv, u_esq, a=1.0, verde=0.0):
     top = [(u, -_r_capa_topo(u)) for u in us]
     bot = [(u, _r_capa(u)) for u in reversed(us)]
     p = suave(top, fechar=False)
-    rr = _r_capa(U_CAPA_FIM - 34)
-    p.lineTo(U_CAPA_FIM - 34, -rr)
-    p.arcTo(skia.Rect(U_CAPA_FIM - 34 - 40, -rr, U_CAPA_FIM - 34 + 40, rr), -90, 180, False)
+    # a ponta fechada: meia-elipse que parte da altura de CIMA (com o calombo do polegar) e volta pela de
+    # baixo (antes era um arco simétrico e o contorno dava um degrau no fim do calombo)
+    ue = U_CAPA_FIM - 34
+    rt, rb = _r_capa_topo(ue), _r_capa(ue)
+    p.lineTo(ue, -rt)
+    p.conicTo(ue + 40, -rt, ue + 40, 0, math.sqrt(0.5))
+    p.conicTo(ue + 40, rb, ue, rb, math.sqrt(0.5))
     for q in bot:
         p.lineTo(*q)
     p.close()
@@ -924,6 +985,31 @@ def capa_impermeavel(cv, u_esq, a=1.0, verde=0.0):
     cv.drawOval(anel, paint("#000000", int(60 * a), "stroke", 14, blur=4))
     cv.drawOval(anel, paint(CAPA_ELAST, int(255 * a), "stroke", 11))
     cv.drawOval(anel, paint("#4F8DB5", int(230 * a), "stroke", 2))
+
+
+def testar_polegar_na_capa():
+    """Guarda da revisão 3 (falha ALTO no render se a geometria do polegar regredir):
+    1) o contorno do polegar contém os pontos do próprio eixo (saída, articulação, ponta; o 0 fica na borda reta da base): nenhum
+       pedaço sumiu; 2) antes da borda da ponta (u < U_ARO2) nenhum ponto do polegar fica FORA do gesso
+       (seco ou amolecido): ele não aparece mais apoiado no dorso do gesso; 3) a ponta sai da abertura
+       (fora do gesso); 4) com a capa vestida, todo o polegar fica dentro dela com folga >= 10 px em cima."""
+    eixo = polegar_eixo(); pth = tubo_path(eixo)
+    erros = [f"eixo {i} fora do contorno" for i, (c, _) in enumerate(eixo) if i > 0 and not pth.contains(*c)]
+    for af in (0.0, 1.0):
+        g = gesso_path(af)
+        n = sum(1 for u in range(int(POL_B[0]) - 6, int(U_ARO2) + 1) for v in range(-110, 1)
+                if pth.contains(u, v) and not g.contains(u, v))
+        if n:
+            erros.append(f"{n} pontos do polegar sobre o gesso antes da borda (afunda={af})")
+        if g.contains(*eixo[-1][0]):
+            erros.append("a ponta do polegar não sai do gesso")
+    folga = min((_r_capa_topo(u) + v for u in range(int(POL_B[0]) - 6, int(U_CAPA_FIM) + 1)
+                 for v in range(-110, 1) if pth.contains(u, v)), default=99.0)
+    if folga < 10:
+        erros.append(f"polegar encosta/fura a capa (folga {folga:.1f} px)")
+    if erros:
+        raise SystemExit("ERRO cf_var_gesso (polegar): " + "; ".join(erros))
+    return folga
 
 
 def contas_agua(cv, ts, t0, a):
@@ -2171,6 +2257,7 @@ def montar_T(pal, mapa):
 
 def fazer_render_var(quadro_fn, mapa, sons_fn, tempos_fn, respiro_cta=0.8):
     def render(ep, mp4, tmp, previa=False):
+        testar_polegar_na_capa()
         roteiro = "\n".join(ep["roteiro"])
         voz_bruta, palavras = _voz.narrar(roteiro, _voz.RITMO_COMO_FUNCIONA, os.path.join(tmp, "voz"))
         voz_c, pal, tirado = comprimir(voz_bruta, palavras, respiro_cta=respiro_cta)

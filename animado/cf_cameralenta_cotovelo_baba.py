@@ -17,9 +17,11 @@ Cada câmera lenta REVELA o que o 1× escondeu:
   2. descongela a 0,25× (0,2 s antes do "Pousou": o pé toca no "Pou-"): a mão adulta solta no toque e sai pelo
      alto, o braço cai ESTICADO num arco até o lado do corpo durante o "Pousou"; congela e uma seta tracejada
      tenta sair da mãozinha e volta (não quer mexer);
-  3. no 2º lance (CORTE de fita no "Pra ajudar a prevenir": OUTRA criança, outra poça, outra manga) o upa é pelas
-     AXILAS, em câmera lenta: as mãos adultas chegam POR TRÁS, na altura do peito (antebraço quase horizontal,
-     cotovelo visível, manga cinza-grafite lisa), os braços da criança ficam soltos para baixo; círculo na axila,
+  3. no 2º lance (CORTE de fita no "Pra ajudar a prevenir": OUTRA criança, outra poça) o upa é pelas AXILAS, em
+     câmera lenta: as mãos adultas chegam POR TRÁS, na altura do peito (antebraço quase horizontal, cotovelo em
+     curva; v5: o MESMO braço do 1º lance — manga azul, punho claro, antebraço e mão de pele — e a mão de lá só
+     aparece atrás do tronco, com as pontas dos dedos à frente do peito), os braços da criança ficam soltos para
+     baixo; círculo na axila,
      e o ícone (criança genérica cinza pendurada pela mão de uma mão adulta com manga azul) leva um X BRANCO.
 Depois da câmera lenta: nome e frequência em 1×, com push-in lento no braço parado e micromovimento (cabeça baixa,
 ombro encolhido); "não puxe nem force" = a mão adulta vem, PARA a ~200 px do braço, abre a palma (polegar junto)
@@ -106,8 +108,6 @@ AD, AD_CL, AD_ESC, AD_LINHA = "#C98D6E", "#DDA98C", "#A56C50", "#7C4C37"        
 TONS_PELE = (PELE_ESC, PELE, PELE_CL, PELE, PELE_ESC)
 TONS_AD = (AD_ESC, AD, AD_CL, AD, AD_ESC)
 MANGA1 = dict(tons=("#435C76", "#5C7A99", "#7F9BB8", "#5C7A99", "#435C76"), linha="#2F445A", punho="#A7BED4")
-MANGA2 = dict(tons=("#474E58", "#5F6874", "#7A8490", "#5F6874", "#474E58"), linha="#2A3038", punho="#9AA4B0",
-              cor="#626B77", cor_cl="#7E8894")                  # cinza-grafite (tecido; nada de marrom/madeira)
 TONS_PUNHO_ICONE = ("#27415F", "#3B5C84", "#5479A6", "#3B5C84", "#27415F")
 ROUPA1 = dict(camisa="#6FD3B5", camisa_cl="#A3E6D2", camisa_esc="#3A9C80", camisa_linha="#23705C",
               bermuda="#C9CED6", bermuda_linha="#7E8794", cabelo="#5A3A26", estilo="puxinhos")
@@ -968,41 +968,156 @@ def _pt(o, d, k):
     return o[0] + d[0] * k, o[1] + d[1] * k
 
 
+# v5 (3ª rodada da verificação em resolução cheia, 01/11): o braço do 2º lance era um TUBO cinza de largura constante
+# — dois `tubo` unidos no cotovelo (quina viva por dentro), punho da manga num cilindro MAIS ESCURO, só ~30 px de pele
+# entre a palma e a manga, duas linhas de brilho e uma prega — e, 12 px acima e paralelo a ele, o braço da mão de
+# trás (contorno DUPLO): lia como cano/guindaste e não combinava com o 1º lance (3,0 s), em que o braço adulto tem
+# manga AZUL, punho CLARO, antebraço e mão de pele. Agora é o MESMO braço do 1º lance (mao_adulta_tras na escala
+# ESC_AD): pele da palma até K_PUNHO (os 190 × 0,42 de lá), punho claro, manga MANGA1 com o degradê cilíndrico de 5
+# tons e contorno ÚNICO, um pouco mais larga que o antebraço e afinando para o punho; o cotovelo é uma CURVA (o eixo
+# faz o canto num arco de círculo, e o degradê acompanha o arco). Os contornos são montados ponto a ponto (curvas
+# paralelas ao eixo), sem skia.Op: nenhuma união que some em alguma pose. A geometria (ANG_ANTE, ANG_BRACO, L_ANTE,
+# as palmas) é a mesma: o cotovelo continua no mesmo lugar (acima do inset do "não pelas mãos").
+K_PUNHO = 72.0                                                   # da palma ao punho da manga (pele visível antes)
+K_PUNHO_FAIXA = 13.0                                             # largura do punho claro (32 × 0,42 no 1º lance)
+T_CURVA = 28.0                                                   # o eixo deixa a reta a T_CURVA do cotovelo (arco)
+MEIA_PELE = (15.0, 17.0)                                         # antebraço de pele: no pulso, sob o punho
+MEIA_MANGA = (21.0, 25.0, 29.0)                                  # manga: no punho, no cotovelo, no braço (bíceps)
+MEIA_DEGRADE = 24.0                                              # meia largura do degradê (a mesma nos três trechos)
+PARADAS = [0.0, 0.22, 0.5, 0.78, 1.0]
+
+
+def _faixa_lados(pts, larg):
+    """Os dois lados (esq. e dir. de quem anda de pts[0] para pts[-1]) de uma faixa de meia largura larg[i] em volta
+    da linha pts: curvas paralelas ao eixo, ponto a ponto (sem skia.Op)."""
+    n = len(pts)
+    esq, dir_ = [], []
+    for i in range(n):
+        a = pts[max(i - 1, 0)]; b = pts[min(i + 1, n - 1)]
+        tx, ty = b[0] - a[0], b[1] - a[1]
+        L = math.hypot(tx, ty) or 1.0
+        nx, ny = -ty / L, tx / L
+        esq.append((pts[i][0] + nx * larg[i], pts[i][1] + ny * larg[i]))
+        dir_.append((pts[i][0] - nx * larg[i], pts[i][1] - ny * larg[i]))
+    return esq, dir_
+
+
+def _poli(pontos):
+    p = skia.Path()
+    p.moveTo(*pontos[0])
+    for q in pontos[1:]:
+        p.lineTo(*q)
+    p.close()
+    return p
+
+
+def _curva_cotovelo(P, u, v):
+    """O canto do cotovelo como ARCO de círculo tangente às duas retas (antebraço ao longo de u, braço ao longo de
+    v): -> (T0, T1, centro O, raio r, ângulo inicial e varredura em graus)."""
+    E = _pt(P, u, L_ANTE)
+    vira = math.degrees(math.atan2(u[0] * v[1] - u[1] * v[0], u[0] * v[0] + u[1] * v[1]))   # quanto o eixo gira
+    r = T_CURVA / math.tan(math.radians(abs(vira)) / 2)
+    s = 1.0 if vira > 0 else -1.0
+    n_in = (-u[1] * s, u[0] * s)                                   # para dentro da curva
+    T0 = _pt(E, u, -T_CURVA); T1 = _pt(E, v, T_CURVA)
+    O = _pt(T0, n_in, r)
+    g0 = math.degrees(math.atan2(T0[1] - O[1], T0[0] - O[0]))
+    return T0, T1, O, r, g0, vira
+
+
+def _eixo_braco(P, u, v):
+    """Eixo da manga (do punho ao fim do braço, fora da cena) e a meia largura em cada ponto."""
+    T0, T1, O, r, g0, vira = _curva_cotovelo(P, u, v)
+    k_t0 = L_ANTE - T_CURVA
+    pts, ws = [], []
+    n0 = 10                                                        # antebraço (reto): do punho até o arco
+    for i in range(n0):
+        k = K_PUNHO + (k_t0 - K_PUNHO) * i / n0
+        pts.append(_pt(P, u, k)); ws.append(lerp(MEIA_MANGA[0], MEIA_MANGA[1], (k - K_PUNHO) / (k_t0 - K_PUNHO)))
+    n1 = 24                                                        # o arco do cotovelo
+    for i in range(n1 + 1):
+        g = math.radians(g0 + vira * i / n1)
+        pts.append((O[0] + r * math.cos(g), O[1] + r * math.sin(g))); ws.append(MEIA_MANGA[1])
+    for k in (60.0, 110.0, 170.0, 260.0, 420.0, 900.0, 1500.0):   # braço (reto): engrossa e sai da cena
+        pts.append(_pt(T1, v, k - T_CURVA))
+        ws.append(lerp(MEIA_MANGA[1], MEIA_MANGA[2], sstep((k - T_CURVA) / 230.0)))
+    return pts, ws
+
+
+def _meio_plano(Q, d):
+    """Meio-plano {X : (X - Q)·d > 0} (polígono grande)."""
+    m = (-d[1], d[0]); G = 6000.0
+    return _poli([_pt(Q, m, G), _pt(Q, m, -G), _pt(_pt(Q, m, -G), d, G), _pt(_pt(Q, m, G), d, G)])
+
+
+def _degrade(o, nrm, w, tons):
+    """Degradê cilíndrico (5 tons simétricos) perpendicular ao eixo reto que passa por o."""
+    return skia.GradientShader.MakeLinear([skia.Point(*_pt(o, nrm, w)), skia.Point(*_pt(o, nrm, -w))],
+                                          [_c(c) for c in tons], PARADAS)
+
+
+def _degrade_arco(O, r, w, tons):
+    """O mesmo degradê seguindo o ARCO (radial em volta do centro da curva)."""
+    R = r + w
+    return skia.GradientShader.MakeRadial(skia.Point(*O), R, [_c(tons[0])] + [_c(c) for c in tons],
+                                          [0.0] + [(r - w + f * 2 * w) / R for f in PARADAS])
+
+
 def braco_adulto(cv, P, manga, a, escuro=0.0):
-    """Braço adulto do 2º lance, da palma em P: punho de pele, antebraço com manga quase horizontal PARA TRÁS,
-    COTOVELO dobrado e visível, e o braço subindo até sair pela borda da cena. Manga de tecido cinza-grafite, lisa
-    (só uma prega no cotovelo)."""
+    """Braço adulto do 2º lance, da palma em P, no MESMO desenho do 1º lance (v5): antebraço de pele, punho claro,
+    manga com degradê cilíndrico e contorno único, quase horizontal PARA TRÁS, cotovelo em CURVA e o braço subindo
+    até sair pela borda da cena."""
     if a <= 0:
         return
     esc = camada_escura(cv, a, escuro)                             # v4: sem filtro de cor (ver camada_escura)
     u = _dir(ANG_ANTE); v = _dir(ANG_BRACO)
-    C0 = _pt(P, u, 46.0); E = _pt(P, u, L_ANTE); S = _pt(E, v, 1500.0)
-    pulso = tubo(*_pt(P, u, 12.0), 14.5, *_pt(C0, u, 6.0), 16.0)
-    _sombrear(cv, pulso, AD, 0.0, aro=((10, -0.08),))
-    cv.drawPath(pulso, paint(AD_LINHA, 230, "stroke", 2.4))
-    mg = _uniao(tubo(*C0, 19.0, *E, 22.0), tubo(*E, 22.0, *S, 25.0))
-    _sombrear(cv, mg, manga["cor"], 0.0, aro=((18, -0.12), (8, -0.22)))
-    cv.save(); cv.clipPath(mg, skia.ClipOp.kIntersect, True)       # brilho do tecido no alto do antebraço
-    n = (u[1], -u[0]) if u[0] < 0 else (-u[1], u[0])
-    if n[1] > 0:
-        n = (-n[0], -n[1])
-    cv.drawLine(*_pt(_pt(C0, u, 10.0), n, 9.0), *_pt(_pt(E, u, -16.0), n, 10.0),
-                paint(manga["cor_cl"], 150, "stroke", 6))
-    nv = (-v[1], v[0]) if v[1] < 0 else (v[1], -v[0])
-    if nv[0] > 0:
-        nv = (-nv[0], -nv[1])
-    cv.drawLine(*_pt(_pt(E, v, 26.0), nv, -10.0), *_pt(_pt(E, v, 900.0), nv, -12.0),
-                paint(manga["cor_cl"], 120, "stroke", 6))
+    nu = (-u[1], u[0]); nv = (-v[1], v[0])
+    # antebraço de pele: do meio da palma até um pouco DENTRO da manga (a manga o cobre); ponta redonda sob a palma
+    k0, k1 = 2.0, K_PUNHO + 14.0
+    eixo = [_pt(P, u, k0 + (k1 - k0) * i / 8) for i in range(9)]
+    e, d = _faixa_lados(eixo, [lerp(MEIA_PELE[0], MEIA_PELE[1], i / 8) for i in range(9)])
+    P0 = eixo[0]
+    tampa = [_pt(P0, (-math.cos(g) * nu[0] - math.sin(g) * u[0], -math.cos(g) * nu[1] - math.sin(g) * u[1]),
+                 MEIA_PELE[0]) for g in [math.pi * j / 12 for j in range(1, 12)]]     # de d[0] a e[0] pela palma
+    pele = _poli(e + d[::-1] + tampa)
+    _pele(cv, pele, _pt(P, nu, MEIA_PELE[1]), _pt(P, nu, -MEIA_PELE[1]), 1.0, tons=TONS_AD, cor_linha=AD_LINHA,
+          linha=2.4)
+    # a manga: UM contorno, do punho até fora da cena
+    pts, ws = _eixo_braco(P, u, v)
+    e, d = _faixa_lados(pts, ws)
+    C = pts[0]
+    mg = skia.Path()
+    mg.moveTo(*e[0])
+    for q in e[1:]:
+        mg.lineTo(*q)
+    for q in d[::-1]:
+        mg.lineTo(*q)
+    mg.quadTo(*_pt(C, u, -5.0), *e[0])                              # a boca da manga, levemente abaulada
+    mg.close()
+    # degradê em três trechos (antebraço, arco, braço) cortados nas retas que ligam o centro do arco aos pontos de
+    # tangência: ali a distância ao eixo reto é a mesma distância ao arco, e os tons são simétricos -> sem emenda.
+    # O arco vai inteiro por baixo; os trechos retos, recortados, por cima (sem fresta de antialias na emenda).
+    T0, T1, O, r, g0, vira = _curva_cotovelo(P, u, v)
+    cv.drawPath(mg, paint(manga["tons"][1], 255, shader=_degrade_arco(O, r, MEIA_DEGRADE, manga["tons"])))
+    for Q, dd, o, nrm in ((T0, (-u[0], -u[1]), T0, nu), (T1, v, T1, nv)):
+        cv.save(); cv.clipPath(_meio_plano(Q, dd), skia.ClipOp.kIntersect, True)
+        cv.drawPath(mg, paint(manga["tons"][1], 255, shader=_degrade(o, nrm, MEIA_DEGRADE, manga["tons"])))
+        cv.restore()
+    # punho claro na boca da manga (como no 1º lance) e a costura que o separa da manga
+    cv.save(); cv.clipPath(mg, skia.ClipOp.kIntersect, True)
+    C1 = _pt(C, u, K_PUNHO_FAIXA)
+    cv.drawPath(_poli([_pt(_pt(C, u, -12.0), nu, 40.0), _pt(C1, nu, 40.0), _pt(C1, nu, -40.0),
+                       _pt(_pt(C, u, -12.0), nu, -40.0)]), paint(manga["punho"], 235))
+    cv.drawLine(*_pt(C1, nu, 30.0), *_pt(C1, nu, -30.0), paint(manga["linha"], 200, "stroke", 1.6))
+    for fr, L in ((0.36, 10.0), (0.66, 7.5)):                      # o tecido franze POR DENTRO do cotovelo
+        g = math.radians(g0 + vira * fr); dg = (math.cos(g), math.sin(g)); r_in = r - MEIA_MANGA[1]
+        cv.drawLine(*_pt(O, dg, r_in + 1.0), *_pt(O, dg, r_in + L), paint(manga["linha"], 150, "stroke", 2.0))
     cv.restore()
     cv.drawPath(mg, paint(manga["linha"], 235, "stroke", 2.6))
-    pun = tubo(*C0, 19.5, *_pt(C0, u, 11.0), 20.5)                # punho da manga (no tom da manga)
-    cv.drawPath(pun, paint(lerpc(manga["cor"], "#000000", 0.18), 255))
-    cv.drawPath(pun, paint(manga["linha"], 235, "stroke", 2.4))
-    b = (-u[0] + v[0], -u[1] + v[1]); bl = math.hypot(*b) or 1.0; b = (b[0] / bl, b[1] / bl)
-    q = _pt(E, b, 20.0); r = (-b[1], b[0])                         # prega do tecido por dentro do cotovelo
-    cv.drawLine(*_pt(q, r, -11.0), *_pt(q, r, 11.0), paint(manga["linha"], 170, "stroke", 2.6))
-    if esc:
-        escurecer(cv, _uniao(_uniao(pulso, mg), pun), escuro)
+    if esc:                                                        # caixa que cobre pele e manga (a camada só tem o
+        b0, b1 = pele.computeTightBounds(), mg.computeTightBounds()          # braço: a caixa não toca em mais nada)
+        escurecer(cv, rr_path(min(b0.left(), b1.left()), min(b0.top(), b1.top()), max(b0.right(), b1.right()),
+                              max(b0.bottom(), b1.bottom()), 1.0), escuro)
     cv.restore()
 
 
@@ -1739,6 +1854,22 @@ def _mao_np(tg, T, p, J):
     return px + u[0] * dist, py + u[1] * dist, abre, a
 
 
+# v5 (3ª rodada, 01/11): a mão de trás (escura) e o braço dela eram desenhados inteiros, 12 px acima e ~30 px à frente
+# da mão de cá: atrás das costas o braço dela virava um 2º contorno paralelo ao da frente, e na chegada (~22,5-22,85 s)
+# e na saída (~26,8-27,15 s), com as duas mãos no ar, longe da criança, liam como UMA mão com dois polegares e ~8
+# dedos. De perfil, com o adulto atrás da criança, o braço de lá fica escondido pelo de cá; então a mão de trás só é
+# desenhada DENTRO do meio-plano que começa a X_CORTE_COSTAS das costas (no referencial do tronco, que gira com ela):
+# ali o tronco a cobre e só as pontas dos dedos aparecem à frente do peito. Fora da criança ela não existe.
+X_CORTE_COSTAS = -30.0                                           # o contorno das costas fica em x ~ -43 nessa altura
+
+
+def atras_do_tronco(p):
+    """Meio-plano x > X_CORTE_COSTAS no referencial do tronco (girado de p["tor"]), em coordenadas do mundo."""
+    G = 6000.0
+    cs = [(X_CORTE_COSTAS, -G), (G, -G), (G, G), (X_CORTE_COSTAS, G)]
+    return _poli([no_mundo(p, rot(q, p["tor"])) for q in cs])
+
+
 def _maos_axila(R, f, p):
     """2º lance: (alfa, palma do lado de cá, palma do outro lado) das mãos adultas (mundo) no tempo de filme f."""
     chega, sai = R.maos(f)
@@ -1849,12 +1980,15 @@ def ator(cv, tg, T, F, sombra=True):
     a_m, Pn, Pl = _maos_axila(R, f, p)
     cbs = {}
     if a_m > 0:
-        def atras(J):                                              # a mão do outro lado (atrás do tronco): o
-            braco_adulto(cv, Pl, MANGA2, a_m, escuro=0.35)         # braço aparece atrás das costas e as pontas
-            mao_axila(cv, Pl, a_m, escuro=0.35)                    # dos dedos passam da frente do peito
+        def atras(J):                                              # a mão do outro lado (atrás do tronco): só
+            cv.save()                                              # as pontas dos dedos passam da frente do peito
+            cv.clipPath(atras_do_tronco(p), skia.ClipOp.kIntersect, True)     # v5: nada dela fora do tronco
+            braco_adulto(cv, Pl, MANGA1, a_m, escuro=0.35)
+            mao_axila(cv, Pl, a_m, escuro=0.35)
+            cv.restore()
 
         def meio(J):                                               # a mão do lado de cá: por cima do tronco e
-            braco_adulto(cv, Pn, MANGA2, a_m)                      # POR BAIXO do braço solto da criança
+            braco_adulto(cv, Pn, MANGA1, a_m)                      # POR BAIXO do braço solto da criança
             mao_axila(cv, Pn, a_m)
 
         cbs["atras"] = atras
