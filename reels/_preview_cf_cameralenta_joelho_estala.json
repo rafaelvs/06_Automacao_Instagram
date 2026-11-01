@@ -1,7 +1,7 @@
 {
  "id": "cf_cameralenta_joelho_estala",
  "hash_episodio": "sha256:55b3012197cab11cad1ddaa104db8e925fdfac7484dc56da56b7bead1b4bff53",
- "hash_motor": "sha256:ad918e5ae732f792bd4fee9d43f53e838248ba82b9eb6c76dc15fa8b84cae999",
+ "hash_motor": "sha256:622654e47ee36ff7a2d238614dbb391e8bda386517993d78bf8e835e5d0c2f00",
  "modulos": [
   "base",
   "cf_alongamento",
@@ -85,5 +85,5 @@
   "É"
  ],
  "dur": 30.67,
- "renderizado_em": "2026-11-01T15:55:01+00:00"
+ "renderizado_em": "2026-11-01T18:47:29+00:00"
 }
