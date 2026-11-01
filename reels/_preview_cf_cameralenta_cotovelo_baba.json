@@ -1,7 +1,7 @@
 {
  "id": "cf_cameralenta_cotovelo_baba",
  "hash_episodio": "sha256:933ecb0f57094d0e998ba6abd9545460fa437c7c84e0e89800a812ddc8f91d6b",
- "hash_motor": "sha256:8fe940f70704b0f2afe2421805803cf3735f2e03a0f97c01fff4daea07c5d368",
+ "hash_motor": "sha256:5f6681fbb3f3ffc230ad2b7f8d8b83f50f8dd6e18408730f0956a3a74067a346",
  "modulos": [
   "base",
   "cf_alongamento",
@@ -92,5 +92,5 @@
   "É"
  ],
  "dur": 32.0,
- "renderizado_em": "2026-11-01T14:51:13+00:00"
+ "renderizado_em": "2026-11-01T15:56:38+00:00"
 }
