@@ -251,6 +251,36 @@ def pesos_formatos_novos(valor=None):
         return dict(PESOS_FORMATOS_NOVOS_PADRAO)
 
 
+# DESCANSO de formato (Rafael, 01/11/2026, sobre o Qual dos dois — 143 de alcance em 7,7 h contra 25.688 da câmera
+# lenta; pulo nos 3 s de 33% e 11,9 s assistidos, no nível dos COMO FUNCIONA: a peça segura quem vê, a distribuição
+# não veio): "pode aumentar o espaço de tempo que ele vai aparecer... não precisa de cancelar totalmente o formato,
+# mas vai precisar de trabalhar nele e evoluir ele para algo melhor". O formato com descanso, publicado há MENOS de
+# N dias, desce para o fim do rodízio: sai só quando nenhum outro formato novo tem peça pronta (vaga nunca fica vazia
+# por causa do descanso — Rafael, 27/10: volume). Mudar = mudar aqui (o PROGRAMACAO.md projeta com a mesma regra).
+DIAS_DESCANSO_FORMATO_PADRAO = {"qual_dos_dois": 21}
+
+
+def dias_descanso_formato(valor=None):
+    """{formato: dias mínimos entre duas aparições}. Variável DIAS_DESCANSO_FORMATO só para os testes ('off' = sem
+    descanso, ou 'qual_dos_dois:21,mito_na_prova:14'); a produção não a define (publish_agenda confere o publish.yml)."""
+    v = os.environ.get("DIAS_DESCANSO_FORMATO") if valor is None else valor
+    if v is None or str(v).strip() == "":
+        return dict(DIAS_DESCANSO_FORMATO_PADRAO)
+    v = str(v).strip().lower()
+    if v in ("off", "0", "-1"):
+        return {}
+    out = {}
+    try:
+        for par in v.split(","):
+            f, n = par.split(":")
+            if f.strip() in FORMATOS_NOVOS:
+                out[f.strip()] = max(0, int(n))
+        return out
+    except ValueError:
+        print(f"::warning::DIAS_DESCANSO_FORMATO ilegível ({v!r}) — usando o padrão de regra_reels.py.")
+        return dict(DIAS_DESCANSO_FORMATO_PADRAO)
+
+
 def publicados_por_formato_desde(state, reels, desde):
     """{formato: quantos reels dele saíram de `desde` em diante} (mesma leitura de ultimas_por_formato)."""
     fmt = {r["id"]: formato(r) for r in reels}
@@ -269,14 +299,17 @@ def publicados_por_formato_desde(state, reels, desde):
     return out
 
 
-def rodizio(reels, done, state, pesos=None):
+def rodizio(reels, done, state, pesos=None, hoje=None, descanso=None):
     """O RODÍZIO dos formatos novos, na ordem em que saem: [(formato, última publicação | None, posição do 1º
     pendente na fila)], só dos formatos com peça pronta. O 1º da lista é o da próxima vaga:
       1. formato NUNCA publicado (estreia), na ordem da fila;
       2. formatos com peso > 0, pela menor razão publicados-desde-INICIO_PESOS / peso (2:1 = câmera lenta duas
          vezes para cada VAR); empate = o publicado há MAIS tempo, depois a fila;
-      3. RESERVA (peso 0), o publicado há mais tempo — só quando nenhum de peso > 0 tem peça pronta."""
+      3. RESERVA (peso 0), o publicado há mais tempo — só quando nenhum de peso > 0 tem peça pronta;
+      4. EM DESCANSO (`hoje` informado e publicado há menos de DIAS_DESCANSO_FORMATO dias), o publicado há mais
+         tempo — só quando nenhum outro formato tem peça pronta."""
     pesos = pesos_formatos_novos() if pesos is None else pesos
+    descanso = dias_descanso_formato() if descanso is None else descanso
     ult = ultimas_por_formato(state, reels)
     cont = publicados_por_formato_desde(state, reels, INICIO_PESOS)
     primeiro = {}
@@ -288,6 +321,8 @@ def rodizio(reels, done, state, pesos=None):
     def chave(f):
         if ult.get(f) is None:
             return (0, 0.0, dt.date.min, primeiro[f])
+        if hoje is not None and descanso.get(f) and (hoje - ult[f]).days < descanso[f]:
+            return (3, 0.0, ult[f], primeiro[f])
         w = pesos.get(f, 0)
         if w > 0:
             return (1, cont.get(f, 0) / w, ult[f], primeiro[f])
@@ -309,7 +344,7 @@ def proximo_reel(reels, done, state, agora_brt, cota=None, dias_conversa=None, c
     if grupo is None:
         return None
     if grupo == GRUPO_NOVOS:
-        r = rodizio(reels, done, state)
+        r = rodizio(reels, done, state, hoje=_data(agora_brt))
         if not r:
             return None
         return next(x for x in reels if x["id"] not in done and formato(x) == r[0][0])

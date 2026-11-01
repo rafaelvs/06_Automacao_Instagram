@@ -176,7 +176,7 @@ def teste_agenda():
         "publish.py deixou de usar a regra única (regra_reels)"
     yml = open(os.path.join(raiz, ".github", "workflows", "publish.yml"), encoding="utf-8").read()
     for var in ("LAMINAS_POR_SEMANA", "DIAS_ENTRE_CONVERSAS", "CONVERSAS_ATIVAS", "POSTS_ATIVOS", "SEQUENCIAS_ATIVAS",
-                "STORIES_NOVOS_ATIVOS", "DIAS_ENTRE_MESMO_TEMA", "PESOS_FORMATOS_NOVOS"):
+                "STORIES_NOVOS_ATIVOS", "DIAS_ENTRE_MESMO_TEMA", "PESOS_FORMATOS_NOVOS", "DIAS_DESCANSO_FORMATO"):
         assert not re.search(r"^\s*" + var + r"\s*:", yml, re.M), \
             f"publish.yml voltou a definir {var} — a página leria outra cota que o robô"
     seg = dt.date(2026, 10, 19)
@@ -240,6 +240,8 @@ def teste_formatos_novos(src=None, yml=None):
     import os as _os
     _antes = _os.environ.get("PESOS_FORMATOS_NOVOS")
     _os.environ["PESOS_FORMATOS_NOVOS"] = "iguais"     # mecânica do rodízio simples; o peso é testado mais abaixo
+    _antes_d = _os.environ.get("DIAS_DESCANSO_FORMATO")
+    _os.environ["DIAS_DESCANSO_FORMATO"] = "off"        # idem: o DESCANSO (01/11) é testado mais abaixo
     # rodízio sem nada publicado: nunca publicado primeiro, empate pela ordem da fila; depois, o mais antigo
     r = projeta_reels([m1, q1, k1, q2, v1, m2], [], ter03, False, horizonte_dias=30)
     assert [i for _, i in r] == ["m1", "q1", "k1", "v1", "m2", "q2"] \
@@ -270,6 +272,16 @@ def teste_formatos_novos(src=None, yml=None):
     ca, cb = novo("ca", "camera_lenta"), novo("cb", "camera_lenta")
     r = projeta_reels([q1, m1, ca, v1, cb], p4, dt.date(2026, 11, 4), False, horizonte_dias=12)
     assert [(d.day, i) for d, i in r] == [(5, "v1"), (7, "ca"), (10, "cb"), (12, "q1"), (14, "m1")], ("peso", r)
+    # DESCANSO (Rafael, 01/11): qual dos dois publicado há < 21 dias cede a vaga; sozinho, sai mesmo assim
+    _os.environ.pop("DIAS_DESCANSO_FORMATO", None)
+    pdq = [{"id": "pq", "kind": "reel", "at": "2026-11-10T18:05:00+00:00", "formato": "qual_dos_dois"},
+           {"id": "pm", "kind": "reel", "at": "2026-11-12T18:05:00+00:00", "formato": "mito_na_prova"}]
+    ter24 = dt.date(2026, 11, 24)
+    r = projeta_reels([q1, m1], pdq, ter24, False, horizonte_dias=3)
+    assert r == [(ter24, "m1"), (ter24 + dt.timedelta(days=2), "q1")], ("descanso do qual dos dois", r)
+    _os.environ["DIAS_DESCANSO_FORMATO"] = "off"
+    r = projeta_reels([q1, m1], pdq, ter24, False, horizonte_dias=3)
+    assert r == [(ter24, "q1"), (ter24 + dt.timedelta(days=2), "m1")], ("controle: sem descanso sai o reserva mais antigo", r)
     if _antes is not None:
         _os.environ["PESOS_FORMATOS_NOVOS"] = _antes
     else:
@@ -305,6 +317,10 @@ def teste_formatos_novos(src=None, yml=None):
     teste_reordenador_fixos(regra)
     if _antes is None:
         _os.environ.pop("PESOS_FORMATOS_NOVOS", None)
+    if _antes_d is None:
+        _os.environ.pop("DIAS_DESCANSO_FORMATO", None)
+    else:
+        _os.environ["DIAS_DESCANSO_FORMATO"] = _antes_d
     return True
 
 

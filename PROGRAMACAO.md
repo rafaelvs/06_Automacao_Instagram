@@ -11,12 +11,12 @@ Regenerado em 31/10/2026 por `_gen_programacao.py`. **Datas são projeção da f
 
 ## Reels (todos os dias, ~15h BRT)
 
-*Regra (Rafael, 24-26/10/2026, regra_reels.py — a mesma do robô): **seg · qua · sex · dom = COMO FUNCIONA**; **ter · qui · sáb = os 4 FORMATOS NOVOS em rodízio**, a partir de 27/10/2026 (antes disso, ter/qui/sáb sem reel). **Rodízio COM PESO (Rafael, 31/10, depois dos números: câmera lenta 25.612 de alcance em 1,8 dia):** pesos camera_lenta 2, chama_o_var 1, qual_dos_dois 0, mito_na_prova 0 — câmera lenta em 2 de cada 3 vagas, Chama o VAR na outra; Qual dos dois e Mito na prova são RESERVA (saem só quando os de peso > 0 estão sem peça). Todo formato faz a estreia antes de valer o peso; dentro do formato sai o 1º da fila. Formato sem peça pronta sai do rodízio até ganhar peça; vaga sem nenhuma peça pronta = sem reel nesse dia (o robô avisa, não é erro). Formato novo nunca ocupa seg/qua/sex/dom, e COMO FUNCIONA nunca ocupa ter/qui/sáb. 1 reel por dia.*
+*Regra (Rafael, 24-26/10/2026, regra_reels.py — a mesma do robô): **seg · qua · sex · dom = COMO FUNCIONA**; **ter · qui · sáb = os 4 FORMATOS NOVOS em rodízio**, a partir de 27/10/2026 (antes disso, ter/qui/sáb sem reel). **Rodízio COM PESO (Rafael, 31/10, depois dos números: câmera lenta 25.612 de alcance em 1,8 dia):** pesos camera_lenta 2, chama_o_var 1, qual_dos_dois 0, mito_na_prova 0 — câmera lenta em 2 de cada 3 vagas, Chama o VAR na outra; Qual dos dois e Mito na prova são RESERVA (saem só quando os de peso > 0 estão sem peça). **DESCANSO (Rafael, 01/11):** qual_dos_dois 21 dias entre duas aparições — o formato em descanso só sai se nenhum outro tiver peça pronta (vaga nunca vazia). Todo formato faz a estreia antes de valer o peso; dentro do formato sai o 1º da fila. Formato sem peça pronta sai do rodízio até ganhar peça; vaga sem nenhuma peça pronta = sem reel nesse dia (o robô avisa, não é erro). Formato novo nunca ocupa seg/qua/sex/dom, e COMO FUNCIONA nunca ocupa ter/qui/sáb. 1 reel por dia.*
 
 | Formato novo | Na fila (pendentes) | Último publicado | Próximas vagas projetadas |
 |---|---|---|---|
-| **QUAL DOS DOIS?** (`qual_dos_dois`) | 2 | 31/10/2026 | qui 03/12, ter 08/12 |
-| **MITO NA PROVA** (`mito_na_prova`) | 3 | nunca | ter 03/11, sáb 05/12, qui 10/12 |
+| **QUAL DOS DOIS?** (`qual_dos_dois`) | 2 | 31/10/2026 | qui 03/12, qui 10/12 |
+| **MITO NA PROVA** (`mito_na_prova`) | 3 | nunca | ter 03/11, sáb 05/12, ter 08/12 |
 | **CÂMERA LENTA** (`camera_lenta`) | 7 | 29/10/2026 | sáb 07/11, ter 10/11, sáb 14/11 |
 | **CHAMA O VAR** (`chama_o_var`) | 5 | 27/10/2026 | qui 05/11, qui 12/11, qui 19/11 |
 
@@ -59,9 +59,9 @@ Regenerado em 31/10/2026 por `_gen_programacao.py`. **Datas são projeção da f
 | sáb 05/12 | **MITO NA PROVA** | `cf_mito_mochila_coluna`  | Mito na prova | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cf_mito_mochila_coluna.mp4) |
 | dom 06/12 | **COMO FUNCIONA** | `cf_quanto_tempo`  | Como funciona | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cf_quanto_tempo.mp4) |
 | seg 07/12 | **COMO FUNCIONA** | `cf_retirada_fixador`  | Como funciona | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cf_retirada_fixador.mp4) |
-| ter 08/12 | **QUAL DOS DOIS?** | `cf_qualdosdois_pino`  | Qual dos dois | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cf_qualdosdois_pino.mp4) |
+| ter 08/12 | **MITO NA PROVA** | `cf_mito_estalar_joelho`  | Mito na prova | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cf_mito_estalar_joelho.mp4) |
 | qua 09/12 | **COMO FUNCIONA** | `cf_dor_alongamento`  | Como funciona | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cf_dor_alongamento.mp4) |
-| qui 10/12 | **MITO NA PROVA** | `cf_mito_estalar_joelho`  | Mito na prova | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cf_mito_estalar_joelho.mp4) |
+| qui 10/12 | **QUAL DOS DOIS?** | `cf_qualdosdois_pino`  | Qual dos dois | [▶ assistir](https://raw.githubusercontent.com/rafaelvs/06_Automacao_Instagram/main/reels/_preview_cf_qualdosdois_pino.mp4) |
 
 *Parados na fila (all-in no formato novo, 24/10 — nada apagado, religar em regra_reels.py): 7 conversa(s) e 26 lâmina(s).*
 

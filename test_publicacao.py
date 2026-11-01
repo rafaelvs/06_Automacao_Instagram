@@ -1097,8 +1097,9 @@ checa("CONTROLE: extras respondendo -> follows, profile_visits e navegação por
 # FUNCIONA. Padrão de PRODUÇÃO (FN): nenhuma variável de cota/suspensão; stories da geração nova ligados (fila vazia).
 # FN1-FN8 testam a MECÂNICA do rodízio simples (pesos iguais); o FN9 testa o padrão de produção com peso (31/10)
 FN = {"LAMINAS_POR_SEMANA": None, "CONVERSAS_ATIVAS": None, "POSTS_ATIVOS": None, "SEQUENCIAS_ATIVAS": None,
-      "PESOS_FORMATOS_NOVOS": "iguais"}
+      "PESOS_FORMATOS_NOVOS": "iguais", "DIAS_DESCANSO_FORMATO": "off"}
 FN_PROD = dict(FN, PESOS_FORMATOS_NOVOS=None)          # padrão de regra_reels.py (câmera 2 : VAR 1 : reserva 0)
+FN_DESC = dict(FN_PROD, DIAS_DESCANSO_FORMATO=None)    # + o DESCANSO de produção (qual dos dois 21 dias, 01/11)
 R_QUAL = {"id": "t-qual-1", "video": "media/q1.mp4", "caption": CAP_IA, "formato": "qual_dos_dois", "voz_ia": True}
 R_QUAL2 = dict(R_QUAL, id="t-qual-2", video="media/q2.mp4")
 R_MITO = dict(R_QUAL, id="t-mito-1", video="media/m1.mp4", formato="mito_na_prova")
@@ -1343,6 +1344,29 @@ rc, out, st = rodar("ok", tmp, agora="2026-11-07T19:00:00+00:00", extra=dict(FN,
 rc, out, st = rodar("ok", tmp, agora="2026-11-10T19:00:00+00:00", extra=dict(FN, PESOS_FORMATOS_NOVOS="iguais"))
 checa("CONTROLE: com pesos iguais a 3ª vaga NÃO é câmera de novo (é a reserva mais antiga): o peso é que muda isso",
       ids(st)[-1:] == ["w-qual"], f"{ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+
+print("\nFN10) DESCANSO (Rafael, 01/11): qual dos dois publicado há < 21 dias só sai se nenhum outro formato tiver peça")
+PD = [{"id": "d-q0", "kind": "reel", "media_id": "DQ", "at": "2026-11-10T18:05:00+00:00", "formato": "qual_dos_dois"},
+      {"id": "d-m0", "kind": "reel", "media_id": "DM", "at": "2026-11-12T18:05:00+00:00", "formato": "mito_na_prova"}]
+DX = [dict(R_QUAL, id="d-qual", video="media/dq.mp4"), dict(R_MITO, id="d-mito", video="media/dm.mp4")]
+tmp = preparar(reels=DX, publicados=list(PD))
+rc, out, st = rodar("ok", tmp, agora="2026-11-24T19:00:00+00:00", extra=FN_DESC)
+checa("ter 24/11: o qual dos dois (14 dias, em descanso) cede a vaga ao MITO, mesmo sendo o reserva mais antigo",
+      ids(st)[-1:] == ["d-mito"] and rc == 0, f"exit={rc} {ids(st)}")
+rc, out, st = rodar("ok", tmp, agora="2026-11-26T19:00:00+00:00", extra=FN_DESC)
+checa("qui 26/11: só sobrou o qual dos dois -> sai MESMO em descanso (vaga nunca vazia)", ids(st)[-1:] == ["d-qual"] and rc == 0,
+      f"exit={rc} {ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(reels=DX, publicados=list(PD))
+rc, out, st = rodar("ok", tmp, agora="2026-11-24T19:00:00+00:00", extra=FN_PROD)
+checa("CONTROLE: sem descanso, na mesma vaga sai o qual dos dois (o reserva publicado há mais tempo)",
+      ids(st)[-1:] == ["d-qual"] and rc == 0, f"exit={rc} {ids(st)}")
+shutil.rmtree(tmp, ignore_errors=True)
+tmp = preparar(reels=DX, publicados=[dict(PD[0], at="2026-11-01T18:05:00+00:00"), PD[1]])
+rc, out, st = rodar("ok", tmp, agora="2026-11-24T19:00:00+00:00", extra=FN_DESC)
+checa("CONTROLE: qual dos dois publicado há 23 dias (fora do descanso) volta ao rodízio normal e sai",
+      ids(st)[-1:] == ["d-qual"] and rc == 0, f"exit={rc} {ids(st)}")
 shutil.rmtree(tmp, ignore_errors=True)
 
 print("\nMEN) @ de perfil INEXISTENTE na legenda (31/10/2026: @sbortopediapediatrica saiu em 12 peças) -> NÃO publica")

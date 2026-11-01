@@ -98,6 +98,8 @@ def secao_rodizio(fila, published, rp, hoje, ja_hoje=False):
          "**Rodízio COM PESO (Rafael, 31/10, depois dos números: câmera lenta 25.612 de alcance em 1,8 dia):** "
          f"pesos {', '.join(f'{f} {w}' for f, w in R.pesos_formatos_novos().items())} — câmera lenta em 2 de cada 3 vagas, "
          "Chama o VAR na outra; Qual dos dois e Mito na prova são RESERVA (saem só quando os de peso > 0 estão sem peça). "
+         f"**DESCANSO (Rafael, 01/11):** {', '.join(f'{f} {n} dias' for f, n in R.dias_descanso_formato().items()) or 'nenhum'} "
+         "entre duas aparições — o formato em descanso só sai se nenhum outro tiver peça pronta (vaga nunca vazia). "
          "Todo formato faz a estreia antes de valer o peso; dentro do formato sai o 1º da fila. Formato sem peça pronta sai do rodízio até ganhar "
          "peça; vaga sem nenhuma peça pronta = sem reel nesse dia (o robô avisa, não é erro). Formato novo nunca ocupa "
          "seg/qua/sex/dom, e COMO FUNCIONA nunca ocupa ter/qui/sáb. 1 reel por dia.*\n",
