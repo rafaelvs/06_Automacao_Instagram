@@ -1,7 +1,7 @@
 {
  "id": "cf_var_primeiros_socorros",
  "hash_episodio": "sha256:6d87a6abde9a8710bcb24565b7bb992f7a1999510f33c49188e665c3df626dfc",
- "hash_motor": "sha256:1778e47ff354f776907af24f18f04068a1037e2d0dd1326402afd0936ea8891d",
+ "hash_motor": "sha256:b0f421973842eb38f45f72f9eab67554a96063b36aef07cdd3847c793895b48a",
  "modulos": [
   "base",
   "cf_alongamento",
@@ -90,5 +90,5 @@
   "É"
  ],
  "dur": 35.77,
- "renderizado_em": "2026-10-26T19:56:03+00:00"
+ "renderizado_em": "2026-11-01T14:48:18+00:00"
 }
