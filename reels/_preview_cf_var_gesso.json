@@ -1,7 +1,7 @@
 {
  "id": "cf_var_gesso",
  "hash_episodio": "sha256:45fcbf647939297ede9ad456ec7b20433ba37aa40a63934abdf98f618fc654ac",
- "hash_motor": "sha256:98d828d726483846cf1193a5fc704349674c387766361a8c6306f8f127988985",
+ "hash_motor": "sha256:ee1fc74d73adc6441e3898797a91e27f0dad97434a51d4818d94144ef0ed2c01",
  "modulos": [
   "base",
   "cf_alongamento",
@@ -80,5 +80,5 @@
   "É"
  ],
  "dur": 30.8,
- "renderizado_em": "2026-10-26T19:55:24+00:00"
+ "renderizado_em": "2026-11-01T14:49:27+00:00"
 }
