@@ -1039,6 +1039,13 @@ def estetoscopio(cv, x, y, a):
 
 CELULAS = ((300, 612, "doi", ico_raio, R_DOI), (780, 612, "incha", ico_incha, R_INCHA),
            (300, 896, "trava", ico_trava, R_TRAVA), (780, 896, "falseia", ico_falseia, R_FALSEIA))
+# Enquadramento de cada pictograma no anel (raio 90; borda interna do anel dourado = 87): escala e o
+# centro (unidades locais) do menor círculo que contém o desenho, levado ao centro do anel.
+# v3: as três perninhas iam a 1,25 em torno do joelho: o contorno branco chegava a ~100 px do centro
+# (~110 no estouro do pop-in, e_back ≈ 1,10), passando por cima do anel, com o pé na borda de baixo.
+# Agora cabem no mesmo envelope do raio do DÓI (~76 px em repouso, ~84 no estouro); o DÓI fica igual.
+ENQUADRA = {"doi": (1.25, (0.0, 0.0)), "incha": (0.97, (10.0, -3.5)),
+            "trava": (0.97, (-13.5, -9.5)), "falseia": (0.97, (10.0, -3.5))}
 
 
 def cartao_asterisco(cv, t, T):
@@ -1089,7 +1096,9 @@ def cartao_asterisco(cv, t, T):
         cv.drawCircle(cx, cy - 34, 90, paint("#FFFFFF", int((22 + 18 * vez) * ai)))
         cv.drawCircle(cx, cy - 34, 90, paint(lerpc("#FFFFFF", OURO, vez), int(lerp(90, 255, vez) * ai), "stroke",
                                              lerp(3, 6, vez)))
-        cv.save(); cv.translate(cx, cy - 34); cv.scale(max(0.01, esc_i) * 1.25, max(0.01, esc_i) * 1.25)
+        esc_ico, (ox, oy) = ENQUADRA[chave]
+        cv.save(); cv.translate(cx, cy - 34); cv.scale(max(0.01, esc_i) * esc_ico, max(0.01, esc_i) * esc_ico)
+        cv.translate(-ox, -oy)
         ico(cv, ai, t, p)
         cv.restore()
         texto(cv, rot, cx, cy + 104, F_BLACK, 40, "#FFFFFF", int(255 * ai))

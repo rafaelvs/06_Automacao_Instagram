@@ -34,11 +34,13 @@ Cada manipulação do tempo tem um sentido:
      às DUAS escápulas (2,3×): a direita faz relevo no tecido (luz e sombra macias, placa achatada com a borda de
      dentro e o ângulo de baixo), a esquerda fica plana; um círculo pequeno só na direita. Sem lupa.
   6. "sinal" (3ª): recapitulação no padrão do piloto — 4 polaroides sem texto, carimbo SINAL (depois que a cena
-     escurece), NÃO DIAGNÓSTICO em branco (calmo) e o estetoscópio no "leve" ("com o ortopedista").
+     escurece), NÃO DIAGNÓSTICO em branco (calmo) e o estetoscópio no "leve" ("com o ortopedista"). A cena ao vivo
+     atrás vira FUNDO (92% escura e desfocada): a criança de pé não fica legível sob os elementos.
   7. ▶▶ ("estirão"): o recap some em 0,15 s; calendário de folhas (sem número, cabeçalho azul-claro), carimbo NO
      ESTIRÃO (sozinho), e no "rápido" um ponto dourado pulsa no alto da metade direita das costas. Nada cresce.
   8. Replay limpo a 0,25× (respiro antes da CTA): os últimos graus da flexão; as trilhas começam no trecho revisto
-     e terminam em alturas diferentes. Depois, a CTA do cf_comum (atrás do véu, ela segue em 1×).
+     e terminam em alturas diferentes. Depois, a CTA do cf_comum (atrás do véu, desfocada e mais escura, ela
+     segue em 1×: sobe e fica de pé com os braços ao lado do corpo, sem passar do título).
 
 Regras do storyboard e do verificador, todas aqui:
   * Assimetria SEMPRE do lado DIREITO da criança (de costas = direita da tela): na flexão, a metade direita do alto
@@ -237,6 +239,17 @@ class Pose:
         self.br = math.sin(2 * math.pi * tf / 3.3) * q                    # respiração
 
 
+def pose_t(t, F):
+    """A pose do instante de VÍDEO t. No cartão final (a partir de F.t_cta) ela sobe da flexão e fica de pé com
+    os braços AO LADO do corpo: o alongamento com os braços para cima (F_BR) punha antebraços e mãos inteiros
+    acima do título da CTA, com a cabeça e o tronco atrás das letras (2ª rodada, 28,4–29,1 s: "dois braços saindo
+    do texto"). O tempo do filme e o som não mudam; só os braços deixam de subir atrás do título."""
+    p = Pose(F.tf(t))
+    if t >= F.t_cta:
+        p.up = 0.0
+    return p
+
+
 # ------------------------------------------------------------------ geometria da criança (vista de COSTAS)
 # u em [-1, 1] atravessa os ombros: -1 = lado ESQUERDO da criança (esquerda da tela), +1 = DIREITO.
 def _meia(e):
@@ -312,16 +325,47 @@ def ponto_costas(p, lado):
 BR_BAIXO = {-1: ((440, 630), (429, 748), (424, 860)), 1: ((640, 616), (649, 738), (652, 850))}
 BR_CIMA = {-1: ((442, 626), (416, 510), (436, 402)), 1: ((638, 612), (664, 496), (644, 388))}
 BR_FLEX = {-1: ((416, 762), (440, 894), (476, 1022)), 1: ((664, 758), (640, 894), (604, 1022))}
+# Os braços NÃO se interpolam por posição (v2 de 31/10): a média de "para cima" com "pendente" punha cotovelo e
+# mão em cima do ombro (comprimento ~0) e o braço virava só a manga com um toco de pele (4,40–4,90 s, pose em
+# "T" amputada no 11,5 s, fundo da 1ª flexão sem antebraço). Agora cada segmento é (ângulo, comprimento) a
+# partir do ombro: o comprimento nunca encolhe, e o braço passa PELO LADO (abdução) ao subir/descer.
+E_SOLTA = 0.24              # na descida, os braços já pendem soltos (teste de Adams) quando a dobra passa disto
+
+
+def _polar(lado, a, b):
+    """Segmento a->b como (ângulo a partir de "para baixo", positivo = para FORA do corpo; comprimento)."""
+    dx, dy = b[0] - a[0], b[1] - a[1]
+    return math.atan2(lado * dx, dy), math.hypot(dx, dy)
+
+
+def _rig(lado, chave):
+    s, c, m = chave[lado]
+    f1, l1 = _polar(lado, s, c)
+    f2, l2 = _polar(lado, c, m)
+    while f2 - f1 > math.pi:                                     # antebraço no mesmo "giro" do braço
+        f2 -= 2 * math.pi
+    while f2 - f1 < -math.pi:
+        f2 += 2 * math.pi
+    return s, f1, l1, f2, l2
+
+
+RIG = {lado: {"B": _rig(lado, BR_BAIXO), "C": _rig(lado, BR_CIMA), "F": _rig(lado, BR_FLEX)} for lado in (-1, 1)}
 
 
 def braco_geo(p, lado):
+    """(ombro, cotovelo, mão). O ombro segue o tronco como antes; braço e antebraço giram com comprimento
+    constante. Nos extremos (de pé, braços para cima, flexão completa) dá EXATAMENTE os pontos de BR_*."""
     e = p.d
-    out = []
-    for a, b, c in zip(BR_BAIXO[lado], BR_CIMA[lado], BR_FLEX[lado]):
-        q = _lp(a, b, p.up)
-        q = _lp(q, c, e)
-        out.append((q[0] + p.sway * (1 - e), q[1] - 1.2 * p.br * (1 - e)))
-    return out
+    rb, rc, rf = RIG[lado]["B"], RIG[lado]["C"], RIG[lado]["F"]
+    up = p.up * (1 - sstep(e / E_SOLTA))                         # ao dobrar, os braços descem (pelo lado) e pendem
+    s = _lp(_lp(rb[0], rc[0], p.up), rf[0], e)
+
+    def par(i):                                                  # pendente (segue a dobra) -> para cima
+        return lerp(lerp(rb[i], rf[i], e), rc[i], up)
+    f1, l1, f2, l2 = par(1), par(2), par(3), par(4)
+    c = (s[0] + lado * l1 * math.sin(f1), s[1] + l1 * math.cos(f1))
+    m = (c[0] + lado * l2 * math.sin(f2), c[1] + l2 * math.cos(f2))
+    return [(q[0] + p.sway * (1 - e), q[1] - 1.2 * p.br * (1 - e)) for q in (s, c, m)]
 
 
 def cabeca_y(p):
@@ -339,6 +383,17 @@ def _pele(cv, pth, x0, x1, linha=3.0):
     cv.drawPath(pth, paint(PELE_LINHA, 230, "stroke", linha))
 
 
+def _uniao(a, b):
+    """skia.Op de união que NÃO derruba o render: o PathOps levanta RuntimeError ("Failed to apply op") em
+    algumas poses de braço (círculos de articulação quase coincidentes) -> None."""
+    if a is None or b is None:
+        return None
+    try:
+        return skia.Op(a, b, skia.PathOp.kUnion_PathOp)
+    except RuntimeError:
+        return None
+
+
 def _segmento(x0, y0, x1, y1, r0, r1):
     L = math.hypot(x1 - x0, y1 - y0) or 1.0
     nx, ny = -(y1 - y0) / L, (x1 - x0) / L
@@ -347,22 +402,49 @@ def _segmento(x0, y0, x1, y1, r0, r1):
     p.lineTo(x1 - nx * r1, y1 - ny * r1); p.lineTo(x0 - nx * r0, y0 - ny * r0); p.close()
     c0 = skia.Path(); c0.addCircle(x0, y0, r0)
     c1 = skia.Path(); c1.addCircle(x1, y1, r1)
-    u = skia.Op(p, c0, skia.PathOp.kUnion_PathOp) or p
-    return skia.Op(u, c1, skia.PathOp.kUnion_PathOp) or u
+    u = _uniao(_uniao(p, c0), c1)
+    if u is not None and all(u.contains(x, y) for x, y in ((x0, y0), (x1, y1), ((x0 + x1) / 2, (y0 + y1) / 2))):
+        return u
+    s = skia.Path(p); s.addPath(c0); s.addPath(c1); s.setFillType(skia.PathFillType.kWinding)   # soma (mesmo preenchimento)
+    return s
 
 
-def desenha_braco(cv, p, lado):
-    (jx, jy), (ex, ey), (hx, hy) = braco_geo(p, lado)
+def braco_path(jx, jy, ex, ey, hx, hy):
+    """Contorno único braço + antebraço + mão com UNIÃO CONFERIDA. Braço e antebraço trazem o MESMO círculo do
+    cotovelo, e o PathOps do skia pode errar a união e SUMIR um segmento (achado do chat YouTube, kit16): o
+    resultado é conferido por pontos de dentro (meio do braço, cotovelo, meio do antebraço, punho, mão) e, se
+    falhar (ou se o Op levantar erro), refeito com o círculo do cotovelo um fio menor (invisível).
+    -> (path, ok); ok=False = peças soltas (desenhadas com o contorno por baixo e a pele por cima)."""
     L = math.hypot(hx - ex, hy - ey) or 1.0
     ux, uy = (hx - ex) / L, (hy - ey) / L
     mao = skia.Path(); mao.addOval(skia.Rect(-13.5, -6, 13.5, 33))
     m = skia.Matrix(); m.setRotate(math.degrees(math.atan2(uy, ux)) - 90); m.postTranslate(hx, hy)
     mao.transform(m)
-    br = _segmento(jx, jy, ex, ey, 17.0, 14.5)
-    br = skia.Op(br, _segmento(ex, ey, hx, hy, 14.5, 12.0), skia.PathOp.kUnion_PathOp) or br
-    br = skia.Op(br, mao, skia.PathOp.kUnion_PathOp) or br
+    pts = (((jx + ex) / 2, (jy + ey) / 2), (ex, ey), ((ex + hx) / 2, (ey + hy) / 2), (hx, hy),
+           (hx + ux * 14, hy + uy * 14))
+    for dr in (0.0, 0.4, 0.9, -0.6):
+        a = _segmento(jx, jy, ex, ey, 17.0, 14.5 - dr)
+        b = _segmento(ex, ey, hx, hy, 14.5, 12.0)
+        u = _uniao(_uniao(a, b), mao)
+        if u is not None and all(u.contains(x, y) for x, y in pts):
+            return u, True
+    return [_segmento(jx, jy, ex, ey, 17.0, 14.5), _segmento(ex, ey, hx, hy, 14.5, 12.0), mao], False
+
+
+def desenha_braco(cv, p, lado):
+    (jx, jy), (ex, ey), (hx, hy) = braco_geo(p, lado)
+    br, ok = braco_path(jx, jy, ex, ey, hx, hy)
     xs = (jx, ex, hx)
-    _pele(cv, br, min(xs) - 18, max(xs) + 18, 2.8)
+    if ok:
+        _pele(cv, br, min(xs) - 18, max(xs) + 18, 2.8)
+    else:                                                        # sem união: contorno por baixo, pele por cima
+        sh = skia.GradientShader.MakeLinear([skia.Point(min(xs) - 18, 0), skia.Point(max(xs) + 18, 0)],
+                                            [_c(PELE_ESC), _c(PELE), _c(PELE_CL), _c(PELE), _c(PELE_ESC)],
+                                            [0.0, 0.22, 0.5, 0.78, 1.0])
+        for pc in br:
+            cv.drawPath(pc, paint(PELE_LINHA, 230, "stroke", 5.6))
+        for pc in br:
+            cv.drawPath(pc, paint(PELE, 255, shader=sh))
     # cotovelo: dobrinha discreta
     cv.drawCircle(ex, ey, 3.2, paint(PELE_LINHA, 90))
     # manga curta (camiseta): cobre o começo do braço
@@ -892,7 +974,9 @@ def _setas(cv, x, y, a, esc, para_frente):
 
 
 HUD_X, HUD_Y = 812, 1166                                         # centro do relógio (na linha do chão, à direita)
-POP_C = (250, 610)                                               # onde o "0,25×" grande aparece: ao lado, longe da cabeça
+POP_C = (872, 640)                                               # onde o "0,25×" grande aparece: ao lado, longe da cabeça
+POP_ESC = 2.1                                                    # e do lado do painel: o voo DESCE pela direita, sem
+                                                                 # cruzar a criança (os braços inteiros pendem dos 2 lados)
 
 
 def _chip_hud_c(s):
@@ -923,10 +1007,10 @@ def painel(cv, t, T, F, a):
     if tipo == "lenta" and k < 0.75 and t0 == T["camera"]:      # "0,25×" grande que voa para o painel
         cx, cy = POP_C
         if k < 0.32:
-            chip_c(cv, s, cx, cy, a, esc=2.4 * e_back(clamp(k / 0.16)))
+            chip_c(cv, s, cx, cy, a, esc=POP_ESC * e_back(clamp(k / 0.16)))
         else:
             v = e_inout(prog(k, 0.32, 0.75))
-            chip_c(cv, s, lerp(cx, hx, v), lerp(cy, hy, v), a, esc=lerp(2.4, 1.0, v))
+            chip_c(cv, s, lerp(cx, hx, v), lerp(cy, hy, v), a, esc=lerp(POP_ESC, 1.0, v))
         return
     pop = 1 + 0.6 * (1 - e_out(prog(t, t0, t0 + 0.3))) if t0 > 0 else 1.0
     chip_c(cv, s, hx, hy, a, esc=pop)
@@ -1161,18 +1245,37 @@ def amostras_borrao(t, F):
     if obt <= 0:
         return [t]
     seg = F.seg(t)
+    n = _n_amostras(t, obt, F)
     out = [t]
-    for i in range(1, N_AMOSTRAS):
-        tg = t - obt * i / (N_AMOSTRAS - 1)
+    for i in range(1, n):
+        tg = t - obt * i / (n - 1)
         if tg < 0 or F.seg(tg) is not seg:
             break
         out.append(tg)
     return out
 
 
+PASSO_MAO = 7.0                                                  # px: deslocamento máximo da mão entre 2 amostras
+N_AMOSTRAS_MAX = 48
+
+
+def _n_amostras(t, obt, F):
+    """Quantas poses entram no borrão: 6, ou mais quando o braço varre rápido (subir/descer pelo lado). Com 6
+    poses um braço inteiro girando sai em 6 CÓPIAS separadas (leque de ecos); com o passo da mão limitado a
+    ~7 px as cópias se sobrepõem e o borrão vira rastro contínuo."""
+    k = 16
+    ps = [pose_t(max(0.0, t - obt * i / k), F) for i in range(k + 1)]
+    L = 0.0
+    for lado in (-1, 1):
+        g = [braco_geo(p, lado) for p in ps]
+        for j in (1, 2):                                         # cotovelo e mão
+            L = max(L, sum(math.hypot(b[j][0] - a[j][0], b[j][1] - a[j][1]) for a, b in zip(g, g[1:])))
+    return int(clamp(math.ceil(L / PASSO_MAO) + 1, N_AMOSTRAS, N_AMOSTRAS_MAX))
+
+
 def crianca_borrada(cv, t, F, **kw):
     ams = amostras_borrao(t, F)
-    poses = [Pose(F.tf(x)) for x in ams]
+    poses = [pose_t(x, F) for x in ams]
     if len(poses) == 1 or (max(abs(q.d - poses[0].d) for q in poses) < 0.003
                            and max(abs(q.up - poses[0].up) for q in poses) < 0.003):
         crianca(cv, poses[0], **kw)
@@ -1253,7 +1356,7 @@ def monitor(cv, t, T, F, limpo=False):
         cam = (cam[0], cam[1], cam[2], cam[3] + j, cam[4])
     s = cam[0]
     tf = F.tf(t)
-    p = Pose(tf)
+    p = pose_t(t, F)
 
     cv.save(); cv.clipRect(CENA, True)
     cv.save(); aplica(cv, cam)
@@ -1371,21 +1474,58 @@ def miniatura(T, F, tt):
 
 MW, MH = 204, 184                                                # miniatura (proporção da CENA)
 REC_Y = 872
+# A cena AO VIVO atrás da recapitulação e do cartão final (2ª rodada, 01/11). Com a cena só 74% escura e nítida,
+# a criança de pé ficava legível atrás de tudo: o carimbo SINAL nos ombros, o NÃO DIAGNÓSTICO na cintura, as
+# polaroides no short e nas coxas e o estetoscópio EXATAMENTE sobre a cabeça ("um corpo com um ícone no lugar da
+# cabeça"); na CTA, antebraços e mãos saíam acima do título. Agora a cena vira fundo: desfocada E mais escura,
+# sem forma de corpo legível atrás dos elementos (as 4 polaroides continuam mostrando a criança inteira).
+REC_ESCURO, REC_DESF = 0.92, 16.0                                # recap: escuro (0..1) e sigma do desfoque (px)
+CTA_ESCURO, CTA_DESF = 0.5, 12.0                                 # CTA: escuro extra por baixo do véu do cf_comum
+
+
+def fundo_rec(t, T):
+    """0..1: quanto a cena ao vivo está escura e desfocada na recap. Entra no "sinal" e sai no "estirão" um
+    pouco DEPOIS dos elementos (polaroides, NÃO DIAGNÓSTICO e estetoscópio somem de 0 a 0,15 s, o SINAL até
+    0,1 s; a cena clareia de 0,1 a 0,25 s): nenhum quadro da saída mostra elemento por cima da criança nítida."""
+    if t < T["sinal3"] - 0.1:
+        return 0.0                                               # já escura quando o SINAL bate (sinal + 0,15 s)
+    return prog(t, T["sinal3"] - 0.1, T["sinal3"] + 0.15) * (1 - e_inout(prog(t, T["estirao"] + 0.1, T["estirao"] + 0.25)))
+
+
+def veu_cena(t, T):
+    """-> (sigma do desfoque, escuro extra da CTA) da cena ao vivo no instante t: recap (fundo_rec) e CTA (entra
+    com o véu do cf_comum, t_cta = manda - 0,15)."""
+    cta = prog(t, T["manda"] - 0.15, T["manda"] + 0.2)
+    return max(REC_DESF * fundo_rec(t, T), CTA_DESF * cta), CTA_ESCURO * cta
+
+
+def monitor_desfocado(cv, t, T, F, sig):
+    """O monitor desenhado à parte e desfocado (bordas presas na CENA: sem halo na moldura)."""
+    sf = skia.Surface(int(CENA.width()), int(CENA.height())); c = sf.getCanvas(); c.clear(_c(BG_OUT))
+    c.translate(-CENA.left(), -CENA.top())
+    fundo_cl(c, t)
+    monitor(c, t, T, F)
+    pf = skia.Paint()
+    pf.setImageFilter(skia.ImageFilters.Blur(sig, sig, skia.TileMode.kClamp))
+    cv.save(); cv.clipRect(CENA, True)
+    cv.drawImage(sf.makeImageSnapshot(), CENA.left(), CENA.top(), skia.SamplingOptions(), pf)
+    cv.restore()
 
 
 def recap(cv, t, T, F):
     """Sem texto nas polaroides: a cena escurece e as 4 entram deslizando; o estetoscópio vem no "leve"."""
-    if t < T["sinal3"] - 0.05:
+    if t < T["sinal3"] - 0.1:
         return
     fim = 1 - e_inout(prog(t, T["estirao"], T["estirao"] + 0.15))
-    if fim <= 0:
+    k_fundo = fundo_rec(t, T)
+    if fim <= 0 and k_fundo <= 0:
         return
     cv.save(); cv.clipRect(CENA, True)
     img = _img("escurece", CENA.width(), CENA.height(), lambda c: c.clear(_c(BG_OUT, 255)))
-    _blit(cv, img, CENA.left(), CENA.top(), 0.74 * prog(t, T["sinal3"] - 0.05, T["sinal3"] + 0.25) * fim)
+    _blit(cv, img, CENA.left(), CENA.top(), REC_ESCURO * k_fundo)
     for i, tt in enumerate(momentos(T)):
         ti = T["sinal3"] + 0.09 * i
-        if t < ti:
+        if t < ti or fim <= 0:
             continue
         k = e_out(prog(t, ti, ti + 0.38))
         a = prog(t, ti, ti + 0.08) * fim
@@ -1430,7 +1570,14 @@ def selo_lenta(cv, lk):
 
 def quadro(cv, t, T, blocos, ep, F):
     fundo_cl(cv, t)
-    monitor(cv, t, T, F)
+    sig, esc_cta = veu_cena(t, T)
+    if sig > 0.05:                                               # recap e CTA: a cena ao vivo vira fundo
+        monitor_desfocado(cv, t, T, F, sig)
+    else:
+        monitor(cv, t, T, F)
+    if esc_cta > 0:
+        img = _img("escurece", CENA.width(), CENA.height(), lambda c: c.clear(_c(BG_OUT, 255)))
+        _blit(cv, img, CENA.left(), CENA.top(), esc_cta)
     recap(cv, t, T, F)
 
     fim = 1 - prog(t, T["manda"] - 0.4, T["manda"] - 0.1)
@@ -1439,7 +1586,9 @@ def quadro(cv, t, T, blocos, ep, F):
 
     # carimbos (dourados) e o NÃO DIAGNÓSTICO (branco, calmo), todos dentro da área de cena
     carimbo_ouro(cv, R_ALTO, 540, 486, -4, T["alto1"], t, dur=T["costuma"] - T["alto1"] + 0.15)
-    carimbo_ouro(cv, R_SINAL, 540, 640, -5, T["sinal3"] + 0.15, t, dur=T["estirao"] - T["sinal3"] + 0.05)
+    # SINAL sai com a recapitulação (até estirão + 0,1 s, ainda com a cena escura); antes o rabo do carimbo ia a
+    # estirão + 0,2 s e ficava, apagando, sobre os ombros da criança já nítida
+    carimbo_ouro(cv, R_SINAL, 540, 640, -5, T["sinal3"] + 0.15, t, dur=T["estirao"] - T["sinal3"] - 0.05)
     a_n = prog(t, T["nao2"], T["nao2"] + 0.2) * (1 - prog(t, T["estirao"] - 0.05, T["estirao"] + 0.12))
     if a_n > 0:
         texto(cv, R_NAO, 540, 728 + 10 * (1 - e_out(prog(t, T["nao2"], T["nao2"] + 0.25))), F_SEMI, 50, "#FFFFFF",

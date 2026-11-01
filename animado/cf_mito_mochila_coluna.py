@@ -574,6 +574,77 @@ def crianca(cv, st, t, T):
             estrela_dor(cv, x, y, max(1.0, r), a_e)
 
 
+# ------------------------------------------------------------------ o clone em "prova" (correção 01/11)
+# Antes: A e B deslizavam OPACAS a partir do MESMO ponto (X0, S0), sem fade e sem recorte pelos painéis:
+# em prova-0,05..+0,1 as duas cópias sobrepostas liam como UM corpo com duas cabeças e quatro pernas, e
+# até ~+0,35 a mochila de uma cruzava o braço da outra. Agora A desliza sozinha (um pouco mais rápida)
+# e B só NASCE quando A já saiu da coluna B — recortada no painel B, silhueta dourada que ganha as
+# cores, com um pulo curto de escala preso ao chão. Em nenhum quadro as duas se tocam.
+NASCE_PIVO = -55                                  # x local do pivô do pulo (meio criança + mochila), no chão
+OURO_ESC, OURO_CL = (0.60, 0.42, 0.09), (1.0, 0.91, 0.62)   # cópia recém-nascida: o desenho em tons de ouro
+
+
+def clone_a(t, T):
+    """0..1 do deslize de A (de X0, S0 para XA, S1)."""
+    return e_inout(prog(t, T["prova"] - 0.05, T["prova"] + 0.40))
+
+
+def nasce_b(t, T):
+    """0..1 do nascimento de B na própria coluna; começa só com A fora da coluna B."""
+    return prog(t, T["prova"] + 0.26, T["prova"] + 0.52)
+
+
+def _ouro_paint(forca):
+    """Camada que repinta o desenho em MONOCROMIA DOURADA (luminância -> ouro escuro..claro): a cópia
+    mantém mochila, braço e cabeça legíveis (uma silhueta lisa lia como borrão amarelo)."""
+    lin = []
+    for esc, cl in zip(OURO_ESC, OURO_CL):
+        k = (cl - esc) / 0.8                                       # luminância 0,2 -> escuro, 1,0 -> claro
+        lin += [k * 0.299, k * 0.587, k * 0.114, 0.0, esc - 0.2 * k]
+    lin += [0.0, 0.0, 0.0, 1.0, 0.0]
+    p = skia.Paint()
+    p.setColorFilter(skia.ColorFilters.Matrix(lin))
+    p.setAlphaf(clamp(forca))
+    return p
+
+
+def _figura(cv, st, t):
+    """Mochila + corpo (o que crianca() desenha, sem sombra no chão, linha-guia nem estrelas)."""
+    if st["bag_a"] > 0:
+        x, y, rot = bag_pose(st)
+        cv.save(); cv.translate(x, y); cv.rotate(rot)
+        mochila_perfil(cv, st["cheia"], st["bag_a"], 0.0, t)
+        cv.restore()
+    corpo(cv, st)
+
+
+def nasce_clone(cv, st, t, T):
+    """B nascendo na coluna B (st["nasce"] em 0..1), recortada no painel B."""
+    k = st["nasce"]
+    cv.save()
+    cv.clipRRect(skia.RRect.MakeRectXY(skia.Rect(*PAINEIS["B"]), 28, 28), skia.ClipOp.kIntersect, True)
+    cx, cy = tela_local(st, NASCE_PIVO, -250)
+    brilhos(cv, cx, cy, t, T["prova"] + 0.33, n=10, raio=250, dur=0.6, raio0=150)   # ATRÁS da criança (já opaca)
+    px = st["x"] + st["s"] * NASCE_PIVO
+    esc = lerp(0.86, 1.0, e_back(k, 1.4))
+    cv.saveLayer(None, _alfa(clamp(k * 4)))
+    cv.translate(px, PISO); cv.scale(esc, esc); cv.translate(-px, -PISO)
+    cv.translate(st["x"], PISO); cv.scale(st["s"], st["s"])
+    crianca(cv, st, t, T)
+    # a silhueta dourada vira cores de CIMA para BAIXO (varredura de copiadora): cada ponto é ouro OU
+    # cor, nunca a mistura (ouro translúcido sobre o roxo dava um marrom sujo)
+    kw = prog(k, 0.3, 1.0)
+    if kw < 1:
+        yw = lerp(-570, 30, e_inout(kw))
+        cv.save(); cv.clipRect(skia.Rect(-400, yw, 320, 80), skia.ClipOp.kIntersect, True)
+        cv.saveLayer(skia.Rect(-300, -600, 220, 40), _ouro_paint(1.0))
+        _figura(cv, st, t)
+        cv.restore()
+        cv.restore()
+    cv.restore()
+    cv.restore()
+
+
 # ------------------------------------------------------------------ estado das duas colunas (tudo a partir de T)
 def andando(t, T):
     """1 enquanto as crianças "carregam" (passo pesado no lugar); param em "Agora"."""
@@ -589,12 +660,13 @@ def estado(nome, t, T):
           "flex": 0.0, "sink": 10 * pulo(t, T["mochila"], 0.45), "pulinho": 0.0, "giro": 0.0, "arco": 30.0,
           "contorno": prog(t, T["assim"] - 0.05, T["assim"] + 0.12) * (1 - prog(t, T["vamos"] - 0.1, T["vamos"] + 0.2)),
           "estrelas": {}, "flash": 0.0, "alca_ouro": 0.0, "halo": 0.0, "bag_a": 1.0}
-    u_clone = e_inout(prog(t, T["prova"] - 0.05, T["prova"] + 0.5))
-    if nome == "A":
-        st["x"], st["s"], st["a"] = lerp(X0, XA, u_clone), lerp(S0, S1, u_clone), 1.0
-    else:
-        st["x"], st["s"] = lerp(X0, XB, u_clone), lerp(S0, S1, u_clone)
-        st["a"] = 1.0 if t >= T["prova"] - 0.05 else 0.0
+    if nome == "A":                                                 # A desliza SOZINHA para a coluna dela
+        u_a = clone_a(t, T)
+        st["x"], st["s"], st["a"], st["nasce"] = lerp(X0, XA, u_a), lerp(S0, S1, u_a), 1.0, 1.0
+    else:                                                           # B NASCE já na coluna B (nunca dentro de A)
+        st["x"], st["s"] = XB, S1
+        st["nasce"] = nasce_b(t, T)
+        st["a"] = 1.0 if st["nasce"] > 0 else 0.0
     m3, tira, m4 = T["mochila3"], T["tira"], T["mochila4"]
     t_volta0, t_volta1 = T["postura2"] - 0.08, T["volta"] + 0.12     # "a postura VOLTA": endireita com mola
     troca = e_inout(prog(t, m4 + 0.05, m4 + 0.45))                   # "Mochila cheia": a mochila certa
@@ -1167,13 +1239,16 @@ def quadro(cv, t, T, blocos, ep):
     cv.save()
     cv.clipRRect(skia.RRect.MakeRectXY(skia.Rect(*BANC), 34, 34), skia.ClipOp.kIntersect, True)
     paineis(cv, t, T)
-    for nome in ("B", "A"):                                         # B nasce de trás de A em "prova"
+    for nome in ("B", "A"):                                         # B nasce na coluna B depois que A sai dela
         st = sts[nome]
         if st["a"] <= 0:
             continue
-        cv.save(); cv.translate(st["x"], PISO); cv.scale(st["s"], st["s"])
-        crianca(cv, st, t, T)
-        cv.restore()
+        if st["nasce"] < 1:
+            nasce_clone(cv, st, t, T)
+        else:
+            cv.save(); cv.translate(st["x"], PISO); cv.scale(st["s"], st["s"])
+            crianca(cv, st, t, T)
+            cv.restore()
         if nome == "A" and 0 <= t - T["mochila3"] < 0.6:            # as estrelas somem em brilhos na virada
             for chave, (px, py) in ESTRELAS:
                 x, y = tela_local(st, *no_tronco(estado("A", T["mochila3"], T), px, py))

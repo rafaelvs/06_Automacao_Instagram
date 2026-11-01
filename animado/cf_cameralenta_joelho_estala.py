@@ -19,6 +19,8 @@ canela curtas, joelho roliço, tênis grande de velcro, meia colorida); "trava" 
 trocado por 1× com um acontecimento por palavra-chave; brilhos que não se juntam numa estrela; CTA sobre fundo
 liso; escurecimento de 0,93; braço curto com cotovelo dobrado; "crec" a 1× no respiro antes do "Volta";
 "Fenômenos normais do corpo" -> "Coisa normal do corpo".
+v3 (revisão em resolução cheia): o close do "dor" corta o short logo abaixo da cintura e o braço entra pela borda
+de cima (na v2 o braço descia flutuando por um vão vazio acima da cintura, sem tronco nem ombro).
 
 Regras da série e do storyboard, todas aqui:
   * Selo CÂMERA LENTA SÓ com a câmera lenta ligada (0,25× ou congelamento dentro dela): "câmera" -> "seguiu" e
@@ -668,15 +670,26 @@ TRAVA = (1.80, HX0 + 20, Y_CHAO, 540, 1105)                      # fita 2, "trav
 
 
 _CAM_MAO = {}
+S_MAO = 3.7                                                      # close do "dor" (v2: 2,45); >= 3,7: os arcos do "crec" cabem
+CORTE_COS = 5.0                                                  # o topo do quadro corta o short 5 un abaixo da cintura
+X_TELA_MAO = 620.0                                               # x do joelho na tela, no close
+
+
+def y_topo_mao(hy):
+    """Mundo na borda de cima da CENA no close do "dor": logo ABAIXO da borda de cima do short."""
+    return hy - 82.0 + CORTE_COS
 
 
 def cam_mao(T):
-    """Fita 2, "dor": bem perto do joelho, com o topo do quadro na altura do ombro (o braço entra por cima)."""
+    """Fita 2, "dor": bem perto do joelho. v3 (revisão em resolução cheia): na v2 o quadro mostrava a cintura do
+    short com ~90 un de VAZIO acima dela e o braço descia por esse vão (personagem só de pernas = braço
+    flutuando, sem tronco nem ombro). Agora o topo do quadro CORTA o short logo abaixo da cintura: short, coxa e
+    braço saem pela borda de cima, o corpo continua fora do quadro e nunca se vê onde ele acaba."""
     chave = round(T["dor2"], 4)
     if chave not in _CAM_MAO:
         hy, perto, _, _ = pose2(T["dor2"], T)
         kx, ky = joelho(HX0, hy, perto.ax, perto.ay)
-        _CAM_MAO[chave] = (2.45, kx, ky, 610, 712)
+        _CAM_MAO[chave] = (S_MAO, kx, ky, X_TELA_MAO, CENA.top() + S_MAO * (ky - y_topo_mao(hy)))
     return _CAM_MAO[chave]
 
 
@@ -692,7 +705,7 @@ def camera(t, T):
         (T["costuma"], 1.4, MEIO),
         (T["agora"], 0.02, BASE2),
         (T["atencao"], 0.7, ZOOM2),
-        (T["vem2"] - 0.25, 0.35, cam_mao(T)),
+        (T["vem2"] - 0.33, 0.35, cam_mao(T)),                   # v3: chega antes de a mão entrar (cintura já fora)
         (t_perfil2(T), 0.02, TRAVA),
     )
     for t0, d, alvo in passos:
@@ -1129,32 +1142,42 @@ def _cotovelo(sx, sy, wx, wy):
     return sx + UA * math.cos(fi + al), sy + UA * math.sin(fi + al)
 
 
+ANG_MAO = 1.39                                                   # dedos = frente do joelho + 1,39 rad (~56°, como na v2)
+DOBRA_PUNHO = 0.52                                               # o antebraço chega 0,52 rad mais "deitado" que a mão
+ANG_BRACO = 1.40                                                 # ombro -> cotovelo quase vertical (desce de cima do quadro)
+
+
 def mao_geo(hip, pe):
-    """-> (centro da mão, ângulo dos dedos, punho, ombro) com a mão pousada na frente do joelho de perto.
-    v2: braço de criança (UA + FA ~ 1,45 coxa) vindo de um ombro logo ACIMA do quadro (câmera MAO), com o
-    cotovelo dobrado; os dedos continuam o antebraço e caem por cima da frente do joelho."""
+    """-> (centro da mão, ângulo dos dedos, punho, cotovelo, ombro) com a mão pousada na frente do joelho de perto.
+    v3 (revisão em resolução cheia): o braço é montado de baixo para cima (mão -> punho -> cotovelo -> ombro), com
+    o antebraço descendo em diagonal e o cotovelo ACIMA do topo do quadro do close (cam_mao, que corta o cós do
+    short): no quadro entram só o antebraço (pela borda de cima), o punho e a mão, vindos do corpo que continua
+    para fora. Na v2 o ombro ficava no topo de um quadro com ~90 un de vazio sobre a cintura, e o braço inteiro
+    descia flutuando ao lado do short."""
     (kx, ky), (fx, fy), _ = frente_joelho(hip, pe)
     hc = (kx + fx * 14, ky + fy * 14)
-    ombro = (kx - 80, ky - 158)
-    ang = math.atan2(fy, fx) + 1.15
-    for _ in range(3):
-        w = (hc[0] - 36 * MAO_ESC * math.cos(ang), hc[1] - 36 * MAO_ESC * math.sin(ang))
-        co = _cotovelo(ombro[0], ombro[1], w[0], w[1])
-        ang = math.atan2(w[1] - co[1], w[0] - co[0]) + 0.85
+    ang = math.atan2(fy, fx) + ANG_MAO
     w = (hc[0] - 36 * MAO_ESC * math.cos(ang), hc[1] - 36 * MAO_ESC * math.sin(ang))
-    return hc, ang, w, ombro
+    a_ant = ang - DOBRA_PUNHO
+    co = (w[0] - FA * math.cos(a_ant), w[1] - FA * math.sin(a_ant))
+    ombro = (co[0] - UA * math.cos(ANG_BRACO), co[1] - UA * math.sin(ANG_BRACO))
+    return hc, ang, w, co, ombro
+
+
+DESCE_MAO = (-12.0, -120.0)                                      # de onde a mão vem (mundo), antes de pousar
 
 
 def mao(cv, hip, pe, k, s):
-    """Mão de criança que desce pelo alto e segura a frente do joelho (braço dobrado + mão, sem rosto)."""
+    """Mão de criança que desce pelo alto e segura a frente do joelho (braço dobrado + mão, sem rosto). O braço
+    desce RÍGIDO (translação), já na forma final."""
     if k <= 0:
         return None
-    hc, ang, w, ombro = mao_geo(hip, pe)
+    hc, ang, w, co0, ombro = mao_geo(hip, pe)
     desce = 1 - e_out(k)
-    ox, oy = -20 * desce, -150 * desce
+    ox, oy = DESCE_MAO[0] * desce, DESCE_MAO[1] * desce
     pw = (w[0] + ox, w[1] + oy)
     om = (ombro[0] + ox, ombro[1] + oy)
-    co = _cotovelo(om[0], om[1], pw[0], pw[1])
+    co = (co0[0] + ox, co0[1] + oy)
     braco = _uniao(tubo(om[0], om[1], 20, co[0], co[1], 16), tubo(co[0], co[1], 16, pw[0], pw[1], 13))
     cv.drawPath(braco, paint("#000000", 50, blur=6))
     cv.drawPath(braco, paint(PELE))
@@ -1182,7 +1205,7 @@ def mao_centro(hip, pe):
 
 
 def k_mao(t, T):
-    return prog(t, T["vem2"] - 0.05, T["dor2"] + 0.02)
+    return prog(t, T["vem2"] - 0.02, T["dor2"] + 0.02)
 
 
 # ------------------------------------------------------------------ câmera 2: as duas pernas DE FRENTE (tela)
@@ -1461,9 +1484,9 @@ def monitor(cv, t, T, F, limpo=False):
 
         # "dor": círculo em volta da mão no joelho (congelado)
         if f == 2 and T["dor2"] <= t < T["joelho2"]:
-            c = mao_centro(hip, perto)
-            cx_, cy_ = na_tela(cam, *c)
-            circulo_mao(cv, cx_, cy_, 66 * s, 58 * s, prog(t, T["dor2"] + 0.08, T["dor2"] + 0.43), 1.0)
+            c = mao_centro(hip, perto)                           # v3: no close mais perto (cam_mao), o círculo
+            cx_, cy_ = na_tela(cam, c[0] + 6, c[1] + 10)            # desce um pouco e cabe inteiro sob a borda de cima
+            circulo_mao(cv, cx_, cy_, 47 * s, 39 * s, prog(t, T["dor2"] + 0.08, T["dor2"] + 0.43), 1.0)
 
         # "estica" (congelado depois dos quiques): a linha volta TRACEJADA, seguindo a coxa além do joelho; a
         # canela fica para trás dela (v2: sem o arco do ângulo, que o leitor às cegas não entendeu)
@@ -1508,19 +1531,21 @@ CW_MINI = 620.0                                                  # recorte da ce
 
 def recorte_mini(T, F, i, tt):
     """Retângulo (coordenadas da imagem da CENA) em volta do sinal de cada miniatura."""
+    w = CW_MINI
     if i == 1:                                                   # as duas pernas de frente, na altura dos joelhos
         cx, cy = 540.0, Y_FR["joe"] + 40
     else:
         hy, perto, longe, _ = pose(tt, T, F)
         cam = camera(tt, T)
-        if i == 0:
-            cx, cy = na_tela(cam, *mao_centro((HX0, hy), perto))
-            cx -= 40; cy += 40
+        if i == 0:                                               # v3: o close do "dor" ficou mais perto (cam_mao):
+            cx, cy = na_tela(cam, *mao_centro((HX0, hy), perto))  # recorte maior e mais baixo, para caber short,
+            cx -= 60; cy += 120                                  # coxa, mão, joelho e canela (a perna se lê)
+            w = CW_MINI * 1.3
         else:
             (kx, ky), _, _ = frente_joelho((HX0, hy), perto)
             cx, cy = na_tela(cam, kx, ky)
             cy += 60
-    w, h = CW_MINI, CW_MINI * MH / MW
+    h = w * MH / MW
     x0 = clamp(cx - CENA.left() - w / 2, 0, CENA.width() - w)
     y0 = clamp(cy - CENA.top() - h / 2, 0, CENA.height() - h)
     return skia.Rect(x0, y0, x0 + w, y0 + h)

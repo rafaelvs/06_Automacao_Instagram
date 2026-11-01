@@ -352,14 +352,42 @@ def _perna(quad, pe, joe=None):
     return Perna(quad, joe, tor, pe, kj)
 
 
-def perna_desenho(cv, pr):
-    """Perna de desenho de criança, OPACA (coxa + joelho + canela num contorno só)."""
+def _contem_todos(p, pts):
+    return all(p.contains(x, y) for x, y in pts)
+
+
+def _uniao_conferida(fazer, pts, folgas=(0.0, 0.4, 0.9, -0.6)):
+    """União de dois tubos que dividem a articulação, CONFERIDA por pontos de dentro. `fazer(dr)` -> (a, b) com
+    o círculo da articulação de um deles `dr` px menor. O PathOps do skia erra em algumas poses quando os dois
+    tubos trazem o círculo da articulação e SOME um segmento inteiro (achado do chat YouTube, kit16): se algum
+    ponto de dentro cair fora, refaz com outra folga e, em último caso, soma os contornos sem união."""
+    for dr in folgas:
+        a, b = fazer(dr)
+        u = skia.Op(a, b, skia.PathOp.kUnion_PathOp)
+        if u is not None and _contem_todos(u, pts):
+            return u
+    a, b = fazer(0.0)
+    u = skia.Path(a); u.addPath(b); u.setFillType(skia.PathFillType.kWinding)
+    return u
+
+
+def corpo_perna(pr):
+    """Contorno único coxa + joelho + canela, com a união CONFERIDA (meio da coxa, joelho, meio da canela,
+    tornozelo)."""
     (hx, hy), (kx, ky), (ax, ay) = pr.quad, pr.joe, pr.tor
     rj = R_JOE * (1 + 0.10 * pr.kj)
     rt = R_TOR * pr.pe.sc
     # (o círculo do joelho da canela é um pouco menor: dois círculos IGUAIS e concêntricos fazem a união do
     # skia perder a canela inteira)
-    corpo = _uniao(tubo(hx, hy, R_QUAD, kx, ky, rj), tubo(kx, ky, rj * 0.93, ax, ay, rt))
+    pts = ((lerp(hx, kx, 0.5), lerp(hy, ky, 0.5)), (kx, ky), (lerp(kx, ax, 0.5), lerp(ky, ay, 0.5)), (ax, ay - 2))
+    return _uniao_conferida(lambda dr: (tubo(hx, hy, R_QUAD, kx, ky, rj), tubo(kx, ky, rj * 0.93 - dr, ax, ay, rt)),
+                            pts)
+
+
+def perna_desenho(cv, pr):
+    """Perna de desenho de criança, OPACA (coxa + joelho + canela num contorno só)."""
+    (hx, hy), (kx, ky), (ax, ay) = pr.quad, pr.joe, pr.tor
+    corpo = corpo_perna(pr)
     L = math.hypot(ax - hx, ay - hy) or 1.0
     nx, ny = -(ay - hy) / L, (ax - hx) / L
     mx, my = (hx + ax) / 2, (hy + ay) / 2
@@ -1320,7 +1348,20 @@ def _mao_path():
 
 MAO_P = _mao_path()
 MAO_ESC = 1.45
-UA, FA = 190.0, 170.0
+# Braço de CRIANÇA (antes: 190 + 170 = quase a perna inteira, tubo fino de largura constante, esticado, sem
+# cotovelo nem ombro, descendo do alto até o meio da canela). Agora: braço ~3/4 da perna, gordinho e afinando
+# (ombro -> cotovelo -> punho), cotovelo DOBRADO para fora, ombro na borda de cima do quadro saindo da manga da
+# camiseta, e a mão pega o alto da canela, logo abaixo do joelho.
+UA, FA = 150.0, 135.0
+R_OMBRO, R_COTOV, R_PUNHO = 36.0, 28.0, 20.5
+PEGA_FR = 0.16                                                   # joelho -> tornozelo: onde a mão pega
+OMBRO_DX, OMBRO_Y = 140.0, 588.0                                 # ombro: à direita do short, na borda de cima
+MANGA, MANGA_CL, MANGA_LINHA = "#8EC3EA", "#B8DCF6", "#4C7FA8"   # camiseta azul-clara (nada de vermelho)
+
+
+def _pega(pr):
+    """Ponto da canela que a mão segura (o anel da DOR e o fio do rótulo saem daqui)."""
+    return lerp(pr.joe[0], pr.tor[0], PEGA_FR), lerp(pr.joe[1], pr.tor[1], PEGA_FR)
 
 
 def _cotovelo(sx, sy, wx, wy):
@@ -1331,25 +1372,74 @@ def _cotovelo(sx, sy, wx, wy):
     return sx + UA * math.cos(fi - al), sy + UA * math.sin(fi - al)
 
 
+def _corpo_braco(om, co, pw):
+    """Braço + antebraço num contorno só, afinando, com a união CONFERIDA (meio do braço, cotovelo, meio do
+    antebraço, punho)."""
+    pts = ((lerp(om[0], co[0], 0.5), lerp(om[1], co[1], 0.5)), co, (lerp(co[0], pw[0], 0.5), lerp(co[1], pw[1], 0.5)),
+           (lerp(co[0], pw[0], 0.92), lerp(co[1], pw[1], 0.92)))
+    return _uniao_conferida(lambda dr: (tubo(om[0], om[1], R_OMBRO, co[0], co[1], R_COTOV),
+                                        tubo(co[0], co[1], R_COTOV * 0.94 - dr, pw[0], pw[1], R_PUNHO)), pts)
+
+
+def _manga(cv, om, co):
+    """Manga curta da camiseta no ombro (a ponta de cima sai do quadro): o braço é de um corpo, inclinado para
+    pegar a perna — sem rosto."""
+    L = math.hypot(co[0] - om[0], co[1] - om[1]) or 1.0
+    ux, uy = (co[0] - om[0]) / L, (co[1] - om[1]) / L
+    nx, ny = -uy, ux
+    a0, a1 = -120.0, 0.40 * UA                                   # de bem acima do ombro até 40% do braço
+    r0, r1 = R_OMBRO + 16, R_OMBRO + 9
+    p = skia.Path()
+    p.moveTo(om[0] + ux * a0 + nx * r0, om[1] + uy * a0 + ny * r0)
+    p.lineTo(om[0] + ux * a1 + nx * r1, om[1] + uy * a1 + ny * r1)
+    p.quadTo(om[0] + ux * (a1 + 9), om[1] + uy * (a1 + 9), om[0] + ux * a1 - nx * r1, om[1] + uy * a1 - ny * r1)
+    p.lineTo(om[0] + ux * a0 - nx * r0, om[1] + uy * a0 - ny * r0)
+    p.close()
+    cv.drawPath(p, paint("#000000", 60, blur=7))
+    cv.drawPath(p, paint(MANGA))
+    cv.save(); cv.clipPath(p, skia.ClipOp.kIntersect, True)
+    cv.drawLine(om[0] + ux * a0 + nx * r0 * 0.35, om[1] + uy * a0 + ny * r0 * 0.35,
+                om[0] + ux * a1 + nx * r1 * 0.35, om[1] + uy * a1 + ny * r1 * 0.35, paint(MANGA_CL, 255, "stroke", 12))
+    cv.drawLine(om[0] + ux * (a1 - 9) + nx * r1, om[1] + uy * (a1 - 9) + ny * r1,
+                om[0] + ux * (a1 - 9) - nx * r1, om[1] + uy * (a1 - 9) - ny * r1, paint(MANGA_LINHA, 150, "stroke", 2.4))
+    cv.restore()
+    cv.drawPath(p, paint(MANGA_LINHA, 230, "stroke", 3.4))
+
+
 def mao_canela(cv, pr, k):
-    """A mão da própria criança desce pelo alto do quadro e segura a canela (por fora, sem rosto). -> centro."""
+    """A mão da própria criança desce pelo alto do quadro e segura o alto da canela (por fora, sem rosto):
+    braço de criança com cotovelo dobrado e manga da camiseta no ombro. -> centro."""
     if k <= 0:
         return None
-    sx, sy = lerp(pr.joe[0], pr.tor[0], 0.40), lerp(pr.joe[1], pr.tor[1], 0.40)
+    sx, sy = _pega(pr)
     ang = math.radians(196)                                      # dedos atravessam a frente da canela, para dentro
-    w = (sx + 64, sy - 12)
+    w = (sx + 62, sy - 12)
     desce = 1 - e_out(k)
     ox, oy = 30 * desce, -330 * desce
     pw = (w[0] + ox, w[1] + oy)
-    om = (sx + 120 + ox, sy - 420 + oy)
+    om = (sx + OMBRO_DX + ox, OMBRO_Y + oy)
     co = _cotovelo(om[0], om[1], pw[0], pw[1])
-    braco = _uniao(tubo(om[0], om[1], 26, co[0], co[1], 22), tubo(co[0], co[1], 20.5, pw[0], pw[1], 18))
+    braco = _corpo_braco(om, co, pw)
     cv.drawPath(braco, paint("#000000", 50, blur=6))
     cv.drawPath(braco, paint(PELE))
     cv.save(); cv.clipPath(braco, skia.ClipOp.kIntersect, True)
-    cv.drawPath(braco, paint("#E29F82", 255, "stroke", 14))
+    cv.drawPath(braco, paint("#E29F82", 255, "stroke", 16))
+    for (x0, y0), (x1, y1) in ((om, co), (co, pw)):              # brilho ao longo do braço e do antebraço
+        L = math.hypot(x1 - x0, y1 - y0) or 1.0
+        nx, ny = -(y1 - y0) / L, (x1 - x0) / L
+        cv.drawLine(lerp(x0, x1, 0.12) - nx * 8, lerp(y0, y1, 0.12) - ny * 8, lerp(x0, x1, 0.8) - nx * 7,
+                    lerp(y0, y1, 0.8) - ny * 7, paint(PELE_CL, 200, "stroke", 9))
     cv.restore()
     cv.drawPath(braco, paint(PELE_LINHA, 230, "stroke", 3.6))
+    # dobrinha do cotovelo (do lado de dentro da dobra)
+    bx, by = (om[0] + pw[0]) / 2 - co[0], (om[1] + pw[1]) / 2 - co[1]
+    bl = math.hypot(bx, by) or 1.0
+    ix, iy = co[0] + bx / bl * 12, co[1] + by / bl * 12
+    tx, ty = -by / bl, bx / bl
+    dob = skia.Path(); dob.moveTo(ix - tx * 11, iy - ty * 11)
+    dob.quadTo(ix + bx / bl * 5, iy + by / bl * 5, ix + tx * 11, iy + ty * 11)
+    cv.drawPath(dob, paint(PELE_LINHA, 150, "stroke", 2.6))
+    _manga(cv, om, co)
     m = skia.Path(MAO_P)
     mt = skia.Matrix(); mt.postScale(MAO_ESC, -MAO_ESC); mt.postRotate(math.degrees(ang)); mt.postTranslate(*pw)
     m.transform(mt)
@@ -1386,20 +1476,56 @@ def amostras_borrao(t, T, F):
     return out
 
 
-def crianca_borrada(cv, t, T, F, pose_de):
-    ams = amostras_borrao(t, T, F)
-    if len(ams) == 1:
-        crianca(cv, pose_de(F.tf(t)))
+RASTRO_N = 8                      # amostras do rastro (o desfoque do layer funde uma na outra: rastro CONTÍNUO)
+RASTRO_A = 0.55                   # opacidade do rastro (por baixo da pose atual, que fica nítida e opaca)
+RASTRO_SIGMA = 4.5                # desfoque do rastro (mundo)
+
+
+def _caixa_pes(pes, mg):
+    xs, ys = [], []
+    for pe in pes:
+        for a, b in ((-20, -PE_W / 2), (-20, PE_W / 2), (PE_L + 14, -PE_W / 2), (PE_L + 14, PE_W / 2)):
+            x, y = pe.P(a, b); xs.append(x); ys.append(y)
+    return skia.Rect(min(xs) - mg, min(ys) - mg, max(xs) + mg, max(ys) + mg)
+
+
+def _rastro_pes(cv, poses):
+    """Rastro de movimento SÓ dos pés: silhuetas lisas (sem contorno nem dedos riscados) num layer DESFOCADO e
+    translúcido, desenhado ANTES da criança (a pose atual cobre o que coincide; sobra o arrasto atrás do pé).
+    `poses`: da mais nova para a mais velha; cada uma mais fraca que a anterior (o rastro some na ponta velha,
+    preso ao pé, sem mancha solta no chão)."""
+    grupos = [[pr.pe for pr in ps.pernas if pr.pe.alfa > 0] for ps in poses]
+    todos = [pe for g in grupos for pe in g]
+    if not todos:
         return
-    cv.saveLayer(CAIXA, None)
-    for k, tg in enumerate(reversed(ams)):
-        if k == 0:
-            crianca(cv, pose_de(F.tf(tg)))
-        else:
-            cv.saveLayer(CAIXA, _alfa(1.0 / (k + 1)))
-            crianca(cv, pose_de(F.tf(tg)))
-            cv.restore()
+    pl = skia.Paint(); pl.setAlphaf(RASTRO_A)
+    pl.setImageFilter(skia.ImageFilters.Blur(RASTRO_SIGMA, RASTRO_SIGMA))
+    cv.saveLayer(_caixa_pes(todos, 3 * RASTRO_SIGMA + 30), pl)
+    pp = paint(PELE)
+    n = len(grupos)
+    for i in range(n - 1, -1, -1):                               # da mais velha para a mais nova
+        if not grupos[i]:
+            continue
+        cv.saveLayer(_caixa_pes(grupos[i], 30), _alfa(0.6 * (1 - i / n) ** 1.3))
+        for pe in grupos[i]:
+            pth, dedos = pe_forma(pe)
+            cv.drawPath(pth, pp)
+            for dx, dy, r in dedos:
+                cv.drawCircle(dx, dy, r, pp)
+        cv.restore()
     cv.restore()
+
+
+def crianca_borrada(cv, t, T, F, pose_de):
+    """Movimento rápido (1×, ◀◀, ▶▶): UMA criança nítida e opaca na pose do instante, com um rastro contínuo e
+    desfocado só atrás dos pés. (Antes: 5 cópias INTEIRAS a 20% cada — o pé que balança virava 3-5 fileiras de
+    dedos empilhadas, a perna do tropeço ganhava contornos paralelos e uma perna fantasma, o short duplicava.)"""
+    ams = amostras_borrao(t, T, F)
+    atual = pose_de(F.tf(t))
+    if len(ams) > 1:
+        t_ini = ams[-1]
+        _rastro_pes(cv, [pose_de(F.tf(lerp(t, t_ini, i / RASTRO_N))) for i in range(1, RASTRO_N + 1)])
+    crianca(cv, atual)
 
 
 # ------------------------------------------------------------------ a 1ª câmera lenta: marcações presas ao pé A
@@ -1643,7 +1769,7 @@ def rotulos(cv, t, T, F):
         a1 = prog(t, T["lado"] + 0.12, T["lado"] + 0.30) * (1 - prog(t, T["dor"] - 0.10, T["dor"] + 0.05))
         rotulo(cv, R_LADO, Y_SINAL, a1, ancora=na_tela(cam, *d.pe.P(PE_L * 0.5, -PE_W * 0.55 * d.pe.lado)), x_dir=1020, tam=38)
         a2 = prog(t, T["dor"] + 0.05, T["dor"] + 0.25) * (1 - prog(t, T["quedas"] - 0.12, T["quedas"]))
-        sx, sy = lerp(d.joe[0], d.tor[0], 0.40), lerp(d.joe[1], d.tor[1], 0.40)
+        sx, sy = _pega(d)
         rotulo(cv, R_DOR, Y_SINAL, a2, ancora=na_tela(cam, sx + 100, sy - 10), x_dir=1020, tam=38)
         a3 = prog(t, T["quedas"] + 0.08, T["quedas"] + 0.28) * (1 - prog(t, T["piora"] - 0.1, T["piora"]))
         rotulo(cv, R_QUEDAS, Y_SINAL, a3, x_dir=1020, tam=38)

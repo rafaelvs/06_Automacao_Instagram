@@ -154,6 +154,29 @@ def tubo(x0, y0, r0, x1, y1, r1):
     return _uniao(_uniao(p, c0), c1)
 
 
+def _contem_todos(path, pts):
+    return all(path.contains(x, y) for x, y in pts)
+
+
+def membro(a, ra, b, rb, c, rc):
+    """Contorno único de um membro de dois segmentos (coxa+canela, braço+antebraço) com UNIÃO CONFERIDA.
+    Os dois tubos trazem o MESMO círculo da junta e, em algumas poses, o PathOps do skia erra a união e um
+    segmento SOME (achado do chat YouTube; aqui, p.ex., o antebraço de trás no quadro 17 do 1×). O resultado é
+    conferido por pontos de dentro (meio do 1º segmento, junta, meio do 2º, ponta) e, se falhar, refeito com o
+    círculo da junta do 1º tubo um tiquinho diferente (invisível) e, em último caso, por soma de contornos."""
+    t2 = tubo(b[0], b[1], rb, c[0], c[1], rc)
+    pts = (_lp(a, b, 0.5), b, _lp(b, c, 0.5), c)
+    u = _uniao(tubo(a[0], a[1], ra, b[0], b[1], rb), t2)
+    if _contem_todos(u, pts):
+        return u
+    for dr in (0.4, 0.9, -0.6):
+        u = _uniao(t2, tubo(a[0], a[1], ra, b[0], b[1], rb - dr))
+        if _contem_todos(u, pts):
+            return u
+    u = skia.Path(tubo(a[0], a[1], ra, b[0], b[1], rb)); u.addPath(t2); u.setFillType(skia.PathFillType.kWinding)
+    return u
+
+
 def ik(ax, ay, bx, by, l1, l2, dobra):
     """Cinemática inversa de dois segmentos (ombro->cotovelo->punho, quadril->joelho->tornozelo).
     dobra = +1: a junta vai para +x quando o membro desce (joelho); -1: para trás (cotovelo).
@@ -186,7 +209,8 @@ F_VIRA0, F_VIRA1, F_AGACHA = 1.08, 1.30, 1.36                    # vira de frent
 F_B = 1.52                                                       # instante em que a 2ª câmera lenta congela ("braço")
 F2 = 20.0                                                        # tempo de filme da FITA 2 (outra tomada, depois do "Viu")
 AG_X, AG_Y = 686.0, 1004.0                                       # quadril agachado (perto da roda da frente)
-AG_PE_P, AG_PE_L = 648.0, 726.0                                  # tornozelos (x do mundo) agachada
+AG_PE_P, AG_PE_L = 648.0, 678.0                                  # tornozelos (x do mundo) agachada: o de trás 30 px
+                                                                 # atrás do da frente (era 726: joelho de trás no chão)
 V1, VL = 1.0, 0.25                                               # 1× e câmera lenta (0,25×)
 DEITA = 0.36                                                     # bicicleta deitada (achatada contra o chão)
 
@@ -298,6 +322,23 @@ L_BR, L_AB = 78.0, 74.0                                          # braço, anteb
 L_CX, L_CN = 96.0, 92.0                                          # coxa, perna
 MAO_K = 1.2                                                      # mão um pouco maior (leitura no celular)
 ANK = GY - 24.0                                                  # tornozelo do pé apoiado no chão
+QUAD_L = (-4.0, 2.0)                                             # quadril da perna de trás (local), em pé/pedalando
+# AGACHADA: a perna de trás é a da frente deslocada para trás (quadril e pé), como no desenho de perfil: a canela
+# e o tênis de trás aparecem atrás dos da frente. (Antes o pé de trás ficava atrás do quadril e o joelho caía no
+# chão: a coxa sumia sob a perna da bermuda, que virava um cone cinza, e canela e joelho sob os tênis.)
+QUAD_L_AG = (-24.0, 2.0)
+# BRAÇO LIVRE NA AGACHADA (2ª rodada). Antes, a mão livre ia ao guidão com o antebraço desenhado POR CIMA de tudo
+# a partir do cotovelo, que no perfil coincide com o do braço machucado: dois antebraços saindo da mesma manga
+# (17,90-18,20 s); e, em l_topo = 0,5, a mão trocava de camada de uma vez para um braço escuro (0,30, que no fundo
+# escuro parece translúcido) vindo de trás da coxa (18,233 s). Agora, da virada (corpo de lado, fino) até levantar,
+# o braço livre inteiro fica numa camada só, NA FRENTE da perna da frente e ATRÁS do tronco e do braço machucado,
+# no mesmo tom da cópia de cima; por cima vai só a MÃO (com um toco de antebraço que recolhe/estende junto com
+# l_topo), e a troca acontece onde a mão não encosta no tronco, na cabeça nem no braço machucado (medido: na ida,
+# limpa de l_topo 0,75 para baixo; na volta para apontar, até 0,35): a troca não muda nenhum pixel.
+ESC_LIVRE = 0.07                                                 # = tom da cópia de cima
+LT_TOPO, LT_TOPO_MEIO = 0.5, 0.33                                # limiar da cópia de cima (fora / dentro da agachada)
+TOCO_0 = 0.92                                                    # l_topo abaixo do qual o toco de antebraço de cima já recolheu
+F_VIRA_MEIO = (F_VIRA0 + F_VIRA1) / 2                            # meio da virada: o corpo está de lado (largura ~0)
 
 
 def _base_pose():
@@ -306,7 +347,8 @@ def _base_pose():
                 mp_rel=0.0, mp_abs=0.0, mp_w=0.0, ml_rel=0.0, ml_abs=0.0, ml_w=0.0,
                 mp_abre=0.0, mp_chao=0.0, mp_aponta=0.0, ml_abre=0.0, ml_chao=0.0, ml_aponta=0.0,
                 mp_cot=(0.0, 0.0), mp_cw=0.0, ml_cot=(0.0, 0.0), ml_cw=0.0, mp_k=1.0, ml_k=1.0,
-                pp=(10.0, 210.0), pl=(-10.0, 210.0), ppa=0.0, pla=0.0, l_frente=0.0, l_topo=0.0, dir=1.0)
+                pp=(10.0, 210.0), pl=(-10.0, 210.0), ppa=0.0, pla=0.0, l_frente=0.0, l_topo=0.0, dir=1.0,
+                ql=QUAD_L, l_meio=0.0)
 
 
 def P(**k):
@@ -386,11 +428,11 @@ class Roteiro:
         # a mão livre apoia no joelho
         hx, hy = AG_X, AG_Y
         pes = dict(pp=w2l(hx, hy, -1, AG_PE_P, ANK), pl=w2l(hx, hy, -1, AG_PE_L, ANK))
-        out.append((F_AGACHA, P(hx=hx, hy=hy, dir=-1.0, tor=26.0, cab=8.0, **pes,
+        out.append((F_AGACHA, P(hx=hx, hy=hy, dir=-1.0, tor=26.0, cab=8.0, ql=QUAD_L_AG, **pes,
                                 mp=(56.0, -70.0), mp_t=1.0, mp_rel=-8.0, mp_abre=0.25,
                                 ml=w2l(hx, hy, -1, AG_X - 52.0, 992.0), ml_t=0.0, ml_abre=0.6)))
         # PROTEGE: a mão livre segura o antebraço machucado por baixo, junto à barriga
-        prot = P(hx=hx, hy=hy, dir=-1.0, tor=16.0, cab=10.0, **pes, **GUARDA_AG)
+        prot = P(hx=hx, hy=hy, dir=-1.0, tor=16.0, cab=10.0, ql=QUAD_L_AG, **pes, **GUARDA_AG)
         prot.update(segura_livre(prot))
         out.append((k["prot"], prot))
         out.append((k["solta"], dict(prot)))
@@ -398,14 +440,15 @@ class Roteiro:
         b = Bike(3.0)
         gx, gy = b.map(*MANOPLA)
         hx2 = AG_X - 16.0
-        alc = P(hx=hx2, hy=hy, dir=-1.0, tor=44.0, cab=-4.0, pp=w2l(hx2, hy, -1, AG_PE_P, ANK),
+        alc = P(hx=hx2, hy=hy, dir=-1.0, tor=44.0, cab=-4.0, ql=QUAD_L_AG, pp=w2l(hx2, hy, -1, AG_PE_P, ANK),
                 pl=w2l(hx2, hy, -1, AG_PE_L, ANK), mp=(60.0, -72.0), mp_t=0.6, mp_rel=-6.0, mp_abre=0.15)
         alc.update(ml=w2l(hx2, hy, -1, gx + 4, gy), ml_t=0.0, ml_rel=10.0, ml_abre=0.0)
         out.append((k["barra"], alc))
         out.append((k["deixa"], dict(alc)))
         # DÓI NUM PONTO: endireita, olha para o braço e APONTA um ponto do antebraço com o indicador
         hx3 = AG_X - 6.0
-        pt = P(hx=hx3, hy=hy, dir=-1.0, tor=APONTA["tor"], cab=APONTA["cab"], pp=w2l(hx3, hy, -1, AG_PE_P, ANK),
+        pt = P(hx=hx3, hy=hy, dir=-1.0, tor=APONTA["tor"], cab=APONTA["cab"], ql=QUAD_L_AG,
+               pp=w2l(hx3, hy, -1, AG_PE_P, ANK),
                pl=w2l(hx3, hy, -1, AG_PE_L, ANK), mp=APONTA["mp"], mp_t=1.0, mp_rel=APONTA["mp_rel"], mp_abre=0.15)
         pt.update(aponta_livre(pt))
         out.append((k["aponta"], pt))
@@ -464,6 +507,18 @@ class Roteiro:
         p["dir"] = math.cos(math.pi * sstep(prog(f, F_VIRA0, F_VIRA1)))
         if f > F_AGACHA:                                                   # respiração (só com o filme andando)
             p["tor"] += 1.1 * math.sin(f * 2.6)
+        # braço livre na camada do meio: entra no meio da virada (corpo de lado, nada a ver) e sai junto com a
+        # cópia de cima ao levantar (l_topo < 0,5, no 1×: a mesma troca de antes)
+        kc = self.k
+        p["l_meio"] = 1.0 if (F_VIRA_MEIO <= f <= kc["solta2"]
+                              or (kc["solta2"] < f < kc["em_pe"] and p["l_topo"] >= LT_TOPO)) else 0.0
+        # cópia de cima da MÃO livre: da virada até segurar o braço ela já vem na frente (o caminho joelho ->
+        # antebraço não tem ponto livre; a troca fica no corpo de lado); depois, limiar da agachada
+        if F_VIRA_MEIO <= f <= kc["prot"]:
+            cima = True
+        else:
+            cima = p["l_topo"] >= (LT_TOPO_MEIO if p["l_meio"] >= 0.5 else LT_TOPO)
+        p["l_cima"] = 1.0 if cima else 0.0
         return p
 
 
@@ -542,7 +597,7 @@ def _joints(p):
         J["cot_" + lado], J["pun_" + lado] = cot, pun
         ang_ab = math.degrees(math.atan2(pun[1] - cot[1], pun[0] - cot[0]))
         J["mao_ang_" + lado] = lerp(ang_ab + p["m" + lado + "_rel"], p["m" + lado + "_abs"], p["m" + lado + "_w"])
-        q = (0.0, 0.0) if lado == "p" else (-4.0, 2.0)
+        q = (0.0, 0.0) if lado == "p" else p["ql"]
         jo, to = ik(q[0], q[1], p["p" + lado][0], p["p" + lado][1], L_CX, L_CN, 1)
         J["joe_" + lado], J["tor_" + lado], J["quad_" + lado] = jo, to, q
     return J
@@ -591,13 +646,23 @@ def mao(cv, pun, ang, abre, chao, aponta, escuro, contorno=0.0, k=1.0):
     cv.restore()
 
 
-def braco(cv, J, lado, p, escuro, so_antebraco=False, contorno_mao=0.0):
+def braco(cv, J, lado, p, escuro, so_antebraco=False, contorno_mao=0.0, toco=1.0):
+    """so_antebraco: só antebraço + mão (cópia de cima); `toco` (0..1) é a fração do antebraço, a partir do
+    PUNHO, que vai junto (1 = antebraço inteiro, como antes; 0 = só a mão)."""
     om, cot, pun = J["omb_" + lado], J["cot_" + lado], J["pun_" + lado]
-    ab = tubo(cot[0], cot[1], 14.5, pun[0], pun[1], 11.5)
-    if not so_antebraco:
-        ab = _uniao(tubo(om[0], om[1], 17.0, cot[0], cot[1], 14.5), ab)
-    _sombrear(cv, ab, PELE, escuro)
-    cv.drawPath(ab, paint(PELE_LINHA, 230, "stroke", 2.8))
+    if so_antebraco:
+        if toco >= 0.999:
+            ab = tubo(cot[0], cot[1], 14.5, pun[0], pun[1], 11.5)
+        elif toco > 0.02:
+            q = _lp(pun, cot, toco)
+            ab = tubo(q[0], q[1], lerp(11.5, 14.5, toco), pun[0], pun[1], 11.5)
+        else:
+            ab = None
+    else:                                                                     # união conferida (não some o antebraço)
+        ab = membro(om, 17.0, cot, 14.5, pun, 11.5)
+    if ab is not None:
+        _sombrear(cv, ab, PELE, escuro)
+        cv.drawPath(ab, paint(PELE_LINHA, 230, "stroke", 2.8))
     mao(cv, pun, J["mao_ang_" + lado], p["m" + lado + "_abre"], p.get("m" + lado + "_chao", 0.0),
         p["m" + lado + "_aponta"], escuro, contorno_mao, p["m" + lado + "_k"])
     if not so_antebraco:                                                      # manga curta da camiseta
@@ -625,7 +690,7 @@ def tenis(cv, to, ang, escuro):
 
 def perna(cv, J, lado, p, escuro):
     q, jo, to = J["quad_" + lado], J["joe_" + lado], J["tor_" + lado]
-    pth = _uniao(tubo(q[0], q[1], 24.0, jo[0], jo[1], 19.0), tubo(jo[0], jo[1], 19.0, to[0], to[1], 13.0))
+    pth = membro(q, 24.0, jo, 19.0, to, 13.0)                               # união conferida (não some a canela)
     _sombrear(cv, pth, PELE, escuro)
     cv.drawPath(pth, paint(PELE_LINHA, 230, "stroke", 2.8))
     tenis(cv, to, p["pp" + ("a" if lado == "p" else "")] if lado == "p" else p["pla"], escuro)
@@ -699,17 +764,22 @@ def cabeca(cv, J, p):
 
 def crianca(cv, p, bike=None, contorno_mao=0.0, tipoia=0.0):
     """A criança inteira, de perfil, sem rosto. Ordem: perna e braço de trás, (bicicleta), perna da frente,
-    tronco, cabeça, antebraço protegido (na frente da barriga), tipoia e braço da frente."""
+    [agachada: o braço livre inteiro aqui, em vez de atrás], tronco, cabeça, braço da frente (machucado), tipoia
+    e, por cima, só a MÃO livre (com o toco de antebraço que recolhe) quando ela segura/aponta."""
     J = _joints(p)
     d = p["dir"]
+    meio = p.get("l_meio", 0.0) >= 0.5                                       # agachada: braço livre na camada do meio
     cv.save(); cv.translate(p["hx"], p["hy"]); cv.scale(d if abs(d) > 0.02 else 0.02, 1.0)
     perna(cv, J, "l", p, 0.30)
-    braco(cv, J, "l", p, 0.30)
+    if not meio:
+        braco(cv, J, "l", p, 0.30)
     if bike is not None:
         cv.save(); cv.scale(1.0 / (d if abs(d) > 0.02 else 0.02), 1.0); cv.translate(-p["hx"], -p["hy"])
         bicicleta(cv, bike)
         cv.restore()
     perna(cv, J, "p", p, 0.0)
+    if meio:                                     # UM braço livre: na frente da perna, atrás do tronco e do braço machucado
+        braco(cv, J, "l", p, ESC_LIVRE)
     tronco(cv, p)
     cabeca(cv, J, p)
     if p["l_frente"] >= 0.5 and p["l_topo"] < 0.5:                           # a outra mão segura por baixo, na frente da barriga
@@ -717,8 +787,8 @@ def crianca(cv, p, bike=None, contorno_mao=0.0, tipoia=0.0):
     braco(cv, J, "p", p, 0.0, contorno_mao=contorno_mao)
     if tipoia > 0:
         desenha_tipoia(cv, J, tipoia)
-    if p["l_topo"] >= 0.5:                                                    # a mão livre segura/aponta POR CIMA do antebraço
-        braco(cv, J, "l", p, 0.07, so_antebraco=True)
+    if p.get("l_cima", 1.0 if p["l_topo"] >= LT_TOPO else 0.0) >= 0.5:     # a mão livre segura/aponta POR CIMA do antebraço
+        braco(cv, J, "l", p, 0.07, so_antebraco=True, toco=sstep((p["l_topo"] - TOCO_0) / (1.0 - TOCO_0)))
     cv.restore()
     return J
 
@@ -1083,8 +1153,12 @@ def _setas(cv, x, y, a, esc, para_frente):
 
 
 HUD_X, HUD_Y = 786, 1166
-POP_C = (540, 560)
-POP_C2 = (330, 540)                                              # 2ª câmera lenta: longe da cabeça
+# onde o "0,25×" grande salta (e de onde voa para o painel): no ALTO e do lado OPOSTO ao da criança, para não
+# passar por cima do capacete nem do rosto (medido com a máscara da criança, quadro a quadro, nos dois trechos;
+# antes, (540, 560) e (330, 540) cobriam o capacete em 2,39-2,56 s e 16,71-16,87 s). Com o exagero do salto
+# (2,5 × 1,1), o chip fica dentro do monitor.
+POP_C = (700, 460)                                               # 1ª câmera lenta: a criança pedala à esquerda
+POP_C2 = (798, 423)                                              # 2ª câmera lenta: a criança agachada à direita, a cabeça sobe com o zoom
 
 
 def _chip_hud_c(s):

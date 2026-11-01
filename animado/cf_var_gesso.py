@@ -1574,21 +1574,29 @@ def legenda_var(cv, blocos, t, destaque, y_base=1395, tam=80, a_extra=1.0):
 def interface_var(cv, t, T, blocos, destaque):
     """Cópia do cf_comum.interface (rodapé CFM a partir de 3 s, cartão final com a CTA e o aviãozinho)."""
     t_cta = T["manda"] - 0.15
-    if t < t_cta:
+    # A legenda só troca para o bloco da CTA em (1ª palavra do bloco) - 0.12 (legenda_var), 30 ms DEPOIS de o
+    # cartão final começar (manda - 0.15). Nesse vão o ramo do cartão desenhava o bloco ANTERIOR ("QUEM APITA /
+    # É A SUA EQUIPE.") no lugar da CTA (y=700, por cima do apito e das cabeças) e o rodapé CFM já tinha saído:
+    # 1 quadro pulando (26,233 s). A legenda no rodapé e as linhas CFM ficam até a troca de BLOCO; o cartão
+    # (escurecimento, caixa, aviãozinho) continua entrando em t_cta, sem mudar nenhum tempo.
+    b_cta = next((b for b in blocos if b[0]["w"].lower() == "manda"), None)
+    t_leg = max(t_cta, b_cta[0]["t"] - 0.12) if b_cta else t_cta
+    if t < t_leg:
         # o replay do JEITO CERTO (cortina do VAR) não tem fala: a legenda "PODE INFECCIONAR." sai antes dele,
         # para não juntar "infeccionar" com o secador brilhando em verde (revisor)
         a_leg = 1.0
         if T["infeccionar_fim"] <= t < T["gesso2"] - 0.12:
             a_leg = 1 - prog(t, T["infeccionar_fim"] + 0.02, T["infeccionar_fim"] + 0.2)
         legenda_var(cv, blocos, t, destaque, a_extra=a_leg)
-    if 3.0 <= t < t_cta:
+    if 3.0 <= t < t_leg:
         a = prog(t, 3.0, 3.6)
         texto(cv, SIG, CX, 1585, F_SEMI, 27, "#FFFFFF", int(200 * a))
         texto(cv, DISC, CX, 1620, F_REG, 23, "#FFFFFF", int(150 * a))
     if t >= t_cta:
         a = prog(t, t_cta, t_cta + 0.35)
         cv.drawRect(skia.Rect(0, 0, W, H), paint(BG_OUT, int(175 * a)))
-        legenda_var(cv, blocos, t, destaque, y_base=700, tam=92)
+        if t >= t_leg:
+            legenda_var(cv, blocos, t, destaque, y_base=700, tam=92)
         aviao(cv, t, T["manda"] + 0.2)
         rr = skia.RRect.MakeRectXY(skia.Rect(150, 1060, 930, 1214), 28, 28)
         cv.drawRRect(rr, paint("#0B1824", int(230 * a))); cv.drawRRect(rr, paint(OURO, int(255 * a), "stroke", 3))

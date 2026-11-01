@@ -1073,6 +1073,34 @@ def placa_subst(cv, x, y, a, t):
     cv.restore()
 
 
+def linha_var_l1(cv, t, T, cam):
+    """(tela) A linha lateral marcada pelo telestrador (de baixo para o fundo), ciano e, depois que a criança cruza,
+    verde. Chamada DENTRO da cena, depois do gramado e ANTES das pessoas: o traço fica no chão, sob os corpos,
+    como a linha branca que ele marca (antes saía no HUD, por cima da criança e do adulto)."""
+    k_l = e_inout(prog(t, T["tira"] + 0.05, T["jogo"] + 0.15))
+    a_l = janela(t, T["tira"] + 0.05, T["corte2"] - 0.1, 0.1, 0.1)
+    if a_l <= 0:
+        return
+    p0 = na_tela(cam, linha_lateral_pts(1360), 1360); p1 = na_tela(cam, linha_lateral_pts(760), 760)
+    linha_tele(cv, p0, p1, k_l, a_l, cor=CIANO, larg=9, traco=(26.0, 16.0))
+    cruzou = prog(t, T["cruza"], T["cruza"] + 0.25)
+    if cruzou > 0:
+        linha_tele(cv, p0, p1, 1.0, a_l * cruzou, cor=VERDE, larg=9, traco=(26.0, 16.0))
+
+
+def placa_l1(cv, t, T):
+    """(tela) Placa de substituição (só a seta de saída), na mesma posição de tela e com a mesma entrada de antes,
+    mas desenhada ANTES das pessoas: ela está mais ao fundo (o pé do poste fica acima das chuteiras), então a
+    criança passa NA FRENTE dela (antes a placa entrava por cima do rosto e do ombro da criança)."""
+    a_p = janela(t, T["tira"] - 0.02, T["pisa"], 0.12, 0.25)
+    kp = e_back(prog(t, T["tira"] - 0.02, T["tira"] + 0.26))
+    if a_p <= 0:
+        return
+    cv.save(); cv.translate(860, 560); s_ = clamp(kp, 0, 1.15); cv.scale(s_, s_)
+    placa_subst(cv, 0, 0, a_p, t)
+    cv.restore()
+
+
 def cena_l1_aberta(cv, t, T):
     kid = pose_l1(t, T)
     ad = pose_adulto_l1(t, T)
@@ -1080,6 +1108,15 @@ def cena_l1_aberta(cv, t, T):
     cv.save(); aplica(cv, cam)
     campo(cv)
     linha_lateral(cv)
+    cv.restore()
+    # (correção 01/11) a marcação do VAR na linha lateral e a placa de substituição saíam no HUD, POR CIMA das
+    # pessoas: a linha tracejada passava sobre braço, short, coxa e joelho da criança e sobre a perna do adulto
+    # (a linha branca embaixo dela já era escondida pelos corpos) e a placa, que está mais ao fundo, cobria o
+    # rosto da criança ao entrar. Agora as duas ficam no gramado, ATRÁS das pessoas (mesma posição de tela,
+    # mesmos tempos).
+    linha_var_l1(cv, t, T, cam)
+    placa_l1(cv, t, T)
+    cv.save(); aplica(cv, cam)
     # a bola foi embora pela direita
     kb = prog(t, T["corte1"], T["congela1"])
     if t < T["anulado1"] + 1.0:
@@ -1840,15 +1877,21 @@ def linha_tele(cv, p0, p1, k, a, cor=CIANO, larg=7, traco=(22.0, 14.0)):
     cv.drawCircle(p0[0], p0[1], larg * 0.9, paint(cor, int(255 * a)))
 
 
-def carimbo_cor(cv, s, x, y, rot, t0, t, dur, cor, tam=88, esc0=1.9):
+def carimbo_cor(cv, s, x, y, rot, t0, t, dur, cor, tam=88, esc0=1.9, sai_esq=False):
+    """`sai_esq` (só o ANULADO do lance 1): na saída o selo encolhe e vai PRIMEIRO para a esquerda e só depois sobe
+    até o chip (curva), em vez da diagonal reta: a diagonal subia justamente por onde a cabeça da criança desce
+    quando a câmera abre. Sem `sai_esq` (lances 2 e 3) a trajetória é a de sempre."""
     k = t - t0
     if k < 0 or k > dur:
         return
     esc = lerp(esc0, 1.0, e_out(clamp(k / 0.16)))
     sai = prog(k, dur - 0.28, dur)
-    esc *= lerp(1.0, 0.35, e_inout(sai))
+    kx = ky = ke = e_inout(sai)
+    if sai_esq:
+        kx = ke = e_out(sai)
+    esc *= lerp(1.0, 0.35, ke)
     a = clamp(k / 0.06) * (1 - sai)
-    xx = lerp(x, 330, e_inout(sai)); yy = lerp(y, 180, e_inout(sai))
+    xx = lerp(x, 330, kx); yy = lerp(y, 180, ky)
     cv.save(); cv.translate(xx, yy); cv.rotate(rot * (1 - sai)); cv.scale(esc, esc)
     f = skia.Font(F_BLACK, tam); lw = f.measureText(s)
     rr = skia.RRect.MakeRectXY(skia.Rect(-lw / 2 - 32, -tam * 1.02, lw / 2 + 32, tam * 0.38), 16, 16)
@@ -2033,7 +2076,12 @@ def interface_var(cv, t, T, blocos, destaque):
 # ================================================================== quadro
 VEREDITOS = (("passa", "anulado1", T_ANUL, AMBAR), ("pode1", "anulado2", T_ANUL, AMBAR),
              ("pode2", "validado", T_VALID, VERDE))
-DUR_CARIMBOS = (1.25, 1.2, 0.85)
+# (correção 01/11, 2ª rodada) ANULADO do lance 1: 1.25 -> 0.95 s. Com 1.25 o selo ficava parado no centro até
+# 5.0 s e a câmera, ao abrir (anulado1+0.35 -> dor+0.25), trazia a cabeça da criança para baixo dele: de 4.85 a
+# 5.05 s o menino ficava sem cabeça. Agora ele sai às 4.70 s (antes de a cabeça entrar na janela, ~4.72 s), pela
+# esquerda (carimbo_cor(sai_esq=True)), e o chip assume o ANULADO quando o selo chega nele (chip_estado usa esta
+# mesma duração). Fala, sons e duração do vídeo não mudam (nenhum som depende de DUR_CARIMBOS[0]).
+DUR_CARIMBOS = (0.95, 1.2, 0.85)
 CARIMBO_Y = JY0 + 190
 
 
@@ -2136,22 +2184,8 @@ def hud_lance(cv, t, T, info):
         fora = 1 - prog(t, T["anulado1"] + 0.25, T["anulado1"] + 0.5)
         pul = 0.5 + 0.5 * math.sin(t * 8) if T["passa_fim"] < t < T["anulado1"] else 0.0
         circulo_tele(cv, hx + 14 * s, hy + 4 * s, 64 * s, 60 * s, k1, k1 * fora, 0.7, pul)
-        # a linha lateral marcada pelo telestrador (de baixo para o fundo)
-        k_l = e_inout(prog(t, T["tira"] + 0.05, T["jogo"] + 0.15))
-        a_l = janela(t, T["tira"] + 0.05, T["corte2"] - 0.1, 0.1, 0.1)
-        if a_l > 0:
-            p0 = na_tela(cam, linha_lateral_pts(1360), 1360); p1 = na_tela(cam, linha_lateral_pts(760), 760)
-            linha_tele(cv, p0, p1, k_l, a_l, cor=CIANO, larg=9, traco=(26.0, 16.0))
-            cruzou = prog(t, T["cruza"], T["cruza"] + 0.25)
-            if cruzou > 0:
-                linha_tele(cv, p0, p1, 1.0, a_l * cruzou, cor=VERDE, larg=9, traco=(26.0, 16.0))
-        # placa de substituição (só a seta de saída)
-        a_p = janela(t, T["tira"] - 0.02, T["pisa"], 0.12, 0.25)
-        kp = e_back(prog(t, T["tira"] - 0.02, T["tira"] + 0.26))
-        if a_p > 0:
-            cv.save(); cv.translate(860, 560); s_ = clamp(kp, 0, 1.15); cv.scale(s_, s_)
-            placa_subst(cv, 0, 0, a_p, t)
-            cv.restore()
+        # (correção 01/11) a linha lateral marcada pelo telestrador e a placa de substituição saíram daqui (HUD, por
+        # cima de tudo) para cena_l1_aberta: linha_var_l1 e placa_l1, desenhadas no gramado ATRÁS das pessoas
         # "Não força o apoio": o vão tracejado verde entre o pé e a grama
         a_v = janela(t, T["pisa"] - 0.05, T["corte2"] - 0.05, 0.2, 0.1)
         if a_v > 0:
@@ -2337,7 +2371,7 @@ def quadro(cv, t, T, blocos, ep):
         icone_rebobina(cv, JX1 - 76, JY1 - 74, a_hud * a_reb * (0.0 if congelado else 1.0))
         for k_c, ((pd, vd, s_, cor), dur) in enumerate(zip(VEREDITOS, DUR_CARIMBOS)):
             cx_c, cy_c = CARIMBO_L3 if k_c == 2 else (CX, CARIMBO_Y)
-            carimbo_cor(cv, s_, cx_c, cy_c, -5, T[vd] - 0.02, t, dur, cor)
+            carimbo_cor(cv, s_, cx_c, cy_c, -5, T[vd] - 0.02, t, dur, cor, sai_esq=(k_c == 0))
         for t0, s in ((T["corte2"], T_LANCE[1]), (T["corte3"], T_LANCE[2])):
             k = t - t0
             if -0.02 <= k < 0.6:

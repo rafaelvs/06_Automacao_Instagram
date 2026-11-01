@@ -295,6 +295,14 @@ def pe_balanco(w):
     return out[0], max(0.0, out[1])
 
 
+QUEDA_MIN_BAL = 166.0                                            # do quadril ao tornozelo NA TELA, no balanço (px, zoom 1)
+
+
+def _smin(a, b, k):
+    """Mínimo suave (sem quina no movimento)."""
+    return 0.5 * (a + b - math.sqrt((a - b) ** 2 + k * k))
+
+
 def fase(tf, ph=PH0):
     return (tf / P_CICLO + ph) % 1.0
 
@@ -326,6 +334,11 @@ def _pose(u, hx, hy, inc, corrida, olha=0.0):
                 sf = 0.45 * sstep((k - 0.5) / 0.5)                 # o calcanhar sobe no fim do apoio
             else:
                 z, up = pe_balanco((v - SD) / (1 - SD))
+                # o pé do balanço nunca sobe tanto que a barra do short engula a canela: quando a pelve
+                # desce (a pisada funda da manqueira), ele sobe menos — a perna segue inteira na tela
+                # (coxa saindo do short, joelho, canela, meia, tênis), do mesmo tamanho da outra
+                up_max = Y_TORN - q[1] - KZ * z - QUEDA_MIN_BAL
+                up = max(0.0, _smin(up, up_max, 24.0))
         else:
             z, up, sf = 4.0, 0.0, 0.0
         (jz, jy), (az, ay) = ik_sag(z, (Y_TORN - up) - q[1])
@@ -1338,12 +1351,23 @@ def conteudo_corrida(cv, t, T, F, limpo=False, manca=1.0, cheio=False):
     return cam, P
 
 
+T_MENINA_PARADA = 0.22                                           # s depois do "Ela": o cartão (x <= 569) já saiu da frente dela
+
+
 def conteudo_parada(cv, t, T, F):
     """A cena parada: a menina de costas, calma, junto do calendário de parede (sem corrida, sem replay)."""
     corredor(cv, Z_PARADA, portas_esq=False)
     P = pose_parada(t)
-    sombra_crianca(cv, P)
-    desenha_crianca(cv, P)
+    # ela só aparece depois que o cartão grande (que vai para o canto) saiu de cima dela: nunca meia menina
+    # (pernas sob o cartão) enquanto ele passa
+    a_g = prog(t, T["trunfo"] + T_MENINA_PARADA, T["trunfo"] + T_MENINA_PARADA + 0.2)
+    if a_g > 0:
+        if a_g < 1:
+            cv.saveLayer(CENA, _alfa(a_g))
+        sombra_crianca(cv, P)
+        desenha_crianca(cv, P)
+        if a_g < 1:
+            cv.restore()
     fc = fim_cta(t, T)
     calendario(cv, fc, n_folhas(t, T))
     # "prever": a trilha dourada sai da folha de hoje e vai até uma folha lá na frente; "a diferença": ela
@@ -1413,7 +1437,9 @@ def _moldura(cv, r, a, brilho=0.0):
 
 def outras_fitas(cv, t, T):
     t0 = T["diferenca"]
-    fim = 1 - prog(t, T["mas"], T["mas"] + 0.2)
+    # no ◀◀ as outras fitas somem ANTES que a miniatura (que cresce até a cena toda) chegue às cabeças das
+    # crianças delas (~0,07 s): nada de pernas de criança sobrando embaixo do quadro que cresce
+    fim = 1 - prog(t, T["mas"], T["mas"] + 0.06)
     if fim <= 0:
         return
     for i, (cx, cy) in enumerate(MINIS):
@@ -1530,7 +1556,9 @@ def selo_lenta(cv, lk):
 EST_A = (935.0, 432.0, 1.35)                                     # estetoscópio: alto à direita
 EST_B = (848.0, 600.0, 1.6)                                      # "procure avaliação": desce para perto dela
 OLHO_XY, OLHO_ESC = (930.0, 805.0), 0.92
-MINI_TL3 = skia.Rect(410, 360, 1010, 900)                         # "aumenta": o cartão volta grande e a manqueira afunda
+# "aumenta": o cartão volta grande e a manqueira afunda — no alto, ENTRE o canto e a menina em pé: nunca passa
+# por cima dela (cabeça em x >= 600 a partir de y 585) nem do calendário (topo em y 628), que segue virando as folhas
+MINI_TL3 = skia.Rect(172, 342, 472, 612)
 
 
 def aumenta_g(t, T):

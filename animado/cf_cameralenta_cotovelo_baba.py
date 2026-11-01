@@ -224,6 +224,30 @@ def camada(cv, a, cinza=0.0, escuro=0.0):
     cv.saveLayer(None, p)
 
 
+def camada_escura(cv, a, escuro):
+    """v4: o mesmo que camada(cv, a, escuro=escuro), mas SEM filtro de cor na camada: nesta build do skia o
+    ColorFilters.Matrix custa ~170 ns por pixel da camada inteira (~160 ms por camada, duas por amostra no 2º lance),
+    o que torna inviável o rastro contínuo (dezenas de amostras por quadro). Abre uma camada só de alfa; quem desenha
+    chama `escurecer` com uma silhueta que cubra tudo o que desenhou, ANTES do restore. Devolve True se escurece."""
+    if escuro <= 0:
+        camada(cv, a)
+        return False
+    cv.saveLayer(None, _alfa(a))
+    return True
+
+
+def escurecer(cv, silhueta, escuro, folga=10.0):
+    """Multiplica o RGB do que JÁ está na camada (dentro da silhueta + folga) por 1 - escuro, alfa intacto: preto
+    com alfa `escuro` em kSrcATop (cor = cor·(1 - escuro); alfa = alfa) — a mesma conta do filtro de matriz que
+    camada(escuro=...) usa. A camada só tem o desenho a escurecer, então a folga não toca em mais nada."""
+    q = skia.Paint(AntiAlias=True)
+    q.setColor(skia.ColorSetARGB(int(round(255 * clamp(escuro))), 0, 0, 0))
+    q.setBlendMode(skia.BlendMode.kSrcATop)
+    q.setStyle(skia.Paint.kStrokeAndFill_Style)
+    q.setStrokeWidth(folga)
+    cv.drawPath(silhueta, q)
+
+
 def _pele(cv, pth, p0, p1, a, tons=TONS_PELE, linha=3.0, cor_linha=PELE_LINHA):
     sh = skia.GradientShader.MakeLinear([skia.Point(*p0), skia.Point(*p1)], [_c(c) for c in tons],
                                         [0.0, 0.22, 0.5, 0.78, 1.0])
@@ -950,7 +974,7 @@ def braco_adulto(cv, P, manga, a, escuro=0.0):
     (só uma prega no cotovelo)."""
     if a <= 0:
         return
-    camada(cv, a, escuro=escuro)
+    esc = camada_escura(cv, a, escuro)                             # v4: sem filtro de cor (ver camada_escura)
     u = _dir(ANG_ANTE); v = _dir(ANG_BRACO)
     C0 = _pt(P, u, 46.0); E = _pt(P, u, L_ANTE); S = _pt(E, v, 1500.0)
     pulso = tubo(*_pt(P, u, 12.0), 14.5, *_pt(C0, u, 6.0), 16.0)
@@ -977,6 +1001,8 @@ def braco_adulto(cv, P, manga, a, escuro=0.0):
     b = (-u[0] + v[0], -u[1] + v[1]); bl = math.hypot(*b) or 1.0; b = (b[0] / bl, b[1] / bl)
     q = _pt(E, b, 20.0); r = (-b[1], b[0])                         # prega do tecido por dentro do cotovelo
     cv.drawLine(*_pt(q, r, -11.0), *_pt(q, r, 11.0), paint(manga["linha"], 170, "stroke", 2.6))
+    if esc:
+        escurecer(cv, _uniao(_uniao(pulso, mg), pun), escuro)
     cv.restore()
 
 
@@ -985,7 +1011,7 @@ def mao_axila(cv, P, a, escuro=0.0):
     atrás do ombro."""
     if a <= 0:
         return
-    camada(cv, a, escuro=escuro)
+    esc = camada_escura(cv, a, escuro)                             # v4: sem filtro de cor (ver camada_escura)
     cv.translate(*P); cv.rotate(ANG_ANTE + 180.0)
     for i, L in enumerate((44.0, 52.0, 51.0, 44.0)):
         y0 = -23 + i * 11.5
@@ -997,6 +1023,8 @@ def mao_axila(cv, P, a, escuro=0.0):
     pol = rr_path(0, -6.5, 34, 6.5, 6.5)
     _pele(cv, pol, (0, -6.5), (0, 6.5), 1.0, tons=TONS_AD, cor_linha=AD_LINHA, linha=2.2)
     cv.restore()
+    if esc:                                                        # caixa que cobre dedos, palma e polegar
+        escurecer(cv, rr_path(-36.0, -62.0, 66.0, 38.0, 8.0), escuro)
     cv.restore()
 
 
@@ -1424,7 +1452,12 @@ def _setas(cv, x, y, a, esc, para_frente):
 
 
 HUD_X, HUD_Y = 786, 1172
-POP_C = (300, 560)                                               # 1ª câmera lenta: longe do braço erguido
+# v3 (verificação em resolução cheia, 01/11): em (300, 560) o "0,25×" grande (2,5×, ~440×168 px) ficava PARADO
+# sobre a pegada (topo da cabeça, puxinhos, mãos erguidas, mão adulta) e depois voava para o painel atravessando
+# rosto, ombro e braço da menina. Na 1ª câmera lenta a criança e a mão adulta ficam em x <= ~565 (mundo à esquerda
+# da poça); o selo nasce à DIREITA, no céu/prédios, e o voo até o painel (canto inferior direito) só se afasta dela.
+POP_C = (780, 572)                                               # 1ª câmera lenta: à direita, longe da pegada
+                                                                 # (e dentro da moldura âmbar, mesmo no pulo)
 POP_C2 = (820, 520)                                              # 2ª câmera lenta: à frente do arco
 
 
@@ -1679,63 +1712,143 @@ def ponto_nao_puxe(p, J):
 
 # ------------------------------------------------------------------ o mundo (dentro do monitor)
 OBTURADOR = {"play": 0.085, "volta": 0.13}                       # s de VÍDEO (na volta, ~0,35 s de filme)
-N_AMOSTRAS = 5
-N_AMOSTRAS_VOLTA = 8
-CAIXA = skia.Rect(-600, 0, 2200, 1500)
+# v4 (2ª rodada da verificação em resolução cheia, 01/11): o borrão era a MÉDIA de 5 cópias (8 na volta) da criança
+# inteira, cada uma com contorno, espalhadas pelos 0,085 s do obturador. No 1× o pulo anda ~3.000 px/s: as cópias
+# ficavam a 30-70 px uma da outra e liam como crianças SEPARADAS e nítidas (0,600 s: duas cabeças, dois coques, duas
+# camisas; 0,667 s: o braço que cai em três degraus com todos os dedos; o mesmo na volta e nas mãos adultas do 2º
+# lance). Agora: a pose ATUAL é desenhada inteira e opaca por cima, e atrás dela fica um RASTRO CONTÍNUO — amostras
+# tão próximas que nenhuma parte anda mais de PASSO_RASTRO px de tela entre duas vizinhas (os contornos de ~3 px se
+# fundem num véu), MÉDIA PONDERADA de verdade (soma em float, ver `rastro`) no TEMPO, a ponta mais velha some (peso
+# (1 - idade)^QUEDA_RASTRO), vezes ALFA_RASTRO.
+# Onde nada se mexe o rastro fica embaixo da pose atual: ele só aparece nas partes que se movem.
+PASSO_RASTRO = 2.5                                               # px de tela entre amostras vizinhas (parte mais rápida)
+N_RASTRO_MAX = 44                                                # teto de amostras; acima dele o rastro encurta (no tempo)
+ALFA_RASTRO = 0.60                                               # opacidade do rastro logo atrás da pose atual
+QUEDA_RASTRO = 1.0                                               # peso = (1 - idade)^QUEDA: a ponta mais velha some
+JUNTAS_RASTRO = ("cab", "pesc", "omb_p", "omb_l", "cot_p", "pun_p", "cot_l", "pun_l", "joe_p", "tor_p", "joe_l",
+                 "tor_l")
+ANG_NP = -58.0                                                   # direção da mão aberta do "não puxe nem force"
 
 
-def amostras_borrao(t, F, T):
-    """(cópia adaptada do piloto) instantes que entram no borrão do 1× e da volta; nunca antes de t = 0, nunca
-    atravessando congelamento nem o corte de fita."""
-    tipo = F.tipo(t)
-    obt = OBTURADOR.get(tipo)
+def _mao_np(tg, T, p, J):
+    """"Não puxe nem force": (x, y, abre, alfa) da mão adulta aberta (mundo) no instante de vídeo tg."""
+    vem, abre, a = estado_nao_puxe(tg, T)
+    px, py = ponto_nao_puxe(p, J)
+    u = (math.cos(math.radians(ANG_NP)), math.sin(math.radians(ANG_NP)))
+    dist = 520.0 * (1 - vem)
+    return px + u[0] * dist, py + u[1] * dist, abre, a
+
+
+def _maos_axila(R, f, p):
+    """2º lance: (alfa, palma do lado de cá, palma do outro lado) das mãos adultas (mundo) no tempo de filme f."""
+    chega, sai = R.maos(f)
+    a_m = clamp(chega * 3) * (1 - prog(sai, 0.75, 1.0))
+    # v2: as mãos chegam e saem PELA HORIZONTAL, por trás (ao longo do antebraço), nunca por cima da cabeça
+    u = _dir(ANG_ANTE)
+    off = 420.0 * (1 - chega) + 700.0 * sai
+    P = axila_mundo(p); Pf = axila_mundo(p, AXILA_L)
+    return a_m, (P[0] + u[0] * off, P[1] + u[1] * off), (Pf[0] + u[0] * off, Pf[1] + u[1] * off)
+
+
+def _pontos_ator(tg, T, F):
+    """Pontos (mundo) que resumem o movimento do que `ator` desenha em tg — juntas, topo da cabeça, palmas, bicos
+    dos tênis e as mãos adultas (None = invisível). Lista de tamanho fixo (compara instantes ponto a ponto)."""
+    f = F.tf(tg)
+    if fita(tg, T) == 1:
+        p, A, a_ad, _, ang = F.R1.pose(f)
+        J = _joints(p)
+        x, y, _, a = _mao_np(tg, T, p, J)
+        extra = [A if a_ad > 0 else None, _pt(A, _dir(ang), 160.0) if a_ad > 0 else None,
+                 (x, y) if a > 0 else None]
+    else:
+        p = F.R2.pose(f)
+        J = _joints(p)
+        a_m, Pn, Pl = _maos_axila(F.R2, f, p)
+        u = _dir(ANG_ANTE)
+        extra = [Pn, Pl, _pt(Pn, u, L_ANTE), _pt(Pl, u, L_ANTE)] if a_m > 0 else [None] * 4
+    pts = [no_mundo(p, J[k]) for k in JUNTAS_RASTRO]
+    pts += [no_mundo(p, centro_palma(J, lado)) for lado in ("p", "l")]
+    topo = rot((-30.0, -58.0), p["tor"] + p["cab"])
+    pts.append(no_mundo(p, (J["cab"][0] + topo[0], J["cab"][1] + topo[1])))
+    for lado, ang_t in (("p", p["ppa"]), ("l", p["pla"])):
+        bico = rot((58.0, 16.0), ang_t)
+        pts.append(no_mundo(p, (J["tor_" + lado][0] + bico[0], J["tor_" + lado][1] + bico[1])))
+    return pts + extra
+
+
+def amostras_borrao(t, F, T, s=1.0):
+    """Instantes do rastro do 1× e da volta, do mais novo (t) ao mais velho, com o peso de cada um no tempo:
+    [(tg, dt)]. Nunca antes de t = 0, nunca atravessando congelamento nem o corte de fita (a janela não sai do
+    trecho de t). v4: a janela é varrida em K pedaços; cada pedaço recebe amostras até que a parte mais rápida ande
+    no máximo PASSO_RASTRO px de tela entre duas vizinhas; acima de N_RASTRO_MAX o rastro perde a ponta mais velha."""
+    obt = OBTURADOR.get(F.tipo(t))
     if not obt:
-        return [t]
-    out = [t]
+        return [(t, 0.0)]
     seg = F.seg(t)
-    n = N_AMOSTRAS_VOLTA if tipo == "volta" else N_AMOSTRAS
-    for i in range(1, n):
-        tg = t - obt * i / (n - 1)
-        if tg < 0 or F.tipo(tg) == "congela" or F.seg(tg) is not seg or fita(tg, T) != fita(t, T):
+    t_ini = max(t - obt, seg[0], 0.0)
+    if t - t_ini < 1e-3:
+        return [(t, 0.0)]
+    K = 12
+    ts = [t - (t - t_ini) * i / K for i in range(K + 1)]
+    pts = [_pontos_ator(x, T, F) for x in ts]
+    cortes = []                                                    # (início, fim, nº de subdivisões) do novo ao velho
+    total = 0
+    for i in range(K):
+        d = 0.0
+        for a, b in zip(pts[i], pts[i + 1]):
+            if a is not None and b is not None:
+                d = max(d, math.hypot(a[0] - b[0], a[1] - b[1]))
+        m = int(math.ceil(d * s / PASSO_RASTRO))
+        if m == 0:
+            m = 1 if d * s > 0.05 else 0
+        if total + m > N_RASTRO_MAX - 1:                           # estoura o teto: corta o pedaço e para
+            resto = N_RASTRO_MAX - 1 - total
+            if resto > 0:
+                cortes.append((ts[i], ts[i] - (ts[i] - ts[i + 1]) * resto / m, resto))
             break
-        out.append(tg)
+        cortes.append((ts[i], ts[i + 1], m))
+        total += m
+    tempos = [t]
+    for a, b, m in cortes:
+        if m == 0:                                                 # nada se mexe neste pedaço: uma amostra só
+            tempos.append(b)
+            continue
+        for j in range(1, m + 1):
+            tempos.append(a - (a - b) * j / m)
+    if len(tempos) < 3 or all(m == 0 for _, _, m in cortes):
+        return [(t, 0.0)]
+    out = []
+    for i, x in enumerate(tempos):                                 # peso no tempo (trapézio)
+        x0 = tempos[i - 1] if i > 0 else x
+        x1 = tempos[i + 1] if i + 1 < len(tempos) else x
+        out.append((x, (x0 - x1) / 2))
     return out
 
 
-def ator(cv, tg, T, F):
+def ator(cv, tg, T, F, sombra=True):
     """Desenha a criança (e as mãos adultas) no instante de vídeo `tg`. -> (pose, juntas)."""
     f = F.tf(tg)
     if fita(tg, T) == 1:
         p, A, a_ad, segura, ang = F.R1.pose(f)
-        sombra_crianca(cv, p)
+        if sombra:
+            sombra_crianca(cv, p)
         cbs = {}
         if a_ad > 0:
             cbs["frente"] = lambda J: adulto_tras(cv, A, ang, MANGA1, a_ad)
             if segura > 0.5:
                 cbs["fim"] = lambda J: adulto_frente(cv, A, ang, a_ad)
         J = crianca(cv, p, ROUPA1, cbs)
-        vem, abre, a = estado_nao_puxe(tg, T)                      # "não puxe nem force"
+        x, y, abre, a = _mao_np(tg, T, p, J)                       # "não puxe nem force"
         if a > 0:
-            px, py = ponto_nao_puxe(p, J)
-            ang_m = -58.0
-            u = (math.cos(math.radians(ang_m)), math.sin(math.radians(ang_m)))
-            dist = 520.0 * (1 - vem)
-            mao_aberta(cv, px + u[0] * dist, py + u[1] * dist, ang_m, 0.60, abre, a, MANGA1)
+            mao_aberta(cv, x, y, ANG_NP, 0.60, abre, a, MANGA1)
         return p, J
     R = F.R2
     p = R.pose(f)
-    sombra_crianca(cv, p)
-    chega, sai = R.maos(f)
-    a_m = clamp(chega * 3) * (1 - prog(sai, 0.75, 1.0))
+    if sombra:
+        sombra_crianca(cv, p)
+    a_m, Pn, Pl = _maos_axila(R, f, p)
     cbs = {}
     if a_m > 0:
-        # v2: as mãos chegam e saem PELA HORIZONTAL, por trás (ao longo do antebraço), nunca por cima da cabeça
-        u = _dir(ANG_ANTE)
-        off = 420.0 * (1 - chega) + 700.0 * sai
-        P = axila_mundo(p); Pf = axila_mundo(p, AXILA_L)
-        Pn = (P[0] + u[0] * off, P[1] + u[1] * off)
-        Pl = (Pf[0] + u[0] * off, Pf[1] + u[1] * off)
-
         def atras(J):                                              # a mão do outro lado (atrás do tronco): o
             braco_adulto(cv, Pl, MANGA2, a_m, escuro=0.35)         # braço aparece atrás das costas e as pontas
             mao_axila(cv, Pl, a_m, escuro=0.35)                    # dos dedos passam da frente do peito
@@ -1750,21 +1863,67 @@ def ator(cv, tg, T, F):
     return p, J
 
 
-def ator_borrado(cv, t, T, F):
-    ams = amostras_borrao(t, F, T)
-    if len(ams) == 1:
-        return ator(cv, t, T, F)
-    cv.saveLayer(CAIXA, None)
-    res = None
-    for k, tg in enumerate(reversed(ams)):
-        if k == 0:
-            res = ator(cv, tg, T, F)
-        else:
-            cv.saveLayer(CAIXA, _alfa(1.0 / (k + 1)))
-            res = ator(cv, tg, T, F)
-            cv.restore()
+_RASTRO_BUF = {}
+
+
+def _buffers_rastro(w, h):
+    if (w, h) not in _RASTRO_BUF:
+        info = skia.ImageInfo.MakeN32Premul(w, h)                  # N32 (BGRA aqui): o blit de volta é direto
+        _RASTRO_BUF[(w, h)] = (info, skia.Surface.MakeRaster(info), np.empty((h, w, 4), np.uint8),
+                               np.zeros((h, w, 4), np.float32), np.empty((h, w, 4), np.float32))
+    return _RASTRO_BUF[(w, h)]
+
+
+def rastro(cv, t, ams, T, F):
+    """O rastro: MÉDIA PONDERADA de verdade (soma em float, pixel a pixel) das amostras passadas, cada uma desenhada
+    sozinha numa superfície do tamanho da cena e somada com o seu peso (tempo × (1 - idade)^QUEDA_RASTRO), vezes
+    ALFA_RASTRO, e posta na cena por baixo da pose atual. (A média "incremental" por camadas com alfa 1/(k+1) só é
+    média onde TODAS as amostras cobrem o pixel: onde só uma amostra velha cobre, nada a atenua e ela fica OPACA — por
+    isso as cópias do borrão antigo saíam inteiras e nítidas. Camadas F16 com soma resolveriam, mas nesta build do
+    skia custam ~120 ms cada.) Sem sombra no chão: a sombra é só a da pose atual."""
+    idade = t - ams[-1][0]
+    pesos = [(tg, (1.0 - (t - tg) / idade) ** QUEDA_RASTRO * dt) for tg, dt in ams[1:]]
+    pesos = [(tg, w) for tg, w in pesos if w > 1e-9]
+    W = sum(w for _, w in pesos)
+    if W <= 0:
+        return
+    x0, y0, w, h = int(CENA.left()), int(CENA.top()), int(CENA.width()), int(CENA.height())
+    info, surf, buf, acc, tmp = _buffers_rastro(w, h)
+    m = cv.getTotalMatrix()
+    c = surf.getCanvas()
+    l0, l1, c0, c1 = h, 0, w, 0
+    for tg, wt in pesos:
+        c.clear(skia.ColorTRANSPARENT)
+        c.save(); c.translate(-x0, -y0); c.concat(m)
+        ator(c, tg, T, F, sombra=False)
+        c.restore()
+        surf.readPixels(info, buf, w * 4, 0, 0)
+        al = buf[:, :, 3]
+        ls = np.flatnonzero(al.any(axis=1))
+        if ls.size == 0:
+            continue
+        cs = np.flatnonzero(al.any(axis=0))
+        a0, a1, b0, b1 = int(ls[0]), int(ls[-1]) + 1, int(cs[0]), int(cs[-1]) + 1
+        l0, l1, c0, c1 = min(l0, a0), max(l1, a1), min(c0, b0), max(c1, b1)
+        np.multiply(buf[a0:a1, b0:b1], np.float32(wt / W * ALFA_RASTRO), out=tmp[a0:a1, b0:b1], dtype=np.float32)
+        np.add(acc[a0:a1, b0:b1], tmp[a0:a1, b0:b1], out=acc[a0:a1, b0:b1])
+    if l1 <= l0:
+        return
+    reg = np.ascontiguousarray(np.clip(np.rint(acc[l0:l1, c0:c1]), 0, 255).astype(np.uint8))
+    acc[l0:l1, c0:c1] = 0.0                                        # o acumulador volta zerado para o próximo quadro
+    img = skia.Image.fromarray(reg, colorType=info.colorType(), alphaType=skia.AlphaType.kPremul_AlphaType)
+    cv.save(); cv.resetMatrix()
+    cv.drawImage(img, x0 + c0, y0 + l0)
     cv.restore()
-    return res
+
+
+def ator_borrado(cv, t, T, F, s=1.0):
+    """v4: rastro contínuo ATRÁS da pose atual (ver PASSO_RASTRO e `rastro`); a pose atual vem por cima, inteira e
+    opaca — uma criança só, nunca cópias soltas."""
+    ams = amostras_borrao(t, F, T, s)
+    if len(ams) >= 3:
+        rastro(cv, t, ams, T, F)
+    return ator(cv, t, T, F)
 
 
 def monitor(cv, t, T, F, passos):
@@ -1783,7 +1942,7 @@ def monitor(cv, t, T, F, passos):
     cv.save(); aplica(cv, cam)
     cenario(cv, fit, s)
     if tipo in OBTURADOR:
-        p, J = ator_borrado(cv, t, T, F)
+        p, J = ator_borrado(cv, t, T, F, s)
     else:
         p, J = ator(cv, t, T, F)
     cv.restore()
@@ -1861,14 +2020,35 @@ def marcas_lance1(cv, t, T, F, p, J, tela, s):
             pt = paint("#FFFFFF", int(255 * a_s), "stroke", 6); pt.setPathEffect(skia.DashPathEffect.Make([16, 10], -t * 40))
             cv.drawLine(x0, y0, x1, y1, pt)
             ponta(cv, x1 + 8 * math.cos(ang), y1 + 8 * math.sin(ang), ang, 24, "#FFFFFF", a_s)
-    # "não puxe nem force": etiqueta no alto da área de cena (borda azul-clara; sem X, sem vermelho)
+    # "não puxe nem force": a etiqueta saiu daqui (v3) — ver etiqueta_nao_puxe, desenhada FORA do monitor
+
+
+# v3 (verificação em resolução cheia, 01/11): dentro da cena (linha de base y = 432, caixa y ~388-446) a etiqueta
+# ficava sobre os puxinhos da menina (topo da cabeça em y ~420 com o push-in de 1,40× no braço parado): a cabeça
+# parecia cortada pelo texto. Nenhum vão da cena comporta a etiqueta inteira (~490-525 px) sem encostar na cabeça
+# ou no caminho da mão adulta, então ela sobe para FORA do monitor, no espaço do selo/gancho, que no 1× está vazio
+# (o selo CÂMERA LENTA só existe com a lentidão ligada; o gancho sai no "volta"). Caixa em y ~246-304 (até ~244-307
+# no pulo de 1,08×), 23 px acima da borda da cena (y = 330): não cobre nada da criança nem da mão.
+PUXE_XY = (540.0, 290.0)                                         # centro x e linha de base do texto
+
+
+def etiqueta_nao_puxe(cv, t, T):
+    """"Não puxe nem force": etiqueta (borda azul-clara; sem X, sem vermelho) acima do monitor."""
     a_np = prog(t, T["nao2"], T["nao2"] + 0.2) * (1 - prog(t, T["leve"] - 0.2, T["leve"]))
-    chip_txt(cv, R_PUXE, 540, 432, "#FFFFFF", a_np, tam=42, borda=AZUL_CL,
+    chip_txt(cv, R_PUXE, PUXE_XY[0], PUXE_XY[1], "#FFFFFF", a_np, tam=42, borda=AZUL_CL,
              esc=lerp(1.08, 1.0, e_out(prog(t, T["nao2"], T["nao2"] + 0.3))))
 
 
-ICONE_C = (854.0, 516.0)
-ICONE_H, ICONE_ESC = 320.0, 0.46
+# v3 (verificação em resolução cheia, 01/11): em (854, 516) o inset ficava no caminho do arco — de ~25,9 s ao fim
+# a criança, pousando à direita, passava POR BAIXO dele e ficava sem cabeça. Agora o inset mora no canto INFERIOR
+# ESQUERDO, num vão que ninguém atravessa enquanto ele existe: a criança já saiu dali (topo do arco em diante), o
+# braço adulto passa ACIMA (cotovelo em y < ~610) e a etiqueta "PELAS AXILAS" fica embaixo, com o fio saindo da
+# ponta direita dela (x >= ~370) para cima e para a direita. Caixa 280 px (era 320) para caber nesse vão, com a
+# borda esquerda alinhada à da etiqueta (x = 70) e longe da moldura âmbar; o desenho de dentro é escalado junto
+# (ICONE_ESC e os deslocamentos foram pensados para 320 px).
+ICONE_C = (210.0, 858.0)                                         # caixa x 70-350, y 718-998
+ICONE_H, ICONE_ESC = 280.0, 0.46
+ICONE_REF = 320.0                                                # tamanho da caixa para o qual o desenho foi feito
 
 
 def marcas_lance2(cv, t, T, F, p, J, tela, s):
@@ -1885,13 +2065,14 @@ def marcas_lance2(cv, t, T, F, p, J, tela, s):
     if a_i > 0:
         x, y = ICONE_C
         H2 = ICONE_H / 2                                            # v2 (revisor): caixa MAIOR
-        rr = skia.RRect.MakeRectXY(skia.Rect(x - H2, y - H2, x + H2, y + H2), 24, 24)
+        ke = ICONE_H / ICONE_REF                                    # v3: desenho escalado com a caixa
+        rr = skia.RRect.MakeRectXY(skia.Rect(x - H2, y - H2, x + H2, y + H2), 24 * ke, 24 * ke)
         cv.drawRRect(rr, paint(FUNDO_CARTAO, int(248 * a_i)))
         cv.drawRRect(rr, paint(CINZA, int(220 * a_i), "stroke", 3.5))
         cv.save(); cv.clipRRect(rr, True)
-        icone_desenho(cv, x - 34, y - H2 + 88, 0, ICONE_ESC * lerp(0.92, 1.0, e_out(k)), a_i, cinza=1.0)
+        icone_desenho(cv, x - 34 * ke, y - H2 + 88 * ke, 0, ICONE_ESC * ke * lerp(0.92, 1.0, e_out(k)), a_i, cinza=1.0)
         cv.restore()
-        xis_branco(cv, x, y + 4, H2 * 0.62, e_out(prog(t, T["nao3"] + 0.2, T["nao3"] + 0.55)), a_i)
+        xis_branco(cv, x, y + 4 * ke, H2 * 0.62, e_out(prog(t, T["nao3"] + 0.2, T["nao3"] + 0.55)), a_i)
 
 
 def na_tela_axila(p, tela):
@@ -1918,6 +2099,7 @@ def selo_lenta(cv, lk):
 def quadro(cv, t, T, blocos, ep, F, passos):
     fundo_cl(cv, t)
     monitor(cv, t, T, F, passos)
+    etiqueta_nao_puxe(cv, t, T)                                    # v3: fora do monitor (não cobre a cabeça)
     fim = 1 - prog(t, T["manda"] - 0.4, T["manda"] - 0.1)
     cantoneiras(cv, fim)
     painel(cv, t, T, F, fim)

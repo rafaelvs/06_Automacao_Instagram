@@ -9,6 +9,20 @@ incha com setas para fora, termômetro grande, pegadas de passo curto/longo) e, 
 dividida contra o padrão do LANCE 1 ("SE DÓI NAS DUAS PERNAS") — o X cai na linha, nunca sobre a criança; a porta
 leva o estetoscópio (a cruz verde lia como farmácia); a mãozinha sai pela borda de baixo; o fecho sem apito.
 
+v3 (revisão em resolução cheia; só DESENHO — texto, voz e tempos iguais): a compressa vira toalhinha BRANCA (era
+pêssego = tom da pele: coxa, canela e pano viravam um bloco bege), cobre só o meio/alto da canela (a canela de baixo
+aparece), perde a aba pendente (lia como panturrilha deformada) e o calor "morna" vai para a cama, atrás das pernas;
+na MANHÃ do lance 2 o pé de trás sai de cima da divisória (o tênis era cortado na vertical o lance inteiro); no
+LANCE 3 o chip "SE DÓI NAS DUAS PERNAS" desce para o chão da metade esquerda e é desenhado depois do carimbo (o
+ANULADO ficava colado embaixo dele e, na saída, passava por cima de "DUAS PERNAS").
+
+v4 (2ª revisão em resolução cheia; só DESENHO — texto, voz e tempos iguais; a v3 fica): (1) na MANHÃ do lance 2 os
+dois tênis ficam de perfil para a DIREITA (para a bola) e PISAM no chão (antes o de trás apontava ~45° para
+baixo-esquerda, solado para fora — o pé lia como torcido — e os dois flutuavam acima do rodapé); o quique é do
+quadril, com os pés no chão. (2) Nas cenas de cama a criança aparece INTEIRA: recostada num travesseiro claro na
+cabeceira, cabeça com cabelo (sem rosto), ombros de pijama, o corpo sob o cobertor até o peito e o bracinho por
+cima dele (antes um volume de bolinhas com dobra de travesseiro: as pernas saíam do nada).
+
 Série "Chama o VAR" (ter/qui/sáb), construído sobre o piloto cf_chamaovar_rotina_fixador e os episódios do gesso e
 dos primeiros socorros: os helpers da série (monitor, selo VAR + chip de estado, telestrador, carimbo com 2ª linha,
 rebobinar, TV desligando, apito, sons, legenda karaokê, render com CHECANDO) estão COPIADOS aqui, sem importar
@@ -135,7 +149,11 @@ MADEIRA, MADEIRA_CL, MADEIRA_ESC = "#7A5E57", "#93746A", "#5C4642"
 PISO, PISO_ESC = "#4B4568", "#3B3655"
 PORTA, PORTA_ESC, PORTA_BATENTE = "#6A6098", "#574E82", "#8494C6"
 URSO, URSO_CL, URSO_ESC = "#B98A5E", "#DDB98F", "#8C6340"
-COMP, COMP_CL, COMP_ESC, COMP_DOBRA = "#FFD2B0", "#FFE4CF", "#F0B892", "#E2A982"     # compressa (morna)
+# compressa (morna). v3: era pêssego (#FFD2B0), o MESMO tom da pele: coxa, canela e pano viravam um bloco bege só.
+# Agora é uma toalhinha BRANCA com contorno marrom-acinzentado (cor própria, longe da pele, do pijama amarelo, do
+# cobertor azul e de todas as cores reservadas da série); o "morna" fica no halo pêssego em volta do pano.
+COMP, COMP_CL, COMP_ESC, COMP_DOBRA = "#F8F5EF", "#FFFFFF", "#DCD3C4", "#7E6C5A"
+COMP_FELPA, COMP_MORNA = "#C9BDAA", "#FFE6D2"
 # manhã
 PAREDE_M1, PAREDE_M2 = "#E4EEF8", "#D2E1F0"
 PISO_M, PISO_M_ESC = "#E3C9A2", "#CDAE82"
@@ -464,14 +482,15 @@ def _quarto(cv):
     cv.restore()
 
 
-DOBRA_X0, DOBRA_Y0, DOBRA_X1, DOBRA_Y1 = 240.0, 640.0, 640.0, 1070.0
+DOBRA_X0, DOBRA_Y0, DOBRA_X1, DOBRA_Y1 = 236.0, 548.0, 660.0, 1070.0
 
 
 def dobra(cv, a=1.0):
-    """O cobertor dobrado por cima do quadril (esconde o corpo: só as perninhas ficam de fora)."""
+    """A criança RECOSTADA no travesseiro e COBERTA até o peito (v4): travesseiro, cabeça com cabelo (sem rosto),
+    ombros de pijama, o corpo sob o cobertor e o bracinho por cima dele; só as perninhas ficam de fora."""
     def _d(c):
         c.scale(QESC, QESC); c.translate(-DOBRA_X0, -DOBRA_Y0); _dobra(c)
-    img = cacheado("dobra", (DOBRA_X1 - DOBRA_X0) * QESC, (DOBRA_Y1 - DOBRA_Y0) * QESC, _d)
+    img = cacheado("crianca_coberta", (DOBRA_X1 - DOBRA_X0) * QESC, (DOBRA_Y1 - DOBRA_Y0) * QESC, _d)
     cv.save(); cv.translate(DOBRA_X0, DOBRA_Y0); cv.scale(1 / QESC, 1 / QESC)
     if a < 1:
         pt = skia.Paint(); pt.setAlphaf(clamp(a))
@@ -481,28 +500,125 @@ def dobra(cv, a=1.0):
     cv.restore()
 
 
-def _dobra(cv):
+# v4 (2ª revisão em resolução cheia): antes o cobertor era um volume azul de bolinhas encostado na cabeceira, com
+# uma dobra que lia como TRAVESSEIRO, e a calça saía direto dele (~240 px contra ~370 px das pernas): PERNAS SEM
+# CORPO. Agora a criança está RECOSTADA num travesseiro claro apoiado na cabeceira (a cama não comporta o corpo
+# deitado reto: quadril em x~474, cabeceira em x~300), coberta até o peito: cabeça com cabelo (sem rosto — o
+# estilo da série), pescoço e ombros de pijama (o mesmo amarelo de estrelinhas da calça), o volume do tronco e do
+# colo sob o cobertor (dobra do avesso no peito, vincos no quadril e entre as coxas) e o bracinho POR CIMA do
+# cobertor, com a mão no colo. As pernas (perna_deitada) e os tempos não mudam; a borda do cobertor continua
+# cobrindo a raiz das coxas (x <= ~576).
+CR_QUADRIL = (474.0, 902.0)        # quadril (onde as coxas entram sob o cobertor)
+CR_OMBRO = (390.0, 732.0)          # meio dos ombros (tronco recostado ~64° no travesseiro)
+CR_CABECA = (356.0, 652.0)         # centro da cabeça, apoiada no travesseiro
+CR_R_CAB = 52.0
+CABELO, CABELO_CL, CABELO_ESC = "#7A5236", "#9A6B48", "#4E3322"
+TRAV, TRAV_CL, TRAV_ESC, TRAV_LINHA = "#E4E9F5", "#F4F6FB", "#BFCAE3", "#8A98C2"
+
+
+def _corpo_cobertor():
+    """Contorno do cobertor por cima do corpo recostado: a barra no peito, o tronco e o colo, a borda sobre as coxas
+    (por onde as pernas saem) e a beira da cama."""
     m = skia.Path()
-    m.moveTo(300, 975); m.lineTo(300, 760)
-    m.cubicTo(300, 712, 350, 690, 410, 694)
-    m.cubicTo(474, 698, 512, 722, 530, 780)
-    m.cubicTo(548, 836, 554, 900, 538, 952)
-    m.cubicTo(530, 976, 512, 984, 484, 984)
-    m.lineTo(320, 984); m.cubicTo(306, 984, 300, 980, 300, 975)
+    m.moveTo(368, 823)                                   # barra do peito, lado das costas
+    m.quadTo(420, 783, 480, 767)                         # barra do peito, lado da frente
+    m.cubicTo(508, 776, 530, 794, 552, 799)              # barriga e colo (o cobertor sobe um pouco na coxa de trás)
+    m.quadTo(566, 800, 578, 797)
+    m.cubicTo(584, 836, 586, 896, 579, 944)              # a borda por cima das coxas
+    m.quadTo(576, 972, 566, 990)
+    m.lineTo(334, 991)                                   # a beira da cama (o cobertor passa um pouco da borda)
+    m.cubicTo(322, 960, 320, 900, 334, 858)              # o lado do travesseiro
+    m.quadTo(346, 834, 368, 823)
     m.close()
+    return m
+
+
+def _dobra(cv):
+    # ---- travesseiro claro apoiado na cabeceira (atrás da cabeça e dos ombros)
+    trav = suave([(300, 600), (360, 576), (428, 584), (452, 650), (444, 760), (430, 868), (370, 934), (306, 930),
+                  (296, 800), (292, 680)])
+    cv.save(); cv.translate(-4, 10); cv.drawPath(trav, paint("#0E1838", 90, blur=12)); cv.restore()
+    sh = skia.GradientShader.MakeLinear([skia.Point(300, 590), skia.Point(450, 760)], [_c(TRAV_CL), _c(TRAV), _c(TRAV_ESC)])
+    cv.drawPath(trav, paint(TRAV, shader=sh))
+    cv.drawPath(suave([(318, 616), (372, 600), (424, 610)], fechar=False), paint(TRAV_ESC, 200, "stroke", 3))
+    cv.drawPath(trav, paint(TRAV_LINHA, 230, "stroke", 2.6))
+    # ---- tronco de pijama (só os ombros e o peito aparecem acima do cobertor)
+    hx, hy = CR_QUADRIL; sx, sy = CR_OMBRO
+    tronco = capsula(CR_QUADRIL, CR_OMBRO, 126, 116)
+    cv.save(); cv.translate(-3, 8); cv.drawPath(tronco, paint("#0E1838", 70, blur=10)); cv.restore()
+    pijama(cv, tronco, CR_QUADRIL, CR_OMBRO, 0.75, 1.0)
+    # ---- pescoço e cabeça (cabelo em cima e atrás; o rosto, sem traços, virado para as pernas)
+    cx, cy = CR_CABECA; r = CR_R_CAB
+    u = unit(sx - hx, sy - hy)
+    pesc0 = (sx + u[0] * 30, sy + u[1] * 30)
+    pinta(cv, capsula(pesc0, (cx + 6, cy + 20), 40, 38), pesc0, (cx + 6, cy + 20), 40, TONS_PELE, 1.0,
+          linha=PELE_LINHA, larg_linha=2.2)
+    fr = (-u[1], u[0]) if -u[1] > 0 else (u[1], -u[0])                  # lado do peito (para a direita)
+    ang_f = math.degrees(math.atan2(fr[1], fr[0]))
+    gola = skia.Rect(pesc0[0] - 25, pesc0[1] - 25, pesc0[0] + 25, pesc0[1] + 25)   # a gola: só a frente do pescoço
+    pt = paint(CALCA_ESC, 255, "stroke", 8); pt.setStrokeCap(skia.Paint.kRound_Cap)
+    cv.drawArc(gola, ang_f - 70, 140, False, pt)
+    cv.drawCircle(cx - 2, cy + 6, r + 4, paint("#0E1838", 70, blur=10))          # a cabeça afunda no travesseiro
+    cabeca = circ_path(cx, cy, r)
+    shc = skia.GradientShader.MakeRadial(skia.Point(cx + 22, cy + 18), r * 1.2, [_c(PELE_CL), _c(PELE), _c(PELE_ESC)],
+                                         [0.0, 0.6, 1.0])
+    cv.drawPath(cabeca, paint(PELE, shader=shc))
+    cv.drawPath(cabeca, paint(PELE_LINHA, 200, "stroke", 2.4))
+    # o cabelo cobre o alto, a nuca e a lateral; o rosto (sem traços) é só o canto de baixo-direita, virado para as
+    # pernas — vista de 3/4 por trás, nada que leia como olho ou boca
+    rosto = circ_path(cx + 0.66 * r, cy + 0.54 * r, 0.8 * r)
+    cab0 = circ_path(cx - 4, cy - 4, r + 7)
+    cabelo = skia.Op(cab0, rosto, skia.PathOp.kDifference_PathOp) or cab0
+    shh = skia.GradientShader.MakeLinear([skia.Point(cx - r, cy - r), skia.Point(cx + r, cy + r)],
+                                         [_c(CABELO_CL), _c(CABELO), _c(CABELO_ESC)])
+    cv.drawPath(cabelo, paint(CABELO, shader=shh))
+    cv.drawPath(cabelo, paint(CABELO_ESC, 230, "stroke", 2.4))
+    for (a0, a1) in (((cx - 30, cy - 34), (cx + 4, cy - 52)), ((cx - 44, cy - 6), (cx - 18, cy - 38)),
+                     ((cx - 34, cy + 26), (cx - 50, cy + 2))):                      # mechas
+        cv.drawLine(a0[0], a0[1], a1[0], a1[1], paint(CABELO_CL, 200, "stroke", 3))
+    # ---- o cobertor por cima do corpo (o volume do tronco e do colo)
+    m = _corpo_cobertor()
     cv.drawPath(m, paint("#000000", 70, blur=14))
-    sh = skia.GradientShader.MakeLinear([skia.Point(300, 700), skia.Point(560, 960)], [_c(COBERTOR_CL), _c(COBERTOR), _c(COBERTOR_ESC)])
+    sh = skia.GradientShader.MakeLinear([skia.Point(360, 760), skia.Point(560, 980)], [_c(COBERTOR_CL), _c(COBERTOR), _c(COBERTOR_ESC)])
     cv.drawPath(m, paint(COBERTOR, shader=sh))
-    _bolinhas(cv, m, 300, 712, 600, 990, 46, 5, BOLINHA, 210)
-    dob = skia.Path()                                               # a borda dobrada (o avesso do cobertor)
-    dob.moveTo(512, 742); dob.cubicTo(486, 800, 486, 900, 504, 978)
-    dob.lineTo(538, 952); dob.cubicTo(554, 900, 548, 836, 530, 780); dob.cubicTo(526, 766, 520, 752, 512, 742)
-    dob.close()
-    cv.drawPath(dob, paint("#AFC5EC"))
-    cv.drawPath(dob, paint("#7F9BCB", 220, "stroke", 2.5))
-    cv.drawPath(m, paint("#5E7FBA", 230, "stroke", 3))
-    # a luz quente do abajur também cai na dobra
+    _bolinhas(cv, m, 320, 770, 600, 995, 46, 5, BOLINHA, 210)
     cv.save(); cv.clipPath(m, skia.ClipOp.kIntersect, True)
+    # luz no alto do volume (peito e barriga) e sombra embaixo: o cobertor tem um corpo dentro
+    cv.drawPath(suave([(392, 812), (470, 786), (548, 812)], fechar=False), paint("#FFFFFF", 70, "stroke", 26, blur=12))
+    cv.drawRect(skia.Rect(320, 940, 600, 1000), paint(COBERTOR_ESC, 120, blur=14))
+    # vincos: o quadril (onde o tronco dobra para o colo) e entre as coxas
+    cv.drawPath(suave([(486, 806), (472, 852), (478, 904), (500, 948)], fechar=False), paint("#5E7FBA", 120, "stroke", 4, blur=2))
+    cv.drawPath(suave([(512, 900), (546, 892), (578, 888)], fechar=False), paint("#5E7FBA", 110, "stroke", 3.5, blur=2))
+    cv.restore()
+    # a barra dobrada (o avesso do cobertor) no peito
+    barra_p = skia.Path()
+    barra_p.moveTo(368, 823); barra_p.quadTo(420, 783, 480, 767)
+    barra_p.quadTo(486, 782, 484, 792); barra_p.quadTo(426, 806, 378, 846); barra_p.quadTo(366, 836, 368, 823)
+    barra_p.close()
+    cv.drawPath(barra_p, paint("#AFC5EC"))
+    _bolinhas(cv, barra_p, 360, 760, 500, 850, 30, 3.5, "#CFDDF5", 220)
+    cv.drawPath(barra_p, paint("#7F9BCB", 230, "stroke", 2.4))
+    cv.drawPath(m, paint("#5E7FBA", 230, "stroke", 3))
+    # ---- o bracinho por cima do cobertor (manga do pijama) com a mão no colo
+    omb = (sx + 12, sy + 14); cot = (446, 846); pulso = (524, 846)
+    braco = capsula(omb, cot, 40, 34)
+    cv.save(); cv.translate(3, 7); cv.drawPath(uniao(braco, capsula(cot, pulso, 32, 28)), paint("#0E1838", 80, blur=8)); cv.restore()
+    pijama(cv, braco, omb, cot, 0.5, 1.0)
+    ante = capsula(cot, (pulso[0] - 6, pulso[1]), 32, 30)
+    pijama(cv, ante, cot, pulso, 0.5, 1.0)
+    # a mãozinha pousada no colo, relaxada: palma, dedinhos dobrados para baixo e o polegar por cima
+    px_, py_ = pulso
+    mao = uniao(oval_path(px_ - 6, py_ - 13, px_ + 24, py_ + 13),
+                capsula((px_ + 14, py_ - 8), (px_ + 28, py_ + 4), 12, 11),
+                capsula((px_ + 12, py_ + 2), (px_ + 25, py_ + 13), 12, 11),
+                capsula((px_ + 2, py_ - 9), (px_ + 16, py_ - 17), 11, 10))
+    cv.save(); cv.translate(2, 5); cv.drawPath(mao, paint("#0E1838", 70, blur=5)); cv.restore()
+    pinta(cv, mao, (px_ + 8, py_ - 14), (px_ + 8, py_ + 14), 28, TONS_PELE, 1.0, linha=PELE_LINHA, larg_linha=2.0)
+    cv.drawLine(px_ + 17, py_ - 3, px_ + 23, py_ + 2, paint(PELE_LINHA, 150, "stroke", 1.6))
+    cv.drawLine(px_ - 9, py_ - 15, px_ - 9, py_ + 15, paint(CALCA_ESC, 255, "stroke", 6))                # punho
+    # ---- a luz quente do abajur cai no travesseiro, na cabeça e no cobertor (vem da esquerda)
+    grupo = uniao(trav, cabeca, m)
+    cv.save(); cv.clipPath(grupo, skia.ClipOp.kIntersect, True)
     cv.drawCircle(ABAJUR[0], ABAJUR[1], 520, paint(LUZ, 255, shader=skia.GradientShader.MakeRadial(
         skia.Point(*ABAJUR), 520, [_c(LUZ, 90), _c(LUZ, 30), _c(LUZ, 0)], [0.0, 0.5, 1.0])))
     cv.restore()
@@ -716,46 +832,61 @@ def braco_adulto(cv, palma, ang, a=1.0, lado=1, L_ante=200.0, sobe=(130.0, -440.
 
 
 def compressa(cv, c, ang, a=1.0, halo=0.0):
-    """Compressa = PANO DOBRADO pêssego-claro (MORNA) pousado POR CIMA da panturrilha (não enrola a canela): ponta
-    dobrada mostrando o avesso mais claro, franjinha nas duas pontas e um canto caído. Sem listras, sem vapor."""
+    """Compressa = TOALHINHA BRANCA dobrada (MORNA) pousada POR CIMA da panturrilha (não enrola a canela): ponta
+    dobrada mostrando o avesso, a espessura da dobra na borda de baixo e franjinha nas duas pontas. Sem listras,
+    sem vapor. v3 (pós revisão em resolução cheia): (1) cor própria — o pano pêssego era o tom da pele e coxa, canela
+    e compressa viravam um bloco bege; (2) o pano cobre só o MEIO da canela e a metade de cima dela: o contorno de
+    baixo da panturrilha, o trecho do joelho e o do tornozelo continuam à vista (antes a canela de baixo sumia
+    inteira); (3) sem a aba pendente, que lia como panturrilha deformada; (4) o halo morno abraça o pano (brilho no
+    contorno) em vez de um disco pêssego quase opaco que lavava a perna. c = centro do pano (a ~8 px acima do eixo
+    da canela); ang = o ângulo da canela."""
     if a <= 0:
         return
     cv.save(); cv.translate(*c); cv.rotate(ang)
-    if halo > 0:
-        cv.drawOval(skia.Rect(-130, -82, 130, 84), paint("#FFDDBE", int(230 * halo * a), blur=28))
-        cv.drawOval(skia.Rect(-100, -56, 100, 58), paint("#FFE8D4", int(170 * halo * a), blur=12))
-    cv.scale(1.12, 1.12)
     corpo = skia.Path()
-    corpo.moveTo(-80, -40)
-    corpo.quadTo(0, -47, 80, -38)                        # borda de cima, levemente curva
-    corpo.quadTo(84, -6, 80, 30)                         # ponta direita
-    corpo.quadTo(30, 36, -4, 34)                         # borda de baixo
-    corpo.quadTo(-10, 58, -30, 66)                       # a aba que cai da perna (pano mole)
-    corpo.quadTo(-52, 72, -66, 58)
-    corpo.quadTo(-72, 44, -80, 32)
-    corpo.quadTo(-84, -4, -80, -40)                      # ponta esquerda
+    corpo.moveTo(-58, -28)
+    corpo.quadTo(0, -35, 58, -26)                        # borda de cima, acompanhando o alto da panturrilha
+    corpo.quadTo(61, -6, 58, 14)                         # ponta direita
+    corpo.quadTo(0, 24, -58, 16)                         # borda de baixo, cedendo um pouco sobre a perna
+    corpo.quadTo(-61, -6, -58, -28)                      # ponta esquerda
     corpo.close()
-    cv.save(); cv.translate(4, 8); cv.drawPath(corpo, paint("#000000", int(70 * a), blur=9)); cv.restore()
-    sh = skia.GradientShader.MakeLinear([skia.Point(-60, -46), skia.Point(40, 60)], [_c(COMP_CL), _c(COMP), _c(COMP_ESC)])
+    if halo > 0:                                         # morna: aro quente colado no pano (o calor grande fica na
+        cv.drawPath(corpo, paint("#FFC596", int(190 * halo * a), "stroke", 14, blur=8))     # cama: halo_compressa)
+    cv.save(); cv.translate(3, 6); cv.drawPath(corpo, paint("#3A2A20", int(80 * a), blur=7)); cv.restore()
+    k_m = 0.35 * clamp(halo)                             # o pano esquenta um tico de cor (continua claro, não vira pele)
+    tons = [_c(lerpc(c_, COMP_MORNA, k_m)) for c_ in (COMP_CL, COMP, COMP_ESC)]
+    sh = skia.GradientShader.MakeLinear([skia.Point(-40, -34), skia.Point(30, 26)], tons)
     cv.drawPath(corpo, paint(COMP, int(255 * a), shader=sh))
     cv.save(); cv.clipPath(corpo, skia.ClipOp.kIntersect, True)
-    cv.drawRect(skia.Rect(-80, 38, 0, 80), paint(COMP_ESC, int(170 * a)))       # a aba caída: o lado de baixo
-    for yy in range(-36, 34, 9):                                                # felpa do tecido (pontinhos)
-        for xx in range(-76 + (yy // 9 % 2) * 5, 80, 10):
-            cv.drawCircle(xx, yy, 1.5, paint(COMP_DOBRA, int(90 * a)))
+    for yy in range(-26, 16, 8):                                                # felpa do tecido (pontinhos)
+        for xx in range(-54 + (yy // 8 % 2) * 5, 58, 10):
+            cv.drawCircle(xx, yy, 1.3, paint(COMP_FELPA, int(100 * a)))
+    esp = skia.Path(); esp.moveTo(-60, 10); esp.quadTo(0, 18, 60, 8)            # a espessura da dobra (2 camadas)
+    cv.drawPath(esp, paint(COMP_ESC, int(255 * a), "stroke", 9))
     cv.restore()
     cv.drawPath(corpo, paint(COMP_DOBRA, int(255 * a), "stroke", 2.6))
-    cv.drawPath(suave([(-4, 34), (-14, 46), (-30, 56)], fechar=False), paint(COMP_DOBRA, int(200 * a), "stroke", 2.2))
-    # ponta dobrada (avesso mais claro) no canto de cima, à direita
-    dob = poli([(80, -38), (34, -43), (78, -2)])
-    cv.drawPath(poli([(34, -43), (78, -2), (60, -4), (30, -36)]), paint("#000000", int(45 * a), blur=4))
-    cv.drawPath(dob, paint("#FFF3E8", int(255 * a)))
-    cv.drawPath(dob, paint(COMP_DOBRA, int(255 * a), "stroke", 2.4))
+    cv.drawPath(esp, paint(COMP_DOBRA, int(150 * a), "stroke", 1.8))
+    # ponta dobrada (o avesso) no canto de cima, à direita
+    dob = poli([(58, -26), (26, -31), (56, -2)])
+    cv.drawPath(poli([(26, -31), (56, -2), (44, -4), (22, -26)]), paint("#000000", int(45 * a), blur=4))
+    cv.drawPath(dob, paint("#EDE6DA", int(255 * a)))
+    cv.drawPath(dob, paint(COMP_DOBRA, int(255 * a), "stroke", 2.2))
     # franjinha nas duas pontas
-    for y in range(-32, 30, 8):
-        cv.drawLine(-81, y, -92, y + 2, paint(COMP_DOBRA, int(230 * a), "stroke", 2.4))
-    for y in range(4, 30, 8):
-        cv.drawLine(81, y, 92, y + 2, paint(COMP_DOBRA, int(230 * a), "stroke", 2.4))
+    for y in range(-22, 14, 7):
+        cv.drawLine(-59, y, -68, y + 2, paint(COMP_DOBRA, int(230 * a), "stroke", 2.2))
+    for y in range(2, 14, 7):
+        cv.drawLine(59, y, 68, y + 2, paint(COMP_DOBRA, int(230 * a), "stroke", 2.2))
+    cv.restore()
+
+
+def halo_compressa(cv, c, ang, a, halo):
+    """O calor da compressa MORNA: brilho pêssego na cama em volta do pano, desenhado ANTES das pernas (v3: o disco
+    quase opaco por cima lavava coxa e canela num bloco bege; aqui a perna fica nítida por cima do brilho)."""
+    if a <= 0 or halo <= 0:
+        return
+    cv.save(); cv.translate(*c); cv.rotate(ang)
+    cv.drawOval(skia.Rect(-150, -96, 150, 96), paint("#FFC99E", int(190 * halo * a), blur=34))
+    cv.drawOval(skia.Rect(-100, -64, 100, 64), paint("#FFDDBF", int(170 * halo * a), blur=18))
     cv.restore()
 
 
@@ -987,7 +1118,7 @@ def perna_em_pe(cv, H, K, A, dpe, e, a):
     pinta(cv, canela, K, A, 70 * e, TONS_PELE, a, linha=PELE_LINHA, larg_linha=2.6)
     meia = tubo((A[0] - d[0] * 40 * e, A[1] - d[1] * 40 * e), A, lambda u: 26.0, e)
     pinta(cv, meia, (A[0] - d[0] * 40 * e, A[1] - d[1] * 40 * e), A, 54 * e, TONS_MEIA, a, linha="#8E9CBA")
-    tenis(cv, (A[0] + d[0] * 6 * e, A[1] + d[1] * 6 * e), dpe, e * 0.9, a)
+    tenis(cv, (A[0] + d[0] * 6 * e, A[1] + d[1] * 6 * e), dpe, E_TENIS, a)
     dk = unit(K[0] - H[0], K[1] - H[1])
     K2 = (K[0] + dk[0] * 6 * e, K[1] + dk[1] * 6 * e)
     coxa = tubo(H, K2, r_calca, e)
@@ -1009,17 +1140,51 @@ def bola(cv, x, y, r, gira, a=1.0):
     cv.drawCircle(x - r * 0.35, y - r * 0.4, r * 0.22, paint("#FFFFFF", int(120 * a), blur=4))
 
 
-# a criança correndo atrás da bola: só as pernas (o quadril fica acima da metade)
+# a criança brincando atrás da bola: só as pernas (o quadril fica acima da metade)
 M_E = 1.3
+# v4 (2ª revisão em resolução cheia): os DOIS tênis de perfil para a DIREITA (para a bola) e APOIADOS no chão.
+# Antes o tênis da perna de trás apontava para baixo-esquerda (~45°, solado para fora) enquanto o da frente
+# apontava para a direita: o pé de trás lia como TORCIDO no tornozelo; e os dois tênis paravam em y local ~715-730,
+# acima do rodapé (742-760) — pés flutuando. Agora cada pé é posto pela ponta do solado num ponto do CHÃO (piso
+# começa em y local 760): passada parada em V invertido (a perna de trás inclinada para trás, a da frente sob o
+# quadril; joelhos SEPARADOS e um tico para a frente — nunca joelhos juntos com pés afastados, que leria "pernas
+# em X"). O "pular" vira quique no lugar: o quadril sobe e desce, os joelhos dobram e esticam, e o calcanhar de
+# trás sobe um pouco (impulso, a ponta continua no chão) — nenhum pé sai do chão. O tênis de trás continua longe
+# da divisória (x local >= ~60, medido em toda a passada; a correção da v3 fica). A bola fica no chão logo à frente
+# da ponta do tênis da frente (antes ela ficava embaixo do pé, mais perto de quem vê).
+E_TENIS = M_E * 0.82                            # escala do tênis (cabe a passada inteira na metade de 512 px)
+TOE_SOLA = (110.0, 52.0)                        # ponto do solado embaixo da ponta, em coordenadas do tênis
+CHAO_TRAS, CHAO_FRENTE = 798.0, 812.0           # onde cada solado encosta no chão (o da frente, mais perto)
+PONTA_TRAS_X, PONTA_FRENTE_X = 232.0, 386.0     # x da ponta de cada tênis no chão
+
+
+def _pe_no_chao(H, ponta_x, chao_y, alfa, fwd):
+    """Joelho, tornozelo e direção do pé para um tênis cuja PONTA do solado fica em (ponta_x, chao_y); `alfa`
+    (graus) gira o tênis em volta dessa ponta (calcanhar sobe, ponta para baixo-DIREITA); `fwd` = quanto o joelho
+    sai da reta quadril-tornozelo para a FRENTE (direita). Devolve (K, A, dpe)."""
+    r = math.radians(alfa)
+    dpe = (math.cos(r), math.sin(r))
+    tx, ty = TOE_SOLA[0] * E_TENIS, TOE_SOLA[1] * E_TENIS
+    A2 = (ponta_x - (tx * dpe[0] - ty * dpe[1]), chao_y - (tx * dpe[1] + ty * dpe[0]))
+    A = (A2[0], A2[1] - 6 * M_E)
+    for _ in range(3):                           # perna_em_pe põe o tênis em A + d*6*e (d = direção da canela)
+        K = (lerp(H[0], A[0], 0.54) + fwd, lerp(H[1], A[1], 0.54))
+        d = unit(A[0] - K[0], A[1] - K[1])
+        A = (A2[0] - d[0] * 6 * M_E, A2[1] - d[1] * 6 * M_E)
+    K = (lerp(H[0], A[0], 0.54) + fwd, lerp(H[1], A[1], 0.54))
+    return K, A, dpe
 
 
 def pose_manha(ts):
     pulo = abs(math.sin(ts * 2 * math.pi * 0.9))
-    sobe = -34 * pulo
-    bal = math.sin(ts * 2 * math.pi * 0.9)
-    Hf = (262.0, -40.0 + sobe); Kf = (350.0 + 8 * bal, 340.0 + sobe); Af = (318.0 + 10 * bal, 656.0 + sobe)
-    Hb = (214.0, -40.0 + sobe); Kb = (180.0 - 6 * bal, 372.0 + sobe); Ab = (72.0 - 8 * bal, 612.0 + sobe)
-    return (Hb, Kb, Ab, unit(-0.55, 0.84)), (Hf, Kf, Af, unit(1.0, 0.1)), pulo
+    sobe = -14 * pulo                            # o quadril quica (o pé fica no chão)
+    flex = 1 - pulo                              # embaixo do quique o joelho dobra mais
+    bal = math.sin(ts * 2 * math.pi * 0.45)
+    Hf = (262.0 + 3 * bal, 34.0 + sobe)
+    Kf, Af, df = _pe_no_chao(Hf, PONTA_FRENTE_X, CHAO_FRENTE, 0.0, 10.0 + 14.0 * flex)
+    Hb = (210.0 + 3 * bal, 34.0 + sobe)
+    Kb, Ab, db = _pe_no_chao(Hb, PONTA_TRAS_X, CHAO_TRAS, 14.0 * pulo, 6.0 + 8.0 * flex)  # impulso: calcanhar sobe
+    return (Hb, Kb, Ab, db), (Hf, Kf, Af, df), pulo
 
 
 def cena_manha(cv, ts, t_sol=0.0):
@@ -1029,11 +1194,13 @@ def cena_manha(cv, ts, t_sol=0.0):
     sol_icone(cv, 420, lerp(118, 330, e_inout(t_sol)), 40, 1.0, ts * 20)
     cv.restore()
     (Hb, Kb, Ab, db), (Hf, Kf, Af, df), pulo = pose_manha(ts)
-    cv.drawOval(skia.Rect(30, 800, 420, 836), paint("#000000", int(50 * (1 - 0.4 * pulo)), blur=14))
-    bx = 392 + 16 * math.sin(ts * 1.4)
-    bola(cv, bx, 836, 54, ts * 60)
+    # sombra dos pés no chão, embaixo dos solados (v4: os pés agora pisam nela)
+    cv.drawOval(skia.Rect(48, 790, 432, 832), paint("#000000", int(58 * (1 - 0.25 * pulo)), blur=12))
     perna_em_pe(cv, Hb, Kb, Ab, db, M_E, 1.0)
     perna_em_pe(cv, Hf, Kf, Af, df, M_E, 1.0)
+    # a bola no chão logo à frente da ponta do tênis (mais perto de quem vê: desenhada depois das pernas)
+    bx = 454 + 3 * math.sin(ts * 1.4)
+    bola(cv, bx, 800, 40, ts * 60)
 
 
 def manha_canela(ts):
@@ -1088,7 +1255,7 @@ CALF_E, CALF_D = ((726.0, 880.0), 102.0), ((842.0, 900.0), 132.0)      # pousada
 JOELHO_E = ((636.0, 872.0), 98.0)                                      # a esquerda abre espaço: PARADA no joelho
 COMP_SEGURA = ((838.0, 884.0), 150.0)                                  # a direita trazendo a compressa
 LEITO_E = ((600.0, 766.0), 104.0)                                      # a mão apoiada na cama (noite do LANCE 2)
-COMP_CALF = ((780.0, 910.0), 7.0)                                      # a compressa POR CIMA da panturrilha
+COMP_CALF = ((772.0, 909.0), 7.0)          # a compressa POR CIMA da panturrilha (meio da canela, u ~0,16..0,72)
 FORA = (300.0, -560.0)                                                 # para onde as mãos saem (cima, direita)
 RISCOS_L3 = ((0.48, 1), (0.7, 1), (0.92, 1))                           # LANCE 3: só embaixo da perna que dói
 
@@ -1228,6 +1395,8 @@ def cena_noite(cv, cam, e, lance3=None):
     ursinho(cv, ux, uy, 1.0, e.get("urso_inc", 0.0))
     ts = e["ts"]
     esm = lance3.get("esmaece", 0.0) if lance3 is not None else 0.0
+    if lance3 is None and e.get("comp") is not None:      # o calor da compressa morna fica ATRÁS das pernas (v3)
+        halo_compressa(cv, e["comp"][0], e["comp"][1], e["comp"][2], e.get("halo", 0.0))
     if esm > 0:                                  # "lado": a perna sem dor fica translúcida (a pele não muda de cor)
         cv.saveLayerAlpha(None, int(255 * (1 - 0.62 * esm)))
     perna_deitada(cv, PERNA_LONGE, 1.0, escuro=0.06)
@@ -1890,6 +2059,9 @@ def setas_incha(cv, cam, a, k, pulso=0.0):
         ponta(cv, x1, y1, ang, 18 * s, CIANO, a)
 
 
+Y_ROTULO = JY0 + 790.0          # chip do padrão: no chão da metade esquerda (era JY0 + 66, colado no carimbo)
+
+
 def rotulo_padrao(cv, x, y, a):
     """Chip da metade esquerda do LANCE 3: o padrão que o LANCE 1 validou (visto verde + SE DÓI NAS DUAS PERNAS)."""
     if a <= 0:
@@ -2008,8 +2180,8 @@ def hud_lance(cv, t, T, info):
         if not info.get("split"):
             return
         cam_l = info["cam_l"]; xd = info["xd"]
-        # o padrão do LANCE 1, na metade esquerda
-        rotulo_padrao(cv, xd - 256.0, JY0 + 66, prog(t, T["chamar2"] + 0.12, T["chamar2"] + 0.32))
+        # (o chip do padrão do LANCE 1 — SE DÓI NAS DUAS PERNAS — é desenhado em quadro(), DEPOIS do carimbo e
+        # embaixo da metade esquerda: v3, ver Y_ROTULO)
         # 'Chamar de crescimento': a linha liga as DUAS pernas (esquerda) à perna que dói (direita)
         p0 = na_tela(cam_l, *ponto_canela(PERNA_LONGE, 0.5, -(r_canela(0.5) + 64)))
         p1 = na_tela(cam, *ponto_canela(PERNA_PERTO, 0.42, -(r_canela(0.42) + 6)))
@@ -2112,6 +2284,15 @@ def quadro(cv, t, T, blocos, ep):
         icone_rebobina(cv, JX1 - 76, JY1 - 74, a_hud * a_reb * (0.0 if congelado else 1.0))
         for (pd, vd, s_, cor), dur, (px, py), sub in zip(VEREDITOS, DUR_CARIMBOS, POS_CARIMBOS, SUB_CARIMBOS):
             carimbo_cor(cv, s_, px, py, -5, T[vd] - 0.02, t, dur, cor, sub=sub)
+        # LANCE 3 dividido: o chip do padrão do LANCE 1 (visto verde + SE DÓI NAS DUAS PERNAS) fica EMBAIXO da metade
+        # esquerda (no chão, sob a cama) e é desenhado DEPOIS do carimbo. v3: no alto da metade, ele ficava colado
+        # em cima do carimbo ANULADO (lido junto: "SE DÓI NAS DUAS PERNAS / ANULADO", o contrário da mensagem) e, na
+        # saída, o carimbo passava por cima de "DUAS PERNAS". Agora ~560 px separam os dois e o carimbo, se cruzar,
+        # passa por trás do texto.
+        if info.get("split"):
+            cv.save(); cv.clipRRect(jan_rr, skia.ClipOp.kIntersect, True)
+            rotulo_padrao(cv, info["xd"] - 256.0, Y_ROTULO, prog(t, T["chamar2"] + 0.12, T["chamar2"] + 0.32))
+            cv.restore()
         # rótulo grande do corte de lance (LANCE 2 e LANCE 3)
         for t0, s in ((T["e2"] - 0.05, T_LANCE[1]), (T["noite3"], T_LANCE[2])):
             k = t - t0

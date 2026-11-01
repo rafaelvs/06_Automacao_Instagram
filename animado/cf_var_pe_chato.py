@@ -42,7 +42,8 @@ O que a cena mostra (a palavra falada comanda o quadro — ANCORAS):
     de apoio; "pé": visto verde encostado nesse pé;
   * apito final e a TV desliga; "Pé": um pé de perfil num cartão; "dói": zigue-zague âmbar; "durinho": os
     dedos não dobram + cadeado; "chato": o cartão abre para os DOIS pés da MESMA criança (a mesma bermuda),
-    um com a curvinha e o outro chato, linha branca nas duas solas; "lado": sinal de DIFERENTE âmbar entre
+    DE PERFIL como no resto do vídeo (parada no meio de um passo, os dois pés para o mesmo lado), o de trás
+    com a curvinha e o da frente chato, linha branca nas duas solas; "lado": sinal de DIFERENTE âmbar entre
     as duas solas (marca a diferença, não o pé chato); "Aí": os três sinais juntos (zigue-zague | o par |
     cadeado) sobem e o apito vai ao busto, que acende em "ortopedista"; selo CHAMA O VAR; CTA.
 A CRIANÇA aparece sempre do mesmo jeito (perna curta e gordinha, bermuda amarela, barra da camiseta lilás):
@@ -323,6 +324,14 @@ def joelho(hx, hy, ax, ay, l1, l2):
     fi = math.atan2(dy, dx)
     al = math.acos(clamp((l1 * l1 + d * d - l2 * l2) / (2 * l1 * d), -1.0, 1.0))
     return hx + l1 * math.cos(fi - al), hy + l1 * math.sin(fi - al)
+
+
+def giro_canela(hip, tor, s):
+    """Quanto a canela (joelho -> tornozelo) está girada da vertical, em graus, no mesmo sentido de Pe.inc (+ =
+    horário na tela). Pé com inc = giro_canela está NEUTRO (perpendicular à canela); inc maior = pé esticado
+    (ponta para baixo), menor = dorso encostando na canela."""
+    kx, ky = joelho(hip[0], hip[1], tor[0], tor[1], L1 * LK * s, L2 * LK * s)
+    return (math.degrees(math.atan2(tor[1] - ky, tor[0] - kx)) % 360.0) - 90.0
 
 
 def tubo(x0, y0, r0, x1, y1, r1):
@@ -983,6 +992,9 @@ LONGE_DX, LONGE_DY = -16.0, -6.0  # a perna de trás fica um pouco atrás (profu
 VEL3 = 2 * PASSO_A / (APOIO * CICLO)
 RODAPE3 = 1010.0
 TAP_Y0, TAP_Y1 = 1100.0, 1250.0
+# "fortalece" (equilíbrio num pé só): pose da perna de TRÁS no ar, em graus — coxa à frente da vertical, dobra do
+# joelho e o pé relaxado (flexão plantar além do neutro, i.e. o pé segue a canela e aponta para baixo/trás)
+TRAS_COXA, TRAS_JOELHO, TRAS_PLANTAR = 26.0, 100.0, 24.0
 PRAT3 = (70.0, 430.0, 772.0, 902.0)      # x0, x1, tábua de cima, tábua do meio
 CAIXA3 = (236.0, 902.0, 168.0, 80.0)
 
@@ -1125,25 +1137,46 @@ def corpo_entrada(cv, hip, joe, s):
     short_perna(cv, hip, joe, s)
 
 
+def saida_tenis(t, T):
+    """O pé sai do tênis simples no corte para o LANCE 2: (u do tornozelo, u do quadril, quanto o pé está solto
+    (1 -> 0 ao pairar), dedos, calçado).
+    De perfil, o cabedal FECHA a frente do pé (cadarço/gáspea/biqueira): não existe caminho rígido para o pé sair
+    sem o antepé atravessar a gáspea ou o calcanhar atravessar o contraforte (revisão 19/11: em 8,50-8,54 s os
+    dedos despontavam pela parte fechada). Então o pé fica inteiro no tênis até o corte e, no quadro seguinte, já
+    saiu PELO COLARINHO (puxão rápido, joelho dobrando: o tornozelo sobe na frente do quadril), solto e um pouco
+    esticado, e termina pairando como antes — nenhum quadro mostra o pé meio dentro, meio fora."""
+    P1 = T["palmilha1"]
+    sai = e_inout(prog(t, P1 - 0.02, P1 + 0.3))          # a curva antiga (o quadril/bermuda seguem por ela)
+    if t < P1:
+        return 0.0, 0.0, 0.0, 0.0, True
+    k = e_out(prog(t, P1, P1 + 0.3))
+    return max(sai, 0.62 + 0.38 * k), max(sai, 0.38 + 0.62 * k), 1 - k, 8.0 * (1 - k), False
+
+
 def pe_entrada(e, t, T):
-    """Pose do pé (e o tênis que ele calça) na entrada, conforme o estado."""
+    """Pose do pé (e o tênis que ele calça) na entrada, conforme o estado: (pé, tênis calçado, quadril ou None)."""
     if not e["lance2"]:
         if not e["certo"]:
             y = lerp(Y_PAIRA, Y_PAIRA - 640, e["fora1"])
-            return Pe(X_PE, y, 0.0, 0.0, 0.0, ESC), None
+            return Pe(X_PE, y, 0.0, 0.0, 0.0, ESC), None, None
         yb = Y_CHAO - sola_y("simples") * ESC
-        return Pe(X_PE, yb, 0.0, 0.0, 0.0, ESC), "simples"
+        return Pe(X_PE, yb, 0.0, 0.0, 0.0, ESC), "simples", None
     # lance 2
     if e["pousa"] <= 0:
         y0 = Y_CHAO - sola_y("simples") * ESC
-        y = lerp(y0, Y_PAIRA, e["sai"])
-        return Pe(X_PE, y, 0.0, -6 * e["sai"] * (1 - e["sai"]) * 4, 0.0, ESC), ("simples" if e["sai"] < 0.8 else None)
+        ua, uh, solto, dd, calcado = saida_tenis(t, T)
+        if calcado:
+            return Pe(X_PE, y0, 0.0, 0.0, 0.0, ESC), "simples", None
+        hip = quadril_entrada(Pe(X_PE, lerp(y0, Y_PAIRA, uh), 0.0, 0.0, 0.0, ESC))
+        tor = (X_PE, lerp(y0, Y_PAIRA, ua))
+        inc = solto * (giro_canela(hip, tor, ESC) + 10.0)     # o pé solto segue a canela, um pouco esticado
+        return Pe(tor[0], tor[1], inc, dd, 0.0, ESC), None, hip
     esc = ESC * (1 + 0.16 * e["cresce"])
     calc_x = X_PE - 31 * ESC                                                   # o calcanhar fica no lugar
     ax = calc_x + 31 * esc
     y_chao = Y_CHAO - Y_SOLA * esc
     y = lerp(Y_PAIRA, y_chao, e["pousa"])
-    return Pe(ax, y, 0.0, e["mexe"], e["arco"], esc), None
+    return Pe(ax, y, 0.0, e["mexe"], e["arco"], esc), None, None
 
 
 def estado_sala(t, T):
@@ -1183,10 +1216,22 @@ def estado_sala(t, T):
         pes[apoio][3] = lerp(pes[apoio][3], 9.0 * aperta, kb)
         ks = max(0.0, t - F - 0.2)
         sway = kb * 5.0 * math.sin(ks * 7.0) * math.exp(-ks * 0.8)
-        pes[outro][0] = lerp(pes[outro][0], hx - 70 + LONGE_DX + 0.6 * sway, kb)
-        pes[outro][1] = lerp(pes[outro][1], Y_TORN3 - 138 + LONGE_DY + 3.0 * sway, kb)
-        pes[outro][2] = lerp(pes[outro][2], -20.0, kb)
-        pes[outro][3] = lerp(pes[outro][3], -8.0, kb)
+        # a perna de trás: o alvo sai da POSE (coxa e joelho em graus) e o pé GIRA COM A CANELA — o ângulo do
+        # tornozelo vai do da marcha ao pé relaxado e um pouco esticado (TRAS_PLANTAR), nunca dobrado sobre a
+        # canela (revisão 19/11: o pé ficava na horizontal, ~25-30° com a canela, escondido na panturrilha)
+        hip_l = (hx + sway + LONGE_DX, hy + LONGE_DY)
+        s3 = ESC3
+        l1, l2 = L1 * LK * s3, L2 * LK * s3
+        th = math.radians(TRAS_COXA + 1.2 * sway)
+        fi = math.radians(TRAS_JOELHO)
+        kx_, ky_ = hip_l[0] + l1 * math.sin(th), hip_l[1] + l1 * math.cos(th)
+        alvo = (kx_ + l2 * math.sin(th - fi), ky_ + l2 * math.cos(th - fi))
+        x_m, y_m = pes[outro][0], pes[outro][1]
+        rel_m = pes[outro][2] - giro_canela(hip_l, (x_m, y_m), s3)          # tornozelo na marcha
+        ax_, ay_ = lerp(x_m, alvo[0], kb), lerp(y_m, alvo[1], kb)
+        pes[outro][0], pes[outro][1] = ax_, ay_
+        pes[outro][2] = giro_canela(hip_l, (ax_, ay_), s3) + lerp(rel_m, TRAS_PLANTAR, kb)
+        pes[outro][3] = lerp(pes[outro][3], 6.0, kb)
         e["apoio"] = apoio
     else:
         e["apoio"] = 0 if pes[0][4] < APOIO else 1
@@ -1241,7 +1286,7 @@ def cam_sala(t, T, e):
 def cena_entrada(cv, t, T, cam, e):
     cv.save(); aplica(cv, cam)
     entrada(cv)
-    pe, calca = pe_entrada(e, t, T)
+    pe, calca, hip_s = pe_entrada(e, t, T)
     # o tênis simples: na prateleira (lance 1 antes da cortina), no pé (jeito certo) ou voltando (lance 2)
     sx, sy, se = SIMPLES_PRAT
     no_pe = _mat(X_PE, Y_CHAO - sola_y("simples") * ESC, 0.0, ESC)
@@ -1285,7 +1330,7 @@ def cena_entrada(cv, t, T, cam, e):
             brilho4(cv, x, y, r0 * pis * (1 - 0.5 * q), 1 - q)
     # o pé (e a perna)
     if pe.ay < Y_CHAO + 200 and (e["certo"] or e["fora1"] < 0.999):
-        hip = quadril_entrada(pe)
+        hip = hip_s if hip_s is not None else quadril_entrada(pe)
         if calca is None:
             sombra_pe(cv, pe, Y_CHAO, 1.0, pe.arco)
             joe, _ = perna(cv, hip, pe)
@@ -2043,13 +2088,69 @@ def disco_icone(cv, x, y, r, a, k, tipo):
     cv.restore()
 
 
+# o par: a MESMA criança DE PERFIL, parada no meio de um passo (o mesmo desenho do LANCE 3). Revisão 19/11 (2ª
+# rodada): o par era de FRENTE (pernas e bermuda simétricas), mas cada pé era o pé de PERFIL espelhado — os dois
+# girados ~90° para fora ("pés de pato"), lido como deformidade rotacional. Um pé desenhado DE FRENTE esconderia
+# a curvinha (ela fica na borda de DENTRO do pé, atrás do antepé) e as duas linhas da sola ficariam iguais; então
+# o cartão inteiro vira perfil: pernas, bermuda e pés no MESMO ponto de vista, os dois pés para o MESMO lado.
+PAR_FE = 1.45                              # escala da perna no cartão do par (os pés maiores que no lance 3)
+PAR_HX = -45.0                             # quadril (x no cartão); a altura sai do comprimento da perna
+PAR_TRAS, PAR_FRENTE = 160.0, 150.0        # tornozelo de trás / da frente: quanto atrás / à frente do quadril
+PAR_ARCO = (1.2, 0.0)                      # pé de trás com a curvinha, pé da frente chato
+_POSE_PAR = []
+
+
+def pontos_perna(hip, joe, pe):
+    """Pontos que TÊM de estar dentro do contorno unido da perna: meio da coxa, joelho, meio da canela,
+    tornozelo, calcanhar, antepé e dedão."""
+    hx, hy = hip; kx, ky = joe
+    return [(lerp(hx, kx, 0.5), lerp(hy, ky, 0.5)), (kx, ky), (lerp(kx, pe.ax, 0.5), lerp(ky, pe.ay, 0.5)),
+            (pe.ax, pe.ay), pe.ponto(-14, 30), pe.ponto(50, 30), _mapa(pe.m_dedos(), 12, 0)]
+
+
+def perna_conferida(hip, pe, tent=12):
+    """A união do skia PathOps (coxa + canela + pé, que dividem o círculo do joelho/tornozelo) falha em algumas
+    poses e o segmento SOME. Monta o MESMO contorno que perna() monta, confere pelos pontos de dentro e, se algum
+    cair fora, empurra o tornozelo uma fração de unidade (invisível) e tenta de novo. Devolve o Pe aprovado; se
+    nenhuma tentativa fechar, FALHA ALTO (melhor não renderizar do que publicar a criança sem um pedaço da perna)."""
+    s = pe.esc; g = GK * s
+    for i in range(tent):
+        q = Pe(pe.ax + 0.31 * i, pe.ay - 0.17 * i, pe.inc, pe.dedos, pe.arco, pe.esc)
+        kx, ky = joelho(hip[0], hip[1], q.ax, q.ay, L1 * LK * s, L2 * LK * s)
+        pe_c, _ = pe_paths(q)
+        corpo = uniao(tubo(hip[0], hip[1], R_QUAD * g, kx, ky, R_JOE * g),
+                      canela(kx, ky, q.ax, q.ay, R_JOE * g, R_TOR * g, BOJO * g), pe_c)
+        if all(corpo.contains(x, y) for (x, y) in pontos_perna(hip, (kx, ky), q)):
+            return q
+    raise RuntimeError(f"cf_var_pe_chato: união da perna do cartão do par quebrada em {tent} tentativas "
+                       f"(quadril {hip}, tornozelo {(pe.ax, pe.ay)})")
+
+
+def pose_par():
+    """(quadril da frente, quadril de trás, pé de trás, pé da frente) do cartão do par — pose FIXA, conferida uma
+    vez e guardada (o cartão só muda de escala/posição pela matriz da tela, o contorno é sempre o mesmo)."""
+    if not _POSE_PAR:
+        ych, fe = 180.0, PAR_FE
+        ay = ych - Y_SOLA * fe
+        l1, l2 = L1 * LK * fe, L2 * LK * fe
+        d = max(PAR_TRAS, PAR_FRENTE)
+        hy = ay - math.sqrt(max(1.0, (l1 + l2 - 3) ** 2 - d * d))      # joelhos quase retos, dobrando para a frente
+        hip = (PAR_HX, hy)
+        hip_l = (PAR_HX + LONGE_DX * 0.5, hy)
+        tras = perna_conferida(hip_l, Pe(PAR_HX - PAR_TRAS, ay, 0.0, 0.0, PAR_ARCO[0], fe))
+        frente = perna_conferida(hip, Pe(PAR_HX + PAR_FRENTE, ay, 0.0, 0.0, PAR_ARCO[1], fe))
+        _POSE_PAR.append((hip, hip_l, tras, frente))
+    return _POSE_PAR[0]
+
+
 def cartao_par(cv, cx, cy, esc, a, luz=0.0, dif=0.0, dif_k=0.0):
-    """Os DOIS pés da MESMA criança num cartão só (a mesma bermuda amarela, a mesma perna): o direito com a
-    curvinha, o esquerdo (espelhado) chato. O âmbar marca a DIFERENÇA entre as duas linhas da sola (sinal de
-    diferente entre elas), não circula 'o pé chato' sozinho."""
+    """Os DOIS pés da MESMA criança num cartão só, DE PERFIL como no vídeo inteiro: parada no meio de um passo,
+    a mesma bermuda amarela por cima das duas pernas, os dois pés apontando para o MESMO lado. O de trás (mais
+    longe, um tom mais escuro) tem a curvinha, o da frente é chato; linha branca nas duas solas. O âmbar marca a
+    DIFERENÇA entre as duas linhas da sola (sinal de diferente entre elas), não circula 'o pé chato' sozinho."""
     if a <= 0:
         return
-    w, h, ych, fe = 860.0, 540.0, 180.0, 1.2
+    w, h, ych, fe = 860.0, 540.0, 180.0, PAR_FE
     cv.save(); cv.translate(cx, cy); cv.scale(esc, esc)
     rr = skia.RRect.MakeRectXY(skia.Rect(-w / 2, -h / 2, w / 2, h / 2), 26, 26)
     cv.drawRRect(rr, paint("#000000", int(110 * a), blur=16))
@@ -2059,25 +2160,24 @@ def cartao_par(cv, cx, cy, esc, a, luz=0.0, dif=0.0, dif_k=0.0):
     cv.drawRect(skia.Rect(-w / 2, -h / 2, w / 2, ych), paint(PAREDE_A, shader=sh))
     cv.drawRect(skia.Rect(-w / 2, ych, w / 2, h / 2), paint(PISO))
     cv.drawLine(-w / 2, ych, w / 2, ych, paint(PISO_ESC, 200, "stroke", 3))
-    hy = ych - Y_SOLA * fe - (L1 + L2 - 4) * LK * fe
-    # o fundilho da bermuda une as duas pernas (é UMA criança)
-    cv.drawPath(rr_path(-92, hy - 120, 92, hy + 92, 40), paint(SHORT))
-    for lado, arco in ((-1, 0.0), (1, 1.2)):
-        cv.save(); cv.scale(lado, 1)
-        pe = Pe(106.0, ych - Y_SOLA * fe, 0.0, 0.0, arco, fe)
-        hip = (pe.ax - 30.0, hy)
-        sombra_pe(cv, pe, ych, 1.0, arco)
-        joe, _ = perna(cv, hip, pe)
-        short_perna(cv, hip, joe, fe)
-        if luz > 0:                               # a linha da sola, grossa e contornada (curva x reta)
+    hip, hip_l, tras, frente = pose_par()
+    sombra_pe(cv, tras, ych, 1.0, tras.arco)
+    sombra_pe(cv, frente, ych, 1.0, frente.arco)
+    kl, _ = perna(cv, hip_l, tras, longe=True, claro=0.55)      # a perna de trás (mais longe) primeiro
+    short_perna(cv, hip_l, kl, fe, longe=True)
+    kp, _ = perna(cv, hip, frente)
+    corpo_baixo(cv, hip, fe)                                      # a mesma bermuda: é UMA criança
+    short_perna(cv, hip, kp, fe)
+    if luz > 0:                                   # a linha da sola, grossa e contornada (curva x reta)
+        for pe in (tras, frente):
             pth = poli([pe.ponto(x, y + 3) for (x, y) in sola_pts(pe.arco)], fechar=False)
             for cor, al, lg in ((CARTAO, 150, 17), ("#FFFFFF", 120, 26), ("#FFFFFF", 255, 8)):
                 pt = paint(cor, int(al * luz), "stroke", lg, blur=8 if lg == 26 else 0)
                 pt.setStrokeCap(skia.Paint.kRound_Cap); cv.drawPath(pth, pt)
-        cv.restore()
     cv.restore()
     cv.drawRRect(rr, paint("#FFFFFF", int(200 * a), "stroke", 4))
-    disco_icone(cv, 0, ych - 18, 44, dif, dif_k, "dif")
+    xd = (_mapa(tras.m_dedos(), 34, 0)[0] + frente.ponto(-31, 0)[0]) / 2     # ponta do dedão de trás | calcanhar da frente
+    disco_icone(cv, xd, ych - 18, 44, dif, dif_k, "dif")         # entre as duas linhas da sola, sem encostar nos pés
     cv.restore()
 
 

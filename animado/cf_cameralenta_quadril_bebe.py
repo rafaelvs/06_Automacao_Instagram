@@ -57,8 +57,17 @@ estetoscopio, ponto_ouro, selo_lenta, miniatura/polaroide (de melhores_momentos)
 rebobinar, avancar, janelas, _media_movel, mixar_cl; do cf_quadril_bebe — _perna_path, perna_bebe, PE_Y0, HQ/HY,
 pe_fundo, _fralda/fralda, o trocador de troca_fralda (aqui CLARO), arco_pts; carimbo (orig. carimbo_ouro do
 cf_fratura_cola / cf_comum.carimbo, com tamanho e "desfazer no borrão"). Importados sem cópia:
-capa/interface/ancoras (cf_comum), comprimir/alinhar/montar_blocos (cf_fratura_cola), paleta, texto e brilhos
-(cf_alongamento).
+capa/interface/ancoras (cf_comum), comprimir/alinhar/montar_blocos (cf_fratura_cola), paleta, texto, brilhos e
+aviao (cf_alongamento).
+
+v3 (correção de desenho de 01/11; texto, voz e tempos intactos): o "0,25×" grande nasce abaixo dos pés e desliza
+até o painel sem cruzar a perna da direita (`_pop_c`); o aviãozinho da CTA passa na frente da caixa de crédito
+(`aviao_na_frente`).
+v4 (2ª rodada de 01/11; texto, voz, sons e tempos intactos): no chute as duas pernas têm o MESMO comprimento aparente
+a cada instante (`_k_igual`; antes o k corria em contrafase e uma perna ficava 15-20% mais curta, conferido em todo
+quadro por um assert no `Filme`); o borrão do 1×/◀◀/▶▶ virou pose nítida + rastro contínuo sem contorno
+(`pernas_borradas`; antes 6 poses inteiras empilhadas = vários pés no quadro pausado); o ponto dourado gruda no pé
+também com o joelho dobrado.
 A cena é PRESA ao roteiro pelas palavras-âncora (ANCORAS): roteiro sem elas = KeyError no render.
 """
 import math
@@ -69,8 +78,8 @@ import skia
 
 from . import som, voz as _voz
 from .base import FPS, codificar, previas as _previas
-from .cf_alongamento import (BG_OUT, CX, F_BLACK, H, OURO, PART, PELE, W, brilhos, clamp, e_back, e_inout, e_out,
-                             lerp, lerpc, paint, prog, texto)
+from .cf_alongamento import (BG_OUT, CX, F_BLACK, H, OURO, PART, PELE, W, aviao, brilhos, clamp, e_back, e_inout,
+                             e_out, lerp, lerpc, paint, prog, texto)
 from .cf_comum import ancoras, capa, interface
 from .cf_fratura_cola import alinhar, comprimir, montar_blocos
 
@@ -320,18 +329,34 @@ V1, VL, VR = 1.0, 0.25, 2.5       # 1×, 0,25×, avanço rápido
 MISTURA = 0.4                     # s de vídeo para misturar duas poses nos saltos de filme (sem "pulo" de pernas)
 
 
+K_CHUTE = (0.78, 0.98)            # v4: comprimento aparente no chute (joelhos dobrados .. esticadas), IGUAL nas duas
+K_CALMA = (0.85, 0.99)            # v4: idem no chute calmo
+
+
+def _k_igual(w, faixa):
+    """v4 (correção de 01/11, 2ª rodada): o comprimento aparente das DUAS pernas, o mesmo a cada instante. Antes o
+    k corria em CONTRAFASE (0,84±0,14 no chute, 0,92±0,07 no calmo): uma perna ficava 15-20% mais curta que a outra
+    e, num vídeo sobre quadril de bebê, perna 'mais curta' é sinal de alerta. Agora o joelho continua subindo e
+    descendo (o pé cresce um pouco, escorço de quem olha de cima), mas nas duas ao mesmo tempo: as duas esticam
+    juntas quando QUALQUER uma chega ao fim do chute (sin² = máximo em w = 90° e 270°, os mesmos instantes das
+    batidinhas de `chutes_som`, que não mudam) e dobram juntas quando se cruzam no meio."""
+    return faixa[0] + (faixa[1] - faixa[0]) * math.sin(w) ** 2
+
+
 def chute(tf):
-    """Chutes alternados (abre-fecha rápido): abertura e encurtamento de cada perna, defasadas meio ciclo."""
+    """Chutes alternados (abre-fecha rápido): a abertura de cada perna corre defasada meio ciclo; o comprimento
+    aparente é o MESMO nas duas (v4, `_k_igual`)."""
     w = 2 * math.pi * tf / P_CHUTE
-    return (12 + 9 * math.sin(w), 0.84 + 0.14 * math.sin(w + PHI_L),
-            12 + 9 * math.sin(w + math.pi), 0.84 + 0.14 * math.sin(w + math.pi + PHI_L))
+    k = _k_igual(w + PHI_L, K_CHUTE)
+    return (12 + 9 * math.sin(w), k, 12 + 9 * math.sin(w + math.pi), k)
 
 
 def chute_calmo(u):
-    """Chute CALMO de fundo (fecho): amplitude pequena, quase sem abrir, igual dos dois lados."""
+    """Chute CALMO de fundo (fecho): amplitude pequena, quase sem abrir, igual dos dois lados (comprimento igual
+    nas duas a cada instante, v4)."""
     w = 2 * math.pi * u / P_CALMA
-    return (REST + 2.5 + 2.5 * math.sin(w), 0.92 + 0.07 * math.sin(w),
-            REST + 2.5 + 2.5 * math.sin(w + math.pi), 0.92 + 0.07 * math.sin(w + math.pi))
+    k = _k_igual(w, K_CALMA)
+    return (REST + 2.5 + 2.5 * math.sin(w), k, REST + 2.5 + 2.5 * math.sin(w + math.pi), k)
 
 
 DESCANSO = (REST, 1.0, REST, 1.0)
@@ -408,6 +433,10 @@ class Filme:
         self.tf_s1 = tf_s1
         self.misturas = ((self.t_calma, pose(self.tf_ou)),
                          (self.t_rep, pose(CALMA + V1 * (self.t_rep - self.t_calma))))
+        # v4: um sinal só no desenho — em NENHUM quadro (nem nas amostras do rastro) uma perna fica mais curta
+        n = int(round((T["total"] + 0.2) * FPS * 4))
+        dif = max(abs(p[1] - p[3]) for p in (pose_video(i / (FPS * 4), self) for i in range(n)))
+        assert dif < 1e-9, ("pernas com comprimentos diferentes", dif)
 
     def seg(self, t):
         for x in self.segs:
@@ -715,12 +744,24 @@ def _setas(cv, x, y, a, esc, para_frente):
 
 
 HUD_X, HUD_Y = 786, 1172                                          # centro do relógio (abaixo do trocador)
-POP_C = (540, 600)                                               # onde o "0,25×" grande aparece
+POP_ESC = 2.5                                                    # tamanho do "0,25×" grande (e_back passa ~10%)
+POP_Y = 1190                                                     # v3: o "0,25×" grande nasce ABAIXO dos pés
 
 
 def _chip_hud_c(s):
     _, w, _ = chip_dim(s)
     return HUD_X + 50 + w / 2, HUD_Y
+
+
+def _pop_c(s):
+    """Onde o "0,25×" grande aparece (v3, correção de 01/11). Antes nascia no meio da cena (540, 600), sobre a fralda
+    e o alto das coxas, e descia em linha reta até o painel ATRAVESSANDO a perna da direita (coxa, canela e pé). Agora
+    nasce na faixa de baixo do monitor (fim do trocador + tampo de madeira), abaixo da ponta dos dedos e à esquerda
+    do relógio, e só desliza para a direita até a vaga ao lado do relógio: nunca passa por cima do bebê.
+    Conferido no quadro: com o tranco do e_back (x1,1) o topo do selo fica em ~1098, abaixo dos dedos (~1084 com a
+    câmera ainda em 1×; sobem quando ela abre) e dos pontos dourados; a base fica acima da legenda karaokê."""
+    _, w, _ = chip_dim(s)
+    return min(540.0, HUD_X - 34 - 14 - POP_ESC * 1.1 * w / 2), POP_Y
 
 
 def painel(cv, t, T, F, a):
@@ -741,13 +782,13 @@ def painel(cv, t, T, F, a):
     s = R_LENTA if tipo == "lenta" else R_1X
     hx, hy = _chip_hud_c(s)
     k = t - t0
-    if tipo == "lenta" and k < 0.75:                              # "0,25×" grande no meio, que voa para o painel
-        cx, cy = POP_C
+    if tipo == "lenta" and k < 0.75:                              # "0,25×" grande embaixo, que desliza para o painel
+        cx, cy = _pop_c(s)
         if k < 0.32:
-            chip_c(cv, s, cx, cy, a, esc=2.5 * e_back(clamp(k / 0.16)))
+            chip_c(cv, s, cx, cy, a, esc=POP_ESC * e_back(clamp(k / 0.16)))
         else:
             v = e_inout(prog(k, 0.32, 0.75))
-            chip_c(cv, s, lerp(cx, hx, v), lerp(cy, hy, v), a, esc=lerp(2.5, 1.0, v))
+            chip_c(cv, s, lerp(cx, hx, v), lerp(cy, hy, v), a, esc=lerp(POP_ESC, 1.0, v))
         return
     pop = 1 + 0.6 * (1 - e_out(prog(t, t0, t0 + 0.3))) if t0 > 0 and t0 != F.t_rep and t0 != F.t_calma else 1.0
     chip_c(cv, s, hx, hy, a, esc=pop)
@@ -867,7 +908,10 @@ def selo_lenta(cv, lk):
 
 # ------------------------------------------------------------------ o mundo (dentro do monitor)
 DELTA_F = {"play": 0.16, "avanca": 0.26, "volta": 0.14}          # borrão: quanto FILME cabe no "obturador"
-N_AMOSTRAS = 6
+N_AMOSTRAS = 18                   # v4: amostras do RASTRO, bem próximas (antes 6 poses inteiras empilhadas)
+RASTRO_A = 0.40                   # v4: opacidade da amostra mais nova do rastro (a mais velha vai a 0)
+RASTRO_COR = lerpc(PELE_CL, "#FFFFFF", 0.55)                    # v4: pele bem CLARA, quase branca (rastro, nunca halo avermelhado)
+RASTRO_BLUR = 3.5                 # v4: desfoque do rastro (unidades locais do bebê): sem degraus entre amostras
 CAIXA_PERNAS = skia.Rect(-60, 360, 1140, 1000)                    # (local do bebê)
 
 
@@ -900,21 +944,38 @@ def pernas(cv, ps, sombra=True):
                sombra=sombra)
 
 
-def pernas_borradas(cv, t, F):
-    """Borrão de movimento do 1× (o que o olho pega): a MÉDIA das poses dentro do obturador (cópia do piloto)."""
-    ams = amostras_borrao(t, F)
-    if len(ams) == 1:
-        pernas(cv, pose_video(t, F))
-        return
-    cv.saveLayer(CAIXA_PERNAS, None)
-    for k, tg in enumerate(reversed(ams)):                      # do mais velho ao mais novo
-        if k == 0:
-            pernas(cv, pose_video(tg, F))
-        else:
-            cv.saveLayer(CAIXA_PERNAS, _alfa(1.0 / (k + 1)))
-            pernas(cv, pose_video(tg, F))
-            cv.restore()
+def silhueta_perna(cv, hx, ang, k, dentro, pe_esc, pt):
+    """v4: só a MANCHA da perna (coxa+canela, pé e dedos cheios, mesma geometria de `perna_bebe`), sem contorno,
+    sem dobrinha, sem joelho e sem sombra: a matéria do rastro de movimento."""
+    cv.save(); cv.translate(hx, HY); cv.rotate(ang)
+    pe_top = PE_Y0 * k
+    cv.drawPath(_perna_path(k), pt)
+    cv.save(); cv.translate(0, pe_top + 40); cv.scale(pe_esc, pe_esc); cv.translate(0, -(pe_top + 40))
+    cv.drawRRect(skia.RRect.MakeRectXY(skia.Rect(-44, pe_top, 44, pe_top + 80), 40, 40), pt)
+    for i, (fx, r) in enumerate(((-29, 9), (-15, 9.5), (-1, 10), (14, 11), (30, 13))):
+        cv.drawCircle(fx * dentro, pe_top + 74 - (2 if i == 4 else 0), r, pt)
     cv.restore()
+    cv.restore()
+
+
+def pernas_borradas(cv, t, F):
+    """Borrão de movimento do 1×, do ◀◀ e do ▶▶: a pose do instante NÍTIDA por cima de um RASTRO contínuo.
+    v4 (correção de 01/11, 2ª rodada): antes eram 6 poses INTEIRAS empilhadas (contorno, dedos e sombra em cada
+    uma) e, pausado, o bebê parecia ter vários pés. Agora as amostras de dentro do obturador (18, bem próximas) viram
+    só manchas de pele bem clara, sem contorno nem dedos desenhados, cada vez mais apagadas quanto mais velhas e
+    desfocadas juntas numa camada: um rastro liso atrás do pé, que dá a sensação de 'rápido' sem duplicar o pé."""
+    ams = amostras_borrao(t, F)
+    if len(ams) > 1:
+        pl = skia.Paint(); pl.setImageFilter(skia.ImageFilters.Blur(RASTRO_BLUR, RASTRO_BLUR))
+        cv.saveLayer(CAIXA_PERNAS, pl)
+        n = len(ams) - 1
+        for i in range(n, 0, -1):                                  # do mais velho ao mais novo (sem o instante)
+            the, lae, thd, lad = pose_video(ams[i], F)
+            pt = paint(RASTRO_COR, int(255 * RASTRO_A * (1 - (i - 1) / (N_AMOSTRAS - 1))))
+            silhueta_perna(cv, HQ[0], the, lae, 1, 1 + 0.35 * (1 - lae), pt)
+            silhueta_perna(cv, HQ[1], -thd, K_CURTA * lad, -1, 1 + 0.35 * (1 - lad), pt)
+        cv.restore()
+    pernas(cv, pose_video(t, F))
 
 
 def a_marcas(t, T, F):
@@ -991,8 +1052,11 @@ def marcas_lenta(cv, t, T, F, cam):
     if a_v > 0:
         pts = [tela(cam, *q) for q in arco_pts("D", ABRE_D, ABRE_E, r_arco("D"))]
         pontilhado(cv, pts, "#FFFFFF", a_v * 0.9, larg=9, passo=24, sombra=True)
-    for lado, th in (("E", ps[0]), ("D", ps[2])):
-        ponto_ouro(cv, *tela(cam, *ponto_perna(lado, th, 1.0, r_arco(lado))), a)
+    for lado, th, kk in (("E", ps[0], ps[1]), ("D", ps[2], ps[3])):
+        # v4: o ponto GRUDA no pé também enquanto o joelho ainda está dobrado (início da lenta, k < 1): antes ficava
+        # no raio da perna esticada, solto abaixo do pé; com k = 1 (abertura, congelamento) é o mesmo r_arco de antes
+        r = r_arco(lado) - (PE_Y0 - 47 * 0.35) * (1 - kk)
+        ponto_ouro(cv, *tela(cam, *ponto_perna(lado, th, 1.0, r)), a)
     a_c = a * prog(t, F.t_fz + 0.06, F.t_fz + 0.1)
     if a_c > 0:                                                      # círculo: o arco curto + o vão que sobra
         pts = [tela(cam, *q) for q in arco_pts("D", ABRE_D - 4, ABRE_E, r_arco("D"))]
@@ -1204,6 +1268,24 @@ def recap(cv, t, T, F, passos):
     cv.restore()
 
 
+# ------------------------------------------------------------------ CTA: o aviãozinho passa POR CIMA da caixa de crédito
+CAIXA_CREDITO = skia.Rect(150, 1060, 930, 1214)                  # a caixa do cartão final de cf_comum.interface (sem nota)
+
+
+def aviao_na_frente(cv, t, T):
+    """v3 (correção de 01/11): no cf_comum.interface o aviãozinho é desenhado ANTES da caixa de crédito, então some
+    atrás dela por ~0,2 s ao subir (28,17-28,47 s). cf_comum entra no hash de vídeos já publicados e não pode mudar:
+    aqui, depois da interface, o MESMO aviao (mesma função, mesmo instante, mesma trajetória) é redesenhado só DENTRO
+    da caixa (recorte com folga de 5 px para cobrir o contorno dourado). Fora da caixa nada muda (o desenho da
+    interface fica como está); dentro dela o avião passa na frente, inteiro."""
+    t0 = T["manda"] + 0.2                                           # o mesmo t0 que cf_comum.interface usa
+    if t < t0:
+        return
+    cv.save(); cv.clipRect(CAIXA_CREDITO.makeOutset(5, 5), True)
+    aviao(cv, t, t0)
+    cv.restore()
+
+
 # ------------------------------------------------------------------ quadro
 CARIMBO_XY = (540.0, 455.0)                                      # acima das pernas (sobre a barriga/fralda)
 
@@ -1224,6 +1306,7 @@ def quadro(cv, t, T, blocos, ep, F, passos):
     capa(cv, t, T["volta"], ep["gancho"][0], ep["gancho"][1])
     selo_lenta(cv, lento_k(t, T) * (1 - prog(t, T["manda"] - 0.3, T["manda"])))
     interface(cv, t, T, blocos, DESTAQUE)
+    aviao_na_frente(cv, t, T)
 
 
 # ------------------------------------------------------------------ som (mix próprio: som.py fica intacto; cópias do piloto)
