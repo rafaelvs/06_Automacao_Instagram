@@ -1,7 +1,7 @@
 {
  "id": "cf_mito_estalar_joelho",
  "hash_episodio": "sha256:f89858b29041b53a9b6ca10d465a458620755aaf5abc14f5b6f83d15795370f8",
- "hash_motor": "sha256:a5c3d6d0bb4b24c71f8380b717d32c1ebd4613fd50d7782b3f82a7f70e3a8b54",
+ "hash_motor": "sha256:fc71d92b5e6b89abb252c810229d442689ce34f37e01b4b01bc457c47368fc43",
  "modulos": [
   "base",
   "cf_alongamento",
@@ -90,5 +90,5 @@
   "É"
  ],
  "dur": 28.23,
- "renderizado_em": "2026-10-26T20:35:15+00:00"
+ "renderizado_em": "2026-11-01T14:48:33+00:00"
 }
