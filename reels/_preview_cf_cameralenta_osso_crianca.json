@@ -1,7 +1,7 @@
 {
  "id": "cf_cameralenta_osso_crianca",
  "hash_episodio": "sha256:49464e65258a5be0319fbe88006d16e8c2da9a7b332c9c0a26bf556f5b2d2e4a",
- "hash_motor": "sha256:9ab0f94f08d19a5b3d543e63d161c32010936117e85e5a0394914b23179b1566",
+ "hash_motor": "sha256:4be6cac17d2d55b14cc386330c8b6f81db4c59a995d9ce21cc7682b02f0809f0",
  "modulos": [
   "base",
   "cf_alongamento",
@@ -95,5 +95,5 @@
   "É"
  ],
  "dur": 31.17,
- "renderizado_em": "2026-10-26T19:55:44+00:00"
+ "renderizado_em": "2026-11-01T14:48:42+00:00"
 }
