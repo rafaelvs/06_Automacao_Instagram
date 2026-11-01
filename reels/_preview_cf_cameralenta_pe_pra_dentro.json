@@ -1,7 +1,7 @@
 {
  "id": "cf_cameralenta_pe_pra_dentro",
  "hash_episodio": "sha256:4b58debd8e6c17f52425c76ddc71cab601920853bd20d5c556fc8b1a9b87cfdf",
- "hash_motor": "sha256:190e49ee3461edc5cd7ae282561fce72acacf844f1ed3d6e55f151afabcbb87f",
+ "hash_motor": "sha256:9de98e7b8e88933dc4c80b0a733699f2368016e93c64425a968fc85a21465378",
  "modulos": [
   "base",
   "cf_alongamento",
@@ -94,5 +94,5 @@
   "É"
  ],
  "dur": 31.5,
- "renderizado_em": "2026-10-31T21:34:36+00:00"
+ "renderizado_em": "2026-11-01T14:48:58+00:00"
 }
