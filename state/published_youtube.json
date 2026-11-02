@@ -89,7 +89,7 @@
     { "kind": "short", "video_id": "xG_LJX4ULPE", "at": "2026-06-23", "titulo_no_canal": "Dr. Rafael Vargas — Ortopedista | Reconstrução e Alongamento Ósseo · Ortopedia Pediátrica", "nota": "video de apresentacao do canal (episodio_apresentacao.py) — nao faz parte dos 34 da serie Recuperacao" }
   ],
 
-  "_videos_longos": "Videos LONGOS (16:9, nao Shorts). Motor proprio fora deste repo: Projeto_YouTube_Dr_Rafael_Vargas\yt_longo_ponta_pes\motor16 (importa animado/ so para leitura). Prova de origem no arquivo-irmao saida\yt_ponta_pes_longo.json (hash do texto, sha dos modulos, voz, loudness, capitulos).",
+  "_videos_longos": "Videos LONGOS (16:9, nao Shorts). Motor proprio fora deste repo: Projeto_YouTube_Dr_Rafael_Vargas/yt_longo_ponta_pes/motor16 (importa animado/ so para leitura). Prova de origem no arquivo-irmao saida/yt_ponta_pes_longo.json (hash do texto, sha dos modulos, voz, loudness, capitulos).",
 
   "videos_longos": [
     { "id": "yt_ponta_pes_longo", "kind": "long", "video_id": "FJmMktN5MFQ", "at": "2026-11-02", "dur_s": 226.7,
