@@ -1882,11 +1882,53 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "como_funciona"
+    },
+    {
+      "id": "stn_calo_osseo#0",
+      "kind": "story_nova",
+      "story": "stn_calo_osseo",
+      "parte": 0,
+      "media_id": "18035959973699555",
+      "at": "2026-11-03T15:31:35.780675+00:00",
+      "temas": [
+        "consolidacao"
+      ],
+      "sha256": "sha256:47043263ecf733b6ff10513eff903c8371613f4622893f383b124fab94d7d54e",
+      "commit": "8d0b1e199209d53357849afd6b5a7717919e58f4",
+      "container": "18491880928128523"
+    },
+    {
+      "id": "stn_calo_osseo#1",
+      "kind": "story_nova",
+      "story": "stn_calo_osseo",
+      "parte": 1,
+      "media_id": "18372751237215575",
+      "at": "2026-11-03T15:31:35.780675+00:00",
+      "temas": [
+        "consolidacao"
+      ],
+      "sha256": "sha256:58e0b1f3a13b4da1214dba2b64a82d7212451d2320e4763760339e8c8742a604",
+      "commit": "8d0b1e199209d53357849afd6b5a7717919e58f4",
+      "container": "18491880931128523"
+    },
+    {
+      "id": "stn_calo_osseo#2",
+      "kind": "story_nova",
+      "story": "stn_calo_osseo",
+      "parte": 2,
+      "media_id": "17938459947402684",
+      "at": "2026-11-03T15:31:35.780675+00:00",
+      "temas": [
+        "consolidacao"
+      ],
+      "sha256": "sha256:f490ac59291da27bae0bd0b80e9069931417e41c444648bc72a544b7f5123d0a",
+      "commit": "8d0b1e199209d53357849afd6b5a7717919e58f4",
+      "container": "18491880934128523"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-11-02",
   "last_seq_date": "2026-10-24",
-  "last_story_nova_date": "2026-10-31"
+  "last_story_nova_date": "2026-11-03"
 }
