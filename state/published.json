@@ -1924,11 +1924,20 @@
       "sha256": "sha256:f490ac59291da27bae0bd0b80e9069931417e41c444648bc72a544b7f5123d0a",
       "commit": "8d0b1e199209d53357849afd6b5a7717919e58f4",
       "container": "18491880934128523"
+    },
+    {
+      "id": "cf_mitonaprova_pinos",
+      "kind": "reel",
+      "media_id": "18141683617624082",
+      "at": "2026-11-03T19:17:42.611884+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "mito_na_prova"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-11-02",
+  "last_reel_date": "2026-11-03",
   "last_seq_date": "2026-10-24",
   "last_story_nova_date": "2026-11-03"
 }
