@@ -299,3 +299,47 @@ da aprovação (outro recorte, trecho ou fonte) nunca sai com o aval de um víde
 **Outras duas redes contra duplicar** (não exigem ação): o `publish.yml` faz checkout de `ref: main`, então o run
 enfileirado atrás de um run de story lê o estado que o anterior commitou; e a raw URL das mídias vai com o SHA desse
 checkout, então a Meta baixa os bytes que os portões conferiram, não o que estiver no main na hora da busca.
+
+## 13. Qualidade de desenho e aprendizados do motor (31/10–03/11/2026)
+
+**Inspeção de anatomia é etapa obrigatória** de toda peça nova da geração nova, antes de ir ao Rafael. Nenhum portão
+anterior via isso: o leitor às cegas olha 1 quadro a cada 1,5 s e o `--completo` só confere TEXTO. O campeão
+`cf_cameralenta_ponta_pes` (29 mil visualizações) foi publicado com a perna da frente SEM CANELA de 10,5 a 13,4 s.
+- Folha densa do mp4 FINAL: `python folha_densa.py <mp4> <pasta> 0.3` (1 quadro a cada 0,3 s, 24 por folha).
+- Inspetor visual por vídeo + verificador que abre o quadro em RESOLUÇÃO CHEIA antes de aceitar o achado.
+- **Controle positivo em toda rodada:** o campeão entra junto; se o inspetor não acha a canela faltando, a rodada
+  não vale.
+- Correção só no módulo DA PEÇA (cada cena é folha: ninguém a importa); nunca em `cf_comum`, `base`, `som`,
+  `cf_alongamento`, `cf_fratura_cola` nem no módulo de peça publicada. Depois, re-render na nuvem.
+- **Push de módulo de peça da fila trava o portão do publish** (sidecar × motor) até o re-render (~6 min): subir FORA
+  da janela do reel e conferir o portão num clone novo.
+
+**Causas já vistas** (procure por elas ao desenhar membro):
+- União de contornos com skia PathOps (coxa + canela com o MESMO círculo do joelho) falha em algumas poses e o
+  segmento SOME. Conferir a forma unida por ~45 pontos de dentro (coxa, anel do joelho, canela em 3 faixas, pé) e
+  refazer com o círculo deslocado 0,4–2,2 px; 5 pontos não bastam (`Projeto_YouTube_Dr_Rafael_Vargas/yt_longo_ponta_pes/
+  motor16/kit16.py`, `corpo_perna` e `_pts_dentro_perna`).
+- Curva de Bézier com ponto de controle ACIMA do ponto de partida: o contorno dá meia-volta e faz "farpa" (tornozelos
+  do `cf_cameralenta_joelho_estala`).
+- Eco de movimento com cópias NÍTIDAS separadas (4-6 poses inteiras) = criança com vários pés/cabeças quando pausado;
+  usar rastro contínuo (amostras próximas, sem contorno, opacidade baixa).
+- Selo, inset, placa ou etiqueta por cima de cabeça/rosto/membro durante a animação; sprite de pé de PERFIL numa
+  vista FRONTAL (lê como deformidade num vídeo de ortopedia); comprimento de perna em contrafase no chute (perna
+  "mais curta" sem querer).
+
+**Armadilhas do motor de som e de texto** (repasse do chat YouTube, 02/11/2026,
+`Projeto_YouTube_Dr_Rafael_Vargas/APRENDIZADOS_VIDEO_LONGO_2026-11.md`):
+- `comprimir()` põe 1,6 s de silêncio antes de QUALQUER palavra "manda" (respiro da CTA): `checar_episodio` reprova
+  "manda" fora da última frase.
+- `som.trilha` quebra em durações em que o último chimbal fica com 1-5 amostras (5,7 / 7,5 / 10,5 / 11,1 s…):
+  `checar_stories.trilha_quebra` reprova a duração da tela antes do render. Os reels não usam essa trilha.
+- CTA "E manda…" reprova em `legenda.cta_de_envio`: começar por "Manda".
+- `alinhar` compara a palavra crua; a voz pode devolver a palavra com pontuação grudada ("canal.").
+- O "pop" da palavra destacada no karaokê (em `cf_comum`, compartilhado) cola duas palavras por 1-2 quadros;
+  mexer nele muda o hash de TODOS os vídeos aprovados — decisão de lote, não de peça.
+
+**Leitor às cegas — o que aprendemos sobre a régua:** nota ABSOLUTA não prevê distribuição (deu ao Qual dos dois a
+mesma diversão do campeão; na vida real, 143 × 25.688). Usar leitor COMPARATIVO (a peça nova ao lado do campeão e de
+uma reprovada, ordem girada) e calibrar com peças publicadas de alcance conhecido. Leitores leem chuvisco de VHS,
+cronômetro e chips 1×/0,25× como "player travado" e o elástico verde na panturrilha como órtese — conferir se a
+leitura muda a mensagem antes de acatar.
