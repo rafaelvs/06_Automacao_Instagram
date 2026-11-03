@@ -208,6 +208,12 @@ def checar_episodio(ep):
         rot = ep.get("roteiro", [])
         if not rot or rot[-1] != ep.get("cta"):
             p.append("a última frase do roteiro tem de ser a CTA")
+        # comprimir() (cf_fratura_cola, usado por cf_comum e 26 cenas) põe 1,6 s de silêncio antes de QUALQUER palavra
+        # "manda" — é o respiro da CTA; no meio do roteiro vira pausa estranha (aprendizado do vídeo longo do YouTube,
+        # 02/11/2026). A palavra "manda" só na última frase.
+        meio = [s for s in rot[:-1] if re.search(r"(?<!\w)manda(?!\w)", s, re.I)]
+        if meio:
+            p.append(f"'manda' antes da CTA ganha 1,6 s de silêncio no comprimir(): {meio[0][:50]!r}")
         n = sum(len(s.split()) for s in rot)
         if not 50 <= n <= 95:
             p.append(f"roteiro com {n} palavras (faixa 50-95)")
@@ -447,6 +453,7 @@ def auto_teste():
         ("CTA 'Manda um direct pra agendar'", 'pedir ENVIO', dict(eps=ep_mut(lambda e: next(x for x in e if x["id"] == conv["id"]).__setitem__("cta", "Manda um direct pra agendar.")))),
         ("ícone que o pacote não desenha", 'icone', dict(eps=ep_mut(lambda e: next(x for x in e if x["id"] == conv["id"]).__setitem__("icone", "skate")))),
         ("rótulo de tela com termo vetado", 'CFM', dict(eps=ep_mut(lambda e: next(x for x in e if x["id"] == cf["id"])["tela"].append("CORRIGE A DISMETRIA")))),
+        ("'manda' no meio do roteiro (comprimir põe 1,6 s de silêncio)", 'antes da CTA', dict(eps=ep_mut(lambda e: next(x for x in e if x["id"] == cf["id"])["roteiro"].insert(1, "O médico manda olhar com calma.")))),
         ("universo vazio", 'VAZIO', dict(eps=[])),
         ("scenes diferente do episódio", '`scenes`', dict(fila=fila_mut(lambda it: it["scenes"].append({"vo": "outra coisa"})))),
         ("voz_ia ausente (legenda com a linha)", 'incompleta', dict(fila=fila_mut(lambda it: it.__setitem__("voz_ia", False)))),
