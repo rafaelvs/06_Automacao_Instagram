@@ -66,6 +66,72 @@
       "story": "stn_quanto_tempo",
       "parte": 0,
       "kind": "story_nova"
+    },
+    "17938459947402684": {
+      "id": "17938459947402684",
+      "quando": "2026-11-03T15:32",
+      "tipo": "VIDEO",
+      "views": 38,
+      "reach": 34,
+      "replies": 0,
+      "shares": 0,
+      "navigation": 36,
+      "follows": 0,
+      "profile_visits": 1,
+      "navegacao": {
+        "swipe_forward": 2,
+        "tap_exit": 9,
+        "tap_forward": 25
+      },
+      "medido_em": "2026-11-04T08:27:48+00:00",
+      "idade_h": 16.9,
+      "story": "stn_calo_osseo",
+      "parte": 2,
+      "kind": "story_nova"
+    },
+    "18372751237215575": {
+      "id": "18372751237215575",
+      "quando": "2026-11-03T15:32",
+      "tipo": "VIDEO",
+      "views": 38,
+      "reach": 37,
+      "replies": 0,
+      "shares": 0,
+      "navigation": 32,
+      "follows": 0,
+      "profile_visits": 1,
+      "navegacao": {
+        "swipe_forward": 2,
+        "tap_forward": 28,
+        "tap_exit": 2
+      },
+      "medido_em": "2026-11-04T08:27:48+00:00",
+      "idade_h": 16.9,
+      "story": "stn_calo_osseo",
+      "parte": 1,
+      "kind": "story_nova"
+    },
+    "18035959973699555": {
+      "id": "18035959973699555",
+      "quando": "2026-11-03T15:32",
+      "tipo": "VIDEO",
+      "views": 45,
+      "reach": 43,
+      "replies": 0,
+      "shares": 0,
+      "navigation": 38,
+      "follows": 0,
+      "profile_visits": 0,
+      "navegacao": {
+        "tap_forward": 26,
+        "swipe_forward": 7,
+        "tap_exit": 5
+      },
+      "medido_em": "2026-11-04T08:27:48+00:00",
+      "idade_h": 16.9,
+      "story": "stn_calo_osseo",
+      "parte": 0,
+      "kind": "story_nova"
     }
   }
 }
