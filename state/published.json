@@ -1933,11 +1933,20 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "mito_na_prova"
+    },
+    {
+      "id": "cf_eixo_perna",
+      "kind": "reel",
+      "media_id": "18504772126099999",
+      "at": "2026-11-04T21:28:36.169308+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "como_funciona"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-11-03",
+  "last_reel_date": "2026-11-04",
   "last_seq_date": "2026-10-24",
   "last_story_nova_date": "2026-11-03"
 }
