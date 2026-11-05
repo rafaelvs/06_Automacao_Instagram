@@ -1942,11 +1942,53 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "como_funciona"
+    },
+    {
+      "id": "stn_infeccao_trava#0",
+      "kind": "story_nova",
+      "story": "stn_infeccao_trava",
+      "parte": 0,
+      "media_id": "18117372965278118",
+      "at": "2026-11-05T15:31:01.103208+00:00",
+      "temas": [
+        "osteomielite"
+      ],
+      "sha256": "sha256:45fb409e2b4ef6b4e69ca4254a9f2894a868d41c7feda9a09ee963eaedcbb9bd",
+      "commit": "aec227a527afe8b42a3daba9ea4083b481eca6a6",
+      "container": "18492321280128523"
+    },
+    {
+      "id": "stn_infeccao_trava#1",
+      "kind": "story_nova",
+      "story": "stn_infeccao_trava",
+      "parte": 1,
+      "media_id": "17949613344068859",
+      "at": "2026-11-05T15:31:01.103208+00:00",
+      "temas": [
+        "osteomielite"
+      ],
+      "sha256": "sha256:1d1dcfff37ebfda5ba8464497509166193fb2b9cddd3069617d236e983e1ee46",
+      "commit": "aec227a527afe8b42a3daba9ea4083b481eca6a6",
+      "container": "18492321283128523"
+    },
+    {
+      "id": "stn_infeccao_trava#2",
+      "kind": "story_nova",
+      "story": "stn_infeccao_trava",
+      "parte": 2,
+      "media_id": "18120776270083215",
+      "at": "2026-11-05T15:31:01.103208+00:00",
+      "temas": [
+        "osteomielite"
+      ],
+      "sha256": "sha256:f430e6c3dc89e6d063d3965719ed77dd0536ffbddb77f46890f6e34f46b76ffd",
+      "commit": "aec227a527afe8b42a3daba9ea4083b481eca6a6",
+      "container": "18492321286128523"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-11-04",
   "last_seq_date": "2026-10-24",
-  "last_story_nova_date": "2026-11-03"
+  "last_story_nova_date": "2026-11-05"
 }
