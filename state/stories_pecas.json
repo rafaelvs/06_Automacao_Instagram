@@ -132,6 +132,73 @@
       "story": "stn_calo_osseo",
       "parte": 0,
       "kind": "story_nova"
+    },
+    "18120776270083215": {
+      "id": "18120776270083215",
+      "quando": "2026-11-05T15:32",
+      "tipo": "VIDEO",
+      "views": 26,
+      "reach": 23,
+      "replies": 0,
+      "shares": 0,
+      "navigation": 24,
+      "follows": 0,
+      "profile_visits": 1,
+      "navegacao": {
+        "tap_back": 2,
+        "tap_forward": 15,
+        "tap_exit": 7
+      },
+      "medido_em": "2026-11-06T08:51:26+00:00",
+      "idade_h": 17.3,
+      "story": "stn_infeccao_trava",
+      "parte": 2,
+      "kind": "story_nova"
+    },
+    "17949613344068859": {
+      "id": "17949613344068859",
+      "quando": "2026-11-05T15:32",
+      "tipo": "VIDEO",
+      "views": 28,
+      "reach": 25,
+      "replies": 0,
+      "shares": 0,
+      "navigation": 23,
+      "follows": 0,
+      "profile_visits": 0,
+      "navegacao": {
+        "swipe_forward": 1,
+        "tap_forward": 19,
+        "tap_exit": 2,
+        "tap_back": 1
+      },
+      "medido_em": "2026-11-06T08:51:26+00:00",
+      "idade_h": 17.3,
+      "story": "stn_infeccao_trava",
+      "parte": 1,
+      "kind": "story_nova"
+    },
+    "18117372965278118": {
+      "id": "18117372965278118",
+      "quando": "2026-11-05T15:32",
+      "tipo": "VIDEO",
+      "views": 29,
+      "reach": 27,
+      "replies": 0,
+      "shares": 0,
+      "navigation": 24,
+      "follows": 0,
+      "profile_visits": 0,
+      "navegacao": {
+        "swipe_forward": 2,
+        "tap_forward": 17,
+        "tap_exit": 5
+      },
+      "medido_em": "2026-11-06T08:51:26+00:00",
+      "idade_h": 17.3,
+      "story": "stn_infeccao_trava",
+      "parte": 0,
+      "kind": "story_nova"
     }
   }
 }
