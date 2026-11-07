@@ -2044,11 +2044,20 @@
       "sha256": "sha256:73e6df1f6ee98f5675a7d5ccc64b80e97c1572c550ba79aae757fcee281f1307",
       "commit": "1d46cbc91fa7ecca5271a5db55ce9b79682408cb",
       "container": "18492736180128523"
+    },
+    {
+      "id": "cf_cameralenta_joelho_estala",
+      "kind": "reel",
+      "media_id": "18117773018166385",
+      "at": "2026-11-07T19:36:45.792834+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "camera_lenta"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-11-06",
+  "last_reel_date": "2026-11-07",
   "last_seq_date": "2026-10-24",
   "last_story_nova_date": "2026-11-07"
 }
