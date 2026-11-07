@@ -2002,11 +2002,53 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "como_funciona"
+    },
+    {
+      "id": "stn_dormir_fixador#0",
+      "kind": "story_nova",
+      "story": "stn_dormir_fixador",
+      "parte": 0,
+      "media_id": "18222850654351537",
+      "at": "2026-11-07T15:30:53.324168+00:00",
+      "temas": [
+        "rotina_fixador"
+      ],
+      "sha256": "sha256:773b0cbd66ca5b34b0ba2c9ea0a92bacd4c16ed8d3b2533810a24fb51b53b44b",
+      "commit": "1d46cbc91fa7ecca5271a5db55ce9b79682408cb",
+      "container": "18492736174128523"
+    },
+    {
+      "id": "stn_dormir_fixador#1",
+      "kind": "story_nova",
+      "story": "stn_dormir_fixador",
+      "parte": 1,
+      "media_id": "17915608239519831",
+      "at": "2026-11-07T15:30:53.324168+00:00",
+      "temas": [
+        "rotina_fixador"
+      ],
+      "sha256": "sha256:719f2879ab391189fec197f60eae8e718ec22f871cfb4e39f020df88582086ed",
+      "commit": "1d46cbc91fa7ecca5271a5db55ce9b79682408cb",
+      "container": "18492736177128523"
+    },
+    {
+      "id": "stn_dormir_fixador#2",
+      "kind": "story_nova",
+      "story": "stn_dormir_fixador",
+      "parte": 2,
+      "media_id": "18128088091968910",
+      "at": "2026-11-07T15:30:53.324168+00:00",
+      "temas": [
+        "rotina_fixador"
+      ],
+      "sha256": "sha256:73e6df1f6ee98f5675a7d5ccc64b80e97c1572c550ba79aae757fcee281f1307",
+      "commit": "1d46cbc91fa7ecca5271a5db55ce9b79682408cb",
+      "container": "18492736180128523"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-11-06",
   "last_seq_date": "2026-10-24",
-  "last_story_nova_date": "2026-11-05"
+  "last_story_nova_date": "2026-11-07"
 }
