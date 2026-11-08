@@ -1,7 +1,7 @@
 {
  "id": "cf_osgood_sever",
  "hash_episodio": "sha256:03869718d2399554b24cc84a33f86c797941a8429cce53b12fd81214840eca5a",
- "hash_motor": "sha256:02e73e181d0aede5b3c429b5ee6eedefcf56354defe3fcdacde2f23497ce6186",
+ "hash_motor": "sha256:df0c76ca0eb37f5b92e9dd06610bc4c5cb09d5da1ae29d3a0331a72e27131051",
  "modulos": [
   "base",
   "cf_alongamento",
@@ -99,5 +99,5 @@
   "É"
  ],
  "dur": 33.5,
- "renderizado_em": "2026-10-19T21:55:32+00:00"
+ "renderizado_em": "2026-11-08T18:43:18+00:00"
 }
