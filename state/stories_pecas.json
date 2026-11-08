@@ -199,6 +199,74 @@
       "story": "stn_infeccao_trava",
       "parte": 0,
       "kind": "story_nova"
+    },
+    "18128088091968910": {
+      "id": "18128088091968910",
+      "quando": "2026-11-07T15:31",
+      "tipo": "VIDEO",
+      "views": 34,
+      "reach": 24,
+      "replies": 0,
+      "shares": 0,
+      "navigation": 33,
+      "follows": 0,
+      "profile_visits": 2,
+      "navegacao": {
+        "swipe_forward": 2,
+        "tap_forward": 17,
+        "tap_exit": 9,
+        "tap_back": 5
+      },
+      "medido_em": "2026-11-08T08:28:02+00:00",
+      "idade_h": 16.9,
+      "story": "stn_dormir_fixador",
+      "parte": 2,
+      "kind": "story_nova"
+    },
+    "17915608239519831": {
+      "id": "17915608239519831",
+      "quando": "2026-11-07T15:31",
+      "tipo": "VIDEO",
+      "views": 37,
+      "reach": 30,
+      "replies": 0,
+      "shares": 0,
+      "navigation": 31,
+      "follows": 0,
+      "profile_visits": 0,
+      "navegacao": {
+        "tap_exit": 1,
+        "tap_back": 1,
+        "tap_forward": 27,
+        "swipe_forward": 2
+      },
+      "medido_em": "2026-11-08T08:28:02+00:00",
+      "idade_h": 16.9,
+      "story": "stn_dormir_fixador",
+      "parte": 1,
+      "kind": "story_nova"
+    },
+    "18222850654351537": {
+      "id": "18222850654351537",
+      "quando": "2026-11-07T15:31",
+      "tipo": "VIDEO",
+      "views": 43,
+      "reach": 38,
+      "replies": 0,
+      "shares": 0,
+      "navigation": 33,
+      "follows": 0,
+      "profile_visits": 0,
+      "navegacao": {
+        "tap_exit": 6,
+        "tap_forward": 19,
+        "swipe_forward": 8
+      },
+      "medido_em": "2026-11-08T08:28:02+00:00",
+      "idade_h": 16.9,
+      "story": "stn_dormir_fixador",
+      "parte": 0,
+      "kind": "story_nova"
     }
   }
 }
