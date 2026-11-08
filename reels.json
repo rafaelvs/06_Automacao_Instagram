@@ -3646,10 +3646,10 @@
   {
     "id": "cf_retirada_fixador",
     "video": "reels/_preview_cf_retirada_fixador.mp4",
-    "caption": "No alongamento ósseo e na reconstrução com fixador externo, a retirada do aparelho é procedimento da equipe, em ambiente adequado, conforme o caso: não se faz em casa. Em geral é rápido, muitas vezes com sedação leve, e os furos dos pinos cicatrizam com o tempo, com curativo simples, do jeito que a equipe orientar. Mas o osso novo (o regenerado, o osso recém-formado) ainda é mais frágil que o osso maduro e segue ganhando resistência por meses: por isso alguns casos usam órtese ou carga controlada. Carga e atividade voltam aos poucos, no ritmo que a equipe orienta, e a fisioterapia continua; impacto e torção esperam a liberação por etapas. É a reta final, ainda não a linha de chegada: o tratamento não termina no dia em que o fixador sai.\n\nDor nova depois da retirada, ou insegurança para apoiar o peso: volte para reavaliação antes de forçar.\n\nManda pra quem acha que tirar o fixador encerra o tratamento.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "caption": "No alongamento ósseo e na reconstrução com fixador externo, a retirada do aparelho é procedimento da equipe, em ambiente adequado, conforme o caso: não se faz em casa. Em geral é rápido, muitas vezes com sedação leve, e os furos dos pinos cicatrizam com o tempo, com curativo simples, do jeito que a equipe orientar. Mas o osso novo (o regenerado, o osso recém-formado) ainda é mais frágil que o osso maduro e segue ganhando resistência por meses: por isso alguns casos usam órtese ou carga controlada. Carga e atividade voltam aos poucos, no ritmo que a equipe orienta, e a fisioterapia continua; impacto e torção esperam a liberação por etapas. É a reta final, ainda não é a linha de chegada: o tratamento não termina no dia em que o fixador sai.\n\nDor nova depois da retirada, ou insegurança para apoiar o peso: volte para reavaliação antes de forçar.\n\nManda pra quem acha que tirar o fixador encerra o tratamento.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
     "formato": "como_funciona",
     "serie": "Como funciona",
-    "dur": 30.1,
+    "dur": 30.3,
     "voz_ia": true,
     "scenes": [
       {
@@ -3668,7 +3668,7 @@
         "vo": "Carga volta aos poucos. Impacto e torção esperam a liberação."
       },
       {
-        "vo": "É a reta final, ainda não a linha de chegada."
+        "vo": "É a reta final, ainda não é a linha de chegada."
       },
       {
         "vo": "Manda pra quem acha que tirar o fixador encerra o tratamento."
@@ -4241,6 +4241,89 @@
       },
       {
         "tela": "SÓ SOM"
+      }
+    ]
+  },
+  {
+    "id": "cf_qualdosdois2_dor_crescimento",
+    "video": "reels/_preview_cf_qualdosdois2_dor_crescimento.mp4",
+    "caption": "Qual dos dois? Mesma noite, duas manhãs. Dor de crescimento existe, é comum na infância e não é frescura. O padrão que tranquiliza: dói nas duas pernas, no fim do dia ou à noite, sem inchaço e sem febre, e some pela manhã, com a criança brincando normal no dia seguinte. Se a dor é só de um lado, com inchaço, febre ou faz mancar de manhã, não trate como “crescimento”: avalie. Fogem desse padrão e merecem avaliação na ortopedia pediátrica: dor sempre no mesmo ponto; inchaço, calor ou febre junto; e dor que invade o dia, fazendo mancar, limitar o brincar ou acordar sempre. Na dúvida, avalie.\n\nCriança mancando: na ortopedia pediátrica, sempre se avalia. Com febre e manqueira juntas, procure atendimento no mesmo dia. Não há exame que “prove”. O médico reconhece pelo padrão típico e descarta o que precisa de atenção. A câmera lenta e o círculo do vídeo só ilustram o passo da criança: não é exame nem teste para fazer em casa.\n\nManda pra quem já perdeu o sono com essa dor.\n\nSociedade da área: @sbopbr\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "qual_dos_dois",
+    "serie": "Qual dos dois",
+    "dur": 32.3,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Dor na perna à noite: levo ou espero?"
+      },
+      {
+        "vo": "A manhã seguinte dá a pista."
+      },
+      {
+        "vo": "Mesma noite, duas manhãs."
+      },
+      {
+        "vo": "Qual merece avaliação? A? Ou B?"
+      },
+      {
+        "vo": "A! Olha o passo: mancou de manhã."
+      },
+      {
+        "vo": "Não espera, avalia."
+      },
+      {
+        "vo": "E o B? Sumiu de manhã, brinca normal."
+      },
+      {
+        "vo": "Nas duas pernas, à noite, sem inchaço e sem febre: padrão da dor de crescimento."
+      },
+      {
+        "vo": "Na dúvida, avalie."
+      },
+      {
+        "vo": "Mancou com febre? Procure atendimento no mesmo dia."
+      },
+      {
+        "vo": "Manda pra quem já perdeu o sono com essa dor."
+      },
+      {
+        "tela": "DOR NA PERNA À NOITE:"
+      },
+      {
+        "tela": "LEVO OU ESPERO?"
+      },
+      {
+        "tela": "QUAL DOS DOIS?"
+      },
+      {
+        "tela": "A"
+      },
+      {
+        "tela": "B"
+      },
+      {
+        "tela": "0,25×"
+      },
+      {
+        "tela": "NA DÚVIDA, AVALIE."
+      },
+      {
+        "tela": "NA DÚVIDA,"
+      },
+      {
+        "tela": "AVALIE."
+      },
+      {
+        "tela": "MANCOU COM FEBRE?"
+      },
+      {
+        "tela": "PROCURE ATENDIMENTO NO MESMO DIA."
+      },
+      {
+        "tela": "PROCURE ATENDIMENTO"
+      },
+      {
+        "tela": "NO MESMO DIA."
       }
     ]
   },
