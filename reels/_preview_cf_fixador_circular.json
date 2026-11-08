@@ -1,7 +1,7 @@
 {
  "id": "cf_fixador_circular",
  "hash_episodio": "sha256:adfdda9c7672b9e67e1fffaa0ff753500fc6710ad4274e6d850fb47b39d7c84a",
- "hash_motor": "sha256:9ff830aece389d6db4b33fb3378c047c1687915f0ac986c5f686e8051255ae6f",
+ "hash_motor": "sha256:6051b8c5c6d4173558e415950290dead20e6524e886ed90766d3a9f9b938ab8f",
  "modulos": [
   "base",
   "cf_alongamento",
@@ -108,5 +108,5 @@
   "É"
  ],
  "dur": 29.93,
- "renderizado_em": "2026-10-19T14:25:35+00:00"
+ "renderizado_em": "2026-11-08T18:43:36+00:00"
 }
