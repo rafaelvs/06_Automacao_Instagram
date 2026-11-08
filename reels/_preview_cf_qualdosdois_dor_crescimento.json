@@ -1,7 +1,7 @@
 {
  "id": "cf_qualdosdois_dor_crescimento",
  "hash_episodio": "sha256:923463880b4f070b776ce03ea58ae2f1aa2b5c863a53506b412a9bcdb9a5b890",
- "hash_motor": "sha256:b640821c5034209a951fda3281f8254d5102808934959a1ab654caf72d1a561b",
+ "hash_motor": "sha256:4bacf0491bcb7944d71a6c8cdec580deefb40cd9b4e24d220035781db86d8c09",
  "modulos": [
   "base",
   "cf_alongamento",
@@ -81,5 +81,5 @@
   "É DE CRESCIMENTO?"
  ],
  "dur": 33.43,
- "renderizado_em": "2026-10-26T19:56:38+00:00"
+ "renderizado_em": "2026-11-08T19:45:07+00:00"
 }
