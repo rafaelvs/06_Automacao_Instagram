@@ -1,7 +1,7 @@
 {
  "id": "cf_cameralenta_quadril_bebe",
  "hash_episodio": "sha256:2498a80bddcbee35fbd98ddfb3e331daae5c9edcea66cd059c4426c8ea12ed63",
- "hash_motor": "sha256:3d022cd2c565794b676e4f721a5c7343489a9812726541778fdbadb02c71c480",
+ "hash_motor": "sha256:aed98fa2d6adc23ad2fd993ec117f3e0c47363c5c22c485064a58ccce2bdca7e",
  "modulos": [
   "base",
   "cf_alongamento",
@@ -87,5 +87,5 @@
   "É"
  ],
  "dur": 31.2,
- "renderizado_em": "2026-11-01T15:55:39+00:00"
+ "renderizado_em": "2026-11-08T19:47:11+00:00"
 }
