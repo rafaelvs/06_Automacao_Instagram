@@ -1,7 +1,7 @@
 {
  "id": "cf_joelho_quadril",
  "hash_episodio": "sha256:471008fe2d85fbca3e5a28af4783acf464ef1e90802343a2ba3a28bc60d64169",
- "hash_motor": "sha256:f52360b3f0b9a2ef70923e1ef9adeefdddac376d1a028efd42d399de47b6d8b5",
+ "hash_motor": "sha256:ccfde7ed5c30196f497e9326418329d3ffc95be2785a0b91ff255dcc7cbefaf9",
  "modulos": [
   "base",
   "cf_alongamento",
@@ -93,5 +93,5 @@
   "É"
  ],
  "dur": 31.23,
- "renderizado_em": "2026-11-08T18:43:50+00:00"
+ "renderizado_em": "2026-11-08T19:44:38+00:00"
 }
