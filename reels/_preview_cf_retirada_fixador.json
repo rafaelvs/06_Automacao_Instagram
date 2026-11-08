@@ -1,6 +1,6 @@
 {
  "id": "cf_retirada_fixador",
- "hash_episodio": "sha256:75ddc85adbeceed33d6080459d6e02d726e22292442d6677a404d5c094bd17f0",
+ "hash_episodio": "sha256:791f2766b8cec34f4fc72d9df97199784b84fdd531155c7a6e316535c1de4e1b",
  "hash_motor": "sha256:102f92ae56bf611f8000ce6fae6f8bedc45b34b763f7ff8ae35b6a0566e75f54",
  "modulos": [
   "base",
@@ -104,6 +104,6 @@
   "VOLTA",
   "É"
  ],
- "dur": 30.1,
- "renderizado_em": "2026-11-08T19:45:01+00:00"
+ "dur": 30.3,
+ "renderizado_em": "2026-11-08T23:27:03+00:00"
 }
