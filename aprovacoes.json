@@ -802,15 +802,11 @@
    "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
    "data": "2026-10-24",
    "evidencia": "Chat auditoria-instagram-v1, 24/10/2026: depois dos primeiros números (cf_alongamento 2.049 contas, cf_fratura_cola 1.333; pulo nos 3 s de 32-43% contra 64-78% das lâminas) o Rafael decidiu o all-in ('a gente tem que dar all-in agora nesse novo modelo') e pediu 'já vamos adiantar aí e rodar o motor para poder fazer mais coisa'. Pauta por 3 ângulos + editor (workflow lote-5-como-funciona); todo fato com trecho LITERAL de peça PUBLICADA ou de lote APROVADO (conferência mecânica: 0 trechos sem lastro; controle positivo com 2 fontes falsas reprovou as 2); tipo de chamada sorteado (semente lote5-cta-2026-10-24). Cenas: construção + revisor adversarial + correção (cenas-lote5-como-funciona); --completo OK em todas; portão CFM limpo.",
-   "observacoes": "Revisão passiva na fila (regra de 30/08): entram depois do lote 4, no fim do bloco da geração nova; cópias para conferência em _GRANDE_REVISAO_2026-08/videos_geracao_nova_2026-10. Correção conservadora no cf_corrigir_e_alongar: saiu da legenda 'voltou ao dia a dia sem mancar' (antes e depois em texto); ficou só o custo honesto do caso. Regra de temas (24/10): na fila, nada do mesmo tema a menos de 14 dias.",
+   "observacoes": "Revisão passiva na fila (regra de 30/08): entram depois do lote 4, no fim do bloco da geração nova; cópias para conferência em _GRANDE_REVISAO_2026-08/videos_geracao_nova_2026-10. Correção conservadora no cf_corrigir_e_alongar: saiu da legenda 'voltou ao dia a dia sem mancar' (antes e depois em texto); ficou só o custo honesto do caso. Regra de temas (24/10): na fila, nada do mesmo tema a menos de 14 dias. 08/11/2026: cf_retirada_fixador saiu deste lote (texto corrigido) e foi reaprovado em QUAL-DOS-DOIS-V2-E-TEXTO-2026-11-08.",
    "episodios": [
     {
      "id": "cf_regra_milimetro",
      "hash_roteiro": "sha256:d6488715a8a3f85266be4219babcaadbad4ceece5a0a67254b053b3ae4b1b038"
-    },
-    {
-     "id": "cf_retirada_fixador",
-     "hash_roteiro": "sha256:75ddc85adbeceed33d6080459d6e02d726e22292442d6677a404d5c094bd17f0"
     },
     {
      "id": "cf_dor_alongamento",
@@ -1091,6 +1087,28 @@
       "sha256:ba5bf9086624953598b0820b59c9fd6550bc0a77a7932b9dbbefe4400e13cdad"
      ],
      "hash_gerador": "sha256:0441ba623e903b354ff025ceaef665b41482bf3ba42caf048527a09f57a20101"
+    }
+   ]
+  },
+  {
+   "lote": "QUAL-DOS-DOIS-V2-E-TEXTO-2026-11-08",
+   "nome": "Qual dos dois v2 (conceito B, 'o pai em dúvida') para dor de crescimento + correção de texto do cf_retirada_fixador",
+   "escopo": [
+    "instagram-reels"
+   ],
+   "status": "aprovado",
+   "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
+   "data": "2026-11-08",
+   "evidencia": "Chat auditoria-instagram-v1, 08/11/2026: depois de ver o piloto cf_qualdosdois2_dor_crescimento (videos_geracao_nova_2026-10/qual_dos_dois_v2_piloto) e a proposta de trocar 'Ainda não a linha de chegada' por 'Ainda não é a linha de chegada', o Rafael respondeu: 'aprovo o qual dos dois e pode trocar o texto'. Antes: 'Vai com B' (escolha da maquete). Piloto validado por leitor às cegas contra o campeão e o QDD antigo.",
+   "observacoes": "cf_qualdosdois2_dor_crescimento substitui cf_qualdosdois_dor_crescimento na fila (mesma posição). Única mudança no cf_retirada_fixador: o verbo 'é' na frase final (roteiro e legenda).",
+   "episodios": [
+    {
+     "id": "cf_qualdosdois2_dor_crescimento",
+     "hash_roteiro": "sha256:453c44a8f81a7796c4713facedca5c48f52d53316c53bffe41e37c33fe2486b9"
+    },
+    {
+     "id": "cf_retirada_fixador",
+     "hash_roteiro": "sha256:791f2766b8cec34f4fc72d9df97199784b84fdd531155c7a6e316535c1de4e1b"
     }
    ]
   }

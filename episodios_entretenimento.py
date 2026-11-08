@@ -1447,7 +1447,7 @@ EPISODIOS_ENTRETENIMENTO = [
             "O aparelho sai. Os furos dos pinos cicatrizam com o tempo.",
             "Mas o osso novo, mais frágil que o maduro, segue ganhando resistência por meses.",
             "Carga volta aos poucos. Impacto e torção esperam a liberação.",
-            "É a reta final, ainda não a linha de chegada.",
+            "É a reta final, ainda não é a linha de chegada.",
             "Manda pra quem acha que tirar o fixador encerra o tratamento.",
         ],
         "cta": "Manda pra quem acha que tirar o fixador encerra o tratamento.",
@@ -1459,7 +1459,7 @@ EPISODIOS_ENTRETENIMENTO = [
             "recém-formado) ainda é mais frágil que o osso maduro e segue ganhando resistência por meses: "
             "por isso alguns casos usam órtese ou carga controlada. Carga e atividade voltam aos poucos, no "
             "ritmo que a equipe orienta, e a fisioterapia continua; impacto e torção esperam a liberação por "
-            "etapas. É a reta final, ainda não a linha de chegada: o tratamento não termina no dia em que o "
+            "etapas. É a reta final, ainda não é a linha de chegada: o tratamento não termina no dia em que o "
             "fixador sai."
             "\n\n"
             "Dor nova depois da retirada, ou insegurança para apoiar o peso: volte para reavaliação antes de "
@@ -2052,43 +2052,44 @@ EPISODIOS_ENTRETENIMENTO = [
         ),
     },
     {
-        "id": "cf_qualdosdois_dor_crescimento",
+        "id": "cf_qualdosdois2_dor_crescimento",
         "formato": "qual_dos_dois",
         "serie": "Qual dos dois",
         "tema": "dor_crescimento",
         "familia": "pediatria",
-        "cena": "cf_qualdosdois_dor_crescimento",
-        "gancho": ["QUAL DESSAS DORES", "É DE CRESCIMENTO?"],
+        "cena": "cf_qualdosdois2_dor_crescimento",
+        "gancho": ["DOR NA PERNA À NOITE:", "LEVO OU ESPERO?"],
         "tela": [
             "QUAL DOS DOIS?",
-            "2 RODADAS",
-            "RODADA 1",
-            "RODADA 2",
-            "BÔNUS",
             "A",
             "B",
-            "2",
-            "1",
+            "0,25×",
+            "NA DÚVIDA, AVALIE.",
+            "NA DÚVIDA,",
+            "AVALIE.",
+            "MANCOU COM FEBRE?",
+            "PROCURE ATENDIMENTO NO MESMO DIA.",
+            "PROCURE ATENDIMENTO",
+            "NO MESMO DIA.",
         ],
         "roteiro": [
-            "Qual dessas dores é de crescimento? Chuta: A? Ou B?",
-            "A! Dói nas duas pernas, à noite. E de manhã? Já sumiu: brinca normal.",
-            "Agora, ao contrário: qual dos dois merece avaliação? A? Ou B?",
-            "B! Dói sempre ali: no mesmo lugar, de um lado só. Merece avaliação.",
-            "Bônus: mancou? Avalie. Com febre? Atendimento no mesmo dia.",
-            "Manda pra quem fica na dúvida toda noite!",
+            "Dor na perna à noite: levo ou espero?",
+            "A manhã seguinte dá a pista.",
+            "Mesma noite, duas manhãs.",
+            "Qual merece avaliação? A? Ou B?",
+            "A! Olha o passo: mancou de manhã.",
+            "Não espera, avalia.",
+            "E o B? Sumiu de manhã, brinca normal.",
+            "Nas duas pernas, à noite, sem inchaço e sem febre: padrão da dor de crescimento.",
+            "Na dúvida, avalie.",
+            "Mancou com febre? Procure atendimento no mesmo dia.",
+            "Manda pra quem já perdeu o sono com essa dor.",
         ],
-        "cta": "Manda pra quem fica na dúvida toda noite!",
+        "cta": "Manda pra quem já perdeu o sono com essa dor.",
         "legenda": (
-            "Qual dos dois? Dor de crescimento existe, é comum na infância e não é frescura. O padrão que "
-            "tranquiliza: dói nas duas pernas, no fim do dia ou à noite, sem inchaço e sem febre, e some "
-            "pela manhã, com a criança brincando normal no dia seguinte. Não há exame que “prove”. O médico "
-            "reconhece pelo padrão típico e descarta o que precisa de atenção. Fogem desse padrão e merecem "
-            "avaliação na ortopedia pediátrica: dor sempre no mesmo ponto, de um lado só; inchaço, calor ou "
-            "febre junto; e dor que invade o dia, fazendo mancar, limitar o brincar ou acordar sempre. "
-            "Criança mancando, na ortopedia pediátrica, sempre se avalia; com febre e manqueira juntas, "
-            "procure atendimento no mesmo dia. No vídeo, as ondinhas vermelhas em volta da perna só mostram "
-            "onde dói: é um desenho, não é vermelhidão na pele."
+            "Qual dos dois? Mesma noite, duas manhãs. Dor de crescimento existe, é comum na infância e não é frescura. O padrão que tranquiliza: dói nas duas pernas, no fim do dia ou à noite, sem inchaço e sem febre, e some pela manhã, com a criança brincando normal no dia seguinte. Se a dor é só de um lado, com inchaço, febre ou faz mancar de manhã, não trate como “crescimento”: avalie. Fogem desse padrão e merecem avaliação na ortopedia pediátrica: dor sempre no mesmo ponto; inchaço, calor ou febre junto; e dor que invade o dia, fazendo mancar, limitar o brincar ou acordar sempre. Na dúvida, avalie."
+            "\n\n"
+            "Criança mancando: na ortopedia pediátrica, sempre se avalia. Com febre e manqueira juntas, procure atendimento no mesmo dia. Não há exame que “prove”. O médico reconhece pelo padrão típico e descarta o que precisa de atenção. A câmera lenta e o círculo do vídeo só ilustram o passo da criança: não é exame nem teste para fazer em casa."
             "\n\n"
             "Dr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901"
         ),

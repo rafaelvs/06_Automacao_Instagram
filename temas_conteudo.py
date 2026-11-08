@@ -82,7 +82,7 @@ POR_ID = {
     "cf_mitonaprova_pinos": "pinos",
     "cf_var_primeiros_socorros": "socorros",
     "cf_cameralenta_joelho_estala": "joelho",
-    "cf_qualdosdois_dor_crescimento": "dor_crescimento",
+    "cf_qualdosdois2_dor_crescimento": "dor_crescimento",
     "cf_mito_mochila_coluna": "escoliose",
     "cf_var_gesso": "gesso_placa",
     "cf_qualdosdois_pino": "pinos",
