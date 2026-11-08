@@ -1,7 +1,7 @@
 {
  "id": "cf_crianca_mancando",
  "hash_episodio": "sha256:93cc42a03abf99dcc2ed38f92e1b609b4924c5b642552435269794419da4e2a9",
- "hash_motor": "sha256:4045a212ca05d9a0b73a689f1162f4a93e644e66161ea23447c16c4855b9d436",
+ "hash_motor": "sha256:f3e2021f3a066b90c4e7042208b3167fe0c2160e1f5eca7a1593bdc54265cac0",
  "modulos": [
   "base",
   "cf_alongamento",
@@ -106,5 +106,5 @@
   "É"
  ],
  "dur": 31.67,
- "renderizado_em": "2026-10-19T21:55:15+00:00"
+ "renderizado_em": "2026-11-08T18:43:27+00:00"
 }
