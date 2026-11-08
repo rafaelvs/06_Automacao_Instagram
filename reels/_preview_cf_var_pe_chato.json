@@ -1,7 +1,7 @@
 {
  "id": "cf_var_pe_chato",
  "hash_episodio": "sha256:9e8c25c1f88ccf929f72f1800bf560ee0e57d039a23f4f460626e67c0f2e71c9",
- "hash_motor": "sha256:8740edf674c7c273bbeace400b42bdcbf6f280459b6aaec9b4e099eca0c79597",
+ "hash_motor": "sha256:5c5fc36ccc3169d3259a91da64bccdd664bb3632e5e86633e4723d4761e34f5f",
  "modulos": [
   "base",
   "cf_alongamento",
@@ -88,5 +88,5 @@
   "É"
  ],
  "dur": 35.03,
- "renderizado_em": "2026-11-01T14:48:36+00:00"
+ "renderizado_em": "2026-11-08T19:46:13+00:00"
 }
