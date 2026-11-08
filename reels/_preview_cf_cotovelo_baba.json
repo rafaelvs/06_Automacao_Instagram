@@ -1,7 +1,7 @@
 {
  "id": "cf_cotovelo_baba",
  "hash_episodio": "sha256:c0c0f462f867b08fa4015dc856eb331b7d5df68f976b861f5f274c3b5fa2496a",
- "hash_motor": "sha256:9773669b03df91ea9a2eaff11e6be3b3b1aec6cc97cd9c3606168ea14b585f65",
+ "hash_motor": "sha256:fd93107a3fde954490733ad00664f279da6d0bdc48dde9474df0b9d4ebc29945",
  "modulos": [
   "base",
   "cf_alongamento",
@@ -100,5 +100,5 @@
   "É"
  ],
  "dur": 31.3,
- "renderizado_em": "2026-11-08T18:43:06+00:00"
+ "renderizado_em": "2026-11-08T19:44:26+00:00"
 }
