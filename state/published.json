@@ -2053,11 +2053,20 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "camera_lenta"
+    },
+    {
+      "id": "cf_fixador_circular",
+      "kind": "reel",
+      "media_id": "17978773383006005",
+      "at": "2026-11-08T18:38:25.462662+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "como_funciona"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-11-07",
+  "last_reel_date": "2026-11-08",
   "last_seq_date": "2026-10-24",
   "last_story_nova_date": "2026-11-07"
 }
