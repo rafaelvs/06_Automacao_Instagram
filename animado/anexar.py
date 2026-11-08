@@ -53,12 +53,15 @@ def main():
     ep = next((e for e in EPISODIOS_ENTRETENIMENTO if e["id"] == a.id), None)
     if not ep:
         raise SystemExit(f"ERRO: episódio {a.id!r} não existe.")
+    done = {e["id"] for e in json.load(open(os.path.join(ROOT, "state", "published.json"), encoding="utf-8"))["published"]}
+    if a.id in done:
+        # ANTES de entrada() (08/11/2026): o reel publicado fica congelado quanto ao motor (checar_entretenimento), então
+        # o irmão dele diverge do motor atual e entrada() abortaria com "Re-renderize" — re-render de reel no ar troca o
+        # sha256 do mp4 que as stories aprovadas fixam. Publicado não se reanexa; a mensagem certa é esta.
+        raise SystemExit(f"ERRO: {a.id} já foi publicado — não se reanexa (nem se re-renderiza: o vídeo no ar é o que vale).")
     novo = entrada(ep)
     p = os.path.join(ROOT, "reels.json")
     reels = json.load(open(p, encoding="utf-8-sig"))
-    done = {e["id"] for e in json.load(open(os.path.join(ROOT, "state", "published.json"), encoding="utf-8"))["published"]}
-    if a.id in done:
-        raise SystemExit(f"ERRO: {a.id} já foi publicado — não se reanexa.")
     reels = [r for r in reels if r["id"] != a.id]
     pend = [i for i, r in enumerate(reels) if r["id"] not in done]
     if a.depois_de:

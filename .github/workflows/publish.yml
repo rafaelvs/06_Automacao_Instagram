@@ -86,6 +86,10 @@ jobs:
         # Video amarrado ao texto aprovado (arquivo-irmao com hash do episodio e do motor), legenda
         # = a do episodio, texto desenhado na tela dentro do episodio, voz_ia coerente em TODO reel
         # pendente (rotulo da Meta + linha da legenda).
+        # FORCE_ID (08/11/2026): reel ja' publicado fica congelado quanto ao motor, MENOS o que este run republica
+        # pelo FORCE (o publish.py acha o id sem olhar `done`) — sem isto ele sairia com o video de motor velho.
+        env:
+          FORCE_ID: ${{ github.event.inputs.force_id }}
         run: python checar_entretenimento.py
       - name: Sequencia sem texto auditavel (ADVISORY)
         # O portao acima so' audita o que consegue LER. Sequencia sem o texto dos frames dentro

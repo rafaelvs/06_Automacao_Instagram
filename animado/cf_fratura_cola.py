@@ -25,6 +25,7 @@ from .cf_alongamento import (BG_OUT, CX, F_BLACK, F_REG, F_SEMI, FPS, H, HASTE, 
                              desenha_regenerado, e_back, e_in_back, e_inout, e_out, fundo, larg_texto, lerp, lerpc,
                              paint, path_osso_inf, path_osso_sup, prog, rotulo, sombra_osso, tecido_linha, texto)
 from .cf_alongamento import comprimir as _comprimir_piloto  # noqa: F401 (referência do método)
+from .cf_alongamento import PONTUACAO, _limpa  # noqa: E402 (palavra da voz sem pontuação: "Manda," == "manda")
 
 YF = 760                       # altura da fratura (diáfise)
 GAP = 46                       # vão entre as pontas depois que quebra
@@ -40,7 +41,7 @@ def comprimir(voz, palavras, max_gap=0.30, limiar=0.42, respiro_cta=1.6):
     cortes = []
     for a, b in zip(palavras, palavras[1:]):
         fim_a = a["t"] + a["d"]; gap = b["t"] - fim_a
-        alvo = respiro_cta if b["w"].lower() == "manda" else max_gap
+        alvo = respiro_cta if _limpa(b["w"]) == "manda" else max_gap
         if gap > max(limiar, alvo):
             meio = fim_a + gap / 2; tirar = gap - alvo
             cortes.append((meio - tirar / 2, meio + tirar / 2))
@@ -49,10 +50,10 @@ def comprimir(voz, palavras, max_gap=0.30, limiar=0.42, respiro_cta=1.6):
         partes.append(voz[int(ult * som.SR):int(c0 * som.SR)]); ult = c1
     partes.append(voz[int(ult * som.SR):])
     nova = _np.concatenate(partes)
-    if any(b["w"].lower() == "manda" and b["t"] - (a["t"] + a["d"]) < respiro_cta
+    if any(_limpa(b["w"]) == "manda" and b["t"] - (a["t"] + a["d"]) < respiro_cta
            for a, b in zip(palavras, palavras[1:])):
         # silêncio original menor que o respiro: insere o que falta antes da CTA
-        i = next(k for k, p in enumerate(palavras) if p["w"].lower() == "manda")
+        i = next(k for k, p in enumerate(palavras) if _limpa(p["w"]) == "manda")
         fim_a = palavras[i - 1]["t"] + palavras[i - 1]["d"]
         falta = respiro_cta - (palavras[i]["t"] - fim_a)
         def remap0(t):
@@ -78,37 +79,21 @@ def alinhar(palavras, roteiro):
     toks = re.findall(r"[\wÀ-ÿ]+(?:-[\wÀ-ÿ]+)*[.,:;!?—]*", roteiro)
     out = []; j = 0
     for p in palavras:
-        alvo = p["w"].lower()
-        while j < len(toks) and re.sub(r"[.,:;!?—]", "", toks[j]).lower() != alvo:
+        alvo = _limpa(p["w"])                    # a voz às vezes devolve "canal." com o ponto
+        while j < len(toks) and _limpa(toks[j]) != alvo:
             j += 1
         if j >= len(toks):                     # palavra da voz sem par no roteiro: dessincronizaria
             raise SystemExit(f"ERRO: palavra da voz {p['w']!r} não achada no roteiro — legenda sairia torta.")
         tok = toks[j]
-        out.append(dict(p, tok=tok, fim_frase=bool(re.search(r"[.!?:]$", tok)), virg=tok.endswith(",")))
+        # `w` sai SEM pontuação (08/11/2026): antes de aceitar "Manda," aqui, palavra pontuada abortava e nunca chegava
+        # adiante; quem compara `p["w"].lower() == "manda"` (cenas, âncoras, CTA inteira) continua valendo.
+        out.append(dict(p, w=re.sub(PONTUACAO, "", p["w"]), tok=tok, fim_frase=bool(re.search(r"[.!?:]$", tok)),
+                        virg=tok.endswith(",")))
         j += 1
     return out
 
 
-def montar_blocos(pal):
-    frases, atual = [], []
-    for p in pal:
-        atual.append(p)
-        if p["fim_frase"]:
-            frases.append(atual); atual = []
-    if atual:
-        frases.append(atual)
-    blocos = []
-    for fr in frases:
-        if len(fr) <= 6 or fr[0]["w"].lower() == "manda":
-            blocos.append(fr); continue
-        n = math.ceil(len(fr) / 5); alvo = len(fr) / n; ini = 0
-        for k in range(1, n):
-            corte = round(alvo * k)
-            virgs = [i + 1 for i in range(ini, len(fr) - 1) if fr[i]["virg"] and abs(i + 1 - corte) <= 1]
-            corte = virgs[0] if virgs else corte
-            blocos.append(fr[ini:corte]); ini = corte
-        blocos.append(fr[ini:])
-    return blocos
+from .cf_alongamento import montar_blocos, pulo_max  # noqa: E402,F401 (UMA regra de quebra, reexportada)
 
 
 def legenda(cv, blocos, t, y_base=1395, tam=80):
@@ -137,9 +122,9 @@ def legenda(cv, blocos, t, y_base=1395, tam=80):
             k = t - p["t"]; base = re.sub(r"[.,:;!?—]", "", p["tok"]).lower()
             dita = k >= -0.03; falando = p["t"] - 0.03 <= t <= p["t"] + p["d"] + 0.06
             cor, a = (OURO, 255) if falando else ((OURO if base in DESTAQUE else "#FFFFFF"), 255) if dita else ("#FFFFFF", 105)
-            esc = 1.0 + (0.06 * (1 - e_out(clamp(k / 0.16))) if dita else 0.0)
-            cv.save(); cv.translate(x, y); cv.scale(esc, esc)
-            texto(cv, p["tok"].upper(), 0, 0, F_BLACK, tam, cor, int(a * entrada), centro=False, contorno=12)
+            esc = 1.0 + (pulo_max(w) * (1 - e_out(clamp(k / 0.16))) if dita else 0.0)
+            cv.save(); cv.translate(x + w / 2, y); cv.scale(esc, esc)          # pulo pelo CENTRO (pulo_max)
+            texto(cv, p["tok"].upper(), -w / 2, 0, F_BLACK, tam, cor, int(a * entrada), centro=False, contorno=12)
             cv.restore()
             x += w + esp
         y += alt
@@ -150,7 +135,7 @@ def montar(pal):
     def em(palavra, n=1, prefixo=False):
         c = 0
         for p in pal:
-            w = p["w"].lower()
+            w = _limpa(p["w"])
             if w == palavra or (prefixo and w.startswith(palavra)):
                 c += 1
                 if c == n:

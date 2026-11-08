@@ -17,6 +17,12 @@ O que reprova (exit 1):
   4. Vídeo não amarrado ao texto: o arquivo-irmão reels/_preview_<id>.json (gravado pelo render)
      falta, foi gerado de OUTRO texto (hash do episódio) ou de outro motor (hash dos módulos de
      animado/ usados), ou registra texto desenhado na tela que não está no episódio.
+     EXCEÇÃO (08/11/2026): reel JÁ PUBLICADO (id em state/published.json) fica CONGELADO quanto ao MOTOR — o
+     vídeo no ar não muda e as stories aprovadas fixam o sha256 do mp4 publicado (checar_stories: reel_sha256),
+     então mudar animado/ não cobra re-render dele. Todas as outras checagens continuam valendo para ele.
+     MENOS o reel que este run vai publicar por FORCE_ID (publish.yml passa o env; ou --forcar <id>): o FORCE do
+     publish.py acha o id em reels.json sem olhar `done`, então republicar um reel congelado sairia com o vídeo
+     de motor velho como post NOVO. O id forçado sai de `publicados` e é cobrado como qualquer peça da fila.
   5. id repetido na fila; universo vazio (nenhum episódio) — vazio não é aprovação.
 Os 4 FORMATOS NOVOS de vídeo (regra_reels.FORMATOS_NOVOS: qual_dos_dois, mito_na_prova, camera_lenta, chama_o_var —
 Rafael, 24-26/10/2026) têm as MESMAS exigências do COMO FUNCIONA: cena com módulo, roteiro de 50-95 palavras
@@ -240,7 +246,13 @@ def _existe_disco(rel):
     return os.path.exists(os.path.join(ROOT, rel.replace("/", os.sep)))
 
 
-def checar_fila(eps, reels, ler_sidecar=_ler_sidecar_disco, existe=_existe_disco):
+def checar_fila(eps, reels, ler_sidecar=_ler_sidecar_disco, existe=_existe_disco, publicados=frozenset()):
+    """`publicados`: ids já no ar (state/published.json). Para eles NÃO se cobra o hash do motor: o vídeo
+    publicado não muda, e re-renderizar trocaria o sha256 do mp4 que as stories aprovadas fixam
+    (checar_stories reprovaria as stories do reel). O resto vale igual, porque nada daquilo depende do motor:
+    vídeo/irmão existem e são os do episódio, legenda e `scenes` = as do episódio (o portão CFM e as stories
+    leem isso), hash do EPISÓDIO (texto de episódio publicado não se edita por baixo do vídeo no ar: o remédio
+    é reverter o texto, não re-renderizar), texto desenhado registrado e dentro do episódio, voz de IA."""
     import legenda
     p = []
     por_id = {e["id"]: e for e in eps}
@@ -280,9 +292,12 @@ def checar_fila(eps, reels, ler_sidecar=_ler_sidecar_disco, existe=_existe_disco
         if sc is None:
             p.append(f"{iid}: falta {sidecar_de(ep)} — vídeo sem prova de qual texto o gerou (re-renderize)")
             continue
+        publicado = iid in publicados
         if sc.get("hash_episodio") != hash_episodio(ep):
-            p.append(f"{iid}: o vídeo foi renderizado de OUTRO texto (hash do episódio mudou) — re-renderize")
-        if sc.get("hash_motor") != hash_motor(ep):
+            p.append(f"{iid}: o vídeo foi renderizado de OUTRO texto (hash do episódio mudou) — "
+                     + ("JÁ PUBLICADO: reverta o texto do episódio (re-render trocaria o vídeo das stories aprovadas)"
+                        if publicado else "re-renderize"))
+        if not publicado and sc.get("hash_motor") != hash_motor(ep):    # publicado = congelado quanto ao motor
             p.append(f"{iid}: o motor (animado/{', '.join(modulos_do_motor(ep))}) mudou depois do render — re-renderize")
         fora = tela_fora_do_episodio(ep, sc.get("textos_tela") or [])
         if fora:
@@ -311,7 +326,8 @@ def checar_declaracao_ia(reels, publicados):
     return p
 
 
-def conferir(eps=None, reels=None, verbose=True, publicados=None, **kw):
+def conferir(eps=None, reels=None, verbose=True, publicados=None, forcar="", **kw):
+    """`forcar`: id que ESTE run publica por FORCE_ID — nunca fica congelado (ver item 4 do cabeçalho)."""
     if eps is None:
         from episodios_entretenimento import EPISODIOS_ENTRETENIMENTO as eps
     if reels is None:
@@ -324,10 +340,13 @@ def conferir(eps=None, reels=None, verbose=True, publicados=None, **kw):
         probs.append("id de episódio duplicado")
     for e in eps:
         probs += [f"{e.get('id')}: {x}" for x in checar_episodio(e)]
-    probs += checar_fila(eps, reels, **kw)
     if publicados is None:
         publicados = {e["id"] for e in json.load(open(os.path.join(ROOT, "state", "published.json"),
                                                       encoding="utf-8"))["published"]}
+    forcar = (forcar or "").strip()
+    if forcar and not forcar.startswith("story:"):          # "story:<id>" publica story, não reel: nada a descongelar
+        publicados = set(publicados) - {forcar}
+    probs += checar_fila(eps, reels, publicados=publicados, **kw)
     probs += checar_declaracao_ia(reels, publicados)
     if verbose:
         novos = [r for r in reels if r.get("formato") or r.get("id") in set(ids)]
@@ -400,10 +419,14 @@ def auto_teste():
     sidecars = {sidecar_de(e): _sidecar_valido(e) for e in [conv, cf] + novos}
     k_nv = 2                                       # posição da entrada de `nv` em `validas`
 
-    def rodar(eps=base, fila=None, side=None, existe=lambda rel: True, lam=None, publicados=frozenset()):
+    def rodar(eps=base, fila=None, side=None, existe=lambda rel: True, lam=None, publicados=frozenset(), forcar=""):
         side = sidecars if side is None else side
         return conferir(eps, (antigas if lam is None else lam) + (validas if fila is None else fila), verbose=False,
-                        ler_sidecar=lambda rel: copy.deepcopy(side.get(rel)), existe=existe, publicados=set(publicados))
+                        ler_sidecar=lambda rel: copy.deepcopy(side.get(rel)), existe=existe, publicados=set(publicados),
+                        forcar=forcar)
+
+    def side_mut_ep(fn, ep):
+        s = copy.deepcopy(sidecars); fn(s[sidecar_de(ep)]); return s
 
     ok = True
     pr = rodar()
@@ -432,6 +455,37 @@ def auto_teste():
     ok &= not no_motor
     pr = rodar(lam=antigas + [{"id": "t_lam_velha", "caption": "x"}], publicados={"t_lam_velha"})
     print(f"[{'ok' if not pr else 'FALHOU'}] negativo: reel JÁ publicado sem voz_ia não reprova ({pr[:2]})")
+    ok &= not pr
+    # reel JÁ PUBLICADO fica congelado quanto ao MOTOR (08/11/2026): mudar animado/ não cobra re-render do que está no
+    # ar (re-render trocaria o sha256 do mp4 que as stories aprovadas fixam). O par usa o MESMO irmão com hash_motor
+    # velho: NÃO publicado -> reprova pelo motor (controle positivo: a exceção não abriu o portão para a fila).
+    s_velho = side_mut_ep(lambda s: s.__setitem__("hash_motor", "sha256:motor_antigo"), cf)
+    pr = rodar(side=s_velho)
+    acertou = any(x.startswith(f"{cf['id']}:") and "o motor" in x for x in pr)
+    print(f"[{'ok' if acertou else 'FALHOU'}] positivo: NÃO publicado + motor mudou depois do render -> reprova "
+          f"({len(pr)} problema(s){'' if acertou else ' — CHECAGEM MORTA'})")
+    ok &= acertou
+    pr = rodar(side=s_velho, publicados={cf["id"]})
+    print(f"[{'ok' if not pr else 'FALHOU'}] negativo: JÁ publicado + motor mudou depois do render -> passa "
+          f"(congelado) ({pr[:2]})")
+    ok &= not pr
+    pr = rodar(side=side_mut_ep(lambda s: s.__setitem__("hash_episodio", "sha256:0"), cf), publicados={cf["id"]})
+    acertou = any(x.startswith(f"{cf['id']}:") and "OUTRO texto" in x and "JÁ PUBLICADO" in x for x in pr)
+    print(f"[{'ok' if acertou else 'FALHOU'}] positivo: JÁ publicado com texto do episódio trocado -> reprova "
+          f"(o congelamento é só do motor) ({len(pr)} problema(s){'' if acertou else ' — CHECAGEM MORTA'})")
+    ok &= acertou
+    # FORCE_ID do MESMO id publicado (republicação): o publish.py acha o reel sem olhar `done` e posta de novo — com motor
+    # velho tem de reprovar. Par: FORCE de OUTRO id não descongela este; "story:<id>" não descongela nada.
+    pr = rodar(side=s_velho, publicados={cf["id"]}, forcar=cf["id"])
+    acertou = any(x.startswith(f"{cf['id']}:") and "o motor" in x for x in pr)
+    print(f"[{'ok' if acertou else 'FALHOU'}] positivo: JÁ publicado + FORCE_ID do mesmo id + motor velho -> reprova "
+          f"({len(pr)} problema(s){'' if acertou else ' — CHECAGEM MORTA'})")
+    ok &= acertou
+    pr = rodar(side=s_velho, publicados={cf["id"]}, forcar="post01")
+    print(f"[{'ok' if not pr else 'FALHOU'}] negativo: JÁ publicado + FORCE_ID de OUTRO id -> segue congelado ({pr[:2]})")
+    ok &= not pr
+    pr = rodar(side=s_velho, publicados={cf["id"]}, forcar=f"story:{cf['id']}")
+    print(f"[{'ok' if not pr else 'FALHOU'}] negativo: JÁ publicado + FORCE_ID 'story:<id>' -> segue congelado ({pr[:2]})")
     ok &= not pr
 
     def ep_mut(fn):
@@ -506,7 +560,15 @@ def auto_teste():
 def main():
     if "--auto-teste" in sys.argv:
         return auto_teste()
-    return 1 if conferir() else 0
+    forcar = os.environ.get("FORCE_ID", "")
+    if "--forcar" in sys.argv:
+        i = sys.argv.index("--forcar")
+        if i + 1 >= len(sys.argv):
+            print("ERRO: --forcar sem id"); return 2
+        forcar = sys.argv[i + 1]
+    if forcar.strip():
+        print(f"FORCE_ID={forcar.strip()}: este id NÃO fica congelado quanto ao motor neste run")
+    return 1 if conferir(forcar=forcar) else 0
 
 
 if __name__ == "__main__":

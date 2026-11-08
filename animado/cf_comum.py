@@ -21,7 +21,8 @@ import skia
 from . import som, voz as _voz
 from .base import codificar, previas as _previas
 from .cf_alongamento import (BG_OUT, CX, F_BLACK, F_REG, F_SEMI, H, OURO, W, C, aviao, clamp, e_out,
-                             larg_texto, paint, prog, texto)
+                             larg_texto, paint, prog, pulo_max, texto)
+from .cf_alongamento import _limpa
 from .cf_fratura_cola import alinhar, comprimir, montar_blocos  # noqa: F401 (reexportados)
 
 SIG = "Dr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901"
@@ -34,7 +35,7 @@ def ancoras(pal, mapa):
     for chave, (palavra, n, prefixo) in mapa.items():
         c = 0
         for p in pal:
-            w = p["w"].lower()
+            w = _limpa(p["w"])
             if w == palavra or (prefixo and w.startswith(palavra)):
                 c += 1
                 if c == n:
@@ -74,9 +75,9 @@ def legenda(cv, blocos, t, destaque, y_base=1395, tam=80):
             k = t - p["t"]; base = re.sub(r"[.,:;!?—]", "", p["tok"]).lower()
             dita = k >= -0.03; falando = p["t"] - 0.03 <= t <= p["t"] + p["d"] + 0.06
             cor, a = (OURO, 255) if falando else ((OURO if base in destaque else "#FFFFFF"), 255) if dita else ("#FFFFFF", 105)
-            esc = 1.0 + (0.06 * (1 - e_out(clamp(k / 0.16))) if dita else 0.0)
-            cv.save(); cv.translate(x, y); cv.scale(esc, esc)
-            texto(cv, p["tok"].upper(), 0, 0, F_BLACK, tam, cor, int(a * entrada), centro=False, contorno=12)
+            esc = 1.0 + (pulo_max(w) * (1 - e_out(clamp(k / 0.16))) if dita else 0.0)
+            cv.save(); cv.translate(x + w / 2, y); cv.scale(esc, esc)          # pulo pelo CENTRO (pulo_max)
+            texto(cv, p["tok"].upper(), -w / 2, 0, F_BLACK, tam, cor, int(a * entrada), centro=False, contorno=12)
             cv.restore()
             x += w + esp
         y += alt

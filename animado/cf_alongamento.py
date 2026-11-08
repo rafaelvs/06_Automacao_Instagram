@@ -52,12 +52,20 @@ def lerpc(c1, c2, x):
     return "#" + "".join(f"{int(lerp(a[i], b[i], x)):02X}" for i in range(3))
 
 # ------------------------------------------------------------------ voz: tira o ar morto entre frases
+PONTUACAO = r"[.,:;!?—]"
+
+
+def _limpa(w):
+    """Palavra da voz sem pontuação, minúscula: a voz às vezes devolve "Manda," / "canal." com o sinal."""
+    return re.sub(PONTUACAO, "", w).lower()
+
+
 def comprimir(voz, palavras, max_gap=0.30, limiar=0.42):
     """Encurta silêncios > `limiar` s para `max_gap` s e remapeia o tempo de cada palavra."""
     cortes = []                                   # (inicio_s, fim_s) a remover
     for a, b in zip(palavras, palavras[1:]):
         fim_a = a["t"] + a["d"]; gap = b["t"] - fim_a
-        alvo = 0.85 if b["w"].lower() == "manda" else max_gap   # respiro: deixa ver o aparelho sair
+        alvo = 0.85 if _limpa(b["w"]) == "manda" else max_gap   # respiro: deixa ver o aparelho sair
         if gap > max(limiar, alvo):
             meio = fim_a + gap / 2; tirar = gap - alvo
             cortes.append((meio - tirar / 2, meio + tirar / 2))
@@ -77,13 +85,16 @@ def alinhar(palavras, roteiro):
     toks = re.findall(r"[\wÀ-ÿ]+[.,:;!?—]*", roteiro)
     out = []; j = 0
     for p in palavras:
-        alvo = p["w"].lower()
-        while j < len(toks) and re.sub(r"[.,:;!?—]", "", toks[j]).lower() != alvo:
+        alvo = _limpa(p["w"])                    # a voz às vezes devolve "canal." com o ponto
+        while j < len(toks) and _limpa(toks[j]) != alvo:
             j += 1
         if j >= len(toks):                     # palavra da voz sem par no roteiro: dessincronizaria
             raise SystemExit(f"ERRO: palavra da voz {p['w']!r} não achada no roteiro — legenda sairia torta.")
         tok = toks[j]
-        out.append(dict(p, tok=tok, fim_frase=bool(re.search(r"[.!?:]$", tok)), virg=tok.endswith(",")))
+        # `w` sai SEM pontuação (08/11/2026): antes de aceitar "Manda," aqui, palavra pontuada abortava e nunca chegava
+        # adiante; quem compara `p["w"].lower() == "manda"` (cenas, âncoras, CTA inteira) continua valendo.
+        out.append(dict(p, w=re.sub(PONTUACAO, "", p["w"]), tok=tok, fim_frase=bool(re.search(r"[.!?:]$", tok)),
+                        virg=tok.endswith(",")))
         j += 1
     return out
 
@@ -359,9 +370,38 @@ def fundo(cv, t):
 DESTAQUE = {"cortar", "propósito", "fixador", "milímetro", "dia", "novo", "devagar", "endurece",
             "sai", "possível", "mais", "curta", "pele", "nervo", "vaso", "acordar"}
 
+PULO_FRAC, PULO_PX = 0.06, 5.0
+
+
+def pulo_max(w):
+    """Quanto a palavra que está sendo dita cresce no "pulo" do karaokê: 6 %, mas no máximo PULO_PX de cada
+    lado. Ancorado na borda esquerda (como era) o crescimento ia todo para a direita e, numa palavra
+    comprida, comia o vão até a vizinha por 2-3 quadros ("PORDIA", "APARELHOSAI", "COSTUMASER"). Pelo
+    centro e com teto em pixels, o vão entre palavras nunca perde mais que PULO_PX de cada lado."""
+    return min(PULO_FRAC, 2 * PULO_PX / max(w, 1.0))
+
+
+# Palavras que NÃO podem fechar um bloco: lido sozinho, "REPARTE O" / "PERDEU DEZESSETE CENTÍMETROS DO"
+# parece erro de português (auditoria IG 08/11: 35 de 922 blocos da fila terminavam assim).
+LIGACAO = {"o", "a", "os", "as", "um", "uma", "uns", "umas", "de", "do", "da", "dos", "das", "em", "no", "na",
+           "nos", "nas", "num", "numa", "ao", "aos", "à", "às", "por", "pelo", "pela", "pelos", "pelas", "para",
+           "pra", "com", "sem", "e", "ou", "nem", "mas", "que", "se", "é", "sua", "seu", "lá", "ele", "até", "já",
+           "não", "pode", "podem", "vai", "vão", "deve", "devem", "costuma", "costumam", "precisa", "precisam"}
+CONJ_APOSTO = {"e", "ou", "mas"}      # "X e, quando indicado, Y verbo": a vírgula que fecha o aposto não é corte
+
+
+def _base_tok(p):
+    return _limpa(p["tok"])
+
+
 def montar_blocos(pal):
-    """Blocos = frases; frase longa quebra em pedaços equilibrados de até 5 palavras,
-    preferindo a vírgula. Evita palavra órfã ("NOVO." sozinho na tela)."""
+    """Blocos = frases; frase de até 6 palavras fica inteira (a CTA "Manda..." sempre inteira). Frase longa é
+    partida no MESMO número de pedaços de antes (ceil(n/5)), mas nos MELHORES pontos: equilibrado, de preferência depois
+    da vírgula ou antes de "e/mas/ou", NUNCA depois de palavra de ligação, sem palavra órfã e sem cortar
+    dentro (ou no fim) de um aposto aberto por "e," -- que separava o sujeito composto do verbo ("QUANDO
+    INDICADO," / "A RADIOGRAFIA AJUDAM A ESCLARECER."). Só conta palavras (não mede fonte): os blocos
+    são os mesmos no Windows (Segoe) e no runner (Roboto)."""
+    from itertools import combinations
     frases, atual = [], []
     for p in pal:
         atual.append(p)
@@ -369,18 +409,48 @@ def montar_blocos(pal):
             frases.append(atual); atual = []
     if atual:
         frases.append(atual)
+
+    def no_aposto(fr):
+        """Índices das palavras dentro de um aposto aberto por 'e,'/'ou,'/'mas,' (inclui a que o fecha)."""
+        dentro, aberto = set(), False
+        for i, p in enumerate(fr):
+            if aberto:
+                dentro.add(i)
+                if p.get("virg"):
+                    aberto = False
+            elif p.get("virg") and _base_tok(p) in CONJ_APOSTO:
+                aberto = True
+        return dentro
+
+    def dividir(fr):
+        if len(fr) <= 6 or _base_tok(fr[0]) == "manda":     # pelo token LIMPO: a voz pode devolver "Manda,"
+            return [fr]
+        n = math.ceil(len(fr) / 5); alvo = len(fr) / n      # MESMO número de pedaços de antes
+        aposto = no_aposto(fr); melhor = None
+        for cortes in combinations(range(1, len(fr)), n - 1):
+            lims = (0,) + cortes + (len(fr),)
+            tams = [lims[k + 1] - lims[k] for k in range(n)]
+            sc = sum(abs(x - alvo) for x in tams) - 0.01 * tams[0]   # equilíbrio; empate: 1º pedaço maior
+            sc += sum(100 for x in tams if x > 6) + sum(4 for x in tams if x == 1)
+            for i in cortes:                                  # corte ENTRE fr[i-1] e fr[i]
+                if _base_tok(fr[i - 1]) in LIGACAO:
+                    sc += 100
+                if (i - 1) in aposto:
+                    sc += 6
+                elif fr[i - 1].get("virg"):
+                    sc -= 2.5
+                if _base_tok(fr[i]) in CONJ_APOSTO:
+                    sc -= 1.5
+            if melhor is None or sc < melhor[0]:
+                melhor = (sc, lims)
+        lims = melhor[1]
+        return [fr[lims[k]:lims[k + 1]] for k in range(n)]
+
     blocos = []
     for fr in frases:
-        if len(fr) <= 6 or fr[0]["w"].lower() == "manda":     # a CTA fica inteira, num bloco só
-            blocos.append(fr); continue
-        n = math.ceil(len(fr) / 5); alvo = len(fr) / n; ini = 0
-        for k in range(1, n):
-            corte = round(alvo * k)
-            virgs = [i + 1 for i in range(ini, len(fr) - 1) if fr[i]["virg"] and abs(i + 1 - corte) <= 1]
-            corte = virgs[0] if virgs else corte
-            blocos.append(fr[ini:corte]); ini = corte
-        blocos.append(fr[ini:])
+        blocos += dividir(fr)
     return blocos
+
 
 def legenda(cv, blocos, t, y_base=1395, tam=80, cta=False):
     """Estilo karaokê: o bloco inteiro aparece (as palavras ainda não ditas em branco
@@ -419,13 +489,13 @@ def legenda(cv, blocos, t, y_base=1395, tam=80, cta=False):
                 cor, a = (OURO if base in DESTAQUE else "#FFFFFF"), 255
             else:
                 cor, a = "#FFFFFF", 105
-            esc = 1.0 + (0.10 * (1 - e_out(clamp(k / 0.16))) if dita else 0.0)
+            esc = 1.0 + (pulo_max(w) * (1 - e_out(clamp(k / 0.16))) if dita else 0.0)
             s = p["tok"].upper()
             track = 0.0
             if base == "devagar" and dita:                    # piada tipográfica: a palavra "demora"
                 track = 9 * e_out(clamp(k / 1.2))
-            cv.save(); cv.translate(x, y); cv.scale(esc, esc)  # escala ancorada na ESQUERDA: não invade o vizinho
-            texto(cv, s, 0, 0, fonte, tam, cor, int(a * entrada), centro=False, contorno=12, track=track)
+            cv.save(); cv.translate(x + w / 2, y); cv.scale(esc, esc)   # pulo pelo CENTRO, teto em px
+            texto(cv, s, -w / 2, 0, fonte, tam, cor, int(a * entrada), centro=False, contorno=12, track=track)
             cv.restore()
             x += w + esp + track * (len(s) - 1)
         y += alt_lin
@@ -435,8 +505,8 @@ def montar(pal):
     def em(palavra, n=1, bigrama=None):
         c = 0
         for i, p in enumerate(pal):
-            if p["w"].lower() == palavra:
-                if bigrama and (i + 1 >= len(pal) or pal[i + 1]["w"].lower() != bigrama):
+            if _limpa(p["w"]) == palavra:
+                if bigrama and (i + 1 >= len(pal) or _limpa(pal[i + 1]["w"]) != bigrama):
                     continue
                 c += 1
                 if c == n:
@@ -668,3 +738,46 @@ def render(ep, mp4, tmp, previa=False):
     som.gravar_wav(wav, som.mixar(voz_c, T["total"], ev, ganho_trilha=0.40))
     codificar(quadro_t, T["total"], wav, mp4)
     return mp4, T["total"]
+
+
+# ------------------------------------------------------------------ auto-teste (sem voz: palavras sintéticas)
+def _auto_teste():
+    """`python -m animado.cf_alongamento --auto-teste`: a CTA "Manda..." sai num bloco só mesmo quando a voz devolve a
+    palavra com pontuação ("Manda," / "Manda."), passando ou não por alinhar(); o controle positivo prova que a frase
+    longa comum (15 palavras) ainda é partida em ceil(15/5) = 3 e que uma frase longa que NÃO começa por "Manda" também."""
+    rot = ("O osso pode crescer de novo, devagar, um milímetro por dia, e o corpo acompanha.\n"
+           "Manda, para quem precisa saber disso hoje mesmo, agora.")
+    toks = re.findall(r"[\wÀ-ÿ]+[.,:;!?—]*", rot)
+    ok = True
+
+    def checa(nome, pal, n_cta):
+        nonlocal ok
+        bl = montar_blocos(pal)
+        cta = [b for b in bl if _base_tok(b[0]) == "manda"]
+        inteira = n_cta == 0 or (len(cta) == 1 and len(cta[0]) == n_cta)
+        partida = len(bl) - len(cta) == 3 if n_cta else len(bl) == 3 + 2
+        print(f"[{'ok' if inteira and partida else 'FALHOU'}] {nome}: blocos {[len(b) for b in bl]} "
+              f"(w da CTA={pal[15]['w']!r})")
+        ok &= inteira and partida
+
+    limpa = [{"w": re.sub(PONTUACAO, "", t), "t": i * 0.3, "d": 0.25} for i, t in enumerate(toks)]
+    crua = [{"w": t, "t": i * 0.3, "d": 0.25} for i, t in enumerate(toks)]           # "Manda," como a voz devolve
+    checa("voz sem pontuação, via alinhar -> CTA inteira", alinhar(limpa, rot), 9)
+    checa("voz com pontuação, via alinhar -> CTA inteira", alinhar(crua, rot), 9)
+    direto = [dict(p, tok=t, fim_frase=bool(re.search(r"[.!?:]$", t)), virg=t.endswith(","))
+              for p, t in zip(crua, toks)]                              # dividir() sem alinhar: w="Manda," cru
+    checa("w='Manda,' cru, sem alinhar -> CTA inteira (compara o token limpo)", direto, 9)
+    rot2 = rot.replace("Manda,", "Conta,")
+    sem_cta = alinhar([dict(p, w=p["w"].replace("Manda", "Conta")) for p in crua], rot2)
+    checa("controle positivo: mesma frase de 9 palavras SEM 'Manda' -> é partida", sem_cta, 0)
+    w_ok = all("," not in p["w"] and "." not in p["w"] for p in alinhar(crua, rot))
+    print(f"[{'ok' if w_ok else 'FALHOU'}] alinhar devolve `w` sem pontuação")
+    ok &= w_ok
+    print("AUTO-TESTE:", "PASSOU" if ok else "REPROVOU")
+    return 0 if ok else 1
+
+
+if __name__ == "__main__":
+    import sys
+    if "--auto-teste" in sys.argv:
+        sys.exit(_auto_teste())
