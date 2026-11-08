@@ -1,7 +1,7 @@
 {
  "id": "cf_qualdosdois_pino",
  "hash_episodio": "sha256:b52c1921db4800fb6a9078923241b4689d9e931fc40c9918f3de430eacd2e56d",
- "hash_motor": "sha256:7a62dea2928a09eae53246b4b83893ec85bb845bf13604b65818cd9a11514564",
+ "hash_motor": "sha256:3c75d4d90a28d6dcddb04091e76f06191625742ce88ca3a4df1781e614ce19c2",
  "modulos": [
   "base",
   "cf_alongamento",
@@ -81,5 +81,5 @@
   "É"
  ],
  "dur": 33.67,
- "renderizado_em": "2026-10-26T19:56:07+00:00"
+ "renderizado_em": "2026-11-08T19:46:24+00:00"
 }
