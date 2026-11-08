@@ -1,7 +1,7 @@
 {
  "id": "cf_osteomielite",
  "hash_episodio": "sha256:7aeaefd2041ee37176de04e261f745a0d35294bddcbb92fe164cbb4c284d2d1b",
- "hash_motor": "sha256:6b90d08c27d040eb8a66a922f794cd626e7af9b343e08d8016e0991924a17094",
+ "hash_motor": "sha256:4b1589ca91f2daca06e827dae21bf24a13c8046b38f6ebe2b64b1c66cd697cab",
  "modulos": [
   "base",
   "cf_alongamento",
@@ -111,5 +111,5 @@
   "ÀS VEZES FEBRE"
  ],
  "dur": 34.67,
- "renderizado_em": "2026-10-19T05:34:01+00:00"
+ "renderizado_em": "2026-11-08T18:42:47+00:00"
 }
