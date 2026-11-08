@@ -1,7 +1,7 @@
 {
  "id": "cf_var_dor_crescimento",
  "hash_episodio": "sha256:e052043726650f0ab2725b4b867485fc90732f589833b6668d2d06dda84af128",
- "hash_motor": "sha256:1f99aaf22804757b5e976a81237b89d0b05a18a69c8e6720273365ae059cae4b",
+ "hash_motor": "sha256:9974d2d7c7c5e767a7eb9ee51c5a253e14c362db68a143d9a9878aba161948e7",
  "modulos": [
   "base",
   "cf_alongamento",
@@ -93,5 +93,5 @@
   "É"
  ],
  "dur": 36.3,
- "renderizado_em": "2026-11-01T15:55:18+00:00"
+ "renderizado_em": "2026-11-08T19:48:08+00:00"
 }
