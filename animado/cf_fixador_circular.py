@@ -701,6 +701,21 @@ def quadro(cv, t, T, blocos, ep):
         cv.drawRect(skia.Rect(0, 1000, W, H), masc)
         cv.restore()
 
+    # pré-escurecimento do card final: o véu escuro da interface (cf_comum) entra JUNTO com o título e a
+    # assinatura (mesmo `a`), e a tíbia clara aparecia através das letras por 2-3 quadros. Aqui o mundo
+    # escurece ANTES (t_cta - 0,30 .. t_cta - 0,05) até o MESMO nível final (175/255); a partir de t_cta
+    # este véu cede na exata medida em que o da interface cresce: 1-(1-a1)(1-a2) = 175/255 constante,
+    # então o quadro final fica idêntico ao de antes e o texto já entra sobre o fundo escuro.
+    t_cta = T["manda"] - 0.15
+    v_alvo = 175 / 255
+    a_pre = e_inout(prog(t, t_cta - 0.30, t_cta - 0.05))
+    if a_pre > 0:
+        a2 = v_alvo * prog(t, t_cta, t_cta + 0.35) if t >= t_cta else 0.0
+        a1 = 1 - (1 - v_alvo) / (1 - a2)
+        a1 = min(a1, v_alvo * a_pre)
+        if a1 > 0.002:
+            cv.drawRect(skia.Rect(0, 0, W, H), paint("#0A1520", int(round(255 * a1))))
+
     # ================= tela (rótulos, cartões, carimbos)
     X_COL = 612
     a = prog(t, T["fixador"] + 0.05, T["fixador"] + 0.3) * (1 - prog(t, T["pinos"] - 0.15, T["pinos"] + 0.05))

@@ -269,7 +269,10 @@ def desenha_perna(cv, cam, dissolve=True):
 
 # ------------------------------------------------------------------ câmera (local -> tela)
 # (escala, X, Y0, kx, ky): kx/ky afinam e alongam a perna (só no pré-adolescente)
-CAM_PERTO = (1.40, 554.0, 157.0, 1.0, 1.0)    # o joelho grande no meio da tela (o espanto)
+# o joelho grande no meio da tela (o espanto). O pé INTEIRO cabe desde o quadro 0: a ponta dos dedos
+# (local ~859) e a sombra (~870) ficam acima de y=1168, onde a máscara começa a dissolver para a
+# faixa da legenda (com 1,40/157 o pé caía em ~1340 e a perna abria sem pé até a câmera recuar).
+CAM_PERTO = (1.25, 554.0, 80.0, 1.0, 1.0)
 CAM_A = (0.93, 430.0, 365.0, 1.0, 1.0)        # a perna inteira: o quadril aparece
 CAM_B = (0.74, 275.0, 290.0, 0.88, 1.12)      # pré-adolescente: perna mais longa e esguia, à esquerda
 Y_PE_LOCAL = 845                               # sola do pé (local)

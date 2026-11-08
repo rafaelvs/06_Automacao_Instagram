@@ -660,21 +660,26 @@ CX_A = (CA_X0 + CA_X1) / 2
 # ------------------------------------------------------------------ o mundo (pernas, brilhos, mecanismos)
 def mundo(cv, t, T):
     cri, ado, ent_a = poses(t, T)
+    # cartela final: a cena INTEIRA (pernas, chão, brilhos) dissolve junto com o cartão e os nomes,
+    # antes de "manda"; sem isso as pernas ficavam como fantasmas atrás do título da CTA
+    kf = fim_cena(t, T)
+    if kf <= 0:
+        return
     # chão
-    a_chao = 0.6 + 0.4 * ent_a
+    a_chao = (0.6 + 0.4 * ent_a) * kf
     yf = cri[1]
     cv.drawLine(40, yf + 2, 1040, yf + 2, paint("#FFFFFF", int(28 * a_chao), "stroke", 3))
-    perna(cv, "ado", ado, 1.0 if ent_a > 0 else 0.0)
-    perna(cv, "crianca", cri)
+    perna(cv, "ado", ado, (1.0 if ent_a > 0 else 0.0) * kf)
+    perna(cv, "crianca", cri, kf)
     # brilhos de dor
     gx, gy, gr = GLOW["crianca"]
     x, y = na_tela(cri, gx, gy)
     brilho_dor(cv, x, y, gr * cri[2] * (1 + 0.1 * pulso(t, T) * prog(t, T["inflama"], T["inflama"] + 0.3)),
-               intens(t, T, T["calcanhar"], pre=0.5))
+               intens(t, T, T["calcanhar"], pre=0.5) * kf)
     if ent_a > 0:
         gx, gy, gr = GLOW["ado"]
         x, y = na_tela(ado, gx, gy)
-        brilho_dor(cv, x, y, gr * ado[2] * (1 + 0.1 * pulso(t, T)), intens(t, T, T["joelho"]))
+        brilho_dor(cv, x, y, gr * ado[2] * (1 + 0.1 * pulso(t, T)), intens(t, T, T["joelho"]) * kf)
     # alongar: setas de duas pontas (só a seta, nenhum músculo)
     a_set = 1 - prog(t, T["com"] - 0.1, T["com"] + 0.3)
     k = prog(t, T["coxa"] - 0.05, T["coxa"] + 0.15) * a_set

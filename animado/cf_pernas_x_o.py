@@ -799,8 +799,10 @@ def quadro(cv, t, T, blocos, ep):
     setas_juntas(cv, t, T)
     chave_juntas(cv, t, T)
 
-    brilhos(cv, 530, 845, t, T["fase"] + 0.05, n=14, raio=300)           # ANTES do carimbo
-    carimbo(cv, T_FASE, 530, 872, -7, T["fase"], t, dur=T["cronograma"] - T["fase"] + 0.9)
+    # selo ABAIXO dos pés (faixa livre entre os pés ~1075 e a legenda ~1285): em y=872 ele atravessava as
+    # duas canelas logo abaixo dos joelhos, cobrindo justamente o arqueamento (auditoria 08/11)
+    brilhos(cv, 540, 1118, t, T["fase"] + 0.05, n=14, raio=300)          # ANTES do carimbo
+    carimbo(cv, T_FASE, 540, 1142, -4, T["fase"], t, dur=T["cronograma"] - T["fase"] + 0.9, tam=52)
 
     alerta(cv, t, T)
 

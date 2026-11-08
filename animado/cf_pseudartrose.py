@@ -73,6 +73,10 @@ X_LISTA = 470                             # coluna da direita: lista do tripé, 
 BX_VASO, S_VASO, FY_VASO = 270.0, 1.2, 930.0     # câmera no vaso: cintura em (401, 814) na tela, pé do osso em 1152
 CIG_VASO = (770, 968, -8, 0.85)           # cigarro ao lado do vaso ampliado (tela)
 Y_ROT_VASO = 852                          # linha de base das etiquetas do vaso (logo abaixo da lista)
+# câmera no vão: o osso INTEIRO cabe acima da legenda (antes era 1.4 centrado no vão, o pé ia a y≈1418 e a
+# máscara de degradê apagava a epífise de baixo de 14,5 s a 19,2 s). Topo em y≈125, pé em y≈1206.
+S_VAO, FY_VAO = 1.15, 870.0
+DY_VAO = round(S_VAO * (PIVO[1] - FY_VAO))  # o vão sobe ~100 px na tela: etiquetas/carimbo do vão sobem junto
 
 
 # ------------------------------------------------------------------ câmera
@@ -85,7 +89,7 @@ def camera(t, T):
          * (1 - e_inout(prog(t, T["pouco"] - 0.1, T["pouco"] + 0.5))))
     bx = lerp(bx, BX_VASO, k); s = lerp(s, S_VASO, k); fy = lerp(fy, FY_VASO, k)
     k = e_inout(prog(t, T["ponte"] - 0.2, T["ponte"] + 0.7))           # aproxima no vão
-    bx = lerp(bx, 560.0, k); s = lerp(s, 1.4, k); fy = lerp(fy, PIVO[1], k)
+    bx = lerp(bx, 560.0, k); s = lerp(s, S_VAO, k); fy = lerp(fy, FY_VAO, k)
     k = e_inout(prog(t, T["pseudartrose"] - 0.25, T["pseudartrose"] + 0.45))   # recua para o nome
     bx = lerp(bx, 300.0, k); s = lerp(s, 0.92, k); fy = lerp(fy, 770.0, k)
     return bx, s, fy
@@ -588,10 +592,10 @@ def rotulos(cv, t, T, cam, amp):
     # a ponte não fecha: aponta para a ponta do arco, parada na metade
     a = prog(t, T["ponte"] + 0.35, T["ponte"] + 0.6) * (1 - prog(t, T["falsa"] - 0.3, T["falsa"] - 0.05))
     xa, ya = ponto_arco(avanco_ponte(t, T) * N_ARCO)
-    etiqueta(cv, "A PONTE NÃO FECHA", 40, 600, tela(cam, xa - 10, ya), OURO, a, saida=(250, 612))
+    etiqueta(cv, "A PONTE NÃO FECHA", 40, 600 + DY_VAO, tela(cam, xa - 10, ya), OURO, a, saida=(250, 612 + DY_VAO))
     # ponto que mexe: à direita do vão
     a = prog(t, T["mexe"] + 0.1, T["mexe"] + 0.35) * (1 - prog(t, T["pseudartrose"] - 0.2, T["pseudartrose"] + 0.05))
-    etiqueta(cv, "PONTO QUE MEXE", 676, 806, tela(cam, CX + HASTE / 2 + 2, PIVO[1]), "#E6EEF6", a, tam=34)
+    etiqueta(cv, "PONTO QUE MEXE", 676, 806 + DY_VAO, tela(cam, CX + HASTE / 2 + 2, PIVO[1]), "#E6EEF6", a, tam=34)
     # risco maior: tom neutro, ao lado do cigarro do canto
     a = prog(t, T["risco"], T["risco"] + 0.25) * (1 - prog(t, T["parar"], T["parar"] + 0.35))
     chip(cv, "RISCO MAIOR", 352, 286, NEUTRO, a * a_c, tam=36, borda="#8FA3B8")
@@ -694,7 +698,7 @@ def quadro(cv, t, T, blocos, ep):
     cigarro(cv, x, y, a_ang, esc, a)
     rotulos(cv, t, T, cam, amp)
     carimbo_opaco(cv, "ATRASA", 540, 610, -7, T["atrasa"], t, dur=1.7, esc0=1.7)
-    carimbo_opaco(cv, "FALSA JUNTA", 430, 612, -6, T["falsa"], t, dur=T["pseudartrose"] - T["falsa"] + 0.15, esc0=1.5)
+    carimbo_opaco(cv, "FALSA JUNTA", 430, 612 + DY_VAO, -6, T["falsa"], t, dur=T["pseudartrose"] - T["falsa"] + 0.15, esc0=1.5)
 
     capa(cv, t, T["atrasa"], ep["gancho"][0], ep["gancho"][1])
     selo_como_funciona(cv, prog(t, T["atrasa"] + 0.55, T["atrasa"] + 0.95) * (1 - prog(t, T["manda"] - 0.3, T["manda"]))

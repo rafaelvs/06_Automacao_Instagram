@@ -647,11 +647,14 @@ def escada(cv, t, T, a):
     if a <= 0:
         return
     ac = acesos(T)
-    # alturas atuais (cada degrau sobe do chão com um pequeno atraso)
+    # alturas atuais: TODOS os degraus sobem juntos, com o MESMO fator (escala vertical da escada
+    # inteira). Antes cada degrau tinha atraso próprio (0,06 s por degrau): na entrada os da esquerda
+    # já estavam altos e os da direita ainda no chão -> o contorno virava um morro (sobe e desce) e só
+    # em ~17,0 s lia como escada. Com fator único o perfil é sempre ascendente em todo quadro.
     alt = []
+    k = e_back(prog(t, T["carga"] + 0.05, T["carga"] + 0.45))
     for i in range(N_DEG):
         x0, x1, y = degrau(i)
-        k = e_back(prog(t, T["carga"] + 0.05 + 0.06 * i, T["carga"] + 0.45 + 0.06 * i))
         alt.append((x0, x1, lerp(DEG_BASE, y, clamp(k, 0, 1.1)) if k > 0 else DEG_BASE))
     # UMA silhueta em degraus (sem divisórias): lê como escada, não como gráfico de barras; tudo numa
     # camada com a borda direita esmaecendo (a escada continua para fora do quadro, sem topo)

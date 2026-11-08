@@ -1013,7 +1013,9 @@ def quadro(cv, t, T, blocos, ep):
     carimbo_cor(cv, "NO MESMO DIA", 775, 1034, -5, T["mesmo"], t, dur=T["manda"] - T["mesmo"] - 0.1, tam=52)
 
     # ---------------- carimbos
-    carimbo_ouro(cv, "NÃO É MANHA", 540, 742, -8, T["manha"], t, dur=T["protegendo"] - T["manha"] + 0.25)
+    # acima da cintura (entre o gancho e o short): no meio das pernas ele cobria coxas e joelhos justo na
+    # marcha mancando; sai inteiro antes do chip "O CORPO PROTEGENDO ALGO" (y 322) entrar.
+    carimbo_ouro(cv, "NÃO É MANHA", 540, 402, -5, T["manha"], t, dur=T["protegendo"] - T["manha"])
     carimbo_cor(cv, "PEDE PRESSA", 360, 610, -6, T["pede"] + 0.08, t, dur=1.8, tam=58)
 
     capa(cv, t, T["manha"] + 0.2, ep["gancho"][0], ep["gancho"][1])

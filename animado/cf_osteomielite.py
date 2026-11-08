@@ -672,7 +672,9 @@ def quadro(cv, t, T, blocos, ep):
     cam = camera(t, T)
 
     # portas e vaso (tela), atrás do osso
-    a_tit = prog(t, T["entrar"], T["entrar"] + 0.3) * (1 - prog(t, T["destruindo"] - 0.4, T["destruindo"]))
+    # o título sai ANTES de a câmera aproximar (zoom começa em instalada+0.3): senão o osso, ao crescer
+    # e subir, passa por baixo das letras ainda em fade e parece cortá-las (defeito 8,7-9,0 s)
+    a_tit = prog(t, T["entrar"], T["entrar"] + 0.3) * (1 - prog(t, T["instalada"] + 0.1, T["instalada"] + 0.5))
     vaso(cv, t, T, cam)
     for i in range(3):
         porta(cv, i, t, T)

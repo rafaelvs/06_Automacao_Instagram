@@ -729,6 +729,9 @@ SH_ESC = skia.GradientShader.MakeLinear([skia.Point(0, 620), skia.Point(0, 1214)
 
 def escada(cv, t, T):
     a = prog(t, T["aumentar"] + 0.3, T["aumentar"] + 0.5)
+    # v2 (08/11): a escada inteira (bloco, pisos, pausa e o chip DESCANSO) sai ANTES da cartela final;
+    # o véu da CTA (alfa 175) deixava a escada a ~30% atrás do texto, do selo e do crédito até o último quadro.
+    a *= 1 - prog(t, T["manda"] - 0.45, T["manda"] - 0.15)
     if a <= 0:
         return
     te = tempos_escada(T)

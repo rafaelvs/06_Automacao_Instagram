@@ -298,8 +298,9 @@ def osso(cv, t, T):
 
 
 # ------------------------------------------------------------------ lupa
-def lupa(cv, x, y, R, ang, a, conteudo=None, a_cont=0.0):
-    """Lupa simples: aro e cabo ouro, vidro azul; `conteudo(cv)` desenha o que ela amplia."""
+def lupa(cv, x, y, R, ang, a, conteudo=None, a_cont=0.0, a_vidro=1.0):
+    """Lupa simples: aro e cabo ouro, vidro azul; `conteudo(cv)` desenha o que ela amplia.
+    `a_vidro` < 1 deixa o vidro translúcido (na saída, o osso real aparece através dele)."""
     if a <= 0 or R <= 1:
         return
     ca, sa = math.cos(ang), math.sin(ang)
@@ -308,8 +309,8 @@ def lupa(cv, x, y, R, ang, a, conteudo=None, a_cont=0.0):
     cv.drawLine(x0, y0, x1, y1, paint("#000000", int(90 * a), "stroke", larg + 8, blur=6))
     cv.drawLine(x0, y0, x1, y1, paint("#6B4E12", int(255 * a), "stroke", larg + 4))
     cv.drawLine(x0, y0, x1, y1, paint(OURO, int(255 * a), "stroke", larg))
-    cv.drawCircle(x, y, R, paint("#000000", int(80 * a), blur=10))
-    cv.drawCircle(x, y, R, paint("#1F4C66", int(235 * a)))
+    cv.drawCircle(x, y, R, paint("#000000", int(80 * a * a_vidro), blur=10))
+    cv.drawCircle(x, y, R, paint("#1F4C66", int(235 * a * a_vidro)))
     if conteudo and a_cont > 0:
         n = cv.save()
         clip = skia.Path(); clip.addCircle(x, y, R)
@@ -726,11 +727,21 @@ def quadro(cv, t, T, blocos, ep):
     if st:
         lx, ly, R, ang, a, a_cont = st
 
-        def ampliado(c2, lx=lx, ly=ly):
-            c2.save(); c2.translate(lx, ly); c2.scale(1.8, 1.8); c2.translate(-lx, -ly)
+        # na saída (lupa subindo para a prancheta) a imagem ampliada ACOMPANHA a lupa: fica ancorada
+        # na linha da fratura em vez de no que está sob a lente (senão a lente vira um disco azul
+        # chapado sobre o osso); e o vidro fica translúcido enquanto sai, opaco de novo no título
+        k3 = e_inout(prog(t, T["causas"] - 0.05, T["causas"] + 0.7))
+        fx, fy_ = tela(cam, CX, YF)
+        # parada em "causa" a lente está exatamente sobre a linha (lx, ly == fx, fy_): daí em diante a
+        # âncora é a linha, contínua; antes disso (a travessia) amplia o que está sob a lente
+        ax, ay = (fx, fy_) if t >= T["causa"] else (lx, ly)
+        a_vidro = 1 - 0.85 * prog(k3, 0.0, 0.15) * (1 - prog(k3, 0.7, 1.0))
+
+        def ampliado(c2, lx=lx, ly=ly, ax=ax, ay=ay):
+            c2.save(); c2.translate(lx, ly); c2.scale(1.8, 1.8); c2.translate(-ax, -ay)
             aplica(c2, cam); osso(c2, t, T)
             c2.restore()
-        lupa(cv, lx, ly, R, ang, a, ampliado, a_cont)
+        lupa(cv, lx, ly, R, ang, a, ampliado, a_cont, a_vidro)
 
     # tratamento
     poste_placas(cv, t, T)

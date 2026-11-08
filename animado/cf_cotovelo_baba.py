@@ -897,7 +897,7 @@ def cena_bc(cv, t, T, tA1, fim):
         cv.translate(540, 760); cv.scale(esc_in * esc_out, esc_in * esc_out); cv.translate(-540, -760)
         mundo_b(cv, t, T, tA1)
         cv.restore()
-    a_c = prog(t, T["levantar"] - 0.04, T["levantar"] + 0.28) * dim
+    a_c = prog(t, T["levantar"] - 0.04, T["levantar"] + 0.28) * dim * fim   # a CTA fica limpa: a cena C sai junto com os rótulos
     if a_c > 0:
         esc_c = lerp(0.92, 1.0, e_out(prog(t, T["levantar"] - 0.04, T["levantar"] + 0.45)))
         camada(cv, a_c)
