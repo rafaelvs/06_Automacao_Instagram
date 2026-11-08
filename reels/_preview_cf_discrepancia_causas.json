@@ -1,7 +1,7 @@
 {
  "id": "cf_discrepancia_causas",
  "hash_episodio": "sha256:979dbf5efdd4a73379b72227f372e365f326609fd133980b945b366138420c15",
- "hash_motor": "sha256:3fea2a29fb8ea98ace345ff5fea0714fb54a6b18e9bf349cccf820cce91fe2fe",
+ "hash_motor": "sha256:fdc4b11258918e6081ab113b7541347dbbb07b924c45a5b772dfaf93daceba01",
  "modulos": [
   "base",
   "cf_alongamento",
@@ -97,5 +97,5 @@
   "ÀS VEZES"
  ],
  "dur": 31.8,
- "renderizado_em": "2026-10-19T21:55:07+00:00"
+ "renderizado_em": "2026-11-08T19:45:05+00:00"
 }
