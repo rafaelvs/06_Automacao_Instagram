@@ -1,7 +1,7 @@
 {
  "id": "cv_muleta",
  "hash_episodio": "sha256:480c83645bb3d8aba16082bf72fd9d569bde27bd6b2e2894f0f2a2b3c6b4df4c",
- "hash_motor": "sha256:f17174abeb2a47ca54ddcd3f4f4bb7afba42279a52a3230ea0af20a775926fa4",
+ "hash_motor": "sha256:048564084d582e52be4536704d82bccabcf345549b58cfee9c9b904204788649",
  "modulos": [
   "base",
   "conversa",
@@ -117,5 +117,5 @@
   "é"
  ],
  "dur": 45.27,
- "renderizado_em": "2026-10-19T04:00:20+00:00"
+ "renderizado_em": "2026-11-09T00:46:33+00:00"
 }
