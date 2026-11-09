@@ -181,11 +181,45 @@ def _data(dia):
     return dia.date() if isinstance(dia, dt.datetime) else dia
 
 
+# TESTES T1/T2 da revisão do motor (AUDITORIA/REVISAO_MOTOR_2026-11-08.md; Rafael, 08/11/2026: "pode fazer os dois
+# testes"). Fonte única: o publish, a agenda e o reordenador leem daqui. Sem vídeo novo: só a ORDEM/dia muda.
+#  T2 (dia × formato): em 3 pares de dias vizinhos o grupo troca — COMO FUNCIONA num ter/qui/sáb e o formato novo da vez
+#     num seg/qua/sex/dom (a semana continua com o mesmo número de cada grupo).
+#  T1 (controle de regime): numa vaga normal do COMO FUNCIONA sai uma CONVERSA já pronta (formato antigo), mesmo com a
+#     série suspensa. Peça já publicada, fora da fila ou de outro grupo = o dia segue a regra normal.
+# Desligar: TROCAS_DE_DIA=off / REEL_DO_DIA=off (os auto-testes desligam para a mecânica não depender do calendário).
+TROCAS_DE_DIA_PADRAO = {
+    dt.date(2026, 11, 13): GRUPO_NOVOS, dt.date(2026, 11, 14): GRUPO_COMO_FUNCIONA,     # sex ↔ sáb
+    dt.date(2026, 11, 21): GRUPO_COMO_FUNCIONA, dt.date(2026, 11, 22): GRUPO_NOVOS,     # sáb ↔ dom
+    dt.date(2026, 11, 24): GRUPO_COMO_FUNCIONA, dt.date(2026, 11, 25): GRUPO_NOVOS,     # ter ↔ qua
+}
+# Pares escolhidos por busca (08/11): entre as 69 combinações que não atrasam NENHUMA story aprovada (a regra de 7 dias
+# entre temas iguais empurrava stn_haste_ou_fixador de 19/11 para 05/12 com o par 12↔13), a que põe o formato novo em 3
+# dias diferentes (sex/dom/qua) — e os 3 são CÂMERA LENTA (uma variável só).
+REEL_DO_DIA_PADRAO = {
+    dt.date(2026, 11, 16): "cv_pinos",          # seg (tema pinos: último em 03/11)
+    dt.date(2026, 11, 27): "cv_gesso_filho",    # sex (11 dias depois; tema gesso_placa: último 12/11)
+}
+
+
+def trocas_de_dia(valor=None):
+    v = os.environ.get("TROCAS_DE_DIA", "") if valor is None else valor
+    return {} if str(v).strip().lower() in _SEM_COTA else dict(TROCAS_DE_DIA_PADRAO)
+
+
+def reel_do_dia(valor=None):
+    v = os.environ.get("REEL_DO_DIA", "") if valor is None else valor
+    return {} if str(v).strip().lower() in _SEM_COTA else dict(REEL_DO_DIA_PADRAO)
+
+
 def grupo_do_dia(dia, inicio_novos=None):
     """Que reel o dia comporta: GRUPO_COMO_FUNCIONA (seg/qua/sex/dom), GRUPO_NOVOS (ter/qui/sáb a partir de
     INICIO_FORMATOS_NOVOS) ou None (ter/qui/sáb antes do início: sem reel). `dia` = date ou datetime BRT."""
     d = _data(dia)
     inicio = INICIO_FORMATOS_NOVOS if inicio_novos is None else inicio_novos
+    troca = trocas_de_dia().get(d)
+    if troca is not None:
+        return troca
     if d.weekday() in DIAS_COMO_FUNCIONA:
         return GRUPO_COMO_FUNCIONA
     if d.weekday() in DIAS_FORMATOS_NOVOS and d >= inicio:
@@ -343,6 +377,11 @@ def proximo_reel(reels, done, state, agora_brt, cota=None, dias_conversa=None, c
     grupo = grupo_do_dia(agora_brt, inicio_novos)
     if grupo is None:
         return None
+    fixo = reel_do_dia().get(_data(agora_brt))
+    if fixo and fixo not in done:
+        x = next((x for x in reels if x["id"] == fixo), None)
+        if x is not None and grupo_do_formato(formato(x)) == grupo:
+            return x
     if grupo == GRUPO_NOVOS:
         r = rodizio(reels, done, state, hoje=_data(agora_brt))
         if not r:

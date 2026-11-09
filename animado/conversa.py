@@ -24,6 +24,7 @@ BAL_F, TXT_F = "#EEF3F8", "#13283A"
 Y_TOPO_MSG, Y_BASE_MSG = 330, 1420          # área da conversa (acima da faixa do Instagram)
 TAM_MSG = 56; LMAX = 760; ALT_LIN = 72; GAP_MSG = 30
 T_GANCHO = 2.5                              # o gancho escrito fica sozinho na tela até aqui
+ROL_ANTES = 0.3                             # a rolagem antecipa o balão novo (08/11/2026)
 
 
 def _validar(ep):
@@ -135,11 +136,13 @@ def _alvo_rolagem(t, msgs):
 
 def _rolagem(t, msgs):
     marcos = sorted({m["t"] for m in msgs} | {m["t_dig"] for m in msgs if m["q"] == "F"})
-    ant = [x for x in marcos if x <= t]
+    ant = [x for x in marcos if x <= t + ROL_ANTES]
     if not ant:
         return 0.0
     te = ant[-1]
-    return lerp(_alvo_rolagem(te - 1e-3, msgs), _alvo_rolagem(te, msgs), e_out(prog(t, te, te + 0.4)))
+    # a rolagem COMEÇA ROL_ANTES s antes do balão nascer e termina logo depois: o balão novo já entra dentro da
+    # área visível (antes rolava DEPOIS, e o balão crescendo era cortado reto pela máscara — cv_muleta 23,2 s)
+    return lerp(_alvo_rolagem(te - 1e-3, msgs), _alvo_rolagem(te, msgs), e_out(prog(t, te - ROL_ANTES, te + 0.4 - ROL_ANTES)))
 
 
 RNG = np.random.default_rng(11)
@@ -152,6 +155,11 @@ def _quadro_fn(ep, msgs, cta):
 
     def quadro(cv, t):
         fundo_gradiente(cv)
+        if t >= cta["t"] + 0.3:
+            # cartão final já cheio: a conversa NÃO é desenhada por baixo (08/11/2026 — o véu de 248/255 deixava o
+            # texto da conversa legível como fantasma atrás do título: cv_gesso_filho, cv_osso, cv_perna_curta)
+            _cartao_final(cv, t, 1.0)
+            return
         for x, y, r in PADRAO:                                   # textura discreta
             yy = (y - t * 10) % H
             cv.drawArc(skia.Rect(x - r * 2, yy - r * 0.5, x + r * 2, yy + r * 0.5), 0, 360, False,
@@ -191,8 +199,10 @@ def _quadro_fn(ep, msgs, cta):
         rodape_cfm(cv, t, cta["t"] - 0.15)
         # CTA
         if t >= cta["t"] - 0.15:
-            a = prog(t, cta["t"] - 0.15, cta["t"] + 0.3)
-            cv.drawRect(skia.Rect(0, 0, W, H), paint(BG_OUT, int(248 * a)))
+            _cartao_final(cv, t, prog(t, cta["t"] - 0.15, cta["t"] + 0.3))
+
+    def _cartao_final(cv, t, a):
+            cv.drawRect(skia.Rect(0, 0, W, H), paint(BG_OUT, int(255 * a)))
             icone(cv, W / 2, 470, 2.4, a, 10 * math.sin(t * 6))
             pal = ep["cta"].split(); linhas, esp = quebrar([w.upper() for w in pal], "black", 88, 900)
             yy = 720

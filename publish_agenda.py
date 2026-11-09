@@ -5,6 +5,7 @@ sai em cada dia NÃO é cópia: é a mesma função do robô (regra_reels.proxim
 dia sobre a fila e o estado reais. Antes havia uma reimplementação aqui, e a cota vinha do
 ambiente local enquanto o publish lia a variável do repositório (auditoria 19/10/2026)."""
 import datetime as dt
+import json
 import os
 import re
 
@@ -202,8 +203,15 @@ def teste_agenda():
     assert [i for _, i in r] == ["f1", "f2"] and [(d - seg).days for d, _ in r] == [0, 2], r
     # cota 0 = lâminas suspensas: nada sai, e a projeção fica vazia (o gerador tem de avisar)
     assert projeta_reels([l1], [], seg, False, cota=0, horizonte_dias=30) == []
-    teste_formatos_novos(src, yml)
-    teste_stories()
+    _env = {k: os.environ.get(k) for k in ("TROCAS_DE_DIA", "REEL_DO_DIA")}
+    os.environ["TROCAS_DE_DIA"] = os.environ["REEL_DO_DIA"] = "off"   # casos à mão usam nov/2026
+    try:
+        teste_formatos_novos(src, yml)
+        teste_stories()
+    finally:
+        for k, v in _env.items():
+            os.environ.pop(k, None) if v is None else os.environ.__setitem__(k, v)
+    teste_trocas_de_dia()
     return True
 
 
@@ -485,6 +493,54 @@ def teste_stories():
     assert r["agenda"] == [] and r["bloqueio"] and "portão BARRA" in r["bloqueio"], ("portão barrando", r)
     assert projeta_stories([sa, sb], pub, [], ter, False, n=14, aprovacoes=aprova(), reels_por_id={}, horizonte_dias=10) == [], \
         "sem aprovação nenhuma, nada é projetado"
+    return True
+
+
+def teste_trocas_de_dia():
+    """Testes T1/T2 da revisão do motor (08/11/2026): as exceções de calendário do regra_reels valem no robô e na
+    agenda. Controle positivo (ligadas: o grupo troca e a conversa sai na data) e negativo (desligadas: regra normal)."""
+    import os as _os
+    antes = {k: _os.environ.get(k) for k in ("TROCAS_DE_DIA", "REEL_DO_DIA", "PESOS_FORMATOS_NOVOS", "DIAS_DESCANSO_FORMATO")}
+    try:
+        _os.environ["PESOS_FORMATOS_NOVOS"] = "iguais"; _os.environ["DIAS_DESCANSO_FORMATO"] = "off"
+        trocas, fixos = regra_reels.TROCAS_DE_DIA_PADRAO, regra_reels.REEL_DO_DIA_PADRAO
+        # a semana continua com o mesmo número de dias de cada grupo (troca é sempre em par)
+        from collections import Counter
+        assert Counter(trocas.values())[regra_reels.GRUPO_COMO_FUNCIONA] == Counter(trocas.values())[regra_reels.GRUPO_NOVOS], trocas
+        for d, g in trocas.items():
+            normal = regra_reels.GRUPO_COMO_FUNCIONA if d.weekday() in regra_reels.DIAS_COMO_FUNCIONA else regra_reels.GRUPO_NOVOS
+            assert g != normal, ("troca que não troca nada", d)
+        sex13, sab14 = dt.date(2026, 11, 13), dt.date(2026, 11, 14)
+        f = [{"id": f"cf{k}", "formato": "como_funciona"} for k in range(12)]
+        k = [{"id": f"k{j}", "formato": "camera_lenta"} for j in range(8)]
+        cv = {"id": "cv_pinos", "formato": "conversa"}
+        fila = f[:6] + k[:4] + [cv] + f[6:] + k[4:]
+        # positivo
+        _os.environ["TROCAS_DE_DIA"] = _os.environ["REEL_DO_DIA"] = "on"
+        r = dict(projeta_reels(fila, [], sex13 - dt.timedelta(days=1), False, horizonte_dias=6))
+        assert r[sex13].startswith("k") and r[sab14].startswith("cf"), ("T2 sex<->sab", r)
+        assert r[dt.date(2026, 11, 12)].startswith("k") and r[dt.date(2026, 11, 15)].startswith("cf"), ("vizinhos normais", r)
+        r = dict(projeta_reels(fila, [], dt.date(2026, 11, 15), False, horizonte_dias=2))
+        assert r[dt.date(2026, 11, 16)] == "cv_pinos", ("T1: conversa na vaga do COMO FUNCIONA", r)
+        # a conversa fixa só sai no dia dela: no dia seguinte (ter, formato novo) e com ela já publicada, regra normal
+        pub = [{"id": "cv_pinos", "kind": "reel", "at": "2026-11-10T18:05:00+00:00", "formato": "conversa"}]
+        r = dict(projeta_reels(fila, pub, dt.date(2026, 11, 15), False, horizonte_dias=2))
+        assert r[dt.date(2026, 11, 16)].startswith("cf"), ("já publicada não repete", r)
+        # negativo (controle): desligadas, o dia volta à regra normal
+        _os.environ["TROCAS_DE_DIA"] = _os.environ["REEL_DO_DIA"] = "off"
+        r = dict(projeta_reels(fila, [], sex13 - dt.timedelta(days=1), False, horizonte_dias=6))
+        assert r[sex13].startswith("cf") and r[sab14].startswith("k"), ("CONTROLE: sem troca", r)
+        r = dict(projeta_reels(fila, [], dt.date(2026, 11, 15), False, horizonte_dias=2))
+        assert r[dt.date(2026, 11, 16)].startswith("cf"), ("CONTROLE: conversa suspensa não sai", r)
+        # ids fixos existem na fila real e são conversas
+        fila_real = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "reels.json"), encoding="utf-8"))
+        por = {x["id"]: x for x in fila_real}
+        for d, i in fixos.items():
+            assert i in por and formato(por[i]) == "conversa" and d.weekday() in regra_reels.DIAS_COMO_FUNCIONA \
+                and d not in trocas, ("reel do dia inválido", d, i)
+    finally:
+        for kk, v in antes.items():
+            _os.environ.pop(kk, None) if v is None else _os.environ.__setitem__(kk, v)
     return True
 
 

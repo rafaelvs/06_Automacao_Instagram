@@ -17,6 +17,9 @@ meio da execucao" com dois itens de tipos diferentes.
 Uso, dentro do repo:  python test_publicacao.py      (exit 0 = tudo passou)
 """
 import json, os, re, sys, subprocess, tempfile, shutil
+# 08/11/2026: os casos daqui usam datas de nov/2026; as exceções de calendário dos testes T1/T2 (regra_reels
+# TROCAS_DE_DIA / REEL_DO_DIA) ficam DESLIGADAS — quem as prova é publish_agenda.teste_trocas_de_dia().
+os.environ.setdefault("TROCAS_DE_DIA", "off"); os.environ.setdefault("REEL_DO_DIA", "off")
 from pathlib import Path
 
 ROOT = Path(__file__).parent
