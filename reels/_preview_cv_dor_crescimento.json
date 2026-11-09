@@ -1,7 +1,7 @@
 {
  "id": "cv_dor_crescimento",
  "hash_episodio": "sha256:6e457815196d5362887ce44b9f3a59be28fb7f00c539650fbdd7377cd9385276",
- "hash_motor": "sha256:f17174abeb2a47ca54ddcd3f4f4bb7afba42279a52a3230ea0af20a775926fa4",
+ "hash_motor": "sha256:048564084d582e52be4536704d82bccabcf345549b58cfee9c9b904204788649",
  "modulos": [
   "base",
   "conversa",
@@ -109,5 +109,5 @@
   "é"
  ],
  "dur": 43.73,
- "renderizado_em": "2026-10-19T04:04:54+00:00"
+ "renderizado_em": "2026-11-09T00:47:07+00:00"
 }
