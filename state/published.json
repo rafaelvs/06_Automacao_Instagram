@@ -2062,11 +2062,20 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "como_funciona"
+    },
+    {
+      "id": "cf_crianca_mancando",
+      "kind": "reel",
+      "media_id": "18022440776956040",
+      "at": "2026-11-09T19:02:37.821366+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "como_funciona"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-11-08",
+  "last_reel_date": "2026-11-09",
   "last_seq_date": "2026-10-24",
   "last_story_nova_date": "2026-11-07"
 }
