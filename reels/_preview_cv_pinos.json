@@ -1,7 +1,7 @@
 {
  "id": "cv_pinos",
  "hash_episodio": "sha256:9fb0653b30ff41d86885aa5b12ceb6cc5675d2d466a07a73487f15882be88c9c",
- "hash_motor": "sha256:f17174abeb2a47ca54ddcd3f4f4bb7afba42279a52a3230ea0af20a775926fa4",
+ "hash_motor": "sha256:048564084d582e52be4536704d82bccabcf345549b58cfee9c9b904204788649",
  "modulos": [
   "base",
   "conversa",
@@ -106,5 +106,5 @@
   "é"
  ],
  "dur": 44.0,
- "renderizado_em": "2026-10-19T03:59:29+00:00"
+ "renderizado_em": "2026-11-09T00:46:43+00:00"
 }
