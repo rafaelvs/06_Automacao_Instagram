@@ -1,7 +1,7 @@
 {
  "id": "cv_perna_curta",
  "hash_episodio": "sha256:7bfacf15f1cbf178338faf8811436e72e28ee6f2d39d64ee63f444e54fd50506",
- "hash_motor": "sha256:f17174abeb2a47ca54ddcd3f4f4bb7afba42279a52a3230ea0af20a775926fa4",
+ "hash_motor": "sha256:048564084d582e52be4536704d82bccabcf345549b58cfee9c9b904204788649",
  "modulos": [
   "base",
   "conversa",
@@ -108,5 +108,5 @@
   "você."
  ],
  "dur": 44.77,
- "renderizado_em": "2026-10-19T04:05:26+00:00"
+ "renderizado_em": "2026-11-09T00:46:53+00:00"
 }
