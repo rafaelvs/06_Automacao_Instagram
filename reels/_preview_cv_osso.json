@@ -1,7 +1,7 @@
 {
  "id": "cv_osso",
  "hash_episodio": "sha256:5e0156edb7bab247ab2a9cc361e9c9505c1844ea78814202cadf9f0d20ebc773",
- "hash_motor": "sha256:f17174abeb2a47ca54ddcd3f4f4bb7afba42279a52a3230ea0af20a775926fa4",
+ "hash_motor": "sha256:048564084d582e52be4536704d82bccabcf345549b58cfee9c9b904204788649",
  "modulos": [
   "base",
   "conversa",
@@ -110,5 +110,5 @@
   "ótimo."
  ],
  "dur": 45.03,
- "renderizado_em": "2026-10-19T04:00:10+00:00"
+ "renderizado_em": "2026-11-09T00:46:47+00:00"
 }
