@@ -719,9 +719,19 @@ def membro(cv, t, T, k):
     desenha_pele(cv, t, T, k)
     rastro(cv, t, T, k)
     g = estado_gesso(t, T)
-    if g:
+    if g and g[1] > 0:
+        # gesso SAINDO: os dedos são pele como o resto do pé e ficam ABAIXO das metades que deslizam
+        # (antes ficavam por cima da metade esquerda, parados e soltos: "dedos colados na tala").
+        # A cópia por cima, que valia com o gesso parado, some logo no começo da abertura (sem salto).
+        dedos(cv, k)
         desenha_gesso(cv, k, g[0], g[1])
-    dedos(cv, k)
+        a_cima = 1 - prog(g[1], 0.0, 0.12)
+        if a_cima > 0:
+            dedos(cv, k, a_cima)
+    else:
+        if g:
+            desenha_gesso(cv, k, g[0], g[1])
+        dedos(cv, k)
     masc = skia.Paint(AntiAlias=True)
     masc.setShader(skia.GradientShader.MakeLinear([skia.Point(0, Y_DISS0), skia.Point(0, Y_DISS1)],
                                                   [skia.ColorSetARGB(0, 0, 0, 0), skia.ColorSetARGB(255, 0, 0, 0)]))

@@ -162,7 +162,9 @@ def gap(t, T):
 
 
 FREQ = 2.3
-CLOSE = (540, 800, 1.30, YF)              # close da fratura (as pontas do osso saem pelas bordas)
+CLOSE = (540, 756, 1.06, YF)              # close da fratura: o osso INTEIRO cabe na janela nítida
+                                          # (cabeça em y~260, abaixo do selo; ponta de baixo ~1208).
+                                          # Era 1.30/800: a cabeça passava de JAN0 e virava "tubo decepado".
 
 
 def forca_balanco(t, T):
