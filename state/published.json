@@ -2071,11 +2071,53 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "como_funciona"
+    },
+    {
+      "id": "stn_ponta_causa#0",
+      "kind": "story_nova",
+      "story": "stn_ponta_causa",
+      "parte": 0,
+      "media_id": "18015396224972854",
+      "at": "2026-11-10T15:31:21.791043+00:00",
+      "temas": [
+        "ponta_pes"
+      ],
+      "sha256": "sha256:f4c6ad12540b26f23b6dc770dfdf70ae44c93ef754ba65e9cfbb124a6b975f1d",
+      "commit": "dd14e6e08d7265c7632453abbd5596a882e9da50",
+      "container": "18493376947128523"
+    },
+    {
+      "id": "stn_ponta_causa#1",
+      "kind": "story_nova",
+      "story": "stn_ponta_causa",
+      "parte": 1,
+      "media_id": "18061526003803886",
+      "at": "2026-11-10T15:31:21.791043+00:00",
+      "temas": [
+        "ponta_pes"
+      ],
+      "sha256": "sha256:81816a7d16070fc61a5a59cefb1ea43c4b528b5ba4bce8b1bd7876cacd3da677",
+      "commit": "dd14e6e08d7265c7632453abbd5596a882e9da50",
+      "container": "18493376950128523"
+    },
+    {
+      "id": "stn_ponta_causa#2",
+      "kind": "story_nova",
+      "story": "stn_ponta_causa",
+      "parte": 2,
+      "media_id": "18114064751226447",
+      "at": "2026-11-10T15:31:21.791043+00:00",
+      "temas": [
+        "ponta_pes"
+      ],
+      "sha256": "sha256:10a2fbf10642ae5976d5a456f64486f64b41b96f2e8d6d58e1a0494d50f87d03",
+      "commit": "dd14e6e08d7265c7632453abbd5596a882e9da50",
+      "container": "18493376953128523"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-11-09",
   "last_seq_date": "2026-10-24",
-  "last_story_nova_date": "2026-11-07"
+  "last_story_nova_date": "2026-11-10"
 }
