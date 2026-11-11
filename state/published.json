@@ -2122,11 +2122,20 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "camera_lenta"
+    },
+    {
+      "id": "cf_pseudartrose",
+      "kind": "reel",
+      "media_id": "17920087116463995",
+      "at": "2026-11-11T22:01:28.646500+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "como_funciona"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-11-10",
+  "last_reel_date": "2026-11-11",
   "last_seq_date": "2026-10-24",
   "last_story_nova_date": "2026-11-10"
 }
