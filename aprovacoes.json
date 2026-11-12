@@ -756,7 +756,7 @@
    "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
    "data": "2026-10-19",
    "evidencia": "Chat auditoria-instagram-v1, 19/10/2026: depois do lote 3, o Rafael pediu 'já faz um lote até fim de novembro', na linha do pedido anterior ('você precisa de produzir mais conteudos como o de alongamento'). Roteiros por roteirista + verificador adversarial (workflow lote-4-como-funciona): todo fato com trecho LITERAL de peça PUBLICADA ou de lote APROVADO (152 fontes conferidas mecanicamente; o LEGADO-PRE-GATE pendente ficou de fora). Cenas: construção + revisor adversarial + correção (cenas-lote4-como-funciona); rótulos de tela só com palavras do roteiro/legenda; portão CFM limpo.",
-   "observacoes": "Revisão passiva na fila (regra de 30/08): entram de 16/11 em diante, no fim do bloco da geração nova; cópias para conferência em _GRANDE_REVISAO_2026-08/videos_geracao_nova_2026-10. Conduta de alarme literal em cada peça (ex.: febre + manqueira = atendimento no mesmo dia; cotovelo de babá = 'Não puxe nem force. Procure avaliação: a correção é com o ortopedista', literal na fala e na tela).",
+   "observacoes": "Revisão passiva na fila (regra de 30/08): entram de 16/11 em diante, no fim do bloco da geração nova; cópias para conferência em _GRANDE_REVISAO_2026-08/videos_geracao_nova_2026-10. Conduta de alarme literal em cada peça (ex.: febre + manqueira = atendimento no mesmo dia; cotovelo de babá = 'Não puxe nem force. Procure avaliação: a correção é com o ortopedista', literal na fala e na tela). 11/11/2026: cf_quanto_tempo saíram deste lote (legenda mudou: retirada a frase que negava estética) e foram reaprovados no lote SEM-ESTETICA-NAS-LEGENDAS-2026-11-11.",
    "episodios": [
     {
      "id": "cf_discrepancia_causas",
@@ -783,10 +783,6 @@
      "hash_roteiro": "sha256:b7c3ed7c40b7a35baaad6e6002401eab6e3f5321ee1018b5953f90c78477336e"
     },
     {
-     "id": "cf_quanto_tempo",
-     "hash_roteiro": "sha256:44493f211313d39b7b35d92ed1f6cdcdd612f13f5b37ae91df728b3efb94bb79"
-    },
-    {
      "id": "cf_osgood_sever",
      "hash_roteiro": "sha256:03869718d2399554b24cc84a33f86c797941a8429cce53b12fd81214840eca5a"
     }
@@ -802,19 +798,11 @@
    "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
    "data": "2026-10-24",
    "evidencia": "Chat auditoria-instagram-v1, 24/10/2026: depois dos primeiros números (cf_alongamento 2.049 contas, cf_fratura_cola 1.333; pulo nos 3 s de 32-43% contra 64-78% das lâminas) o Rafael decidiu o all-in ('a gente tem que dar all-in agora nesse novo modelo') e pediu 'já vamos adiantar aí e rodar o motor para poder fazer mais coisa'. Pauta por 3 ângulos + editor (workflow lote-5-como-funciona); todo fato com trecho LITERAL de peça PUBLICADA ou de lote APROVADO (conferência mecânica: 0 trechos sem lastro; controle positivo com 2 fontes falsas reprovou as 2); tipo de chamada sorteado (semente lote5-cta-2026-10-24). Cenas: construção + revisor adversarial + correção (cenas-lote5-como-funciona); --completo OK em todas; portão CFM limpo.",
-   "observacoes": "Revisão passiva na fila (regra de 30/08): entram depois do lote 4, no fim do bloco da geração nova; cópias para conferência em _GRANDE_REVISAO_2026-08/videos_geracao_nova_2026-10. Correção conservadora no cf_corrigir_e_alongar: saiu da legenda 'voltou ao dia a dia sem mancar' (antes e depois em texto); ficou só o custo honesto do caso. Regra de temas (24/10): na fila, nada do mesmo tema a menos de 14 dias. 08/11/2026: cf_retirada_fixador saiu deste lote (texto corrigido) e foi reaprovado em QUAL-DOS-DOIS-V2-E-TEXTO-2026-11-08.",
+   "observacoes": "Revisão passiva na fila (regra de 30/08): entram depois do lote 4, no fim do bloco da geração nova; cópias para conferência em _GRANDE_REVISAO_2026-08/videos_geracao_nova_2026-10. Correção conservadora no cf_corrigir_e_alongar: saiu da legenda 'voltou ao dia a dia sem mancar' (antes e depois em texto); ficou só o custo honesto do caso. Regra de temas (24/10): na fila, nada do mesmo tema a menos de 14 dias. 08/11/2026: cf_retirada_fixador saiu deste lote (texto corrigido) e foi reaprovado em QUAL-DOS-DOIS-V2-E-TEXTO-2026-11-08. 11/11/2026: cf_regra_milimetro, cf_corrigir_e_alongar saíram deste lote (legenda mudou: retirada a frase que negava estética) e foram reaprovados no lote SEM-ESTETICA-NAS-LEGENDAS-2026-11-11.",
    "episodios": [
-    {
-     "id": "cf_regra_milimetro",
-     "hash_roteiro": "sha256:d6488715a8a3f85266be4219babcaadbad4ceece5a0a67254b053b3ae4b1b038"
-    },
     {
      "id": "cf_dor_alongamento",
      "hash_roteiro": "sha256:d7b549e56a3819256692d375860bb91f2c29e2aafa4304e0a777aa5afff712e4"
-    },
-    {
-     "id": "cf_corrigir_e_alongar",
-     "hash_roteiro": "sha256:a6513ac871a584b8fbc1ded8e618b630af540b2dcafb8d28df842182871e3aa9"
     },
     {
      "id": "cf_refratura",
@@ -940,7 +928,7 @@
    "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
    "data": "2026-10-31",
    "evidencia": "Chat auditoria-instagram-v1, 31/10/2026: vendo os números (câmera lenta cf_cameralenta_ponta_pes 25.612 de alcance em 1,8 dia e 27 envios; Chama o VAR 3.461 e 22,8 s assistidos), o Rafael escreveu 'a gente vai investir nesses formatos novos', aprovou o rodízio com peso ('pode implementar') e pediu 'pode rodar o motor agora'. Séries aprovadas em 26/10 (lote FORMATOS-NOVOS-2026-10-26, 'conferido, segue'). Pauta pela regra de temas; roteirista + verificador adversarial; cena + revisor adversarial + leitor às cegas + correção; 2ª leitura às cegas no mp4 FINAL com folha uniforme, calibrada em 5 peças publicadas (as 8 no nível delas: clareza 7, diversão 4-6); todo fato com trecho LITERAL de peça publicada ou de lote aprovado (conferência mecânica: 0 trechos sem lastro; controle positivo com 2 fontes falsas reprovou as 2); portão CFM limpo.",
-   "observacoes": "Revisão passiva na fila (regra de 30/08): entram nas vagas de ter/qui/sáb pelo rodízio com peso (regra_reels); cópias para conferência em _GRANDE_REVISAO_2026-08/videos_geracao_nova_2026-10. Os 6 COMO FUNCIONA da mesma rodada NÃO entraram: diversão 3-4 no leitor às cegas, contra 5-6 das publicadas na mesma régua — voltam para retrabalho.",
+   "observacoes": "Revisão passiva na fila (regra de 30/08): entram nas vagas de ter/qui/sáb pelo rodízio com peso (regra_reels); cópias para conferência em _GRANDE_REVISAO_2026-08/videos_geracao_nova_2026-10. Os 6 COMO FUNCIONA da mesma rodada NÃO entraram: diversão 3-4 no leitor às cegas, contra 5-6 das publicadas na mesma régua — voltam para retrabalho. 11/11/2026: cf_cameralenta_perna_curta saíram deste lote (legenda mudou: retirada a frase que negava estética) e foram reaprovados no lote SEM-ESTETICA-NAS-LEGENDAS-2026-11-11.",
    "episodios": [
     {
      "id": "cf_cameralenta_pe_pra_dentro",
@@ -961,10 +949,6 @@
     {
      "id": "cf_var_dor_crescimento",
      "hash_roteiro": "sha256:e052043726650f0ab2725b4b867485fc90732f589833b6668d2d06dda84af128"
-    },
-    {
-     "id": "cf_cameralenta_perna_curta",
-     "hash_roteiro": "sha256:7423d36134e7889797bc047ee01fed2ddbc699b3d9fb332867a0b211dc2de3c4"
     },
     {
      "id": "cf_cameralenta_escoliose",
@@ -1109,6 +1093,36 @@
     {
      "id": "cf_retirada_fixador",
      "hash_roteiro": "sha256:791f2766b8cec34f4fc72d9df97199784b84fdd531155c7a6e316535c1de4e1b"
+    }
+   ]
+  },
+  {
+   "lote": "SEM-ESTETICA-NAS-LEGENDAS-2026-11-11",
+   "nome": "Retirada da frase que negava estética/altura na legenda de 4 reels pendentes",
+   "escopo": [
+    "instagram-reels"
+   ],
+   "status": "aprovado",
+   "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
+   "data": "2026-11-11",
+   "evidencia": "Chat auditoria-instagram-v1, 11/11/2026: proposta de apagar, sem substituir, as frases 'nunca estética' (e 'nunca estética ou altura') das legendas de cf_cameralenta_perna_curta, cf_regra_milimetro, cf_corrigir_e_alongar e cf_quanto_tempo; o Rafael respondeu: 'pode'. Contexto: ordem dele do mesmo dia, 'não vamos falar de alongamento estético nas redes sociais' (nem para negar), e o fato de que ele faz alongamento estético.",
+   "observacoes": "Só a legenda mudou; roteiro (narração) e tela iguais. Re-render necessário pelo hash do episódio.",
+   "episodios": [
+    {
+     "id": "cf_cameralenta_perna_curta",
+     "hash_roteiro": "sha256:a697edbb768bbc6b139c44fb0a93a2a6938655340142ad589c9757675001733f"
+    },
+    {
+     "id": "cf_regra_milimetro",
+     "hash_roteiro": "sha256:7791b07ec9174505e89e1c5d45ad1ba33f2afb23e9f4e104dbb96df999dfcb47"
+    },
+    {
+     "id": "cf_corrigir_e_alongar",
+     "hash_roteiro": "sha256:67cec486fad8fee49fd87b3ffe1213ffdf3ca7ca8a69a5ce09bfadd388db48c6"
+    },
+    {
+     "id": "cf_quanto_tempo",
+     "hash_roteiro": "sha256:2a4f46489d51624e845f567de5b2069c217ca30d80b3768e39365d3f120f98a0"
     }
    ]
   }
