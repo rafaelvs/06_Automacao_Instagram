@@ -1,6 +1,6 @@
 {
  "id": "cf_corrigir_e_alongar",
- "hash_episodio": "sha256:a6513ac871a584b8fbc1ded8e618b630af540b2dcafb8d28df842182871e3aa9",
+ "hash_episodio": "sha256:67cec486fad8fee49fd87b3ffe1213ffdf3ca7ca8a69a5ce09bfadd388db48c6",
  "hash_motor": "sha256:541b4f926bbb2a17935840e8fcf36b6f53be6bc1e1f87dcb4234a5f63d193596",
  "modulos": [
   "base",
@@ -109,5 +109,5 @@
   "tratado por outra equipe"
  ],
  "dur": 33.33,
- "renderizado_em": "2026-11-08T19:45:44+00:00"
+ "renderizado_em": "2026-11-12T01:39:38+00:00"
 }
