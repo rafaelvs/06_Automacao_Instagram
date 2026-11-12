@@ -1,6 +1,6 @@
 {
  "id": "cf_regra_milimetro",
- "hash_episodio": "sha256:d6488715a8a3f85266be4219babcaadbad4ceece5a0a67254b053b3ae4b1b038",
+ "hash_episodio": "sha256:7791b07ec9174505e89e1c5d45ad1ba33f2afb23e9f4e104dbb96df999dfcb47",
  "hash_motor": "sha256:265453b5363bed10af8f6443cf85f3203cb42d2f7902255b68c9ebe47ba79ace",
  "modulos": [
   "base",
@@ -100,5 +100,5 @@
   "ÓSSEO"
  ],
  "dur": 30.03,
- "renderizado_em": "2026-11-08T19:45:19+00:00"
+ "renderizado_em": "2026-11-12T01:39:22+00:00"
 }
