@@ -2173,11 +2173,20 @@
       "sha256": "sha256:be86470f9d54a8853b9b03f4fe161e750c333c931dc1759c115c12b65a61fde0",
       "commit": "754d98f3b1696e3c02325bfd905d523bd7bd1cff",
       "container": "18493789615128523"
+    },
+    {
+      "id": "cf_var_gesso",
+      "kind": "reel",
+      "media_id": "18348230611285835",
+      "at": "2026-11-12T21:55:47.294169+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "chama_o_var"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-11-11",
+  "last_reel_date": "2026-11-12",
   "last_seq_date": "2026-10-24",
   "last_story_nova_date": "2026-11-12"
 }
