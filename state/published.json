@@ -2182,11 +2182,20 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "chama_o_var"
+    },
+    {
+      "id": "cf_cameralenta_pe_pra_dentro",
+      "kind": "reel",
+      "media_id": "17968345512207232",
+      "at": "2026-11-13T18:26:11.040346+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "camera_lenta"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-11-12",
+  "last_reel_date": "2026-11-13",
   "last_seq_date": "2026-10-24",
   "last_story_nova_date": "2026-11-12"
 }
