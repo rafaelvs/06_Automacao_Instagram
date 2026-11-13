@@ -334,6 +334,74 @@
       "story": "stn_ponta_causa",
       "parte": 0,
       "kind": "story_nova"
+    },
+    "18080052656766313": {
+      "id": "18080052656766313",
+      "quando": "2026-11-12T15:32",
+      "tipo": "VIDEO",
+      "views": 26,
+      "reach": 18,
+      "replies": 0,
+      "shares": 0,
+      "navigation": 22,
+      "follows": 0,
+      "profile_visits": 3,
+      "navegacao": {
+        "tap_forward": 10,
+        "tap_back": 4,
+        "swipe_forward": 2,
+        "tap_exit": 6
+      },
+      "medido_em": "2026-11-13T08:59:54+00:00",
+      "idade_h": 17.5,
+      "story": "stn_tenis_caro",
+      "parte": 2,
+      "kind": "story_nova"
+    },
+    "18122226979761536": {
+      "id": "18122226979761536",
+      "quando": "2026-11-12T15:32",
+      "tipo": "VIDEO",
+      "views": 34,
+      "reach": 23,
+      "replies": 0,
+      "shares": 0,
+      "navigation": 31,
+      "follows": 0,
+      "profile_visits": 1,
+      "navegacao": {
+        "swipe_forward": 3,
+        "tap_forward": 20,
+        "tap_exit": 3,
+        "tap_back": 5
+      },
+      "medido_em": "2026-11-13T08:59:54+00:00",
+      "idade_h": 17.5,
+      "story": "stn_tenis_caro",
+      "parte": 1,
+      "kind": "story_nova"
+    },
+    "18030508913865673": {
+      "id": "18030508913865673",
+      "quando": "2026-11-12T15:32",
+      "tipo": "VIDEO",
+      "views": 35,
+      "reach": 25,
+      "replies": 0,
+      "shares": 0,
+      "navigation": 23,
+      "follows": 0,
+      "profile_visits": 1,
+      "navegacao": {
+        "swipe_forward": 5,
+        "tap_forward": 16,
+        "tap_exit": 2
+      },
+      "medido_em": "2026-11-13T08:59:54+00:00",
+      "idade_h": 17.5,
+      "story": "stn_tenis_caro",
+      "parte": 0,
+      "kind": "story_nova"
     }
   }
 }
