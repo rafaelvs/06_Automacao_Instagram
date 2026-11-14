@@ -2191,11 +2191,53 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "camera_lenta"
+    },
+    {
+      "id": "stn_escoliose_reavaliar#0",
+      "kind": "story_nova",
+      "story": "stn_escoliose_reavaliar",
+      "parte": 0,
+      "media_id": "18125109937737213",
+      "at": "2026-11-14T15:31:12.550834+00:00",
+      "temas": [
+        "escoliose"
+      ],
+      "sha256": "sha256:a68d57340c94671ef1a4fa1c28a853c7b9164bb94f0df273fe862bf97aec4934",
+      "commit": "feea5d3ef0746e4c9f3eaf9722001906ff41b804",
+      "container": "18494253106128523"
+    },
+    {
+      "id": "stn_escoliose_reavaliar#1",
+      "kind": "story_nova",
+      "story": "stn_escoliose_reavaliar",
+      "parte": 1,
+      "media_id": "17893536144457281",
+      "at": "2026-11-14T15:31:12.550834+00:00",
+      "temas": [
+        "escoliose"
+      ],
+      "sha256": "sha256:de4432505066124900ba4d64b7da28433b0a483ef1f83e2e1457bab570edf385",
+      "commit": "feea5d3ef0746e4c9f3eaf9722001906ff41b804",
+      "container": "18494253109128523"
+    },
+    {
+      "id": "stn_escoliose_reavaliar#2",
+      "kind": "story_nova",
+      "story": "stn_escoliose_reavaliar",
+      "parte": 2,
+      "media_id": "18120084550801175",
+      "at": "2026-11-14T15:31:12.550834+00:00",
+      "temas": [
+        "escoliose"
+      ],
+      "sha256": "sha256:305b56933b02bef301df859629d33a40833986947c3f24075c10d0ac400fa5cb",
+      "commit": "feea5d3ef0746e4c9f3eaf9722001906ff41b804",
+      "container": "18494253112128523"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-11-13",
   "last_seq_date": "2026-10-24",
-  "last_story_nova_date": "2026-11-12"
+  "last_story_nova_date": "2026-11-14"
 }
