@@ -2233,11 +2233,20 @@
       "sha256": "sha256:305b56933b02bef301df859629d33a40833986947c3f24075c10d0ac400fa5cb",
       "commit": "feea5d3ef0746e4c9f3eaf9722001906ff41b804",
       "container": "18494253112128523"
+    },
+    {
+      "id": "cf_discrepancia_causas",
+      "kind": "reel",
+      "media_id": "17915509656474118",
+      "at": "2026-11-14T18:25:17.999241+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "como_funciona"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-11-13",
+  "last_reel_date": "2026-11-14",
   "last_seq_date": "2026-10-24",
   "last_story_nova_date": "2026-11-14"
 }
