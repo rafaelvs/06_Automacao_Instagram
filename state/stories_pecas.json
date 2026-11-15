@@ -402,6 +402,70 @@
       "story": "stn_tenis_caro",
       "parte": 0,
       "kind": "story_nova"
+    },
+    "18120084550801175": {
+      "id": "18120084550801175",
+      "quando": "2026-11-14T15:31",
+      "tipo": "VIDEO",
+      "views": 27,
+      "reach": 22,
+      "replies": 0,
+      "shares": 0,
+      "navigation": 21,
+      "follows": 0,
+      "profile_visits": 2,
+      "navegacao": {
+        "tap_back": 1,
+        "tap_forward": 14,
+        "tap_exit": 6
+      },
+      "medido_em": "2026-11-15T08:44:26+00:00",
+      "idade_h": 17.2,
+      "story": "stn_escoliose_reavaliar",
+      "parte": 2,
+      "kind": "story_nova"
+    },
+    "17893536144457281": {
+      "id": "17893536144457281",
+      "quando": "2026-11-14T15:31",
+      "tipo": "VIDEO",
+      "views": 26,
+      "reach": 24,
+      "replies": 0,
+      "shares": 0,
+      "navigation": 23,
+      "follows": 0,
+      "profile_visits": 0,
+      "navegacao": {
+        "tap_forward": 20,
+        "tap_exit": 3
+      },
+      "medido_em": "2026-11-15T08:44:26+00:00",
+      "idade_h": 17.2,
+      "story": "stn_escoliose_reavaliar",
+      "parte": 1,
+      "kind": "story_nova"
+    },
+    "18125109937737213": {
+      "id": "18125109937737213",
+      "quando": "2026-11-14T15:31",
+      "tipo": "VIDEO",
+      "views": 30,
+      "reach": 28,
+      "replies": 0,
+      "shares": 0,
+      "navigation": 24,
+      "follows": 0,
+      "profile_visits": 0,
+      "navegacao": {
+        "tap_forward": 17,
+        "tap_exit": 7
+      },
+      "medido_em": "2026-11-15T08:44:26+00:00",
+      "idade_h": 17.2,
+      "story": "stn_escoliose_reavaliar",
+      "parte": 0,
+      "kind": "story_nova"
     }
   }
 }
