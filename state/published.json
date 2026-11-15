@@ -2242,11 +2242,20 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "como_funciona"
+    },
+    {
+      "id": "cf_cotovelo_baba",
+      "kind": "reel",
+      "media_id": "18204942985378039",
+      "at": "2026-11-15T19:32:41.838471+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "como_funciona"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-11-14",
+  "last_reel_date": "2026-11-15",
   "last_seq_date": "2026-10-24",
   "last_story_nova_date": "2026-11-14"
 }
