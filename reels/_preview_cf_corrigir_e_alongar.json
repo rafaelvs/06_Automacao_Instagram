@@ -1,8 +1,9 @@
 {
  "id": "cf_corrigir_e_alongar",
  "hash_episodio": "sha256:67cec486fad8fee49fd87b3ffe1213ffdf3ca7ca8a69a5ce09bfadd388db48c6",
- "hash_motor": "sha256:541b4f926bbb2a17935840e8fcf36b6f53be6bc1e1f87dcb4234a5f63d193596",
+ "hash_motor": "sha256:ca767ae5ac10ee56167a7cc8bd812793d31073582b2396c45b476a5b2de272ed",
  "modulos": [
+  "alinhar",
   "base",
   "cf_alongamento",
   "cf_comum",
@@ -108,6 +109,6 @@
   "tratadas com antibiótico",
   "tratado por outra equipe"
  ],
- "dur": 33.33,
- "renderizado_em": "2026-11-12T01:39:38+00:00"
+ "dur": 37.93,
+ "renderizado_em": "2026-11-16T21:22:18+00:00"
 }
