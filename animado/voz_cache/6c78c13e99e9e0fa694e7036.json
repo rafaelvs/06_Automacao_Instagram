@@ -1,0 +1,534 @@
+{
+ "versao": 2,
+ "chave": "6c78c13e99e9e0fa694e7036",
+ "engine": "gemini",
+ "voz": "Sadaltager",
+ "modelo": "gemini-2.5-flash-tts",
+ "prompt": "Narre em português do Brasil, como um médico ortopedista explicando com calma e clareza para pais num vídeo curto de redes sociais: tom acolhedor, natural, ritmo levemente animado, sem exagero.",
+ "ritmo": "+10%",
+ "taxa": 1.05,
+ "gerado_em": "2026-11-16T21:01:13+00:00",
+ "texto": "Perna mais curta: normal até onde? Volta a fita. Câmera lenta.\nRepara: ela manca. E o quadril fica desnivelado.\nDiferença bem pequena? Quase toda criança tem, e não dá sintoma.\nMancar, desnível no quadril ou diferença nítida pede avaliação.\nA diferença se mede com exame, não no olho.\nEla ainda vai crescer: dá pra prever a diferença final. E planejar com calma, se precisar.\nDiferença que aumenta rápido? Procure avaliação.\nManda pra quem notou uma perna mais curta no filho.",
+ "duracao": 35.97,
+ "alinhamento": {
+  "modelo_whisper": "small",
+  "fracao": 0.9875,
+  "buraco": 1,
+  "inseridas": [
+   {
+    "w": "o",
+    "t": 21.44,
+    "depois_de": 43
+   }
+  ],
+  "omitidas": [
+   {
+    "w": "a",
+    "posicao": 7
+   }
+  ],
+  "trocadas": [],
+  "inseridas_pontas": [],
+  "tomada_aceita": 0,
+  "tomadas": [
+   {
+    "tomada": 0,
+    "dur": 35.97,
+    "problemas": [],
+    "fracao": 0.988,
+    "buraco": 1,
+    "inseridas": [
+     "o"
+    ],
+    "omitidas": [
+     "a"
+    ],
+    "trocadas": []
+   }
+  ]
+ },
+ "palavras": [
+  {
+   "t": 0.34,
+   "d": 0.3,
+   "w": "Perna",
+   "casada": true
+  },
+  {
+   "t": 0.64,
+   "d": 0.24,
+   "w": "mais",
+   "casada": true
+  },
+  {
+   "t": 0.88,
+   "d": 0.59,
+   "w": "curta:",
+   "casada": true
+  },
+  {
+   "t": 1.77,
+   "d": 0.43,
+   "w": "normal",
+   "casada": true
+  },
+  {
+   "t": 2.2,
+   "d": 0.34,
+   "w": "até",
+   "casada": true
+  },
+  {
+   "t": 2.54,
+   "d": 0.51,
+   "w": "onde?",
+   "casada": true
+  },
+  {
+   "t": 3.35,
+   "d": 0.33,
+   "w": "Volta",
+   "casada": true
+  },
+  {
+   "t": 3.68,
+   "d": 0.0,
+   "w": "a",
+   "casada": false
+  },
+  {
+   "t": 3.71,
+   "d": 0.55,
+   "w": "fita.",
+   "casada": true
+  },
+  {
+   "t": 4.6,
+   "d": 0.3,
+   "w": "Câmera",
+   "casada": true
+  },
+  {
+   "t": 4.9,
+   "d": 0.62,
+   "w": "lenta.",
+   "casada": true
+  },
+  {
+   "t": 5.86,
+   "d": 0.55,
+   "w": "Repara:",
+   "casada": true
+  },
+  {
+   "t": 6.64,
+   "d": 0.2,
+   "w": "ela",
+   "casada": true
+  },
+  {
+   "t": 6.84,
+   "d": 0.52,
+   "w": "manca.",
+   "casada": true
+  },
+  {
+   "t": 7.36,
+   "d": 0.46,
+   "w": "E",
+   "casada": true
+  },
+  {
+   "t": 7.82,
+   "d": 0.12,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 7.94,
+   "d": 0.34,
+   "w": "quadril",
+   "casada": true
+  },
+  {
+   "t": 8.28,
+   "d": 0.34,
+   "w": "fica",
+   "casada": true
+  },
+  {
+   "t": 8.62,
+   "d": 1.03,
+   "w": "desnivelado.",
+   "casada": true
+  },
+  {
+   "t": 10.06,
+   "d": 0.54,
+   "w": "Diferença",
+   "casada": true
+  },
+  {
+   "t": 10.6,
+   "d": 0.36,
+   "w": "bem",
+   "casada": true
+  },
+  {
+   "t": 10.96,
+   "d": 0.58,
+   "w": "pequena?",
+   "casada": true
+  },
+  {
+   "t": 11.89,
+   "d": 0.23,
+   "w": "Quase",
+   "casada": true
+  },
+  {
+   "t": 12.12,
+   "d": 0.34,
+   "w": "toda",
+   "casada": true
+  },
+  {
+   "t": 12.46,
+   "d": 0.4,
+   "w": "criança",
+   "casada": true
+  },
+  {
+   "t": 12.86,
+   "d": 0.42,
+   "w": "tem,",
+   "casada": true
+  },
+  {
+   "t": 13.28,
+   "d": 0.38,
+   "w": "e",
+   "casada": true
+  },
+  {
+   "t": 13.66,
+   "d": 0.24,
+   "w": "não",
+   "casada": true
+  },
+  {
+   "t": 13.9,
+   "d": 0.22,
+   "w": "dá",
+   "casada": true
+  },
+  {
+   "t": 14.12,
+   "d": 0.64,
+   "w": "sintoma.",
+   "casada": true
+  },
+  {
+   "t": 15.19,
+   "d": 0.61,
+   "w": "Mancar,",
+   "casada": true
+  },
+  {
+   "t": 15.97,
+   "d": 0.57,
+   "w": "desnível",
+   "casada": true
+  },
+  {
+   "t": 16.54,
+   "d": 0.14,
+   "w": "no",
+   "casada": true
+  },
+  {
+   "t": 16.68,
+   "d": 0.38,
+   "w": "quadril",
+   "casada": true
+  },
+  {
+   "t": 17.06,
+   "d": 0.28,
+   "w": "ou",
+   "casada": true
+  },
+  {
+   "t": 17.34,
+   "d": 0.44,
+   "w": "diferença",
+   "casada": true
+  },
+  {
+   "t": 17.78,
+   "d": 0.8,
+   "w": "nítida",
+   "casada": true
+  },
+  {
+   "t": 18.74,
+   "d": 0.28,
+   "w": "pede",
+   "casada": true
+  },
+  {
+   "t": 19.02,
+   "d": 0.7,
+   "w": "avaliação.",
+   "casada": true
+  },
+  {
+   "t": 20.04,
+   "d": 0.2,
+   "w": "A",
+   "casada": true
+  },
+  {
+   "t": 20.24,
+   "d": 0.44,
+   "w": "diferença",
+   "casada": true
+  },
+  {
+   "t": 20.68,
+   "d": 0.34,
+   "w": "se",
+   "casada": true
+  },
+  {
+   "t": 21.02,
+   "d": 0.22,
+   "w": "mede",
+   "casada": true
+  },
+  {
+   "t": 21.24,
+   "d": 0.28,
+   "w": "com",
+   "casada": true
+  },
+  {
+   "t": 21.52,
+   "d": 0.49,
+   "w": "exame,",
+   "casada": true
+  },
+  {
+   "t": 22.16,
+   "d": 0.26,
+   "w": "não",
+   "casada": true
+  },
+  {
+   "t": 22.42,
+   "d": 0.18,
+   "w": "no",
+   "casada": true
+  },
+  {
+   "t": 22.6,
+   "d": 0.35,
+   "w": "olho.",
+   "casada": true
+  },
+  {
+   "t": 23.38,
+   "d": 0.16,
+   "w": "Ela",
+   "casada": true
+  },
+  {
+   "t": 23.54,
+   "d": 0.26,
+   "w": "ainda",
+   "casada": true
+  },
+  {
+   "t": 23.8,
+   "d": 0.28,
+   "w": "vai",
+   "casada": true
+  },
+  {
+   "t": 24.08,
+   "d": 0.56,
+   "w": "crescer:",
+   "casada": true
+  },
+  {
+   "t": 24.9,
+   "d": 0.18,
+   "w": "dá",
+   "casada": true
+  },
+  {
+   "t": 25.08,
+   "d": 0.19,
+   "w": "pra",
+   "casada": true
+  },
+  {
+   "t": 25.34,
+   "d": 0.4,
+   "w": "prever",
+   "casada": true
+  },
+  {
+   "t": 25.74,
+   "d": 0.06,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 25.8,
+   "d": 0.5,
+   "w": "diferença",
+   "casada": true
+  },
+  {
+   "t": 26.3,
+   "d": 0.34,
+   "w": "final.",
+   "casada": true
+  },
+  {
+   "t": 26.64,
+   "d": 0.58,
+   "w": "E",
+   "casada": true
+  },
+  {
+   "t": 27.22,
+   "d": 0.54,
+   "w": "planejar",
+   "casada": true
+  },
+  {
+   "t": 27.76,
+   "d": 0.24,
+   "w": "com",
+   "casada": true
+  },
+  {
+   "t": 28.0,
+   "d": 0.5,
+   "w": "calma,",
+   "casada": true
+  },
+  {
+   "t": 28.5,
+   "d": 0.24,
+   "w": "se",
+   "casada": true
+  },
+  {
+   "t": 28.74,
+   "d": 0.62,
+   "w": "precisar.",
+   "casada": true
+  },
+  {
+   "t": 29.81,
+   "d": 0.53,
+   "w": "Diferença",
+   "casada": true
+  },
+  {
+   "t": 30.34,
+   "d": 0.18,
+   "w": "que",
+   "casada": true
+  },
+  {
+   "t": 30.52,
+   "d": 0.42,
+   "w": "aumenta",
+   "casada": true
+  },
+  {
+   "t": 30.94,
+   "d": 0.51,
+   "w": "rápido?",
+   "casada": true
+  },
+  {
+   "t": 31.71,
+   "d": 0.39,
+   "w": "Procure",
+   "casada": true
+  },
+  {
+   "t": 32.1,
+   "d": 0.79,
+   "w": "avaliação.",
+   "casada": true
+  },
+  {
+   "t": 33.28,
+   "d": 0.32,
+   "w": "Manda",
+   "casada": true
+  },
+  {
+   "t": 33.6,
+   "d": 0.16,
+   "w": "pra",
+   "casada": true
+  },
+  {
+   "t": 33.76,
+   "d": 0.18,
+   "w": "quem",
+   "casada": true
+  },
+  {
+   "t": 33.94,
+   "d": 0.42,
+   "w": "notou",
+   "casada": true
+  },
+  {
+   "t": 34.36,
+   "d": 0.14,
+   "w": "uma",
+   "casada": true
+  },
+  {
+   "t": 34.5,
+   "d": 0.32,
+   "w": "perna",
+   "casada": true
+  },
+  {
+   "t": 34.82,
+   "d": 0.16,
+   "w": "mais",
+   "casada": true
+  },
+  {
+   "t": 34.98,
+   "d": 0.42,
+   "w": "curta",
+   "casada": true
+  },
+  {
+   "t": 35.4,
+   "d": 0.1,
+   "w": "no",
+   "casada": true
+  },
+  {
+   "t": 35.5,
+   "d": 0.43,
+   "w": "filho.",
+   "casada": true
+  }
+ ],
+ "amostras": 1726544,
+ "pcm_sha256": "b7847aeb4dd346b369f8a11c459ac5e949455af194f5f7c1695a9f690e76e5d4"
+}

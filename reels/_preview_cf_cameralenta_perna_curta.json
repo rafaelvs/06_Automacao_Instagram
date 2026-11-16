@@ -1,8 +1,9 @@
 {
  "id": "cf_cameralenta_perna_curta",
  "hash_episodio": "sha256:a697edbb768bbc6b139c44fb0a93a2a6938655340142ad589c9757675001733f",
- "hash_motor": "sha256:57d24ea344633375fcef40ee788d125ad3d6b3c2ed931d5047d5c56e8a5c2315",
+ "hash_motor": "sha256:cda9ce3f35381bf39769fdec4f66a71443d2cf96772d6e8b5e6e8b821568319b",
  "modulos": [
+  "alinhar",
   "base",
   "cf_alongamento",
   "cf_cameralenta_perna_curta",
@@ -86,6 +87,6 @@
   "VAI",
   "VOLTA"
  ],
- "dur": 33.7,
- "renderizado_em": "2026-11-12T01:39:28+00:00"
+ "dur": 38.9,
+ "renderizado_em": "2026-11-16T21:02:00+00:00"
 }
