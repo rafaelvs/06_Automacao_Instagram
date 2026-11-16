@@ -1,0 +1,514 @@
+{
+ "versao": 2,
+ "chave": "1337e132e5e2b240f6b02b67",
+ "engine": "gemini",
+ "voz": "Sadaltager",
+ "modelo": "gemini-2.5-flash-tts",
+ "prompt": "Narre em português do Brasil, como um médico ortopedista explicando com calma e clareza para pais num vídeo curto de redes sociais: tom acolhedor, natural, ritmo levemente animado, sem exagero.",
+ "ritmo": "+10%",
+ "taxa": 1.05,
+ "gerado_em": "2026-11-16T21:03:05+00:00",
+ "texto": "Dá pra trincar um osso sem nenhuma queda.\nTreino intenso e repetitivo pode trincar o osso aos poucos, sem uma pancada única.\nÉ a fratura por estresse.\nO sinal: dor que piora com a atividade e melhora no repouso.\nDor sempre no mesmo ponto, a cada treino, merece avaliação.\nDor é aviso, não troféu.\nAumentar o treino aos poucos e respeitar o descanso previne boa parte dessas fraturas.\nManda pra quem acha que osso só quebra em queda.",
+ "duracao": 30.275,
+ "alinhamento": {
+  "modelo_whisper": "small",
+  "fracao": 0.9872,
+  "buraco": 1,
+  "inseridas": [],
+  "omitidas": [
+   {
+    "w": "a",
+    "posicao": 33
+   }
+  ],
+  "trocadas": [],
+  "inseridas_pontas": [],
+  "tomada_aceita": 0,
+  "tomadas": [
+   {
+    "tomada": 0,
+    "dur": 30.27,
+    "problemas": [],
+    "fracao": 0.987,
+    "buraco": 1,
+    "inseridas": [],
+    "omitidas": [
+     "a"
+    ],
+    "trocadas": []
+   }
+  ]
+ },
+ "palavras": [
+  {
+   "t": 0.24,
+   "d": 0.14,
+   "w": "Dá",
+   "casada": true
+  },
+  {
+   "t": 0.38,
+   "d": 0.2,
+   "w": "pra",
+   "casada": true
+  },
+  {
+   "t": 0.58,
+   "d": 0.58,
+   "w": "trincar",
+   "casada": true
+  },
+  {
+   "t": 1.16,
+   "d": 0.18,
+   "w": "um",
+   "casada": true
+  },
+  {
+   "t": 1.34,
+   "d": 0.36,
+   "w": "osso",
+   "casada": true
+  },
+  {
+   "t": 1.7,
+   "d": 0.26,
+   "w": "sem",
+   "casada": true
+  },
+  {
+   "t": 1.96,
+   "d": 0.48,
+   "w": "nenhuma",
+   "casada": true
+  },
+  {
+   "t": 2.44,
+   "d": 0.51,
+   "w": "queda.",
+   "casada": true
+  },
+  {
+   "t": 3.43,
+   "d": 0.25,
+   "w": "Treino",
+   "casada": true
+  },
+  {
+   "t": 3.68,
+   "d": 0.56,
+   "w": "intenso",
+   "casada": true
+  },
+  {
+   "t": 4.24,
+   "d": 0.12,
+   "w": "e",
+   "casada": true
+  },
+  {
+   "t": 4.36,
+   "d": 0.74,
+   "w": "repetitivo",
+   "casada": true
+  },
+  {
+   "t": 5.1,
+   "d": 0.34,
+   "w": "pode",
+   "casada": true
+  },
+  {
+   "t": 5.44,
+   "d": 0.5,
+   "w": "trincar",
+   "casada": true
+  },
+  {
+   "t": 5.94,
+   "d": 0.16,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 6.1,
+   "d": 0.22,
+   "w": "osso",
+   "casada": true
+  },
+  {
+   "t": 6.32,
+   "d": 0.14,
+   "w": "aos",
+   "casada": true
+  },
+  {
+   "t": 6.46,
+   "d": 0.57,
+   "w": "poucos,",
+   "casada": true
+  },
+  {
+   "t": 7.21,
+   "d": 0.27,
+   "w": "sem",
+   "casada": true
+  },
+  {
+   "t": 7.48,
+   "d": 0.22,
+   "w": "uma",
+   "casada": true
+  },
+  {
+   "t": 7.7,
+   "d": 0.44,
+   "w": "pancada",
+   "casada": true
+  },
+  {
+   "t": 8.14,
+   "d": 0.57,
+   "w": "única.",
+   "casada": true
+  },
+  {
+   "t": 9.03,
+   "d": 0.11,
+   "w": "É",
+   "casada": true
+  },
+  {
+   "t": 9.14,
+   "d": 0.14,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 9.28,
+   "d": 0.32,
+   "w": "fratura",
+   "casada": true
+  },
+  {
+   "t": 9.6,
+   "d": 0.32,
+   "w": "por",
+   "casada": true
+  },
+  {
+   "t": 9.92,
+   "d": 0.72,
+   "w": "estresse.",
+   "casada": true
+  },
+  {
+   "t": 10.98,
+   "d": 0.12,
+   "w": "O",
+   "casada": true
+  },
+  {
+   "t": 11.1,
+   "d": 0.42,
+   "w": "sinal:",
+   "casada": true
+  },
+  {
+   "t": 11.77,
+   "d": 0.27,
+   "w": "dor",
+   "casada": true
+  },
+  {
+   "t": 12.04,
+   "d": 0.18,
+   "w": "que",
+   "casada": true
+  },
+  {
+   "t": 12.22,
+   "d": 0.51,
+   "w": "piora",
+   "casada": true
+  },
+  {
+   "t": 12.77,
+   "d": 0.05,
+   "w": "com",
+   "casada": true
+  },
+  {
+   "t": 12.82,
+   "d": 0.0,
+   "w": "a",
+   "casada": false
+  },
+  {
+   "t": 12.82,
+   "d": 0.58,
+   "w": "atividade",
+   "casada": true
+  },
+  {
+   "t": 13.4,
+   "d": 0.4,
+   "w": "e",
+   "casada": true
+  },
+  {
+   "t": 13.8,
+   "d": 0.4,
+   "w": "melhora",
+   "casada": true
+  },
+  {
+   "t": 14.2,
+   "d": 0.12,
+   "w": "no",
+   "casada": true
+  },
+  {
+   "t": 14.32,
+   "d": 0.61,
+   "w": "repouso.",
+   "casada": true
+  },
+  {
+   "t": 15.24,
+   "d": 0.24,
+   "w": "Dor",
+   "casada": true
+  },
+  {
+   "t": 15.48,
+   "d": 0.48,
+   "w": "sempre",
+   "casada": true
+  },
+  {
+   "t": 15.96,
+   "d": 0.18,
+   "w": "no",
+   "casada": true
+  },
+  {
+   "t": 16.14,
+   "d": 0.32,
+   "w": "mesmo",
+   "casada": true
+  },
+  {
+   "t": 16.46,
+   "d": 0.68,
+   "w": "ponto,",
+   "casada": true
+  },
+  {
+   "t": 17.14,
+   "d": 0.08,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 17.33,
+   "d": 0.21,
+   "w": "cada",
+   "casada": true
+  },
+  {
+   "t": 17.54,
+   "d": 0.51,
+   "w": "treino,",
+   "casada": true
+  },
+  {
+   "t": 18.22,
+   "d": 0.4,
+   "w": "merece",
+   "casada": true
+  },
+  {
+   "t": 18.62,
+   "d": 0.67,
+   "w": "avaliação.",
+   "casada": true
+  },
+  {
+   "t": 19.66,
+   "d": 0.3,
+   "w": "Dor",
+   "casada": true
+  },
+  {
+   "t": 19.96,
+   "d": 0.28,
+   "w": "é",
+   "casada": true
+  },
+  {
+   "t": 20.24,
+   "d": 0.66,
+   "w": "aviso,",
+   "casada": true
+  },
+  {
+   "t": 21.05,
+   "d": 0.27,
+   "w": "não",
+   "casada": true
+  },
+  {
+   "t": 21.32,
+   "d": 0.58,
+   "w": "troféu.",
+   "casada": true
+  },
+  {
+   "t": 22.27,
+   "d": 0.41,
+   "w": "Aumentar",
+   "casada": true
+  },
+  {
+   "t": 22.68,
+   "d": 0.12,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 22.81,
+   "d": 0.21,
+   "w": "treino",
+   "casada": true
+  },
+  {
+   "t": 23.02,
+   "d": 0.16,
+   "w": "aos",
+   "casada": true
+  },
+  {
+   "t": 23.18,
+   "d": 0.5,
+   "w": "poucos",
+   "casada": true
+  },
+  {
+   "t": 23.68,
+   "d": 0.14,
+   "w": "e",
+   "casada": true
+  },
+  {
+   "t": 23.82,
+   "d": 0.58,
+   "w": "respeitar",
+   "casada": true
+  },
+  {
+   "t": 24.4,
+   "d": 0.12,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 24.52,
+   "d": 0.57,
+   "w": "descanso",
+   "casada": true
+  },
+  {
+   "t": 25.34,
+   "d": 0.34,
+   "w": "previne",
+   "casada": true
+  },
+  {
+   "t": 25.68,
+   "d": 0.32,
+   "w": "boa",
+   "casada": true
+  },
+  {
+   "t": 26.0,
+   "d": 0.4,
+   "w": "parte",
+   "casada": true
+  },
+  {
+   "t": 26.4,
+   "d": 0.28,
+   "w": "dessas",
+   "casada": true
+  },
+  {
+   "t": 26.68,
+   "d": 0.68,
+   "w": "fraturas.",
+   "casada": true
+  },
+  {
+   "t": 27.7,
+   "d": 0.34,
+   "w": "Manda",
+   "casada": true
+  },
+  {
+   "t": 28.06,
+   "d": 0.08,
+   "w": "pra",
+   "casada": true
+  },
+  {
+   "t": 28.14,
+   "d": 0.18,
+   "w": "quem",
+   "casada": true
+  },
+  {
+   "t": 28.32,
+   "d": 0.28,
+   "w": "acha",
+   "casada": true
+  },
+  {
+   "t": 28.6,
+   "d": 0.26,
+   "w": "que",
+   "casada": true
+  },
+  {
+   "t": 28.86,
+   "d": 0.34,
+   "w": "osso",
+   "casada": true
+  },
+  {
+   "t": 29.2,
+   "d": 0.24,
+   "w": "só",
+   "casada": true
+  },
+  {
+   "t": 29.44,
+   "d": 0.36,
+   "w": "quebra",
+   "casada": true
+  },
+  {
+   "t": 29.8,
+   "d": 0.15,
+   "w": "em",
+   "casada": true
+  },
+  {
+   "t": 29.97,
+   "d": 0.3,
+   "w": "queda.",
+   "casada": true
+  }
+ ],
+ "amostras": 1453184,
+ "pcm_sha256": "a34329048b8c9545e60464de59fbdb71b84666d2ad03db8c77ab2d419ab857bc"
+}
