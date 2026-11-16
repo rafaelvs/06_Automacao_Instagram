@@ -1,7 +1,7 @@
 {
  "id": "cf_andador",
  "hash_episodio": "sha256:76c438d508ecf2deb4d5fc22d46372fcb9df284281ad8157c45c10a2b7856793",
- "hash_motor": "sha256:235dffc7076ae531daa14306df21769d6ef2d61c0928cefb6b6fde8329b1776b",
+ "hash_motor": "sha256:d95c36a82ed5a1912d7dec1c51c4a9fe8b32cd813bbcebd0381ad36793a2d66c",
  "modulos": [
   "alinhar",
   "base",
@@ -96,5 +96,5 @@
   "É"
  ],
  "dur": 34.43,
- "renderizado_em": "2026-11-16T21:01:19+00:00"
+ "renderizado_em": "2026-11-16T21:18:56+00:00"
 }
