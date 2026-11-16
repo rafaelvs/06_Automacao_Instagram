@@ -92,6 +92,16 @@ def fingerprint(gerar_path=None, wf_path=None, animado_path=None, animado_dir=No
         "animado_tts": _extrai(a, r'async def _tts\(.*?\n(?=\n\S|\Z)', "animado _tts()"),
         "animado_narrar": _extrai(a, r'def narrar\(.*?\n(?=\n\S|\Z)', "animado narrar()"),
         "animado_chamadas": _chamadas_narrar(pasta),
+        # 16/11/2026: voz F (Gemini-TTS Sadaltager). A engine, a voz, o modelo, o prompt de estilo e
+        # a tabela ritmo -> speakingRate definem o som tanto quanto a voz do edge; e a masterização
+        # e a escolha da tomada saíram de narrar() para funções próprias — que entram aqui.
+        "animado_gemini": (_extrai(a, r'ENGINE\s*=\s*"[^"\n]*"', "animado ENGINE")
+                           + _extrai(a, r'VOZ_GEMINI\s*=\s*"[^"\n]*"', "animado VOZ_GEMINI")
+                           + _extrai(a, r'MODELO_GEMINI\s*=\s*"[^"\n]*"', "animado MODELO_GEMINI")
+                           + _extrai(a, r'PROMPT_GEMINI\s*=\s*\(.*?\)\n', "animado PROMPT_GEMINI")
+                           + _extrai(a, r'TAXA_GEMINI\s*=\s*\{[^}\n]*\}', "animado TAXA_GEMINI")),
+        "animado_funcoes": "".join(_extrai(a, rf'def {f}\(.*?\n(?=\n\S|\Z)', f"animado {f}()")
+                                   for f in ("_masterizar", "_gemini_tts", "_narrar_gemini", "_narrar_edge")),
     }
     blob = json.dumps(partes, ensure_ascii=False, sort_keys=True)
     return hashlib.sha256(blob.encode("utf-8")).hexdigest(), partes
@@ -158,10 +168,17 @@ def main():
                 "6: rate/pitch fixos em _tts()": ("voz.py", "rate=rate, pitch=pitch", 'rate="+40%", pitch="-12Hz"'),
                 "7: masterização tirada de narrar()": ("voz.py", '"-af", VOICE_CHAIN, ', ""),
                 "8: chamador passa outro ritmo": ("conversa.py", "voz.RITMO_CONVERSA", '"+25%"'),
+                # 16/11/2026 (voz F, Gemini-TTS)
+                "9: engine trocada": ("voz.py", 'ENGINE = "gemini"', 'ENGINE = "edge"'),
+                "10: voz do Gemini trocada": ("voz.py", 'VOZ_GEMINI = "Sadaltager"', 'VOZ_GEMINI = "Charon"'),
+                "11: speakingRate trocado": ("voz.py", '"+10%": 1.05', '"+10%": 1.20'),
+                "12: prompt de estilo trocado": ("voz.py", "tom acolhedor", "tom urgente"),
+                "13: modelo do Gemini fixo dentro de _gemini_tts()": ("voz.py", '"modelName": MODELO_GEMINI',
+                                                                       '"modelName": "gemini-2.5-pro-tts"'),
             }
             for nome, (arq, de, para) in mut.items():
-                d = td / f"anim_{nome[0]}"
-                shutil.copytree(ROOT / "animado", d, ignore=shutil.ignore_patterns("__pycache__"))
+                d = td / f"anim_{nome.split(':')[0]}"
+                shutil.copytree(ROOT / "animado", d, ignore=shutil.ignore_patterns("__pycache__", "voz_cache"))
                 t = (d / arq).read_text(encoding="utf-8")
                 assert de in t, f"controle {nome}: trecho {de!r} sumiu de {arq} — atualize o controle"
                 (d / arq).write_text(t.replace(de, para, 1), encoding="utf-8")
@@ -171,7 +188,7 @@ def main():
                 ok &= r
             # controle NEGATIVO (19/10): cena NOVA que narra com o ritmo aprovado NÃO muda a voz
             d = td / "anim_neg_cena"
-            shutil.copytree(ROOT / "animado", d, ignore=shutil.ignore_patterns("__pycache__"))
+            shutil.copytree(ROOT / "animado", d, ignore=shutil.ignore_patterns("__pycache__", "voz_cache"))
             (d / "cf_cena_nova_teste.py").write_text(
                 "from . import voz as _voz\n\ndef render(ep, mp4, tmp, previa=False):\n"
                 "    v, p = _voz.narrar(ep['x'], _voz.RITMO_COMO_FUNCIONA, tmp)\n", encoding="utf-8")
