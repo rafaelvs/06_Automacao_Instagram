@@ -1,0 +1,515 @@
+{
+ "versao": 2,
+ "chave": "f817a73ce9f2d16e281e74aa",
+ "engine": "gemini",
+ "voz": "Sadaltager",
+ "modelo": "gemini-2.5-flash-tts",
+ "prompt": "Narre em português do Brasil, como um médico ortopedista explicando com calma e clareza para pais num vídeo curto de redes sociais: tom acolhedor, natural, ritmo levemente animado, sem exagero.",
+ "ritmo": "+10%",
+ "taxa": 1.05,
+ "gerado_em": "2026-11-16T21:05:56+00:00",
+ "texto": "Dor na perna à noite: levo ou espero?\nA manhã seguinte dá a pista.\nMesma noite, duas manhãs.\nQual merece avaliação? A? Ou B?\nA! Olha o passo: mancou de manhã.\nNão espera, avalia.\nE o B? Sumiu de manhã, brinca normal.\nNas duas pernas, à noite, sem inchaço e sem febre: padrão da dor de crescimento.\nNa dúvida, avalie.\nMancou com febre? Procure atendimento no mesmo dia.\nManda pra quem já perdeu o sono com essa dor.",
+ "duracao": 34.027,
+ "alinhamento": {
+  "modelo_whisper": "small",
+  "fracao": 1.0,
+  "buraco": 0,
+  "inseridas": [
+   {
+    "w": "a",
+    "t": 8.9,
+    "depois_de": 19
+   }
+  ],
+  "omitidas": [],
+  "trocadas": [],
+  "inseridas_pontas": [],
+  "tomada_aceita": 0,
+  "tomadas": [
+   {
+    "tomada": 0,
+    "dur": 34.03,
+    "problemas": [],
+    "fracao": 1.0,
+    "buraco": 0,
+    "inseridas": [
+     "a"
+    ],
+    "omitidas": [],
+    "trocadas": []
+   }
+  ]
+ },
+ "palavras": [
+  {
+   "t": 0.15,
+   "d": 0.35,
+   "w": "Dor",
+   "casada": true
+  },
+  {
+   "t": 0.5,
+   "d": 0.16,
+   "w": "na",
+   "casada": true
+  },
+  {
+   "t": 0.66,
+   "d": 0.48,
+   "w": "perna",
+   "casada": true
+  },
+  {
+   "t": 1.14,
+   "d": 0.24,
+   "w": "à",
+   "casada": true
+  },
+  {
+   "t": 1.38,
+   "d": 0.52,
+   "w": "noite:",
+   "casada": true
+  },
+  {
+   "t": 2.19,
+   "d": 0.47,
+   "w": "levo",
+   "casada": true
+  },
+  {
+   "t": 2.66,
+   "d": 0.3,
+   "w": "ou",
+   "casada": true
+  },
+  {
+   "t": 2.96,
+   "d": 0.61,
+   "w": "espero?",
+   "casada": true
+  },
+  {
+   "t": 3.97,
+   "d": 0.04,
+   "w": "A",
+   "casada": true
+  },
+  {
+   "t": 4.01,
+   "d": 0.35,
+   "w": "manhã",
+   "casada": true
+  },
+  {
+   "t": 4.36,
+   "d": 0.69,
+   "w": "seguinte",
+   "casada": true
+  },
+  {
+   "t": 5.05,
+   "d": 0.11,
+   "w": "dá",
+   "casada": true
+  },
+  {
+   "t": 5.16,
+   "d": 0.16,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 5.32,
+   "d": 0.41,
+   "w": "pista.",
+   "casada": true
+  },
+  {
+   "t": 6.21,
+   "d": 0.45,
+   "w": "Mesma",
+   "casada": true
+  },
+  {
+   "t": 6.66,
+   "d": 0.6,
+   "w": "noite,",
+   "casada": true
+  },
+  {
+   "t": 7.26,
+   "d": 0.24,
+   "w": "duas",
+   "casada": true
+  },
+  {
+   "t": 7.5,
+   "d": 0.66,
+   "w": "manhãs.",
+   "casada": true
+  },
+  {
+   "t": 8.37,
+   "d": 0.11,
+   "w": "Qual",
+   "casada": true
+  },
+  {
+   "t": 8.48,
+   "d": 0.53,
+   "w": "merece",
+   "casada": true
+  },
+  {
+   "t": 9.01,
+   "d": 0.59,
+   "w": "avaliação?",
+   "casada": true
+  },
+  {
+   "t": 9.95,
+   "d": 0.17,
+   "w": "A?",
+   "casada": true
+  },
+  {
+   "t": 10.12,
+   "d": 0.58,
+   "w": "Ou",
+   "casada": true
+  },
+  {
+   "t": 10.7,
+   "d": 0.36,
+   "w": "B?",
+   "casada": true
+  },
+  {
+   "t": 11.6,
+   "d": 0.4,
+   "w": "A!",
+   "casada": true
+  },
+  {
+   "t": 12.34,
+   "d": 0.2,
+   "w": "Olha",
+   "casada": true
+  },
+  {
+   "t": 12.54,
+   "d": 0.1,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 12.69,
+   "d": 0.45,
+   "w": "passo:",
+   "casada": true
+  },
+  {
+   "t": 13.39,
+   "d": 0.57,
+   "w": "mancou",
+   "casada": true
+  },
+  {
+   "t": 13.96,
+   "d": 0.16,
+   "w": "de",
+   "casada": true
+  },
+  {
+   "t": 14.12,
+   "d": 0.43,
+   "w": "manhã.",
+   "casada": true
+  },
+  {
+   "t": 14.81,
+   "d": 0.25,
+   "w": "Não",
+   "casada": true
+  },
+  {
+   "t": 15.06,
+   "d": 0.61,
+   "w": "espera,",
+   "casada": true
+  },
+  {
+   "t": 15.81,
+   "d": 0.59,
+   "w": "avalia.",
+   "casada": true
+  },
+  {
+   "t": 16.84,
+   "d": 0.1,
+   "w": "E",
+   "casada": true
+  },
+  {
+   "t": 16.94,
+   "d": 0.08,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 17.02,
+   "d": 0.31,
+   "w": "B?",
+   "casada": true
+  },
+  {
+   "t": 17.55,
+   "d": 0.45,
+   "w": "Sumiu",
+   "casada": true
+  },
+  {
+   "t": 18.0,
+   "d": 0.14,
+   "w": "de",
+   "casada": true
+  },
+  {
+   "t": 18.14,
+   "d": 0.42,
+   "w": "manhã,",
+   "casada": true
+  },
+  {
+   "t": 18.75,
+   "d": 0.43,
+   "w": "brinca",
+   "casada": true
+  },
+  {
+   "t": 19.18,
+   "d": 0.49,
+   "w": "normal.",
+   "casada": true
+  },
+  {
+   "t": 20.11,
+   "d": 0.17,
+   "w": "Nas",
+   "casada": true
+  },
+  {
+   "t": 20.28,
+   "d": 0.28,
+   "w": "duas",
+   "casada": true
+  },
+  {
+   "t": 20.56,
+   "d": 0.82,
+   "w": "pernas,",
+   "casada": true
+  },
+  {
+   "t": 21.38,
+   "d": 0.06,
+   "w": "à",
+   "casada": true
+  },
+  {
+   "t": 21.44,
+   "d": 0.64,
+   "w": "noite,",
+   "casada": true
+  },
+  {
+   "t": 22.08,
+   "d": 0.2,
+   "w": "sem",
+   "casada": true
+  },
+  {
+   "t": 22.28,
+   "d": 0.62,
+   "w": "inchaço",
+   "casada": true
+  },
+  {
+   "t": 22.9,
+   "d": 0.12,
+   "w": "e",
+   "casada": true
+  },
+  {
+   "t": 23.02,
+   "d": 0.2,
+   "w": "sem",
+   "casada": true
+  },
+  {
+   "t": 23.22,
+   "d": 0.5,
+   "w": "febre:",
+   "casada": true
+  },
+  {
+   "t": 24.04,
+   "d": 0.34,
+   "w": "padrão",
+   "casada": true
+  },
+  {
+   "t": 24.38,
+   "d": 0.16,
+   "w": "da",
+   "casada": true
+  },
+  {
+   "t": 24.54,
+   "d": 0.28,
+   "w": "dor",
+   "casada": true
+  },
+  {
+   "t": 24.82,
+   "d": 0.13,
+   "w": "de",
+   "casada": true
+  },
+  {
+   "t": 24.97,
+   "d": 0.61,
+   "w": "crescimento.",
+   "casada": true
+  },
+  {
+   "t": 25.98,
+   "d": 0.14,
+   "w": "Na",
+   "casada": true
+  },
+  {
+   "t": 26.12,
+   "d": 0.5,
+   "w": "dúvida,",
+   "casada": true
+  },
+  {
+   "t": 26.8,
+   "d": 0.58,
+   "w": "avalie.",
+   "casada": true
+  },
+  {
+   "t": 27.83,
+   "d": 0.47,
+   "w": "Mancou",
+   "casada": true
+  },
+  {
+   "t": 28.3,
+   "d": 0.16,
+   "w": "com",
+   "casada": true
+  },
+  {
+   "t": 28.46,
+   "d": 0.62,
+   "w": "febre?",
+   "casada": true
+  },
+  {
+   "t": 29.34,
+   "d": 0.4,
+   "w": "Procure",
+   "casada": true
+  },
+  {
+   "t": 29.74,
+   "d": 0.53,
+   "w": "atendimento",
+   "casada": true
+  },
+  {
+   "t": 30.29,
+   "d": 0.17,
+   "w": "no",
+   "casada": true
+  },
+  {
+   "t": 30.46,
+   "d": 0.28,
+   "w": "mesmo",
+   "casada": true
+  },
+  {
+   "t": 30.74,
+   "d": 0.55,
+   "w": "dia.",
+   "casada": true
+  },
+  {
+   "t": 31.69,
+   "d": 0.29,
+   "w": "Manda",
+   "casada": true
+  },
+  {
+   "t": 31.98,
+   "d": 0.16,
+   "w": "pra",
+   "casada": true
+  },
+  {
+   "t": 32.14,
+   "d": 0.2,
+   "w": "quem",
+   "casada": true
+  },
+  {
+   "t": 32.34,
+   "d": 0.16,
+   "w": "já",
+   "casada": true
+  },
+  {
+   "t": 32.5,
+   "d": 0.54,
+   "w": "perdeu",
+   "casada": true
+  },
+  {
+   "t": 33.04,
+   "d": 0.04,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 33.08,
+   "d": 0.26,
+   "w": "sono",
+   "casada": true
+  },
+  {
+   "t": 33.34,
+   "d": 0.16,
+   "w": "com",
+   "casada": true
+  },
+  {
+   "t": 33.5,
+   "d": 0.16,
+   "w": "essa",
+   "casada": true
+  },
+  {
+   "t": 33.66,
+   "d": 0.36,
+   "w": "dor.",
+   "casada": true
+  }
+ ],
+ "amostras": 1633280,
+ "pcm_sha256": "58660d21f1ef2e0af14c29e738d5f95e4ff81699c55965e2a164a13af069abb5"
+}

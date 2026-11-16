@@ -1,8 +1,9 @@
 {
  "id": "cf_qualdosdois2_dor_crescimento",
  "hash_episodio": "sha256:453c44a8f81a7796c4713facedca5c48f52d53316c53bffe41e37c33fe2486b9",
- "hash_motor": "sha256:eda2f72515a88c2bf12b4d7292fbc2c423d8944bee00f0ae2e258522b6f417b9",
+ "hash_motor": "sha256:a841f79047a5a216f7c4eb87489f7612ff87ebbf33996c58608398060d59317e",
  "modulos": [
+  "alinhar",
   "base",
   "cf_alongamento",
   "cf_comum",
@@ -82,6 +83,6 @@
   "SUMIU",
   "À"
  ],
- "dur": 32.3,
- "renderizado_em": "2026-11-08T23:26:20+00:00"
+ "dur": 36.57,
+ "renderizado_em": "2026-11-16T21:06:51+00:00"
 }
