@@ -1,0 +1,471 @@
+{
+ "versao": 2,
+ "chave": "e0f1c076c71aadedee77fcdd",
+ "engine": "gemini",
+ "voz": "Sadaltager",
+ "modelo": "gemini-2.5-flash-tts",
+ "prompt": "Narre em português do Brasil, como um médico ortopedista explicando com calma e clareza para pais num vídeo curto de redes sociais: tom acolhedor, natural, ritmo levemente animado, sem exagero.",
+ "ritmo": "+10%",
+ "taxa": 1.05,
+ "gerado_em": "2026-11-16T21:02:03+00:00",
+ "texto": "Um lado abre menos? Volta. Câmera lenta.\nRepara: essa perninha para no meio do caminho.\nNa troca de fralda, com pressa, passa batido.\nPode ser sinal de displasia do quadril: o quadril que não encaixa.\nO teste do pezinho não detecta.\nA avaliação é clínica e, às vezes, com ultrassom.\nIdentificado nos primeiros meses, o tratamento costuma ser mais simples.\nNa dúvida, leve ao ortopedista pediátrico.\nManda pra quem vive trocando fralda.",
+ "duracao": 32.084,
+ "alinhamento": {
+  "modelo_whisper": "small",
+  "fracao": 1.0,
+  "buraco": 0,
+  "inseridas": [],
+  "omitidas": [],
+  "trocadas": [],
+  "inseridas_pontas": [],
+  "tomada_aceita": 0,
+  "tomadas": [
+   {
+    "tomada": 0,
+    "dur": 32.08,
+    "problemas": [],
+    "fracao": 1.0,
+    "buraco": 0,
+    "inseridas": [],
+    "omitidas": [],
+    "trocadas": []
+   }
+  ]
+ },
+ "palavras": [
+  {
+   "t": 0.26,
+   "d": 0.14,
+   "w": "Um",
+   "casada": true
+  },
+  {
+   "t": 0.4,
+   "d": 0.36,
+   "w": "lado",
+   "casada": true
+  },
+  {
+   "t": 0.76,
+   "d": 0.4,
+   "w": "abre",
+   "casada": true
+  },
+  {
+   "t": 1.16,
+   "d": 0.69,
+   "w": "menos?",
+   "casada": true
+  },
+  {
+   "t": 2.39,
+   "d": 0.55,
+   "w": "Volta.",
+   "casada": true
+  },
+  {
+   "t": 3.33,
+   "d": 0.19,
+   "w": "Câmera",
+   "casada": true
+  },
+  {
+   "t": 3.52,
+   "d": 0.56,
+   "w": "lenta.",
+   "casada": true
+  },
+  {
+   "t": 4.45,
+   "d": 0.53,
+   "w": "Repara:",
+   "casada": true
+  },
+  {
+   "t": 5.33,
+   "d": 0.33,
+   "w": "essa",
+   "casada": true
+  },
+  {
+   "t": 5.66,
+   "d": 0.59,
+   "w": "perninha",
+   "casada": true
+  },
+  {
+   "t": 6.5,
+   "d": 0.22,
+   "w": "para",
+   "casada": true
+  },
+  {
+   "t": 6.72,
+   "d": 0.2,
+   "w": "no",
+   "casada": true
+  },
+  {
+   "t": 6.92,
+   "d": 0.28,
+   "w": "meio",
+   "casada": true
+  },
+  {
+   "t": 7.2,
+   "d": 0.17,
+   "w": "do",
+   "casada": true
+  },
+  {
+   "t": 7.39,
+   "d": 0.44,
+   "w": "caminho.",
+   "casada": true
+  },
+  {
+   "t": 8.32,
+   "d": 0.12,
+   "w": "Na",
+   "casada": true
+  },
+  {
+   "t": 8.44,
+   "d": 0.3,
+   "w": "troca",
+   "casada": true
+  },
+  {
+   "t": 8.74,
+   "d": 0.14,
+   "w": "de",
+   "casada": true
+  },
+  {
+   "t": 8.88,
+   "d": 0.57,
+   "w": "fralda,",
+   "casada": true
+  },
+  {
+   "t": 9.5,
+   "d": 0.08,
+   "w": "com",
+   "casada": true
+  },
+  {
+   "t": 9.58,
+   "d": 0.49,
+   "w": "pressa,",
+   "casada": true
+  },
+  {
+   "t": 10.32,
+   "d": 0.26,
+   "w": "passa",
+   "casada": true
+  },
+  {
+   "t": 10.58,
+   "d": 0.57,
+   "w": "batido.",
+   "casada": true
+  },
+  {
+   "t": 11.68,
+   "d": 0.22,
+   "w": "Pode",
+   "casada": true
+  },
+  {
+   "t": 11.9,
+   "d": 0.26,
+   "w": "ser",
+   "casada": true
+  },
+  {
+   "t": 12.16,
+   "d": 0.32,
+   "w": "sinal",
+   "casada": true
+  },
+  {
+   "t": 12.48,
+   "d": 0.18,
+   "w": "de",
+   "casada": true
+  },
+  {
+   "t": 12.66,
+   "d": 0.62,
+   "w": "displasia",
+   "casada": true
+  },
+  {
+   "t": 13.28,
+   "d": 0.2,
+   "w": "do",
+   "casada": true
+  },
+  {
+   "t": 13.48,
+   "d": 0.46,
+   "w": "quadril:",
+   "casada": true
+  },
+  {
+   "t": 14.27,
+   "d": 0.08,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 14.39,
+   "d": 0.35,
+   "w": "quadril",
+   "casada": true
+  },
+  {
+   "t": 14.74,
+   "d": 0.22,
+   "w": "que",
+   "casada": true
+  },
+  {
+   "t": 14.96,
+   "d": 0.3,
+   "w": "não",
+   "casada": true
+  },
+  {
+   "t": 15.26,
+   "d": 0.65,
+   "w": "encaixa.",
+   "casada": true
+  },
+  {
+   "t": 16.37,
+   "d": 0.09,
+   "w": "O",
+   "casada": true
+  },
+  {
+   "t": 16.56,
+   "d": 0.2,
+   "w": "teste",
+   "casada": true
+  },
+  {
+   "t": 16.76,
+   "d": 0.2,
+   "w": "do",
+   "casada": true
+  },
+  {
+   "t": 16.96,
+   "d": 0.38,
+   "w": "pezinho",
+   "casada": true
+  },
+  {
+   "t": 17.34,
+   "d": 0.42,
+   "w": "não",
+   "casada": true
+  },
+  {
+   "t": 17.76,
+   "d": 0.64,
+   "w": "detecta.",
+   "casada": true
+  },
+  {
+   "t": 18.74,
+   "d": 0.14,
+   "w": "A",
+   "casada": true
+  },
+  {
+   "t": 18.88,
+   "d": 0.64,
+   "w": "avaliação",
+   "casada": true
+  },
+  {
+   "t": 19.52,
+   "d": 0.23,
+   "w": "é",
+   "casada": true
+  },
+  {
+   "t": 19.84,
+   "d": 0.42,
+   "w": "clínica",
+   "casada": true
+  },
+  {
+   "t": 20.26,
+   "d": 0.38,
+   "w": "e,",
+   "casada": true
+  },
+  {
+   "t": 20.64,
+   "d": 0.1,
+   "w": "às",
+   "casada": true
+  },
+  {
+   "t": 20.74,
+   "d": 0.44,
+   "w": "vezes,",
+   "casada": true
+  },
+  {
+   "t": 21.21,
+   "d": 0.09,
+   "w": "com",
+   "casada": true
+  },
+  {
+   "t": 21.3,
+   "d": 0.6,
+   "w": "ultrassom.",
+   "casada": true
+  },
+  {
+   "t": 22.41,
+   "d": 0.75,
+   "w": "Identificado",
+   "casada": true
+  },
+  {
+   "t": 23.16,
+   "d": 0.18,
+   "w": "nos",
+   "casada": true
+  },
+  {
+   "t": 23.34,
+   "d": 0.44,
+   "w": "primeiros",
+   "casada": true
+  },
+  {
+   "t": 23.78,
+   "d": 0.53,
+   "w": "meses,",
+   "casada": true
+  },
+  {
+   "t": 24.53,
+   "d": 0.11,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 24.65,
+   "d": 0.43,
+   "w": "tratamento",
+   "casada": true
+  },
+  {
+   "t": 25.08,
+   "d": 0.48,
+   "w": "costuma",
+   "casada": true
+  },
+  {
+   "t": 25.56,
+   "d": 0.2,
+   "w": "ser",
+   "casada": true
+  },
+  {
+   "t": 25.76,
+   "d": 0.2,
+   "w": "mais",
+   "casada": true
+  },
+  {
+   "t": 25.96,
+   "d": 0.4,
+   "w": "simples.",
+   "casada": true
+  },
+  {
+   "t": 26.36,
+   "d": 0.7,
+   "w": "Na",
+   "casada": true
+  },
+  {
+   "t": 27.06,
+   "d": 0.52,
+   "w": "dúvida,",
+   "casada": true
+  },
+  {
+   "t": 27.79,
+   "d": 0.29,
+   "w": "leve",
+   "casada": true
+  },
+  {
+   "t": 28.08,
+   "d": 0.18,
+   "w": "ao",
+   "casada": true
+  },
+  {
+   "t": 28.26,
+   "d": 0.72,
+   "w": "ortopedista",
+   "casada": true
+  },
+  {
+   "t": 28.98,
+   "d": 0.82,
+   "w": "pediátrico.",
+   "casada": true
+  },
+  {
+   "t": 30.09,
+   "d": 0.39,
+   "w": "Manda",
+   "casada": true
+  },
+  {
+   "t": 30.48,
+   "d": 0.12,
+   "w": "pra",
+   "casada": true
+  },
+  {
+   "t": 30.6,
+   "d": 0.16,
+   "w": "quem",
+   "casada": true
+  },
+  {
+   "t": 30.76,
+   "d": 0.34,
+   "w": "vive",
+   "casada": true
+  },
+  {
+   "t": 31.1,
+   "d": 0.44,
+   "w": "trocando",
+   "casada": true
+  },
+  {
+   "t": 31.54,
+   "d": 0.51,
+   "w": "fralda.",
+   "casada": true
+  }
+ ],
+ "amostras": 1540016,
+ "pcm_sha256": "c5ddb206ad364c2c461589cb451908cb263874ea521c07acd0e307e2a167d71d"
+}
