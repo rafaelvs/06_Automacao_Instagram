@@ -1,7 +1,7 @@
 {
  "id": "cf_fratura_estresse",
  "hash_episodio": "sha256:60894e26a10d1fbff859d4e0dd51714c53bbff9d95280c48ea496e94ccf07cca",
- "hash_motor": "sha256:22f0d8c3274b0846b41b45d04de490a0625ece8476af90a37c61ca6f32d9b48a",
+ "hash_motor": "sha256:d0abb661ae26ef80a4e64b1ba0121de31c66482e42744c797b079448a2fb91ee",
  "modulos": [
   "alinhar",
   "base",
@@ -95,5 +95,5 @@
   "ÚNICA."
  ],
  "dur": 33.93,
- "renderizado_em": "2026-11-16T21:04:16+00:00"
+ "renderizado_em": "2026-11-16T21:22:42+00:00"
 }
