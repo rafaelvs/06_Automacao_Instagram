@@ -1,8 +1,9 @@
 {
  "id": "cf_cameralenta_escoliose",
  "hash_episodio": "sha256:46d683e9faa7b497925ffc01d3af08a79fb30b4310fdfebab6bcf611c91c360e",
- "hash_motor": "sha256:7d5122e59a8778cb0b9f3f358cbe65a46984f05ba679630ccb52a3a6d311750a",
+ "hash_motor": "sha256:0f35884f12a4c7042343355d7c1df582037078477a893a40f9947c4701e35f37",
  "modulos": [
+  "alinhar",
   "base",
   "cf_alongamento",
   "cf_cameralenta_escoliose",
@@ -87,6 +88,6 @@
   "À",
   "É"
  ],
- "dur": 31.07,
- "renderizado_em": "2026-11-08T19:47:17+00:00"
+ "dur": 35.53,
+ "renderizado_em": "2026-11-16T21:02:33+00:00"
 }
