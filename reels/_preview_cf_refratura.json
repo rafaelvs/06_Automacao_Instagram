@@ -1,7 +1,7 @@
 {
  "id": "cf_refratura",
  "hash_episodio": "sha256:b1b44fe4b4cf81c707432e1151223affa936f21d0ad7929b101562c3f9f73620",
- "hash_motor": "sha256:068983f411bf73a5c9ce9477becd72f4afb4d7eea1243b4db393b6b22e2ff740",
+ "hash_motor": "sha256:a6af0eab9b6249df0da891ad7e935101f50a2a6b2b5e9661a031ebb528399f71",
  "modulos": [
   "alinhar",
   "base",
@@ -101,5 +101,5 @@
   "ÓSSEO"
  ],
  "dur": 36.9,
- "renderizado_em": "2026-11-16T21:07:56+00:00"
+ "renderizado_em": "2026-11-16T21:26:03+00:00"
 }
