@@ -1,0 +1,123 @@
+{
+ "versao": 2,
+ "chave": "72612dfaca25b36484cbcc9e",
+ "engine": "gemini",
+ "voz": "Sadaltager",
+ "modelo": "gemini-2.5-flash-tts",
+ "prompt": "Narre em português do Brasil, como um médico ortopedista explicando com calma e clareza para pais num vídeo curto de redes sociais: tom acolhedor, natural, ritmo levemente animado, sem exagero.",
+ "ritmo": "+8%",
+ "taxa": 1.0,
+ "gerado_em": "2026-11-16T20:54:33+00:00",
+ "texto": "Régua não! Arranhão aqui dentro pode infeccionar. Coçou? Ar frio de secador, nunca quente.",
+ "duracao": 8.771,
+ "alinhamento": {
+  "modelo_whisper": "small",
+  "fracao": 1.0,
+  "buraco": 0,
+  "inseridas": [],
+  "omitidas": [],
+  "trocadas": [],
+  "inseridas_pontas": [],
+  "tomada_aceita": 0,
+  "tomadas": [
+   {
+    "tomada": 0,
+    "dur": 8.77,
+    "problemas": [],
+    "fracao": 1.0,
+    "buraco": 0,
+    "inseridas": [],
+    "omitidas": [],
+    "trocadas": []
+   }
+  ]
+ },
+ "palavras": [
+  {
+   "t": 0.26,
+   "d": 0.5,
+   "w": "Régua",
+   "casada": true
+  },
+  {
+   "t": 0.76,
+   "d": 0.64,
+   "w": "não!",
+   "casada": true
+  },
+  {
+   "t": 1.73,
+   "d": 0.59,
+   "w": "Arranhão",
+   "casada": true
+  },
+  {
+   "t": 2.32,
+   "d": 0.16,
+   "w": "aqui",
+   "casada": true
+  },
+  {
+   "t": 2.48,
+   "d": 0.42,
+   "w": "dentro",
+   "casada": true
+  },
+  {
+   "t": 2.9,
+   "d": 0.34,
+   "w": "pode",
+   "casada": true
+  },
+  {
+   "t": 3.24,
+   "d": 1.03,
+   "w": "infeccionar.",
+   "casada": true
+  },
+  {
+   "t": 4.82,
+   "d": 0.51,
+   "w": "Coçou?",
+   "casada": true
+  },
+  {
+   "t": 5.79,
+   "d": 0.17,
+   "w": "Ar",
+   "casada": true
+  },
+  {
+   "t": 5.96,
+   "d": 0.5,
+   "w": "frio",
+   "casada": true
+  },
+  {
+   "t": 6.46,
+   "d": 0.14,
+   "w": "de",
+   "casada": true
+  },
+  {
+   "t": 6.6,
+   "d": 0.7,
+   "w": "secador,",
+   "casada": true
+  },
+  {
+   "t": 7.6,
+   "d": 0.42,
+   "w": "nunca",
+   "casada": true
+  },
+  {
+   "t": 8.04,
+   "d": 0.67,
+   "w": "quente.",
+   "casada": true
+  }
+ ],
+ "amostras": 421016,
+ "pcm_sha256": "029900f69d39e0a2f04d60ef44ef401b6613a8b4a3eeaf4ff3843a793b82721b"
+}

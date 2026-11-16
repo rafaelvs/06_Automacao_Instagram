@@ -1,0 +1,123 @@
+{
+ "versao": 2,
+ "chave": "399d012fede7c6ae856697bb",
+ "engine": "gemini",
+ "voz": "Sadaltager",
+ "modelo": "gemini-2.5-flash-tts",
+ "prompt": "Narre em português do Brasil, como um médico ortopedista explicando com calma e clareza para pais num vídeo curto de redes sociais: tom acolhedor, natural, ritmo levemente animado, sem exagero.",
+ "ritmo": "+8%",
+ "taxa": 1.0,
+ "gerado_em": "2026-11-16T20:55:07+00:00",
+ "texto": "Isso não espera: pronto-socorro na hora, avisando a equipe. Posso estar apertando a circulação.",
+ "duracao": 7.211,
+ "alinhamento": {
+  "modelo_whisper": "small",
+  "fracao": 1.0,
+  "buraco": 0,
+  "inseridas": [],
+  "omitidas": [],
+  "trocadas": [],
+  "inseridas_pontas": [],
+  "tomada_aceita": 0,
+  "tomadas": [
+   {
+    "tomada": 0,
+    "dur": 7.21,
+    "problemas": [],
+    "fracao": 1.0,
+    "buraco": 0,
+    "inseridas": [],
+    "omitidas": [],
+    "trocadas": []
+   }
+  ]
+ },
+ "palavras": [
+  {
+   "t": 0.22,
+   "d": 0.3,
+   "w": "Isso",
+   "casada": true
+  },
+  {
+   "t": 0.52,
+   "d": 0.32,
+   "w": "não",
+   "casada": true
+  },
+  {
+   "t": 0.84,
+   "d": 0.63,
+   "w": "espera:",
+   "casada": true
+  },
+  {
+   "t": 1.96,
+   "d": 0.92,
+   "w": "pronto-socorro",
+   "casada": true
+  },
+  {
+   "t": 2.88,
+   "d": 0.18,
+   "w": "na",
+   "casada": true
+  },
+  {
+   "t": 3.06,
+   "d": 0.45,
+   "w": "hora,",
+   "casada": true
+  },
+  {
+   "t": 3.61,
+   "d": 0.53,
+   "w": "avisando",
+   "casada": true
+  },
+  {
+   "t": 4.14,
+   "d": 0.1,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 4.24,
+   "d": 0.47,
+   "w": "equipe.",
+   "casada": true
+  },
+  {
+   "t": 5.08,
+   "d": 0.28,
+   "w": "Posso",
+   "casada": true
+  },
+  {
+   "t": 5.36,
+   "d": 0.2,
+   "w": "estar",
+   "casada": true
+  },
+  {
+   "t": 5.56,
+   "d": 0.72,
+   "w": "apertando",
+   "casada": true
+  },
+  {
+   "t": 6.28,
+   "d": 0.08,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 6.36,
+   "d": 0.75,
+   "w": "circulação.",
+   "casada": true
+  }
+ ],
+ "amostras": 346136,
+ "pcm_sha256": "23ce174e46a909af873bd6bbf3365989139f7806f57ac2897e30ce9333ef618c"
+}

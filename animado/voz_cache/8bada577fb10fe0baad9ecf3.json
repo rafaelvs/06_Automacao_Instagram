@@ -1,0 +1,106 @@
+{
+ "versao": 2,
+ "chave": "8bada577fb10fe0baad9ecf3",
+ "engine": "gemini",
+ "voz": "Sadaltager",
+ "modelo": "gemini-2.5-flash-tts",
+ "prompt": "Narre em português do Brasil, como um médico ortopedista explicando com calma e clareza para pais num vídeo curto de redes sociais: tom acolhedor, natural, ritmo levemente animado, sem exagero.",
+ "ritmo": "+8%",
+ "taxa": 1.0,
+ "gerado_em": "2026-11-16T20:55:26+00:00",
+ "texto": "Manda pra quem tem criança engessada em casa.",
+ "duracao": 3.531,
+ "alinhamento": {
+  "modelo_whisper": "small",
+  "fracao": 1.0,
+  "buraco": 0,
+  "inseridas": [],
+  "omitidas": [],
+  "trocadas": [],
+  "inseridas_pontas": [],
+  "tomada_aceita": 2,
+  "tomadas": [
+   {
+    "tomada": 0,
+    "dur": 6.33,
+    "problemas": [
+     "voz fora das palavras alinhadas (palavra não reconhecida, repetição ou tempo errado — o corte de silêncio comeria fala): [{'de': 3.63, 'ate': 4.0, 'onde': \"depois de 'casa.'\"}, {'de': 4.05, 'ate': 4.16, 'onde': \"depois de 'casa.'\"}, {'de': 4.21, 'ate': 4.37, 'onde': \"depois de 'casa.'\"}, {'de': 4.41, 'ate': 4.54, 'onde': \"depois de 'casa.'\"}]"
+    ],
+    "fracao": 1.0,
+    "buraco": 0,
+    "inseridas": [],
+    "omitidas": [],
+    "trocadas": []
+   },
+   {
+    "tomada": 1,
+    "dur": 11.21,
+    "problemas": [
+     "duração implausível: 11.2s para 8 palavras (1.40 s/palavra)"
+    ]
+   },
+   {
+    "tomada": 2,
+    "dur": 3.53,
+    "problemas": [],
+    "fracao": 1.0,
+    "buraco": 0,
+    "inseridas": [],
+    "omitidas": [],
+    "trocadas": []
+   }
+  ]
+ },
+ "palavras": [
+  {
+   "t": 0.25,
+   "d": 0.45,
+   "w": "Manda",
+   "casada": true
+  },
+  {
+   "t": 0.7,
+   "d": 0.2,
+   "w": "pra",
+   "casada": true
+  },
+  {
+   "t": 0.9,
+   "d": 0.18,
+   "w": "quem",
+   "casada": true
+  },
+  {
+   "t": 1.08,
+   "d": 0.2,
+   "w": "tem",
+   "casada": true
+  },
+  {
+   "t": 1.28,
+   "d": 0.46,
+   "w": "criança",
+   "casada": true
+  },
+  {
+   "t": 1.74,
+   "d": 0.96,
+   "w": "engessada",
+   "casada": true
+  },
+  {
+   "t": 2.7,
+   "d": 0.13,
+   "w": "em",
+   "casada": true
+  },
+  {
+   "t": 2.83,
+   "d": 0.63,
+   "w": "casa.",
+   "casada": true
+  }
+ ],
+ "amostras": 169496,
+ "pcm_sha256": "7d3fa9e51c2ea51e30f5268b7888e96ab58d401df40c0ea32dcdc89e6a7cb2a2"
+}

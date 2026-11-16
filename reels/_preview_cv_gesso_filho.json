@@ -1,8 +1,9 @@
 {
  "id": "cv_gesso_filho",
  "hash_episodio": "sha256:bda3de9f5cd9a89f88eab68324582dc7f11004ce12b8b10106681fe2c7bf360d",
- "hash_motor": "sha256:048564084d582e52be4536704d82bccabcf345549b58cfee9c9b904204788649",
+ "hash_motor": "sha256:1493ba2c7636fd4b272c648dc668b74d2a16569c7c863a963fd7b2fb7f3bbfe1",
  "modulos": [
+  "alinhar",
   "base",
   "conversa",
   "fontes",
@@ -106,6 +107,6 @@
   "você",
   "você."
  ],
- "dur": 44.27,
- "renderizado_em": "2026-11-09T00:46:07+00:00"
+ "dur": 50.3,
+ "renderizado_em": "2026-11-16T20:56:57+00:00"
 }
