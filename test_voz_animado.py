@@ -414,6 +414,23 @@ def teste_caso_real_pe_torto():
          f"rms antes={antes:.4f} depois={depois:.4f}")
 
 
+def teste_numeros_em_algarismo():
+    """16/11/2026: 3 renders caíram porque o Whisper escreve '18', '24', '40%' e o roteiro diz 'dezoito',
+    'vinte e quatro', 'quarenta por cento'. A voz estava CERTA; o conferidor é que não convertia."""
+    texto = "Até os dezoito anos, cerca de quarenta por cento melhora em vinte e quatro meses, sem duas cirurgias."
+    def rec_whisper(tokens):
+        return rec_de([q.strip(",.") for t in tokens for q in A.numero_por_extenso(t)])
+    certo = ["Até", "os", "18", "anos,", "cerca", "de", "40%", "melhora", "em", "24", "meses,", "sem", "2", "cirurgias."]
+    r = A.alinhar_tokens(texto, rec_whisper(certo), 30.0)
+    caso("números: algarismo do Whisper = número por extenso do roteiro (não reprova)", not A.problemas(r, texto),
+         str(A.problemas(r, texto)))
+    errado = list(certo); errado[2] = "19"
+    r = A.alinhar_tokens(texto, rec_whisper(errado), 30.0)
+    caso("números: CONTROLE — '19' no lugar de 'dezoito' continua reprovando", bool(A.problemas(r, texto)))
+    caso("números: extenso de 1500, 100 e 21", A.numero_por_extenso("1500") == ["mil", "e", "quinhentos"]
+         and A.numero_por_extenso("100") == ["cem"] and A.numero_por_extenso("21,") == ["vinte", "e", "um,"])
+
+
 if __name__ == "__main__":
     teste_alinhador()
     teste_tempos()
@@ -422,5 +439,6 @@ if __name__ == "__main__":
     teste_revisao_energia()
     teste_revisao_cache()
     teste_caso_real_pe_torto()
+    teste_numeros_em_algarismo()
     print("RESULTADO:", "PASSOU" if not FALHAS else f"REPROVOU ({len(FALHAS)}): {FALHAS}")
     sys.exit(1 if FALHAS else 0)

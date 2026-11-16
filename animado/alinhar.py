@@ -93,7 +93,8 @@ def _chave(w):
     w = _norm(w).replace("ç", "s").replace("ss", "s").replace("rr", "r")
     w = unicodedata.normalize("NFKD", w)
     w = "".join(c for c in w if not unicodedata.combining(c)).replace("-", "")
-    return _NUM.get(w, w)
+    w = _NUM.get(w, w)
+    return {"duas": "dois", "duzentas": "duzentos", "trezentas": "trezentos", "quatorze": "catorze"}.get(w, w)
 
 
 # Palavras cuja troca/omissão muda o SENTIDO da frase: tolerância zero. "um"/"uma" ficam de fora
@@ -103,6 +104,40 @@ _CRITICAS = {_chave(w) for w in (
     "sete oito nove dez onze doze treze catorze quatorze quinze dezesseis dezessete dezoito "
     "dezenove vinte trinta quarenta cinquenta sessenta setenta oitenta noventa cem cento duzentos "
     "trezentos mil meio meia dobro metade").split()}
+
+
+_UNID = "zero um dois tres quatro cinco seis sete oito nove dez onze doze treze catorze quinze dezesseis dezessete dezoito dezenove".split()
+_DEZ = "_ _ vinte trinta quarenta cinquenta sessenta setenta oitenta noventa".split()
+_CEM = "_ cento duzentos trezentos quatrocentos quinhentos seiscentos setecentos oitocentos novecentos".split()
+
+
+def _extenso(n):
+    """Inteiro 0..9999 -> palavras em português ('24' -> ['vinte', 'e', 'quatro'])."""
+    if n < 20:
+        return [_UNID[n]]
+    if n < 100:
+        d, u = divmod(n, 10)
+        return [_DEZ[d]] + (["e"] + _extenso(u) if u else [])
+    if n < 1000:
+        if n == 100:
+            return ["cem"]
+        c, r = divmod(n, 100)
+        return [_CEM[c]] + (["e"] + _extenso(r) if r else [])
+    m, r = divmod(n, 1000)
+    return ([] if m == 1 else _extenso(m)) + ["mil"] + ((["e"] if r < 100 or r % 100 == 0 else []) + _extenso(r) if r else [])
+
+
+def numero_por_extenso(tok):
+    """O Whisper escreve número em ALGARISMO ('18', '24', '40%') e o roteiro, por extenso ('dezoito',
+    'vinte e quatro', 'quarenta por cento'). Sem isto a conferência de palavra crítica reprovava toda
+    tomada CORRETA com número (16/11/2026: cf_* com 'dezoito', 'catorze', 'vinte e quatro' e
+    'por cento' caíram nas 3 tomadas). Token sem algarismo volta como está."""
+    m = re.fullmatch(r"([^\w%]*)(\d{1,4})(%?)([^\w%]*)", tok)
+    if not m:
+        return ["por", "cento"] if tok.strip(".,;:!?") == "%" else [tok]
+    out = _extenso(int(m.group(2))) + (["por", "cento"] if m.group(3) else [])
+    out[-1] = out[-1] + m.group(4)          # devolve a pontuação final (vírgula/ponto) à última palavra
+    return out
 
 
 def critica(w):
@@ -129,7 +164,7 @@ def reconhecer(wav_path, modelo=MODELO, cpu_threads=0):
     out = []
     for s in segs:
         for w in (s.words or []):
-            partes = [p for p in w.word.split() if _chave(p)]
+            partes = [q for p in w.word.split() for q in numero_por_extenso(p) if _chave(q)]
             if not partes:
                 continue
             tot = sum(len(p) for p in partes); t = w.start; dur = max(w.end - w.start, 0.0)
