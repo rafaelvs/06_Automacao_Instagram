@@ -1,0 +1,519 @@
+{
+ "versao": 2,
+ "chave": "0bfa6d3821c830f423cb2fca",
+ "engine": "gemini",
+ "voz": "Sadaltager",
+ "modelo": "gemini-2.5-flash-tts",
+ "prompt": "Narre em português do Brasil, como um médico ortopedista explicando com calma e clareza para pais num vídeo curto de redes sociais: tom acolhedor, natural, ritmo levemente animado, sem exagero.",
+ "ritmo": "+10%",
+ "taxa": 1.05,
+ "gerado_em": "2026-11-16T21:27:14+00:00",
+ "texto": "Chama o VAR! Sentar em W: pode?\nValidado: de vez em quando, não vira deformidade. Só senta assim? Comenta na consulta.\nComparar com o filho do vizinho que andou antes: pode?\nAnulado: o ritmo é individual.\nTreinar e cair, em espaço seguro: pode?\nValidado: cada queda calibra o equilíbrio.\nNão andar até uns dezoito meses, perder o que já fazia, cair cada vez mais ou tropeçar sempre do mesmo lado pede avaliação.\nManda pra quem tem criança aprendendo a andar.",
+ "duracao": 36.037,
+ "alinhamento": {
+  "modelo_whisper": "small",
+  "fracao": 1.0,
+  "buraco": 0,
+  "inseridas": [],
+  "omitidas": [],
+  "trocadas": [],
+  "inseridas_pontas": [],
+  "tomada_aceita": 0,
+  "tomadas": [
+   {
+    "tomada": 0,
+    "dur": 36.04,
+    "problemas": [],
+    "fracao": 1.0,
+    "buraco": 0,
+    "inseridas": [],
+    "omitidas": [],
+    "trocadas": []
+   }
+  ]
+ },
+ "palavras": [
+  {
+   "t": 0.19,
+   "d": 0.33,
+   "w": "Chama",
+   "casada": true
+  },
+  {
+   "t": 0.52,
+   "d": 0.14,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 0.66,
+   "d": 0.5,
+   "w": "VAR!",
+   "casada": true
+  },
+  {
+   "t": 1.55,
+   "d": 0.55,
+   "w": "Sentar",
+   "casada": true
+  },
+  {
+   "t": 2.1,
+   "d": 0.14,
+   "w": "em",
+   "casada": true
+  },
+  {
+   "t": 2.24,
+   "d": 0.5,
+   "w": "W:",
+   "casada": true
+  },
+  {
+   "t": 3.04,
+   "d": 0.4,
+   "w": "pode?",
+   "casada": true
+  },
+  {
+   "t": 3.77,
+   "d": 0.74,
+   "w": "Validado:",
+   "casada": true
+  },
+  {
+   "t": 4.93,
+   "d": 0.11,
+   "w": "de",
+   "casada": true
+  },
+  {
+   "t": 5.04,
+   "d": 0.2,
+   "w": "vez",
+   "casada": true
+  },
+  {
+   "t": 5.24,
+   "d": 0.14,
+   "w": "em",
+   "casada": true
+  },
+  {
+   "t": 5.38,
+   "d": 0.47,
+   "w": "quando,",
+   "casada": true
+  },
+  {
+   "t": 6.12,
+   "d": 0.2,
+   "w": "não",
+   "casada": true
+  },
+  {
+   "t": 6.32,
+   "d": 0.42,
+   "w": "vira",
+   "casada": true
+  },
+  {
+   "t": 6.74,
+   "d": 0.9,
+   "w": "deformidade.",
+   "casada": true
+  },
+  {
+   "t": 8.1,
+   "d": 0.26,
+   "w": "Só",
+   "casada": true
+  },
+  {
+   "t": 8.36,
+   "d": 0.36,
+   "w": "senta",
+   "casada": true
+  },
+  {
+   "t": 8.72,
+   "d": 0.39,
+   "w": "assim?",
+   "casada": true
+  },
+  {
+   "t": 9.48,
+   "d": 0.38,
+   "w": "Comenta",
+   "casada": true
+  },
+  {
+   "t": 9.86,
+   "d": 0.14,
+   "w": "na",
+   "casada": true
+  },
+  {
+   "t": 10.0,
+   "d": 0.61,
+   "w": "consulta.",
+   "casada": true
+  },
+  {
+   "t": 11.19,
+   "d": 0.45,
+   "w": "Comparar",
+   "casada": true
+  },
+  {
+   "t": 11.66,
+   "d": 0.08,
+   "w": "com",
+   "casada": true
+  },
+  {
+   "t": 11.74,
+   "d": 0.1,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 11.84,
+   "d": 0.2,
+   "w": "filho",
+   "casada": true
+  },
+  {
+   "t": 12.04,
+   "d": 0.16,
+   "w": "do",
+   "casada": true
+  },
+  {
+   "t": 12.2,
+   "d": 0.4,
+   "w": "vizinho",
+   "casada": true
+  },
+  {
+   "t": 12.6,
+   "d": 0.18,
+   "w": "que",
+   "casada": true
+  },
+  {
+   "t": 12.78,
+   "d": 0.2,
+   "w": "andou",
+   "casada": true
+  },
+  {
+   "t": 12.98,
+   "d": 0.61,
+   "w": "antes:",
+   "casada": true
+  },
+  {
+   "t": 13.86,
+   "d": 0.39,
+   "w": "pode?",
+   "casada": true
+  },
+  {
+   "t": 14.59,
+   "d": 0.68,
+   "w": "Anulado:",
+   "casada": true
+  },
+  {
+   "t": 15.54,
+   "d": 0.1,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 15.64,
+   "d": 0.4,
+   "w": "ritmo",
+   "casada": true
+  },
+  {
+   "t": 16.04,
+   "d": 0.26,
+   "w": "é",
+   "casada": true
+  },
+  {
+   "t": 16.3,
+   "d": 0.96,
+   "w": "individual.",
+   "casada": true
+  },
+  {
+   "t": 17.87,
+   "d": 0.35,
+   "w": "Treinar",
+   "casada": true
+  },
+  {
+   "t": 18.22,
+   "d": 0.22,
+   "w": "e",
+   "casada": true
+  },
+  {
+   "t": 18.44,
+   "d": 0.26,
+   "w": "cair,",
+   "casada": true
+  },
+  {
+   "t": 18.7,
+   "d": 0.34,
+   "w": "em",
+   "casada": true
+  },
+  {
+   "t": 19.04,
+   "d": 0.32,
+   "w": "espaço",
+   "casada": true
+  },
+  {
+   "t": 19.36,
+   "d": 0.67,
+   "w": "seguro:",
+   "casada": true
+  },
+  {
+   "t": 20.34,
+   "d": 0.4,
+   "w": "pode?",
+   "casada": true
+  },
+  {
+   "t": 21.02,
+   "d": 0.81,
+   "w": "Validado:",
+   "casada": true
+  },
+  {
+   "t": 22.17,
+   "d": 0.23,
+   "w": "cada",
+   "casada": true
+  },
+  {
+   "t": 22.4,
+   "d": 0.38,
+   "w": "queda",
+   "casada": true
+  },
+  {
+   "t": 22.78,
+   "d": 0.72,
+   "w": "calibra",
+   "casada": true
+  },
+  {
+   "t": 23.5,
+   "d": 0.15,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 23.68,
+   "d": 0.48,
+   "w": "equilíbrio.",
+   "casada": true
+  },
+  {
+   "t": 24.7,
+   "d": 0.18,
+   "w": "Não",
+   "casada": true
+  },
+  {
+   "t": 24.88,
+   "d": 0.34,
+   "w": "andar",
+   "casada": true
+  },
+  {
+   "t": 25.22,
+   "d": 0.22,
+   "w": "até",
+   "casada": true
+  },
+  {
+   "t": 25.44,
+   "d": 0.16,
+   "w": "uns",
+   "casada": true
+  },
+  {
+   "t": 25.6,
+   "d": 0.42,
+   "w": "dezoito",
+   "casada": true
+  },
+  {
+   "t": 26.02,
+   "d": 0.69,
+   "w": "meses,",
+   "casada": true
+  },
+  {
+   "t": 26.96,
+   "d": 0.26,
+   "w": "perder",
+   "casada": true
+  },
+  {
+   "t": 27.22,
+   "d": 0.22,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 27.47,
+   "d": 0.07,
+   "w": "que",
+   "casada": true
+  },
+  {
+   "t": 27.54,
+   "d": 0.16,
+   "w": "já",
+   "casada": true
+  },
+  {
+   "t": 27.7,
+   "d": 0.54,
+   "w": "fazia,",
+   "casada": true
+  },
+  {
+   "t": 28.53,
+   "d": 0.29,
+   "w": "cair",
+   "casada": true
+  },
+  {
+   "t": 28.82,
+   "d": 0.22,
+   "w": "cada",
+   "casada": true
+  },
+  {
+   "t": 29.04,
+   "d": 0.34,
+   "w": "vez",
+   "casada": true
+  },
+  {
+   "t": 29.38,
+   "d": 0.3,
+   "w": "mais",
+   "casada": true
+  },
+  {
+   "t": 29.68,
+   "d": 0.34,
+   "w": "ou",
+   "casada": true
+  },
+  {
+   "t": 30.06,
+   "d": 0.4,
+   "w": "tropeçar",
+   "casada": true
+  },
+  {
+   "t": 30.46,
+   "d": 0.44,
+   "w": "sempre",
+   "casada": true
+  },
+  {
+   "t": 30.9,
+   "d": 0.2,
+   "w": "do",
+   "casada": true
+  },
+  {
+   "t": 31.1,
+   "d": 0.18,
+   "w": "mesmo",
+   "casada": true
+  },
+  {
+   "t": 31.28,
+   "d": 0.52,
+   "w": "lado",
+   "casada": true
+  },
+  {
+   "t": 32.15,
+   "d": 0.25,
+   "w": "pede",
+   "casada": true
+  },
+  {
+   "t": 32.4,
+   "d": 0.76,
+   "w": "avaliação.",
+   "casada": true
+  },
+  {
+   "t": 33.6,
+   "d": 0.34,
+   "w": "Manda",
+   "casada": true
+  },
+  {
+   "t": 33.94,
+   "d": 0.16,
+   "w": "pra",
+   "casada": true
+  },
+  {
+   "t": 34.1,
+   "d": 0.2,
+   "w": "quem",
+   "casada": true
+  },
+  {
+   "t": 34.3,
+   "d": 0.14,
+   "w": "tem",
+   "casada": true
+  },
+  {
+   "t": 34.44,
+   "d": 0.48,
+   "w": "criança",
+   "casada": true
+  },
+  {
+   "t": 34.92,
+   "d": 0.5273,
+   "w": "aprendendo",
+   "casada": true
+  },
+  {
+   "t": 35.4473,
+   "d": 0.0527,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 35.5,
+   "d": 0.51,
+   "w": "andar.",
+   "casada": true
+  }
+ ],
+ "amostras": 1729760,
+ "pcm_sha256": "5cead123aa83250507a2798daaf38177d535957d1200c8dbdeb3435eb744b4c9"
+}
