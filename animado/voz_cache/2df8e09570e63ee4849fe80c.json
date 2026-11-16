@@ -1,0 +1,513 @@
+{
+ "versao": 2,
+ "chave": "2df8e09570e63ee4849fe80c",
+ "engine": "gemini",
+ "voz": "Sadaltager",
+ "modelo": "gemini-2.5-flash-tts",
+ "prompt": "Narre em português do Brasil, como um médico ortopedista explicando com calma e clareza para pais num vídeo curto de redes sociais: tom acolhedor, natural, ritmo levemente animado, sem exagero.",
+ "ritmo": "+10%",
+ "taxa": 1.05,
+ "gerado_em": "2026-11-16T21:02:56+00:00",
+ "texto": "Alongar o osso dói? Existe desconforto, sim. E existe manejo.\nNos dias de ajuste, pressão e dor muscular são comuns.\nAnalgesia e fisioterapia, desde o início.\nEm camadas: medicação em horários certos, alongamento muscular, posicionamento e sono cuidado.\nDor controlada é meta de tratamento, não luxo.\nDor que dispara de repente ou não cede com a medicação: avise a equipe. Com febre, pronto-socorro.\nDor se conversa, não se aguenta.\nManda pra quem vai começar e tem essa dúvida calada.",
+ "duracao": 38.516,
+ "alinhamento": {
+  "modelo_whisper": "small",
+  "fracao": 1.0,
+  "buraco": 0,
+  "inseridas": [],
+  "omitidas": [],
+  "trocadas": [],
+  "inseridas_pontas": [],
+  "tomada_aceita": 0,
+  "tomadas": [
+   {
+    "tomada": 0,
+    "dur": 38.52,
+    "problemas": [],
+    "fracao": 1.0,
+    "buraco": 0,
+    "inseridas": [],
+    "omitidas": [],
+    "trocadas": []
+   }
+  ]
+ },
+ "palavras": [
+  {
+   "t": 0.24,
+   "d": 0.62,
+   "w": "Alongar",
+   "casada": true
+  },
+  {
+   "t": 0.86,
+   "d": 0.2,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 1.06,
+   "d": 0.32,
+   "w": "osso",
+   "casada": true
+  },
+  {
+   "t": 1.38,
+   "d": 0.48,
+   "w": "dói?",
+   "casada": true
+  },
+  {
+   "t": 2.48,
+   "d": 0.4,
+   "w": "Existe",
+   "casada": true
+  },
+  {
+   "t": 2.88,
+   "d": 0.74,
+   "w": "desconforto,",
+   "casada": true
+  },
+  {
+   "t": 3.62,
+   "d": 0.48,
+   "w": "sim.",
+   "casada": true
+  },
+  {
+   "t": 4.38,
+   "d": 0.1,
+   "w": "E",
+   "casada": true
+  },
+  {
+   "t": 4.48,
+   "d": 0.38,
+   "w": "existe",
+   "casada": true
+  },
+  {
+   "t": 4.86,
+   "d": 0.78,
+   "w": "manejo.",
+   "casada": true
+  },
+  {
+   "t": 6.09,
+   "d": 0.15,
+   "w": "Nos",
+   "casada": true
+  },
+  {
+   "t": 6.24,
+   "d": 0.26,
+   "w": "dias",
+   "casada": true
+  },
+  {
+   "t": 6.5,
+   "d": 0.16,
+   "w": "de",
+   "casada": true
+  },
+  {
+   "t": 6.66,
+   "d": 0.74,
+   "w": "ajuste,",
+   "casada": true
+  },
+  {
+   "t": 7.4,
+   "d": 0.46,
+   "w": "pressão",
+   "casada": true
+  },
+  {
+   "t": 7.86,
+   "d": 0.24,
+   "w": "e",
+   "casada": true
+  },
+  {
+   "t": 8.1,
+   "d": 0.24,
+   "w": "dor",
+   "casada": true
+  },
+  {
+   "t": 8.34,
+   "d": 0.44,
+   "w": "muscular",
+   "casada": true
+  },
+  {
+   "t": 8.78,
+   "d": 0.28,
+   "w": "são",
+   "casada": true
+  },
+  {
+   "t": 9.06,
+   "d": 0.64,
+   "w": "comuns.",
+   "casada": true
+  },
+  {
+   "t": 10.2,
+   "d": 0.84,
+   "w": "Analgesia",
+   "casada": true
+  },
+  {
+   "t": 11.04,
+   "d": 0.22,
+   "w": "e",
+   "casada": true
+  },
+  {
+   "t": 11.26,
+   "d": 1.05,
+   "w": "fisioterapia,",
+   "casada": true
+  },
+  {
+   "t": 12.44,
+   "d": 0.34,
+   "w": "desde",
+   "casada": true
+  },
+  {
+   "t": 12.78,
+   "d": 0.22,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 13.0,
+   "d": 0.47,
+   "w": "início.",
+   "casada": true
+  },
+  {
+   "t": 13.99,
+   "d": 0.09,
+   "w": "Em",
+   "casada": true
+  },
+  {
+   "t": 14.08,
+   "d": 0.75,
+   "w": "camadas:",
+   "casada": true
+  },
+  {
+   "t": 15.2,
+   "d": 0.52,
+   "w": "medicação",
+   "casada": true
+  },
+  {
+   "t": 15.72,
+   "d": 0.26,
+   "w": "em",
+   "casada": true
+  },
+  {
+   "t": 15.98,
+   "d": 0.36,
+   "w": "horários",
+   "casada": true
+  },
+  {
+   "t": 16.34,
+   "d": 0.67,
+   "w": "certos,",
+   "casada": true
+  },
+  {
+   "t": 17.24,
+   "d": 0.62,
+   "w": "alongamento",
+   "casada": true
+  },
+  {
+   "t": 17.86,
+   "d": 0.72,
+   "w": "muscular,",
+   "casada": true
+  },
+  {
+   "t": 18.86,
+   "d": 0.8,
+   "w": "posicionamento",
+   "casada": true
+  },
+  {
+   "t": 19.66,
+   "d": 0.32,
+   "w": "e",
+   "casada": true
+  },
+  {
+   "t": 19.98,
+   "d": 0.32,
+   "w": "sono",
+   "casada": true
+  },
+  {
+   "t": 20.3,
+   "d": 0.79,
+   "w": "cuidado.",
+   "casada": true
+  },
+  {
+   "t": 21.57,
+   "d": 0.27,
+   "w": "Dor",
+   "casada": true
+  },
+  {
+   "t": 21.84,
+   "d": 0.78,
+   "w": "controlada",
+   "casada": true
+  },
+  {
+   "t": 22.62,
+   "d": 0.26,
+   "w": "é",
+   "casada": true
+  },
+  {
+   "t": 22.88,
+   "d": 0.44,
+   "w": "meta",
+   "casada": true
+  },
+  {
+   "t": 23.32,
+   "d": 0.2,
+   "w": "de",
+   "casada": true
+  },
+  {
+   "t": 23.56,
+   "d": 0.58,
+   "w": "tratamento,",
+   "casada": true
+  },
+  {
+   "t": 24.17,
+   "d": 0.29,
+   "w": "não",
+   "casada": true
+  },
+  {
+   "t": 24.46,
+   "d": 0.55,
+   "w": "luxo.",
+   "casada": true
+  },
+  {
+   "t": 25.45,
+   "d": 0.35,
+   "w": "Dor",
+   "casada": true
+  },
+  {
+   "t": 25.8,
+   "d": 0.06,
+   "w": "que",
+   "casada": true
+  },
+  {
+   "t": 25.86,
+   "d": 0.52,
+   "w": "dispara",
+   "casada": true
+  },
+  {
+   "t": 26.38,
+   "d": 0.12,
+   "w": "de",
+   "casada": true
+  },
+  {
+   "t": 26.5,
+   "d": 0.42,
+   "w": "repente",
+   "casada": true
+  },
+  {
+   "t": 26.92,
+   "d": 0.38,
+   "w": "ou",
+   "casada": true
+  },
+  {
+   "t": 27.3,
+   "d": 0.2,
+   "w": "não",
+   "casada": true
+  },
+  {
+   "t": 27.5,
+   "d": 0.44,
+   "w": "cede",
+   "casada": true
+  },
+  {
+   "t": 27.94,
+   "d": 0.18,
+   "w": "com",
+   "casada": true
+  },
+  {
+   "t": 28.12,
+   "d": 0.08,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 28.2,
+   "d": 0.67,
+   "w": "medicação:",
+   "casada": true
+  },
+  {
+   "t": 29.14,
+   "d": 0.5,
+   "w": "avise",
+   "casada": true
+  },
+  {
+   "t": 29.64,
+   "d": 0.12,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 29.76,
+   "d": 0.51,
+   "w": "equipe.",
+   "casada": true
+  },
+  {
+   "t": 30.74,
+   "d": 0.1725,
+   "w": "Com",
+   "casada": true
+  },
+  {
+   "t": 30.9125,
+   "d": 0.4675,
+   "w": "febre,",
+   "casada": true
+  },
+  {
+   "t": 31.64,
+   "d": 0.88,
+   "w": "pronto-socorro.",
+   "casada": true
+  },
+  {
+   "t": 32.95,
+   "d": 0.29,
+   "w": "Dor",
+   "casada": true
+  },
+  {
+   "t": 33.24,
+   "d": 0.16,
+   "w": "se",
+   "casada": true
+  },
+  {
+   "t": 33.4,
+   "d": 0.74,
+   "w": "conversa,",
+   "casada": true
+  },
+  {
+   "t": 34.3,
+   "d": 0.3,
+   "w": "não",
+   "casada": true
+  },
+  {
+   "t": 34.6,
+   "d": 0.2,
+   "w": "se",
+   "casada": true
+  },
+  {
+   "t": 34.8,
+   "d": 0.52,
+   "w": "aguenta.",
+   "casada": true
+  },
+  {
+   "t": 35.7,
+   "d": 0.28,
+   "w": "Manda",
+   "casada": true
+  },
+  {
+   "t": 35.98,
+   "d": 0.16,
+   "w": "pra",
+   "casada": true
+  },
+  {
+   "t": 36.14,
+   "d": 0.16,
+   "w": "quem",
+   "casada": true
+  },
+  {
+   "t": 36.3,
+   "d": 0.16,
+   "w": "vai",
+   "casada": true
+  },
+  {
+   "t": 36.46,
+   "d": 0.48,
+   "w": "começar",
+   "casada": true
+  },
+  {
+   "t": 36.94,
+   "d": 0.35,
+   "w": "e",
+   "casada": true
+  },
+  {
+   "t": 37.35,
+   "d": 0.11,
+   "w": "tem",
+   "casada": true
+  },
+  {
+   "t": 37.46,
+   "d": 0.18,
+   "w": "essa",
+   "casada": true
+  },
+  {
+   "t": 37.64,
+   "d": 0.4,
+   "w": "dúvida",
+   "casada": true
+  },
+  {
+   "t": 38.04,
+   "d": 0.46,
+   "w": "calada.",
+   "casada": true
+  }
+ ],
+ "amostras": 1848752,
+ "pcm_sha256": "f7f52c92ad8d23e2e90514975c690857f8baab5ed63f6e6004e0296da3c64f77"
+}
