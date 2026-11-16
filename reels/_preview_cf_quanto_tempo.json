@@ -1,8 +1,9 @@
 {
  "id": "cf_quanto_tempo",
  "hash_episodio": "sha256:2a4f46489d51624e845f567de5b2069c217ca30d80b3768e39365d3f120f98a0",
- "hash_motor": "sha256:d0e4f2930ed179b7f3e038b61c8cb5210be86b3afb3f9f99d446ef6c541e3f31",
+ "hash_motor": "sha256:e65092350a77d016fddc0e6a7acdb19061c2e507e6fe8fdbd01b652c6465470e",
  "modulos": [
+  "alinhar",
   "base",
   "cf_alongamento",
   "cf_comum",
@@ -102,6 +103,6 @@
   "É",
   "ÚNICO"
  ],
- "dur": 34.33,
- "renderizado_em": "2026-11-12T01:39:49+00:00"
+ "dur": 39.17,
+ "renderizado_em": "2026-11-16T21:07:59+00:00"
 }
