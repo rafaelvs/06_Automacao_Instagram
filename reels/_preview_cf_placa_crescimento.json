@@ -1,7 +1,7 @@
 {
  "id": "cf_placa_crescimento",
  "hash_episodio": "sha256:14cdaf4c0ea0a3cd6c3861ea297e5985f39412edcd5c4604ac805b45df72c91c",
- "hash_motor": "sha256:73b95b0d299fadd4c5b562764aa15398cb98f818f72fd8be49951be22630b146",
+ "hash_motor": "sha256:76918ed34735be35e775cb7eb4561542df09dd63d6385cc3a70a5c5b4fc2ce53",
  "modulos": [
   "alinhar",
   "base",
@@ -88,5 +88,5 @@
   "É"
  ],
  "dur": 33.3,
- "renderizado_em": "2026-11-16T21:06:56+00:00"
+ "renderizado_em": "2026-11-16T21:25:35+00:00"
 }
