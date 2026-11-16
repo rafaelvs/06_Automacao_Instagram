@@ -1,0 +1,527 @@
+{
+ "versao": 2,
+ "chave": "9ac0526ff297ec303d0f6f70",
+ "engine": "gemini",
+ "voz": "Sadaltager",
+ "modelo": "gemini-2.5-flash-tts",
+ "prompt": "Narre em português do Brasil, como um médico ortopedista explicando com calma e clareza para pais num vídeo curto de redes sociais: tom acolhedor, natural, ritmo levemente animado, sem exagero.",
+ "ritmo": "+10%",
+ "taxa": 1.05,
+ "gerado_em": "2026-11-16T21:02:07+00:00",
+ "texto": "No alongamento, o fixador afasta as pontas do osso cerca de um milímetro por dia.\nOsso novo e articulação não gostam de ficar parados.\nParada, a articulação pode enrijecer. E o músculo, encolher.\nAí a rigidez rouba parte do ganho da cirurgia.\nFisioterapia desde o início.\nMovimento e carga, na dose certa, mantêm a articulação solta e fortalecem o osso.\nNada de treino pesado: um pouco todo dia, guiado pela equipe.\nManda pra quem acha que fisioterapia fica pra depois.",
+ "duracao": 35.367,
+ "alinhamento": {
+  "modelo_whisper": "small",
+  "fracao": 1.0,
+  "buraco": 0,
+  "inseridas": [
+   {
+    "w": "a",
+    "t": 17.06,
+    "depois_de": 36
+   }
+  ],
+  "omitidas": [],
+  "trocadas": [],
+  "inseridas_pontas": [],
+  "tomada_aceita": 0,
+  "tomadas": [
+   {
+    "tomada": 0,
+    "dur": 35.37,
+    "problemas": [],
+    "fracao": 1.0,
+    "buraco": 0,
+    "inseridas": [
+     "a"
+    ],
+    "omitidas": [],
+    "trocadas": []
+   }
+  ]
+ },
+ "palavras": [
+  {
+   "t": 0.25,
+   "d": 0.11,
+   "w": "No",
+   "casada": true
+  },
+  {
+   "t": 0.36,
+   "d": 0.81,
+   "w": "alongamento,",
+   "casada": true
+  },
+  {
+   "t": 1.4,
+   "d": 0.1,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 1.5,
+   "d": 0.56,
+   "w": "fixador",
+   "casada": true
+  },
+  {
+   "t": 2.06,
+   "d": 0.7,
+   "w": "afasta",
+   "casada": true
+  },
+  {
+   "t": 2.76,
+   "d": 0.28,
+   "w": "as",
+   "casada": true
+  },
+  {
+   "t": 3.08,
+   "d": 0.28,
+   "w": "pontas",
+   "casada": true
+  },
+  {
+   "t": 3.36,
+   "d": 0.18,
+   "w": "do",
+   "casada": true
+  },
+  {
+   "t": 3.54,
+   "d": 0.3,
+   "w": "osso",
+   "casada": true
+  },
+  {
+   "t": 3.84,
+   "d": 0.3,
+   "w": "cerca",
+   "casada": true
+  },
+  {
+   "t": 4.17,
+   "d": 0.21,
+   "w": "de",
+   "casada": true
+  },
+  {
+   "t": 4.38,
+   "d": 0.18,
+   "w": "um",
+   "casada": true
+  },
+  {
+   "t": 4.56,
+   "d": 0.54,
+   "w": "milímetro",
+   "casada": true
+  },
+  {
+   "t": 5.1,
+   "d": 0.22,
+   "w": "por",
+   "casada": true
+  },
+  {
+   "t": 5.32,
+   "d": 0.38,
+   "w": "dia.",
+   "casada": true
+  },
+  {
+   "t": 6.33,
+   "d": 0.29,
+   "w": "Osso",
+   "casada": true
+  },
+  {
+   "t": 6.62,
+   "d": 0.3,
+   "w": "novo",
+   "casada": true
+  },
+  {
+   "t": 6.92,
+   "d": 0.28,
+   "w": "e",
+   "casada": true
+  },
+  {
+   "t": 7.2,
+   "d": 0.74,
+   "w": "articulação",
+   "casada": true
+  },
+  {
+   "t": 8.13,
+   "d": 0.21,
+   "w": "não",
+   "casada": true
+  },
+  {
+   "t": 8.34,
+   "d": 0.48,
+   "w": "gostam",
+   "casada": true
+  },
+  {
+   "t": 8.82,
+   "d": 0.12,
+   "w": "de",
+   "casada": true
+  },
+  {
+   "t": 8.94,
+   "d": 0.28,
+   "w": "ficar",
+   "casada": true
+  },
+  {
+   "t": 9.22,
+   "d": 0.69,
+   "w": "parados.",
+   "casada": true
+  },
+  {
+   "t": 10.48,
+   "d": 0.49,
+   "w": "Parada,",
+   "casada": true
+  },
+  {
+   "t": 11.16,
+   "d": 0.1,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 11.26,
+   "d": 0.62,
+   "w": "articulação",
+   "casada": true
+  },
+  {
+   "t": 11.88,
+   "d": 0.28,
+   "w": "pode",
+   "casada": true
+  },
+  {
+   "t": 12.16,
+   "d": 0.96,
+   "w": "enrijecer.",
+   "casada": true
+  },
+  {
+   "t": 13.12,
+   "d": 0.56,
+   "w": "E",
+   "casada": true
+  },
+  {
+   "t": 13.68,
+   "d": 0.08,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 13.76,
+   "d": 0.44,
+   "w": "músculo,",
+   "casada": true
+  },
+  {
+   "t": 14.2,
+   "d": 0.7,
+   "w": "encolher.",
+   "casada": true
+  },
+  {
+   "t": 15.39,
+   "d": 0.47,
+   "w": "Aí",
+   "casada": true
+  },
+  {
+   "t": 15.86,
+   "d": 0.06,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 15.92,
+   "d": 0.48,
+   "w": "rigidez",
+   "casada": true
+  },
+  {
+   "t": 16.4,
+   "d": 0.72,
+   "w": "rouba",
+   "casada": true
+  },
+  {
+   "t": 17.22,
+   "d": 0.22,
+   "w": "parte",
+   "casada": true
+  },
+  {
+   "t": 17.44,
+   "d": 0.18,
+   "w": "do",
+   "casada": true
+  },
+  {
+   "t": 17.62,
+   "d": 0.26,
+   "w": "ganho",
+   "casada": true
+  },
+  {
+   "t": 17.88,
+   "d": 0.1,
+   "w": "da",
+   "casada": true
+  },
+  {
+   "t": 17.98,
+   "d": 0.6,
+   "w": "cirurgia.",
+   "casada": true
+  },
+  {
+   "t": 19.1,
+   "d": 1.02,
+   "w": "Fisioterapia",
+   "casada": true
+  },
+  {
+   "t": 20.12,
+   "d": 0.46,
+   "w": "desde",
+   "casada": true
+  },
+  {
+   "t": 20.58,
+   "d": 0.2,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 20.78,
+   "d": 0.44,
+   "w": "início.",
+   "casada": true
+  },
+  {
+   "t": 21.67,
+   "d": 0.59,
+   "w": "Movimento",
+   "casada": true
+  },
+  {
+   "t": 22.28,
+   "d": 0.16,
+   "w": "e",
+   "casada": true
+  },
+  {
+   "t": 22.45,
+   "d": 0.29,
+   "w": "carga,",
+   "casada": true
+  },
+  {
+   "t": 22.74,
+   "d": 0.3,
+   "w": "na",
+   "casada": true
+  },
+  {
+   "t": 23.04,
+   "d": 0.32,
+   "w": "dose",
+   "casada": true
+  },
+  {
+   "t": 23.36,
+   "d": 0.62,
+   "w": "certa,",
+   "casada": true
+  },
+  {
+   "t": 24.19,
+   "d": 0.43,
+   "w": "mantêm",
+   "casada": true
+  },
+  {
+   "t": 24.62,
+   "d": 0.16,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 24.78,
+   "d": 0.66,
+   "w": "articulação",
+   "casada": true
+  },
+  {
+   "t": 25.44,
+   "d": 0.46,
+   "w": "solta",
+   "casada": true
+  },
+  {
+   "t": 25.9,
+   "d": 0.28,
+   "w": "e",
+   "casada": true
+  },
+  {
+   "t": 26.18,
+   "d": 0.7,
+   "w": "fortalecem",
+   "casada": true
+  },
+  {
+   "t": 26.88,
+   "d": 0.18,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 27.06,
+   "d": 0.34,
+   "w": "osso.",
+   "casada": true
+  },
+  {
+   "t": 27.83,
+   "d": 0.25,
+   "w": "Nada",
+   "casada": true
+  },
+  {
+   "t": 28.08,
+   "d": 0.24,
+   "w": "de",
+   "casada": true
+  },
+  {
+   "t": 28.38,
+   "d": 0.2,
+   "w": "treino",
+   "casada": true
+  },
+  {
+   "t": 28.58,
+   "d": 0.58,
+   "w": "pesado:",
+   "casada": true
+  },
+  {
+   "t": 29.42,
+   "d": 0.12,
+   "w": "um",
+   "casada": true
+  },
+  {
+   "t": 29.54,
+   "d": 0.38,
+   "w": "pouco",
+   "casada": true
+  },
+  {
+   "t": 29.92,
+   "d": 0.28,
+   "w": "todo",
+   "casada": true
+  },
+  {
+   "t": 30.2,
+   "d": 0.66,
+   "w": "dia,",
+   "casada": true
+  },
+  {
+   "t": 30.86,
+   "d": 0.38,
+   "w": "guiado",
+   "casada": true
+  },
+  {
+   "t": 31.24,
+   "d": 0.16,
+   "w": "pela",
+   "casada": true
+  },
+  {
+   "t": 31.4,
+   "d": 0.53,
+   "w": "equipe.",
+   "casada": true
+  },
+  {
+   "t": 32.34,
+   "d": 0.26,
+   "w": "Manda",
+   "casada": true
+  },
+  {
+   "t": 32.6,
+   "d": 0.14,
+   "w": "pra",
+   "casada": true
+  },
+  {
+   "t": 32.74,
+   "d": 0.2,
+   "w": "quem",
+   "casada": true
+  },
+  {
+   "t": 32.94,
+   "d": 0.28,
+   "w": "acha",
+   "casada": true
+  },
+  {
+   "t": 33.22,
+   "d": 0.16,
+   "w": "que",
+   "casada": true
+  },
+  {
+   "t": 33.38,
+   "d": 0.88,
+   "w": "fisioterapia",
+   "casada": true
+  },
+  {
+   "t": 34.26,
+   "d": 0.3,
+   "w": "fica",
+   "casada": true
+  },
+  {
+   "t": 34.57,
+   "d": 0.17,
+   "w": "pra",
+   "casada": true
+  },
+  {
+   "t": 34.74,
+   "d": 0.61,
+   "w": "depois.",
+   "casada": true
+  }
+ ],
+ "amostras": 1697600,
+ "pcm_sha256": "3656e4806653c09ed150223932413c9fcfcda722bff737568684a142cf62dbc1"
+}

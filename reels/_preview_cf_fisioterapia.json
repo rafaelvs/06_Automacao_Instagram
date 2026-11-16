@@ -1,8 +1,9 @@
 {
  "id": "cf_fisioterapia",
  "hash_episodio": "sha256:e6c3919ca032899eaeab48b66e06f1b51d3695d0743f3396b405f2e400982ca8",
- "hash_motor": "sha256:c48f75e075990c1c459165e48b656b4cc0d83feb15fc108f28522415f65aa6d0",
+ "hash_motor": "sha256:98b18b208ccb7264f12d6006570f9a6473ba891c9957fd385a8444f49b3b868e",
  "modulos": [
+  "alinhar",
   "base",
   "cf_alongamento",
   "cf_comum",
@@ -97,6 +98,6 @@
   "UM",
   "UM POUCO TODO DIA"
  ],
- "dur": 32.6,
- "renderizado_em": "2026-11-08T19:44:51+00:00"
+ "dur": 37.63,
+ "renderizado_em": "2026-11-16T21:03:28+00:00"
 }
