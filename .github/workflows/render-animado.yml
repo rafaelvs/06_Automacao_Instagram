@@ -66,45 +66,50 @@ jobs:
       - name: Renderizar (portao do episodio + CFM antes do 1o quadro; texto da tela conferido; irmao .json)
         id: render
         run: python -m animado.render "$EP"
-      - name: Commit do cache de voz (tomada aceita do Gemini-TTS + tempos)
-        # if: always(): a tomada ja' foi paga e conferida; se o render falhar DEPOIS da voz, o proximo
-        # render reaproveita exatamente o mesmo som em vez de sortear outra amostra.
-        if: ${{ always() && steps.checkout.outcome == 'success' }}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add animado/voz_cache 2>/dev/null || true
-          if git diff --cached --quiet; then echo "cache de voz sem novidade"; exit 0; fi
-          git commit -m "Cache de voz do render animado ${EP}"
-          ok=0
-          for attempt in 1 2 3 4 5; do
-            if git pull --rebase -X theirs origin main && git push; then ok=1; break; fi
-            git rebase --abort 2>/dev/null || true
-            echo "Push do cache tentativa $attempt falhou — aguardando ${attempt}0s..."
-            sleep $((attempt * 10))
-          done
-          if [ "$ok" != "1" ]; then
-            echo "::error::cache de voz gerado mas NAO commitado apos 5 tentativas — o proximo render sorteia outra amostra."
-            exit 1
-          fi
-      - name: Commit do mp4 + arquivo-irmao (hash do texto e do motor que geraram o video)
-        # ANTES das previas: previa que falha (edge-tts instavel) nao pode perder o video pronto
+      - name: Commit do mp4 + arquivo-irmao + cache de voz (hash do texto e do motor que geraram o video)
+        # ANTES das previas: previa que falha (edge-tts instavel) nao pode perder o video pronto.
+        # 16/11/2026 (revisao): o cache de voz vai NO MESMO commit do mp4. Com dois passos, o do cache
+        # rodava antes e o `git pull --rebase` dele recusava ("You have unstaged changes": o mp4 e o
+        # irmao re-renderizados, ja versionados) — o passo caia e o mp4 nunca era commitado.
+        id: commit_mp4
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add "reels/_preview_${EP}.mp4" "reels/_preview_${EP}.json"
+          if [ -d animado/voz_cache ]; then git add animado/voz_cache; fi
           git commit -m "Render animado ${EP} (geracao nova)" || echo "nada a commitar"
           ok=0
           for attempt in 1 2 3 4 5; do
             # -X theirs: num rebase, "theirs" e' o commit deste render. Re-render do mesmo episodio
             # em sequencia dava conflito BINARIO no mp4 e as 5 tentativas falhavam (auditoria 19/10)
-            if git pull --rebase -X theirs origin main && git push; then ok=1; break; fi
+            if git pull --rebase --autostash -X theirs origin main && git push; then ok=1; break; fi
             git rebase --abort 2>/dev/null || true
             echo "Push tentativa $attempt falhou — aguardando ${attempt}0s..."
             sleep $((attempt * 10))
           done
           if [ "$ok" != "1" ]; then
             echo "::error::mp4 renderizado mas NAO commitado apos 5 tentativas — render perdido."
+            exit 1
+          fi
+      - name: Commit so' do cache de voz (o render caiu DEPOIS de a voz ser paga e conferida)
+        # o proximo render reaproveita exatamente o mesmo som em vez de sortear outra amostra.
+        # --autostash: o mp4/irmao podem ter ficado modificados pelo render que caiu.
+        if: ${{ always() && steps.checkout.outcome == 'success' && steps.render.outcome == 'failure' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -d animado/voz_cache ]; then git add animado/voz_cache; fi
+          if git diff --cached --quiet; then echo "cache de voz sem novidade"; exit 0; fi
+          git commit -m "Cache de voz do render animado ${EP} (render falhou depois da voz)"
+          ok=0
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase --autostash -X theirs origin main && git push; then ok=1; break; fi
+            git rebase --abort 2>/dev/null || true
+            echo "Push do cache tentativa $attempt falhou — aguardando ${attempt}0s..."
+            sleep $((attempt * 10))
+          done
+          if [ "$ok" != "1" ]; then
+            echo "::error::cache de voz gerado mas NAO commitado apos 5 tentativas — o proximo render sorteia outra amostra."
             exit 1
           fi
       - name: Quadros de conferencia (reusa o cache de voz do render)

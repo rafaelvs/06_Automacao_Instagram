@@ -13,3 +13,6 @@ _render_reel_OLD.py
 # pasta de trabalho do motor animado (voz em cache, quadros de previa)
 .animado_tmp/
 previa_out/
+
+# parciais da gravação do cache de voz (hoje gravados em tmp_dir; rede de segurança)
+animado/voz_cache/*.parcial*

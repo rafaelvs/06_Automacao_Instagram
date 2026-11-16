@@ -1,5 +1,5 @@
 {
- "versao": 1,
+ "versao": 2,
  "chave": "692f5aa341c8b679b1eafb7d",
  "engine": "gemini",
  "voz": "Sadaltager",
@@ -27,18 +27,22 @@
     "inseridas": [],
     "omitidas": []
    }
-  ]
+  ],
+  "trocadas": [],
+  "inseridas_pontas": [],
+  "realinhado_em": "2026-11-16T15:09:55+00:00",
+  "realinhado_por": "revisão 16/11: fronteiras pela energia + voz fora das palavras (áudio inalterado)"
  },
  "palavras": [
   {
-   "t": 0.24,
-   "d": 0.1,
+   "t": 0.25,
+   "d": 0.09,
    "w": "O",
    "casada": true
   },
   {
-   "t": 0.34,
-   "d": 0.14,
+   "t": 0.4,
+   "d": 0.08,
    "w": "pé",
    "casada": true
   },
@@ -62,13 +66,13 @@
   },
   {
    "t": 1.68,
-   "d": 0.54,
+   "d": 0.58,
    "w": "virado:",
    "casada": true
   },
   {
-   "t": 2.59,
-   "d": 0.13,
+   "t": 2.6,
+   "d": 0.12,
    "w": "pra",
    "casada": true
   },
@@ -80,25 +84,25 @@
   },
   {
    "t": 3.16,
-   "d": 0.36,
+   "d": 0.37,
    "w": "e",
    "casada": true
   },
   {
-   "t": 3.52,
-   "d": 0.18,
+   "t": 3.59,
+   "d": 0.11,
    "w": "pra",
    "casada": true
   },
   {
    "t": 3.7,
-   "d": 0.36,
+   "d": 0.49,
    "w": "dentro.",
    "casada": true
   },
   {
-   "t": 4.52,
-   "d": 0.2,
+   "t": 4.63,
+   "d": 0.09,
    "w": "É",
    "casada": true
   },
@@ -152,25 +156,25 @@
   },
   {
    "t": 6.84,
-   "d": 0.42,
+   "d": 0.68,
    "w": "gravidez.",
    "casada": true
   },
   {
-   "t": 7.9,
-   "d": 0.2,
+   "t": 8.0,
+   "d": 0.1,
    "w": "Quem",
    "casada": true
   },
   {
    "t": 8.1,
-   "d": 0.5,
+   "d": 0.6,
    "w": "corrige?",
    "casada": true
   },
   {
-   "t": 9.14,
-   "d": 0.36,
+   "t": 8.96,
+   "d": 0.74,
    "w": "Gessos,",
    "casada": true
   },
@@ -182,7 +186,7 @@
   },
   {
    "t": 10.12,
-   "d": 0.58,
+   "d": 0.68,
    "w": "poucos,",
    "casada": true
   },
@@ -218,13 +222,13 @@
   },
   {
    "t": 12.84,
-   "d": 0.3,
+   "d": 0.37,
    "w": "vida.",
    "casada": true
   },
   {
-   "t": 13.58,
-   "d": 0.22,
+   "t": 13.66,
+   "d": 0.14,
    "w": "Uma",
    "casada": true
   },
@@ -254,7 +258,7 @@
   },
   {
    "t": 15.46,
-   "d": 0.36,
+   "d": 0.45,
    "w": "gesso.",
    "casada": true
   },
@@ -289,8 +293,8 @@
    "casada": true
   },
   {
-   "t": 17.64,
-   "d": 0.1,
+   "t": 17.65,
+   "d": 0.09,
    "w": "pé",
    "casada": true
   },
@@ -314,7 +318,7 @@
   },
   {
    "t": 18.7,
-   "d": 0.32,
+   "d": 0.45,
    "w": "pouco.",
    "casada": true
   },
@@ -332,7 +336,7 @@
   },
   {
    "t": 20.3,
-   "d": 0.48,
+   "d": 0.51,
    "w": "gesso.",
    "casada": true
   },
@@ -356,13 +360,13 @@
   },
   {
    "t": 22.86,
-   "d": 0.18,
+   "d": 0.2,
    "w": "a",
    "casada": true
   },
   {
-   "t": 23.04,
-   "d": 0.8,
+   "t": 23.06,
+   "d": 0.78,
    "w": "flexibilidade",
    "casada": true
   },
@@ -374,13 +378,13 @@
   },
   {
    "t": 24.04,
-   "d": 0.28,
+   "d": 0.32,
    "w": "bebê.",
    "casada": true
   },
   {
-   "t": 24.58,
-   "d": 0.56,
+   "t": 24.81,
+   "d": 0.58,
    "w": "Depois,",
    "casada": true
   },
@@ -404,7 +408,7 @@
   },
   {
    "t": 26.3,
-   "d": 0.3,
+   "d": 0.43,
    "w": "manter.",
    "casada": true
   },
@@ -422,13 +426,13 @@
   },
   {
    "t": 27.24,
-   "d": 0.7,
+   "d": 0.71,
    "w": "acompanhamento",
    "casada": true
   },
   {
-   "t": 27.94,
-   "d": 0.44,
+   "t": 27.97,
+   "d": 0.41,
    "w": "segue",
    "casada": true
   },
@@ -440,13 +444,13 @@
   },
   {
    "t": 28.56,
-   "d": 0.5,
+   "d": 0.68,
    "w": "crescimento.",
    "casada": true
   },
   {
-   "t": 29.06,
-   "d": 0.92,
+   "t": 29.64,
+   "d": 0.34,
    "w": "Manda",
    "casada": true
   },
@@ -476,9 +480,11 @@
   },
   {
    "t": 31.1,
-   "d": 0.76,
+   "d": 0.78,
    "w": "diagnóstico.",
    "casada": true
   }
- ]
+ ],
+ "amostras": 1530368,
+ "pcm_sha256": "405e548e3a7ce11aaa2f5fd62d1a40ffb6287ecdffafaf78db2e4b5cd6bb8c60"
 }

@@ -11,8 +11,11 @@ Duas engines, escolhidas por UMA constante (`ENGINE`):
   pouco diferente, ±5% de duração): o tempo sai do próprio áudio (animado/alinhar.py, faster-whisper
   casado ao texto conhecido) e a tomada aceita fica num CACHE VERSIONADO no repo
   (animado/voz_cache/), para que re-render do mesmo episódio dê exatamente o mesmo som.
-- "edge": edge-tts pt-BR-AntonioNeural com WordBoundary — a voz de 18/10/2026. Para voltar a ela,
-  troque ENGINE para "edge" (exige piloto, como qualquer mudança de voz).
+- "edge": edge-tts pt-BR-AntonioNeural com WordBoundary — a voz de 18/10/2026 (corpo de `_tts`
+  idêntico ao de 18/10). Voltar a ela NÃO é só trocar a constante: o fingerprint de `checar_voz.py`
+  cobre também a engine e as funções da gemini, então a volta exige `--registrar` com evidência
+  ("volta à voz Antonio de 18/10, mesma voz já aprovada") e, como `voz.py`/`alinhar.py` entram no
+  hash do motor, re-render da fila (checar_entretenimento acusa "o motor mudou").
 
 Ritmo e tom APROVADOS pelo Rafael em 18/10/2026 (pilotos A e B): +10% na narração do COMO FUNCIONA,
 +8% na CONVERSA, tom +0Hz. Os chamadores (cf_*.py, conversa.py) continuam passando esses ritmos; na
@@ -32,6 +35,11 @@ import time
 import wave
 
 import numpy as np
+
+try:
+    import edge_tts
+except ImportError:                     # só a engine "edge" precisa; a gemini roda sem o pacote
+    edge_tts = None
 
 from . import som
 
@@ -57,7 +65,9 @@ URL_GEMINI = "https://texttospeech.googleapis.com/v1/text:synthesize"
 PROJETO_COTA_PADRAO = "debb-b4b6d"   # x-goog-user-project quando a credencial é um token de usuário
 
 CACHE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "voz_cache")
-CACHE_VERSAO = 1
+CACHE_VERSAO = 2            # 2: sha256 + nº de amostras do PCM no JSON, conferidos na leitura
+FADE_FINAL = 0.015          # s; 1/3 das tomadas cruas do Gemini terminam no meio do fonema (-3 a -20
+                            # dB no último quadro): sem rampa, o fim do áudio estala no vídeo
 
 # Mesma masterização do motor (gerar_reel_voz.py), SEM o silenceremove do começo: cortar
 # silêncio deslocaria todos os tempos de palavra.
@@ -84,7 +94,6 @@ def _masterizar(entrada, wav):
 
 
 async def _tts(texto, rate, pitch):
-    import edge_tts
     com = edge_tts.Communicate(texto, VOZ, rate=rate, pitch=pitch, boundary="WordBoundary")
     audio, palavras = bytearray(), []
     async for ch in com.stream():
@@ -221,8 +230,12 @@ def _gemini_tts(texto, taxa, credencial, tentativas=5):
                 raise SystemExit(f"ERRO: Gemini-TTS recusou o pedido (HTTP {r.status_code}): {r.text[:300]}")
             else:
                 erro = RuntimeError(f"HTTP {r.status_code}: {r.text[:200]}")
-        except (requests.ConnectionError, requests.Timeout) as e:
+        # revisão 16/11: conexão que cai no meio do corpo (~4 MB de base64) é ChunkedEncodingError e
+        # um 200 com HTML de proxy é ValueError (JSON/base64) — transitórios, merecem nova tentativa
+        except (requests.RequestException, ValueError) as e:
             erro = e
+        if k == tentativas - 1:
+            break                                                    # não dorme depois da última
         espera = 5 * 2 ** k
         print(f"  [voz] Gemini-TTS falhou ({erro}); nova tentativa em {espera}s", flush=True)
         time.sleep(espera)
@@ -249,6 +262,17 @@ def chave_cache(texto, taxa):
                           .encode("utf-8")).hexdigest()[:24]
 
 
+def _pcm_flac(flac, wav):
+    """FLAC -> WAV PCM 16 bits; -> (nº de amostras, sha256 do PCM). `-xerror`: o ffmpeg sai com
+    código 0 mesmo com 'decode_frame() failed' (revisão 16/11: FLAC com 300 bytes trocados foi
+    aceito com 787 mil amostras diferentes e os tempos deixaram de bater com o som)."""
+    subprocess.run([ffmpeg(), "-y", "-loglevel", "error", "-xerror", "-i", flac, "-c:a", "pcm_s16le", wav],
+                   check=True)
+    with wave.open(wav) as f:
+        n, pcm = f.getnframes() * f.getnchannels(), f.readframes(f.getnframes())
+    return n, hashlib.sha256(pcm).hexdigest()
+
+
 def _ler_cache(chave, texto, tmp_dir):
     flac = os.path.join(CACHE_DIR, f"{chave}.flac"); meta = os.path.join(CACHE_DIR, f"{chave}.json")
     if not (os.path.isfile(flac) and os.path.isfile(meta)):
@@ -256,23 +280,46 @@ def _ler_cache(chave, texto, tmp_dir):
     m = json.load(open(meta, encoding="utf-8"))
     if m.get("texto") != texto or m.get("chave") != chave:
         raise SystemExit(f"ERRO: cache de voz {chave} não corresponde ao texto pedido (arquivo trocado?).")
+    if m.get("versao") != CACHE_VERSAO:
+        raise SystemExit(f"ERRO: cache de voz {chave} é da versão {m.get('versao')!r}, o código espera "
+                         f"{CACHE_VERSAO} — regrave a entrada (re-alinhar o áudio) antes de renderizar.")
     wav = os.path.join(tmp_dir, f"{chave}.wav")
-    subprocess.run([ffmpeg(), "-y", "-loglevel", "error", "-i", flac, "-c:a", "pcm_s16le", wav], check=True)
+    try:
+        n, sha = _pcm_flac(flac, wav)
+    except subprocess.CalledProcessError as e:
+        raise SystemExit(f"ERRO: FLAC do cache de voz {chave} não decodifica ({e}) — arquivo corrompido.")
+    if (n, sha) != (m.get("amostras"), m.get("pcm_sha256")):
+        raise SystemExit(f"ERRO: áudio do cache de voz {chave} não confere com o JSON (amostras {n} x "
+                         f"{m.get('amostras')}, sha256 {sha[:12]} x {str(m.get('pcm_sha256'))[:12]}) — "
+                         f"arquivo corrompido ou trocado; os tempos das palavras não valeriam para ele.")
     return som.ler_wav(wav), [{"t": p["t"], "d": p["d"], "w": p["w"]} for p in m["palavras"]]
 
 
-def _gravar_cache(chave, wav, meta):
-    """FLAC mono 16 bits/48 kHz (sem perda: o re-render toca exatamente o mesmo som) + JSON."""
+def _gravar_cache(chave, wav, meta, tmp_dir):
+    """FLAC mono 16 bits/48 kHz (sem perda: o re-render toca exatamente o mesmo som) + JSON com o
+    sha256 do PCM DECODIFICADO do próprio FLAC. Os arquivos parciais ficam em tmp_dir (nunca na
+    pasta versionada: o commit do cache faz `git add` da pasta inteira)."""
     os.makedirs(CACHE_DIR, exist_ok=True)
-    flac = os.path.join(CACHE_DIR, f"{chave}.flac")
+    flac = os.path.join(CACHE_DIR, f"{chave}.flac"); caminho = os.path.join(CACHE_DIR, f"{chave}.json")
+    flac_p = os.path.join(tmp_dir, f"{chave}.parcial.flac"); json_p = os.path.join(tmp_dir, f"{chave}.parcial.json")
     subprocess.run([ffmpeg(), "-y", "-loglevel", "error", "-i", wav, "-ac", "1", "-c:a", "flac",
-                    "-compression_level", "8", flac + ".parcial.flac"], check=True)
-    caminho = os.path.join(CACHE_DIR, f"{chave}.json")
-    with open(caminho + ".parcial", "w", encoding="utf-8", newline="\n") as f:
+                    "-compression_level", "8", flac_p], check=True)
+    n, sha = _pcm_flac(flac_p, os.path.join(tmp_dir, f"{chave}.conferencia.wav"))
+    meta = dict(meta, versao=CACHE_VERSAO, amostras=n, pcm_sha256=sha)
+    with open(json_p, "w", encoding="utf-8", newline="\n") as f:
         json.dump(meta, f, ensure_ascii=False, indent=1)
         f.write("\n")
-    os.replace(flac + ".parcial.flac", flac)          # áudio primeiro: json sem áudio = cache incompleto
-    os.replace(caminho + ".parcial", caminho)
+    shutil.move(flac_p, flac)                       # áudio primeiro: json sem áudio = cache incompleto
+    shutil.move(json_p, caminho)
+
+
+def _arrematar(audio):
+    """Rampa de FADE_FINAL s no fim (a tomada pode acabar no meio do fonema)."""
+    k = min(int(FADE_FINAL * som.SR), len(audio))
+    if k:
+        audio = audio.copy()
+        audio[-k:] *= np.cos(np.linspace(0, np.pi / 2, k)).astype(audio.dtype)
+    return audio
 
 
 def _narrar_gemini(texto, rate, tmp_dir, pitch):
@@ -304,12 +351,14 @@ def _narrar_gemini(texto, rate, tmp_dir, pitch):
         resumo = {"tomada": k, "dur": round(len(audio) / som.SR, 2), "problemas": probs}
         if res is not None:
             resumo.update(fracao=round(res["fracao"], 3), buraco=res["buraco"],
-                          inseridas=[x["w"] for x in res["inseridas"]], omitidas=[x["w"] for x in res["omitidas"]])
+                          inseridas=[x["w"] for x in res["inseridas"]], omitidas=[x["w"] for x in res["omitidas"]],
+                          trocadas=[f"{x['w']}>{x['por']}" for x in res.get("trocadas", [])])
         tomadas.append(resumo)
         print(f"  [voz] tomada {k + 1}/{TOMADAS_GEMINI}: {resumo} ({time.time() - t0:.0f}s)", flush=True)
         if not probs:
             rel = len(alinhar.divergencias_relevantes(res))
-            nota = (rel, len(res["inseridas"]) + len(res["omitidas"]), -res["fracao"])
+            nota = (rel, len(res["inseridas"]) + len(res["omitidas"]) + len(res.get("trocadas", [])),
+                    -res["fracao"])
             if melhor is None or nota < melhor[0]:
                 melhor = (nota, k, wav, res)
             if rel == 0:
@@ -327,9 +376,10 @@ def _narrar_gemini(texto, rate, tmp_dir, pitch):
             "texto": texto, "duracao": round(res["duracao"], 3),
             "alinhamento": {"modelo_whisper": alinhar.MODELO, "fracao": round(res["fracao"], 4),
                             "buraco": res["buraco"], "inseridas": res["inseridas"], "omitidas": res["omitidas"],
+                            "trocadas": res.get("trocadas", []), "inseridas_pontas": res.get("inseridas_pontas", []),
                             "tomada_aceita": k, "tomadas": tomadas},
             "palavras": [{"t": p["t"], "d": p["d"], "w": p["w"], "casada": p["casada"]} for p in res["palavras"]]}
-    _gravar_cache(chave, wav, meta)
+    _gravar_cache(chave, wav, meta, tmp_dir)
     # lê de volta DO CACHE: o 1º render e os seguintes tocam exatamente o mesmo áudio
     return _ler_cache(chave, texto, tmp_dir)
 
@@ -370,6 +420,7 @@ def narrar(texto, rate, tmp_dir, pitch=TOM, tentativas=4):
     os.makedirs(tmp_dir, exist_ok=True)
     if ENGINE == "gemini":
         audio, pal = _narrar_gemini(texto, rate, tmp_dir, pitch)
+        audio = _arrematar(audio)
     elif ENGINE == "edge":
         audio, pal = _narrar_edge(texto, rate, tmp_dir, pitch, tentativas)
     else:

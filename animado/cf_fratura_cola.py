@@ -56,17 +56,21 @@ def comprimir(voz, palavras, max_gap=0.30, limiar=0.42, respiro_cta=1.6):
         i = next(k for k, p in enumerate(palavras) if _limpa(p["w"]) == "manda")
         fim_a = palavras[i - 1]["t"] + palavras[i - 1]["d"]
         falta = respiro_cta - (palavras[i]["t"] - fim_a)
+        # 16/11/2026 (voz Gemini): a pausa antes do "Manda" pode ter menos de 0,05 s; inserir em
+        # fim_a + 0,05 caía DENTRO da palavra e o "Manda" ficava fora do deslocamento (T["manda"]
+        # ~1,6 s antes da fala). Insere no meio da pausa quando ela é curta e desloca t >= ponto.
+        ponto = fim_a + min(0.05, max(palavras[i]["t"] - fim_a, 0.0) / 2)
         def remap0(t):
             return t - sum(min(c1, t) - c0 for c0, c1 in cortes if t > c0)
-        pos = int(remap0(fim_a + 0.05) * som.SR)
+        pos = int(remap0(ponto) * som.SR)
         nova = _np.concatenate([nova[:pos], _np.zeros(int(falta * som.SR)), nova[pos:]])
-        cortes_extra = (fim_a + 0.05, falta)
+        cortes_extra = (ponto, falta)
     else:
         cortes_extra = None
 
     def remap(t):
         t2 = t - sum(min(c1, t) - c0 for c0, c1 in cortes if t > c0)
-        if cortes_extra and t > cortes_extra[0]:
+        if cortes_extra and t >= cortes_extra[0]:
             t2 += cortes_extra[1]
         return t2
     return nova, [dict(p, t=remap(p["t"])) for p in palavras], sum(c1 - c0 for c0, c1 in cortes)

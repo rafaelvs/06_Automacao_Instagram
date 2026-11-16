@@ -99,9 +99,13 @@ def fingerprint(gerar_path=None, wf_path=None, animado_path=None, animado_dir=No
                            + _extrai(a, r'VOZ_GEMINI\s*=\s*"[^"\n]*"', "animado VOZ_GEMINI")
                            + _extrai(a, r'MODELO_GEMINI\s*=\s*"[^"\n]*"', "animado MODELO_GEMINI")
                            + _extrai(a, r'PROMPT_GEMINI\s*=\s*\(.*?\)\n', "animado PROMPT_GEMINI")
-                           + _extrai(a, r'TAXA_GEMINI\s*=\s*\{[^}\n]*\}', "animado TAXA_GEMINI")),
+                           + _extrai(a, r'TAXA_GEMINI\s*=\s*\{[^}\n]*\}', "animado TAXA_GEMINI")
+                           + _extrai(a, r'FADE_FINAL\s*=\s*[^\n]*', "animado FADE_FINAL")),
+        # revisão 16/11: TODO som da engine gemini passa pelo cache (grava FLAC, lê de volta) e pela
+        # rampa final — um filtro enfiado em _gravar_cache mudava volume/ritmo com o MESMO fingerprint
         "animado_funcoes": "".join(_extrai(a, rf'def {f}\(.*?\n(?=\n\S|\Z)', f"animado {f}()")
-                                   for f in ("_masterizar", "_gemini_tts", "_narrar_gemini", "_narrar_edge")),
+                                   for f in ("_masterizar", "_gemini_tts", "_narrar_gemini", "_narrar_edge",
+                                             "_gravar_cache", "_ler_cache", "_pcm_flac", "_arrematar")),
     }
     blob = json.dumps(partes, ensure_ascii=False, sort_keys=True)
     return hashlib.sha256(blob.encode("utf-8")).hexdigest(), partes
@@ -175,6 +179,13 @@ def main():
                 "12: prompt de estilo trocado": ("voz.py", "tom acolhedor", "tom urgente"),
                 "13: modelo do Gemini fixo dentro de _gemini_tts()": ("voz.py", '"modelName": MODELO_GEMINI',
                                                                        '"modelName": "gemini-2.5-pro-tts"'),
+                # revisão 16/11: o caminho do cache (por onde passa todo som da gemini) e a rampa final
+                "14: filtro enfiado na gravação do cache": ("voz.py", '"-ac", "1", "-c:a", "flac",',
+                                                            '"-ac", "1", "-af", "volume=6dB,atempo=1.08", "-c:a", "flac",'),
+                "15: rampa final alterada": ("voz.py", "FADE_FINAL = 0.015", "FADE_FINAL = 0.400"),
+                "16: filtro enfiado na leitura do cache": ("voz.py", '"-xerror", "-i", flac,',
+                                                           '"-xerror", "-i", flac, "-af", "volume=6dB",'),
+                "17: rampa final tirada de narrar()": ("voz.py", "        audio = _arrematar(audio)\n", ""),
             }
             for nome, (arq, de, para) in mut.items():
                 d = td / f"anim_{nome.split(':')[0]}"
