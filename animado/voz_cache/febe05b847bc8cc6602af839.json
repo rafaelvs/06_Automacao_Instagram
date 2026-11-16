@@ -1,0 +1,513 @@
+{
+ "versao": 2,
+ "chave": "febe05b847bc8cc6602af839",
+ "engine": "gemini",
+ "voz": "Sadaltager",
+ "modelo": "gemini-2.5-flash-tts",
+ "prompt": "Narre em português do Brasil, como um médico ortopedista explicando com calma e clareza para pais num vídeo curto de redes sociais: tom acolhedor, natural, ritmo levemente animado, sem exagero.",
+ "ritmo": "+10%",
+ "taxa": 1.05,
+ "gerado_em": "2026-11-16T21:06:35+00:00",
+ "texto": "Quebrou o mesmo osso, no mesmo lugar? Antes de tratar igual, se investiga a causa.\nNa refratura, três possíveis causas entram na conta.\nA estabilidade da fixação. Os fatores do paciente. E o momento de voltar à carga.\nVoltar ao esporte antes da hora aumenta a chance de nova fratura no mesmo lugar.\nO tratamento é individualizado.\nPode envolver revisão da fixação, enxerto ósseo e, em casos selecionados, fixador externo.\nManda pra quem quebrou o mesmo osso duas vezes.",
+ "duracao": 34.563,
+ "alinhamento": {
+  "modelo_whisper": "small",
+  "fracao": 1.0,
+  "buraco": 0,
+  "inseridas": [],
+  "omitidas": [],
+  "trocadas": [],
+  "inseridas_pontas": [],
+  "tomada_aceita": 0,
+  "tomadas": [
+   {
+    "tomada": 0,
+    "dur": 34.56,
+    "problemas": [],
+    "fracao": 1.0,
+    "buraco": 0,
+    "inseridas": [],
+    "omitidas": [],
+    "trocadas": []
+   }
+  ]
+ },
+ "palavras": [
+  {
+   "t": 0.3,
+   "d": 0.44,
+   "w": "Quebrou",
+   "casada": true
+  },
+  {
+   "t": 0.74,
+   "d": 0.28,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 1.02,
+   "d": 0.36,
+   "w": "mesmo",
+   "casada": true
+  },
+  {
+   "t": 1.38,
+   "d": 0.58,
+   "w": "osso,",
+   "casada": true
+  },
+  {
+   "t": 2.08,
+   "d": 0.16,
+   "w": "no",
+   "casada": true
+  },
+  {
+   "t": 2.24,
+   "d": 0.36,
+   "w": "mesmo",
+   "casada": true
+  },
+  {
+   "t": 2.6,
+   "d": 0.5,
+   "w": "lugar?",
+   "casada": true
+  },
+  {
+   "t": 3.69,
+   "d": 0.31,
+   "w": "Antes",
+   "casada": true
+  },
+  {
+   "t": 4.0,
+   "d": 0.21,
+   "w": "de",
+   "casada": true
+  },
+  {
+   "t": 4.22,
+   "d": 0.22,
+   "w": "tratar",
+   "casada": true
+  },
+  {
+   "t": 4.44,
+   "d": 0.61,
+   "w": "igual,",
+   "casada": true
+  },
+  {
+   "t": 5.2,
+   "d": 0.16,
+   "w": "se",
+   "casada": true
+  },
+  {
+   "t": 5.36,
+   "d": 0.5,
+   "w": "investiga",
+   "casada": true
+  },
+  {
+   "t": 5.86,
+   "d": 0.14,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 6.0,
+   "d": 0.37,
+   "w": "causa.",
+   "casada": true
+  },
+  {
+   "t": 6.86,
+   "d": 0.12,
+   "w": "Na",
+   "casada": true
+  },
+  {
+   "t": 6.98,
+   "d": 0.75,
+   "w": "refratura,",
+   "casada": true
+  },
+  {
+   "t": 8.04,
+   "d": 0.18,
+   "w": "três",
+   "casada": true
+  },
+  {
+   "t": 8.22,
+   "d": 0.54,
+   "w": "possíveis",
+   "casada": true
+  },
+  {
+   "t": 8.76,
+   "d": 0.56,
+   "w": "causas",
+   "casada": true
+  },
+  {
+   "t": 9.32,
+   "d": 0.34,
+   "w": "entram",
+   "casada": true
+  },
+  {
+   "t": 9.66,
+   "d": 0.14,
+   "w": "na",
+   "casada": true
+  },
+  {
+   "t": 9.8,
+   "d": 0.43,
+   "w": "conta.",
+   "casada": true
+  },
+  {
+   "t": 10.65,
+   "d": 0.11,
+   "w": "A",
+   "casada": true
+  },
+  {
+   "t": 10.76,
+   "d": 0.74,
+   "w": "estabilidade",
+   "casada": true
+  },
+  {
+   "t": 11.5,
+   "d": 0.2,
+   "w": "da",
+   "casada": true
+  },
+  {
+   "t": 11.7,
+   "d": 0.66,
+   "w": "fixação.",
+   "casada": true
+  },
+  {
+   "t": 12.86,
+   "d": 0.12,
+   "w": "Os",
+   "casada": true
+  },
+  {
+   "t": 12.98,
+   "d": 0.44,
+   "w": "fatores",
+   "casada": true
+  },
+  {
+   "t": 13.42,
+   "d": 0.25,
+   "w": "do",
+   "casada": true
+  },
+  {
+   "t": 13.72,
+   "d": 0.56,
+   "w": "paciente.",
+   "casada": true
+  },
+  {
+   "t": 14.28,
+   "d": 0.6,
+   "w": "E",
+   "casada": true
+  },
+  {
+   "t": 14.88,
+   "d": 0.1,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 14.98,
+   "d": 0.34,
+   "w": "momento",
+   "casada": true
+  },
+  {
+   "t": 15.32,
+   "d": 0.3,
+   "w": "de",
+   "casada": true
+  },
+  {
+   "t": 15.62,
+   "d": 0.28,
+   "w": "voltar",
+   "casada": true
+  },
+  {
+   "t": 15.9,
+   "d": 0.2,
+   "w": "à",
+   "casada": true
+  },
+  {
+   "t": 16.12,
+   "d": 0.37,
+   "w": "carga.",
+   "casada": true
+  },
+  {
+   "t": 16.95,
+   "d": 0.47,
+   "w": "Voltar",
+   "casada": true
+  },
+  {
+   "t": 17.42,
+   "d": 0.14,
+   "w": "ao",
+   "casada": true
+  },
+  {
+   "t": 17.56,
+   "d": 0.38,
+   "w": "esporte",
+   "casada": true
+  },
+  {
+   "t": 17.94,
+   "d": 0.56,
+   "w": "antes",
+   "casada": true
+  },
+  {
+   "t": 18.5,
+   "d": 0.22,
+   "w": "da",
+   "casada": true
+  },
+  {
+   "t": 18.72,
+   "d": 0.32,
+   "w": "hora",
+   "casada": true
+  },
+  {
+   "t": 19.25,
+   "d": 0.47,
+   "w": "aumenta",
+   "casada": true
+  },
+  {
+   "t": 19.72,
+   "d": 0.14,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 19.86,
+   "d": 0.18,
+   "w": "chance",
+   "casada": true
+  },
+  {
+   "t": 20.04,
+   "d": 0.26,
+   "w": "de",
+   "casada": true
+  },
+  {
+   "t": 20.3,
+   "d": 0.34,
+   "w": "nova",
+   "casada": true
+  },
+  {
+   "t": 20.64,
+   "d": 0.46,
+   "w": "fratura",
+   "casada": true
+  },
+  {
+   "t": 21.1,
+   "d": 0.26,
+   "w": "no",
+   "casada": true
+  },
+  {
+   "t": 21.36,
+   "d": 0.4,
+   "w": "mesmo",
+   "casada": true
+  },
+  {
+   "t": 21.76,
+   "d": 0.43,
+   "w": "lugar.",
+   "casada": true
+  },
+  {
+   "t": 22.71,
+   "d": 0.11,
+   "w": "O",
+   "casada": true
+  },
+  {
+   "t": 22.86,
+   "d": 0.48,
+   "w": "tratamento",
+   "casada": true
+  },
+  {
+   "t": 23.34,
+   "d": 0.22,
+   "w": "é",
+   "casada": true
+  },
+  {
+   "t": 23.65,
+   "d": 1.01,
+   "w": "individualizado.",
+   "casada": true
+  },
+  {
+   "t": 24.66,
+   "d": 0.58,
+   "w": "Pode",
+   "casada": true
+  },
+  {
+   "t": 25.24,
+   "d": 0.46,
+   "w": "envolver",
+   "casada": true
+  },
+  {
+   "t": 25.7,
+   "d": 0.54,
+   "w": "revisão",
+   "casada": true
+  },
+  {
+   "t": 26.24,
+   "d": 0.1,
+   "w": "da",
+   "casada": true
+  },
+  {
+   "t": 26.34,
+   "d": 0.68,
+   "w": "fixação,",
+   "casada": true
+  },
+  {
+   "t": 27.24,
+   "d": 0.52,
+   "w": "enxerto",
+   "casada": true
+  },
+  {
+   "t": 27.76,
+   "d": 0.58,
+   "w": "ósseo",
+   "casada": true
+  },
+  {
+   "t": 28.4,
+   "d": 0.22,
+   "w": "e,",
+   "casada": true
+  },
+  {
+   "t": 28.62,
+   "d": 0.16,
+   "w": "em",
+   "casada": true
+  },
+  {
+   "t": 28.78,
+   "d": 0.3,
+   "w": "casos",
+   "casada": true
+  },
+  {
+   "t": 29.08,
+   "d": 0.98,
+   "w": "selecionados,",
+   "casada": true
+  },
+  {
+   "t": 30.17,
+   "d": 0.51,
+   "w": "fixador",
+   "casada": true
+  },
+  {
+   "t": 30.68,
+   "d": 0.58,
+   "w": "externo.",
+   "casada": true
+  },
+  {
+   "t": 31.64,
+   "d": 0.34,
+   "w": "Manda",
+   "casada": true
+  },
+  {
+   "t": 31.98,
+   "d": 0.16,
+   "w": "pra",
+   "casada": true
+  },
+  {
+   "t": 32.14,
+   "d": 0.18,
+   "w": "quem",
+   "casada": true
+  },
+  {
+   "t": 32.32,
+   "d": 0.44,
+   "w": "quebrou",
+   "casada": true
+  },
+  {
+   "t": 32.76,
+   "d": 0.18,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 32.94,
+   "d": 0.34,
+   "w": "mesmo",
+   "casada": true
+  },
+  {
+   "t": 33.28,
+   "d": 0.4,
+   "w": "osso",
+   "casada": true
+  },
+  {
+   "t": 33.68,
+   "d": 0.24,
+   "w": "duas",
+   "casada": true
+  },
+  {
+   "t": 33.92,
+   "d": 0.64,
+   "w": "vezes.",
+   "casada": true
+  }
+ ],
+ "amostras": 1659008,
+ "pcm_sha256": "953c03183b5d8d753969ff23c865da12592433b6ed02374159948242d3ed4ae8"
+}
