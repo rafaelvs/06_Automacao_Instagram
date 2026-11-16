@@ -1,7 +1,7 @@
 {
  "id": "cf_dor_alongamento",
  "hash_episodio": "sha256:d7b549e56a3819256692d375860bb91f2c29e2aafa4304e0a777aa5afff712e4",
- "hash_motor": "sha256:d84210fdeb318cf090ae5623953e4f244ba133573f70c4b63545aad3f35fbbce",
+ "hash_motor": "sha256:ba26317150cae045471c3e2c599cca28c34d0eb08fcc3e7448596401cf36f99b",
  "modulos": [
   "alinhar",
   "base",
@@ -102,5 +102,5 @@
   "É"
  ],
  "dur": 41.0,
- "renderizado_em": "2026-11-16T21:04:07+00:00"
+ "renderizado_em": "2026-11-16T21:22:08+00:00"
 }
