@@ -1,8 +1,9 @@
 {
  "id": "cf_mito_mochila_coluna",
  "hash_episodio": "sha256:f60b703565f00f5bb67a013450dd99eae067a7e082045a52a7df27f498cdc1a3",
- "hash_motor": "sha256:4c50e3829fedf7d3b8661940b24c2e2a4cca6db77f11cadbc5574c4c64bc642a",
+ "hash_motor": "sha256:5c659aa60b8d3212e61e3eefec78f6189e49a95794648a0b1682ef762464a22c",
  "modulos": [
+  "alinhar",
   "base",
   "cf_alongamento",
   "cf_comum",
@@ -96,6 +97,6 @@
   "VOLTA.",
   "À"
  ],
- "dur": 34.0,
- "renderizado_em": "2026-11-08T19:45:35+00:00"
+ "dur": 37.17,
+ "renderizado_em": "2026-11-16T21:24:51+00:00"
 }
