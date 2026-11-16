@@ -1,7 +1,7 @@
 {
  "id": "cf_quando_pisar",
  "hash_episodio": "sha256:4df48cf6e1eb10f6460d7c39d1ba2e8e317b37ce6c41aeb769933f716e324df9",
- "hash_motor": "sha256:28a6b84dc74401951b074f86e669e85131a96090e04364ae28fbc6b30cabc152",
+ "hash_motor": "sha256:4891a31a89f9d816c5848dcca8a66d177a5cc6a2305fce8ca11967d036fb8d74",
  "modulos": [
   "alinhar",
   "base",
@@ -97,5 +97,5 @@
   "É"
  ],
  "dur": 36.67,
- "renderizado_em": "2026-11-16T21:08:29+00:00"
+ "renderizado_em": "2026-11-16T21:27:14+00:00"
 }
