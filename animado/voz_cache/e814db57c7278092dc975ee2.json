@@ -1,0 +1,533 @@
+{
+ "versao": 2,
+ "chave": "e814db57c7278092dc975ee2",
+ "engine": "gemini",
+ "voz": "Sadaltager",
+ "modelo": "gemini-2.5-flash-tts",
+ "prompt": "Narre em português do Brasil, como um médico ortopedista explicando com calma e clareza para pais num vídeo curto de redes sociais: tom acolhedor, natural, ritmo levemente animado, sem exagero.",
+ "ritmo": "+10%",
+ "taxa": 1.05,
+ "gerado_em": "2026-11-16T21:05:22+00:00",
+ "texto": "Perna torta na criança? Quase sempre é fase, com cronograma.\nAté uns dois anos, é comum arquear pra fora: perna de cowboy.\nDepois, inverte: por volta dos três, quatro anos, vira um X.\nLá pelos seis, sete anos, costuma alinhar sozinha.\nAs duas mudam juntas? Costuma ser desenvolvimento.\nO alerta: só de um lado, dói, ou piora em vez de alinhar.\nAí vale avaliar: pode ter uma causa, como raquitismo.\nManda pra quem tá achando a perna do filho torta.",
+ "duracao": 33.357,
+ "alinhamento": {
+  "modelo_whisper": "small",
+  "fracao": 1.0,
+  "buraco": 0,
+  "inseridas": [],
+  "omitidas": [],
+  "trocadas": [],
+  "inseridas_pontas": [],
+  "tomada_aceita": 1,
+  "tomadas": [
+   {
+    "tomada": 0,
+    "dur": 34.43,
+    "problemas": [],
+    "fracao": 0.988,
+    "buraco": 1,
+    "inseridas": [
+     "o"
+    ],
+    "omitidas": [],
+    "trocadas": [
+     "cowboy.>calgoi."
+    ]
+   },
+   {
+    "tomada": 1,
+    "dur": 33.36,
+    "problemas": [],
+    "fracao": 1.0,
+    "buraco": 0,
+    "inseridas": [],
+    "omitidas": [],
+    "trocadas": []
+   }
+  ]
+ },
+ "palavras": [
+  {
+   "t": 0.3,
+   "d": 0.28,
+   "w": "Perna",
+   "casada": true
+  },
+  {
+   "t": 0.58,
+   "d": 0.44,
+   "w": "torta",
+   "casada": true
+  },
+  {
+   "t": 1.02,
+   "d": 0.1,
+   "w": "na",
+   "casada": true
+  },
+  {
+   "t": 1.12,
+   "d": 0.6,
+   "w": "criança?",
+   "casada": true
+  },
+  {
+   "t": 2.03,
+   "d": 0.37,
+   "w": "Quase",
+   "casada": true
+  },
+  {
+   "t": 2.4,
+   "d": 0.5,
+   "w": "sempre",
+   "casada": true
+  },
+  {
+   "t": 2.9,
+   "d": 0.26,
+   "w": "é",
+   "casada": true
+  },
+  {
+   "t": 3.24,
+   "d": 0.51,
+   "w": "fase,",
+   "casada": true
+  },
+  {
+   "t": 4.0,
+   "d": 0.16,
+   "w": "com",
+   "casada": true
+  },
+  {
+   "t": 4.16,
+   "d": 0.8,
+   "w": "cronograma.",
+   "casada": true
+  },
+  {
+   "t": 5.36,
+   "d": 0.24,
+   "w": "Até",
+   "casada": true
+  },
+  {
+   "t": 5.6,
+   "d": 0.24,
+   "w": "uns",
+   "casada": true
+  },
+  {
+   "t": 5.84,
+   "d": 0.24,
+   "w": "dois",
+   "casada": true
+  },
+  {
+   "t": 6.08,
+   "d": 0.6,
+   "w": "anos,",
+   "casada": true
+  },
+  {
+   "t": 6.76,
+   "d": 0.14,
+   "w": "é",
+   "casada": true
+  },
+  {
+   "t": 6.93,
+   "d": 0.19,
+   "w": "comum",
+   "casada": true
+  },
+  {
+   "t": 7.12,
+   "d": 0.4,
+   "w": "arquear",
+   "casada": true
+  },
+  {
+   "t": 7.52,
+   "d": 0.14,
+   "w": "pra",
+   "casada": true
+  },
+  {
+   "t": 7.66,
+   "d": 0.5,
+   "w": "fora:",
+   "casada": true
+  },
+  {
+   "t": 8.5,
+   "d": 0.26,
+   "w": "perna",
+   "casada": true
+  },
+  {
+   "t": 8.76,
+   "d": 0.15,
+   "w": "de",
+   "casada": true
+  },
+  {
+   "t": 8.95,
+   "d": 0.48,
+   "w": "cowboy.",
+   "casada": true
+  },
+  {
+   "t": 9.88,
+   "d": 0.68,
+   "w": "Depois,",
+   "casada": true
+  },
+  {
+   "t": 10.56,
+   "d": 0.52,
+   "w": "inverte:",
+   "casada": true
+  },
+  {
+   "t": 11.39,
+   "d": 0.09,
+   "w": "por",
+   "casada": true
+  },
+  {
+   "t": 11.48,
+   "d": 0.26,
+   "w": "volta",
+   "casada": true
+  },
+  {
+   "t": 11.76,
+   "d": 0.26,
+   "w": "dos",
+   "casada": true
+  },
+  {
+   "t": 12.02,
+   "d": 0.52,
+   "w": "três,",
+   "casada": true
+  },
+  {
+   "t": 12.54,
+   "d": 0.26,
+   "w": "quatro",
+   "casada": true
+  },
+  {
+   "t": 12.83,
+   "d": 0.67,
+   "w": "anos,",
+   "casada": true
+  },
+  {
+   "t": 13.5,
+   "d": 0.24,
+   "w": "vira",
+   "casada": true
+  },
+  {
+   "t": 13.74,
+   "d": 0.08,
+   "w": "um",
+   "casada": true
+  },
+  {
+   "t": 13.82,
+   "d": 0.5,
+   "w": "X.",
+   "casada": true
+  },
+  {
+   "t": 14.76,
+   "d": 0.22,
+   "w": "Lá",
+   "casada": true
+  },
+  {
+   "t": 14.98,
+   "d": 0.26,
+   "w": "pelos",
+   "casada": true
+  },
+  {
+   "t": 15.24,
+   "d": 0.68,
+   "w": "seis,",
+   "casada": true
+  },
+  {
+   "t": 15.92,
+   "d": 0.34,
+   "w": "sete",
+   "casada": true
+  },
+  {
+   "t": 16.26,
+   "d": 0.6,
+   "w": "anos,",
+   "casada": true
+  },
+  {
+   "t": 16.86,
+   "d": 0.28,
+   "w": "costuma",
+   "casada": true
+  },
+  {
+   "t": 17.14,
+   "d": 0.34,
+   "w": "alinhar",
+   "casada": true
+  },
+  {
+   "t": 17.48,
+   "d": 0.72,
+   "w": "sozinha.",
+   "casada": true
+  },
+  {
+   "t": 18.63,
+   "d": 0.19,
+   "w": "As",
+   "casada": true
+  },
+  {
+   "t": 18.82,
+   "d": 0.2,
+   "w": "duas",
+   "casada": true
+  },
+  {
+   "t": 19.02,
+   "d": 0.38,
+   "w": "mudam",
+   "casada": true
+  },
+  {
+   "t": 19.4,
+   "d": 0.58,
+   "w": "juntas?",
+   "casada": true
+  },
+  {
+   "t": 20.25,
+   "d": 0.41,
+   "w": "Costuma",
+   "casada": true
+  },
+  {
+   "t": 20.66,
+   "d": 0.26,
+   "w": "ser",
+   "casada": true
+  },
+  {
+   "t": 20.92,
+   "d": 1.06,
+   "w": "desenvolvimento.",
+   "casada": true
+  },
+  {
+   "t": 22.38,
+   "d": 0.12,
+   "w": "O",
+   "casada": true
+  },
+  {
+   "t": 22.5,
+   "d": 0.57,
+   "w": "alerta:",
+   "casada": true
+  },
+  {
+   "t": 23.31,
+   "d": 0.31,
+   "w": "só",
+   "casada": true
+  },
+  {
+   "t": 23.62,
+   "d": 0.12,
+   "w": "de",
+   "casada": true
+  },
+  {
+   "t": 23.74,
+   "d": 0.08,
+   "w": "um",
+   "casada": true
+  },
+  {
+   "t": 23.82,
+   "d": 0.43,
+   "w": "lado,",
+   "casada": true
+  },
+  {
+   "t": 24.46,
+   "d": 0.5,
+   "w": "dói,",
+   "casada": true
+  },
+  {
+   "t": 25.03,
+   "d": 0.11,
+   "w": "ou",
+   "casada": true
+  },
+  {
+   "t": 25.14,
+   "d": 0.38,
+   "w": "piora",
+   "casada": true
+  },
+  {
+   "t": 25.52,
+   "d": 0.28,
+   "w": "em",
+   "casada": true
+  },
+  {
+   "t": 25.8,
+   "d": 0.14,
+   "w": "vez",
+   "casada": true
+  },
+  {
+   "t": 25.94,
+   "d": 0.18,
+   "w": "de",
+   "casada": true
+  },
+  {
+   "t": 26.12,
+   "d": 0.35,
+   "w": "alinhar.",
+   "casada": true
+  },
+  {
+   "t": 26.86,
+   "d": 0.32,
+   "w": "Aí",
+   "casada": true
+  },
+  {
+   "t": 27.18,
+   "d": 0.22,
+   "w": "vale",
+   "casada": true
+  },
+  {
+   "t": 27.4,
+   "d": 0.54,
+   "w": "avaliar:",
+   "casada": true
+  },
+  {
+   "t": 28.31,
+   "d": 0.17,
+   "w": "pode",
+   "casada": true
+  },
+  {
+   "t": 28.48,
+   "d": 0.24,
+   "w": "ter",
+   "casada": true
+  },
+  {
+   "t": 28.72,
+   "d": 0.14,
+   "w": "uma",
+   "casada": true
+  },
+  {
+   "t": 28.86,
+   "d": 0.49,
+   "w": "causa,",
+   "casada": true
+  },
+  {
+   "t": 29.47,
+   "d": 0.19,
+   "w": "como",
+   "casada": true
+  },
+  {
+   "t": 29.66,
+   "d": 0.86,
+   "w": "raquitismo.",
+   "casada": true
+  },
+  {
+   "t": 30.9,
+   "d": 0.32,
+   "w": "Manda",
+   "casada": true
+  },
+  {
+   "t": 31.22,
+   "d": 0.16,
+   "w": "pra",
+   "casada": true
+  },
+  {
+   "t": 31.38,
+   "d": 0.18,
+   "w": "quem",
+   "casada": true
+  },
+  {
+   "t": 31.56,
+   "d": 0.18,
+   "w": "tá",
+   "casada": true
+  },
+  {
+   "t": 31.74,
+   "d": 0.32,
+   "w": "achando",
+   "casada": true
+  },
+  {
+   "t": 32.06,
+   "d": 0.08,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 32.22,
+   "d": 0.2,
+   "w": "perna",
+   "casada": true
+  },
+  {
+   "t": 32.42,
+   "d": 0.08,
+   "w": "do",
+   "casada": true
+  },
+  {
+   "t": 32.5,
+   "d": 0.2,
+   "w": "filho",
+   "casada": true
+  },
+  {
+   "t": 32.7,
+   "d": 0.62,
+   "w": "torta.",
+   "casada": true
+  }
+ ],
+ "amostras": 1601120,
+ "pcm_sha256": "c86891f2a3a2e0841b4d61c196fe92e54aee4479c03bd129ccd9f177419a6dc8"
+}

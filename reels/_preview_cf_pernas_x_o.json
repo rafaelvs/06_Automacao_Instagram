@@ -1,8 +1,9 @@
 {
  "id": "cf_pernas_x_o",
  "hash_episodio": "sha256:b7c3ed7c40b7a35baaad6e6002401eab6e3f5321ee1018b5953f90c78477336e",
- "hash_motor": "sha256:a76ae9b016a1a26a0bbb7e645f5a35731923389cd88a45609a41bab8abed2744",
+ "hash_motor": "sha256:417e8ba0079a10a0dd251a15d59f0e137c9bc3ad7dd37d5e7836856fe038ad53",
  "modulos": [
+  "alinhar",
   "base",
   "cf_alongamento",
   "cf_comum",
@@ -112,6 +113,6 @@
   "X.",
   "É"
  ],
- "dur": 33.63,
- "renderizado_em": "2026-11-08T19:44:55+00:00"
+ "dur": 36.9,
+ "renderizado_em": "2026-11-16T21:06:43+00:00"
 }
