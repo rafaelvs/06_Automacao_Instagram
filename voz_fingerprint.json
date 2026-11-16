@@ -1,8 +1,10 @@
 {
-  "fingerprint": "ae03d584785169ca0f733197f1489acde74e36eb4002cce222c702f5a9211a31",
-  "evidencia": "Mesma voz do piloto aprovado pelo Rafael em 18/10/2026 ('pode seguir com tudo', pilotos A e B): Antonio, +8% conversa / +10% como funciona, tom +0Hz, VOICE_CHAIN identica. animado/voz.py, gerar_reel_voz.py e render-reel-voz.yml sem NENHUMA alteracao desde o registro anterior (664dc9c, fingerprint 4b88a330dd8142c4): git diff vazio. O hash mudou em 19/10 so porque a parte 'animado_chamadas' do guarda passou a contar os RITMOS passados a narrar() (conjunto normalizado) em vez de listar arquivo a arquivo: a cena nova cf_fixador_circular narra com o mesmo RITMO_COMO_FUNCIONA e a lista antiga acusava mudanca de voz (falso positivo que travou 8 renders). Ritmos em uso: RITMO_COMO_FUNCIONA e RITMO_CONVERSA, ambos aprovados.",
+  "fingerprint": "e8f17f471a32f5d751970fa7ac32e6a79fb45d4022d5bbe433981815efca1ef5",
+  "evidencia": "piloto cf_pe_torto com a voz F (Gemini-TTS Sadaltager) aprovado pelo Rafael em 16/11/2026 no chat do Claude Code ('Aprovado a F'); escolhida às cegas entre 6 vozes",
   "partes_rotulos": [
     "animado_chamadas",
+    "animado_funcoes",
+    "animado_gemini",
     "animado_narrar",
     "animado_tts",
     "animado_voz",
