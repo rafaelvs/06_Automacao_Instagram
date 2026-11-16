@@ -2251,11 +2251,20 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "como_funciona"
+    },
+    {
+      "id": "cv_pinos",
+      "kind": "reel",
+      "media_id": "18421185745087663",
+      "at": "2026-11-16T18:49:02.381477+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "conversa"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-11-15",
+  "last_reel_date": "2026-11-16",
   "last_seq_date": "2026-10-24",
   "last_story_nova_date": "2026-11-14"
 }
