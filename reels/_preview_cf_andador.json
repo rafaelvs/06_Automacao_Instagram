@@ -1,8 +1,9 @@
 {
  "id": "cf_andador",
  "hash_episodio": "sha256:76c438d508ecf2deb4d5fc22d46372fcb9df284281ad8157c45c10a2b7856793",
- "hash_motor": "sha256:07b28aa767e4c17dec9222d29d86e0617e619f63a9de9936ea3feef424eeabae",
+ "hash_motor": "sha256:235dffc7076ae531daa14306df21769d6ef2d61c0928cefb6b6fde8329b1776b",
  "modulos": [
+  "alinhar",
   "base",
   "cf_alongamento",
   "cf_andador",
@@ -94,6 +95,6 @@
   "quando o bebê já fica de pé sozinho",
   "É"
  ],
- "dur": 30.03,
- "renderizado_em": "2026-11-08T19:45:03+00:00"
+ "dur": 34.43,
+ "renderizado_em": "2026-11-16T21:01:19+00:00"
 }
