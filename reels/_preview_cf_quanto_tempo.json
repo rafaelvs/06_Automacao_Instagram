@@ -1,7 +1,7 @@
 {
  "id": "cf_quanto_tempo",
  "hash_episodio": "sha256:2a4f46489d51624e845f567de5b2069c217ca30d80b3768e39365d3f120f98a0",
- "hash_motor": "sha256:e65092350a77d016fddc0e6a7acdb19061c2e507e6fe8fdbd01b652c6465470e",
+ "hash_motor": "sha256:b45b99bb2dd9fcbf3bae92f2351fbc1ef7be5c5f392416c0cd4ce85264bbe521",
  "modulos": [
   "alinhar",
   "base",
@@ -104,5 +104,5 @@
   "ÚNICO"
  ],
  "dur": 39.17,
- "renderizado_em": "2026-11-16T21:07:59+00:00"
+ "renderizado_em": "2026-11-16T21:26:06+00:00"
 }
