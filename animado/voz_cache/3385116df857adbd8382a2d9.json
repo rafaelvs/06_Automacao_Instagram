@@ -1,0 +1,531 @@
+{
+ "versao": 2,
+ "chave": "3385116df857adbd8382a2d9",
+ "engine": "gemini",
+ "voz": "Sadaltager",
+ "modelo": "gemini-2.5-flash-tts",
+ "prompt": "Narre em português do Brasil, como um médico ortopedista explicando com calma e clareza para pais num vídeo curto de redes sociais: tom acolhedor, natural, ritmo levemente animado, sem exagero.",
+ "ritmo": "+10%",
+ "taxa": 1.05,
+ "gerado_em": "2026-11-16T21:08:18+00:00",
+ "texto": "Como se tira essa gaiola? Em casa, não: é procedimento da equipe.\nEm geral é rápido, muitas vezes com sedação leve.\nO aparelho sai. Os furos dos pinos cicatrizam com o tempo.\nMas o osso novo, mais frágil que o maduro, segue ganhando resistência por meses.\nCarga volta aos poucos. Impacto e torção esperam a liberação.\nÉ a reta final, ainda não é a linha de chegada.\nManda pra quem acha que tirar o fixador encerra o tratamento.",
+ "duracao": 31.28,
+ "alinhamento": {
+  "modelo_whisper": "small",
+  "fracao": 1.0,
+  "buraco": 0,
+  "inseridas": [],
+  "omitidas": [],
+  "trocadas": [],
+  "inseridas_pontas": [],
+  "tomada_aceita": 2,
+  "tomadas": [
+   {
+    "tomada": 0,
+    "dur": 30.68,
+    "problemas": [],
+    "fracao": 0.987,
+    "buraco": 1,
+    "inseridas": [],
+    "omitidas": [],
+    "trocadas": [
+     "cicatrizam>se catrisam"
+    ]
+   },
+   {
+    "tomada": 1,
+    "dur": 34.29,
+    "problemas": [
+     "voz fora das palavras alinhadas (palavra não reconhecida, repetição ou tempo errado — o corte de silêncio comeria fala): [{'de': 30.89, 'ate': 31.22, 'onde': \"depois de 'tratamento.'\"}, {'de': 31.26, 'ate': 31.38, 'onde': \"depois de 'tratamento.'\"}, {'de': 31.43, 'ate': 31.89, 'onde': \"depois de 'tratamento.'\"}, {'de': 31.93, 'ate': 32.02, 'onde': \"depois de 'tratamento.'\"}]"
+    ],
+    "fracao": 1.0,
+    "buraco": 0,
+    "inseridas": [],
+    "omitidas": [],
+    "trocadas": []
+   },
+   {
+    "tomada": 2,
+    "dur": 31.28,
+    "problemas": [],
+    "fracao": 1.0,
+    "buraco": 0,
+    "inseridas": [],
+    "omitidas": [],
+    "trocadas": []
+   }
+  ]
+ },
+ "palavras": [
+  {
+   "t": 0.33,
+   "d": 0.19,
+   "w": "Como",
+   "casada": true
+  },
+  {
+   "t": 0.52,
+   "d": 0.23,
+   "w": "se",
+   "casada": true
+  },
+  {
+   "t": 0.79,
+   "d": 0.25,
+   "w": "tira",
+   "casada": true
+  },
+  {
+   "t": 1.04,
+   "d": 0.2,
+   "w": "essa",
+   "casada": true
+  },
+  {
+   "t": 1.24,
+   "d": 0.56,
+   "w": "gaiola?",
+   "casada": true
+  },
+  {
+   "t": 2.32,
+   "d": 0.14,
+   "w": "Em",
+   "casada": true
+  },
+  {
+   "t": 2.46,
+   "d": 0.78,
+   "w": "casa,",
+   "casada": true
+  },
+  {
+   "t": 3.24,
+   "d": 0.28,
+   "w": "não:",
+   "casada": true
+  },
+  {
+   "t": 3.69,
+   "d": 0.1,
+   "w": "é",
+   "casada": true
+  },
+  {
+   "t": 3.9,
+   "d": 0.68,
+   "w": "procedimento",
+   "casada": true
+  },
+  {
+   "t": 4.58,
+   "d": 0.24,
+   "w": "da",
+   "casada": true
+  },
+  {
+   "t": 4.82,
+   "d": 0.49,
+   "w": "equipe.",
+   "casada": true
+  },
+  {
+   "t": 5.74,
+   "d": 0.1,
+   "w": "Em",
+   "casada": true
+  },
+  {
+   "t": 5.84,
+   "d": 0.42,
+   "w": "geral",
+   "casada": true
+  },
+  {
+   "t": 6.26,
+   "d": 0.02,
+   "w": "é",
+   "casada": true
+  },
+  {
+   "t": 6.28,
+   "d": 0.52,
+   "w": "rápido,",
+   "casada": true
+  },
+  {
+   "t": 7.03,
+   "d": 0.17,
+   "w": "muitas",
+   "casada": true
+  },
+  {
+   "t": 7.2,
+   "d": 0.4,
+   "w": "vezes",
+   "casada": true
+  },
+  {
+   "t": 7.6,
+   "d": 0.28,
+   "w": "com",
+   "casada": true
+  },
+  {
+   "t": 7.88,
+   "d": 0.44,
+   "w": "sedação",
+   "casada": true
+  },
+  {
+   "t": 8.32,
+   "d": 0.51,
+   "w": "leve.",
+   "casada": true
+  },
+  {
+   "t": 9.24,
+   "d": 0.08,
+   "w": "O",
+   "casada": true
+  },
+  {
+   "t": 9.32,
+   "d": 0.44,
+   "w": "aparelho",
+   "casada": true
+  },
+  {
+   "t": 9.76,
+   "d": 0.49,
+   "w": "sai.",
+   "casada": true
+  },
+  {
+   "t": 10.69,
+   "d": 0.15,
+   "w": "Os",
+   "casada": true
+  },
+  {
+   "t": 10.84,
+   "d": 0.34,
+   "w": "furos",
+   "casada": true
+  },
+  {
+   "t": 11.18,
+   "d": 0.16,
+   "w": "dos",
+   "casada": true
+  },
+  {
+   "t": 11.34,
+   "d": 0.44,
+   "w": "pinos",
+   "casada": true
+  },
+  {
+   "t": 11.78,
+   "d": 0.88,
+   "w": "cicatrizam",
+   "casada": true
+  },
+  {
+   "t": 12.66,
+   "d": 0.16,
+   "w": "com",
+   "casada": true
+  },
+  {
+   "t": 12.82,
+   "d": 0.12,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 12.98,
+   "d": 0.35,
+   "w": "tempo.",
+   "casada": true
+  },
+  {
+   "t": 13.77,
+   "d": 0.17,
+   "w": "Mas",
+   "casada": true
+  },
+  {
+   "t": 13.94,
+   "d": 0.16,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 14.1,
+   "d": 0.26,
+   "w": "osso",
+   "casada": true
+  },
+  {
+   "t": 14.36,
+   "d": 0.54,
+   "w": "novo,",
+   "casada": true
+  },
+  {
+   "t": 14.9,
+   "d": 0.2,
+   "w": "mais",
+   "casada": true
+  },
+  {
+   "t": 15.1,
+   "d": 0.57,
+   "w": "frágil",
+   "casada": true
+  },
+  {
+   "t": 15.7,
+   "d": 0.06,
+   "w": "que",
+   "casada": true
+  },
+  {
+   "t": 15.76,
+   "d": 0.1,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 15.86,
+   "d": 0.42,
+   "w": "maduro,",
+   "casada": true
+  },
+  {
+   "t": 16.51,
+   "d": 0.39,
+   "w": "segue",
+   "casada": true
+  },
+  {
+   "t": 16.9,
+   "d": 0.42,
+   "w": "ganhando",
+   "casada": true
+  },
+  {
+   "t": 17.32,
+   "d": 0.72,
+   "w": "resistência",
+   "casada": true
+  },
+  {
+   "t": 18.04,
+   "d": 0.24,
+   "w": "por",
+   "casada": true
+  },
+  {
+   "t": 18.28,
+   "d": 0.56,
+   "w": "meses.",
+   "casada": true
+  },
+  {
+   "t": 19.37,
+   "d": 0.49,
+   "w": "Carga",
+   "casada": true
+  },
+  {
+   "t": 19.86,
+   "d": 0.18,
+   "w": "volta",
+   "casada": true
+  },
+  {
+   "t": 20.04,
+   "d": 0.26,
+   "w": "aos",
+   "casada": true
+  },
+  {
+   "t": 20.3,
+   "d": 0.6,
+   "w": "poucos.",
+   "casada": true
+  },
+  {
+   "t": 21.25,
+   "d": 0.61,
+   "w": "Impacto",
+   "casada": true
+  },
+  {
+   "t": 21.86,
+   "d": 0.08,
+   "w": "e",
+   "casada": true
+  },
+  {
+   "t": 22.0,
+   "d": 0.47,
+   "w": "torção",
+   "casada": true
+  },
+  {
+   "t": 22.67,
+   "d": 0.49,
+   "w": "esperam",
+   "casada": true
+  },
+  {
+   "t": 23.16,
+   "d": 0.1,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 23.26,
+   "d": 0.63,
+   "w": "liberação.",
+   "casada": true
+  },
+  {
+   "t": 24.37,
+   "d": 0.11,
+   "w": "É",
+   "casada": true
+  },
+  {
+   "t": 24.48,
+   "d": 0.12,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 24.6,
+   "d": 0.3,
+   "w": "reta",
+   "casada": true
+  },
+  {
+   "t": 24.9,
+   "d": 0.52,
+   "w": "final,",
+   "casada": true
+  },
+  {
+   "t": 25.61,
+   "d": 0.27,
+   "w": "ainda",
+   "casada": true
+  },
+  {
+   "t": 25.88,
+   "d": 0.3,
+   "w": "não",
+   "casada": true
+  },
+  {
+   "t": 26.18,
+   "d": 0.22,
+   "w": "é",
+   "casada": true
+  },
+  {
+   "t": 26.4,
+   "d": 0.08,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 26.48,
+   "d": 0.18,
+   "w": "linha",
+   "casada": true
+  },
+  {
+   "t": 26.66,
+   "d": 0.16,
+   "w": "de",
+   "casada": true
+  },
+  {
+   "t": 26.82,
+   "d": 0.53,
+   "w": "chegada.",
+   "casada": true
+  },
+  {
+   "t": 27.72,
+   "d": 0.32,
+   "w": "Manda",
+   "casada": true
+  },
+  {
+   "t": 28.04,
+   "d": 0.16,
+   "w": "pra",
+   "casada": true
+  },
+  {
+   "t": 28.2,
+   "d": 0.2,
+   "w": "quem",
+   "casada": true
+  },
+  {
+   "t": 28.4,
+   "d": 0.3,
+   "w": "acha",
+   "casada": true
+  },
+  {
+   "t": 28.7,
+   "d": 0.2,
+   "w": "que",
+   "casada": true
+  },
+  {
+   "t": 28.9,
+   "d": 0.3,
+   "w": "tirar",
+   "casada": true
+  },
+  {
+   "t": 29.2,
+   "d": 0.2,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 29.4,
+   "d": 0.55,
+   "w": "fixador",
+   "casada": true
+  },
+  {
+   "t": 30.09,
+   "d": 0.49,
+   "w": "encerra",
+   "casada": true
+  },
+  {
+   "t": 30.58,
+   "d": 0.04,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 30.65,
+   "d": 0.58,
+   "w": "tratamento.",
+   "casada": true
+  }
+ ],
+ "amostras": 1501424,
+ "pcm_sha256": "4bf0b17f6ec2cd098fe302932c82237fbd2ca4d8cd3c5a4317f872d8c10c7894"
+}
