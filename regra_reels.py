@@ -198,7 +198,8 @@ TROCAS_DE_DIA_PADRAO = {
 # dias diferentes (sex/dom/qua) — e os 3 são CÂMERA LENTA (uma variável só).
 REEL_DO_DIA_PADRAO = {
     dt.date(2026, 11, 16): "cv_pinos",          # seg (tema pinos: último em 03/11)
-    dt.date(2026, 11, 27): "cv_gesso_filho",    # sex (11 dias depois; tema gesso_placa: último 12/11)
+    # 27/11 cv_gesso_filho RETIRADO (16/11/2026): o Rafael aposentou o formato CONVERSA depois que o
+    # cv_pinos "flopou totalmente" — "nem vamos tentar mais nada com ele". As cv_* não publicadas saíram do reels.json.
 }
 
 
