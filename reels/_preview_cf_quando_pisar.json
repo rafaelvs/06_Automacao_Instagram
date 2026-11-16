@@ -1,8 +1,9 @@
 {
  "id": "cf_quando_pisar",
  "hash_episodio": "sha256:4df48cf6e1eb10f6460d7c39d1ba2e8e317b37ce6c41aeb769933f716e324df9",
- "hash_motor": "sha256:411b3bf7f1b368e96e02937b90ab6a3a3deb11af4efe5bec1299bf82a9aef050",
+ "hash_motor": "sha256:28a6b84dc74401951b074f86e669e85131a96090e04364ae28fbc6b30cabc152",
  "modulos": [
+  "alinhar",
   "base",
   "cf_alongamento",
   "cf_comum",
@@ -95,6 +96,6 @@
   "VOLTO",
   "É"
  ],
- "dur": 30.43,
- "renderizado_em": "2026-11-08T19:44:56+00:00"
+ "dur": 36.67,
+ "renderizado_em": "2026-11-16T21:08:29+00:00"
 }
