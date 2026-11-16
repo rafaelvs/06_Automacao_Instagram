@@ -1,0 +1,501 @@
+{
+ "versao": 2,
+ "chave": "bdb422d6fe87996e78b9dca5",
+ "engine": "gemini",
+ "voz": "Sadaltager",
+ "modelo": "gemini-2.5-flash-tts",
+ "prompt": "Narre em português do Brasil, como um médico ortopedista explicando com calma e clareza para pais num vídeo curto de redes sociais: tom acolhedor, natural, ritmo levemente animado, sem exagero.",
+ "ritmo": "+10%",
+ "taxa": 1.05,
+ "gerado_em": "2026-11-16T21:03:25+00:00",
+ "texto": "Dor no joelho? Às vezes, quem está avisando é o quadril.\nNa criança, dói no joelho ou na coxa, mas pode vir do quadril.\nDor no joelho sem motivo? Também se olha o quadril.\nNo pré-adolescente, dor na virilha, coxa ou joelho, mancando, sem trauma claro?\nMerece avaliação sem demora.\nO exame clínico e, quando indicado, a radiografia ajudam a esclarecer.\nAvaliar cedo faz diferença.\nManda pra quem acha que dor no joelho vem sempre do joelho.",
+ "duracao": 33.156,
+ "alinhamento": {
+  "modelo_whisper": "small",
+  "fracao": 1.0,
+  "buraco": 0,
+  "inseridas": [],
+  "omitidas": [],
+  "trocadas": [],
+  "inseridas_pontas": [],
+  "tomada_aceita": 0,
+  "tomadas": [
+   {
+    "tomada": 0,
+    "dur": 33.16,
+    "problemas": [],
+    "fracao": 1.0,
+    "buraco": 0,
+    "inseridas": [],
+    "omitidas": [],
+    "trocadas": []
+   }
+  ]
+ },
+ "palavras": [
+  {
+   "t": 0.23,
+   "d": 0.27,
+   "w": "Dor",
+   "casada": true
+  },
+  {
+   "t": 0.5,
+   "d": 0.16,
+   "w": "no",
+   "casada": true
+  },
+  {
+   "t": 0.66,
+   "d": 0.54,
+   "w": "joelho?",
+   "casada": true
+  },
+  {
+   "t": 1.62,
+   "d": 0.2,
+   "w": "Às",
+   "casada": true
+  },
+  {
+   "t": 1.82,
+   "d": 0.38,
+   "w": "vezes,",
+   "casada": true
+  },
+  {
+   "t": 2.2,
+   "d": 0.26,
+   "w": "quem",
+   "casada": true
+  },
+  {
+   "t": 2.46,
+   "d": 0.34,
+   "w": "está",
+   "casada": true
+  },
+  {
+   "t": 2.8,
+   "d": 0.56,
+   "w": "avisando",
+   "casada": true
+  },
+  {
+   "t": 3.36,
+   "d": 0.28,
+   "w": "é",
+   "casada": true
+  },
+  {
+   "t": 3.64,
+   "d": 0.08,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 3.75,
+   "d": 0.48,
+   "w": "quadril.",
+   "casada": true
+  },
+  {
+   "t": 4.77,
+   "d": 0.11,
+   "w": "Na",
+   "casada": true
+  },
+  {
+   "t": 4.88,
+   "d": 0.63,
+   "w": "criança,",
+   "casada": true
+  },
+  {
+   "t": 5.75,
+   "d": 0.25,
+   "w": "dói",
+   "casada": true
+  },
+  {
+   "t": 6.0,
+   "d": 0.08,
+   "w": "no",
+   "casada": true
+  },
+  {
+   "t": 6.08,
+   "d": 0.58,
+   "w": "joelho",
+   "casada": true
+  },
+  {
+   "t": 6.71,
+   "d": 0.13,
+   "w": "ou",
+   "casada": true
+  },
+  {
+   "t": 6.84,
+   "d": 0.14,
+   "w": "na",
+   "casada": true
+  },
+  {
+   "t": 6.98,
+   "d": 0.52,
+   "w": "coxa,",
+   "casada": true
+  },
+  {
+   "t": 7.69,
+   "d": 0.17,
+   "w": "mas",
+   "casada": true
+  },
+  {
+   "t": 7.86,
+   "d": 0.38,
+   "w": "pode",
+   "casada": true
+  },
+  {
+   "t": 8.24,
+   "d": 0.3,
+   "w": "vir",
+   "casada": true
+  },
+  {
+   "t": 8.54,
+   "d": 0.12,
+   "w": "do",
+   "casada": true
+  },
+  {
+   "t": 8.66,
+   "d": 0.48,
+   "w": "quadril.",
+   "casada": true
+  },
+  {
+   "t": 9.69,
+   "d": 0.23,
+   "w": "Dor",
+   "casada": true
+  },
+  {
+   "t": 9.92,
+   "d": 0.1,
+   "w": "no",
+   "casada": true
+  },
+  {
+   "t": 10.02,
+   "d": 0.38,
+   "w": "joelho",
+   "casada": true
+  },
+  {
+   "t": 10.4,
+   "d": 0.24,
+   "w": "sem",
+   "casada": true
+  },
+  {
+   "t": 10.64,
+   "d": 0.59,
+   "w": "motivo?",
+   "casada": true
+  },
+  {
+   "t": 11.5,
+   "d": 0.36,
+   "w": "Também",
+   "casada": true
+  },
+  {
+   "t": 11.86,
+   "d": 0.26,
+   "w": "se",
+   "casada": true
+  },
+  {
+   "t": 12.12,
+   "d": 0.18,
+   "w": "olha",
+   "casada": true
+  },
+  {
+   "t": 12.3,
+   "d": 0.07,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 12.37,
+   "d": 0.42,
+   "w": "quadril.",
+   "casada": true
+  },
+  {
+   "t": 13.39,
+   "d": 0.09,
+   "w": "No",
+   "casada": true
+  },
+  {
+   "t": 13.48,
+   "d": 1.06,
+   "w": "pré-adolescente,",
+   "casada": true
+  },
+  {
+   "t": 14.73,
+   "d": 0.23,
+   "w": "dor",
+   "casada": true
+  },
+  {
+   "t": 14.96,
+   "d": 0.12,
+   "w": "na",
+   "casada": true
+  },
+  {
+   "t": 15.08,
+   "d": 0.62,
+   "w": "virilha,",
+   "casada": true
+  },
+  {
+   "t": 15.84,
+   "d": 0.38,
+   "w": "coxa",
+   "casada": true
+  },
+  {
+   "t": 16.22,
+   "d": 0.3,
+   "w": "ou",
+   "casada": true
+  },
+  {
+   "t": 16.52,
+   "d": 0.6,
+   "w": "joelho,",
+   "casada": true
+  },
+  {
+   "t": 17.31,
+   "d": 0.53,
+   "w": "mancando,",
+   "casada": true
+  },
+  {
+   "t": 17.84,
+   "d": 0.44,
+   "w": "sem",
+   "casada": true
+  },
+  {
+   "t": 18.28,
+   "d": 0.36,
+   "w": "trauma",
+   "casada": true
+  },
+  {
+   "t": 18.64,
+   "d": 0.58,
+   "w": "claro?",
+   "casada": true
+  },
+  {
+   "t": 19.51,
+   "d": 0.53,
+   "w": "Merece",
+   "casada": true
+  },
+  {
+   "t": 20.04,
+   "d": 0.66,
+   "w": "avaliação",
+   "casada": true
+  },
+  {
+   "t": 20.7,
+   "d": 0.34,
+   "w": "sem",
+   "casada": true
+  },
+  {
+   "t": 21.04,
+   "d": 0.53,
+   "w": "demora.",
+   "casada": true
+  },
+  {
+   "t": 22.17,
+   "d": 0.07,
+   "w": "O",
+   "casada": true
+  },
+  {
+   "t": 22.24,
+   "d": 0.28,
+   "w": "exame",
+   "casada": true
+  },
+  {
+   "t": 22.52,
+   "d": 0.56,
+   "w": "clínico",
+   "casada": true
+  },
+  {
+   "t": 23.08,
+   "d": 0.2,
+   "w": "e,",
+   "casada": true
+  },
+  {
+   "t": 23.28,
+   "d": 0.28,
+   "w": "quando",
+   "casada": true
+  },
+  {
+   "t": 23.56,
+   "d": 0.69,
+   "w": "indicado,",
+   "casada": true
+  },
+  {
+   "t": 24.45,
+   "d": 0.11,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 24.56,
+   "d": 0.74,
+   "w": "radiografia",
+   "casada": true
+  },
+  {
+   "t": 25.3,
+   "d": 0.62,
+   "w": "ajudam",
+   "casada": true
+  },
+  {
+   "t": 25.92,
+   "d": 0.14,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 26.06,
+   "d": 0.66,
+   "w": "esclarecer.",
+   "casada": true
+  },
+  {
+   "t": 27.22,
+   "d": 0.46,
+   "w": "Avaliar",
+   "casada": true
+  },
+  {
+   "t": 27.68,
+   "d": 0.52,
+   "w": "cedo",
+   "casada": true
+  },
+  {
+   "t": 28.2,
+   "d": 0.36,
+   "w": "faz",
+   "casada": true
+  },
+  {
+   "t": 28.56,
+   "d": 0.73,
+   "w": "diferença.",
+   "casada": true
+  },
+  {
+   "t": 29.76,
+   "d": 0.3,
+   "w": "Manda",
+   "casada": true
+  },
+  {
+   "t": 30.06,
+   "d": 0.14,
+   "w": "pra",
+   "casada": true
+  },
+  {
+   "t": 30.2,
+   "d": 0.18,
+   "w": "quem",
+   "casada": true
+  },
+  {
+   "t": 30.38,
+   "d": 0.3,
+   "w": "acha",
+   "casada": true
+  },
+  {
+   "t": 30.68,
+   "d": 0.22,
+   "w": "que",
+   "casada": true
+  },
+  {
+   "t": 30.9,
+   "d": 0.26,
+   "w": "dor",
+   "casada": true
+  },
+  {
+   "t": 31.16,
+   "d": 0.14,
+   "w": "no",
+   "casada": true
+  },
+  {
+   "t": 31.3,
+   "d": 0.5,
+   "w": "joelho",
+   "casada": true
+  },
+  {
+   "t": 31.86,
+   "d": 0.2,
+   "w": "vem",
+   "casada": true
+  },
+  {
+   "t": 32.06,
+   "d": 0.42,
+   "w": "sempre",
+   "casada": true
+  },
+  {
+   "t": 32.48,
+   "d": 0.18,
+   "w": "do",
+   "casada": true
+  },
+  {
+   "t": 32.66,
+   "d": 0.49,
+   "w": "joelho.",
+   "casada": true
+  }
+ ],
+ "amostras": 1591472,
+ "pcm_sha256": "3d2422b2db2db46ab36617713d8daa20a71096033f1360799c62dc893ac2859d"
+}
