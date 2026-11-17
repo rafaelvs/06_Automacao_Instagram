@@ -2302,11 +2302,20 @@
       "sha256": "sha256:823a9c09b3a9bd177f8965936c54697e84b07b40f2cf5810bdaef51d90b3d9fc",
       "commit": "205b2789e21f0778e7e8eac4f819c1249f73f021",
       "container": "18494929423128523"
+    },
+    {
+      "id": "cf_cameralenta_quadril_bebe",
+      "kind": "reel",
+      "media_id": "18128099491916715",
+      "at": "2026-11-17T19:39:46.094548+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "camera_lenta"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-11-16",
+  "last_reel_date": "2026-11-17",
   "last_seq_date": "2026-10-24",
   "last_story_nova_date": "2026-11-17"
 }
