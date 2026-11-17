@@ -2260,11 +2260,53 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "conversa"
+    },
+    {
+      "id": "stn_pe_torto_gravidez#0",
+      "kind": "story_nova",
+      "story": "stn_pe_torto_gravidez",
+      "parte": 0,
+      "media_id": "18416817031084030",
+      "at": "2026-11-17T15:31:18.597544+00:00",
+      "temas": [
+        "pe_torto"
+      ],
+      "sha256": "sha256:37198b951480b8ddda2a085e1b73ebef2ff1f0fecb7e3fdba851cadd7ee60448",
+      "commit": "205b2789e21f0778e7e8eac4f819c1249f73f021",
+      "container": "18494929414128523"
+    },
+    {
+      "id": "stn_pe_torto_gravidez#1",
+      "kind": "story_nova",
+      "story": "stn_pe_torto_gravidez",
+      "parte": 1,
+      "media_id": "18248311108314296",
+      "at": "2026-11-17T15:31:18.597544+00:00",
+      "temas": [
+        "pe_torto"
+      ],
+      "sha256": "sha256:8be583189874fd97f8d87dec6c176d1b33af2e0439f36f9dbe65a4e6ac2d15a1",
+      "commit": "205b2789e21f0778e7e8eac4f819c1249f73f021",
+      "container": "18494929420128523"
+    },
+    {
+      "id": "stn_pe_torto_gravidez#2",
+      "kind": "story_nova",
+      "story": "stn_pe_torto_gravidez",
+      "parte": 2,
+      "media_id": "17874328698646591",
+      "at": "2026-11-17T15:31:18.597544+00:00",
+      "temas": [
+        "pe_torto"
+      ],
+      "sha256": "sha256:823a9c09b3a9bd177f8965936c54697e84b07b40f2cf5810bdaef51d90b3d9fc",
+      "commit": "205b2789e21f0778e7e8eac4f819c1249f73f021",
+      "container": "18494929423128523"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-11-16",
   "last_seq_date": "2026-10-24",
-  "last_story_nova_date": "2026-11-14"
+  "last_story_nova_date": "2026-11-17"
 }
