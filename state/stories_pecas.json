@@ -466,6 +466,73 @@
       "story": "stn_escoliose_reavaliar",
       "parte": 0,
       "kind": "story_nova"
+    },
+    "17874328698646591": {
+      "id": "17874328698646591",
+      "quando": "2026-11-17T15:32",
+      "tipo": "VIDEO",
+      "views": 38,
+      "reach": 35,
+      "replies": 1,
+      "shares": 0,
+      "navigation": 36,
+      "follows": 0,
+      "profile_visits": 0,
+      "navegacao": {
+        "swipe_forward": 2,
+        "tap_forward": 24,
+        "tap_back": 2,
+        "tap_exit": 8
+      },
+      "medido_em": "2026-11-18T09:38:24+00:00",
+      "idade_h": 18.1,
+      "story": "stn_pe_torto_gravidez",
+      "parte": 2,
+      "kind": "story_nova"
+    },
+    "18248311108314296": {
+      "id": "18248311108314296",
+      "quando": "2026-11-17T15:32",
+      "tipo": "VIDEO",
+      "views": 42,
+      "reach": 38,
+      "replies": 0,
+      "shares": 0,
+      "navigation": 36,
+      "follows": 0,
+      "profile_visits": 0,
+      "navegacao": {
+        "tap_exit": 6,
+        "tap_forward": 28,
+        "tap_back": 2
+      },
+      "medido_em": "2026-11-18T09:38:24+00:00",
+      "idade_h": 18.1,
+      "story": "stn_pe_torto_gravidez",
+      "parte": 1,
+      "kind": "story_nova"
+    },
+    "18416817031084030": {
+      "id": "18416817031084030",
+      "quando": "2026-11-17T15:32",
+      "tipo": "VIDEO",
+      "views": 49,
+      "reach": 42,
+      "replies": 0,
+      "shares": 0,
+      "navigation": 45,
+      "follows": 0,
+      "profile_visits": 2,
+      "navegacao": {
+        "tap_forward": 32,
+        "tap_exit": 8,
+        "swipe_forward": 5
+      },
+      "medido_em": "2026-11-18T09:38:24+00:00",
+      "idade_h": 18.1,
+      "story": "stn_pe_torto_gravidez",
+      "parte": 0,
+      "kind": "story_nova"
     }
   }
 }
