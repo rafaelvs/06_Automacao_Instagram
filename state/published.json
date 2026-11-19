@@ -2320,11 +2320,56 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "como_funciona"
+    },
+    {
+      "id": "stn_haste_ou_fixador#0",
+      "kind": "story_nova",
+      "story": "stn_haste_ou_fixador",
+      "parte": 0,
+      "media_id": "17993683740110755",
+      "at": "2026-11-19T15:31:08.074381+00:00",
+      "temas": [
+        "fixador_haste",
+        "gesso_placa"
+      ],
+      "sha256": "sha256:88b5b0291f303f0af32b3370f1ffa6b5e514350de061cbcd8ec6620df6a00d96",
+      "commit": "6354c2e815dea1ca203e57b6de679039888d8495",
+      "container": "18495273835128523"
+    },
+    {
+      "id": "stn_haste_ou_fixador#1",
+      "kind": "story_nova",
+      "story": "stn_haste_ou_fixador",
+      "parte": 1,
+      "media_id": "18131678594513193",
+      "at": "2026-11-19T15:31:08.074381+00:00",
+      "temas": [
+        "fixador_haste",
+        "gesso_placa"
+      ],
+      "sha256": "sha256:6e94e650566ad0cf54c7dbab5f98ec17b4843a8e674c21d1fd0e6c88afe24050",
+      "commit": "6354c2e815dea1ca203e57b6de679039888d8495",
+      "container": "18495273838128523"
+    },
+    {
+      "id": "stn_haste_ou_fixador#2",
+      "kind": "story_nova",
+      "story": "stn_haste_ou_fixador",
+      "parte": 2,
+      "media_id": "18222507028348974",
+      "at": "2026-11-19T15:31:08.074381+00:00",
+      "temas": [
+        "fixador_haste",
+        "gesso_placa"
+      ],
+      "sha256": "sha256:39f0b153a6699f1e3858300993acc7f8326206d2285abf240c441706e982d32e",
+      "commit": "6354c2e815dea1ca203e57b6de679039888d8495",
+      "container": "18495273841128523"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-11-18",
   "last_seq_date": "2026-10-24",
-  "last_story_nova_date": "2026-11-17"
+  "last_story_nova_date": "2026-11-19"
 }
