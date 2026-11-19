@@ -2365,11 +2365,20 @@
       "sha256": "sha256:39f0b153a6699f1e3858300993acc7f8326206d2285abf240c441706e982d32e",
       "commit": "6354c2e815dea1ca203e57b6de679039888d8495",
       "container": "18495273841128523"
+    },
+    {
+      "id": "cf_var_pe_chato",
+      "kind": "reel",
+      "media_id": "17978727734939759",
+      "at": "2026-11-19T22:01:14.483009+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "chama_o_var"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-11-18",
+  "last_reel_date": "2026-11-19",
   "last_seq_date": "2026-10-24",
   "last_story_nova_date": "2026-11-19"
 }
