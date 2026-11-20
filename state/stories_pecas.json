@@ -533,6 +533,72 @@
       "story": "stn_pe_torto_gravidez",
       "parte": 0,
       "kind": "story_nova"
+    },
+    "18222507028348974": {
+      "id": "18222507028348974",
+      "quando": "2026-11-19T15:31",
+      "tipo": "VIDEO",
+      "views": 27,
+      "reach": 23,
+      "replies": 0,
+      "shares": 0,
+      "navigation": 26,
+      "follows": 0,
+      "profile_visits": 0,
+      "navegacao": {
+        "tap_back": 1,
+        "tap_exit": 12,
+        "tap_forward": 12,
+        "swipe_forward": 1
+      },
+      "medido_em": "2026-11-20T09:33:06+00:00",
+      "idade_h": 18.0,
+      "story": "stn_haste_ou_fixador",
+      "parte": 2,
+      "kind": "story_nova"
+    },
+    "18131678594513193": {
+      "id": "18131678594513193",
+      "quando": "2026-11-19T15:31",
+      "tipo": "VIDEO",
+      "views": 24,
+      "reach": 23,
+      "replies": 0,
+      "shares": 0,
+      "navigation": 21,
+      "follows": 0,
+      "profile_visits": 0,
+      "navegacao": {
+        "tap_forward": 19,
+        "swipe_forward": 2
+      },
+      "medido_em": "2026-11-20T09:33:06+00:00",
+      "idade_h": 18.0,
+      "story": "stn_haste_ou_fixador",
+      "parte": 1,
+      "kind": "story_nova"
+    },
+    "17993683740110755": {
+      "id": "17993683740110755",
+      "quando": "2026-11-19T15:31",
+      "tipo": "VIDEO",
+      "views": 30,
+      "reach": 29,
+      "replies": 0,
+      "shares": 0,
+      "navigation": 25,
+      "follows": 0,
+      "profile_visits": 0,
+      "navegacao": {
+        "tap_exit": 6,
+        "tap_forward": 14,
+        "swipe_forward": 5
+      },
+      "medido_em": "2026-11-20T09:33:06+00:00",
+      "idade_h": 18.0,
+      "story": "stn_haste_ou_fixador",
+      "parte": 0,
+      "kind": "story_nova"
     }
   }
 }
