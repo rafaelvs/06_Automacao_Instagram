@@ -2374,11 +2374,20 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "chama_o_var"
+    },
+    {
+      "id": "cf_placa_crescimento",
+      "kind": "reel",
+      "media_id": "18081781565416385",
+      "at": "2026-11-20T22:01:52.913642+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "como_funciona"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-11-19",
+  "last_reel_date": "2026-11-20",
   "last_seq_date": "2026-10-24",
   "last_story_nova_date": "2026-11-19"
 }
