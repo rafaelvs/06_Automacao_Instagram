@@ -29,3 +29,7 @@ terminam em slide de CTA, e o D-day de vitrine de 17–18/09 não aconteceu (bio
 longo de 35 dias). A janela mediu conteúdo velho publicado por um motor consertado.
 Método: 13 agentes (6 auditores + 6 refutadores adversariais + 1 juiz); **as 6 notas caíram na refutação**
 (52→46, 58→54, 62→58, 26→21, 71→66, 71→67) antes do juiz arbitrar. Rodada: `rodadas/v2_2026-09-19.md`.
+
+| **v3** | 21/11/2026 | 52 | 66 | 72 | **55** | 70 | 74 | **64,2** |
+
+**v3 (21/11/2026): o portão D4 PASSOU (55 ≥ 35) pela primeira vez.** Reach mediano por reel subiu de 30 para 1.246, saves de 0 para 58 e shares de 0 para 84, com 0% de peças sem curtida. A causa é o FORMATO (geração nova animada; a Câmera lenta tem 61 dos 84 shares), não a vitrine que a v2 previa. Ficam abertos: 99,6% do alcance é de não-seguidor e converte pouco (42 seguidores e 11 cliques sem atribuição). Par: Processo 32,2/45 · Resultado 32,0/55. **Rodada SEM cético** (limite semanal a 95%), então as notas são teto. Implementado antes do número: `checar_dump.py` no CI. Rodada: `rodadas/v3_2026-11-21.md`.

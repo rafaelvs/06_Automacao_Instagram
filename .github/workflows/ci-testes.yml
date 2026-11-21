@@ -53,6 +53,8 @@ jobs:
           python checar_dur.py --auto-teste
           python sincronizar_texto_sequencias.py --auto-teste
           python rerender_frame.py --autoteste
+      - name: "Vigia da medicao (auditoria v3, 21/11/2026): dump de insights de 30d com no maximo 10 dias"
+        run: python checar_dump.py --auto-teste && python checar_dump.py
       - name: "Duracao real dos reels (dur e' o denominador da retencao)"
         # A auditoria v1 publicou 9,5% de retencao onde o real era 3,5% porque `dur` vinha do
         # storyboard, nao do MP4. 54 de 57 itens erravam >10%; 47 nao tinham dur nenhum.
