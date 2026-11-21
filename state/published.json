@@ -2425,11 +2425,20 @@
       "sha256": "sha256:bca11bbd55687d1d10e08888aa9b1cf1165f9a8bec01bd34c30ff3b7f0306336",
       "commit": "56ddb6c60d7b61acae3260ed73d9c202f88f8059",
       "container": "18495620935128523"
+    },
+    {
+      "id": "cf_pernas_x_o",
+      "kind": "reel",
+      "media_id": "17979084141157393",
+      "at": "2026-11-21T18:47:30.424603+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "como_funciona"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-11-20",
+  "last_reel_date": "2026-11-21",
   "last_seq_date": "2026-10-24",
   "last_story_nova_date": "2026-11-21"
 }
