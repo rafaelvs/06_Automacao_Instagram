@@ -2383,11 +2383,53 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "como_funciona"
+    },
+    {
+      "id": "stn_pe_pra_dentro#0",
+      "kind": "story_nova",
+      "story": "stn_pe_pra_dentro",
+      "parte": 0,
+      "media_id": "18016516985977936",
+      "at": "2026-11-21T15:31:14.892408+00:00",
+      "temas": [
+        "pe_virado"
+      ],
+      "sha256": "sha256:d4ccb35d23b5f444d94227ac77fc0b18ded4ae2937221578e5dc5f415c131e87",
+      "commit": "56ddb6c60d7b61acae3260ed73d9c202f88f8059",
+      "container": "18495620929128523"
+    },
+    {
+      "id": "stn_pe_pra_dentro#1",
+      "kind": "story_nova",
+      "story": "stn_pe_pra_dentro",
+      "parte": 1,
+      "media_id": "18116432834169902",
+      "at": "2026-11-21T15:31:14.892408+00:00",
+      "temas": [
+        "pe_virado"
+      ],
+      "sha256": "sha256:1fc286ea839e5b877b605bae365b94e448702a080c8f877f6fa97b845ddda77b",
+      "commit": "56ddb6c60d7b61acae3260ed73d9c202f88f8059",
+      "container": "18495620932128523"
+    },
+    {
+      "id": "stn_pe_pra_dentro#2",
+      "kind": "story_nova",
+      "story": "stn_pe_pra_dentro",
+      "parte": 2,
+      "media_id": "18121074080119024",
+      "at": "2026-11-21T15:31:14.892408+00:00",
+      "temas": [
+        "pe_virado"
+      ],
+      "sha256": "sha256:bca11bbd55687d1d10e08888aa9b1cf1165f9a8bec01bd34c30ff3b7f0306336",
+      "commit": "56ddb6c60d7b61acae3260ed73d9c202f88f8059",
+      "container": "18495620935128523"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-11-20",
   "last_seq_date": "2026-10-24",
-  "last_story_nova_date": "2026-11-19"
+  "last_story_nova_date": "2026-11-21"
 }
