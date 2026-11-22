@@ -2434,11 +2434,20 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "como_funciona"
+    },
+    {
+      "id": "cf_cameralenta_perna_curta",
+      "kind": "reel",
+      "media_id": "18362678407218186",
+      "at": "2026-11-22T20:27:46.239387+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "camera_lenta"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-11-21",
+  "last_reel_date": "2026-11-22",
   "last_seq_date": "2026-10-24",
   "last_story_nova_date": "2026-11-21"
 }
