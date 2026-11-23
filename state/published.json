@@ -2443,11 +2443,20 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "camera_lenta"
+    },
+    {
+      "id": "cf_osgood_sever",
+      "kind": "reel",
+      "media_id": "18654489712012258",
+      "at": "2026-11-23T20:56:00.775477+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "como_funciona"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-11-22",
+  "last_reel_date": "2026-11-23",
   "last_seq_date": "2026-10-24",
   "last_story_nova_date": "2026-11-21"
 }
