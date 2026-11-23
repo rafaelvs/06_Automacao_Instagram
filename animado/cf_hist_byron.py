@@ -8,9 +8,10 @@ Regras da cena:
     "PÉ TORTO" é carimbo dos médicos da época e ganha um "?" que fica; a etiqueta "PÉ TORTO?
     AINDA SE DISCUTE" acompanha o resto do passado.
   * Passado × presente por rótulo: NO PASSADO / 1791 / HOJE.
-  * Aparelho antigo é esquemático; ele é posto de lado, sem zombaria. O nado cruza de margem a margem.
-  * HOJE reaproveita cf_pe_torto: manipulação DESTORCE, gessos seguram, o "pra baixo" sai por último.
-    Sem "depois", sem brilho de sucesso. Fonte na tela na órtese e no cartão final.
+  * Aparelho antigo é esquemático; ele é recusado com a mão, sem zombaria. O nado cruza de margem a margem.
+  * HOJE reaproveita a perninha de cf_pe_torto: duas mãos seguram o pé, um gesso, UMA troca. O pé NÃO chega
+    a "corrigido" (nada que pareça promessa); a órtese é um par de botinhas com barra, esquemático.
+    Fonte na tela no cartão final, depois que o aviãozinho passa.
 """
 import math
 
@@ -19,7 +20,7 @@ import skia
 from . import cf_pe_torto as pt
 from .cf_alongamento import F_BLACK, OURO, W, C, clamp, e_back, e_inout, e_out, fundo, lerp, paint, prog, texto
 from .cf_comum import capa, fazer_render, interface
-from .cf_pe_torto import CORAL, PELE, PELE_CL, PELE_LINHA, chip, chip_janela, ponta, seta_pts
+from .cf_pe_torto import CORAL, PELE, PELE_CL, PELE_ESC, PELE_LINHA, chip, chip_janela, ponta, seta_pts
 
 ANCORAS = {k: (p, n, False) for k, p, n in (
     ("nasceu", "nasceu", 1), ("diferente", "diferente", 1), ("virou", "virou", 1), ("poetas", "poetas", 1),
@@ -74,17 +75,37 @@ def linha(cv, x0, y0, x1, y1, cor, w, a=255):
 
 
 # ------------------------------------------------------------------ pés vistos de cima (dedos para cima)
-def pe_cima(cv, x, y, lado, rot, esc=1.0, ink=False):
-    """lado = +1 pé direito (o dedão fica do lado esquerdo), -1 pé esquerdo. Gira em volta do calcanhar."""
-    cv.save(); cv.translate(x, y); cv.rotate(rot); cv.scale(esc * lado, esc)
-    pe = caminho([(-40, 20), ((-58, -60), (-66, -140), (-72, -200)), ((-74, -246), (60, -246), (70, -186)),
-                  ((76, -120), (52, -60), (44, 20)), ((40, 66), (-34, 66), (-40, 20))])
+def pe_cima(cv, x, y, lado, rot, esc=1.0, bota=False):
+    """Visto de CIMA (dorso, unhas, perninha chegando por baixo). lado = +1 pé direito, -1 esquerdo.
+    Gira em volta do tornozelo; a perninha não gira."""
+    cv.save(); cv.translate(x, y); cv.scale(esc * lado, esc)
+    rot *= lado
+    perna = caminho([(-34, 6), ((-46, 40), (-56, 70), (-58, 120)), (58, 120), ((56, 70), (46, 40), (34, 6))])
+    cv.save(); cv.rotate(rot)
+    pe = caminho([(-46, 0), ((-58, -70), (-66, -140), (-72, -200)), ((-74, -246), (60, -246), (70, -186)),
+                  ((76, -120), (56, -70), (46, 0)), ((40, 40), (-40, 40), (-46, 0))])
     cv.drawPath(pe, paint("#000000", 70, blur=10))
+    if bota:                                              # sola da botinha, aberta na ponta
+        caixa(cv, rr(-96, -290, 96, 56, 70), "#C9D6E2", FERRO_E, 5)
+    cv.restore()
+    forma(cv, perna, PELE, PELE_LINHA, 4)
+    cv.save(); cv.rotate(rot)
+    forma(cv, pe, PELE, PELE_LINHA, 4)
+    cv.drawPath(caminho([(-34, 40), (-34, -30), (34, -30), (34, 40)]), paint(PELE))
+    cv.save(); cv.clipPath(pe, skia.ClipOp.kIntersect, True)
+    cv.drawLine(-8, -30, -8, -170, paint(PELE_CL, 190, "stroke", 34, blur=10))   # peito do pé
+    cv.restore()
     for dx, dy, r in ((-46, -240, 27), (-6, -249, 19), (23, -242, 17), (46, -228, 15), (64, -208, 13)):
         cv.drawCircle(dx, dy, r, paint(PELE_CL)); cv.drawCircle(dx, dy, r, paint(PELE_LINHA, 255, "stroke", 4))
-        cv.drawOval(skia.Rect(dx - r * .45, dy - r * .85, dx + r * .45, dy - r * .2), paint("#FFE6DA", 200))
-    forma(cv, pe, PELE, PELE_LINHA, 4)
-    cv.restore()
+        caixa(cv, rr(dx - r * .52, dy - r * .86, dx + r * .52, dy + r * .02, r * .4), "#FFF4EE", "#C98A72", 3)
+    if bota:                                              # tiras por cima do pé
+        for yy in (-176, -104, -32):
+            caixa(cv, rr(-88, yy - 24, 88, yy + 24, 14), "#5D86AD", "#2F4D6B", 5)
+            caixa(cv, rr(34, yy - 15, 66, yy + 15, 6), "#E8EEF4", FERRO_E, 3)
+    else:
+        for yy in (-18, 2):
+            cv.drawArc(skia.Rect(-30, yy - 10, 30, yy + 10), 200, 140, False, paint(PELE_LINHA, 150, "stroke", 3))
+    cv.restore(); cv.restore()
 
 
 def manta(cv):
@@ -103,8 +124,9 @@ def manta(cv):
 
 
 # ------------------------------------------------------------------ silhueta genérica (sem rosto)
-def pessoa(cv, x, y, esc=1.0, cartola=False, braco=None):
-    """y = chão. braco = (dx, dy) da mão a partir do ombro direito da tela, ou None."""
+def pessoa(cv, x, y, esc=1.0, braco=None, palma=0.0):
+    """y = chão. braco = (dx, dy) da mão a partir do ombro direito da tela, ou None; palma 0–1 = mão
+    aberta erguida ("não")."""
     cv.save(); cv.translate(x, y); cv.scale(esc, esc)
     corpo = caminho([(-78, 0), (-84, -150), ((-120, -240), (-120, -330), (-84, -366)),
                      ((-50, -392), (50, -392), (84, -366)), ((120, -330), (120, -240), (84, -150)), (78, 0),
@@ -113,8 +135,13 @@ def pessoa(cv, x, y, esc=1.0, cartola=False, braco=None):
         for cor, w in ((SILH_L, 62), (SILH, 52)):
             linha(cv, 66, -325, 66 + braco[0], -325 + braco[1], cor, w)
     partes = [rr(-24, -410, 24, -360, 10)]
-    if cartola:
-        partes += [rr(-50, -590, 50, -490, 12), rr(-84, -506, 84, -484, 10)]
+    if braco and palma > 0:
+        mx, my = 66 + braco[0], -325 + braco[1]
+        for cor, d in ((SILH_L, 10), (SILH, 0)):
+            for dx, dy in ((-30, -86), (-8, -100), (16, -100), (40, -84)):
+                linha(cv, mx + dx * .6, my - 20, mx + dx, my + dy * palma, cor, 17 + d)
+            linha(cv, mx - 14, my + 8, mx - 52 * palma, my - 34 * palma, cor, 18 + d)
+            cv.drawRRect(rr(mx - 34 - d / 2, my - 46 - d / 2, mx + 36 + d / 2, my + 36 + d / 2, 26), paint(cor))
     for p in (paint(SILH_L, 255, "stroke", 10), paint(SILH)):
         cv.drawPath(corpo, p); cv.drawCircle(0, -450, 58, p)
         for r in partes:
@@ -122,12 +149,6 @@ def pessoa(cv, x, y, esc=1.0, cartola=False, braco=None):
     cv.drawPath(caminho([(-30, -372), (0, -290), (30, -372)], False), paint(SILH_L, 200, "stroke", 5))
     linha(cv, 0, -290, 0, -150, SILH_L, 4, 150)
     cv.restore()
-
-
-def maleta(cv, x, y):
-    cv.drawArc(skia.Rect(x - 28, y - 116, x + 28, y - 56), 180, 180, False, paint(COURO_E, 255, "stroke", 9))
-    caixa(cv, rr(x - 62, y - 84, x + 62, y, 14), COURO, COURO_E)
-    linha(cv, x, y - 60, x, y - 24, PAPEL, 10); linha(cv, x - 18, y - 42, x + 18, y - 42, PAPEL, 10)
 
 
 # ------------------------------------------------------------------ 1) pé diferente -> livro e pena
@@ -138,8 +159,7 @@ def cena_nasceu(cv, t, T):
     cv.saveLayerAlpha(None, int(255 * a))
     mexe = 2.5 * math.sin(t * 5)
     pe_cima(cv, 310, 890, -1, -4 + mexe, 1.3)
-    u = e_back(prog(t, T["nasceu"], T["diferente"] + 0.2))
-    pe_cima(cv, 780, 890, 1, lerp(-12, -38, u) - mexe, 1.3)
+    pe_cima(cv, 780, 890, 1, -38 - mexe, 1.3)             # já nasce virado: não "vira" na tela
     manta(cv)
     b = prog(t, T["diferente"], T["diferente"] + 0.2)
     if b > 0:                                             # um anel chama o olhar, sem julgamento
@@ -157,7 +177,7 @@ def pena(cv, x, y, rot):
 
 
 def cena_poeta(cv, t, T):
-    a = janela(t, T["virou"] - 0.1, T["lord"] - 0.2)
+    a = janela(t, T["virou"] - 0.1, T["lord"] - 0.42)
     if a <= 0:
         return
     cv.saveLayerAlpha(None, int(255 * a))
@@ -216,18 +236,18 @@ def cena_carta(cv, t, T):
     if b > 0:
         cv.saveLayerAlpha(None, int(255 * b))
         g = e_inout(prog(t, T["vira"], T["dentro"] + 0.2))
-        pe_cima(cv, 350, 1065, -1, 0, 1.1)
-        pe_cima(cv, 720, 1065, 1, lerp(-3, -38, g), 1.1)
+        pe_cima(cv, 350, 1040, -1, 0, 1.05)
+        pe_cima(cv, 720, 1040, 1, lerp(-20, -38, g), 1.05)
         c = prog(t, T["vira"], T["vira"] + 0.2)
         if c > 0:                                         # seta arqueada, de fora para dentro
             fim = lerp(-62, -108, e_out(prog(t, T["vira"], T["dentro"] + .2)))
-            pts = [(720 + 355 * math.cos(g_), 1065 + 355 * math.sin(g_))
+            pts = [(720 + 335 * math.cos(g_), 1040 + 335 * math.sin(g_))
                    for g_ in (math.radians(lerp(-60, fim, i / 20)) for i in range(21))]
             seta_pts(cv, pts, "#D1492E", c, larg=11, tam=34, brilho=30)
         cv.restore()
     cv.restore()
     chip(cv, "PÉ DIREITO", 730, 1194, "#FFFFFF", janela(t, T["direito"] - .1, T["medicos"] - .3), 42, OURO)
-    chip(cv, "PRA DENTRO", 750, 664, CORAL, janela(t, T["dentro"] - .15, T["medicos"] - .3), 40)
+    chip(cv, "PRA DENTRO", 780, 656, CORAL, janela(t, T["dentro"] - .15, T["medicos"] - .3), 40)
 
 
 # ------------------------------------------------------------------ 3) médicos, carimbo e "?"
@@ -239,15 +259,16 @@ def cena_medicos(cv, t, T):
     linha(cv, 90, 1084, 990, 1084, SILH_L, 5, 120)
     d = 60 * (1 - e_out(prog(t, T["medicos"] - .2, T["medicos"] + .4)))
     for s in (-1, 1):
-        pessoa(cv, 540 + s * (320 + d), 1080, 0.95, cartola=True)
-        maleta(cv, 540 + s * (140 + d), 1080)
+        pessoa(cv, 540 + s * (320 + d), 1080, 0.95)
+    caixa(cv, rr(415, 840, 665, 1072, 10), PAPEL, PAPEL_B, 5)   # folha com o desenho do pé que eles examinam
+    pe_cima(cv, 575, 1000, 1, -38, .52)
     cv.restore()
     chip(cv, "MÉDICOS DA ÉPOCA", 540, 1190, "#FFFFFF", a, 44, SILH_L)
     b = janela(t, T["torto1"] - .15, T["trat"] - .35)
     if b > 0:
         esc = lerp(1.6, 1, e_out(prog(t, T["torto1"] - .15, T["torto1"] + .1)))
         f = skia.Font(F_BLACK, 50); lw = f.measureText("PÉ TORTO")
-        cv.save(); cv.translate(540, 700); cv.rotate(-4); cv.scale(esc, esc)
+        cv.save(); cv.translate(540, 620); cv.rotate(-4); cv.scale(esc, esc)
         r = rr(-lw / 2 - 24, -58, lw / 2 + 24, 24, 12)
         cv.drawRRect(r, paint(PAPEL, int(255 * b))); cv.drawRRect(r, paint(TINTA, int(255 * b), "stroke", 6))
         cv.drawString("PÉ TORTO", -lw / 2, 2, f, paint(TINTA, int(255 * b)))
@@ -255,7 +276,7 @@ def cena_medicos(cv, t, T):
     q = janela(t, T["ate"] - .05, T["trat"] - .35)
     if q > 0:
         s = lerp(.4, 1, e_back(prog(t, T["ate"] - .05, T["ate"] + .35))) * (1 + .04 * math.sin(t * 6))
-        cv.save(); cv.translate(540, 860); cv.scale(s, s)
+        cv.save(); cv.translate(540, 755); cv.scale(s * .7, s * .8)
         texto(cv, "?", 0, 70, F_BLACK, 220, OURO, int(255 * q), contorno=14)
         cv.restore()
 
@@ -269,7 +290,7 @@ def raio(cv, x, y, rot, s, a):
 
 
 def cena_tratamento(cv, t, T):
-    a = janela(t, T["trat"] - .25, T["aparelho"] - .25)
+    a = janela(t, T["trat"] - .25, T["aparelho"] - .4)
     if a <= 0:
         return
     cv.saveLayerAlpha(None, int(255 * a))
@@ -277,18 +298,12 @@ def cena_tratamento(cv, t, T):
                   ((600, 1024), (740, 1024), (830, 1012)), ((890, 1000), (880, 945), (810, 925)),
                   ((730, 900), (660, 860), (635, 775)), ((618, 690), (630, 560), (635, 440))])
     forma(cv, pe, SILH, SILH_L, 6)
-    cv.save(); cv.clipPath(pe, skia.ClipOp.kIntersect, True)   # faixas apertadas, sem modelo de aparelho
-    for x0, y0, x1, y1 in ((360, 600, 720, 580), (360, 720, 720, 700), (380, 930, 690, 790), (560, 1050, 680, 830),
-                           (720, 1060, 770, 880)):
-        linha(cv, x0, y0, x1, y1, TINTA, 50); linha(cv, x0, y0, x1, y1, PAPEL, 42)
-    cv.restore()
-    cv.drawPath(pe, paint(SILH_L, 255, "stroke", 6))
     cv.restore()
     for i, (x, y, r) in enumerate(((330, 640, -25), (310, 880, -10), (750, 690, 25), (930, 860, 30))):
         k = prog(t, T["doiam"] - .05 + .08 * i, T["doiam"] + .12 + .08 * i)
         if k > 0:
             raio(cv, x, y, r, 1.35 * (1 + .12 * math.sin(t * 11 + i)), k * a)
-    chip(cv, "DOÍA", 540, 1170, CORAL, janela(t, T["doiam"], T["aparelho"] - .25), 58)
+    chip(cv, "O TRATAMENTO DOÍA", 540, 1170, CORAL, janela(t, T["doiam"] - .3, T["aparelho"] - .4), 54)
 
 
 def aparelho(cv, x, y, s, a=255):
@@ -311,20 +326,17 @@ def aparelho(cv, x, y, s, a=255):
 
 
 def cena_recusa(cv, t, T):
-    a = janela(t, T["aparelho"] - .25, T["mesmo"] - .25)
+    a = janela(t, T["aparelho"] - .15, T["mesmo"] - .25)
     if a <= 0:
         return
     u = e_inout(prog(t, T["recusou"] - .05, T["recusou"] + .6))
-    b = e_out(prog(t, T["recusou"] - .2, T["recusou"] + .2))
+    b = e_out(prog(t, T["recusou"] - .25, T["recusou"] + .15))
     cv.saveLayerAlpha(None, int(255 * a))
     linha(cv, 90, 1084, 990, 1084, SILH_L, 5, 120)
-    aparelho(cv, lerp(640, 790, u), 1048, lerp(1.1, .95, u), int(lerp(255, 130, u)))
-    pessoa(cv, 280, 1080, 1.1, braco=(lerp(30, 180, b), lerp(130, -8, b)))
-    if u > .05:                                           # o aparelho é posto de lado
-        x1 = lerp(680, 900, u)
-        linha(cv, 680, 520, x1, 520, OURO, 10, int(255 * u)); ponta(cv, x1, 520, 0, 34, OURO, u)
+    aparelho(cv, lerp(720, 830, u), 1062, .7, int(lerp(255, 120, u)))
+    pessoa(cv, 320, 1080, 1.15, braco=(lerp(20, 170, b), lerp(130, -20, b)), palma=b)   # mão aberta: não
     cv.restore()
-    chip(cv, "APARELHO", 650, 480, "#FFFFFF", a * (1 - prog(t, T["recusou"] - .2, T["recusou"])), 44, SILH_L)
+    chip(cv, "APARELHO", 780, 670, "#FFFFFF", a * (1 - prog(t, T["recusou"] - .25, T["recusou"])), 44, SILH_L)
     chip(cv, "RECUSOU USAR", 540, 1180, OURO, janela(t, T["recusou"], T["mesmo"] - .25), 54)
 
 
@@ -385,36 +397,60 @@ def cena_nado(cv, t, T):
 
 
 # ------------------------------------------------------------------ 6 e 7) HOJE: cf_pe_torto reaproveitado
-def trocas(T):
-    """[(sai0, sai1, entra1, k0, k1)] — duas trocas entre 'gessos' e 'depois'."""
-    t0 = T["gessos"] + .62; P = (T["depois"] - .12 - t0) / 2
-    ks = (pt.K_MANIP, .46, pt.K_FIM)
-    return [(t0 + i * P, t0 + (i + .25) * P, t0 + (i + .78) * P, ks[i], ks[i + 1]) for i in range(2)]
+K_GESSO2 = .34                                             # segundo gesso: um passo a mais; nunca o pé "pronto"
+
+
+def troca(T):
+    """(abre, aberto, novo gesso pronto): UMA troca só, com os dois gessos parados antes e depois."""
+    t0 = T["primeiras"] - .1
+    return t0, t0 + .35, t0 + 1.0
 
 
 def k_em(t, T):
+    s0, s1, _ = troca(T)
     k = lerp(0, pt.K_MANIP, e_inout(prog(t, T["manip"] + .2, T["gessos"] - .1)))
-    for s0, s1, _, k0, k1 in trocas(T):
-        if t > s0:                                        # o pé gira com o gesso velho já aberto
-            k = lerp(k0, k1, e_inout(prog(t, s0 + .04, s1 + .18)))
-    return k
+    return lerp(k, K_GESSO2, e_inout(prog(t, s0 + .1, s1 + .15)))
 
 
 def gesso_em(t, T):
     """-> (enrolado, saindo)"""
-    if t >= T["depois"]:
-        return 1.0, prog(t, T["depois"], T["depois"] + .4)
-    v = (e_inout(prog(t, T["gessos"] - .05, T["gessos"] + .35)), 0.0)
-    for s0, s1, e1, _, _ in trocas(T):
-        if t >= s1:
-            v = (e_inout(prog(t, s1, e1)), 0.0)
-        elif t >= s0:
-            v = (1.0, prog(t, s0, s1))
-    return v
+    s0, s1, e1 = troca(T)
+    if t < s0:
+        return e_inout(prog(t, T["gessos"] - .1, T["gessos"] + .5)), 0.0
+    return (1.0, prog(t, s0, s1)) if t < s1 else (e_inout(prog(t, s1, e1)), 0.0)
+
+
+MAO, MAO_L = "#C48C68", "#8E5C3F"
+
+
+def mao(cv, braco, palma, dedos_, a):
+    """Mão adulta de desenho: braço, palma e dedos em traços arredondados."""
+    cv.saveLayerAlpha(None, int(255 * a))
+    tracos = [(*braco, 84)] + [(*d, 34) for d in dedos_]
+    for cor, d in ((MAO_L, 10), (MAO, 0)):
+        for x0, y0, x1, y1, w in tracos:
+            linha(cv, x0, y0, x1, y1, cor, w + d)
+        cv.drawCircle(*palma, 58 + d / 2, paint(cor))
+    for x0, y0, x1, y1 in dedos_[:-1]:                    # separação dos dedos
+        linha(cv, x0, y0 + 18, x1, y1 + 18, MAO_L, 3, 170)
+    cv.restore()
+
+
+def maos(cv, t, T):
+    a = janela(t, T["manip"] - .1, T["gessos"] - .35, .3, .2)
+    if a <= 0:
+        return
+    d = 5 * math.sin((t - T["manip"]) * 4)
+    e = 70 * (1 - e_out(prog(t, T["manip"] - .1, T["manip"] + .35)))
+    mao(cv, (250 - e, 900, 420 - e, 980 + d), (430 - e, 990 + d),          # segura a ponta do pé
+        [(440 - e, 960 + d, 570 - e, 950 + d), (440 - e, 996 + d, 580 - e, 990 + d),
+         (440 - e, 1030 + d, 570 - e, 1030 + d)], a)
+    mao(cv, (1010 + e, 780, 830 + e, 830), (815 + e, 835),                 # apoia o calcanhar
+        [(810 + e, 800, 680 + e, 800), (810 + e, 836, 672 + e, 840), (810 + e, 872, 690 + e, 880)], a)
 
 
 def cena_hoje(cv, t, T):
-    a = janela(t, T["hoje"] - .2, T["manda"] - .4)
+    a = janela(t, T["hoje"] - .05, T["depois"] - .2, .25, .25)
     if a <= 0:
         return
     T2 = dict(T, gesso=T["gessos"], dentro=1e9)
@@ -423,7 +459,12 @@ def cena_hoje(cv, t, T):
     cv.save()
     cv.translate(lerp(540, 620, e_inout(prog(t, T["gessos"], T["depois"]))), 810); cv.scale(.93, .93); cv.translate(-600, -860)
     cv.saveLayer(skia.Rect(-600, pt.Y_DISS0 - 200, W + 600, 1600), None)
-    pt.desenha_pele(cv, t, T2, k)
+    sola = pt.SOLA
+    pt.SOLA = PELE_ESC                                    # aqui a sola é só sombra de pele: vermelho lê "ferida"
+    try:
+        pt.desenha_pele(cv, t, T2, k)
+    finally:
+        pt.SOLA = sola
     if sai < 1:
         pt.desenha_gesso(cv, k, enr, sai)
     pt.dedos(cv, k)
@@ -433,14 +474,30 @@ def cena_hoje(cv, t, T):
     m.setBlendMode(skia.BlendMode.kDstIn)
     cv.drawRect(skia.Rect(-600, pt.Y_DISS0 - 200, W + 600, 1600), m)
     cv.restore()
-    pt.manipulacao(cv, t, T2, k)
-    pt.ortese(cv, t, T2, k)
+    maos(cv, t, T)
     cv.restore(); cv.restore()
-    pt.icone_calendario(cv, t, dict(T, manip=T["depois"] + .2))
-    chip_janela(cv, "MANIPULAÇÃO SUAVE", t, T["manip"], T["gessos"] - .15)
-    chip_janela(cv, "TROCAS DE GESSO", t, T["gessos"] + .1, T["primeiras"] - .25)
-    chip_janela(cv, "PRIMEIRAS SEMANAS", t, T["primeiras"], T["depois"] + .1)
-    pt.cartao(cv, "GESSOS", "aos poucos", t, T["gessos"], T["depois"] - .1)
+    pt.icone_calendario(cv, t, dict(T, primeiras=T["desde"], manip=T["depois"] + .1))
+    chip_janela(cv, "PÉ TORTO DO BEBÊ", t, T["hoje"] + .1, T["manip"] - .1)
+    chip_janela(cv, "MANIPULAÇÃO SUAVE", t, T["manip"] + .1, T["gessos"] - .15)
+    chip_janela(cv, "DESDE AS PRIMEIRAS SEMANAS", t, T["desde"], T["depois"] - .25)
+    pt.cartao(cv, "GESSOS", "aos poucos", t, T["gessos"], T["depois"] - .2)
+
+
+def cena_ortese(cv, t, T):
+    """Par de botinhas com barra, visto de cima, esquemático: a órtese se explica sozinha."""
+    a = janela(t, T["depois"] + .05, T["manda"] - .4, .3)
+    if a <= 0:
+        return
+    cv.saveLayerAlpha(None, int(255 * a))
+    u = e_out(prog(t, T["ortese"] - .1, T["ortese"] + .35))
+    if u > 0:
+        for cor, w in ((FERRO_E, 34), (FERRO, 24)):       # a barra cresce do meio até as botinhas
+            linha(cv, 540 - 210 * u, 765, 540 + 210 * u, 765, cor, w)
+    for s_ in (-1, 1):
+        pe_cima(cv, 540 + s_ * 200, 825, s_, s_ * 40, 1.1, bota=t >= T["ortese"] - .1)
+    cv.translate(0, 5)
+    manta(cv)
+    cv.restore()
     pt.cartao(cv, "ÓRTESE", "pra manter", t, T["ortese"], T["manda"] - .45)
 
 
@@ -453,6 +510,7 @@ def faixa_epoca(cv, t, T):
         chip(cv, s, x, 300, cor, janela(t, t0, t1, .2, .2), 46)
 
 
+FONTE_DEPOIS = .9                                        # o aviãozinho já passou da área da fonte
 FONTE1, FONTE2 = "Diagnóstico de Byron: discutido", "Fonte: Hektoen International, 2018"
 DISCUTE = "PÉ TORTO? AINDA SE DISCUTE"
 
@@ -460,24 +518,20 @@ DISCUTE = "PÉ TORTO? AINDA SE DISCUTE"
 def quadro(cv, t, T, blocos, ep):
     fundo(cv, t)
     for cena in (cena_nasceu, cena_poeta, cena_byron, cena_carta, cena_medicos, cena_tratamento, cena_recusa,
-                 cena_nado, cena_hoje):
+                 cena_nado, cena_hoje, cena_ortese):
         cena(cv, t, T)
     # o "?" fica: lembrete enquanto o passado segue
     chip(cv, DISCUTE, 540, 450, OURO, janela(t, T["discute"] - .1, T["trat"] - .4), 44)
     chip(cv, DISCUTE, 540, 374, OURO, janela(t, T["trat"] - .2, T["hoje"] - .35), 32)
     faixa_epoca(cv, t, T)
-    a = janela(t, T["ortese"], T["manda"] - .45)
-    if a > 0:
-        texto(cv, FONTE1, 540, 1168, F_BLACK, 34, "#FFFFFF", int(255 * a), contorno=8)
-        texto(cv, FONTE2, 540, 1216, F_BLACK, 30, pt.AZUL, int(255 * a), contorno=8)
     t_sai = T["poetas"] - .1
     capa(cv, t, t_sai, *ep["gancho"])
-    a = prog(t, t_sai + .3, t_sai + .7) * (1 - prog(t, T["manda"] - .3, T["manda"]))
+    a = prog(t, t_sai + .6, t_sai + 1.0) * (1 - prog(t, T["manda"] - .3, T["manda"]))
     if a > 0:
         cv.drawRRect(rr(330, 150, 750, 204, 27), paint("#FFFFFF", int(28 * a)))
         texto(cv, "HISTÓRIA NO OSSO", 540, 190, F_BLACK, 32, OURO, int(255 * a))
     interface(cv, t, T, blocos, DESTAQUE)
-    a = prog(t, T["manda"] + .2, T["manda"] + .5)
+    a = prog(t, T["manda"] + FONTE_DEPOIS, T["manda"] + FONTE_DEPOIS + .3)
     if a > 0:
         texto(cv, FONTE1, 540, 1276, F_BLACK, 34, "#FFFFFF", int(255 * a), contorno=6)
         texto(cv, FONTE2, 540, 1324, F_BLACK, 32, "#9CC9FF", int(255 * a), contorno=6)
@@ -491,9 +545,9 @@ def sons(T):
           (T["doiam"], "thump", .5), (T["aparelho"], "pop", .45), (T["recusou"], "whoosh", .4),
           (T["mesmo"], "whoosh", .3), (T["nado"], "pop", .45), (T["hoje"], "shimmer", .35),
           (T["manip"], "pop", .4), (T["gessos"], "whoosh", .3)]
-    for s0, s1, _, _, _ in trocas(T):
-        ev += [(s0, "whoosh", .2), (s1 + .2, "click", .8)]
-    ev += [(T["primeiras"] + .2 * i, "tick", .3) for i in range(4)]
+    s0, s1, _ = troca(T)
+    ev += [(s0, "whoosh", .2), (s1 + .2, "click", .8)]
+    ev += [(T["desde"] + .2 * i, "tick", .3) for i in range(4)]
     return ev + [(T["depois"], "whoosh", .2), (T["ortese"], "pop", .45), (T["manter"], "ping", .4),
                  (T["manda"] + .05, "whoosh", .5)]
 
@@ -501,8 +555,8 @@ def sons(T):
 def tempos_previa(T):
     return (0.0, T["diferente"] + .4, T["poetas"] + .8, T["lord"] + .6, T["direito"], T["dentro"] + .4,
             T["torto1"] + .3, T["discute"] + .3, T["doiam"] + .35, T["aparelho"] + .2, T["usar"],
-            T["estreito"] + .2, T["hoje"] + .5, T["manip"] + .7, T["gessos"] + .4, T["primeiras"] + .4,
-            T["ortese"] + .5, T["manda"] + 1.6)
+            T["estreito"] + .2, T["hoje"] + .5, T["gessos"] - .5, T["manip"] + .7, T["gessos"] + .4, T["primeiras"] + .4,
+            T["ortese"] + .6, T["manda"] + .5, T["manda"] + 1.6)
 
 
 render = fazer_render(quadro, ANCORAS, sons, tempos_previa, respiro_cta=1.8)

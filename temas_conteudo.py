@@ -64,7 +64,7 @@ POR_ID = {
     "cf_fratura_cola": "consolidacao", "cf_pseudartrose": "consolidacao", "cf_refratura": "consolidacao",
     "cf_transporte_osseo": "trauma_transporte", "cf_osteomielite": "osteomielite",
     "cf_pe_virado": "pe_virado", "cf_eixo_perna": "eixo", "cf_corrigir_e_alongar": "eixo",
-    "cf_fixador_circular": "fixador_haste", "cf_gesso_placa": "gesso_placa", "cf_pe_torto": "pe_torto",
+    "cf_fixador_circular": "fixador_haste", "cf_gesso_placa": "gesso_placa", "cf_pe_torto": "pe_torto", "cf_hist_byron": "pe_torto",
     "cf_escoliose": "escoliose", "cf_quadril_bebe": "quadril_bebe", "cf_placa_crescimento": "fratura_crianca",
     "cf_discrepancia_causas": "discrepancia", "cf_cotovelo_baba": "cotovelo_baba",
     "cf_quando_pisar": "tempo_tratamento", "cf_fisioterapia": "tempo_tratamento", "cf_quanto_tempo": "tempo_tratamento",
