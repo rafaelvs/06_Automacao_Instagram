@@ -1,0 +1,552 @@
+{
+ "versao": 2,
+ "chave": "fcc096251602fa4dba79ba9e",
+ "engine": "gemini",
+ "voz": "Sadaltager",
+ "modelo": "gemini-2.5-flash-tts",
+ "prompt": "Narre em português do Brasil, como um médico ortopedista explicando com calma e clareza para pais num vídeo curto de redes sociais: tom acolhedor, natural, ritmo levemente animado, sem exagero.",
+ "ritmo": "+10%",
+ "taxa": 1.05,
+ "gerado_em": "2026-11-23T15:57:37+00:00",
+ "texto": "Ele nasceu com o pé diferente. E virou um dos poetas mais famosos da história.\nLord Byron. A mãe escreveu: o pé direito vira pra dentro.\nMédicos da época chamaram de pé torto. Até hoje se discute.\nOs tratamentos doíam. E o aparelho, ele se recusou a usar.\nMesmo assim, atravessou um estreito a nado.\nHoje, o pé torto tem manipulação suave e gessos, desde as primeiras semanas.\nDepois, uma órtese, pra manter.\nManda pra quem tem um bebê com pé torto.",
+ "duracao": 33.424,
+ "alinhamento": {
+  "modelo_whisper": "small",
+  "fracao": 0.9878,
+  "buraco": 1,
+  "inseridas": [],
+  "omitidas": [],
+  "trocadas": [
+   {
+    "w": "o",
+    "por": "um",
+    "posicao": 3
+   }
+  ],
+  "inseridas_pontas": [],
+  "tomada_aceita": 1,
+  "tomadas": [
+   {
+    "tomada": 0,
+    "dur": 34.7,
+    "problemas": [],
+    "fracao": 0.988,
+    "buraco": 1,
+    "inseridas": [],
+    "omitidas": [],
+    "trocadas": [
+     "doíam.>do íon"
+    ]
+   },
+   {
+    "tomada": 1,
+    "dur": 33.42,
+    "problemas": [],
+    "fracao": 0.988,
+    "buraco": 1,
+    "inseridas": [],
+    "omitidas": [],
+    "trocadas": [
+     "o>um"
+    ]
+   }
+  ]
+ },
+ "palavras": [
+  {
+   "t": 0.29,
+   "d": 0.13,
+   "w": "Ele",
+   "casada": true
+  },
+  {
+   "t": 0.42,
+   "d": 0.42,
+   "w": "nasceu",
+   "casada": true
+  },
+  {
+   "t": 0.84,
+   "d": 0.24,
+   "w": "com",
+   "casada": true
+  },
+  {
+   "t": 1.08,
+   "d": 0.12,
+   "w": "o",
+   "casada": false
+  },
+  {
+   "t": 1.24,
+   "d": 0.1,
+   "w": "pé",
+   "casada": true
+  },
+  {
+   "t": 1.34,
+   "d": 0.64,
+   "w": "diferente.",
+   "casada": true
+  },
+  {
+   "t": 1.98,
+   "d": 0.64,
+   "w": "E",
+   "casada": true
+  },
+  {
+   "t": 2.62,
+   "d": 0.3,
+   "w": "virou",
+   "casada": true
+  },
+  {
+   "t": 2.92,
+   "d": 0.1,
+   "w": "um",
+   "casada": true
+  },
+  {
+   "t": 3.02,
+   "d": 0.12,
+   "w": "dos",
+   "casada": true
+  },
+  {
+   "t": 3.14,
+   "d": 0.46,
+   "w": "poetas",
+   "casada": true
+  },
+  {
+   "t": 3.6,
+   "d": 0.42,
+   "w": "mais",
+   "casada": true
+  },
+  {
+   "t": 4.02,
+   "d": 0.54,
+   "w": "famosos",
+   "casada": true
+  },
+  {
+   "t": 4.56,
+   "d": 0.2,
+   "w": "da",
+   "casada": true
+  },
+  {
+   "t": 4.76,
+   "d": 0.54,
+   "w": "história.",
+   "casada": true
+  },
+  {
+   "t": 5.6,
+   "d": 0.32,
+   "w": "Lord",
+   "casada": true
+  },
+  {
+   "t": 5.92,
+   "d": 0.59,
+   "w": "Byron.",
+   "casada": true
+  },
+  {
+   "t": 7.03,
+   "d": 0.09,
+   "w": "A",
+   "casada": true
+  },
+  {
+   "t": 7.12,
+   "d": 0.2,
+   "w": "mãe",
+   "casada": true
+  },
+  {
+   "t": 7.32,
+   "d": 0.76,
+   "w": "escreveu:",
+   "casada": true
+  },
+  {
+   "t": 8.29,
+   "d": 0.09,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 8.5,
+   "d": 0.12,
+   "w": "pé",
+   "casada": true
+  },
+  {
+   "t": 8.62,
+   "d": 0.39,
+   "w": "direito",
+   "casada": true
+  },
+  {
+   "t": 9.05,
+   "d": 0.49,
+   "w": "vira",
+   "casada": true
+  },
+  {
+   "t": 9.6,
+   "d": 0.08,
+   "w": "pra",
+   "casada": true
+  },
+  {
+   "t": 9.68,
+   "d": 0.55,
+   "w": "dentro.",
+   "casada": true
+  },
+  {
+   "t": 10.69,
+   "d": 0.47,
+   "w": "Médicos",
+   "casada": true
+  },
+  {
+   "t": 11.16,
+   "d": 0.16,
+   "w": "da",
+   "casada": true
+  },
+  {
+   "t": 11.32,
+   "d": 0.31,
+   "w": "época",
+   "casada": true
+  },
+  {
+   "t": 11.66,
+   "d": 0.46,
+   "w": "chamaram",
+   "casada": true
+  },
+  {
+   "t": 12.12,
+   "d": 0.22,
+   "w": "de",
+   "casada": true
+  },
+  {
+   "t": 12.49,
+   "d": 0.13,
+   "w": "pé",
+   "casada": true
+  },
+  {
+   "t": 12.62,
+   "d": 0.55,
+   "w": "torto.",
+   "casada": true
+  },
+  {
+   "t": 13.45,
+   "d": 0.23,
+   "w": "Até",
+   "casada": true
+  },
+  {
+   "t": 13.68,
+   "d": 0.3,
+   "w": "hoje",
+   "casada": true
+  },
+  {
+   "t": 13.98,
+   "d": 0.2,
+   "w": "se",
+   "casada": true
+  },
+  {
+   "t": 14.18,
+   "d": 0.56,
+   "w": "discute.",
+   "casada": true
+  },
+  {
+   "t": 15.18,
+   "d": 0.12,
+   "w": "Os",
+   "casada": true
+  },
+  {
+   "t": 15.3,
+   "d": 0.56,
+   "w": "tratamentos",
+   "casada": true
+  },
+  {
+   "t": 15.88,
+   "d": 0.66,
+   "w": "doíam.",
+   "casada": true
+  },
+  {
+   "t": 16.54,
+   "d": 0.44,
+   "w": "E",
+   "casada": true
+  },
+  {
+   "t": 16.98,
+   "d": 0.1,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 17.08,
+   "d": 0.56,
+   "w": "aparelho,",
+   "casada": true
+  },
+  {
+   "t": 17.64,
+   "d": 0.34,
+   "w": "ele",
+   "casada": true
+  },
+  {
+   "t": 17.98,
+   "d": 0.22,
+   "w": "se",
+   "casada": true
+  },
+  {
+   "t": 18.2,
+   "d": 0.72,
+   "w": "recusou",
+   "casada": true
+  },
+  {
+   "t": 18.92,
+   "d": 0.12,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 19.04,
+   "d": 0.42,
+   "w": "usar.",
+   "casada": true
+  },
+  {
+   "t": 19.96,
+   "d": 0.46,
+   "w": "Mesmo",
+   "casada": true
+  },
+  {
+   "t": 20.42,
+   "d": 0.38,
+   "w": "assim,",
+   "casada": true
+  },
+  {
+   "t": 20.98,
+   "d": 0.6,
+   "w": "atravessou",
+   "casada": true
+  },
+  {
+   "t": 21.58,
+   "d": 0.16,
+   "w": "um",
+   "casada": true
+  },
+  {
+   "t": 21.74,
+   "d": 0.56,
+   "w": "estreito",
+   "casada": true
+  },
+  {
+   "t": 22.3,
+   "d": 0.088,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 22.388,
+   "d": 0.462,
+   "w": "nado.",
+   "casada": true
+  },
+  {
+   "t": 23.28,
+   "d": 0.38,
+   "w": "Hoje,",
+   "casada": true
+  },
+  {
+   "t": 23.86,
+   "d": 0.1,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 24.02,
+   "d": 0.08,
+   "w": "pé",
+   "casada": true
+  },
+  {
+   "t": 24.1,
+   "d": 0.45,
+   "w": "torto",
+   "casada": true
+  },
+  {
+   "t": 24.59,
+   "d": 0.09,
+   "w": "tem",
+   "casada": true
+  },
+  {
+   "t": 24.68,
+   "d": 0.68,
+   "w": "manipulação",
+   "casada": true
+  },
+  {
+   "t": 25.36,
+   "d": 0.52,
+   "w": "suave",
+   "casada": true
+  },
+  {
+   "t": 25.88,
+   "d": 0.24,
+   "w": "e",
+   "casada": true
+  },
+  {
+   "t": 26.12,
+   "d": 0.56,
+   "w": "gessos,",
+   "casada": true
+  },
+  {
+   "t": 26.9,
+   "d": 0.28,
+   "w": "desde",
+   "casada": true
+  },
+  {
+   "t": 27.18,
+   "d": 0.27,
+   "w": "as",
+   "casada": true
+  },
+  {
+   "t": 27.48,
+   "d": 0.36,
+   "w": "primeiras",
+   "casada": true
+  },
+  {
+   "t": 27.84,
+   "d": 0.64,
+   "w": "semanas.",
+   "casada": true
+  },
+  {
+   "t": 28.82,
+   "d": 0.54,
+   "w": "Depois,",
+   "casada": true
+  },
+  {
+   "t": 29.51,
+   "d": 0.15,
+   "w": "uma",
+   "casada": true
+  },
+  {
+   "t": 29.66,
+   "d": 0.5,
+   "w": "órtese,",
+   "casada": true
+  },
+  {
+   "t": 30.16,
+   "d": 0.26,
+   "w": "pra",
+   "casada": true
+  },
+  {
+   "t": 30.42,
+   "d": 0.48,
+   "w": "manter.",
+   "casada": true
+  },
+  {
+   "t": 31.34,
+   "d": 0.28,
+   "w": "Manda",
+   "casada": true
+  },
+  {
+   "t": 31.62,
+   "d": 0.14,
+   "w": "pra",
+   "casada": true
+  },
+  {
+   "t": 31.76,
+   "d": 0.16,
+   "w": "quem",
+   "casada": true
+  },
+  {
+   "t": 31.92,
+   "d": 0.22,
+   "w": "tem",
+   "casada": true
+  },
+  {
+   "t": 32.14,
+   "d": 0.12,
+   "w": "um",
+   "casada": true
+  },
+  {
+   "t": 32.26,
+   "d": 0.34,
+   "w": "bebê",
+   "casada": true
+  },
+  {
+   "t": 32.62,
+   "d": 0.08,
+   "w": "com",
+   "casada": true
+  },
+  {
+   "t": 32.7,
+   "d": 0.2,
+   "w": "pé",
+   "casada": true
+  },
+  {
+   "t": 32.9,
+   "d": 0.52,
+   "w": "torto.",
+   "casada": true
+  }
+ ],
+ "amostras": 1604336,
+ "pcm_sha256": "d73a2b0b83ec83b1495108a83fa03080f408491c54885ee5f4f67e3333f27730",
+ "rechaveado_de": "ec15750445d97ee6929e40c4"
+}

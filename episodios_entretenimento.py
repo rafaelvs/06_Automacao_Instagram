@@ -2711,4 +2711,71 @@ EPISODIOS_ENTRETENIMENTO = [
             "Dr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901"
         ),
     },
+    {
+        "id": "cf_hist_byron",
+        "formato": "como_funciona",
+        "serie": "História no osso",
+        "tema": "pe_torto",
+        "familia": "pediatria",
+        "cena": "cf_hist_byron",
+        "gancho": ["UM POETA FAMOSO,", "UM PÉ DIFERENTE"],
+        "tela": [
+            "HISTÓRIA NO OSSO",
+            "NO PASSADO",
+            "POETA",
+            "LORD BYRON",
+            "1791",
+            "CARTA DA MÃE",
+            "PÉ DIREITO",
+            "PRA DENTRO",
+            "MÉDICOS DA ÉPOCA",
+            "PÉ TORTO",
+            "?",
+            "PÉ TORTO? AINDA SE DISCUTE",
+            "DOÍA",
+            "APARELHO",
+            "RECUSOU USAR",
+            "HELESPONTO",
+            "A NADO",
+            "HOJE",
+            "MANIPULAÇÃO SUAVE",
+            "GESSOS",
+            "aos poucos",
+            "TROCAS DE GESSO",
+            "PRIMEIRAS SEMANAS",
+            "ÓRTESE",
+            "pra manter",
+            "Diagnóstico de Byron: discutido",
+            "Fonte: Hektoen International, 2018",
+        ],
+        "roteiro": [
+            "Ele nasceu com o pé diferente. E virou um dos poetas mais famosos da história.",
+            "Lord Byron. A mãe escreveu: o pé direito vira pra dentro.",
+            "Médicos da época chamaram de pé torto. Até hoje se discute.",
+            "Os tratamentos doíam. E o aparelho, ele se recusou a usar.",
+            "Mesmo assim, atravessou um estreito a nado.",
+            "Hoje, o pé torto tem manipulação suave e gessos, desde as primeiras semanas.",
+            "Depois, uma órtese, pra manter.",
+            "Manda pra quem tem um bebê com pé torto.",
+        ],
+        "cta": "Manda pra quem tem um bebê com pé torto.",
+        "legenda": (
+            "História no osso: Lord Byron, um dos poetas mais famosos da história, nasceu com uma deformidade "
+            "na perna e no pé. Em 1791, a mãe escreveu numa carta que o pé direito dele virava para dentro. "
+            "Médicos da época, como Hunter e Baillie, chamaram de pé torto, mas o diagnóstico é discutido até "
+            "hoje: há outras hipóteses, como uma displasia ou uma alteração da coluna (disrafismo espinhal). "
+            "Os tratamentos doíam, e ele se recusou a usar o aparelho. Mesmo assim, atravessou a nado o "
+            "Helesponto."
+            "\n\n"
+            "Hoje, o tratamento do pé torto congênito começa nas primeiras semanas de vida, com manipulação "
+            "suave e gessos seriados (método de Ponseti), e depois vem uma órtese de manutenção. Com o gesso, "
+            "dedos roxos, pálidos ou frios, inchaço forte ou a criança muito agitada e chorando sem parar: "
+            "isso não espera. Pronto-socorro na hora, avisando a equipe no caminho."
+            "\n\n"
+            "Fonte: Hektoen International, 2018 (JMS Pearce). Os desenhos são ilustrativos: não são retrato, "
+            "exame nem diagnóstico."
+            "\n\n"
+            "Dr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901"
+        ),
+    },
 ]
