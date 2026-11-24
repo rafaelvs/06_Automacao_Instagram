@@ -2494,11 +2494,20 @@
       "sha256": "sha256:ba5bf9086624953598b0820b59c9fd6550bc0a77a7932b9dbbefe4400e13cdad",
       "commit": "6821a545366aad7aa7ea0e1dadd2569284431826",
       "container": "18496164118128523"
+    },
+    {
+      "id": "cf_andador",
+      "kind": "reel",
+      "media_id": "18122204593993037",
+      "at": "2026-11-24T22:01:22.980274+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "como_funciona"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-11-23",
+  "last_reel_date": "2026-11-24",
   "last_seq_date": "2026-10-24",
   "last_story_nova_date": "2026-11-24"
 }
