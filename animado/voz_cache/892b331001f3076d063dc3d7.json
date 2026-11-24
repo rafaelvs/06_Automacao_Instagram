@@ -1,0 +1,543 @@
+{
+ "versao": 2,
+ "chave": "892b331001f3076d063dc3d7",
+ "engine": "gemini",
+ "voz": "Sadaltager",
+ "modelo": "gemini-2.5-flash-tts",
+ "prompt": "Narre em português do Brasil, como um médico ortopedista explicando com calma e clareza para pais num vídeo curto de redes sociais: tom acolhedor, natural, ritmo levemente animado, sem exagero.",
+ "ritmo": "+10%",
+ "taxa": 1.05,
+ "gerado_em": "2026-11-23T23:39:10+00:00",
+ "texto": "Um explorador italiano. E um osso que não colava.\nCarlo Mauri quebrou a tíbia esquiando. O osso não colou, e infeccionou.\nO nome disso: pseudartrose infectada.\nEm mil novecentos e oitenta, ele foi até a Rússia procurar o doutor Ilizarov.\nCom o aparelho, o foco foi alongado aos poucos, dois centímetros. E o osso colou.\nNa volta, contou aos médicos de Lecco. Em mil novecentos e oitenta e um, eles começaram a usar o método.\nManda pra quem tem uma fratura que não cola.",
+ "duracao": 33.759,
+ "alinhamento": {
+  "modelo_whisper": "small",
+  "fracao": 1.0,
+  "buraco": 0,
+  "inseridas": [],
+  "omitidas": [],
+  "trocadas": [],
+  "inseridas_pontas": [],
+  "tomada_aceita": 0,
+  "tomadas": [
+   {
+    "tomada": 0,
+    "dur": 33.76,
+    "problemas": [],
+    "fracao": 1.0,
+    "buraco": 0,
+    "inseridas": [],
+    "omitidas": [],
+    "trocadas": []
+   }
+  ]
+ },
+ "palavras": [
+  {
+   "t": 0.26,
+   "d": 0.12,
+   "w": "Um",
+   "casada": true
+  },
+  {
+   "t": 0.38,
+   "d": 0.64,
+   "w": "explorador",
+   "casada": true
+  },
+  {
+   "t": 1.02,
+   "d": 0.8,
+   "w": "italiano.",
+   "casada": true
+  },
+  {
+   "t": 2.27,
+   "d": 0.09,
+   "w": "E",
+   "casada": true
+  },
+  {
+   "t": 2.36,
+   "d": 0.16,
+   "w": "um",
+   "casada": true
+  },
+  {
+   "t": 2.52,
+   "d": 0.32,
+   "w": "osso",
+   "casada": true
+  },
+  {
+   "t": 2.84,
+   "d": 0.16,
+   "w": "que",
+   "casada": true
+  },
+  {
+   "t": 3.0,
+   "d": 0.26,
+   "w": "não",
+   "casada": true
+  },
+  {
+   "t": 3.26,
+   "d": 0.62,
+   "w": "colava.",
+   "casada": true
+  },
+  {
+   "t": 4.38,
+   "d": 0.3,
+   "w": "Carlo",
+   "casada": true
+  },
+  {
+   "t": 4.68,
+   "d": 0.46,
+   "w": "Mauri",
+   "casada": true
+  },
+  {
+   "t": 5.14,
+   "d": 0.56,
+   "w": "quebrou",
+   "casada": true
+  },
+  {
+   "t": 5.7,
+   "d": 0.24,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 5.94,
+   "d": 0.3,
+   "w": "tíbia",
+   "casada": true
+  },
+  {
+   "t": 6.24,
+   "d": 0.66,
+   "w": "esquiando.",
+   "casada": true
+  },
+  {
+   "t": 7.27,
+   "d": 0.15,
+   "w": "O",
+   "casada": true
+  },
+  {
+   "t": 7.42,
+   "d": 0.28,
+   "w": "osso",
+   "casada": true
+  },
+  {
+   "t": 7.7,
+   "d": 0.28,
+   "w": "não",
+   "casada": true
+  },
+  {
+   "t": 7.98,
+   "d": 0.49,
+   "w": "colou,",
+   "casada": true
+  },
+  {
+   "t": 8.61,
+   "d": 0.15,
+   "w": "e",
+   "casada": true
+  },
+  {
+   "t": 8.76,
+   "d": 0.81,
+   "w": "infeccionou.",
+   "casada": true
+  },
+  {
+   "t": 9.94,
+   "d": 0.08,
+   "w": "O",
+   "casada": true
+  },
+  {
+   "t": 10.02,
+   "d": 0.26,
+   "w": "nome",
+   "casada": true
+  },
+  {
+   "t": 10.28,
+   "d": 0.46,
+   "w": "disso:",
+   "casada": true
+  },
+  {
+   "t": 11.04,
+   "d": 0.84,
+   "w": "pseudartrose",
+   "casada": true
+  },
+  {
+   "t": 11.88,
+   "d": 0.91,
+   "w": "infectada.",
+   "casada": true
+  },
+  {
+   "t": 13.28,
+   "d": 0.14,
+   "w": "Em",
+   "casada": true
+  },
+  {
+   "t": 13.42,
+   "d": 0.1091,
+   "w": "mil",
+   "casada": true
+  },
+  {
+   "t": 13.5291,
+   "d": 0.3636,
+   "w": "novecentos",
+   "casada": true
+  },
+  {
+   "t": 13.8927,
+   "d": 0.0364,
+   "w": "e",
+   "casada": true
+  },
+  {
+   "t": 13.9291,
+   "d": 0.9509,
+   "w": "oitenta,",
+   "casada": true
+  },
+  {
+   "t": 15.09,
+   "d": 0.11,
+   "w": "ele",
+   "casada": true
+  },
+  {
+   "t": 15.2,
+   "d": 0.2,
+   "w": "foi",
+   "casada": true
+  },
+  {
+   "t": 15.4,
+   "d": 0.28,
+   "w": "até",
+   "casada": true
+  },
+  {
+   "t": 15.68,
+   "d": 0.22,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 15.9,
+   "d": 0.39,
+   "w": "Rússia",
+   "casada": true
+  },
+  {
+   "t": 16.34,
+   "d": 0.38,
+   "w": "procurar",
+   "casada": true
+  },
+  {
+   "t": 16.72,
+   "d": 0.14,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 16.86,
+   "d": 0.42,
+   "w": "doutor",
+   "casada": true
+  },
+  {
+   "t": 17.35,
+   "d": 0.77,
+   "w": "Ilizarov.",
+   "casada": true
+  },
+  {
+   "t": 18.64,
+   "d": 0.1,
+   "w": "Com",
+   "casada": true
+  },
+  {
+   "t": 18.74,
+   "d": 0.12,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 18.86,
+   "d": 0.51,
+   "w": "aparelho,",
+   "casada": true
+  },
+  {
+   "t": 19.6,
+   "d": 0.1,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 19.7,
+   "d": 0.34,
+   "w": "foco",
+   "casada": true
+  },
+  {
+   "t": 20.04,
+   "d": 0.22,
+   "w": "foi",
+   "casada": true
+  },
+  {
+   "t": 20.26,
+   "d": 0.44,
+   "w": "alongado",
+   "casada": true
+  },
+  {
+   "t": 20.7,
+   "d": 0.24,
+   "w": "aos",
+   "casada": true
+  },
+  {
+   "t": 20.94,
+   "d": 0.6,
+   "w": "poucos,",
+   "casada": true
+  },
+  {
+   "t": 21.75,
+   "d": 0.35,
+   "w": "dois",
+   "casada": true
+  },
+  {
+   "t": 22.1,
+   "d": 0.83,
+   "w": "centímetros.",
+   "casada": true
+  },
+  {
+   "t": 23.17,
+   "d": 0.09,
+   "w": "E",
+   "casada": true
+  },
+  {
+   "t": 23.26,
+   "d": 0.14,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 23.4,
+   "d": 0.24,
+   "w": "osso",
+   "casada": true
+  },
+  {
+   "t": 23.64,
+   "d": 0.39,
+   "w": "colou.",
+   "casada": true
+  },
+  {
+   "t": 24.48,
+   "d": 0.14,
+   "w": "Na",
+   "casada": true
+  },
+  {
+   "t": 24.62,
+   "d": 0.64,
+   "w": "volta,",
+   "casada": true
+  },
+  {
+   "t": 25.26,
+   "d": 0.3,
+   "w": "contou",
+   "casada": true
+  },
+  {
+   "t": 25.56,
+   "d": 0.18,
+   "w": "aos",
+   "casada": true
+  },
+  {
+   "t": 25.74,
+   "d": 0.42,
+   "w": "médicos",
+   "casada": true
+  },
+  {
+   "t": 26.16,
+   "d": 0.18,
+   "w": "de",
+   "casada": true
+  },
+  {
+   "t": 26.34,
+   "d": 0.28,
+   "w": "Lecco.",
+   "casada": true
+  },
+  {
+   "t": 26.62,
+   "d": 0.66,
+   "w": "Em",
+   "casada": true
+  },
+  {
+   "t": 27.28,
+   "d": 0.1344,
+   "w": "mil",
+   "casada": true
+  },
+  {
+   "t": 27.4144,
+   "d": 0.448,
+   "w": "novecentos",
+   "casada": true
+  },
+  {
+   "t": 27.8624,
+   "d": 0.0448,
+   "w": "e",
+   "casada": true
+  },
+  {
+   "t": 27.9072,
+   "d": 0.3136,
+   "w": "oitenta",
+   "casada": true
+  },
+  {
+   "t": 28.2208,
+   "d": 0.0448,
+   "w": "e",
+   "casada": true
+  },
+  {
+   "t": 28.2656,
+   "d": 0.5944,
+   "w": "um,",
+   "casada": true
+  },
+  {
+   "t": 29.09,
+   "d": 0.15,
+   "w": "eles",
+   "casada": true
+  },
+  {
+   "t": 29.24,
+   "d": 0.7,
+   "w": "começaram",
+   "casada": true
+  },
+  {
+   "t": 29.94,
+   "d": 0.08,
+   "w": "a",
+   "casada": true
+  },
+  {
+   "t": 30.02,
+   "d": 0.24,
+   "w": "usar",
+   "casada": true
+  },
+  {
+   "t": 30.26,
+   "d": 0.14,
+   "w": "o",
+   "casada": true
+  },
+  {
+   "t": 30.4,
+   "d": 0.45,
+   "w": "método.",
+   "casada": true
+  },
+  {
+   "t": 31.22,
+   "d": 0.36,
+   "w": "Manda",
+   "casada": true
+  },
+  {
+   "t": 31.58,
+   "d": 0.16,
+   "w": "pra",
+   "casada": true
+  },
+  {
+   "t": 31.74,
+   "d": 0.24,
+   "w": "quem",
+   "casada": true
+  },
+  {
+   "t": 31.98,
+   "d": 0.24,
+   "w": "tem",
+   "casada": true
+  },
+  {
+   "t": 32.22,
+   "d": 0.14,
+   "w": "uma",
+   "casada": true
+  },
+  {
+   "t": 32.36,
+   "d": 0.48,
+   "w": "fratura",
+   "casada": true
+  },
+  {
+   "t": 32.84,
+   "d": 0.24,
+   "w": "que",
+   "casada": true
+  },
+  {
+   "t": 33.08,
+   "d": 0.26,
+   "w": "não",
+   "casada": true
+  },
+  {
+   "t": 33.34,
+   "d": 0.41,
+   "w": "cola.",
+   "casada": true
+  }
+ ],
+ "amostras": 1620416,
+ "pcm_sha256": "91322374cf29081d509d547ee6a0f7f8bab9496df9c7de8a83aa89bda3214c88"
+}

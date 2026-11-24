@@ -2778,4 +2778,74 @@ EPISODIOS_ENTRETENIMENTO = [
             "Dr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901"
         ),
     },
+    {
+        "id": "cf_hist_mauri",
+        "formato": "como_funciona",
+        "serie": "História no osso",
+        "tema": "consolidacao",
+        "familia": "reconstrucao",
+        "cena": "cf_hist_mauri",
+        "gancho": ["UM EXPLORADOR E UM", "OSSO QUE NÃO COLAVA"],
+        "tela": [
+            "HISTÓRIA NO OSSO",
+            "NÃO COLAVA",
+            "NO PASSADO",
+            "CARLO MAURI",
+            "TÍBIA QUEBRADA",
+            "NÃO COLOU",
+            "INFECCIONOU",
+            "O OSSO NÃO COLA",
+            "PSEUDARTROSE",
+            "INFECTADA",
+            "1980",
+            "ITÁLIA",
+            "RÚSSIA",
+            "DR. ILIZAROV",
+            "O FOCO",
+            "AOS POUCOS",
+            "OSSO NOVO",
+            "2 CM",
+            "COLOU",
+            "CADA CASO É ÚNICO",
+            "NÃO É PROMESSA DE RESULTADO",
+            "NA VOLTA",
+            "MÉDICOS DE LECCO",
+            "1981",
+            "HOSPITAL DE LECCO",
+            "PASSOU A USAR O MÉTODO",
+            "HOJE",
+            "Desenho ilustrativo: não é exame",
+            "Fonte: Paley Institute",
+        ],
+        "roteiro": [
+            "Um explorador italiano. E um osso que não colava.",
+            "Carlo Mauri quebrou a tíbia esquiando. O osso não colou, e infeccionou.",
+            "O nome disso: pseudartrose infectada.",
+            "Em mil novecentos e oitenta, ele foi até a Rússia procurar o doutor Ilizarov.",
+            "Com o aparelho, o foco foi alongado aos poucos, dois centímetros. E o osso colou.",
+            "Na volta, contou aos médicos de Lecco. Em mil novecentos e oitenta e um, eles começaram a usar o método.",
+            "Manda pra quem tem uma fratura que não cola.",
+        ],
+        "cta": "Manda pra quem tem uma fratura que não cola.",
+        "legenda": (
+            "História no osso: Carlo Mauri, explorador italiano e instrutor de esqui, foi atingido por outro "
+            "esquiador e teve uma fratura exposta da tíbia. O osso não colou e infeccionou: é a pseudartrose "
+            "infectada, e no caso dele veio com deformidade e encurtamento. Em março de 1980 ele foi a Kurgan, "
+            "na Rússia, e em abril foi operado pelo Dr. Ilizarov. O foco, que era rígido, foi alongado aos "
+            "poucos, 2 cm, e o osso consolidou. De volta à Itália, contou ao Dr. Villa, em Lecco, e em 1981 o "
+            "hospital de lá começou a usar o método."
+            "\n\n"
+            "Essa é a história de uma pessoa, não uma promessa: o resultado varia, há riscos, e nem toda "
+            "fratura que não cola se trata assim. A escolha é sempre caso a caso. Dor que persiste no local da "
+            "fratura meses depois, ou a sensação de que a perna não sustenta: leve para avaliação com quem "
+            "trata reconstrução óssea. Para quem usa fixador, sinais de infecção (secreção com pus ou mau "
+            "cheiro, vermelhidão que aumenta ou dor nova) pedem contato precoce com a equipe; com febre, "
+            "pronto-socorro."
+            "\n\n"
+            "Fonte: Paley Institute (Historical Vignettes). Os desenhos são ilustrativos: não são retrato, "
+            "exame nem diagnóstico."
+            "\n\n"
+            "Dr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901"
+        ),
+    },
 ]
