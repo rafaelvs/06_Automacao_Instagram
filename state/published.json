@@ -2452,11 +2452,53 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "como_funciona"
+    },
+    {
+      "id": "stn_quadril_ultrassom#0",
+      "kind": "story_nova",
+      "story": "stn_quadril_ultrassom",
+      "parte": 0,
+      "media_id": "17988596885899936",
+      "at": "2026-11-24T15:31:20.712420+00:00",
+      "temas": [
+        "quadril_bebe"
+      ],
+      "sha256": "sha256:dcef27ee30cd7e9d8168613413f3779dfed2a1c22a2c557cd5740e321f9e4baa",
+      "commit": "6821a545366aad7aa7ea0e1dadd2569284431826",
+      "container": "18496164112128523"
+    },
+    {
+      "id": "stn_quadril_ultrassom#1",
+      "kind": "story_nova",
+      "story": "stn_quadril_ultrassom",
+      "parte": 1,
+      "media_id": "17929025547200537",
+      "at": "2026-11-24T15:31:20.712420+00:00",
+      "temas": [
+        "quadril_bebe"
+      ],
+      "sha256": "sha256:483de140b81a56f5fc7f48bef35409e257eec76fe3de833371ddf0b58c7633ce",
+      "commit": "6821a545366aad7aa7ea0e1dadd2569284431826",
+      "container": "18496164115128523"
+    },
+    {
+      "id": "stn_quadril_ultrassom#2",
+      "kind": "story_nova",
+      "story": "stn_quadril_ultrassom",
+      "parte": 2,
+      "media_id": "18122434075785826",
+      "at": "2026-11-24T15:31:20.712420+00:00",
+      "temas": [
+        "quadril_bebe"
+      ],
+      "sha256": "sha256:ba5bf9086624953598b0820b59c9fd6550bc0a77a7932b9dbbefe4400e13cdad",
+      "commit": "6821a545366aad7aa7ea0e1dadd2569284431826",
+      "container": "18496164118128523"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-11-23",
   "last_seq_date": "2026-10-24",
-  "last_story_nova_date": "2026-11-21"
+  "last_story_nova_date": "2026-11-24"
 }
