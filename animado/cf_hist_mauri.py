@@ -36,7 +36,7 @@ ANCORAS = {k: (p, n, False) for k, p, n in (
 DESTAQUE = {"explorador", "osso", "colava", "carlo", "mauri", "tíbia", "infeccionou", "pseudartrose", "infectada",
             "rússia", "ilizarov", "foco", "alongado", "dois", "centímetros", "colou", "lecco", "método", "fratura"}
 
-YF, VAO0, ABRE = 760, 20, 110            # foco; vão inicial (tecido, rígido); quanto abre (esquemático)
+YF, VAO0, ABRE = 760, 20, 58             # foco; vão inicial (tecido, rígido); quanto abre (perto da escala de 2 cm)
 Y_AN = (465, 635, 905, 1030)             # dois anéis antes e dois depois do foco
 RX, RY = tr.RX2, tr.RY2
 FIBRA, INFEC = "#B9788A", "#E5565E"
@@ -105,7 +105,7 @@ def aparelho(cv, d, pr, frente, giro=0.0):
     ys = [Y_AN[0], Y_AN[1], Y_AN[2] + d, Y_AN[3] + d]
     if not frente:
         for i, y in enumerate(ys):
-            tr.anel(cv, y, (1 - e_out(pr)) * (-700 if i % 2 else 700), clamp(pr * 3), "tras")
+            tr.anel(cv, y, 0, prog(pr, .1 * i, .1 * i + .25), "tras")      # aparece no lugar, já em volta do osso
         return
     for y in ys:
         fio(cv, y, prog(pr, .55, 1))
@@ -115,7 +115,7 @@ def aparelho(cv, d, pr, frente, giro=0.0):
         haste(cv, x, ys[0], ys[1], a); haste(cv, x, ys[1], ys[2], a, rosca=True); haste(cv, x, ys[2], ys[3], a)
         porca(cv, x, ys[2] - 20, giro, a); porca(cv, x, ys[2] + 20, -giro, a)
     for i, y in enumerate(ys):
-        tr.anel(cv, y, (1 - e_out(pr)) * (-700 if i % 2 else 700), clamp(pr * 3), "frente")
+        tr.anel(cv, y, 0, prog(pr, .1 * i, .1 * i + .25), "frente")
 
 
 def no_mundo(cv, cx, cy, s):
@@ -200,7 +200,7 @@ def cena_neve(cv, t, T):
     bate = prog(t, T["quebrou"] + .05, T["quebrou"] + .45)
     ny = lambda xx: 720 + (xx - 60) * .302
     esquiador(cv, v, ny(v) - 4, inc - 14 * bate, "#7A8794", "#E4EAF0")          # o outro esquiador
-    esquiador(cv, x + 40 * bate, ny(x + 40 * bate) - 4, inc + 46 * e_out(bate), SILH, OURO)
+    esquiador(cv, x + 40 * bate, ny(x + 40 * bate) - 4, inc + 68 * e_out(bate), SILH, OURO)
     k = prog(t, T["quebrou"] + .05, T["quebrou"] + .5)
     if 0 < k < 1:
         for i in range(10):
@@ -211,7 +211,7 @@ def cena_neve(cv, t, T):
     cv.drawRRect(rr(60, 400, 1020, 1120, 34), paint(SILH_L, 160, "stroke", 4))
     b = e_back(prog(t, T["tibia"] - .15, T["tibia"] + .25))
     if b > 0.02:
-        lupa(cv, t, 775, 660, 210 * b, .62 * b, 1)
+        lupa(cv, t, 790, 605, 185 * b, .56 * b, 1)
     cv.restore()
     chip(cv, "CARLO MAURI", 540, 1170, OURO, janela(t, T["carlo"], T["tibia"] - .25), 56)
     chip(cv, "TÍBIA QUEBRADA", 540, 1170, CORAL, janela(t, T["tibia"], T["osso2"] - .4), 52)
@@ -327,7 +327,7 @@ def cena_foco(cv, t, T):
     cv.saveLayerAlpha(None, int(255 * a))
     cv.save(); no_mundo(cv, OS_CX, cy, s)
     aparelho(cv, d, pr, False)
-    osso(cv, t, VAO0 + d, fibra=1 - clamp(u * 2.2), infec=.55 * (1 - prog(t, T["aparelho"], T["alongado"])),
+    osso(cv, t, VAO0 + d, fibra=1 - clamp(u * 2.2), infec=.55 * (1 - colou),
          novo=novo, duro=.6 * colou, brilho=.5 * (1 - colou))
     aparelho(cv, d, pr, True, d * 4)
     brilhos(cv, CX, YF + (VAO0 + d) / 2, t, T["colou2"] + .05, n=12, raio=170)
@@ -341,10 +341,10 @@ def cena_foco(cv, t, T):
         chip(cv, "O FOCO", 735, (ya + yb) / 2 + 16, OURO, b, 46)
     c = janela(t, T["dois"] - .1, T["contou"] - .3)
     if c > 0:
-        x = 575
-        for yy in (ya, yb):
+        x, ym = 575, yb - d * s                          # a medida é só o que abriu
+        for yy in (ym, yb):
             linha(cv, x - 20, yy, x + 20, yy, OURO, 6, int(255 * c))
-        linha(cv, x, ya, x, yb, OURO, 6, int(255 * c))
+        linha(cv, x, ym, x, yb, OURO, 6, int(255 * c))
         chip(cv, "2 CM", 715, (ya + yb) / 2 + 22, OURO, c, 60)
     cv.restore()
     chip(cv, "AOS POUCOS", 775, 470, "#FFFFFF", janela(t, T["poucos"] - .25, T["osso3"] - .2), 46, OURO)
@@ -400,7 +400,7 @@ def cena_lecco(cv, t, T):
 
 # ------------------------------------------------------------------ quadro
 def faixa_epoca(cv, t, T):
-    for s, t0, t1 in (("NO PASSADO", T["carlo"] - .1, T["mil1"] - .35), ("1980", T["mil1"] - .1, T["volta"] - .3),
+    for s, t0, t1 in (("NO PASSADO", T["carlo"] - .1, T["mil1"] - .35), ("1980", T["mil1"] - .1, T["osso3"] - .15),
                       ("NA VOLTA", T["volta"] - .1, T["mil2"] - .35), ("1981", T["mil2"] - .1, T["manda"] - .45)):
         chip(cv, s, 540, 300, PAPEL, janela(t, t0, t1, .2, .2), 46)
 
