@@ -666,6 +666,74 @@
       "story": "stn_pe_pra_dentro",
       "parte": 0,
       "kind": "story_nova"
+    },
+    "18122434075785826": {
+      "id": "18122434075785826",
+      "quando": "2026-11-24T15:32",
+      "tipo": "VIDEO",
+      "views": 33,
+      "reach": 32,
+      "replies": 0,
+      "shares": 0,
+      "navigation": 32,
+      "follows": 0,
+      "profile_visits": 0,
+      "navegacao": {
+        "tap_exit": 9,
+        "tap_forward": 20,
+        "swipe_forward": 2,
+        "tap_back": 1
+      },
+      "medido_em": "2026-11-25T10:47:42+00:00",
+      "idade_h": 19.3,
+      "story": "stn_quadril_ultrassom",
+      "parte": 2,
+      "kind": "story_nova"
+    },
+    "17929025547200537": {
+      "id": "17929025547200537",
+      "quando": "2026-11-24T15:31",
+      "tipo": "VIDEO",
+      "views": 41,
+      "reach": 35,
+      "replies": 0,
+      "shares": 0,
+      "navigation": 34,
+      "follows": 0,
+      "profile_visits": 0,
+      "navegacao": {
+        "tap_back": 3,
+        "tap_exit": 3,
+        "tap_forward": 26,
+        "swipe_forward": 2
+      },
+      "medido_em": "2026-11-25T10:47:42+00:00",
+      "idade_h": 19.3,
+      "story": "stn_quadril_ultrassom",
+      "parte": 1,
+      "kind": "story_nova"
+    },
+    "17988596885899936": {
+      "id": "17988596885899936",
+      "quando": "2026-11-24T15:31",
+      "tipo": "VIDEO",
+      "views": 47,
+      "reach": 41,
+      "replies": 0,
+      "shares": 0,
+      "navigation": 40,
+      "follows": 0,
+      "profile_visits": 0,
+      "navegacao": {
+        "tap_forward": 31,
+        "tap_exit": 5,
+        "swipe_forward": 4
+      },
+      "medido_em": "2026-11-25T10:47:42+00:00",
+      "idade_h": 19.3,
+      "story": "stn_quadril_ultrassom",
+      "parte": 0,
+      "kind": "story_nova"
     }
   }
 }
