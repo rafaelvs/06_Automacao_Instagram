@@ -2512,11 +2512,20 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "camera_lenta"
+    },
+    {
+      "id": "cf_var_dor_crescimento",
+      "kind": "reel",
+      "media_id": "17999152968055878",
+      "at": "2026-11-26T21:01:33.314471+00:00",
+      "modo_reel": "normal",
+      "rotulo_ia": true,
+      "formato": "chama_o_var"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
-  "last_reel_date": "2026-11-25",
+  "last_reel_date": "2026-11-26",
   "last_seq_date": "2026-10-24",
   "last_story_nova_date": "2026-11-24"
 }
