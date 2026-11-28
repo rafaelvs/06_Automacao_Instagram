@@ -2530,11 +2530,53 @@
       "modo_reel": "normal",
       "rotulo_ia": true,
       "formato": "como_funciona"
+    },
+    {
+      "id": "stn_maratona_osso#0",
+      "kind": "story_nova",
+      "story": "stn_maratona_osso",
+      "parte": 0,
+      "media_id": "17927639004446445",
+      "at": "2026-11-28T15:31:12.367497+00:00",
+      "temas": [
+        "trauma_transporte"
+      ],
+      "sha256": "sha256:718f868b7cb200e8e75e36ce542c6d15c7522afeb1f113f7f759579ee0b88916",
+      "commit": "7d8957780c17f8c5dadbb911b99573620749289c",
+      "container": "18496853530128523"
+    },
+    {
+      "id": "stn_maratona_osso#1",
+      "kind": "story_nova",
+      "story": "stn_maratona_osso",
+      "parte": 1,
+      "media_id": "18190081690419494",
+      "at": "2026-11-28T15:31:12.367497+00:00",
+      "temas": [
+        "trauma_transporte"
+      ],
+      "sha256": "sha256:e77e0f96d520d20e69dd522f75c3be37ff7f166d718f2388cac09be7f27de05b",
+      "commit": "7d8957780c17f8c5dadbb911b99573620749289c",
+      "container": "18496853533128523"
+    },
+    {
+      "id": "stn_maratona_osso#2",
+      "kind": "story_nova",
+      "story": "stn_maratona_osso",
+      "parte": 2,
+      "media_id": "18422467804081950",
+      "at": "2026-11-28T15:31:12.367497+00:00",
+      "temas": [
+        "trauma_transporte"
+      ],
+      "sha256": "sha256:60e601efba8fbf5aa79ed142dbbb265c8fb27d9bdedec12f506f9251d715b7dc",
+      "commit": "7d8957780c17f8c5dadbb911b99573620749289c",
+      "container": "18496853536128523"
     }
   ],
   "last_post_date": "2026-10-24",
   "last_story_date": "2026-06-07",
   "last_reel_date": "2026-11-27",
   "last_seq_date": "2026-10-24",
-  "last_story_nova_date": "2026-11-24"
+  "last_story_nova_date": "2026-11-28"
 }
