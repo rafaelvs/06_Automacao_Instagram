@@ -221,8 +221,24 @@ def auto_teste():
         _, msgs = classificar({g: 30 for g in GRUPOS}, vz, sem["pend"], seg, None, data_programacao(txt), seg)
         nivel = next(nv for nv, m in msgs if m.startswith("PROGRAMACAO"))
         caso(f"programação: '{txt}' = {esperado}", nivel == esperado)
+    # --hoje no futuro com estado de ontem: a projeção parte do ESTADO e consome a fila até hoje (verificador 27/11:
+    # com `base = hoje` este controle positivo virava amarelo e nada acusava)
+    seg8 = seg + dt.timedelta(days=7)
+    fila8 = fila(4, 12, 8)
+    rc, msgs = avaliar(fila8, pub, [], prog_ok, seg8, aprovacoes={"lotes": []}, reels_por_id={})
+    caso("futuro: estado de ontem + 7 dias consome os 4 COMO FUNCIONA = VERMELHO", rc == 1)
+    _, _, proj = cobertura_reels(fila8, pub, seg8)
+    pend = pendentes_por_formato(fila8, pub, [rid for d, rid in proj if d < seg8])
+    caso("futuro: peças com peso descontam as que a projeção já publicou (20 - 3 = 17)",
+         pend["camera_lenta"] + pend["chama_o_var"] == 17)
+    # estado à frente de hoje: base volta para hoje
+    pub_fut = pub + [{"id": "fut", "kind": "reel", "at": dt.datetime(2027, 3, 5, 15, 5, tzinfo=R.BRT).isoformat()}]
+    caso("estado à frente de hoje: base = hoje", base_do_estado(pub_fut, seg)[0] == seg)
+    # bloqueio de story na projeção = amarelo
+    _, msgs = classificar({g: 30 for g in GRUPOS}, vz, sem["pend"], seg, "story X sem aprovação", seg, seg)
+    caso("story: bloqueio na projeção = AMARELO", any(n == "AMARELO" and "BLOQUEIO" in m for n, m in msgs))
     os.environ.pop("TROCAS_DE_DIA"); os.environ.pop("REEL_DO_DIA")
-    total = 4 + 4 + 2 + 3 + 3
+    total = 4 + 4 + 2 + 3 + 3 + 4
     print(f"AUTO-TESTE: {total - falhas}/{total} —", "PASSOU" if not falhas else "REPROVOU")
     return 1 if falhas else 0
 
