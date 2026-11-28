@@ -712,7 +712,7 @@
   },
   {
     "id": "stn_maratona_osso",
-    "tema": "tempo_tratamento",
+    "tema": "trauma_transporte",
     "reel_ref": "cf_transporte_osseo",
     "reel_sha256": "sha256:728c5b59e98e1625b6a8072b0b389ca3d707886c29cc34ea1364ee37709a078b",
     "resposta_no_reel_em": 18.27,
