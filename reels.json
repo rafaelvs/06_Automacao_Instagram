@@ -2898,6 +2898,128 @@
     ]
   },
   {
+    "id": "cf_hist_byron",
+    "video": "reels/_preview_cf_hist_byron.mp4",
+    "caption": "História no osso: Lord Byron, um dos poetas mais famosos da história, nasceu com uma deformidade na perna e no pé. Em 1791, a mãe escreveu numa carta que o pé direito dele virava para dentro. Médicos da época, como Hunter e Baillie, chamaram de pé torto, mas o diagnóstico é discutido até hoje: há outras hipóteses, como uma displasia ou uma alteração da coluna (disrafismo espinhal). Os tratamentos doíam, e ele se recusou a usar o aparelho. Mesmo assim, atravessou a nado o Helesponto.\n\nHoje, o tratamento do pé torto congênito começa nas primeiras semanas de vida, com manipulação suave e gessos seriados (método de Ponseti), e depois vem uma órtese de manutenção. Com o gesso, dedos roxos, pálidos ou frios, inchaço forte ou a criança muito agitada e chorando sem parar: isso não espera. Pronto-socorro na hora, avisando a equipe no caminho.\n\nManda pra quem tem um bebê com pé torto.\n\nSociedade da área: @sbopbr\n\nNarração com voz digital (IA).\nFonte: Hektoen International, 2018 (JMS Pearce). Os desenhos são ilustrativos: não são retrato, exame nem diagnóstico.\nDr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "como_funciona",
+    "serie": "História no osso",
+    "dur": 36.1,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Ele nasceu com o pé diferente. E virou um dos poetas mais famosos da história."
+      },
+      {
+        "vo": "Lord Byron. A mãe escreveu: o pé direito vira pra dentro."
+      },
+      {
+        "vo": "Médicos da época chamaram de pé torto. Até hoje se discute."
+      },
+      {
+        "vo": "Os tratamentos doíam. E o aparelho, ele se recusou a usar."
+      },
+      {
+        "vo": "Mesmo assim, atravessou um estreito a nado."
+      },
+      {
+        "vo": "Hoje, o pé torto tem manipulação suave e gessos, desde as primeiras semanas."
+      },
+      {
+        "vo": "Depois, uma órtese, pra manter."
+      },
+      {
+        "vo": "Manda pra quem tem um bebê com pé torto."
+      },
+      {
+        "tela": "UM POETA FAMOSO,"
+      },
+      {
+        "tela": "UM PÉ DIFERENTE"
+      },
+      {
+        "tela": "HISTÓRIA NO OSSO"
+      },
+      {
+        "tela": "NO PASSADO"
+      },
+      {
+        "tela": "POETA"
+      },
+      {
+        "tela": "LORD BYRON"
+      },
+      {
+        "tela": "1791"
+      },
+      {
+        "tela": "CARTA DA MÃE"
+      },
+      {
+        "tela": "PÉ DIREITO"
+      },
+      {
+        "tela": "PRA DENTRO"
+      },
+      {
+        "tela": "MÉDICOS DA ÉPOCA"
+      },
+      {
+        "tela": "PÉ TORTO"
+      },
+      {
+        "tela": "?"
+      },
+      {
+        "tela": "PÉ TORTO? AINDA SE DISCUTE"
+      },
+      {
+        "tela": "O TRATAMENTO DOÍA"
+      },
+      {
+        "tela": "APARELHO"
+      },
+      {
+        "tela": "RECUSOU USAR"
+      },
+      {
+        "tela": "HELESPONTO"
+      },
+      {
+        "tela": "A NADO"
+      },
+      {
+        "tela": "HOJE"
+      },
+      {
+        "tela": "MANIPULAÇÃO SUAVE"
+      },
+      {
+        "tela": "GESSOS"
+      },
+      {
+        "tela": "aos poucos"
+      },
+      {
+        "tela": "PÉ TORTO DO BEBÊ"
+      },
+      {
+        "tela": "DESDE AS PRIMEIRAS SEMANAS"
+      },
+      {
+        "tela": "ÓRTESE"
+      },
+      {
+        "tela": "pra manter"
+      },
+      {
+        "tela": "Diagnóstico de Byron: discutido"
+      },
+      {
+        "tela": "Fonte: Hektoen International, 2018"
+      }
+    ]
+  },
+  {
     "id": "cf_fisioterapia",
     "video": "reels/_preview_cf_fisioterapia.mp4",
     "caption": "No alongamento ósseo, o fixador externo afasta as partes do osso cerca de um milímetro por dia, e a fisioterapia faz parte do plano desde o início, junto com a higiene dos pinos e o ritmo de ajuste. O motivo: osso novo e articulação não gostam de ficar parados; movimento e carga na dose certa, apoiando o quanto foi combinado, mantêm a articulação solta e fortalecem o osso. Quem pula essa parte corre o risco de a articulação enrijecer e de o músculo encolher, e aí a rigidez rouba parte do ganho que a cirurgia deu. O segredo não é treino pesado: é constância, um pouco todo dia, guiado pela equipe, e a fisioterapia continua depois que o fixador sai. Nos dias de ajuste, sensação de pressão e dor muscular são comuns. Dor que dispara de repente, não cede com a medicação ou vem com vermelhidão: avise a equipe; com febre, pronto-socorro.\n\nManda pra quem acha que fisioterapia fica pra depois.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nDr. Rafael Vargas · Médico · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
@@ -3304,6 +3426,131 @@
       },
       {
         "tela": "RAIO-X"
+      }
+    ]
+  },
+  {
+    "id": "cf_hist_mauri",
+    "video": "reels/_preview_cf_hist_mauri.mp4",
+    "caption": "História no osso: Carlo Mauri, explorador italiano e instrutor de esqui, foi atingido por outro esquiador e teve uma fratura exposta da tíbia. O osso não colou e infeccionou: é a pseudartrose infectada, e no caso dele veio com deformidade e encurtamento. Em março de 1980 ele foi a Kurgan, na Rússia, e em abril foi operado pelo Dr. Ilizarov. O foco, que era rígido, foi alongado aos poucos, 2 cm, e o osso consolidou. De volta à Itália, contou ao Dr. Villa, em Lecco, e em 1981 o hospital de lá começou a usar o método.\n\nEssa é a história de uma pessoa, não uma promessa: o resultado varia, há riscos, e nem toda fratura que não cola se trata assim. A escolha é sempre caso a caso. Dor que persiste no local da fratura meses depois, ou a sensação de que a perna não sustenta: leve para avaliação com quem trata reconstrução óssea. Para quem usa fixador, sinais de infecção (secreção com pus ou mau cheiro, vermelhidão que aumenta ou dor nova) pedem contato precoce com a equipe; com febre, pronto-socorro.\n\nManda pra quem tem uma fratura que não cola.\n\nSociedade da área: @asami.brasil\n\nNarração com voz digital (IA).\nFonte: Paley Institute (Historical Vignettes). Os desenhos são ilustrativos: não são retrato, exame nem diagnóstico.\nDr. Rafael Vargas · Médico ortopedista · CRM-SP 226103 · RQE 137901\nConteúdo educativo; não substitui avaliação individual.",
+    "formato": "como_funciona",
+    "serie": "História no osso",
+    "dur": 36.5,
+    "voz_ia": true,
+    "scenes": [
+      {
+        "vo": "Um explorador italiano. E um osso que não colava."
+      },
+      {
+        "vo": "Carlo Mauri quebrou a tíbia esquiando. O osso não colou, e infeccionou."
+      },
+      {
+        "vo": "O nome disso: pseudartrose infectada."
+      },
+      {
+        "vo": "Em mil novecentos e oitenta, ele foi até a Rússia procurar o doutor Ilizarov."
+      },
+      {
+        "vo": "Com o aparelho, o foco foi alongado aos poucos, dois centímetros. E o osso colou."
+      },
+      {
+        "vo": "Na volta, contou aos médicos de Lecco. Em mil novecentos e oitenta e um, eles começaram a usar o método."
+      },
+      {
+        "vo": "Manda pra quem tem uma fratura que não cola."
+      },
+      {
+        "tela": "UM EXPLORADOR E UM"
+      },
+      {
+        "tela": "OSSO QUE NÃO COLAVA"
+      },
+      {
+        "tela": "HISTÓRIA NO OSSO"
+      },
+      {
+        "tela": "NÃO COLAVA"
+      },
+      {
+        "tela": "NO PASSADO"
+      },
+      {
+        "tela": "CARLO MAURI"
+      },
+      {
+        "tela": "TÍBIA QUEBRADA"
+      },
+      {
+        "tela": "NÃO COLOU"
+      },
+      {
+        "tela": "INFECCIONOU"
+      },
+      {
+        "tela": "O OSSO NÃO COLA"
+      },
+      {
+        "tela": "PSEUDARTROSE"
+      },
+      {
+        "tela": "INFECTADA"
+      },
+      {
+        "tela": "1980"
+      },
+      {
+        "tela": "ITÁLIA"
+      },
+      {
+        "tela": "RÚSSIA"
+      },
+      {
+        "tela": "DR. ILIZAROV"
+      },
+      {
+        "tela": "O FOCO"
+      },
+      {
+        "tela": "AOS POUCOS"
+      },
+      {
+        "tela": "OSSO NOVO"
+      },
+      {
+        "tela": "2 CM"
+      },
+      {
+        "tela": "COLOU"
+      },
+      {
+        "tela": "CADA CASO É ÚNICO"
+      },
+      {
+        "tela": "NÃO É PROMESSA DE RESULTADO"
+      },
+      {
+        "tela": "NA VOLTA"
+      },
+      {
+        "tela": "MÉDICOS DE LECCO"
+      },
+      {
+        "tela": "1981"
+      },
+      {
+        "tela": "HOSPITAL DE LECCO"
+      },
+      {
+        "tela": "PASSOU A USAR O MÉTODO"
+      },
+      {
+        "tela": "HOJE"
+      },
+      {
+        "tela": "Desenho ilustrativo: não é exame"
+      },
+      {
+        "tela": "Fonte: Paley Institute"
       }
     ]
   },

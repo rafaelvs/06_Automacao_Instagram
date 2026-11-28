@@ -1125,6 +1125,28 @@
      "hash_roteiro": "sha256:2a4f46489d51624e845f567de5b2069c217ca30d80b3768e39365d3f120f98a0"
     }
    ]
+  },
+  {
+   "lote": "HISTORIA-NO-OSSO-PILOTOS-2026-11-27",
+   "nome": "História no osso: pilotos Lord Byron e Carlo Mauri",
+   "escopo": [
+    "instagram-reels"
+   ],
+   "status": "aprovado",
+   "aprovado_por": "Dr. Rafael Vargas (CRM-SP 226103, RQE 137901)",
+   "data": "2026-11-27",
+   "evidencia": "Chat Instagram, 27/11/2026: depois de ver os dois pilotos renderizados (piloto_historia_no_osso_2026-11/1_lord_byron_piloto.mp4 e 2_carlo_mauri_piloto.mp4) e a lista de pendências que pedia o OK clínico de Byron e Mauri, o Rafael respondeu: 'Tudo autorizado, segue'.",
+   "observacoes": "Série escolhida por ele em 21/11 (Byron → Mauri → Joseph Smith); avaliar os 3 antes de criar mais. Ritmo: 1 por semana a partir de 02/12.",
+   "episodios": [
+    {
+     "id": "cf_hist_byron",
+     "hash_roteiro": "sha256:675575d1217ac26083e392c1e15dc04a87e57fb3f6a593f846b8ed5da3d74435"
+    },
+    {
+     "id": "cf_hist_mauri",
+     "hash_roteiro": "sha256:20b3082150d859060cf9aca2194c5522252d4928446fac78dfb814e1393bed13"
+    }
+   ]
   }
  ]
 }
