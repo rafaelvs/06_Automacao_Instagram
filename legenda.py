@@ -316,6 +316,11 @@ def validar(caption, formato):
         p.append("assinatura sem Médico+CRM+RQE")
     if "whatsapp" in n or "link da bio" in n:
         p.append("CTA de contato na legenda")
+    # Ordem do Rafael, 11/11/2026: "não vamos falar de alongamento estético nas redes sociais" —
+    # nem para negar ("nunca estética" também é falso: ele faz). A auditoria v4 (27/11) achou 5
+    # legendas na fila com a negação, sem nenhuma guarda que acusasse.
+    if re.search(r"(?<![a-z])estetic", n):
+        p.append("fala de estética (ordem de 11/11: o tema não entra nas redes, nem para negar)")
     return p
 
 

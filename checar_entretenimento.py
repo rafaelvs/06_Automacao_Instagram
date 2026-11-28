@@ -276,13 +276,17 @@ def checar_fila(eps, reels, ler_sidecar=_ler_sidecar_disco, existe=_existe_disco
         elif not existe(it["video"]):
             p.append(f"{iid}: vídeo {it.get('video')!r} NÃO existe no repo — publicar falharia")
         cap = it.get("caption", "")
-        for v in legenda.validar(cap, "reel"):
-            p.append(f"{iid}: legenda — {v}")
-        try:
-            if cap != legenda_de(ep):
-                p.append(f"{iid}: legenda da fila diverge da gerada do episódio aprovado — refaça com animado.anexar")
-        except ValueError as x:
-            p.append(f"{iid}: a legenda do episódio não normaliza ({x})")
+        # Legenda de peça JÁ NO AR não se audita (mesmo escopo do checar_legenda): mexer no JSON não muda o
+        # post, e editar o episódio trocaria o hash por baixo do vídeo publicado. Regra nova de legenda (ex.:
+        # estética, 27/11) vale para a FILA; o que já saiu se corrige no app, à mão.
+        if iid not in publicados:
+            for v in legenda.validar(cap, "reel"):
+                p.append(f"{iid}: legenda — {v}")
+            try:
+                if cap != legenda_de(ep):
+                    p.append(f"{iid}: legenda da fila diverge da gerada do episódio aprovado — refaça com animado.anexar")
+            except ValueError as x:
+                p.append(f"{iid}: a legenda do episódio não normaliza ({x})")
         if it.get("voz_ia") is not True or "voz digital (ia)" not in cap.lower():
             p.append(f"{iid}: declaração de IA incompleta (exige voz_ia: true, que liga o rótulo da Meta, E a "
                      f"linha 'voz digital (IA)' na legenda)")

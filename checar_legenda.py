@@ -72,6 +72,10 @@ def auto_teste():
         ("controle NEGATIVO: @ verificado da SBOP", [("reels.json", "reel", "t_sbopbr", ok_cap.replace("@asami.brasil", "@sbopbr"))], 0),
         ("controle NEGATIVO: 'Manda pra quem' é envio", [("reels.json", "reel", "t_manda", ok_cap.replace("Envia para quem precisa disso.", "Manda pra quem tá esperando o osso colar."))], 0),
     ]
+    casos.append(("controle POSITIVO: nega estética (o literal da fila em 27/11)",
+                  [("reels.json", "reel", "t_est", ok_cap.replace("quando avaliar.", "quando avaliar. Reconstrução de função, nunca estética."))], 1))
+    casos.append(("controle NEGATIVO: anestesia não é estética",
+                  [("reels.json", "reel", "t_anest", ok_cap.replace("quando avaliar.", "quando avaliar, com anestesia."))], 0))
     for cta in ("Manda um direct pra agendar sua avaliação.", "Manda mensagem que eu te respondo.",
                 "Manda sua dúvida nos comentários.", "Manda o seu raio-X por direct.",
                 "Manda pra quem quer agendar consulta."):
