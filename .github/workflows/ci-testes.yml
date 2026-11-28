@@ -55,6 +55,11 @@ jobs:
           python rerender_frame.py --autoteste
       - name: "Vigia da medicao (auditoria v3, 21/11/2026): dump de insights de 30d com no maximo 10 dias"
         run: python checar_dump.py --auto-teste && python checar_dump.py
+      - name: "Estoque da fila (auditoria v4, 27/11/2026): vaga de reel vazia < 5 dias = VERMELHO"
+        # So' le: projeta a fila com a regra do robo (regra_reels via publish_agenda), por grupo de dias.
+        # Amarelo (< 10 dias num grupo, < 2 CAMERA LENTA ou VAR, story a mais de 7 dias, PROGRAMACAO.md
+        # com mais de 7 dias) vai para o resumo do job. A v4 achou o buraco de 10/12 sem nenhum alarme.
+        run: python checar_fila.py --auto-teste && python checar_fila.py
       - name: "Duracao real dos reels (dur e' o denominador da retencao)"
         # A auditoria v1 publicou 9,5% de retencao onde o real era 3,5% porque `dur` vinha do
         # storyboard, nao do MP4. 54 de 57 itens erravam >10%; 47 nao tinham dur nenhum.
